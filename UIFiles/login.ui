@@ -48,7 +48,7 @@ QLabel{
 
 #login_dialog_window{
 	background-color: #ffffff;
-	background-color: rgb(6, 76, 130);
+	background-color: rgb(12, 53, 106);
 }
 
 

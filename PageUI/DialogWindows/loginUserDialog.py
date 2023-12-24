@@ -31,6 +31,7 @@ class loginUserDialog:
         GUIBackend.show_window(self.ui, always_on_top=True)
 
     def close(self):
+        self.clear_inputs()
         GUIBackend.close_window(self.ui)
 
 

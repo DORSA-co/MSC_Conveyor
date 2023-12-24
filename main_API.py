@@ -80,6 +80,12 @@ class main_API:
             'users': self.API_Page_Users
         }
 
+        self.startup()
+
+
+    def startup(self,):
+        for api in self.pages_api_dict.values():
+            api.startup()
         
     
     

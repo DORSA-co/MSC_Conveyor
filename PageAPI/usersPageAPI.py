@@ -38,6 +38,7 @@ class usersPageAPI:
 
     def startup(self,):
         self.allUser.startup()
+        self.loginUser.startup()
         
 
     def set_login_event(self, func):
@@ -303,6 +304,9 @@ class LoginUserAPI:
         #this button is login button on login dialog box
         self.uiHandeler.loginDialog.login_button_connector(self.login)
         self.uiHandeler.set_logedin_username(None)
+
+    def startup(self):
+        self.uiHandeler.loginDialog.show()
 
     def set_login_event_func(self, func):
         self.login_event_func = func
