@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>editUserDialogWin</class>
+ <widget class="QDialog" name="editUserDialogWin">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>550</width>
+    <height>442</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>550</width>
+    <height>400</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>550</width>
+    <height>442</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Edit User</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">*{
+	
+	font: auto &quot;Arial&quot;;
+	font-size: 14px;
+font-weight:bold;
+
+}
+
+QLabel{
+
+
+}
+
+
+#editUserDialogWin{
+	background-color: rgb(250, 250, 250);
+	
+	border:3px solid rgb(12, 53, 106);
+	
+}
+
+
+
+QPushButton{
+	border: none;
+	min-height: 40px;
+	border-radius: 5px;
+
+	
+}
+/*
+QPushButton:hover{
+
+	background-color:rgb(22, 38, 76);
+
+}
+
+QPushButton:disabled{
+	color: #808080;
+	background-color:rgb(210, 210, 210);
+
+}
+*/
+
+/*********************************************/
+QLabel{
+	color: rgb(50,50,50);
+color: #202020;
+}
+
+
+/*********************************************/
+
+
+/*******************************************/
+QLineEdit
+{
+	border:2px solid rgb(6, 76, 130);
+    border-radius: 3px;
+    padding: 1px 18px 1px 8px;
+    min-width: 6em;
+	min-height: 35px;
+	font-size: 16px;
+}
+
+
+
+/*******************************************/
+
+
+QGroupBox{
+	font-weight: bold;
+}
+
+QLineEdit:hover{
+	border: 1px solid black;
+	background: #e4f0fa;
+}
+
+QLineEdit:focus {
+	color: rgb(6, 76, 130);
+	background: #ffffff;
+	selection-background-color: rgb(255, 204, 75);
+}
+
+QSpinBox:hover{
+	background: #e4f0fa;
+}
+
+
+/*********************************************/
+QComboBox
+{
+	border:2px solid rgb(12, 53, 105);
+    border-radius: 3px;
+    padding: 1px 18px 1px 8px;
+    min-width: 6em;
+	min-height: 35px;
+	font-size: 14px;
+}
+
+QComboBox:enabled{
+color: rgb(50, 50, 50);
+}
+
+QComboBox:disabled
+{
+	border:2px solid rgb(210, 210, 210);
+	color:(210, 210, 210);
+
+}
+
+QComboBox::down-arrow
+{   
+	image: url(:/icons/icon/icons8-down-white-48.png);
+	width: 15px;
+    height: 15px;
+
+}
+
+QComboBox::drop-down
+{
+	 background-color: rgb(12, 53, 106);
+	 min-width: 30px;
+}
+
+QComboBox::drop-down:disabled 
+{
+	 background-color: rgb(210, 210, 210);
+	 min-width: 30px;
+}
+
+QComboBox QAbstractItemView {
+    border: none;
+    selection-background-color: rgb(6, 76, 130);
+	selection-color: rgb(6, 76, 130);
+
+
+}
+
+QComboBox QAbstractItemView {
+    border: none;
+}
+
+QComboBox QAbstractItemView::item {
+    border: none;
+	height:30px;
+}
+
+
+</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>25</number>
+   </property>
+   <property name="leftMargin">
+    <number>60</number>
+   </property>
+   <property name="topMargin">
+    <number>40</number>
+   </property>
+   <property name="rightMargin">
+    <number>60</number>
+   </property>
+   <property name="bottomMargin">
+    <number>40</number>
+   </property>
+   <item>
+    <layout class="QGridLayout" name="gridLayout">
+     <property name="verticalSpacing">
+      <number>50</number>
+     </property>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="username_input"/>
+     </item>
+     <item row="2" column="1">
+      <widget class="QComboBox" name="role_combobox"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Password</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Role</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Username</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="password_input"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="error_lbl">
+     <property name="styleSheet">
+      <string notr="true">color:rgb(255, 99, 94);</string>
+     </property>
+     <property name="text">
+      <string>Error</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="horizontalFrame">
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="topMargin">
+       <number>20</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="save_btn">
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+
+background-color: rgb(12, 53, 106);
+color:#ffffff;
+max-width: 200px;
+}
+
+
+QPushButton:hover{
+
+background-color: rgb(6, 29, 56);
+color:#ffffff;
+max-width: 200px;
+}</string>
+        </property>
+        <property name="text">
+         <string>Save</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="cancel_btn">
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+
+background-color: rgb(12, 53, 106);
+color:#ffffff;
+max-width: 200px;
+}
+
+
+QPushButton:hover{
+
+background-color: rgb(6, 29, 56);
+color:#ffffff;
+max-width: 200px;
+}</string>
+        </property>
+        <property name="text">
+         <string>Cancel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="Assets/Assets.qrc"/>
+ </resources>
+ <connections/>
+</ui>

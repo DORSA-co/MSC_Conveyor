@@ -15,12 +15,13 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractSpinBox, QApplication, QComboBox, QDateEdit,
-    QFormLayout, QFrame, QGridLayout, QGroupBox,
-    QHBoxLayout, QHeaderView, QLabel, QLineEdit,
-    QMainWindow, QPushButton, QScrollArea, QSizePolicy,
-    QSpacerItem, QSpinBox, QStackedWidget, QTabWidget,
-    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QAbstractSpinBox, QApplication,
+    QComboBox, QDateEdit, QFormLayout, QFrame,
+    QGridLayout, QGroupBox, QHBoxLayout, QHeaderView,
+    QLabel, QLineEdit, QMainWindow, QPushButton,
+    QScrollArea, QSizePolicy, QSpacerItem, QSpinBox,
+    QStackedWidget, QTabWidget, QTableWidget, QTableWidgetItem,
+    QVBoxLayout, QWidget)
 import assets_rc
 
 class Ui_MainWindow(object):
@@ -45,6 +46,7 @@ class Ui_MainWindow(object):
 "	padding: 5px;\n"
 "	font-size: 11pt;\n"
 "	font-weight: bold;\n"
+"	background-color: rgb(12, 53, 106);\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
@@ -86,8 +88,8 @@ class Ui_MainWindow(object):
 "	\n"
 "}\n"
 "\n"
-"/*****************************************************************************"
-                        "*************/\n"
+"/************************************"
+                        "******************************************************/\n"
 "QLineEdit\n"
 "{\n"
 "	border:2px solid rgb(6, 76, 130);\n"
@@ -133,10 +135,10 @@ class Ui_MainWindow(object):
 "\n"
 "QSpinBox::down-arrow ,  QDoubleSpinBox::down-arrow\n"
 "{   \n"
-"	image: url(:/icons/icon/icons8-minus-white-48.png);\n"
+"	image: url(:/icons/icon/icons8-minus-whi"
+                        "te-48.png);\n"
 "	width: 24px;\n"
-"	height"
-                        ": 24px;\n"
+"	height: 24px;\n"
 "\n"
 "\n"
 "}\n"
@@ -184,9 +186,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QSpinBox:focus, QDoubleSpinBox:focus{\n"
-"	background: rgb(241, 241, 241);\n"
-"	/*selection-background"
-                        "-color: black;*/\n"
+"	background: rgb(24"
+                        "1, 241, 241);\n"
+"	/*selection-background-color: black;*/\n"
 "}\n"
 "\n"
 "\n"
@@ -240,11 +242,11 @@ class Ui_MainWindow(object):
 "QComboBox::drop-down:disabled \n"
 "{\n"
 "	 background-color: rgb(210, 210, 210);\n"
-"	 min-width: 30px;\n"
+"	 min-wi"
+                        "dth: 30px;\n"
 "}\n"
 "\n"
-"QComboBox QAbst"
-                        "ractItemView {\n"
+"QComboBox QAbstractItemView {\n"
 "    border: none;\n"
 "	color: #202020;\n"
 "	background-color:#ffffff;\n"
@@ -292,10 +294,10 @@ class Ui_MainWindow(object):
 "    height: 10px;\n"
 "\n"
 "}\n"
-"\n"
+""
+                        "\n"
 "QDateEdit::up-button,\n"
-"QDateEdit"
-                        "::down-button\n"
+"QDateEdit::down-button\n"
 "{\n"
 "    subcontrol-origin: border;\n"
 "	background-color:rgb(12, 52, 105);\n"
@@ -372,6 +374,31 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_4.addItem(self.horizontalSpacer_4)
 
+        self.frame_27 = QFrame(self.header)
+        self.frame_27.setObjectName(u"frame_27")
+        self.frame_27.setFrameShape(QFrame.StyledPanel)
+        self.frame_27.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_20 = QHBoxLayout(self.frame_27)
+        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
+        self.logined_username_lbl = QLabel(self.frame_27)
+        self.logined_username_lbl.setObjectName(u"logined_username_lbl")
+        self.logined_username_lbl.setStyleSheet(u"color:#ffffff;")
+
+        self.horizontalLayout_20.addWidget(self.logined_username_lbl)
+
+        self.login_logout_btn = QPushButton(self.frame_27)
+        self.login_logout_btn.setObjectName(u"login_logout_btn")
+        self.login_logout_btn.setStyleSheet(u"")
+        icon = QIcon()
+        icon.addFile(u":/icons/icon/icons8-user-50.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.login_logout_btn.setIcon(icon)
+        self.login_logout_btn.setIconSize(QSize(35, 35))
+
+        self.horizontalLayout_20.addWidget(self.login_logout_btn)
+
+
+        self.horizontalLayout_4.addWidget(self.frame_27)
+
         self.frame_5 = QFrame(self.header)
         self.frame_5.setObjectName(u"frame_5")
         self.frame_5.setMaximumSize(QSize(500, 16777215))
@@ -398,9 +425,9 @@ class Ui_MainWindow(object):
 "QPushButton:hover {\n"
 " background: #a3a3a3;\n"
 " }")
-        icon = QIcon()
-        icon.addFile(u":/general_icons/general_incons/icon_minimize.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.minimize_btn.setIcon(icon)
+        icon1 = QIcon()
+        icon1.addFile(u":/general_icons/general_incons/icon_minimize.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.minimize_btn.setIcon(icon1)
 
         self.horizontalLayout_8.addWidget(self.minimize_btn)
 
@@ -414,9 +441,9 @@ class Ui_MainWindow(object):
 "QPushButton:hover {\n"
 " background: #a3a3a3;\n"
 " }")
-        icon1 = QIcon()
-        icon1.addFile(u":/general_icons/general_incons/icon_maximize.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.maximize_btn.setIcon(icon1)
+        icon2 = QIcon()
+        icon2.addFile(u":/general_icons/general_incons/icon_maximize.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.maximize_btn.setIcon(icon2)
 
         self.horizontalLayout_8.addWidget(self.maximize_btn)
 
@@ -432,9 +459,9 @@ class Ui_MainWindow(object):
 "QPushButton:hover{\n"
 "	background: #F70000;\n"
 " }")
-        icon2 = QIcon()
-        icon2.addFile(u":/general_icons/general_incons/icons8-close-20.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.close_btn.setIcon(icon2)
+        icon3 = QIcon()
+        icon3.addFile(u":/general_icons/general_incons/icons8-close-20.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.close_btn.setIcon(icon3)
 
         self.horizontalLayout_8.addWidget(self.close_btn)
 
@@ -511,9 +538,9 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background: rgb(0, 0, 0);\n"
 "}")
-        icon3 = QIcon()
-        icon3.addFile(u"../icons/camera_connection.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.LiveDetectionBT.setIcon(icon3)
+        icon4 = QIcon()
+        icon4.addFile(u"../icons/camera_connection.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.LiveDetectionBT.setIcon(icon4)
         self.LiveDetectionBT.setIconSize(QSize(51, 51))
 
         self.verticalLayout_36.addWidget(self.LiveDetectionBT, 0, Qt.AlignHCenter)
@@ -542,9 +569,9 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background: rgb(0, 0, 0);\n"
 "}")
-        icon4 = QIcon()
-        icon4.addFile(u"../icons/monitor.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.ReportConnectionBT.setIcon(icon4)
+        icon5 = QIcon()
+        icon5.addFile(u"../icons/monitor.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.ReportConnectionBT.setIcon(icon5)
         self.ReportConnectionBT.setIconSize(QSize(51, 51))
 
         self.verticalLayout_36.addWidget(self.ReportConnectionBT, 0, Qt.AlignHCenter)
@@ -573,9 +600,9 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background: rgb(0, 0, 0);\n"
 "}")
-        icon5 = QIcon()
-        icon5.addFile(u"../icons/Capture-calib.PNG", QSize(), QIcon.Normal, QIcon.Off)
-        self.HelpConnectionBT.setIcon(icon5)
+        icon6 = QIcon()
+        icon6.addFile(u"../icons/Capture-calib.PNG", QSize(), QIcon.Normal, QIcon.Off)
+        self.HelpConnectionBT.setIcon(icon6)
         self.HelpConnectionBT.setIconSize(QSize(51, 51))
 
         self.verticalLayout_36.addWidget(self.HelpConnectionBT, 0, Qt.AlignHCenter)
@@ -604,12 +631,41 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background: rgb(0, 0, 0);\n"
 "}")
-        icon6 = QIcon()
-        icon6.addFile(u"../icons/settings.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.SettingBT.setIcon(icon6)
+        icon7 = QIcon()
+        icon7.addFile(u"../icons/settings.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.SettingBT.setIcon(icon7)
         self.SettingBT.setIconSize(QSize(51, 51))
 
         self.verticalLayout_36.addWidget(self.SettingBT)
+
+        self.usersBtn = QPushButton(self.frame_43)
+        self.usersBtn.setObjectName(u"usersBtn")
+        self.usersBtn.setMaximumSize(QSize(60, 60))
+        self.usersBtn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.usersBtn.setStyleSheet(u"QPushButton{\n"
+"	color: white;\n"
+"	padding: 5px;\n"
+"	font-size: 11pt;\n"
+"	font-weight: bold;\n"
+"	border-radius:7px;\n"
+"   background-color:#F1F0E8;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	background: #a3a3a3;\n"
+"}\n"
+"\n"
+"QPushButton:disabled {\n"
+"    color: #8D8D8D;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background: rgb(0, 0, 0);\n"
+"}")
+        self.usersBtn.setIcon(icon7)
+        self.usersBtn.setIconSize(QSize(51, 51))
+
+        self.verticalLayout_36.addWidget(self.usersBtn)
 
         self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -629,9 +685,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.stackedWidget = QStackedWidget(self.main_frame)
-        self.stackedWidget.setObjectName(u"stackedWidget")
-        self.stackedWidget.setStyleSheet(u"#Live_View_Page,\n"
+        self.pages_stackwgt = QStackedWidget(self.main_frame)
+        self.pages_stackwgt.setObjectName(u"pages_stackwgt")
+        self.pages_stackwgt.setStyleSheet(u"#Live_View_Page,\n"
 "#Help_Page,\n"
 "#Report_Page,\n"
 "#Setting_Page\n"
@@ -639,9 +695,9 @@ class Ui_MainWindow(object):
 "background-color:#ffffff;\n"
 "\n"
 "}")
-        self.stackedWidget.setFrameShape(QFrame.NoFrame)
-        self.stackedWidget.setFrameShadow(QFrame.Plain)
-        self.stackedWidget.setLineWidth(3)
+        self.pages_stackwgt.setFrameShape(QFrame.NoFrame)
+        self.pages_stackwgt.setFrameShadow(QFrame.Plain)
+        self.pages_stackwgt.setLineWidth(3)
         self.Live_View_Page = QWidget()
         self.Live_View_Page.setObjectName(u"Live_View_Page")
         self.horizontalLayout_7 = QHBoxLayout(self.Live_View_Page)
@@ -972,9 +1028,9 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background: rgb(0, 0, 0);\n"
 "}")
-        icon7 = QIcon()
-        icon7.addFile(u"../icons/camera_connected.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.Stop_connection.setIcon(icon7)
+        icon8 = QIcon()
+        icon8.addFile(u"../icons/camera_connected.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.Stop_connection.setIcon(icon8)
         self.Stop_connection.setIconSize(QSize(50, 50))
 
         self.horizontalLayout_25.addWidget(self.Stop_connection)
@@ -1006,9 +1062,9 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background: rgb(0, 0, 0);\n"
 "}")
-        icon8 = QIcon()
-        icon8.addFile(u"../icons/camera_disconnected.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.Camera_connection.setIcon(icon8)
+        icon9 = QIcon()
+        icon9.addFile(u"../icons/camera_disconnected.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.Camera_connection.setIcon(icon9)
         self.Camera_connection.setIconSize(QSize(50, 50))
 
         self.horizontalLayout_25.addWidget(self.Camera_connection)
@@ -1039,9 +1095,9 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background: rgb(0, 0, 0);\n"
 "}")
-        icon9 = QIcon()
-        icon9.addFile(u"../icons/Live00.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.live.setIcon(icon9)
+        icon10 = QIcon()
+        icon10.addFile(u"../icons/Live00.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.live.setIcon(icon10)
         self.live.setIconSize(QSize(60, 60))
 
         self.horizontalLayout_25.addWidget(self.live)
@@ -1071,9 +1127,9 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background: rgb(0, 0, 0);\n"
 "}")
-        icon10 = QIcon()
-        icon10.addFile(u"../icons/stop-button2.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.Stop.setIcon(icon10)
+        icon11 = QIcon()
+        icon11.addFile(u"../icons/stop-button2.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.Stop.setIcon(icon11)
         self.Stop.setIconSize(QSize(29, 26))
 
         self.horizontalLayout_25.addWidget(self.Stop)
@@ -1349,7 +1405,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_7.addWidget(self.frame_6)
 
-        self.stackedWidget.addWidget(self.Live_View_Page)
+        self.pages_stackwgt.addWidget(self.Live_View_Page)
         self.Help_page = QWidget()
         self.Help_page.setObjectName(u"Help_page")
         self.horizontalLayout = QHBoxLayout(self.Help_page)
@@ -1891,9 +1947,9 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background: rgb(0, 0, 0);\n"
 "}")
-        icon11 = QIcon()
-        icon11.addFile(u"../icons/save.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.Save_Calibration.setIcon(icon11)
+        icon12 = QIcon()
+        icon12.addFile(u"../icons/save.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.Save_Calibration.setIcon(icon12)
 
         self.verticalLayout_31.addWidget(self.Save_Calibration)
 
@@ -1957,7 +2013,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.frame_29)
 
-        self.stackedWidget.addWidget(self.Help_page)
+        self.pages_stackwgt.addWidget(self.Help_page)
         self.Report_page = QWidget()
         self.Report_page.setObjectName(u"Report_page")
         self.horizontalLayout_6 = QHBoxLayout(self.Report_page)
@@ -2357,7 +2413,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_6.addWidget(self.frame_39)
 
-        self.stackedWidget.addWidget(self.Report_page)
+        self.pages_stackwgt.addWidget(self.Report_page)
         self.Setting_Page = QWidget()
         self.Setting_Page.setObjectName(u"Setting_Page")
         self.horizontalLayout_14 = QHBoxLayout(self.Setting_Page)
@@ -2420,9 +2476,9 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background: rgb(0, 0, 0);\n"
 "}")
-        icon12 = QIcon()
-        icon12.addFile(u":/icons/icon/camera_disconnected.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.Camera_connection_Camera_setting.setIcon(icon12)
+        icon13 = QIcon()
+        icon13.addFile(u":/icons/icon/camera_disconnected.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.Camera_connection_Camera_setting.setIcon(icon13)
         self.Camera_connection_Camera_setting.setIconSize(QSize(50, 50))
 
         self.horizontalLayout_18.addWidget(self.Camera_connection_Camera_setting)
@@ -2452,7 +2508,7 @@ class Ui_MainWindow(object):
 "QPushButton:pressed {\n"
 "	background: rgb(0, 0, 0);\n"
 "}")
-        self.Stop_connection_Camera_setting.setIcon(icon8)
+        self.Stop_connection_Camera_setting.setIcon(icon9)
         self.Stop_connection_Camera_setting.setIconSize(QSize(50, 50))
 
         self.horizontalLayout_18.addWidget(self.Stop_connection_Camera_setting)
@@ -2614,7 +2670,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        self.Save_Camera_Parameters.setIcon(icon11)
+        self.Save_Camera_Parameters.setIcon(icon12)
         self.Save_Camera_Parameters.setIconSize(QSize(26, 26))
 
         self.horizontalLayout_13.addWidget(self.Save_Camera_Parameters)
@@ -2849,7 +2905,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        self.Save_algorithm_setting.setIcon(icon11)
+        self.Save_algorithm_setting.setIcon(icon12)
         self.Save_algorithm_setting.setIconSize(QSize(26, 26))
 
         self.horizontalLayout_12.addWidget(self.Save_algorithm_setting)
@@ -3225,7 +3281,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        self.Save_Algorithm_Parameters.setIcon(icon11)
+        self.Save_Algorithm_Parameters.setIcon(icon12)
         self.Save_Algorithm_Parameters.setIconSize(QSize(26, 26))
 
         self.horizontalLayout_83.addWidget(self.Save_Algorithm_Parameters)
@@ -3254,9 +3310,492 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_14.addWidget(self.frame_4)
 
-        self.stackedWidget.addWidget(self.Setting_Page)
+        self.pages_stackwgt.addWidget(self.Setting_Page)
+        self.Users_page = QWidget()
+        self.Users_page.setObjectName(u"Users_page")
+        self.verticalLayout_47 = QVBoxLayout(self.Users_page)
+        self.verticalLayout_47.setObjectName(u"verticalLayout_47")
+        self.user_tabs = QTabWidget(self.Users_page)
+        self.user_tabs.setObjectName(u"user_tabs")
+        self.user_tabs.setStyleSheet(u"#all_users_tab,\n"
+"#user_profile_tab,\n"
+"#user_register_tab\n"
+"{\n"
+"	\n"
+"	background-color: #ffffff;\n"
+"\n"
+"}")
+        self.user_register_tab = QWidget()
+        self.user_register_tab.setObjectName(u"user_register_tab")
+        self.verticalLayout_41 = QVBoxLayout(self.user_register_tab)
+        self.verticalLayout_41.setObjectName(u"verticalLayout_41")
+        self.gridFrame_2 = QFrame(self.user_register_tab)
+        self.gridFrame_2.setObjectName(u"gridFrame_2")
+        self.gridFrame_2.setStyleSheet(u"QLabel{\n"
+"	font-size: 16px;\n"
+"	color: rgb(52, 52, 52);\n"
+"	padding-right: 20px;\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"QLineEdit\n"
+"{\n"
+"	max-width: 300px;\n"
+"\n"
+"}")
+        self.gridLayout_9 = QGridLayout(self.gridFrame_2)
+        self.gridLayout_9.setSpacing(3)
+        self.gridLayout_9.setObjectName(u"gridLayout_9")
+        self.userpage_user_role_combobox = QComboBox(self.gridFrame_2)
+        self.userpage_user_role_combobox.addItem("")
+        self.userpage_user_role_combobox.setObjectName(u"userpage_user_role_combobox")
 
-        self.verticalLayout_3.addWidget(self.stackedWidget)
+        self.gridLayout_9.addWidget(self.userpage_user_role_combobox, 6, 1, 1, 1)
+
+        self.verticalSpacer_15 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Maximum)
+
+        self.gridLayout_9.addItem(self.verticalSpacer_15, 5, 0, 1, 1)
+
+        self.userpage_password_inpt = QLineEdit(self.gridFrame_2)
+        self.userpage_password_inpt.setObjectName(u"userpage_password_inpt")
+
+        self.gridLayout_9.addWidget(self.userpage_password_inpt, 2, 1, 1, 1)
+
+        self.userpage_username_inpt = QLineEdit(self.gridFrame_2)
+        self.userpage_username_inpt.setObjectName(u"userpage_username_inpt")
+
+        self.gridLayout_9.addWidget(self.userpage_username_inpt, 0, 1, 1, 1)
+
+        self.label_62 = QLabel(self.gridFrame_2)
+        self.label_62.setObjectName(u"label_62")
+        self.label_62.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_9.addWidget(self.label_62, 6, 0, 1, 1)
+
+        self.label_64 = QLabel(self.gridFrame_2)
+        self.label_64.setObjectName(u"label_64")
+        self.label_64.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_9.addWidget(self.label_64, 0, 0, 1, 1)
+
+        self.userpage_confirm_password_inpt = QLineEdit(self.gridFrame_2)
+        self.userpage_confirm_password_inpt.setObjectName(u"userpage_confirm_password_inpt")
+        self.userpage_confirm_password_inpt.setStyleSheet(u"")
+
+        self.gridLayout_9.addWidget(self.userpage_confirm_password_inpt, 4, 1, 1, 1)
+
+        self.label_65 = QLabel(self.gridFrame_2)
+        self.label_65.setObjectName(u"label_65")
+        self.label_65.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_9.addWidget(self.label_65, 2, 0, 1, 1)
+
+        self.horizontalSpacer_23 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_9.addItem(self.horizontalSpacer_23, 0, 2, 1, 1)
+
+        self.verticalSpacer_13 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Maximum)
+
+        self.gridLayout_9.addItem(self.verticalSpacer_13, 3, 0, 1, 1)
+
+        self.label_66 = QLabel(self.gridFrame_2)
+        self.label_66.setObjectName(u"label_66")
+        self.label_66.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_9.addWidget(self.label_66, 4, 0, 1, 1)
+
+        self.verticalSpacer_16 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Maximum)
+
+        self.gridLayout_9.addItem(self.verticalSpacer_16, 7, 0, 1, 1)
+
+        self.verticalSpacer_18 = QSpacerItem(20, 15, QSizePolicy.Minimum, QSizePolicy.Maximum)
+
+        self.gridLayout_9.addItem(self.verticalSpacer_18, 1, 0, 1, 1)
+
+        self.userspage_add_user_btn = QPushButton(self.gridFrame_2)
+        self.userspage_add_user_btn.setObjectName(u"userspage_add_user_btn")
+        self.userspage_add_user_btn.setStyleSheet(u"max-width: 120px;")
+        icon14 = QIcon()
+        icon14.addFile(u":/assets/Assets/icons/icons8-plus-white-50.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.userspage_add_user_btn.setIcon(icon14)
+
+        self.gridLayout_9.addWidget(self.userspage_add_user_btn, 8, 1, 1, 1)
+
+
+        self.verticalLayout_41.addWidget(self.gridFrame_2)
+
+        self.verticalSpacer_21 = QSpacerItem(20, 15, QSizePolicy.Minimum, QSizePolicy.Maximum)
+
+        self.verticalLayout_41.addItem(self.verticalSpacer_21)
+
+        self.userspage_register_error_lbl = QLabel(self.user_register_tab)
+        self.userspage_register_error_lbl.setObjectName(u"userspage_register_error_lbl")
+        self.userspage_register_error_lbl.setMinimumSize(QSize(310, 35))
+        self.userspage_register_error_lbl.setStyleSheet(u"font-size: 16px;\n"
+"font-weight: bold;\n"
+"color: #ffffff;\n"
+"background-color: rgb(255, 95, 84);\n"
+"padding:5px;\n"
+"\n"
+"min-width: 300px;\n"
+"max-width: 16777px;\n"
+"")
+
+        self.verticalLayout_41.addWidget(self.userspage_register_error_lbl)
+
+        self.userspage_register_success_frame = QFrame(self.user_register_tab)
+        self.userspage_register_success_frame.setObjectName(u"userspage_register_success_frame")
+        self.userspage_register_success_frame.setStyleSheet(u"QFrame{\n"
+"background-color: rgb(58, 209, 154);\n"
+"}")
+        self.userspage_register_success_frame.setFrameShape(QFrame.StyledPanel)
+        self.userspage_register_success_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_39 = QHBoxLayout(self.userspage_register_success_frame)
+        self.horizontalLayout_39.setObjectName(u"horizontalLayout_39")
+        self.label_88 = QLabel(self.userspage_register_success_frame)
+        self.label_88.setObjectName(u"label_88")
+        self.label_88.setMaximumSize(QSize(50, 50))
+        self.label_88.setPixmap(QPixmap(u":/assets/icons/icons8-check-150.png"))
+        self.label_88.setScaledContents(True)
+
+        self.horizontalLayout_39.addWidget(self.label_88)
+
+        self.userspage_register_success_lbl = QLabel(self.userspage_register_success_frame)
+        self.userspage_register_success_lbl.setObjectName(u"userspage_register_success_lbl")
+        self.userspage_register_success_lbl.setMinimumSize(QSize(0, 50))
+        self.userspage_register_success_lbl.setStyleSheet(u"font-size: 16px;\n"
+"font-weight: bold;\n"
+"color: #ffffff;\n"
+"\n"
+"")
+        self.userspage_register_success_lbl.setScaledContents(False)
+
+        self.horizontalLayout_39.addWidget(self.userspage_register_success_lbl)
+
+        self.horizontalSpacer_70 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_39.addItem(self.horizontalSpacer_70)
+
+
+        self.verticalLayout_41.addWidget(self.userspage_register_success_frame)
+
+        self.verticalSpacer_19 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_41.addItem(self.verticalSpacer_19)
+
+        self.user_tabs.addTab(self.user_register_tab, "")
+        self.user_profile_tab = QWidget()
+        self.user_profile_tab.setObjectName(u"user_profile_tab")
+        self.verticalLayout_42 = QVBoxLayout(self.user_profile_tab)
+        self.verticalLayout_42.setObjectName(u"verticalLayout_42")
+        self.userpage_editprofile_edit_profile_groupbox = QGroupBox(self.user_profile_tab)
+        self.userpage_editprofile_edit_profile_groupbox.setObjectName(u"userpage_editprofile_edit_profile_groupbox")
+        self.userpage_editprofile_edit_profile_groupbox.setStyleSheet(u"QLabel{\n"
+"	font-size: 16px;\n"
+"	color: rgb(52, 52, 52);\n"
+"	padding-right: 20px;\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"QLineEdit\n"
+"{\n"
+"	max-width: 300px;\n"
+"\n"
+"}")
+        self.horizontalLayout_40 = QHBoxLayout(self.userpage_editprofile_edit_profile_groupbox)
+        self.horizontalLayout_40.setObjectName(u"horizontalLayout_40")
+        self.horizontalLayout_40.setContentsMargins(50, 50, -1, -1)
+        self.verticalLayout_43 = QVBoxLayout()
+        self.verticalLayout_43.setObjectName(u"verticalLayout_43")
+        self.verticalLayout_43.setContentsMargins(0, -1, -1, -1)
+        self.gridLayout_18 = QGridLayout()
+        self.gridLayout_18.setObjectName(u"gridLayout_18")
+        self.gridLayout_18.setVerticalSpacing(25)
+        self.userpage_editprofile_username_inpt = QLineEdit(self.userpage_editprofile_edit_profile_groupbox)
+        self.userpage_editprofile_username_inpt.setObjectName(u"userpage_editprofile_username_inpt")
+
+        self.gridLayout_18.addWidget(self.userpage_editprofile_username_inpt, 0, 1, 1, 1)
+
+        self.label_79 = QLabel(self.userpage_editprofile_edit_profile_groupbox)
+        self.label_79.setObjectName(u"label_79")
+        self.label_79.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_18.addWidget(self.label_79, 0, 0, 1, 1)
+
+        self.horizontalSpacer_39 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_18.addItem(self.horizontalSpacer_39, 0, 2, 1, 1)
+
+
+        self.verticalLayout_43.addLayout(self.gridLayout_18)
+
+        self.editprofile_error_lbl = QLabel(self.userpage_editprofile_edit_profile_groupbox)
+        self.editprofile_error_lbl.setObjectName(u"editprofile_error_lbl")
+        self.editprofile_error_lbl.setStyleSheet(u"font-size: 16px;\n"
+"font-weight: bold;\n"
+"color: #ffffff;\n"
+"background-color: rgb(255, 95, 84);\n"
+"padding:5px;\n"
+"\n"
+"min-width: 100px;\n"
+"max-width: 16777px;\n"
+"max-height: 30px;\n"
+"")
+
+        self.verticalLayout_43.addWidget(self.editprofile_error_lbl)
+
+        self.horizontalFrame_7 = QFrame(self.userpage_editprofile_edit_profile_groupbox)
+        self.horizontalFrame_7.setObjectName(u"horizontalFrame_7")
+        self.horizontalFrame_7.setStyleSheet(u"QPushButton {\n"
+"max-width: 120px;\n"
+"}")
+        self.horizontalLayout_41 = QHBoxLayout(self.horizontalFrame_7)
+        self.horizontalLayout_41.setObjectName(u"horizontalLayout_41")
+        self.horizontalLayout_41.setContentsMargins(-1, 30, -1, -1)
+        self.userpage_editprofile_update_btn = QPushButton(self.horizontalFrame_7)
+        self.userpage_editprofile_update_btn.setObjectName(u"userpage_editprofile_update_btn")
+        self.userpage_editprofile_update_btn.setMinimumSize(QSize(150, 0))
+        self.userpage_editprofile_update_btn.setMaximumSize(QSize(130, 16777215))
+        self.userpage_editprofile_update_btn.setStyleSheet(u"")
+
+        self.horizontalLayout_41.addWidget(self.userpage_editprofile_update_btn)
+
+        self.userpage_editprofile_cancel_btn = QPushButton(self.horizontalFrame_7)
+        self.userpage_editprofile_cancel_btn.setObjectName(u"userpage_editprofile_cancel_btn")
+
+        self.horizontalLayout_41.addWidget(self.userpage_editprofile_cancel_btn)
+
+        self.horizontalSpacer_69 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_41.addItem(self.horizontalSpacer_69)
+
+
+        self.verticalLayout_43.addWidget(self.horizontalFrame_7)
+
+
+        self.horizontalLayout_40.addLayout(self.verticalLayout_43)
+
+
+        self.verticalLayout_42.addWidget(self.userpage_editprofile_edit_profile_groupbox)
+
+        self.verticalSpacer_35 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Maximum)
+
+        self.verticalLayout_42.addItem(self.verticalSpacer_35)
+
+        self.userpage_editprofile_change_pass_groupbox = QGroupBox(self.user_profile_tab)
+        self.userpage_editprofile_change_pass_groupbox.setObjectName(u"userpage_editprofile_change_pass_groupbox")
+        self.userpage_editprofile_change_pass_groupbox.setStyleSheet(u"QLabel{\n"
+"	font-size: 16px;\n"
+"	color: rgb(52, 52, 52);\n"
+"	padding-right: 20px;\n"
+"	\n"
+"}\n"
+"\n"
+"\n"
+"QLineEdit\n"
+"{\n"
+"	max-width: 300px;\n"
+"\n"
+"}")
+        self.horizontalLayout_43 = QHBoxLayout(self.userpage_editprofile_change_pass_groupbox)
+        self.horizontalLayout_43.setObjectName(u"horizontalLayout_43")
+        self.horizontalLayout_43.setContentsMargins(50, 50, -1, -1)
+        self.verticalLayout_44 = QVBoxLayout()
+        self.verticalLayout_44.setObjectName(u"verticalLayout_44")
+        self.verticalLayout_44.setContentsMargins(0, -1, -1, -1)
+        self.gridLayout_22 = QGridLayout()
+        self.gridLayout_22.setObjectName(u"gridLayout_22")
+        self.gridLayout_22.setVerticalSpacing(30)
+        self.label_80 = QLabel(self.userpage_editprofile_change_pass_groupbox)
+        self.label_80.setObjectName(u"label_80")
+        self.label_80.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_22.addWidget(self.label_80, 0, 0, 1, 1)
+
+        self.label_81 = QLabel(self.userpage_editprofile_change_pass_groupbox)
+        self.label_81.setObjectName(u"label_81")
+        self.label_81.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_22.addWidget(self.label_81, 1, 0, 1, 1)
+
+        self.userpage_editprofile_confirm_new_password_inpt = QLineEdit(self.userpage_editprofile_change_pass_groupbox)
+        self.userpage_editprofile_confirm_new_password_inpt.setObjectName(u"userpage_editprofile_confirm_new_password_inpt")
+
+        self.gridLayout_22.addWidget(self.userpage_editprofile_confirm_new_password_inpt, 2, 1, 1, 1)
+
+        self.userpage_editprofile_old_password_inpt = QLineEdit(self.userpage_editprofile_change_pass_groupbox)
+        self.userpage_editprofile_old_password_inpt.setObjectName(u"userpage_editprofile_old_password_inpt")
+
+        self.gridLayout_22.addWidget(self.userpage_editprofile_old_password_inpt, 0, 1, 1, 1)
+
+        self.label_86 = QLabel(self.userpage_editprofile_change_pass_groupbox)
+        self.label_86.setObjectName(u"label_86")
+        self.label_86.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+
+        self.gridLayout_22.addWidget(self.label_86, 2, 0, 1, 1)
+
+        self.userpage_editprofile_new_password_inpt = QLineEdit(self.userpage_editprofile_change_pass_groupbox)
+        self.userpage_editprofile_new_password_inpt.setObjectName(u"userpage_editprofile_new_password_inpt")
+
+        self.gridLayout_22.addWidget(self.userpage_editprofile_new_password_inpt, 1, 1, 1, 1)
+
+        self.horizontalSpacer_73 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_22.addItem(self.horizontalSpacer_73, 0, 2, 1, 1)
+
+
+        self.verticalLayout_44.addLayout(self.gridLayout_22)
+
+        self.changepass_error_lbl = QLabel(self.userpage_editprofile_change_pass_groupbox)
+        self.changepass_error_lbl.setObjectName(u"changepass_error_lbl")
+        self.changepass_error_lbl.setStyleSheet(u"font-size: 16px;\n"
+"font-weight: bold;\n"
+"color: #ffffff;\n"
+"background-color: rgb(255, 95, 84);\n"
+"padding:5px;\n"
+"\n"
+"min-width: 300px;\n"
+"max-width: 16777px;\n"
+"max-height: 30px;\n"
+"")
+
+        self.verticalLayout_44.addWidget(self.changepass_error_lbl)
+
+        self.horizontalLayout_44 = QHBoxLayout()
+        self.horizontalLayout_44.setObjectName(u"horizontalLayout_44")
+        self.horizontalLayout_44.setContentsMargins(-1, 30, -1, -1)
+        self.userpage_editprofile_change_password_btn = QPushButton(self.userpage_editprofile_change_pass_groupbox)
+        self.userpage_editprofile_change_password_btn.setObjectName(u"userpage_editprofile_change_password_btn")
+        self.userpage_editprofile_change_password_btn.setMaximumSize(QSize(130, 16777215))
+        self.userpage_editprofile_change_password_btn.setStyleSheet(u"max-width: 120px;")
+
+        self.horizontalLayout_44.addWidget(self.userpage_editprofile_change_password_btn)
+
+        self.horizontalSpacer_97 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_44.addItem(self.horizontalSpacer_97)
+
+
+        self.verticalLayout_44.addLayout(self.horizontalLayout_44)
+
+
+        self.horizontalLayout_43.addLayout(self.verticalLayout_44)
+
+
+        self.verticalLayout_42.addWidget(self.userpage_editprofile_change_pass_groupbox)
+
+        self.userspage_editprofile_success_frame = QFrame(self.user_profile_tab)
+        self.userspage_editprofile_success_frame.setObjectName(u"userspage_editprofile_success_frame")
+        self.userspage_editprofile_success_frame.setStyleSheet(u"QFrame{\n"
+"background-color: rgb(58, 209, 154);\n"
+"}")
+        self.userspage_editprofile_success_frame.setFrameShape(QFrame.StyledPanel)
+        self.userspage_editprofile_success_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_45 = QHBoxLayout(self.userspage_editprofile_success_frame)
+        self.horizontalLayout_45.setObjectName(u"horizontalLayout_45")
+        self.label_89 = QLabel(self.userspage_editprofile_success_frame)
+        self.label_89.setObjectName(u"label_89")
+        self.label_89.setMaximumSize(QSize(50, 50))
+        self.label_89.setPixmap(QPixmap(u":/assets/icons/icons8-check-150.png"))
+        self.label_89.setScaledContents(True)
+
+        self.horizontalLayout_45.addWidget(self.label_89)
+
+        self.userspage_editprofile_success_lbl = QLabel(self.userspage_editprofile_success_frame)
+        self.userspage_editprofile_success_lbl.setObjectName(u"userspage_editprofile_success_lbl")
+        self.userspage_editprofile_success_lbl.setMinimumSize(QSize(0, 50))
+        self.userspage_editprofile_success_lbl.setStyleSheet(u"font-size: 16px;\n"
+"font-weight: bold;\n"
+"color: #ffffff;\n"
+"\n"
+"")
+        self.userspage_editprofile_success_lbl.setScaledContents(False)
+
+        self.horizontalLayout_45.addWidget(self.userspage_editprofile_success_lbl)
+
+        self.horizontalSpacer_71 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_45.addItem(self.horizontalSpacer_71)
+
+
+        self.verticalLayout_42.addWidget(self.userspage_editprofile_success_frame)
+
+        self.verticalSpacer_36 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_42.addItem(self.verticalSpacer_36)
+
+        self.user_tabs.addTab(self.user_profile_tab, "")
+        self.all_users_tab = QWidget()
+        self.all_users_tab.setObjectName(u"all_users_tab")
+        self.verticalLayout_45 = QVBoxLayout(self.all_users_tab)
+        self.verticalLayout_45.setObjectName(u"verticalLayout_45")
+        self.userspage_user_heading_lbl = QLabel(self.all_users_tab)
+        self.userspage_user_heading_lbl.setObjectName(u"userspage_user_heading_lbl")
+        self.userspage_user_heading_lbl.setStyleSheet(u"font-size: 16px;\n"
+"font-weight: bold;\n"
+"color: rgb(6, 76, 130);\n"
+"min-height: 80px;\n"
+"max-height: 80px;")
+
+        self.verticalLayout_45.addWidget(self.userspage_user_heading_lbl)
+
+        self.userpage_all_users_table = QTableWidget(self.all_users_tab)
+        if (self.userpage_all_users_table.columnCount() < 5):
+            self.userpage_all_users_table.setColumnCount(5)
+        if (self.userpage_all_users_table.rowCount() < 3):
+            self.userpage_all_users_table.setRowCount(3)
+        self.userpage_all_users_table.setObjectName(u"userpage_all_users_table")
+        self.userpage_all_users_table.setAutoFillBackground(False)
+        self.userpage_all_users_table.setStyleSheet(u"\n"
+"QHeaderView::section {\n"
+"    background-color:rgb(12, 53, 106);\n"
+"	color: #ffffff;\n"
+"    padding: 4px;\n"
+"    font-size: 10pt;\n"
+"    border-style: none;\n"
+"    border-bottom: 1px solid #fffff8;\n"
+"    border-right: 1px solid #fffff8;\n"
+"}\n"
+"\n"
+"QHeaderView::section:horizontal\n"
+"{\n"
+"    border-top: 1px solid #fffff8;\n"
+"}\n"
+"\n"
+"QHeaderView::section:vertical\n"
+"{\n"
+"    border: 1px solid #fffff8;\n"
+"}\n"
+"\n"
+"")
+        self.userpage_all_users_table.setFrameShape(QFrame.StyledPanel)
+        self.userpage_all_users_table.setFrameShadow(QFrame.Raised)
+        self.userpage_all_users_table.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+        self.userpage_all_users_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
+        self.userpage_all_users_table.setDefaultDropAction(Qt.IgnoreAction)
+        self.userpage_all_users_table.setAlternatingRowColors(False)
+        self.userpage_all_users_table.setSelectionMode(QAbstractItemView.NoSelection)
+        self.userpage_all_users_table.setSelectionBehavior(QAbstractItemView.SelectRows)
+        self.userpage_all_users_table.setTextElideMode(Qt.ElideMiddle)
+        self.userpage_all_users_table.setSortingEnabled(False)
+        self.userpage_all_users_table.setCornerButtonEnabled(True)
+        self.userpage_all_users_table.setRowCount(3)
+        self.userpage_all_users_table.setColumnCount(5)
+        self.userpage_all_users_table.horizontalHeader().setVisible(False)
+        self.userpage_all_users_table.horizontalHeader().setDefaultSectionSize(150)
+        self.userpage_all_users_table.verticalHeader().setVisible(False)
+
+        self.verticalLayout_45.addWidget(self.userpage_all_users_table)
+
+        self.user_tabs.addTab(self.all_users_tab, "")
+
+        self.verticalLayout_47.addWidget(self.user_tabs)
+
+        self.pages_stackwgt.addWidget(self.Users_page)
+
+        self.verticalLayout_3.addWidget(self.pages_stackwgt)
 
 
         self.horizontalLayout_27.addWidget(self.main_frame)
@@ -3268,9 +3807,10 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(3)
+        self.pages_stackwgt.setCurrentIndex(4)
         self.tabWidget.setCurrentIndex(1)
         self.settings_tab.setCurrentIndex(0)
+        self.user_tabs.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -3280,6 +3820,8 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.label.setText("")
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Online Belt Inspection System", None))
+        self.logined_username_lbl.setText(QCoreApplication.translate("MainWindow", u"No User Logged in", None))
+        self.login_logout_btn.setText("")
 #if QT_CONFIG(tooltip)
         self.minimize_btn.setToolTip(QCoreApplication.translate("MainWindow", u"Minimize", None))
 #endif // QT_CONFIG(tooltip)
@@ -3309,7 +3851,11 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.SettingBT.setText("")
 #if QT_CONFIG(tooltip)
-        self.stackedWidget.setToolTip("")
+        self.usersBtn.setToolTip(QCoreApplication.translate("MainWindow", u"Setting", None))
+#endif // QT_CONFIG(tooltip)
+        self.usersBtn.setText("")
+#if QT_CONFIG(tooltip)
+        self.pages_stackwgt.setToolTip("")
 #endif // QT_CONFIG(tooltip)
         self.groupBox_7.setTitle(QCoreApplication.translate("MainWindow", u"System Status", None))
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"PLC Connection", None))
@@ -3476,5 +4022,32 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.Save_Algorithm_Parameters.setText(QCoreApplication.translate("MainWindow", u"Save Prameters", None))
         self.settings_tab.setTabText(self.settings_tab.indexOf(self.tab_11), QCoreApplication.translate("MainWindow", u"Tab 2", None))
+        self.userpage_user_role_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"admin", None))
+
+        self.label_62.setText(QCoreApplication.translate("MainWindow", u"User Role:", None))
+        self.label_64.setText(QCoreApplication.translate("MainWindow", u"Username:", None))
+        self.label_65.setText(QCoreApplication.translate("MainWindow", u"Password:", None))
+        self.label_66.setText(QCoreApplication.translate("MainWindow", u"Pasword Confirm:", None))
+        self.userspage_add_user_btn.setText(QCoreApplication.translate("MainWindow", u"Register", None))
+        self.userspage_register_error_lbl.setText(QCoreApplication.translate("MainWindow", u"Username exist", None))
+        self.label_88.setText("")
+        self.userspage_register_success_lbl.setText(QCoreApplication.translate("MainWindow", u"Success", None))
+        self.user_tabs.setTabText(self.user_tabs.indexOf(self.user_register_tab), QCoreApplication.translate("MainWindow", u"register user", None))
+        self.userpage_editprofile_edit_profile_groupbox.setTitle(QCoreApplication.translate("MainWindow", u"Edit Profile", None))
+        self.label_79.setText(QCoreApplication.translate("MainWindow", u"Username:", None))
+        self.editprofile_error_lbl.setText(QCoreApplication.translate("MainWindow", u"Username exist", None))
+        self.userpage_editprofile_update_btn.setText(QCoreApplication.translate("MainWindow", u"Update Profile", None))
+        self.userpage_editprofile_cancel_btn.setText(QCoreApplication.translate("MainWindow", u"Cancel", None))
+        self.userpage_editprofile_change_pass_groupbox.setTitle(QCoreApplication.translate("MainWindow", u"Change Password", None))
+        self.label_80.setText(QCoreApplication.translate("MainWindow", u"Password:", None))
+        self.label_81.setText(QCoreApplication.translate("MainWindow", u"New Password", None))
+        self.label_86.setText(QCoreApplication.translate("MainWindow", u"Confirm New Password", None))
+        self.changepass_error_lbl.setText(QCoreApplication.translate("MainWindow", u"Username exist", None))
+        self.userpage_editprofile_change_password_btn.setText(QCoreApplication.translate("MainWindow", u"Change Password", None))
+        self.label_89.setText("")
+        self.userspage_editprofile_success_lbl.setText(QCoreApplication.translate("MainWindow", u"Success", None))
+        self.user_tabs.setTabText(self.user_tabs.indexOf(self.user_profile_tab), QCoreApplication.translate("MainWindow", u"Edit Profile", None))
+        self.userspage_user_heading_lbl.setText(QCoreApplication.translate("MainWindow", u"Only Admin Can Access", None))
+        self.user_tabs.setTabText(self.user_tabs.indexOf(self.all_users_tab), QCoreApplication.translate("MainWindow", u"All Users", None))
     # retranslateUi
 

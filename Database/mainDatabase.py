@@ -2,6 +2,7 @@
 from Database.databaseManager import databaseManager
 from Database.Report_DB import Report_DB
 from Database.Setting_DB import settingDB
+from Database.users_DB import usersDB
 
 class mainDatabase:
     username = "root"
@@ -18,6 +19,7 @@ class mainDatabase:
 
         self.Report_DB = Report_DB(self.dbManager)
         self.Setting_DB = settingDB(self.dbManager)
+        self.Users_DB = usersDB(self.dbManager)
        
 
     def __connect__(

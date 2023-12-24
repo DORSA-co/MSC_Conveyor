@@ -209,7 +209,7 @@ class CameraSetting_UI(Common_Function_UI):
 
 
     def show_image(self, image):
-        self.set_label_image(self.ui.Showlive_Setting, image )
+        GUIBackend.set_label_image(self.ui.Showlive_Setting, image )
 
 
 

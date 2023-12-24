@@ -1,5 +1,11 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icon/icons8-login-50.png</file>
+    <file>icon/icons8-user-50.png</file>
+    <file>icon/icons8-edit-hover-table-50.png</file>
+    <file>icon/icons8-edit-table-50.png</file>
+    <file>icon/icons8-remove-hover-table-50.png</file>
+    <file>icon/icons8-remove-table-50.png</file>
     <file>icon/camera_connected - Copy.png</file>
     <file>icon/camera_connected.png</file>
     <file>icon/camera_disconnected - Copy.png</file>

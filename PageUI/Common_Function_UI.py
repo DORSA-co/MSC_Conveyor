@@ -4,6 +4,8 @@ from PySide6.QtCore import QTimer
 from PySide6 import QtWidgets, QtCore, QtGui
 import cv2
 
+from uiUtils.GUIComponents import confirmMessageBox
+
 class Common_Function_UI:
     def __init__(self):
         """Description of the code"""
@@ -15,43 +17,12 @@ class Common_Function_UI:
             func(*args)
         return event
     
+    def show_confirm_box(Self, title, massage, buttons):
+        cmb = confirmMessageBox(title, massage, buttons = buttons)
+        return cmb.render()
     
-    def set_label_image(self, lbl: QtWidgets.QLabel, image) -> QtGui.QPixmap:
-
-        if isinstance(image, str):
-            image = cv2.imread(image)        
-
-        #resie image to fix in label
-        img_h, img_w = image.shape[:2]
-        lbl_h, lbl_w = lbl.height(), lbl.width()
-        
-        scale = min(lbl_h/img_h, lbl_w/img_w)
-        image = cv2.resize(image, None, fx= scale, fy=scale)
-
-        #color image
-        if len(image.shape)==3:
-            #alpha channel image
-            if image.shape[2] ==4:
-                qformat=QtGui.QImage.Format_RGBA8888
-            else:
-                qformat=QtGui.QImage.Format_RGB888          
-
-        #grayscale image
-        if len(image.shape) == 2:
-            qformat=QtGui.QImage.Format_Grayscale8
-
-        img = QtGui.QImage(image.data,
-            image.shape[1],
-            image.shape[0], 
-            image.strides[0], # <--- +++
-            qformat)
-        
-        img = img.rgbSwapped()
-        pixmap = QtGui.QPixmap.fromImage(img)
-        lbl.setPixmap(pixmap)
-        lbl.setAlignment(QtCore.Qt.AlignCenter)
-        return pixmap
-            
+    
+    
 
     def set_message(self, label_name, text, level=1):
         """Show warning with time delay 2 second , all labels for show warning has been set here"""

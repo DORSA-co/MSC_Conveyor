@@ -214,8 +214,8 @@ class editButton(QtWidgets.QPushButton):
 
     def __init__(self, *a, **kw):
         super(editButton, self).__init__(*a, **kw)
-        self._icon_normal = QtGui.QIcon(':/assets/icons/icons8-edit-table-50.png')
-        self._icon_over = QtGui.QIcon(':/assets/icons/icons8-edit-hover-table-50.png')
+        self._icon_normal = QtGui.QIcon(':/icons/icon/icons8-edit-table-50.png')
+        self._icon_over = QtGui.QIcon(':/icons/icon/icons8-edit-hover-table-50.png')
         self.setStyleSheet(TABEL_BUTTON_STYLE)
         self.setIcon(self._icon_normal)
 
@@ -233,8 +233,8 @@ class deleteButton(QtWidgets.QPushButton):
 
     def __init__(self, *a, **kw):
         super(deleteButton, self).__init__(*a, **kw)
-        self._icon_normal = QtGui.QIcon(':/assets/icons/icons8-remove-table-50.png')
-        self._icon_over = QtGui.QIcon(':/assets/icons/icons8-remove-hover-table-50.png')
+        self._icon_normal = QtGui.QIcon(':/icons/icon/icons8-remove-table-50.png')
+        self._icon_over = QtGui.QIcon(':/icons/icon/icons8-remove-hover-table-50.png')
         self.setStyleSheet(TABEL_BUTTON_STYLE)
         self.setIcon(self._icon_normal)
 

@@ -618,7 +618,29 @@ class databaseManager:
 
     # --------------------------------------------------------------------------
     # --------------------------------------------------------------------------
-
+    def table_exits(self,table_name):
+        try:
+            if self.check_connection():
+                query = """
+                        SELECT * 
+                        FROM information_schema.tables
+                        WHERE table_schema = '{}' 
+                            AND table_name = '{}'
+                        LIMIT 1;                        
+                        """.format(self.data_base_name, table_name)
+                cursor = self.execute_quary(query=query)
+                record = cursor.fetchall()
+                if len(record):
+                    return True
+                return False
+            else:
+                self.show_message('Error in SQL Connection')
+                return False
+        except mysql.connector.Error as e:
+            self.show_message(("Error Create Table ", e))
+            return False
+        
+        
     def delete_table(self, table_name):
         """
         Deletes the specified table from the database.

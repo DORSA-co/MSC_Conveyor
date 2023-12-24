@@ -7,6 +7,7 @@ from PySide6 import QtCore
 from PageUI.LiveView_UI import LiveView_UI
 from PageUI.Report_UI import Report_UI
 from PageUI.Setting_UI import Setting_UI
+from PageUI.users_UI import usersPageUI
 from PageUI.AlgorithmCalibration_UI import AlgorithmCalibration_UI
 from PageUI.Common_Function_UI import Common_Function_UI 
 from UIFiles.assets import assets_rc
@@ -33,6 +34,7 @@ class mainUI(QMainWindow):
         self.Page_Report = Report_UI(self.ui)
         self.Page_AlgorithmCalibration = AlgorithmCalibration_UI(self.ui)
         self.Page_Setting = Setting_UI(self.ui)
+        self.Page_Users = usersPageUI(self.ui)
         self.common_func=Common_Function_UI()
 
         self.external_page_change_event = None
@@ -41,11 +43,12 @@ class mainUI(QMainWindow):
             'live': self.ui.Live_View_Page,
             'help': self.ui.Help_page,
             'reports': self.ui.Report_page,
-            'settings': self.ui.Setting_Page
+            'settings': self.ui.Setting_Page,
+            'users': self.ui.Users_page
         }
 
         self.buttons_connection()
-        self.laod_table_parms()
+        #self.laod_table_parms()
         
         self.current_page_name = ''
         self.previouse_page_name = ''
@@ -72,7 +75,7 @@ class mainUI(QMainWindow):
 
     def load_page(self, name):
         self.previouse_page_name = self.current_page_name
-        self.ui.stackedWidget.setCurrentWidget(self.pages[name])
+        self.ui.pages_stackwgt.setCurrentWidget(self.pages[name])
         self.current_page_name = name
         if self.external_page_change_event is not None:
             self.external_page_change_event(self.previouse_page_name,
@@ -87,6 +90,7 @@ class mainUI(QMainWindow):
         self.ui.HelpConnectionBT.clicked.connect(lambda :self.load_page('help'))
         self.ui.ReportConnectionBT.clicked.connect(lambda :self.load_page('reports'))
         self.ui.SettingBT.clicked.connect(lambda :self.load_page('settings'))
+        self.ui.usersBtn.clicked.connect(lambda :self.load_page('users'))
 
     def minimize(self):
         """Minimize winodw"""

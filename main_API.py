@@ -5,6 +5,7 @@ import cv2
 
 from PageAPI.Setting_API import SettingAPI
 from PageAPI.AlgorithmCalibration_API import AlgorithmCalibration_API
+from PageAPI.usersPageAPI import usersPageAPI
 from PageAPI.LiveView_API import LiveView_API
 from PageAPI.Report_API import Report_API
 from Database.mainDatabase import mainDatabase
@@ -66,12 +67,17 @@ class main_API:
                                             self.db.Setting_DB,
                                             self.beltIncpetcion )
         
+        self.API_Page_Users = usersPageAPI(self.uiHandeler.Page_Users,
+                                           self.db.Users_DB)
+        
         
         
         self.uiHandeler.change_page_connector(self.page_change_event)
+        self.API_Page_Users.set_login_event(self.login_user_event)
         
         self.pages_api_dict = {
-            'settings': self.API_Page_Setting
+            'settings': self.API_Page_Setting,
+            'users': self.API_Page_Users
         }
 
         
@@ -88,7 +94,13 @@ class main_API:
                 self.pages_api_dict[new_page].startup()
 
         
-        
+    def login_user_event(self,):
+        role = self.API_Page_Users.data_passer.get_logined_user_role()
+        username = self.API_Page_Users.data_passer.logined_user.get('username', '')
+        #self.set_access(role)
+        #self.mainPageAPI.set_logined_user(username)
+        #self.reportsPageAPI.set_user_login(username)
+
 
         return
         ###############################      AlgorithmCalibration_API    ################################
