@@ -1,0 +1,19 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>icon/camera_connected - Copy.png</file>
+    <file>icon/camera_connected.png</file>
+    <file>icon/camera_disconnected - Copy.png</file>
+    <file>icon/camera_disconnected.png</file>
+    <file>icon/icons8-uptriangle-48.png</file>
+    <file>icon/icons8-downtriangle-48.png</file>
+    <file>icon/icons8-check-48.png</file>
+    <file>icon/icons8-down-white-48.png</file>
+    <file>icon/icons8-plus-white-48.png</file>
+    <file>icon/icons8-minus-white-48.png</file>
+  </qresource>
+  <qresource prefix="general_icons">
+    <file>general_incons/icons8-close-20.png</file>
+    <file>general_incons/icon_minimize.png</file>
+    <file>general_incons/icon_maximize.png</file>
+  </qresource>
+</RCC>
