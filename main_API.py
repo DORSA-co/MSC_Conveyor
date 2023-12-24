@@ -129,18 +129,6 @@ class main_API:
 
         ###################  self.camera = self.collector.get_camera_by_serial(str(self.parms_camera_liveView["Serial"]))
       
-
-    def get_calibration_paprameter_main_API(self,param):
-         self.API_Page_LiveView.set_param_calibration(param)  # Send the parameters of calibration to API_Page_liveView
-        
-
-    def get_camera_paprameter_main_API(self,param):
-         self.API_Page_LiveView.set_param_camera(param)   # Send the parameters of camera to API_Page_liveView
-
-    
-    def get_algorithm_paprameter_main_API(self,param):
-         self.API_Page_LiveView.set_param_algorithm(param)   # Send the parameters of camera to API_Page_liveView
-        
         
     def build_camera(self, camera_meta: dict):
         """get camera meta_data and build that camera
