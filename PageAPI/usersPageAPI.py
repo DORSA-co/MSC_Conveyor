@@ -13,7 +13,7 @@ class dataPasser:
         #self.logined_user = {'role':'admin'}
 
     def get_logined_user_role(self,):
-        return self.logined_user.get('role', 'CONSTANTS.UNLOGIN_USER_ROLE')
+        return self.logined_user.get('role', Constant.User.UNLOGIN_USER_ROLE)
 
 
 class usersPageAPI:
@@ -39,6 +39,9 @@ class usersPageAPI:
     def startup(self,):
         self.allUser.startup()
         self.loginUser.startup()
+    
+    def endup(self,):
+        return True
         
 
     def set_login_event(self, func):

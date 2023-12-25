@@ -667,6 +667,35 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_36.addWidget(self.usersBtn)
 
+        self.AboutBT = QPushButton(self.frame_43)
+        self.AboutBT.setObjectName(u"AboutBT")
+        self.AboutBT.setMaximumSize(QSize(60, 60))
+        self.AboutBT.setCursor(QCursor(Qt.PointingHandCursor))
+        self.AboutBT.setStyleSheet(u"QPushButton{\n"
+"	color: white;\n"
+"	padding: 5px;\n"
+"	font-size: 11pt;\n"
+"	font-weight: bold;\n"
+"	border-radius:7px;\n"
+"   background-color:#F1F0E8;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"	background: #a3a3a3;\n"
+"}\n"
+"\n"
+"QPushButton:disabled {\n"
+"    color: #8D8D8D;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background: rgb(0, 0, 0);\n"
+"}")
+        self.AboutBT.setIcon(icon6)
+        self.AboutBT.setIconSize(QSize(51, 51))
+
+        self.verticalLayout_36.addWidget(self.AboutBT)
+
         self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_36.addItem(self.verticalSpacer_4)
@@ -1406,13 +1435,13 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.addWidget(self.frame_6)
 
         self.pages_stackwgt.addWidget(self.Live_View_Page)
-        self.Help_page = QWidget()
-        self.Help_page.setObjectName(u"Help_page")
-        self.horizontalLayout = QHBoxLayout(self.Help_page)
+        self.defect_tab = QWidget()
+        self.defect_tab.setObjectName(u"defect_tab")
+        self.horizontalLayout = QHBoxLayout(self.defect_tab)
         self.horizontalLayout.setSpacing(3)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, -1, -1)
-        self.frame_29 = QFrame(self.Help_page)
+        self.frame_29 = QFrame(self.defect_tab)
         self.frame_29.setObjectName(u"frame_29")
         self.frame_29.setMaximumSize(QSize(16777215, 16777215))
         self.frame_29.setFrameShape(QFrame.NoFrame)
@@ -2013,7 +2042,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.frame_29)
 
-        self.pages_stackwgt.addWidget(self.Help_page)
+        self.pages_stackwgt.addWidget(self.defect_tab)
         self.Report_page = QWidget()
         self.Report_page.setObjectName(u"Report_page")
         self.horizontalLayout_6 = QHBoxLayout(self.Report_page)
@@ -2050,7 +2079,7 @@ class Ui_MainWindow(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.filters_scroll_area = QWidget()
         self.filters_scroll_area.setObjectName(u"filters_scroll_area")
-        self.filters_scroll_area.setGeometry(QRect(0, 0, 378, 796))
+        self.filters_scroll_area.setGeometry(QRect(0, 0, 281, 573))
         self.verticalLayout_5 = QVBoxLayout(self.filters_scroll_area)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.verticalLayout_5.setContentsMargins(30, -1, -1, -1)
@@ -2420,8 +2449,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_14.setSpacing(3)
         self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
         self.horizontalLayout_14.setContentsMargins(0, 0, -1, -1)
-        self.settings_tab = QTabWidget(self.Setting_Page)
-        self.settings_tab.setObjectName(u"settings_tab")
+        self.settings_tabs = QTabWidget(self.Setting_Page)
+        self.settings_tabs.setObjectName(u"settings_tabs")
         self.camera_tab = QWidget()
         self.camera_tab.setObjectName(u"camera_tab")
         self.horizontalLayout_49 = QHBoxLayout(self.camera_tab)
@@ -2773,7 +2802,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_49.addWidget(self.frame_61)
 
-        self.settings_tab.addTab(self.camera_tab, "")
+        self.settings_tabs.addTab(self.camera_tab, "")
         self.algorithm_tab = QWidget()
         self.algorithm_tab.setObjectName(u"algorithm_tab")
         self.verticalLayout_13 = QVBoxLayout(self.algorithm_tab)
@@ -2913,7 +2942,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_13.addLayout(self.horizontalLayout_12)
 
-        self.settings_tab.addTab(self.algorithm_tab, "")
+        self.settings_tabs.addTab(self.algorithm_tab, "")
         self.tab_11 = QWidget()
         self.tab_11.setObjectName(u"tab_11")
         self.horizontalLayout_16 = QHBoxLayout(self.tab_11)
@@ -3295,9 +3324,9 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_16.addWidget(self.groupBox_19)
 
-        self.settings_tab.addTab(self.tab_11, "")
+        self.settings_tabs.addTab(self.tab_11, "")
 
-        self.horizontalLayout_14.addWidget(self.settings_tab)
+        self.horizontalLayout_14.addWidget(self.settings_tabs)
 
         self.frame_4 = QFrame(self.Setting_Page)
         self.frame_4.setObjectName(u"frame_4")
@@ -3794,6 +3823,16 @@ class Ui_MainWindow(object):
         self.verticalLayout_47.addWidget(self.user_tabs)
 
         self.pages_stackwgt.addWidget(self.Users_page)
+        self.About_Page = QWidget()
+        self.About_Page.setObjectName(u"About_Page")
+        self.verticalLayout_49 = QVBoxLayout(self.About_Page)
+        self.verticalLayout_49.setObjectName(u"verticalLayout_49")
+        self.label_7 = QLabel(self.About_Page)
+        self.label_7.setObjectName(u"label_7")
+
+        self.verticalLayout_49.addWidget(self.label_7)
+
+        self.pages_stackwgt.addWidget(self.About_Page)
 
         self.verticalLayout_3.addWidget(self.pages_stackwgt)
 
@@ -3807,10 +3846,10 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.pages_stackwgt.setCurrentIndex(4)
+        self.pages_stackwgt.setCurrentIndex(5)
         self.tabWidget.setCurrentIndex(1)
-        self.settings_tab.setCurrentIndex(0)
-        self.user_tabs.setCurrentIndex(1)
+        self.settings_tabs.setCurrentIndex(1)
+        self.user_tabs.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -3854,6 +3893,10 @@ class Ui_MainWindow(object):
         self.usersBtn.setToolTip(QCoreApplication.translate("MainWindow", u"Setting", None))
 #endif // QT_CONFIG(tooltip)
         self.usersBtn.setText("")
+#if QT_CONFIG(tooltip)
+        self.AboutBT.setToolTip(QCoreApplication.translate("MainWindow", u"Defect Parameters", None))
+#endif // QT_CONFIG(tooltip)
+        self.AboutBT.setText("")
 #if QT_CONFIG(tooltip)
         self.pages_stackwgt.setToolTip("")
 #endif // QT_CONFIG(tooltip)
@@ -3992,7 +4035,7 @@ class Ui_MainWindow(object):
         self.Showlive_Setting.setText("")
         self.label_27.setText(QCoreApplication.translate("MainWindow", u"Message", None))
         self.Message_Camera.setText("")
-        self.settings_tab.setTabText(self.settings_tab.indexOf(self.camera_tab), QCoreApplication.translate("MainWindow", u"Camera Setting", None))
+        self.settings_tabs.setTabText(self.settings_tabs.indexOf(self.camera_tab), QCoreApplication.translate("MainWindow", u"Camera Setting", None))
         self.label_63.setText(QCoreApplication.translate("MainWindow", u"Step 1", None))
         self.label_61.setText(QCoreApplication.translate("MainWindow", u"Convolotion Window Size", None))
         self.label_49.setText(QCoreApplication.translate("MainWindow", u"Background Threshould", None))
@@ -4001,7 +4044,7 @@ class Ui_MainWindow(object):
         self.Save_algorithm_setting.setToolTip(QCoreApplication.translate("MainWindow", u"Save Parameters", None))
 #endif // QT_CONFIG(tooltip)
         self.Save_algorithm_setting.setText(QCoreApplication.translate("MainWindow", u"Save Prameters", None))
-        self.settings_tab.setTabText(self.settings_tab.indexOf(self.algorithm_tab), QCoreApplication.translate("MainWindow", u"Algorithm", None))
+        self.settings_tabs.setTabText(self.settings_tabs.indexOf(self.algorithm_tab), QCoreApplication.translate("MainWindow", u"Algorithm", None))
         self.groupBox_21.setTitle(QCoreApplication.translate("MainWindow", u"Show Tear Depth", None))
         self.label_38.setText(QCoreApplication.translate("MainWindow", u"TEAR_DEPTH", None))
         self.Show_Tear_Depth_Label.setText("")
@@ -4021,7 +4064,7 @@ class Ui_MainWindow(object):
         self.Save_Algorithm_Parameters.setToolTip("")
 #endif // QT_CONFIG(tooltip)
         self.Save_Algorithm_Parameters.setText(QCoreApplication.translate("MainWindow", u"Save Prameters", None))
-        self.settings_tab.setTabText(self.settings_tab.indexOf(self.tab_11), QCoreApplication.translate("MainWindow", u"Tab 2", None))
+        self.settings_tabs.setTabText(self.settings_tabs.indexOf(self.tab_11), QCoreApplication.translate("MainWindow", u"Tab 2", None))
         self.userpage_user_role_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"admin", None))
 
         self.label_62.setText(QCoreApplication.translate("MainWindow", u"User Role:", None))
@@ -4049,5 +4092,6 @@ class Ui_MainWindow(object):
         self.user_tabs.setTabText(self.user_tabs.indexOf(self.user_profile_tab), QCoreApplication.translate("MainWindow", u"Edit Profile", None))
         self.userspage_user_heading_lbl.setText(QCoreApplication.translate("MainWindow", u"Only Admin Can Access", None))
         self.user_tabs.setTabText(self.user_tabs.indexOf(self.all_users_tab), QCoreApplication.translate("MainWindow", u"All Users", None))
+        self.label_7.setText(QCoreApplication.translate("MainWindow", u"Help", None))
     # retranslateUi
 

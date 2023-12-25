@@ -16,7 +16,7 @@ class Setting_UI:
         self.AlgorithmSetting = AlgorithmSetting_UI(ui)
 
     def get_tabname(self):
-        return GUIBackend.get_current_tab_text(self.ui.settings_tab)
+        return GUIBackend.get_current_tab_text(self.ui.settings_tabs)
     
 class CameraSetting_UI(Common_Function_UI):
 

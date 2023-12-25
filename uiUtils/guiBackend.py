@@ -930,7 +930,9 @@ class GUIBackend:
 
 
     @staticmethod 
-    def set_visible_tab( tab: QtWidgets.QTabWidget, idx, status):
+    def set_visible_tab( tab: QtWidgets.QTabWidget, idx:int, status):
+        if not isinstance(idx, int):
+            idx = tab.indexOf(idx)
         tab.setTabVisible(idx, status)
 
     

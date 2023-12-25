@@ -1019,6 +1019,57 @@ QPushButton:pressed {
            </widget>
           </item>
           <item>
+           <widget class="QPushButton" name="AboutBT">
+            <property name="maximumSize">
+             <size>
+              <width>60</width>
+              <height>60</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="toolTip">
+             <string>Defect Parameters</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{
+	color: white;
+	padding: 5px;
+	font-size: 11pt;
+	font-weight: bold;
+	border-radius:7px;
+   background-color:#F1F0E8;
+}
+
+QPushButton:hover{
+	background: #a3a3a3;
+}
+
+QPushButton:disabled {
+    color: #8D8D8D;
+}
+
+QPushButton:pressed {
+	background: rgb(0, 0, 0);
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../icons/Capture-calib.PNG</normaloff>../icons/Capture-calib.PNG</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>51</width>
+              <height>51</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
            <spacer name="verticalSpacer_4">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -1098,7 +1149,7 @@ background-color:#ffffff;
              <number>3</number>
             </property>
             <property name="currentIndex">
-             <number>4</number>
+             <number>5</number>
             </property>
             <widget class="QWidget" name="Live_View_Page">
              <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -2481,7 +2532,7 @@ border: no</string>
               </item>
              </layout>
             </widget>
-            <widget class="QWidget" name="Help_page">
+            <widget class="QWidget" name="defect_tab">
              <layout class="QHBoxLayout" name="horizontalLayout">
               <property name="spacing">
                <number>3</number>
@@ -3901,8 +3952,8 @@ font-weight:bold;</string>
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>378</width>
-                      <height>796</height>
+                      <width>281</width>
+                      <height>573</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -4676,9 +4727,9 @@ font: 16pt &quot;Mongolian Baiti&quot;;</string>
                <number>0</number>
               </property>
               <item>
-               <widget class="QTabWidget" name="settings_tab">
+               <widget class="QTabWidget" name="settings_tabs">
                 <property name="currentIndex">
-                 <number>0</number>
+                 <number>1</number>
                 </property>
                 <widget class="QWidget" name="camera_tab">
                  <attribute name="title">
@@ -6275,7 +6326,7 @@ QPushButton:pressed {
 }</string>
                 </property>
                 <property name="currentIndex">
-                 <number>1</number>
+                 <number>0</number>
                 </property>
                 <widget class="QWidget" name="user_register_tab">
                  <attribute name="title">
@@ -7098,6 +7149,17 @@ QHeaderView::section:vertical
                   </item>
                  </layout>
                 </widget>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="About_Page">
+             <layout class="QVBoxLayout" name="verticalLayout_49">
+              <item>
+               <widget class="QLabel" name="label_7">
+                <property name="text">
+                 <string>Help</string>
+                </property>
                </widget>
               </item>
              </layout>

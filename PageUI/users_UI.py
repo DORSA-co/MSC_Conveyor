@@ -256,9 +256,9 @@ class EditUserTabUI:
         return data
 
 
-    def set_edit_profile_fields(self, data):
+    def set_edit_profile_fields(self, data:dict):
         for name, field in self.edit_profile_fields.items():
-            GUIBackend.set_input(field, data[name])
+            GUIBackend.set_input(field, data.get(name, ""))
     
     
 

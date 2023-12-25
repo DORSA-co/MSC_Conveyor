@@ -15,6 +15,7 @@ from backend.Camera import dorsaPylon
 from main_UI import mainUI
 from uiUtils.GUIComponents import timerBuilder
 from Detection.beltInspection import beltInspection
+from Constants import Constant
 
 
 CAMERAS = {
@@ -80,12 +81,18 @@ class main_API:
             'users': self.API_Page_Users
         }
 
+        self.login_user_event()
         self.startup()
 
 
     def startup(self,):
         for api in self.pages_api_dict.values():
             api.startup()
+
+    def set_access(self, role):
+        self.uiHandeler.set_access_pages( Constant.User.ACCESS[role]['pages'],)
+        self.uiHandeler.set_access_tabs( Constant.User.ACCESS[role]['tabs'])
+
         
     
     
@@ -103,9 +110,10 @@ class main_API:
     def login_user_event(self,):
         role = self.API_Page_Users.data_passer.get_logined_user_role()
         username = self.API_Page_Users.data_passer.logined_user.get('username', '')
-        #self.set_access(role)
+        self.set_access(role)
         #self.mainPageAPI.set_logined_user(username)
         #self.reportsPageAPI.set_user_login(username)
+
 
 
         return

@@ -12,6 +12,7 @@ from PageUI.AlgorithmCalibration_UI import AlgorithmCalibration_UI
 from PageUI.Common_Function_UI import Common_Function_UI 
 from UIFiles.assets import assets_rc
 from UIFiles.main_UI import Ui_MainWindow
+from uiUtils.guiBackend import GUIBackend
 
 MAIN_UI_PATH = "UIFiles/main_UI.ui"
 
@@ -41,18 +42,130 @@ class mainUI(QMainWindow):
 
         self.pages = {
             'live': self.ui.Live_View_Page,
-            'help': self.ui.Help_page,
+            'defect': self.ui.defect_tab,
             'reports': self.ui.Report_page,
             'settings': self.ui.Setting_Page,
-            'users': self.ui.Users_page
+            'users': self.ui.Users_page,
+            'about': self.ui.About_Page
+        }
+
+        self.sidebar_pages_buttons = {
+            'live': self.ui.LiveDetectionBT,
+            'reports': self.ui.ReportConnectionBT,
+            'settings': self.ui.SettingBT,
+            'defect': self.ui.HelpConnectionBT,
+            'users': self.ui.usersBtn,
+            'about': self.ui.AboutBT
+        }
+
+        self.tabs = {
+            'users':(
+                self.ui.user_tabs,
+                {
+                    'register': self.ui.user_register_tab,
+                    'edit_profile':self.ui.user_profile_tab,
+                    'all_users': self.ui.all_users_tab
+                }
+                ),
+            
+            'settings':(
+                self.ui.settings_tabs,
+                {
+                    'camera': self.ui.camera_tab,
+                    'algorithm': self.ui.algorithm_tab
+                
+                }
+                )
+
         }
 
         self.buttons_connection()
+        self.sidebar_button_connector()
         #self.laod_table_parms()
         
         self.current_page_name = ''
         self.previouse_page_name = ''
+
+    
+    def sidebar_button_connector(self):
+        for page_name in self.sidebar_pages_buttons.keys():
+            GUIBackend.button_connector( self.sidebar_pages_buttons[page_name], 
+                                        self.sidebar_menu_handler(page_name) )
+            
+    
+    def sidebar_menu_handler(self, new_page_name:str):
+        """event happend when side bar menu button clicked
+
+        Args:
+            new_page_name (str): name of page that its button clicked
+        """
+        def func():
+            self.previouse_page_name = self.current_page_name
+            self.go_to_page(new_page_name)
+            self.current_page_name = new_page_name
+
+            if (self.current_page_name != self.previouse_page_name 
+                and self.external_page_change_event is not None):
+                self.internal_page_change_event()
+            
+        return func
+    
+    def go_to_page(self, page_name:str):
+        """change page to the page with page_name
+        """
+        self.ui.pages_stackwgt.setCurrentWidget(self.pages[page_name])
+
+
+    def internal_page_change_event(self, ):
+        """this function called when page change
+        """
+        self.external_page_change_event(self.previouse_page_name,
+                                                self.current_page_name)
+            
         
+    def set_access_pages(self, pages:list[str], flag:bool = True):
+        """enable or disable some pages
+
+        Args:
+            pages (list[str]): list of page names 
+            flag (bool): if True, make pages enable. if False, make pages disable
+        """
+        if isinstance(pages, str):
+            if pages == 'all':
+                pages = list(self.sidebar_pages_buttons.keys())
+
+        for page_name in self.sidebar_pages_buttons.keys():
+            btn = self.sidebar_pages_buttons[page_name]
+            if page_name in pages:
+                GUIBackend.set_wgt_visible( btn, flag )
+            else:
+                GUIBackend.set_wgt_visible(btn , not(flag))
+        
+        self.go_to_page(pages[0])
+
+    
+    def set_access_tabs(self, tabs_access: dict[str,list], flag:bool = True):
+        """enable or disable some tabs
+        """
+        for tabgropup_name in self.tabs.keys():
+            tab_group_widget, sub_tabs = self.tabs[tabgropup_name]
+            if tabgropup_name in tabs_access.keys():
+                GUIBackend.set_wgt_visible(tab_group_widget, True)
+                sub_tabs_access = tabs_access[tabgropup_name]
+
+                if isinstance(sub_tabs_access, str):
+                    if sub_tabs_access == 'all':
+                        sub_tabs_access = list(sub_tabs.keys())
+                    
+                for sub_tab_name in sub_tabs.keys():
+                    if sub_tab_name in sub_tabs_access:
+                        GUIBackend.set_visible_tab(tab_group_widget,
+                                                       sub_tabs[sub_tab_name],True )
+                    else:
+                        GUIBackend.set_visible_tab(tab_group_widget,
+                                                       sub_tabs[sub_tab_name],False )
+            else:
+                GUIBackend.set_wgt_visible(tab_group_widget, False)
 
 
     def laod_table_parms(self):
@@ -73,24 +186,11 @@ class mainUI(QMainWindow):
     def change_page_connector(self, func):
         self.external_page_change_event = func
 
-    def load_page(self, name):
-        self.previouse_page_name = self.current_page_name
-        self.ui.pages_stackwgt.setCurrentWidget(self.pages[name])
-        self.current_page_name = name
-        if self.external_page_change_event is not None:
-            self.external_page_change_event(self.previouse_page_name,
-                                            self.current_page_name)
-
     def buttons_connection(self):
         """main butoons connect -- exit , minize , maximize, help --"""
         self.ui.close_btn.clicked.connect(self.close_win)
         self.ui.minimize_btn.clicked.connect(self.minimize)
         self.ui.maximize_btn.clicked.connect(self.maxmize_minimize)
-        self.ui.LiveDetectionBT.clicked.connect(lambda : self.load_page('live'))
-        self.ui.HelpConnectionBT.clicked.connect(lambda :self.load_page('help'))
-        self.ui.ReportConnectionBT.clicked.connect(lambda :self.load_page('reports'))
-        self.ui.SettingBT.clicked.connect(lambda :self.load_page('settings'))
-        self.ui.usersBtn.clicked.connect(lambda :self.load_page('users'))
 
     def minimize(self):
         """Minimize winodw"""
