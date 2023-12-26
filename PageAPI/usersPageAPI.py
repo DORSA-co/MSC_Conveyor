@@ -38,7 +38,7 @@ class usersPageAPI:
 
     def startup(self,):
         self.allUser.startup()
-        self.loginUser.startup()
+        #self.loginUser.startup()
     
     def endup(self,):
         return True
@@ -309,7 +309,7 @@ class LoginUserAPI:
         self.uiHandeler.set_logedin_username(None)
 
     def startup(self):
-        self.uiHandeler.loginDialog.show()
+        pass
 
     def set_login_event_func(self, func):
         self.login_event_func = func

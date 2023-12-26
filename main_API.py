@@ -82,6 +82,7 @@ class main_API:
         }
 
         self.login_user_event()
+        self.API_Page_Users.loginUser.uiHandeler.loginDialog.show()
         self.startup()
 
 

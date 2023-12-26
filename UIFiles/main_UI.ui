@@ -414,10 +414,16 @@ QDateEdit:focus
           </item>
           <item>
            <widget class="QLabel" name="label_5">
+            <property name="minimumSize">
+             <size>
+              <width>550</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
-              <width>371</width>
-              <height>300</height>
+              <width>600</width>
+              <height>373</height>
              </size>
             </property>
             <property name="styleSheet">
@@ -427,7 +433,7 @@ font: 20pt &quot;Mongolian Baiti&quot;;
 </string>
             </property>
             <property name="text">
-             <string>Online Belt Inspection System</string>
+             <string>Online DORSA Belt Inspection System</string>
             </property>
             <property name="margin">
              <number>-1</number>

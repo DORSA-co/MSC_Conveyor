@@ -358,7 +358,8 @@ class Ui_MainWindow(object):
 
         self.label_5 = QLabel(self.frame_13)
         self.label_5.setObjectName(u"label_5")
-        self.label_5.setMaximumSize(QSize(371, 300))
+        self.label_5.setMinimumSize(QSize(550, 0))
+        self.label_5.setMaximumSize(QSize(600, 373))
         self.label_5.setStyleSheet(u"font-size:24px;\n"
 "color: white;\n"
 "font: 20pt \"Mongolian Baiti\";\n"
@@ -3858,7 +3859,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.label.setText("")
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"Online Belt Inspection System", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"Online DORSA Belt Inspection System", None))
         self.logined_username_lbl.setText(QCoreApplication.translate("MainWindow", u"No User Logged in", None))
         self.login_logout_btn.setText("")
 #if QT_CONFIG(tooltip)
