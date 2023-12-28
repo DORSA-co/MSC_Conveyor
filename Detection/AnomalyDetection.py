@@ -2,7 +2,8 @@ import numpy as np
 from Detection import cvToolsCython
 from Detection.mathUtils import mathUtils
 
-LINE_FIT = 'line_fit'
+class ANOMALY_ALGORITHMS:
+    LINE_FIT = 'line_fit'
 
 
 class AnomalyDetectionHandeler:
@@ -11,8 +12,8 @@ class AnomalyDetectionHandeler:
 
 
     def feed(self, pts:np.ndarray, diff_thresh:int, algorithm:str):
-        if algorithm == LINE_FIT:
-            self.LineFit.feed(pts, diff_thresh)
+        if algorithm == ANOMALY_ALGORITHMS.LINE_FIT:
+            return self.LineFit.feed(pts, diff_thresh)
 
       
 

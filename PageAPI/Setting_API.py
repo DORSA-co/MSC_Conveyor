@@ -9,6 +9,8 @@ from backend.Camera.dorsaPylon import Camera
 from PageUI.Setting_UI import Setting_UI, CameraSetting_UI, AlgorithmSetting_UI
 from Database.Setting_DB import settingDB, cameraSettingDB, algorithmSettingDB
 from Detection.beltInspection import beltInspection
+from Detection.AnomalyDetection import ANOMALY_ALGORITHMS
+from backend.Utils.mapDictionary import mapDictionary
 
 class SettingAPI:
     
@@ -200,19 +202,40 @@ class AlgorithmSetting_API:
                  uiHandeler:AlgorithmSetting_UI, 
                  belt_inspection:beltInspection, 
                  db:algorithmSettingDB):
-        self.uiHandeler = uiHandeler  # ui =self.ui.Page_CameraSetting    =====>  self.ui.Page_CameraSetting=CameraSetting_UI(self.ui)  on main_UI page
+        self.uiHandeler = uiHandeler
         self.db = db
         self.belt_inspection = belt_inspection
 
+        self.map_items = {
+            "anomaly_algorithm":{ANOMALY_ALGORITHMS.LINE_FIT: 'algo1',
+                                 'test': 'algo2'
+                                }
+        }
+
+
+        self.mapDict = mapDictionary(self.map_items)
 
         self.uiHandeler.setting_change_connector(self.setting_change_event)
         self.uiHandeler.button_connector('save', self.save_algorithm_settings)
-    
+        for combo_name in self.mapDict.get_maps_names():
+            items = self.mapDict.get_values(combo_name)
+            self.uiHandeler.set_combobox_items(combo_name, items)
 
         
     def startup(self,):
         self.load_algorithm_settings()
 
+        #cv2.waitKey(2)
+
+    
+    
+    def setting_change_event(self, name):
+        value = self.uiHandeler.get_parm(name)
+
+        #if a map is exist for name, convert the value to key, o.w no chane on value
+        value = self.mapDict.value2key(map_name=name, value=value)
+
+        self.belt_inspection.kwargs[name] = value
 
     def grab_image_event(self, image:np.ndarray):
         
@@ -223,21 +246,17 @@ class AlgorithmSetting_API:
 
         #image_ = np.zeros( image.shape + )
         step2_img = self.belt_inspection.AnomalyDetection.LineFit.draw(image=step1_img)
-        #self.uiHandeler.set_image('step2', step2_img)
-        #cv2.waitKey(2)
-
-    
-    def setting_change_event(self, name):
-        value = self.uiHandeler.get_parm(name)
-        self.belt_inspection.kwargs[name] = value
+        self.uiHandeler.set_image('step2', step2_img)
     
     def load_algorithm_settings(self,):
         parms = self.db.load()
+        parms = self.mapDict.multi_value2key(parms)
         self.uiHandeler.set_parms(parms)
 
     
     def save_algorithm_settings(self,):
         parms = self.uiHandeler.get_parms()
+        parms = self.mapDict.multi_value2key(parms)
         self.db.save(parms)
 
     

@@ -38,6 +38,7 @@ class beltInspection:
                                    diff_thresh=self.kwargs['diff_thresh'],
                                    algorithm=self.kwargs['anomaly_algorithm']
         )
+
                                    
     
 

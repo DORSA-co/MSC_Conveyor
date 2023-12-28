@@ -224,10 +224,15 @@ class AlgorithmSetting_UI(Common_Function_UI):
         self.setting_parms = {
             'background_thresh': self.ui.alghoritm_background_thresh,
             'conv_window_size': self.ui.alghoritm_conv_window_size,
+            'anomaly_algorithm': self.ui.anomaly_alghorithm_combo,
+            'diff_thresh': self.ui.anomaly_thresh_error,
         }
 
+        self.combobox_items = {}
+
         self.images_lbl = {
-            'step1': self.ui.algorithm_image1
+            'step1': self.ui.algorithm_image1,
+            'step2': self.ui.algorithm_image2
         }
 
         self.buttons = {
@@ -256,7 +261,19 @@ class AlgorithmSetting_UI(Common_Function_UI):
                 GUIBackend.set_input(field, value)
             else:
                 print(f'{name} not exist in UI fields in algorithm setting')
+    
+    def set_parm(self, name:str, value):
+        field = self.setting_parms.get(name)
+        if field:
+            GUIBackend.set_input(field, value)
+        else:
+            print(f'{name} not exist in UI fields in algorithm setting')
 
+
+    def set_combobox_items(self, name:str, items:list[str]):
+        items = list(items)
+        GUIBackend.set_combobox_items(self.setting_parms[name],
+                                      items)
 
     def set_image(self, name: str, image):
         GUIBackend.set_label_image(self.images_lbl[name], image)

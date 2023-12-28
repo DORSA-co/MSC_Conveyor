@@ -1,5 +1,5 @@
 from Database.databaseManager import databaseManager
-from Detection import AnomalyDetection
+from Detection.AnomalyDetection import ANOMALY_ALGORITHMS
 
 
 class parentSettingDB:
@@ -131,7 +131,7 @@ class algorithmSettingDB(parentSettingDB):
                             'background_thresh': 25,
                             'conv_window_size': 10,
                             'diff_thresh': 2,
-                            'anomaly_algorithm': AnomalyDetection.LINE_FIT
+                            'anomaly_algorithm': ANOMALY_ALGORITHMS.LINE_FIT
                         }   
                     ]
     

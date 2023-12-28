@@ -1525,7 +1525,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 1143, 647))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 470, 555))
         self.horizontalLayout_57 = QHBoxLayout(self.scrollAreaWidgetContents_3)
         self.horizontalLayout_57.setObjectName(u"horizontalLayout_57")
         self.groupBox_20 = QGroupBox(self.scrollAreaWidgetContents_3)
@@ -2901,6 +2901,94 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_40.addWidget(self.frame_step1)
 
+        self.frame_step2 = QFrame(self.scrollAreaWidgetContents)
+        self.frame_step2.setObjectName(u"frame_step2")
+        self.frame_step2.setMaximumSize(QSize(16777215, 400))
+        self.frame_step2.setStyleSheet(u"#algo_setting_step2_frame,\n"
+"#frame_step2\n"
+"{\n"
+"border: 2 solid rgba(12, 53, 106, 100);\n"
+"background-color:#ffffff;\n"
+"\n"
+"}\n"
+"")
+        self.frame_step2.setFrameShape(QFrame.StyledPanel)
+        self.frame_step2.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_21 = QHBoxLayout(self.frame_step2)
+        self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
+        self.algo_setting_step2_frame = QFrame(self.frame_step2)
+        self.algo_setting_step2_frame.setObjectName(u"algo_setting_step2_frame")
+        self.algo_setting_step2_frame.setStyleSheet(u"")
+        self.algo_setting_step2_frame.setFrameShape(QFrame.StyledPanel)
+        self.algo_setting_step2_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_50 = QVBoxLayout(self.algo_setting_step2_frame)
+        self.verticalLayout_50.setObjectName(u"verticalLayout_50")
+        self.label_67 = QLabel(self.algo_setting_step2_frame)
+        self.label_67.setObjectName(u"label_67")
+        self.label_67.setMaximumSize(QSize(16777215, 50))
+        self.label_67.setStyleSheet(u"font-size: 26px;\n"
+"font-weight: bold;\n"
+"color:rgb(12, 53, 106);")
+
+        self.verticalLayout_50.addWidget(self.label_67)
+
+        self.frame_35 = QFrame(self.algo_setting_step2_frame)
+        self.frame_35.setObjectName(u"frame_35")
+        self.frame_35.setFrameShape(QFrame.StyledPanel)
+        self.frame_35.setFrameShadow(QFrame.Raised)
+        self.gridLayout_10 = QGridLayout(self.frame_35)
+        self.gridLayout_10.setObjectName(u"gridLayout_10")
+        self.gridLayout_10.setContentsMargins(-1, -1, -1, 11)
+        self.anomaly_alghorithm_combo = QComboBox(self.frame_35)
+        self.anomaly_alghorithm_combo.setObjectName(u"anomaly_alghorithm_combo")
+
+        self.gridLayout_10.addWidget(self.anomaly_alghorithm_combo, 0, 1, 1, 1)
+
+        self.gridLayout_11 = QGridLayout()
+        self.gridLayout_11.setObjectName(u"gridLayout_11")
+        self.label_70 = QLabel(self.frame_35)
+        self.label_70.setObjectName(u"label_70")
+
+        self.gridLayout_11.addWidget(self.label_70, 0, 0, 1, 1)
+
+
+        self.gridLayout_10.addLayout(self.gridLayout_11, 0, 0, 1, 1)
+
+        self.anomaly_thresh_error = QSpinBox(self.frame_35)
+        self.anomaly_thresh_error.setObjectName(u"anomaly_thresh_error")
+
+        self.gridLayout_10.addWidget(self.anomaly_thresh_error, 1, 1, 1, 1)
+
+        self.label_69 = QLabel(self.frame_35)
+        self.label_69.setObjectName(u"label_69")
+
+        self.gridLayout_10.addWidget(self.label_69, 1, 0, 1, 1)
+
+
+        self.verticalLayout_50.addWidget(self.frame_35)
+
+
+        self.horizontalLayout_21.addWidget(self.algo_setting_step2_frame)
+
+        self.frame_37 = QFrame(self.frame_step2)
+        self.frame_37.setObjectName(u"frame_37")
+        self.frame_37.setFrameShape(QFrame.StyledPanel)
+        self.frame_37.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_51 = QVBoxLayout(self.frame_37)
+        self.verticalLayout_51.setObjectName(u"verticalLayout_51")
+        self.algorithm_image2 = QLabel(self.frame_37)
+        self.algorithm_image2.setObjectName(u"algorithm_image2")
+        sizePolicy2.setHeightForWidth(self.algorithm_image2.sizePolicy().hasHeightForWidth())
+        self.algorithm_image2.setSizePolicy(sizePolicy2)
+
+        self.verticalLayout_51.addWidget(self.algorithm_image2)
+
+
+        self.horizontalLayout_21.addWidget(self.frame_37)
+
+
+        self.verticalLayout_40.addWidget(self.frame_step2)
+
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
 
         self.verticalLayout_13.addWidget(self.scrollArea)
@@ -3847,7 +3935,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.pages_stackwgt.setCurrentIndex(5)
+        self.pages_stackwgt.setCurrentIndex(3)
         self.tabWidget.setCurrentIndex(1)
         self.settings_tabs.setCurrentIndex(1)
         self.user_tabs.setCurrentIndex(0)
@@ -4041,6 +4129,11 @@ class Ui_MainWindow(object):
         self.label_61.setText(QCoreApplication.translate("MainWindow", u"Convolotion Window Size", None))
         self.label_49.setText(QCoreApplication.translate("MainWindow", u"Background Threshould", None))
         self.algorithm_image1.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.algorithm_image1.setProperty("abas", QCoreApplication.translate("MainWindow", u"card", None))
+        self.label_67.setText(QCoreApplication.translate("MainWindow", u"Step 1", None))
+        self.label_70.setText(QCoreApplication.translate("MainWindow", u"Algorithm", None))
+        self.label_69.setText(QCoreApplication.translate("MainWindow", u"Thresh Error", None))
+        self.algorithm_image2.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
 #if QT_CONFIG(tooltip)
         self.Save_algorithm_setting.setToolTip(QCoreApplication.translate("MainWindow", u"Save Parameters", None))
 #endif // QT_CONFIG(tooltip)
