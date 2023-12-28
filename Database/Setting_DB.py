@@ -1,4 +1,6 @@
 from Database.databaseManager import databaseManager
+from Detection import AnomalyDetection
+
 
 class parentSettingDB:
     TABLE_NAME = ""
@@ -39,8 +41,8 @@ class settingDB:
 class cameraSettingDB(parentSettingDB):
     TABLE_NAME = "camera_setting"
     TABLE_COLS = [
-        {"col_name": "name",  "type": "VARCHAR(255)", "len": 50},
-        {"col_name": "serial_number",  "type": "VARCHAR(255)", "len": 50},
+        {"col_name": "name",  "type": "VARCHAR", "len": 50},
+        {"col_name": "serial_number",  "type": "VARCHAR", "len": 50},
         {"col_name": "width", "type": "INT"},
         {"col_name": "height", "type": "INT"},
         {"col_name": "exposure", "type": "INT"},
@@ -119,13 +121,17 @@ class algorithmSettingDB(parentSettingDB):
     TABLE_NAME = "algorithm_setting"
     TABLE_COLS = [
         {"col_name": "background_thresh", "type": "INT"},
-        {"col_name": "conv_window_size", "type": "INT"},
+        {"col_name": "conv_window_size",  "type": "INT"},
+        {"col_name": "diff_thresh",       "type": "INT"},
+        {"col_name": "anomaly_algorithm", "type": "VARCHAR(255)", "len": 100},
     ]
     
     
     TABLE_DEFAULT_DATAS= [ {
                             'background_thresh': 25,
                             'conv_window_size': 10,
+                            'diff_thresh': 2,
+                            'anomaly_algorithm': AnomalyDetection.LINE_FIT
                         }   
                     ]
     

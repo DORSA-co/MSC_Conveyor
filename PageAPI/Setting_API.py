@@ -216,21 +216,14 @@ class AlgorithmSetting_API:
 
     def grab_image_event(self, image:np.ndarray):
         
-        #cv2.imshow('orginal',image)
+        res = np.zeros(image.shape + (3,), dtype=np.uint8)
         
-        step1_img = self.belt_inspection.Scanner.pts2image(pts=None, 
-                                                           img_shape=image.shape)
-        
-        #cv2.imshow('step1_img',step1_img)
-        
+        step1_img = self.belt_inspection.LaserScanner.draw(res)
         self.uiHandeler.set_image('step1', step1_img)
 
         #image_ = np.zeros( image.shape + )
-
-        self.belt_inspection.LaserScanner.draw()
-
-        #self.belt_inspection.AnomalyDetection.LineFit.draw(image=)
-
+        step2_img = self.belt_inspection.AnomalyDetection.LineFit.draw(image=step1_img)
+        #self.uiHandeler.set_image('step2', step2_img)
         #cv2.waitKey(2)
 
     
