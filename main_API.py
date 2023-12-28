@@ -115,6 +115,11 @@ class main_API:
         #self.mainPageAPI.set_logined_user(username)
         #self.reportsPageAPI.set_user_login(username)
 
+    def grabbed_image_event(self, image):
+        self.beltIncpetcion.feed(image)
+        if self.uiHandeler.current_page_name == 'settings':
+            self.API_Page_Setting.grab_image_event(image)
+
 
 
         return
@@ -200,11 +205,6 @@ class main_API:
             print('Warning: camera {camera_name} is empty')
 
 
-
-    def grabbed_image_event(self, image):
-        self.beltIncpetcion.feed(image)
-        if self.uiHandeler.current_page_name == 'settings':
-            self.API_Page_Setting.grab_image_event(image)
 
 
     

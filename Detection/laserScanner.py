@@ -8,12 +8,9 @@ class laserScanner:
     def __init__(self) -> None:
         pass
     
-    def pts2image(self, pts:np.ndarray, img_shape:tuple):
-        if pts is None:
-            pts = self.pts
-        res = np.zeros(img_shape, dtype=np.uint8)
-        res[pts[:,1], pts[:,0]] = 255
-        return res
+    def draw(self,image:np.ndarray, point_color=(255,255,255)):
+        image[self.pts[:,1], self.pts[:,0]] = point_color
+        return image
     
     
     def laserExtraction(self, image, thresh, win_size=10):

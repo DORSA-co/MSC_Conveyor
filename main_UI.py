@@ -1,9 +1,11 @@
 import sys
-
+import time
 
 
 from PySide6.QtWidgets import QMainWindow, QHeaderView
 from PySide6 import QtCore
+
+
 from PageUI.LiveView_UI import LiveView_UI
 from PageUI.Report_UI import Report_UI
 from PageUI.Setting_UI import Setting_UI
@@ -13,6 +15,7 @@ from PageUI.Common_Function_UI import Common_Function_UI
 from UIFiles.assets import assets_rc
 from UIFiles.main_UI import Ui_MainWindow
 from uiUtils.guiBackend import GUIBackend
+from Constants import Constant
 
 MAIN_UI_PATH = "UIFiles/main_UI.ui"
 
@@ -39,6 +42,7 @@ class mainUI(QMainWindow):
         self.common_func=Common_Function_UI()
 
         self.external_page_change_event = None
+        self.move_refresh_time = 0
 
         self.pages = {
             'live': self.ui.Live_View_Page,
@@ -86,7 +90,28 @@ class mainUI(QMainWindow):
         self.current_page_name = ''
         self.previouse_page_name = ''
 
+    def mousePressEvent(self, event):
+        if event.button() == QtCore.Qt.LeftButton:
+            self.offset = QtCore.QPoint(event.position().x(),event.position().y())
+        else:
+            super().mousePressEvent(event)
+
+
+    def mouseMoveEvent(self, event):
+        if self.offset is not None and event.buttons() == QtCore.Qt.LeftButton:
+            if time.time() - self.move_refresh_time > Constant.RefreshRates.MOUSE_MOVE:
+                self.move_refresh_time = time.time()
+                self.move(self.pos() + QtCore.QPoint(event.scenePosition().x(),event.scenePosition().y()) - self.offset)
+
+        else:
+            super().mouseMoveEvent(event)
+
+
+    def mouseReleaseEvent(self, event):
+        self.offset = None
+        super().mouseReleaseEvent(event)
     
+
     def sidebar_button_connector(self):
         for page_name in self.sidebar_pages_buttons.keys():
             GUIBackend.button_connector( self.sidebar_pages_buttons[page_name], 
