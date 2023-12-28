@@ -9,7 +9,7 @@ if __name__ == "__main__":
     sys.path.append(os.getcwd())
 
 from Detection.laserScanner import laserScanner
-from Detection import AnomalyDetection
+from Detection.AnomalyDetection import AnomalyDetectionHandeler, ANOMALY_ALGORITHMS
 
 
 
@@ -20,7 +20,7 @@ class beltInspection:
     def __init__(self, kwargs:dict) -> None:
         self.kwargs = kwargs
         self.LaserScanner = laserScanner()
-        self.AnomalyDetection = AnomalyDetection.AnomalyDetectionHandeler()
+        self.AnomalyDetection = AnomalyDetectionHandeler()
 
     
     def change_settings(self, kwargs:dict):
@@ -39,6 +39,9 @@ class beltInspection:
                                    algorithm=self.kwargs['anomaly_algorithm']
         )
 
+
+    
+
                                    
     
 
@@ -52,7 +55,7 @@ if __name__ == "__main__":
         'background_thresh': 25,
         'conv_window_size': 10,
         'diff_thresh': 2,
-        'anomaly_algorithm': AnomalyDetection.LINE_FIT
+        'anomaly_algorithm': ANOMALY_ALGORITHMS.LINE_FIT
 
     }
     ls = beltInspection(kwargs=kwargs)

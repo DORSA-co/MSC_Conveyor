@@ -207,8 +207,8 @@ class AlgorithmSetting_API:
         self.belt_inspection = belt_inspection
 
         self.map_items = {
-            "anomaly_algorithm":{ANOMALY_ALGORITHMS.LINE_FIT: 'algo1',
-                                 'test': 'algo2'
+            "anomaly_algorithm":{ANOMALY_ALGORITHMS.LINE_FIT: 'line',
+                                 ANOMALY_ALGORITHMS.CURVE_FIT: 'curve'
                                 }
         }
 
@@ -244,8 +244,8 @@ class AlgorithmSetting_API:
         step1_img = self.belt_inspection.LaserScanner.draw(res)
         self.uiHandeler.set_image('step1', step1_img)
 
-        #image_ = np.zeros( image.shape + )
-        step2_img = self.belt_inspection.AnomalyDetection.LineFit.draw(image=step1_img)
+        
+        step2_img = self.belt_inspection.AnomalyDetection.draw(image=step1_img)
         self.uiHandeler.set_image('step2', step2_img)
     
     def load_algorithm_settings(self,):
