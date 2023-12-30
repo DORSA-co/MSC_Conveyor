@@ -2783,8 +2783,8 @@ font: 24pt &quot;Mongolian Baiti&quot;;</string>
                               <rect>
                                <x>0</x>
                                <y>0</y>
-                               <width>470</width>
-                               <height>555</height>
+                               <width>403</width>
+                               <height>543</height>
                               </rect>
                              </property>
                              <layout class="QHBoxLayout" name="horizontalLayout_57">
@@ -3958,8 +3958,8 @@ font-weight:bold;</string>
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>281</width>
-                      <height>573</height>
+                      <width>274</width>
+                      <height>558</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -5395,8 +5395,8 @@ font: 16pt &quot;Mongolian Baiti&quot;;</string>
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>1114</width>
-                       <height>733</height>
+                       <width>1124</width>
+                       <height>740</height>
                       </rect>
                      </property>
                      <layout class="QVBoxLayout" name="verticalLayout_40">
@@ -5472,7 +5472,11 @@ color:rgb(12, 53, 106);</string>
                                 </widget>
                                </item>
                                <item row="0" column="1">
-                                <widget class="QSpinBox" name="alghoritm_background_thresh"/>
+                                <widget class="QSpinBox" name="alghoritm_background_thresh">
+                                 <property name="maximum">
+                                  <number>255</number>
+                                 </property>
+                                </widget>
                                </item>
                                <item row="1" column="1">
                                 <widget class="QSpinBox" name="alghoritm_conv_window_size"/>

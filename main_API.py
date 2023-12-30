@@ -20,7 +20,7 @@ from Constants import Constant
 
 CAMERAS = {
      'name': 'main',
-     'serial_number':'23287291'
+     'serial_number':'24555048'
 }
 
 class main_API:
@@ -53,6 +53,7 @@ class main_API:
         
         self.checked_device_time = time.time()
         self.is_during_checking_device  = False
+        self.is_during_process = False
         
         self.device_checker_timer = timerBuilder(self.DEVICE_CHECKer_TIMER, self.check_camera_devices_event)
         self.device_checker_timer.start()
@@ -116,10 +117,16 @@ class main_API:
         #self.reportsPageAPI.set_user_login(username)
 
     def grabbed_image_event(self, image):
-        self.beltIncpetcion.feed(image)
-        if self.uiHandeler.current_page_name == 'settings':
-            self.API_Page_Setting.grab_image_event(image)
-
+        if not self.is_during_process:
+            self.is_during_process = True
+            t = time.time()
+            self.beltIncpetcion.feed(image)
+            t = time.time() - t
+            print(t)
+            if self.uiHandeler.current_page_name == 'settings':
+                self.API_Page_Setting.grab_image_event(image)
+            
+        self.is_during_process = False
 
 
         return

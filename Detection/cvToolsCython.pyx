@@ -132,13 +132,13 @@ def extract_points_slope(numpy.ndarray[DTYPE_uint8, ndim=2] img, float gain_thre
 @cython.wraparound(False)
 def extract_points_maxwin(numpy.ndarray[DTYPE_uint8, ndim=2] img, int thresh,  int window_size):  
 
-    cdef long int total_y_sum = 0
-    cdef long int weights_sum = 0
+    cdef int total_y_sum = 0
+    cdef int weights_sum = 0
     cdef int max_windown_conv = -1
     cdef int window_conv = 0
     cdef int max_win_idx = 0
     cdef int x,y,k
-    cdef float res_y = 0
+    cdef int res_y = 0
     cdef int img_h = img.shape[0]
     cdef int img_w = img.shape[1]
     
@@ -146,10 +146,10 @@ def extract_points_maxwin(numpy.ndarray[DTYPE_uint8, ndim=2] img, int thresh,  i
     cdef numpy.ndarray[DTYPE_int32, ndim=2] res_pts = numpy.zeros( (img_w, 2), dtype = numpy.int32 )    
 
 
-    for x in range(img_w):
+    for x in range(0,img_w):
         max_win_idx = -1
         max_windown_conv = -1
-        for y in range(0, img_h - window_size):
+        for y in range(0, img_h - window_size,2):
             window_conv = 0
             if img[y + window_size//2, x] > thresh:
                 for k in range(0, window_size):
@@ -170,14 +170,14 @@ def extract_points_maxwin(numpy.ndarray[DTYPE_uint8, ndim=2] img, int thresh,  i
                 weights_sum += img[y, x]
 
 
-        res_pts[x][0] = x
+        # 
 
         if weights_sum > 0:
-            res_y = total_y_sum / weights_sum 
-            res_pts[x][1] = int(res_y)
-
+            res_y = int(total_y_sum / weights_sum )
         else:
-            res_pts[x][1] = -1
-
+            res_y = -1
+        
+        res_pts[x, 0] = x
+        res_pts[x, 1] = res_y
             
     return res_pts

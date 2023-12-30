@@ -1525,7 +1525,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 470, 555))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 403, 543))
         self.horizontalLayout_57 = QHBoxLayout(self.scrollAreaWidgetContents_3)
         self.horizontalLayout_57.setObjectName(u"horizontalLayout_57")
         self.groupBox_20 = QGroupBox(self.scrollAreaWidgetContents_3)
@@ -2080,7 +2080,7 @@ class Ui_MainWindow(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.filters_scroll_area = QWidget()
         self.filters_scroll_area.setObjectName(u"filters_scroll_area")
-        self.filters_scroll_area.setGeometry(QRect(0, 0, 281, 573))
+        self.filters_scroll_area.setGeometry(QRect(0, 0, 274, 558))
         self.verticalLayout_5 = QVBoxLayout(self.filters_scroll_area)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.verticalLayout_5.setContentsMargins(30, -1, -1, -1)
@@ -2813,7 +2813,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1114, 733))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1124, 740))
         self.verticalLayout_40 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_40.setObjectName(u"verticalLayout_40")
         self.frame_step1 = QFrame(self.scrollAreaWidgetContents)
@@ -2860,6 +2860,7 @@ class Ui_MainWindow(object):
 
         self.alghoritm_background_thresh = QSpinBox(self.frame_34)
         self.alghoritm_background_thresh.setObjectName(u"alghoritm_background_thresh")
+        self.alghoritm_background_thresh.setMaximum(255)
 
         self.gridLayout_8.addWidget(self.alghoritm_background_thresh, 0, 1, 1, 1)
 

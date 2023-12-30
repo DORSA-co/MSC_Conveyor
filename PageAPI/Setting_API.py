@@ -242,11 +242,14 @@ class AlgorithmSetting_API:
         res = np.zeros(image.shape + (3,), dtype=np.uint8)
         
         step1_img = self.belt_inspection.LaserScanner.draw(res)
+        #cv2.imshow('step1', step1_img)
         self.uiHandeler.set_image('step1', step1_img)
 
         
         step2_img = self.belt_inspection.AnomalyDetection.draw(image=step1_img)
         self.uiHandeler.set_image('step2', step2_img)
+        #cv2.imshow('step2', step2_img)
+        #cv2.waitKey(1)
     
     def load_algorithm_settings(self,):
         parms = self.db.load()

@@ -12,12 +12,13 @@ class parentSettingDB:
 
     
     def __create_table__(self,):
-        self.db_manager.create_table(self.TABLE_NAME)
+        if not self.db_manager.table_exits(self.TABLE_NAME):
+            self.db_manager.create_table(self.TABLE_NAME)
             
-        for col in self.TABLE_COLS:
-            self.db_manager.add_column( self.TABLE_NAME, **col)
+            for col in self.TABLE_COLS:
+                self.db_manager.add_column( self.TABLE_NAME, **col)
             
-        self.restor_default()
+            self.restor_default()
 
     def restor_default(self):
         for default_data in self.TABLE_DEFAULT_DATAS:
