@@ -1,9 +1,10 @@
 from uiUtils.guiBackend import GUIBackend
+import os
 #from UIFiles.edit_user_ui import 
 
 
 class editUserDialog:
-    ui_path = 'UIFiles\\edit_user.ui'
+    ui_path = os.path.join('UIFiles', 'edit_user.ui')
     
     def __init__(self) -> None:
         self.ui = GUIBackend.load_ui(self.ui_path)

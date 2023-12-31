@@ -7,9 +7,9 @@ from Database.users_DB import usersDB
 class mainDatabase:
     username = "root"
     #password = "dorsa-co"
-    password = ""
+    password = "Dorsa-1400"
     HOST = "localhost"
-    DATABASE_NAME = "test_database"
+    DATABASE_NAME = "dci_database"
 
     def __init__(
         self,

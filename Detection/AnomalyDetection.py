@@ -56,11 +56,8 @@ class _AnomalyDetection:
         defect_pts = self.pts[self.error_ys>0]
         image[defect_pts[:,1], defect_pts[:,0]] = color
         return image
-    
-
 
 class LineFitAnomalyDetection(_AnomalyDetection):
-    
     
     def __init__(self,) -> None:
         super().__init__()

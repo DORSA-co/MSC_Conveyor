@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 from . import heatMap
-from . import ConvayerBase
+# from . import ConvayerBase
 import os
 from datetime import date
 import jdatetime
