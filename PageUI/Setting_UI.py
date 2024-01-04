@@ -226,13 +226,15 @@ class AlgorithmSetting_UI(Common_Function_UI):
             'conv_window_size': self.ui.alghoritm_conv_window_size,
             'anomaly_algorithm': self.ui.anomaly_alghorithm_combo,
             'diff_thresh': self.ui.anomaly_thresh_error,
+            'defect_min_width': self.ui.defect_extractor_min_width
         }
 
         self.combobox_items = {}
 
         self.images_lbl = {
             'step1': self.ui.algorithm_image1,
-            'step2': self.ui.algorithm_image2
+            'step2': self.ui.algorithm_image2,
+            'step3': self.ui.algorithm_image3,
         }
 
         self.buttons = {

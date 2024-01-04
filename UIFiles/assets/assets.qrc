@@ -1,25 +1,26 @@
 <RCC>
-  <qresource prefix="icons">
-    <file>icon/icons8-login-50.png</file>
-    <file>icon/icons8-user-50.png</file>
-    <file>icon/icons8-edit-hover-table-50.png</file>
-    <file>icon/icons8-edit-table-50.png</file>
-    <file>icon/icons8-remove-hover-table-50.png</file>
-    <file>icon/icons8-remove-table-50.png</file>
-    <file>icon/camera_connected - Copy.png</file>
-    <file>icon/camera_connected.png</file>
-    <file>icon/camera_disconnected - Copy.png</file>
-    <file>icon/camera_disconnected.png</file>
-    <file>icon/icons8-uptriangle-48.png</file>
-    <file>icon/icons8-downtriangle-48.png</file>
-    <file>icon/icons8-check-48.png</file>
-    <file>icon/icons8-down-white-48.png</file>
-    <file>icon/icons8-plus-white-48.png</file>
-    <file>icon/icons8-minus-white-48.png</file>
-  </qresource>
   <qresource prefix="general_icons">
-    <file>general_incons/icons8-close-20.png</file>
-    <file>general_incons/icon_minimize.png</file>
-    <file>general_incons/icon_maximize.png</file>
+    <file>icons/general_icons/help_icon.png</file>
+    <file>icons/general_icons/dorsa_logo.png</file>
+    <file>icons/general_icons/settings_icon.png</file>
+    <file>icons/general_icons/report_icon.png</file>
+    <file>icons/general_icons/open_menus_icon.png</file>
+    <file>icons/general_icons/users_icon.png</file>
+    <file>icons/general_icons/maximize_icon.png</file>
+    <file>icons/general_icons/about_icon.png</file>
+    <file>icons/general_icons/minimize_icon.png</file>
+    <file>icons/general_icons/logout_icon.png</file>
+    <file>icons/general_icons/login_icon.png</file>
+    <file>icons/general_icons/live_icon.png</file>
+    <file>icons/general_icons/close_menus_icon.png</file>
+    <file>icons/general_icons/close_icon.png</file>
+  </qresource>
+  <qresource prefix="login_icons">
+    <file>icons/login_icons/username.png</file>
+    <file>icons/login_icons/password.png</file>
+    <file>icons/login_icons/eye_off.png</file>
+    <file>icons/login_icons/eye.png</file>
+    <file>icons/login_icons/dorsa.jpg</file>
+    <file>icons/login_icons/close.png</file>
   </qresource>
 </RCC>

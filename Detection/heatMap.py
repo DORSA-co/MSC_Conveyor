@@ -35,7 +35,7 @@ class colorGradient:
         if self.colors[-1].position < 1:
             self.colors.append(gradientItem(self.colors[-1].color, 1))
 
-        self.gradiant = np.zeros((1, size, 3), dtype=np.uint8)
+        self.gradiant = np.zeros((size, 3), dtype=np.uint8)
 
         for c_idx in range(len(self.colors) - 1):
             # ------------
@@ -51,19 +51,21 @@ class colorGradient:
                     item2.absolute_pos - item1.absolute_pos,
                     dtype=np.uint8,
                 )
-                self.gradiant[0, item1.absolute_pos : item2.absolute_pos, channle] = ch
+                self.gradiant[item1.absolute_pos : item2.absolute_pos, channle] = ch
 
         # ---------------- fill start
 
         if smooth:
+            self.gradiant = np.reshape(self.gradiant, (1, -1, 3))
             self.gradiant = cv2.blur(self.gradiant, ksize=(int(size / 10), 1))
+            self.gradiant = np.reshape(self.gradiant, (-1, 3))
         return self.gradiant
 
     def toImage(self, width):
-        _, h, _ = self.gradiant.shape
+        h, _ = self.gradiant.shape
         image = np.zeros((h, width, 3), dtype=np.uint8)
         for i in range(width):
-            image[:, i, :] = self.gradiant
+            image[:, i] = self.gradiant
         return image
 
 
@@ -71,12 +73,16 @@ class colorGradient:
 
 if __name__ == "__main__":
     cg = colorGradient()
-    cg.add_color((255, 0, 0), 0)
-    cg.add_color((255, 255, 0), 0.3)
-    cg.add_color((0, 255, 0), 0.5)
-    cg.add_color((0, 255, 255), 0.7)
-    cg.add_color((0, 0, 255), 1)
-    gradiant = cg.generate_gradiant(500)
+    cg.add_color((19, 47, 186), 0)
+    cg.add_color((30, 115, 227), 0.15)
+    cg.add_color((9, 162, 222), 0.3)
+    cg.add_color((150, 150, 150), 0.45)
+    cg.add_color((150, 150, 150), 0.5)
+    cg.add_color((150, 150, 150), 0.55)
+    cg.add_color((9, 162, 222), 0.7)
+    cg.add_color((30, 115, 227), 0.85)
+    cg.add_color((19, 47, 186), 1)
+    gradiant = cg.generate_gradiant(20)
     img = cg.toImage(200)
 
     cv2.imshow("grad", img)

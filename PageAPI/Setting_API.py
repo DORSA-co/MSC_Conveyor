@@ -250,6 +250,9 @@ class AlgorithmSetting_API:
         self.uiHandeler.set_image('step2', step2_img)
         #cv2.imshow('step2', step2_img)
         #cv2.waitKey(1)
+
+        step3_img = self.belt_inspection.DefectExtractor.draw(image=step2_img)
+        self.uiHandeler.set_image('step3', step3_img)
     
     def load_algorithm_settings(self,):
         parms = self.db.load()

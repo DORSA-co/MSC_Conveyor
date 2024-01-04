@@ -15,9 +15,10 @@ from PageUI.Common_Function_UI import Common_Function_UI
 from UIFiles.assets import assets_rc
 from UIFiles.main_UI import Ui_MainWindow
 from uiUtils.guiBackend import GUIBackend
+from uiUtils.GUIComponents import SIDEBAR_BUTTON_SELECTED_STYLE, SIDEBAR_BUTTON_UNSELECTED_STYLE
 from Constants import Constant
+from Constants import IconsPath
 
-MAIN_UI_PATH = "UIFiles/main_UI.ui"
 
 class mainUI(QMainWindow):
 
@@ -28,15 +29,15 @@ class mainUI(QMainWindow):
     """
     def __init__(self):
         """this function is used to laod ui file and build GUI application"""
-        super(mainUI,self).__init__()
+        super(mainUI, self).__init__()
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.setWindowFlags(QtCore.Qt.WindowFlags(QtCore.Qt.FramelessWindowHint))
 
         self.Page_LiveView = LiveView_UI(self.ui)
-        self.Page_Report = Report_UI(self.ui)
-        self.Page_AlgorithmCalibration = AlgorithmCalibration_UI(self.ui)
+        # self.Page_Report = Report_UI(self.ui)
+        # self.Page_AlgorithmCalibration = AlgorithmCalibration_UI(self.ui)
         self.Page_Setting = Setting_UI(self.ui)
         self.Page_Users = usersPageUI(self.ui)
         self.common_func=Common_Function_UI()
@@ -45,21 +46,19 @@ class mainUI(QMainWindow):
         self.move_refresh_time = 0
 
         self.pages = {
-            'live': self.ui.Live_View_Page,
-            'defect': self.ui.defect_tab,
-            'reports': self.ui.Report_page,
-            'settings': self.ui.Setting_Page,
-            'users': self.ui.Users_page,
-            'about': self.ui.About_Page
+            'live': self.ui.live_view_page,
+            'reports': self.ui.report_page,
+            'settings': self.ui.settings_page,
+            'users': self.ui.users_page,
+            'about': self.ui.about_page
         }
 
         self.sidebar_pages_buttons = {
-            'live': self.ui.LiveDetectionBT,
-            'reports': self.ui.ReportConnectionBT,
-            'settings': self.ui.SettingBT,
-            'defect': self.ui.HelpConnectionBT,
-            'users': self.ui.usersBtn,
-            'about': self.ui.AboutBT
+            'live': self.ui.side_live_view_btn,
+            'reports': self.ui.side_report_btn,
+            'settings': self.ui.side_settings_btn,
+            'users': self.ui.side_users_btn,
+            'about': self.ui.side_about_btn
         }
 
         self.tabs = {
@@ -98,7 +97,7 @@ class mainUI(QMainWindow):
 
 
     def mouseMoveEvent(self, event):
-        if self.offset is not None and event.buttons() == QtCore.Qt.LeftButton:
+        if self.offset is not None and event.buttons() == QtCore.Qt.LeftButton and event.y() < self.ui.top_frame.height():
             if time.time() - self.move_refresh_time > Constant.RefreshRates.MOUSE_MOVE:
                 self.move_refresh_time = time.time()
                 self.move(self.pos() + QtCore.QPoint(event.scenePosition().x(),event.scenePosition().y()) - self.offset)
@@ -135,10 +134,18 @@ class mainUI(QMainWindow):
             
         return func
     
+    def sidebar_btns_style_handler(self, page_name):
+        for page in self.sidebar_pages_buttons:
+            if page_name==page:
+                GUIBackend.set_style(self.sidebar_pages_buttons[page], SIDEBAR_BUTTON_SELECTED_STYLE)
+            else:
+                GUIBackend.set_style(self.sidebar_pages_buttons[page], SIDEBAR_BUTTON_UNSELECTED_STYLE)
+    
     def go_to_page(self, page_name:str):
         """change page to the page with page_name
         """
-        self.ui.pages_stackwgt.setCurrentWidget(self.pages[page_name])
+        self.ui.main_stackedWidget.setCurrentWidget(self.pages[page_name])
+        self.sidebar_btns_style_handler(page_name)
 
 
     def internal_page_change_event(self, ):
@@ -216,6 +223,7 @@ class mainUI(QMainWindow):
         self.ui.close_btn.clicked.connect(self.close_win)
         self.ui.minimize_btn.clicked.connect(self.minimize)
         self.ui.maximize_btn.clicked.connect(self.maxmize_minimize)
+        self.ui.menu_btn.clicked.connect(self.move_side_frame)
 
     def minimize(self):
         """Minimize winodw"""
@@ -246,5 +254,46 @@ class mainUI(QMainWindow):
             self.showNormal()
         else:
             self.showMaximized()
+
+    def move_side_frame(self):
+        w = self.ui.side_frame.width()
+
+        if w <= Constant.SideBarAnimation.WIDTH_START_VALUE:
+            self.minWidth = QtCore.QPropertyAnimation(self.ui.side_frame, b"minimumWidth")
+            self.minWidth.setDuration(Constant.SideBarAnimation.ANIMATION_DURATION)
+            self.minWidth.setStartValue(w)
+            self.minWidth.setEndValue(Constant.SideBarAnimation.WIDTH_STOP_VALUE)
+            self.minWidth.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
+            self.group = QtCore.QParallelAnimationGroup()
+            self.group.addAnimation(self.minWidth)
+
+            self.maxWidth = QtCore.QPropertyAnimation(self.ui.side_frame, b"maximumWidth")
+            self.maxWidth.setDuration(Constant.SideBarAnimation.ANIMATION_DURATION)
+            self.maxWidth.setStartValue(w)
+            self.maxWidth.setEndValue(Constant.SideBarAnimation.WIDTH_STOP_VALUE)
+            self.maxWidth.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
+            self.group.addAnimation(self.maxWidth)
+            self.group.start()
+
+            GUIBackend.set_button_icon(self.ui.menu_btn, IconsPath.MenuIcons.OPEN_MENU_ICON)
+
+        else:
+            self.minWidth = QtCore.QPropertyAnimation(self.ui.side_frame, b"minimumWidth")
+            self.minWidth.setDuration(Constant.SideBarAnimation.ANIMATION_DURATION)
+            self.minWidth.setStartValue(w)
+            self.minWidth.setEndValue(Constant.SideBarAnimation.WIDTH_START_VALUE)
+            self.minWidth.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
+            self.group = QtCore.QParallelAnimationGroup()
+            self.group.addAnimation(self.minWidth)
+
+            self.maxWidth = QtCore.QPropertyAnimation(self.ui.side_frame, b"maximumWidth")
+            self.maxWidth.setDuration(Constant.SideBarAnimation.ANIMATION_DURATION)
+            self.maxWidth.setStartValue(w)
+            self.maxWidth.setEndValue(Constant.SideBarAnimation.WIDTH_START_VALUE)
+            self.maxWidth.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
+            self.group.addAnimation(self.maxWidth)
+            self.group.start()
+
+            GUIBackend.set_button_icon(self.ui.menu_btn, IconsPath.MenuIcons.CLOSE_MENU_ICON)
 
 

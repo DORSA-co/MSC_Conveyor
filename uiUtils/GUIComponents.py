@@ -3,6 +3,7 @@ import time
 from PySide6 import QtWidgets, QtCore, QtGui
 import PySide6.QtWidgets 
 
+
 CODE_NAME_BUTTON_STYLE ={
     'normal': """ QPushButton{
                   min-width:100px;
@@ -41,16 +42,14 @@ TABEL_BUTTON_STYLE = """
     """
 
 SIDEBAR_BUTTON_SELECTED_STYLE = """
-QPushButton{
-	color:#ffffff;
-    border-color:rgb(255, 205, 5);
-	min-height: 40px;
-	text-align: left;
-	icon-size:25px;
-	background-color:rgba(0,0,0,0);
-    font-size:14px;
-    font-weight:bold;
-    }
+    QPushButton{
+        background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #4C7EFF, stop: 0.029 #4C7EFF, stop: 0.03 rgba(120, 146, 223, 40), stop: 1 rgba(120, 146, 223, 40));
+        }
+
+"""
+
+SIDEBAR_BUTTON_UNSELECTED_STYLE = """
+    None
 
 """
 

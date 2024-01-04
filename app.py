@@ -3,7 +3,8 @@ import os
 sys.path.append(os.path.join('UIFiles', 'assets'))
 
 os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'main_UI.ui'), os.path.join('UIFiles', 'main_UI.py')))
-os.system('pyside6-rcc {} -o {}'.format(os.path.join('UIFiles', 'assets', 'assets.qrc'), os.path.join('UIFiles', 'asset', 'assets_rc.py')))
+os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'login_UI.ui'), os.path.join('UIFiles', 'login_UI.py')))
+os.system('pyside6-rcc {} -o {}'.format(os.path.join('UIFiles', 'assets', 'assets.qrc'), os.path.join('UIFiles', 'assets', 'assets_rc.py')))
 
 from PySide6.QtWidgets   import QApplication
 

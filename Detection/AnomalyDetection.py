@@ -56,6 +56,13 @@ class _AnomalyDetection:
         defect_pts = self.pts[self.error_ys>0]
         image[defect_pts[:,1], defect_pts[:,0]] = color
         return image
+    
+    def stackXY(self, xs:np.ndarray, error_ys:np.ndarray):
+        return np.hstack( (xs.reshape((-1,1)), 
+                            error_ys.reshape((-1,1))
+                            )
+                        ) 
+
 
 class LineFitAnomalyDetection(_AnomalyDetection):
     
@@ -91,8 +98,11 @@ class LineFitAnomalyDetection(_AnomalyDetection):
 
         #threshould errors smaller than diff_thresh into 0
         self.error_ys = self.threshould_errors(self.error_ys, diff_thresh)
+
+
+
         
-        return self.error_ys
+        return self.stackXY(self.xs, self.error_ys)
 
 
 
@@ -118,7 +128,7 @@ class CurveFitAnomalyDetection(_AnomalyDetection):
         pred_ys = np.round(pred_ys, decimals=0).astype(np.int32)
         return pred_ys
     
-    def draw(self,image: np.ndarray, line_color:tuple=(0,255,0), defect_color:tuple=(0,0,255) ):
+    def draw(self, image: np.ndarray, line_color:tuple=(0,255,0), defect_color:tuple=(0,0,255) ):
         image = super().draw(image, color=defect_color)
         image[self.pred_ys, self.xs] = line_color
         return image
@@ -137,5 +147,5 @@ class CurveFitAnomalyDetection(_AnomalyDetection):
         #threshould errors smaller than diff_thresh into 0
         self.error_ys = self.threshould_errors(self.error_ys, diff_thresh)
         
-        return self.error_ys
+        return self.stackXY(self.xs, self.error_ys)
 

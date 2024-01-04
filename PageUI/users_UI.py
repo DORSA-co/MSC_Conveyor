@@ -1,9 +1,10 @@
 from uiUtils.guiBackend import GUIBackend
 from uiUtils import GUIComponents
+from Constants import IconsPath
 #import Constants.CONSTANTS as CONSTANTS
 
 from PageUI.Common_Function_UI import Common_Function_UI
-from UIFiles.main_UI_ui import Ui_MainWindow
+from UIFiles.main_UI import Ui_MainWindow
 from PageUI.DialogWindows.editUserDialog import editUserDialog
 from PageUI.DialogWindows.loginUserDialog import loginUserDialog
 
@@ -14,9 +15,6 @@ class usersPageUI:
         self.allUserTab = AllUserTabUI(ui)
         self.editUserTab = EditUserTabUI(ui)
         self.LoginUser = LoginUserUI(ui)
-
-
-
 
 
 class RegisterUserTabUI(Common_Function_UI):
@@ -285,12 +283,6 @@ class EditUserTabUI:
             GUIBackend.set_label_text( self.ui.userspage_editprofile_success_lbl, txt)
             GUIComponents.single_timer_runner(3000, lambda: self.show_success_msg(None) )
 
-          
-
-
-
-
-
 class LoginUserUI(Common_Function_UI):
     
     def __init__(self, ui:Ui_MainWindow) -> None:
@@ -311,9 +303,6 @@ class LoginUserUI(Common_Function_UI):
             #GUIBackend.set_wgt_visible(self.logined_username_lbl, True)
             GUIBackend.set_label_text( self.ui.logined_username_lbl, username)
 
-    
-
-
     def show_logout(Self, username):
         cmb = GUIComponents.confirmMessageBox('logout', 
                                               "{} do you want logout?".format(username), buttons = ['yes', 'no'])
@@ -328,8 +317,8 @@ class LoginUserUI(Common_Function_UI):
             state (str): flags that determine icon. it could be 'login' or 'logout'
         """
         if state == 'login':
-            GUIBackend.set_button_icon(self.ui.login_logout_btn, ":/icons/icon/icons8-user-50.png")
+            GUIBackend.set_button_icon(self.ui.login_logout_btn, IconsPath.LoginIcons.LOGIN_ICON)
         
         elif state == 'logout':
-            GUIBackend.set_button_icon(self.ui.login_logout_btn, ":/icons/icon/icons8-login-50.png")
+            GUIBackend.set_button_icon(self.ui.login_logout_btn, IconsPath.LoginIcons.LOGOUT_ICON)
             

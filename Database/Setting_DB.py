@@ -17,8 +17,8 @@ class parentSettingDB:
             
             for col in self.TABLE_COLS:
                 self.db_manager.add_column( self.TABLE_NAME, **col)
-            
-            self.restor_default()
+                
+                self.restor_default()
 
     def restor_default(self):
         for default_data in self.TABLE_DEFAULT_DATAS:
@@ -125,6 +125,7 @@ class algorithmSettingDB(parentSettingDB):
         {"col_name": "conv_window_size",  "type": "INT"},
         {"col_name": "diff_thresh",       "type": "INT"},
         {"col_name": "anomaly_algorithm", "type": "VARCHAR(255)", "len": 100},
+        {"col_name": "defect_min_width",  "type": "INT"},
     ]
     
     
@@ -132,7 +133,8 @@ class algorithmSettingDB(parentSettingDB):
                             'background_thresh': 25,
                             'conv_window_size': 10,
                             'diff_thresh': 2,
-                            'anomaly_algorithm': ANOMALY_ALGORITHMS.LINE_FIT
+                            'anomaly_algorithm': ANOMALY_ALGORITHMS.LINE_FIT,
+                            'defect_min_width': 3,
                         }   
                     ]
     

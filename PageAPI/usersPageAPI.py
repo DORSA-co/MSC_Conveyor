@@ -318,7 +318,7 @@ class LoginUserAPI:
         """this function called when loging_logout button in top of wofrware pressed
         """
         if not self.data_passer.login_flag:
-            self.uiHandeler.loginDialog.show()
+            self.uiHandeler.loginDialog.show_win()
         
         else :
             flag = self.uiHandeler.show_logout(self.data_passer.logined_user['username'])
@@ -352,7 +352,7 @@ class LoginUserAPI:
         #show logedin username on top of sofrware
         self.uiHandeler.set_logedin_username(user_db['username'])
         #clear username and password from input fields
-        self.uiHandeler.loginDialog.close()
+        self.uiHandeler.loginDialog.close_win()
         self.uiHandeler.set_toolbar_login_button_icon('logout')
 
         if self.login_event_func is not None:

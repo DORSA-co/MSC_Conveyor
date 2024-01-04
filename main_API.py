@@ -50,6 +50,7 @@ class main_API:
         self.cameras: dict[str, Camera] = {}
         self.camera_workers:dict[str, cameraWorker] = {}
         self.camera_threads:dict[str, threading.Thread]= {}
+        self.collector = Collector()
         
         self.checked_device_time = time.time()
         self.is_during_checking_device  = False
@@ -83,7 +84,7 @@ class main_API:
         }
 
         self.login_user_event()
-        self.API_Page_Users.loginUser.uiHandeler.loginDialog.show()
+        self.API_Page_Users.loginUser.uiHandeler.loginDialog.show_win()
         self.startup()
 
 
@@ -122,7 +123,7 @@ class main_API:
             t = time.time()
             self.beltIncpetcion.feed(image)
             t = time.time() - t
-            print(t)
+            # print(t)
             if self.uiHandeler.current_page_name == 'settings':
                 self.API_Page_Setting.grab_image_event(image)
             
@@ -179,14 +180,13 @@ class main_API:
         """
         camera_name = camera_meta['name']
         sn = camera_meta['serial_number']
-        collector = Collector()
         camera = None
         if self.CAMERA_SIMULATION:
-            collector.enable_camera_emulation(1)
-            camera = collector.get_all_cameras(dorsaPylon.CamersClass.emulation)[0]
+            self.collector.enable_camera_emulation(1)
+            camera = self.collector.get_all_cameras(dorsaPylon.CamersClass.emulation)[0]
 
         else:
-            camera = collector.get_camera_by_serial(sn)
+            camera = self.collector.get_camera_by_serial(sn)
         if camera is not None:
              camera.build_converter(pixel_type=dorsaPylon.PixelType.GRAY8)
              self.cameras[ camera_name ] = camera
@@ -217,11 +217,11 @@ class main_API:
     
     def check_camera_devices_event(self,):
         if not self.is_during_checking_device:
+            t = time.time()
             self.checked_device_time = time.time()
             self.is_during_checking_device = True
 
-            
-            self.device_checker_worker = DeviceCheckerWorker(Collector())
+            self.device_checker_worker = DeviceCheckerWorker(self.collector)
             self.device_checker_thread = threading.Thread(target= self.device_checker_worker.serial_number_finder)
             self.device_checker_worker.serials_ready.connect(self.refresh_camera_devices_event)
             if self.DEBUG_PROCESS_THREAD:
@@ -229,11 +229,9 @@ class main_API:
                 self.device_checker_worker.serial_number_finder()
             else:
                 self.device_checker_thread.start()
-
         else:
             if time.time() - self.checked_device_time  > ( self.DEVICE_CHECKer_TIMER / 1000) + 1:
                 self.is_during_checking_device = False
-    
 
     def refresh_camera_devices_event(self):
         self.is_during_checking_device = False

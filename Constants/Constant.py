@@ -1,3 +1,8 @@
+class SideBarAnimation:
+    ANIMATION_DURATION = 300
+    WIDTH_START_VALUE = 0
+    WIDTH_STOP_VALUE = 198
+
 class DemoImage:
     DIR = 'demo imgs/'
 

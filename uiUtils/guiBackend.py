@@ -56,6 +56,10 @@ class GUIBackend:
         ui.setWindowFlags(QtCore.Qt.WindowFlags(QtCore.Qt.FramelessWindowHint))
 
     @staticmethod
+    def set_win_attribute(ui:QtWidgets.QMainWindow, attribute:QtCore.Qt.WidgetAttribute):
+        ui.setAttribute(attribute)
+
+    @staticmethod
     def move(ui:QtWidgets.QMainWindow, pos:tuple[int]):
         point = QtCore.QPoint(*pos)
         ui.move(point)
@@ -616,6 +620,14 @@ class GUIBackend:
             inpt (QtWidgets.QLineEdit): _description_
         """
         inpt.setEchoMode(QtWidgets.QLineEdit.Password)
+
+    def set_input_normal(inpt:QtWidgets.QLineEdit):
+        """make a input, normal format that show charaters normally
+
+        Args:
+            inpt (QtWidgets.QLineEdit): _description_
+        """
+        inpt.setEchoMode(QtWidgets.QLineEdit.Normal)
 
 
     def input_text_connector(inpt:QtWidgets.QLineEdit, func):
