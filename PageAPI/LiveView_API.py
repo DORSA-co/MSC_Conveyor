@@ -2,13 +2,6 @@ import cv2
 import os
 import time
 from PySide6.QtCore import QTimer
-from Detection.Defect import (
-    defect_detection,
-    function_total_complete_defects_cnts,
-    function_return_total_depth,
-    function_return_critical_flage,
-    getDate,
-)
 from Detection.defectTrackerClass import defectTracker
 
 import cv2

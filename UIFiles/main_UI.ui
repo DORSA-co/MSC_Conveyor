@@ -14,8 +14,83 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="StyleSheet">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="styleSheet">
-    <string notr="true">QTabWidget{
+    <string notr="true">QSpinBox, QDoubleSpinBox  
+{
+	border-bottom: 2px solid rgba(20, 20, 20, 150);
+	border-radius: None;
+	font-size: 18px;
+	min-height: 25px;
+	min-width: 70px;
+}
+
+QSpinBox:disabled ,
+QDoubleSpinBox:disabled 
+{
+	border: 2px solid rgba(182, 187, 196, 100);
+	color: rgba(182, 187, 196, 255);
+}
+
+QSpinBox::up-arrow, QDoubleSpinBox::up-arrow
+{   
+	image: url(:/general_icons/icons/general_icons/plus_icon_black.png);
+	width: 16px;
+	height: 16px;
+}
+
+QSpinBox::down-arrow ,  QDoubleSpinBox::down-arrow
+{   
+	image: url(:/general_icons/icons/general_icons/minus_icon_black.png);
+	width: 16px;
+	height: 16px;
+}
+
+QSpinBox::up-button
+{
+	border:none;
+    min-width:30px;
+    min-height: 29px;
+    subcontrol-origin: margin;
+    subcontrol-position: right;
+    top: 0px;
+    right: 0px;
+}
+
+QSpinBox::down-button
+{
+    min-width:30px;
+    min-height: 29px;
+    subcontrol-origin: margin;
+    subcontrol-position: left;
+    top: 0px;
+    right: 0px;
+}
+
+QSpinBox::up-button,
+QSpinBox::down-button,
+QDoubleSpinBox::up-button,
+QDoubleSpinBox::down-button   {
+	background-color: transparent;
+}
+
+QSpinBox::up-button:disabled ,
+QSpinBox::down-button:disabled ,
+QDoubleSpinBox::up-button:disabled ,
+QDoubleSpinBox::down-button:disabled    {
+    subcontrol-origin: border;
+	background-color: rgba(182, 187, 196, 100);
+}
+
+QSpinBox:focus, QDoubleSpinBox:focus{
+	background: #F0ECE5;
+}
+
+/************************************************************/
+
+QTabWidget{
     font-weight: bold;
 	border: None;
 }
@@ -48,12 +123,62 @@ QTabBar::tab:!selected {
     margin-top: 2px;
 }
 
-QComboBox {
-    border: 1px solid #7f9db9;
-    border-radius: 3px;
-    padding: 1px 18px 1px 3px;
-    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+/************************************************************/
+
+QComboBox
+{
+	border:1px solid #31304D;
+	min-height: 25px;
+	min-width: 70px;
+	font-size: 16px;
 }
+
+QComboBox:enabled{
+	color: rgb(20, 20, 20);
+}
+
+QComboBox:disabled
+{
+	border: 2px solid rgba(182, 187, 196, 100);
+	color: rgba(182, 187, 196, 255);
+}
+
+QComboBox::down-arrow
+{   
+	image: url(:/general_icons/icons/general_icons/down_icon.png);
+	width: 30px;
+    height: 30px;
+}
+
+QComboBox::drop-down
+{
+	 background-color: #31304D;
+	 min-width: 30px;
+}
+
+QComboBox::drop-down:button{
+	width: 30px;
+}
+
+QComboBox::drop-down:disabled 
+{
+	 background-color: rgba(182, 187, 196, 100);
+	 min-width: 30px;
+}
+
+QComboBox QAbstractItemView {
+    border: none;
+	color: #202020;
+	background-color:#ffffff;
+	selection-color: rgb(12, 53, 106);
+}
+
+QComboBox QAbstractItemView::item {
+    border: none;
+	height:30px;
+}
+
+/************************************************************/
 
 #side_frame{
 	background-color: #17203A;
@@ -2580,7 +2705,7 @@ font: 16pt &quot;Mongolian Baiti&quot;;</string>
                    <x>0</x>
                    <y>0</y>
                    <width>1054</width>
-                   <height>569</height>
+                   <height>580</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_40">
@@ -2657,13 +2782,29 @@ color:rgb(12, 53, 106);</string>
                            </item>
                            <item row="0" column="1">
                             <widget class="QSpinBox" name="alghoritm_background_thresh">
+                             <property name="enabled">
+                              <bool>true</bool>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true"/>
+                             </property>
                              <property name="maximum">
                               <number>255</number>
                              </property>
                             </widget>
                            </item>
                            <item row="1" column="1">
-                            <widget class="QSpinBox" name="alghoritm_conv_window_size"/>
+                            <widget class="QSpinBox" name="alghoritm_conv_window_size">
+                             <property name="enabled">
+                              <bool>true</bool>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true"/>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignCenter</set>
+                             </property>
+                            </widget>
                            </item>
                            <item row="0" column="0">
                             <widget class="QLabel" name="label_49">
@@ -2777,7 +2918,19 @@ color:rgb(12, 53, 106);</string>
                             <number>11</number>
                            </property>
                            <item row="0" column="1">
-                            <widget class="QComboBox" name="anomaly_alghorithm_combo"/>
+                            <widget class="QComboBox" name="anomaly_alghorithm_combo">
+                             <property name="enabled">
+                              <bool>true</bool>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true"/>
+                             </property>
+                             <item>
+                              <property name="text">
+                               <string>dsdas</string>
+                              </property>
+                             </item>
+                            </widget>
                            </item>
                            <item row="0" column="0">
                             <layout class="QGridLayout" name="gridLayout_11">
@@ -2902,7 +3055,11 @@ color:rgb(12, 53, 106);</string>
                             <number>11</number>
                            </property>
                            <item row="0" column="1">
-                            <widget class="QSpinBox" name="defect_extractor_min_width"/>
+                            <widget class="QSpinBox" name="defect_extractor_min_width">
+                             <property name="styleSheet">
+                              <string notr="true"/>
+                             </property>
+                            </widget>
                            </item>
                            <item row="0" column="0">
                             <widget class="QLabel" name="label_72">
@@ -2968,7 +3125,7 @@ color:rgb(12, 53, 106);</string>
                   <property name="styleSheet">
                    <string notr="true">QPushButton{
 	color: white;
-    background-color:#0C356A;
+    background-color:#31304D;
 	padding: 5px;
 	font-size:12px;
 	font-weight: bold;
@@ -2993,10 +3150,6 @@ QPushButton:pressed {
                   </property>
                   <property name="text">
                    <string>Save Prameters</string>
-                  </property>
-                  <property name="icon">
-                   <iconset>
-                    <normaloff>../icons/save.png</normaloff>../icons/save.png</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -3444,8 +3597,8 @@ border: no</string>
                      <widget class="QSpinBox" name="SpinBox_MAX_ERROR">
                       <property name="minimumSize">
                        <size>
-                        <width>128</width>
-                        <height>34</height>
+                        <width>72</width>
+                        <height>27</height>
                        </size>
                       </property>
                       <property name="maximumSize">

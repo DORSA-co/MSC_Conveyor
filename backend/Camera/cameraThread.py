@@ -10,13 +10,11 @@ from backend.Camera.dorsaPylon import Camera, Collector
 from Constants import Constant
 
 def DemoImageLoader(path):
-    def generator():
-        files = os.listdir(path)
+        files = sorted(os.listdir(path))
         while True:
             for fname in files:
                 fpath = os.path.join(path, fname)
                 yield cv2.imread(fpath,0)
-    return generator
 
 
 
@@ -67,13 +65,12 @@ class cameraWorker(QObject):
                         if not self.simulation:
                             self.success_grab_signal.emit(img)
                         else:
-                            img = next(self.demoImageLoader())
+                            img = next(self.demoImageLoader)
                             self.success_grab_signal.emit(img)
                         self.time = time.time()
                 
                 else:
                     self.time = time.time()
-
                 
                 
                 
@@ -81,6 +78,8 @@ class cameraWorker(QObject):
             except Exception as e:
                 pass
                 #print('camera Error happend in thread while !', e)
+            
+            time.sleep(0.05)
 
         print('end of Camra Thread While')
         self.finished.emit()

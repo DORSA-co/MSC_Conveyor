@@ -13,6 +13,8 @@ from Detection.laserScanner import laserScanner
 from Detection.AnomalyDetection import AnomalyDetectionHandeler, ANOMALY_ALGORITHMS
 from Detection.DefectExtractor import DefectExtractor
 from Detection.ImageCreator import ImageCreator
+from Detection.Encoder import Encoder
+from Detection.DefectTracker import DefectTracker
 
 
 class beltInspection:
@@ -23,8 +25,9 @@ class beltInspection:
         self.LaserScanner = laserScanner()
         self.AnomalyDetection = AnomalyDetectionHandeler()
         self.DefectExtractor = DefectExtractor()
-        self.ImageCreator = ImageCreator((640,1000), 
-                                         step=2, 
+        self.Encoder = Encoder()
+        self.DefectTracker = DefectTracker(min_frame_gap=self.Encoder.step*10, min_length=5)
+        self.ImageCreator = ImageCreator((640,1000),
                                          max_y_errors=10 )
     
     
@@ -34,6 +37,12 @@ class beltInspection:
     
 
     def feed(self, image:np.ndarray):
+        t = time.time()
+
+        # SHOULD BE CHANGED
+        self.Encoder.counter()
+        # SHOULD BE CHANGED
+
         self.laser_pts = self.LaserScanner.laserExtraction(image,
                                      thresh=self.kwargs['background_thresh'],
                                       win_size=self.kwargs['conv_window_size'] )
@@ -45,13 +54,18 @@ class beltInspection:
                                    algorithm=self.kwargs['anomaly_algorithm']
         )
         
-        t = time.time()
         self.defect_indices = self.DefectExtractor.feed(self.anomaly_pts, min_width=self.kwargs['defect_min_width'])
+
+        self.DefectTracker.feed(self.defect_indices, self.anomaly_pts[:, 1], self.Encoder.line_idx)
+        self.DefectTracker.check_defects_completion(self.Encoder.line_idx)
+
+        image = self.ImageCreator.feed(self.anomaly_pts, 'color_gradient', self.Encoder.step)
+        blure_image = cv2.blur(image, ksize=(5, 5))
+        res_image = self.DefectTracker.draw(blure_image.copy(), self.Encoder.line_idx)
+
         print(time.time() - t)
 
-        self.ImageCreator.feed(self.anomaly_pts, 'gray_gradient')
-
-
+        cv2.imshow('', res_image)
 
 if __name__ == "__main__":
     

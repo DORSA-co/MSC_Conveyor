@@ -51,7 +51,7 @@ class loginUserDialog(QDialog):
         GUIBackend.button_connector(self.ui.login_btn, func)
 
     def show_win(self):
-        self.write_error(None)
+        # self.write_error(None)
         GUIBackend.show_window(self, always_on_top=True)
 
     def close_win(self):

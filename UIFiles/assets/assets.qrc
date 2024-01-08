@@ -1,7 +1,12 @@
 <RCC>
   <qresource prefix="general_icons">
+    <file>icons/general_icons/plus_icon.png</file>
+    <file>icons/general_icons/down_icon.png</file>
+    <file>icons/general_icons/minus_icon.png</file>
     <file>icons/general_icons/help_icon.png</file>
     <file>icons/general_icons/dorsa_logo.png</file>
+    <file>icons/general_icons/plus_icon_black.png</file>
+    <file>icons/general_icons/minus_icon_black.png</file>
     <file>icons/general_icons/settings_icon.png</file>
     <file>icons/general_icons/report_icon.png</file>
     <file>icons/general_icons/open_menus_icon.png</file>

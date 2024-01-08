@@ -30,7 +30,81 @@ class Ui_MainWindow(object):
         MainWindow.resize(1294, 767)
         self.StyleSheet = QWidget(MainWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
-        self.StyleSheet.setStyleSheet(u"QTabWidget{\n"
+        self.StyleSheet.setEnabled(True)
+        self.StyleSheet.setStyleSheet(u"QSpinBox, QDoubleSpinBox  \n"
+"{\n"
+"	border-bottom: 2px solid rgba(20, 20, 20, 150);\n"
+"	border-radius: None;\n"
+"	font-size: 18px;\n"
+"	min-height: 25px;\n"
+"	min-width: 70px;\n"
+"}\n"
+"\n"
+"QSpinBox:disabled ,\n"
+"QDoubleSpinBox:disabled \n"
+"{\n"
+"	border: 2px solid rgba(182, 187, 196, 100);\n"
+"	color: rgba(182, 187, 196, 255);\n"
+"}\n"
+"\n"
+"QSpinBox::up-arrow, QDoubleSpinBox::up-arrow\n"
+"{   \n"
+"	image: url(:/general_icons/icons/general_icons/plus_icon_black.png);\n"
+"	width: 16px;\n"
+"	height: 16px;\n"
+"}\n"
+"\n"
+"QSpinBox::down-arrow ,  QDoubleSpinBox::down-arrow\n"
+"{   \n"
+"	image: url(:/general_icons/icons/general_icons/minus_icon_black.png);\n"
+"	width: 16px;\n"
+"	height: 16px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-button\n"
+"{\n"
+"	border:none;\n"
+"    min-width:30px;\n"
+"    min-height: 29px;\n"
+"    subcontrol-origin: margin;\n"
+"    subcontrol-position: right;\n"
+"    top: 0px;\n"
+"    right: 0px;\n"
+"}\n"
+"\n"
+"QSpinBox::down-button\n"
+"{\n"
+"    min-width:30px;\n"
+"    min-height: 29px;\n"
+"    sub"
+                        "control-origin: margin;\n"
+"    subcontrol-position: left;\n"
+"    top: 0px;\n"
+"    right: 0px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-button,\n"
+"QSpinBox::down-button,\n"
+"QDoubleSpinBox::up-button,\n"
+"QDoubleSpinBox::down-button   {\n"
+"	background-color: transparent;\n"
+"}\n"
+"\n"
+"QSpinBox::up-button:disabled ,\n"
+"QSpinBox::down-button:disabled ,\n"
+"QDoubleSpinBox::up-button:disabled ,\n"
+"QDoubleSpinBox::down-button:disabled    {\n"
+"    subcontrol-origin: border;\n"
+"	background-color: rgba(182, 187, 196, 100);\n"
+"}\n"
+"\n"
+"QSpinBox:focus, QDoubleSpinBox:focus{\n"
+"	background: #F0ECE5;\n"
+"}\n"
+"\n"
+"/************************************************************/\n"
+"\n"
+"QTabWidget{\n"
 "    font-weight: bold;\n"
 "	border: None;\n"
 "}\n"
@@ -45,7 +119,8 @@ class Ui_MainWindow(object):
 "    border: 1px solid #C4C4C3;\n"
 "    border-bottom-color: #C2C7CB; \n"
 "    border-top-left-radius: 4px;\n"
-"    border-top-right-radius: 4px;\n"
+"    bo"
+                        "rder-top-right-radius: 4px;\n"
 "    min-width: 120px;\n"
 "    padding: 2px;\n"
 "}\n"
@@ -63,15 +138,65 @@ class Ui_MainWindow(object):
 "    margin-top: 2px;\n"
 "}\n"
 "\n"
-"QComboBox {\n"
-"    border: 1px solid #7f9db9;\n"
-"    border-radius: 3px;\n"
-"    padding: 1px 18px 1px 3px;\n"
-"    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"/************************************************************/\n"
+"\n"
+"QComboBox\n"
+"{\n"
+"	border:1px solid #31304D;\n"
+"	min-height: 25px;\n"
+"	min-width: 70px;\n"
+"	font-size: 16px;\n"
 "}\n"
 "\n"
-""
-                        "#side_frame{\n"
+"QComboBox:enabled{\n"
+"	color: rgb(20, 20, 20);\n"
+"}\n"
+"\n"
+"QComboBox:disabled\n"
+"{\n"
+"	border: 2px solid rgba(182, 187, 196, 100);\n"
+"	color: rgba(182, 187, 196, 255);\n"
+"}\n"
+"\n"
+"QComboBox::down-arrow\n"
+"{   \n"
+"	image: url(:/general_icons/icons/general_icons/down_icon.png);\n"
+"	width: 30px;\n"
+"    height: 30px;\n"
+"}\n"
+"\n"
+"QComboBox::drop-do"
+                        "wn\n"
+"{\n"
+"	 background-color: #31304D;\n"
+"	 min-width: 30px;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down:button{\n"
+"	width: 30px;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down:disabled \n"
+"{\n"
+"	 background-color: rgba(182, 187, 196, 100);\n"
+"	 min-width: 30px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    border: none;\n"
+"	color: #202020;\n"
+"	background-color:#ffffff;\n"
+"	selection-color: rgb(12, 53, 106);\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item {\n"
+"    border: none;\n"
+"	height:30px;\n"
+"}\n"
+"\n"
+"/************************************************************/\n"
+"\n"
+"#side_frame{\n"
 "	background-color: #17203A;\n"
 "}\n"
 "\n"
@@ -1386,7 +1511,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1054, 569))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1054, 580))
         self.verticalLayout_40 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_40.setObjectName(u"verticalLayout_40")
         self.frame_step1 = QFrame(self.scrollAreaWidgetContents)
@@ -1433,12 +1558,17 @@ class Ui_MainWindow(object):
 
         self.alghoritm_background_thresh = QSpinBox(self.frame_34)
         self.alghoritm_background_thresh.setObjectName(u"alghoritm_background_thresh")
+        self.alghoritm_background_thresh.setEnabled(True)
+        self.alghoritm_background_thresh.setStyleSheet(u"")
         self.alghoritm_background_thresh.setMaximum(255)
 
         self.gridLayout_8.addWidget(self.alghoritm_background_thresh, 0, 1, 1, 1)
 
         self.alghoritm_conv_window_size = QSpinBox(self.frame_34)
         self.alghoritm_conv_window_size.setObjectName(u"alghoritm_conv_window_size")
+        self.alghoritm_conv_window_size.setEnabled(True)
+        self.alghoritm_conv_window_size.setStyleSheet(u"")
+        self.alghoritm_conv_window_size.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_8.addWidget(self.alghoritm_conv_window_size, 1, 1, 1, 1)
 
@@ -1514,7 +1644,10 @@ class Ui_MainWindow(object):
         self.gridLayout_10.setObjectName(u"gridLayout_10")
         self.gridLayout_10.setContentsMargins(-1, -1, -1, 11)
         self.anomaly_alghorithm_combo = QComboBox(self.frame_35)
+        self.anomaly_alghorithm_combo.addItem("")
         self.anomaly_alghorithm_combo.setObjectName(u"anomaly_alghorithm_combo")
+        self.anomaly_alghorithm_combo.setEnabled(True)
+        self.anomaly_alghorithm_combo.setStyleSheet(u"")
 
         self.gridLayout_10.addWidget(self.anomaly_alghorithm_combo, 0, 1, 1, 1)
 
@@ -1603,6 +1736,7 @@ class Ui_MainWindow(object):
         self.gridLayout_12.setContentsMargins(-1, -1, -1, 11)
         self.defect_extractor_min_width = QSpinBox(self.frame_38)
         self.defect_extractor_min_width.setObjectName(u"defect_extractor_min_width")
+        self.defect_extractor_min_width.setStyleSheet(u"")
 
         self.gridLayout_12.addWidget(self.defect_extractor_min_width, 0, 1, 1, 1)
 
@@ -1648,7 +1782,7 @@ class Ui_MainWindow(object):
         self.Save_algorithm_setting.setCursor(QCursor(Qt.PointingHandCursor))
         self.Save_algorithm_setting.setStyleSheet(u"QPushButton{\n"
 "	color: white;\n"
-"    background-color:#0C356A;\n"
+"    background-color:#31304D;\n"
 "	padding: 5px;\n"
 "	font-size:12px;\n"
 "	font-weight: bold;\n"
@@ -1670,7 +1804,6 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        self.Save_algorithm_setting.setIcon(icon16)
         self.Save_algorithm_setting.setIconSize(QSize(26, 26))
 
         self.horizontalLayout_12.addWidget(self.Save_algorithm_setting)
@@ -1898,7 +2031,7 @@ class Ui_MainWindow(object):
 
         self.SpinBox_MAX_ERROR = QSpinBox(self.frame_91)
         self.SpinBox_MAX_ERROR.setObjectName(u"SpinBox_MAX_ERROR")
-        self.SpinBox_MAX_ERROR.setMinimumSize(QSize(128, 34))
+        self.SpinBox_MAX_ERROR.setMinimumSize(QSize(72, 27))
         self.SpinBox_MAX_ERROR.setMaximumSize(QSize(60, 33))
         self.SpinBox_MAX_ERROR.setStyleSheet(u"background-color :rgb(219, 219, 219);\n"
 "border-style: solid;\n"
@@ -2666,6 +2799,8 @@ class Ui_MainWindow(object):
         self.algorithm_image1.setText("")
         self.algorithm_image1.setProperty("abas", QCoreApplication.translate("MainWindow", u"card", None))
         self.label_67.setText(QCoreApplication.translate("MainWindow", u"Step 2", None))
+        self.anomaly_alghorithm_combo.setItemText(0, QCoreApplication.translate("MainWindow", u"dsdas", None))
+
         self.label_70.setText(QCoreApplication.translate("MainWindow", u"Algorithm", None))
         self.label_69.setText(QCoreApplication.translate("MainWindow", u"Thresh Error", None))
         self.algorithm_image2.setText("")
