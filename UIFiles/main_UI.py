@@ -2330,11 +2330,11 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.main_stackedWidget.setCurrentIndex(3)
+        self.main_stackedWidget.setCurrentIndex(1)
         self.tabWidget.setCurrentIndex(0)
-        self.settings_tabs.setCurrentIndex(1)
+        self.settings_tabs.setCurrentIndex(0)
         self.algorithm_stackedWidget.setCurrentIndex(0)
-        self.user_tabs.setCurrentIndex(1)
+        self.user_tabs.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
