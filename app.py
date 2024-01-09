@@ -1,6 +1,7 @@
 import sys
 import os
 sys.path.append(os.path.join('UIFiles', 'assets'))
+sys.path.append('uiUtils')
 
 os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'main_UI.ui'), os.path.join('UIFiles', 'main_UI.py')))
 os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'login_UI.ui'), os.path.join('UIFiles', 'login_UI.py')))
@@ -19,3 +20,7 @@ if __name__ == "__main__":
     API = main_API(main_ui)
     main_ui.show()
     app.exec()
+
+
+
+

@@ -1,5 +1,10 @@
 <RCC>
   <qresource prefix="general_icons">
+    <file>Basler_acA640-300gm__23287291__20230530_141814072_0042.png</file>
+    <file>icons/general_icons/minus_icon_gray.png</file>
+    <file>icons/general_icons/plus_icon_gray.png</file>
+    <file>icons/general_icons/down_icon_gray.png</file>
+    <file>icons/general_icons/down_icon_black.png</file>
     <file>icons/general_icons/plus_icon.png</file>
     <file>icons/general_icons/down_icon.png</file>
     <file>icons/general_icons/minus_icon.png</file>
@@ -19,6 +24,9 @@
     <file>icons/general_icons/live_icon.png</file>
     <file>icons/general_icons/close_menus_icon.png</file>
     <file>icons/general_icons/close_icon.png</file>
+  </qresource>
+  <qresource prefix="settings_icons">
+    <file>icons/settings_icon/right_arrow.png</file>
   </qresource>
   <qresource prefix="login_icons">
     <file>icons/login_icons/username.png</file>

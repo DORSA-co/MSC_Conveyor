@@ -21,8 +21,6 @@ class loginUserDialog(QDialog):
         GUIBackend.button_connector(self.ui.close_btn, self.close_win)
         GUIBackend.button_connector(self.ui.eye_btn, self.show_hide_password)
 
-        # QtGui.QShortcut(QtGui.QKeySequence(QtGui.Qt.Key_Enter), self, activated=)
-
         self.move_refresh_time = 0
         self.show_password = False
 
@@ -42,6 +40,9 @@ class loginUserDialog(QDialog):
         else:
             super().mouseMoveEvent(event)
 
+    def keyPressEvent(self, event):
+        if event.key() == 16777220:  # Enter key
+            self.ui.login_btn.click()
 
     def mouseReleaseEvent(self, event):
         self.offset = None

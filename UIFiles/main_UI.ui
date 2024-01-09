@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1294</width>
-    <height>767</height>
+    <height>777</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,20 +18,32 @@
     <bool>true</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">QSpinBox, QDoubleSpinBox  
+    <string notr="true">QLabel{
+	color: rgb(20, 20, 20);
+}
+
+QLabel:disabled{
+	color: rgb(120, 120, 120);
+}
+
+/************************************************************/
+
+QSpinBox, QDoubleSpinBox  
 {
-	border-bottom: 2px solid rgba(20, 20, 20, 150);
+	background-color: transparent;
+	border-bottom: 2px solid #D7D7D9;
 	border-radius: None;
 	font-size: 18px;
 	min-height: 25px;
 	min-width: 70px;
+	qproperty-alignment: AlignCenter;
 }
 
 QSpinBox:disabled ,
 QDoubleSpinBox:disabled 
 {
-	border: 2px solid rgba(182, 187, 196, 100);
-	color: rgba(182, 187, 196, 255);
+	border-bottom: 2px solid #F0F0F2;
+	color: rgb(120, 120, 120);
 }
 
 QSpinBox::up-arrow, QDoubleSpinBox::up-arrow
@@ -44,6 +56,20 @@ QSpinBox::up-arrow, QDoubleSpinBox::up-arrow
 QSpinBox::down-arrow ,  QDoubleSpinBox::down-arrow
 {   
 	image: url(:/general_icons/icons/general_icons/minus_icon_black.png);
+	width: 16px;
+	height: 16px;
+}
+
+QSpinBox::up-arrow:disabled, QDoubleSpinBox::up-arrow:disabled
+{   
+	image: url(:/general_icons/icons/general_icons/plus_icon_gray.png);
+	width: 16px;
+	height: 16px;
+}
+
+QSpinBox::down-arrow:disabled ,  QDoubleSpinBox::down-arrow:disabled
+{   
+	image: url(:/general_icons/icons/general_icons/minus_icon_gray.png);
 	width: 16px;
 	height: 16px;
 }
@@ -81,53 +107,54 @@ QSpinBox::down-button:disabled ,
 QDoubleSpinBox::up-button:disabled ,
 QDoubleSpinBox::down-button:disabled    {
     subcontrol-origin: border;
-	background-color: rgba(182, 187, 196, 100);
 }
 
 QSpinBox:focus, QDoubleSpinBox:focus{
-	background: #F0ECE5;
+	border-bottom: 2px solid #7892DF;
 }
 
 /************************************************************/
 
-QTabWidget{
-    font-weight: bold;
-	border: None;
+QTabWidget {
+    background-color: #F7F8FA;
 }
 
-QTabWidget::pane {
-    border: 1px solid #C4C4C3;
-    background-color: Transparent;
-    margin-top: 1px;
-}
-
+/* Tab Bar Style */
 QTabBar::tab {
-    border: 1px solid #C4C4C3;
-    border-bottom-color: #C2C7CB; 
+    background-color: #BDBDBF;
+    color: rgb(20, 20, 20);
+	min-width: 100px;
+    padding: 8px 16px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
-    min-width: 120px;
-    padding: 2px;
 }
 
-QTabBar::tab:selected, QTabBar::tab:hover {
-    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #fafafa, stop: 0.4 #f4f4f4, stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);
+QTabBar::tab:hover {
+    background-color: #D7D7D9;
+	color: rgb(120, 120, 120);
 }
 
+/* Tab Content Area */
+QTabWidget::pane {
+    border: 1px solid #E0E4EC;
+    border-top: none;
+    background-color: #E0E4EC;
+}
+
+/* Selected Tab Label Style */
 QTabBar::tab:selected {
-    border-color: #9B9B9B;
-    border-bottom-color: #C2C7CB;
-}
-
-QTabBar::tab:!selected {
-    margin-top: 2px;
+    background-color: #E0E4EC;
+    border-bottom: 2px solid #7892DF; /* Change the color of the selected tab indicator */
 }
 
 /************************************************************/
 
 QComboBox
 {
-	border:1px solid #31304D;
+	border:1px solid #E0E4EC;
+	background-color: #F7F8FA;
+	border-radius: 10px;
+	padding-left: 15px;
 	min-height: 25px;
 	min-width: 70px;
 	font-size: 16px;
@@ -139,43 +166,43 @@ QComboBox:enabled{
 
 QComboBox:disabled
 {
-	border: 2px solid rgba(182, 187, 196, 100);
-	color: rgba(182, 187, 196, 255);
+	border: 2px solid #F0F0F2;
+	color: rgb(120, 120, 120);
+}
+
+QComboBox::down-arrow:disabled
+{   
+	image: url(:/general_icons/icons/general_icons/down_icon_gray.png);
+	width: 12px;
+    height: 12px;
 }
 
 QComboBox::down-arrow
 {   
-	image: url(:/general_icons/icons/general_icons/down_icon.png);
-	width: 30px;
-    height: 30px;
+	image: url(:/general_icons/icons/general_icons/down_icon_black.png);
+	width: 12px;
+    height: 12px;
 }
 
-QComboBox::drop-down
-{
-	 background-color: #31304D;
-	 min-width: 30px;
+QComboBox::drop-down {
+    subcontrol-origin: padding; 
+    subcontrol-position: bottom right;
+    width: 30px; 
+    border-top-right-radius: 3px; 
+    border-bottom-right-radius: 3px; 
 }
 
-QComboBox::drop-down:button{
-	width: 30px;
-}
-
-QComboBox::drop-down:disabled 
-{
-	 background-color: rgba(182, 187, 196, 100);
-	 min-width: 30px;
+QComboBox::item:selected {
+    border-left: 5px solid #7892DF;
+	background-color: #D7D7D9;
 }
 
 QComboBox QAbstractItemView {
-    border: none;
-	color: #202020;
-	background-color:#ffffff;
-	selection-color: rgb(12, 53, 106);
+	background-color: #F7F8FA;
 }
 
-QComboBox QAbstractItemView::item {
-    border: none;
-	height:30px;
+QComboBox:focus{
+	border-bottom: 2px solid #7892DF;
 }
 
 /************************************************************/
@@ -201,6 +228,87 @@ QComboBox QAbstractItemView::item {
 #main_stackedWidget{
 	background-color: #E0E4EC;
 }
+
+#camera_tab .QFrame{
+	background-color: #F7F8FA;
+	border:1px solid #D7D7D9;
+}
+
+#connect_camera_btn, #disconnect_camera_btn{
+	background-color: transparent;
+	border:1px solid #D7D7D9;
+	border-radius: 10px;
+}
+
+#connect_camera_btn:hover, #disconnect_camera_btn:hover{
+	border-bottom: 2px solid #7892DF;
+}
+
+#save_camera_settings, #save_algorithm_setting{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 #1F2A4D, stop:1 #7E84A2);
+	color: rgba(255, 255, 255, 210);
+	border-radius: 5px;
+}
+
+#save_camera_settings:hover, #save_algorithm_setting:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(40, 67, 98, 219), stop:1 #8B92B3);
+}
+
+#save_camera_settings:pressed, #save_algorithm_setting:pressed{
+	padding-left: 5px;
+	padding-top: 5px;
+}
+
+#algorithm_stackedWidget .QFrame{
+	background-color: #F7F8FA;
+	border:1px solid #D7D7D9;
+}
+
+#step1_settings_frame .QLabel{
+	font-weight: bold;
+}
+
+#step1_label{
+	font-size: 26px;
+	color: #4C7EFF;
+}
+
+#step2_settings_frame .QLabel{
+	font-weight: bold;
+}
+
+#step2_label{
+	font-size: 26px;
+	color: #4C7EFF;
+}
+
+#step3_settings_frame .QLabel{
+	font-weight: bold;
+}
+
+#step3_label{
+	font-size: 26px;
+	color: #4C7EFF;
+}
+
+#show_steps_frame{
+	border: None;
+}
+
+#show_steps_frame .QPushButton{
+	background-color: #4C7EFF;
+	border:1px solid #D7D7D9;
+	border-radius: 35px;
+	min-width: 70px;
+	max-width: 70px;
+	min-height: 70px;
+	max-heigth: 70px;
+	font-size: 24px;
+	color: rgb(200, 200, 200);
+	font-weight: bold;
+}
+
+
 
 
 
@@ -2044,346 +2152,167 @@ border: no</string>
           <item>
            <widget class="QTabWidget" name="settings_tabs">
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="camera_tab">
              <attribute name="title">
-              <string>Camera Setting</string>
+              <string>Camera</string>
              </attribute>
-             <layout class="QHBoxLayout" name="horizontalLayout_49">
+             <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="30,70">
               <item>
-               <widget class="QFrame" name="camera_setting_frame">
-                <property name="maximumSize">
-                 <size>
-                  <width>350</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QLabel{
-	font: 16px;
-	border: no
-}
-
-#camera_setting_frame{
-
-	border: 2px solid #445069;
-
-}
-
-QSpinBox{
-	min-width: 150px;
-
-}</string>
-                </property>
+               <widget class="QFrame" name="camera_settings_frame">
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_33">
+                <layout class="QVBoxLayout" name="verticalLayout_24">
+                 <property name="spacing">
+                  <number>10</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>20</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>11</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>20</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>10</number>
+                 </property>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_18">
-                   <property name="topMargin">
-                    <number>17</number>
+                  <layout class="QHBoxLayout" name="horizontalLayout_8">
+                   <property name="spacing">
+                    <number>10</number>
                    </property>
                    <item>
-                    <widget class="QPushButton" name="Camera_connection_Camera_setting">
-                     <property name="maximumSize">
-                      <size>
-                       <width>80</width>
-                       <height>30</height>
-                      </size>
+                    <widget class="QLabel" name="camera_settings_off_label">
+                     <property name="font">
+                      <font>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
                      </property>
+                     <property name="text">
+                      <string>Off</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="SwitchControl" name="connect_camera_switch">
                      <property name="styleSheet">
-                      <string notr="true">
-QPushButton{
-	color: white;
-	padding: 5px;
-    background-color:#F1F0E8;
-	font-size: 11pt;
-	font-weight: bold;
-	border-radius:7px;
-    background-color:rgb(12, 53, 106);
+                      <string notr="true">QCheckBox{
+	border: 2px solid red;
 }
 
-QPushButton:hover{
-	background:rgb(9, 39, 76);
-}
-
-QPushButton:disabled {
-    color: #8D8D8D;
-}
-
-QPushButton:pressed {
-	background: rgb(0, 0, 0);
+QCheckBox::indicator{
+	border: None;
 }</string>
                      </property>
                      <property name="text">
                       <string/>
                      </property>
-                     <property name="icon">
-                      <iconset>
-                       <normaloff>:/icons/icon/camera_disconnected.png</normaloff>:/icons/icon/camera_disconnected.png</iconset>
-                     </property>
-                     <property name="iconSize">
-                      <size>
-                       <width>50</width>
-                       <height>50</height>
-                      </size>
-                     </property>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="Stop_connection_Camera_setting">
-                     <property name="maximumSize">
-                      <size>
-                       <width>80</width>
-                       <height>30</height>
-                      </size>
+                    <widget class="QLabel" name="camera_settings_on_label">
+                     <property name="enabled">
+                      <bool>true</bool>
                      </property>
-                     <property name="styleSheet">
-                      <string notr="true">
-QPushButton{
-	color: white;
-	padding: 5px;
-    background-color:#F1F0E8;
-	font-size: 11pt;
-	font-weight: bold;
-	border-radius:7px;
-    background-color:rgb(12, 53, 106);
-}
-
-QPushButton:hover{
-	background: #a3a3a3;
-}
-
-QPushButton:disabled {
-    color: #8D8D8D;
-}
-
-QPushButton:pressed {
-	background: rgb(0, 0, 0);
-}</string>
+                     <property name="font">
+                      <font>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
                      </property>
                      <property name="text">
-                      <string/>
-                     </property>
-                     <property name="icon">
-                      <iconset>
-                       <normaloff>../icons/camera_disconnected.png</normaloff>../icons/camera_disconnected.png</iconset>
-                     </property>
-                     <property name="iconSize">
-                      <size>
-                       <width>50</width>
-                       <height>50</height>
-                      </size>
+                      <string>On</string>
                      </property>
                     </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_22">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
                    </item>
                   </layout>
                  </item>
                  <item>
-                  <layout class="QGridLayout" name="gridLayout_7">
-                   <property name="verticalSpacing">
-                    <number>20</number>
+                  <widget class="Line" name="line">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>2</height>
+                    </size>
                    </property>
-                   <item row="8" column="0">
-                    <widget class="QLabel" name="label_18">
-                     <property name="styleSheet">
-                      <string notr="true"/>
-                     </property>
-                     <property name="text">
-                      <string>Offset Y</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="7" column="1">
-                    <widget class="QSpinBox" name="offsetx_spinbox">
-                     <property name="maximumSize">
-                      <size>
-                       <width>90</width>
-                       <height>33</height>
-                      </size>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true"/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="0">
-                    <spacer name="verticalSpacer_8">
-                     <property name="orientation">
-                      <enum>Qt::Vertical</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>20</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="0" column="1">
-                    <widget class="QComboBox" name="cameras_combobox">
-                     <property name="styleSheet">
-                      <string notr="true">min-width:150px;</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="4" column="0">
-                    <widget class="QLabel" name="label_14">
-                     <property name="styleSheet">
-                      <string notr="true"/>
-                     </property>
-                     <property name="text">
-                      <string>Width</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="0">
-                    <widget class="QLabel" name="label_11">
-                     <property name="styleSheet">
-                      <string notr="true"/>
-                     </property>
-                     <property name="text">
-                      <string>Serial Number</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="2">
-                    <spacer name="horizontalSpacer_21">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item row="8" column="1">
-                    <widget class="QSpinBox" name="offsety_spinbox">
-                     <property name="maximumSize">
-                      <size>
-                       <width>90</width>
-                       <height>33</height>
-                      </size>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true"/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="7" column="0">
-                    <widget class="QLabel" name="label_17">
-                     <property name="styleSheet">
-                      <string notr="true"/>
-                     </property>
-                     <property name="text">
-                      <string>Offset X</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="1">
-                    <widget class="QComboBox" name="devices_sn_combobox"/>
-                   </item>
-                   <item row="4" column="1">
-                    <widget class="QSpinBox" name="width_spinbox">
-                     <property name="maximumSize">
-                      <size>
-                       <width>90</width>
-                       <height>33</height>
-                      </size>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true"/>
-                     </property>
-                     <property name="maximum">
-                      <number>10000</number>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="0">
-                    <widget class="QLabel" name="label_42">
-                     <property name="styleSheet">
-                      <string notr="true"/>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_21">
+                   <property name="spacing">
+                    <number>3</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="camera_settings_camera_label">
+                     <property name="font">
+                      <font>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
                      </property>
                      <property name="text">
                       <string>Camera</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="6" column="0">
-                    <widget class="QLabel" name="label_16">
-                     <property name="styleSheet">
-                      <string notr="true"/>
+                   <item>
+                    <widget class="QComboBox" name="comboBox"/>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_23">
+                   <property name="spacing">
+                    <number>3</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="camera_settings_serial_label">
+                     <property name="font">
+                      <font>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
                      </property>
                      <property name="text">
-                      <string>Exposure</string>
+                      <string>Serial Number</string>
                      </property>
                     </widget>
                    </item>
-                   <item row="6" column="1">
-                    <widget class="QSpinBox" name="expo_spinbox">
-                     <property name="maximumSize">
-                      <size>
-                       <width>90</width>
-                       <height>30</height>
-                      </size>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true"/>
-                     </property>
-                     <property name="maximum">
-                      <number>10000000</number>
-                     </property>
-                    </widget>
+                   <item>
+                    <widget class="QComboBox" name="devices_sn_combobox"/>
                    </item>
-                   <item row="5" column="1">
-                    <widget class="QSpinBox" name="height_spinbox">
-                     <property name="maximumSize">
-                      <size>
-                       <width>90</width>
-                       <height>33</height>
-                      </size>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_6">
+                   <property name="spacing">
+                    <number>3</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="camera_settings_gain_label">
+                     <property name="font">
+                      <font>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
                      </property>
-                     <property name="styleSheet">
-                      <string notr="true"/>
-                     </property>
-                     <property name="maximum">
-                      <number>100000</number>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="5" column="0">
-                    <widget class="QLabel" name="label_12">
-                     <property name="styleSheet">
-                      <string notr="true"/>
-                     </property>
-                     <property name="text">
-                      <string>Height</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="3" column="0">
-                    <widget class="QLabel" name="label_15">
                      <property name="styleSheet">
                       <string notr="true"/>
                      </property>
@@ -2392,104 +2321,189 @@ QPushButton:pressed {
                      </property>
                     </widget>
                    </item>
-                   <item row="3" column="1">
+                   <item>
                     <widget class="QSpinBox" name="gain_spinbox">
-                     <property name="maximumSize">
-                      <size>
-                       <width>90</width>
-                       <height>33</height>
-                      </size>
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_10">
+                   <property name="spacing">
+                    <number>3</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="camera_settings_width_label">
+                     <property name="font">
+                      <font>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
                      </property>
                      <property name="styleSheet">
                       <string notr="true"/>
                      </property>
-                     <property name="maximum">
-                      <number>600</number>
+                     <property name="text">
+                      <string>Width</string>
                      </property>
                     </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="width_spinbox"/>
                    </item>
                   </layout>
                  </item>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_13">
-                   <property name="topMargin">
-                    <number>50</number>
+                  <layout class="QVBoxLayout" name="verticalLayout_11">
+                   <property name="spacing">
+                    <number>3</number>
                    </property>
                    <item>
-                    <widget class="QPushButton" name="Save_Camera_Parameters">
-                     <property name="maximumSize">
-                      <size>
-                       <width>200</width>
-                       <height>16777215</height>
-                      </size>
-                     </property>
-                     <property name="cursor">
-                      <cursorShape>PointingHandCursor</cursorShape>
-                     </property>
-                     <property name="toolTip">
-                      <string>Save Parameters</string>
+                    <widget class="QLabel" name="camera_settings_height_label">
+                     <property name="font">
+                      <font>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">QPushButton{
-	color: white;
-    background-color:#0C356A;
-	padding: 5px;
-	font-size:12px;
-	font-weight: bold;
-	border-radius:7px;
-	background-color: rgb(12, 53, 106);
-	padding: 15px 15px;
-}
-
-QPushButton:hover{
-	background: #a3a3a3;
-}
-
-QPushButton:disabled {
-    color: #8D8D8D;
-}
-
-QPushButton:pressed {
-	background: rgb(0, 0, 0);
-}
-
-</string>
+                      <string notr="true"/>
                      </property>
                      <property name="text">
-                      <string>Save Prameters</string>
-                     </property>
-                     <property name="icon">
-                      <iconset>
-                       <normaloff>../icons/save.png</normaloff>../icons/save.png</iconset>
-                     </property>
-                     <property name="iconSize">
-                      <size>
-                       <width>26</width>
-                       <height>26</height>
-                      </size>
+                      <string>Height</string>
                      </property>
                     </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="height_spinbox"/>
                    </item>
                   </layout>
                  </item>
                  <item>
-                  <spacer name="verticalSpacer_3">
-                   <property name="orientation">
-                    <enum>Qt::Vertical</enum>
+                  <layout class="QVBoxLayout" name="verticalLayout_12">
+                   <property name="spacing">
+                    <number>3</number>
                    </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>20</width>
-                     <height>40</height>
-                    </size>
+                   <item>
+                    <widget class="QLabel" name="camera_settings_exposure_label">
+                     <property name="font">
+                      <font>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true"/>
+                     </property>
+                     <property name="text">
+                      <string>Exposure</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="expo_spinbox"/>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_14">
+                   <property name="spacing">
+                    <number>3</number>
                    </property>
-                  </spacer>
+                   <item>
+                    <widget class="QLabel" name="camera_settings_offsetx_label">
+                     <property name="font">
+                      <font>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true"/>
+                     </property>
+                     <property name="text">
+                      <string>Offset X</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="offsetx_spinbox"/>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_20">
+                   <property name="spacing">
+                    <number>3</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="camera_settings_offsety_label">
+                     <property name="font">
+                      <font>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true"/>
+                     </property>
+                     <property name="text">
+                      <string>Offset Y</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="offsety_spinbox"/>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="save_camera_settings">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="text">
+                    <string>Save Prameters</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
                  </item>
                 </layout>
                </widget>
               </item>
               <item>
-               <widget class="QFrame" name="frame_61">
+               <widget class="QFrame" name="camera_live_frame">
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>
@@ -2498,190 +2512,10 @@ QPushButton:pressed {
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_8">
                  <item>
-                  <widget class="QFrame" name="frame_7">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>75</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>80</height>
-                    </size>
-                   </property>
-                   <property name="baseSize">
-                    <size>
-                     <width>0</width>
-                     <height>100</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QFrame{
-	background: #0C356A;
-border-radius:5px;
-}
-
-</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::NoFrame</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Plain</enum>
-                   </property>
-                   <property name="lineWidth">
-                    <number>3</number>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_11">
-                    <property name="topMargin">
-                     <number>0</number>
-                    </property>
-                    <item>
-                     <spacer name="horizontalSpacer_15">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>40</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_8">
-                      <property name="maximumSize">
-                       <size>
-                        <width>250</width>
-                        <height>100</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">font-size:30px;
-color: white;
-font: 26pt &quot;Mongolian Baiti&quot;;</string>
-                      </property>
-                      <property name="text">
-                       <string>Camera Live</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <spacer name="horizontalSpacer_16">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>40</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="Showlive_Setting">
+                  <widget class="QLabel" name="camera_settings_live_label">
                    <property name="text">
                     <string/>
                    </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_20">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>44</height>
-                    </size>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_33">
-                    <item>
-                     <spacer name="horizontalSpacer_10">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>40</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="label_27">
-                      <property name="maximumSize">
-                       <size>
-                        <width>100</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">font-size:18px;
-font: 16pt &quot;Mongolian Baiti&quot;;</string>
-                      </property>
-                      <property name="text">
-                       <string>Message</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="Message_Camera">
-                      <property name="minimumSize">
-                       <size>
-                        <width>300</width>
-                        <height>0</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>360</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::Box</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <property name="text">
-                       <string/>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignCenter</set>
-                      </property>
-                      <property name="margin">
-                       <number>4</number>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <spacer name="horizontalSpacer_11">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>40</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                   </layout>
                   </widget>
                  </item>
                 </layout>
@@ -2693,410 +2527,554 @@ font: 16pt &quot;Mongolian Baiti&quot;;</string>
              <attribute name="title">
               <string>Algorithm</string>
              </attribute>
-             <layout class="QVBoxLayout" name="verticalLayout_13">
+             <layout class="QVBoxLayout" name="verticalLayout_4">
               <item>
-               <widget class="QScrollArea" name="scrollArea">
-                <property name="widgetResizable">
-                 <bool>true</bool>
+               <widget class="QFrame" name="show_steps_frame">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>100</height>
+                 </size>
                 </property>
-                <widget class="QWidget" name="scrollAreaWidgetContents">
-                 <property name="geometry">
-                  <rect>
-                   <x>0</x>
-                   <y>0</y>
-                   <width>1054</width>
-                   <height>580</height>
-                  </rect>
-                 </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_40">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_13">
+                 <item>
+                  <widget class="QPushButton" name="step1_btn">
+                   <property name="font">
+                    <font>
+                     <pointsize>-1</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="text">
+                    <string>1</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="arrow1_label">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="pixmap">
+                    <pixmap resource="assets/assets.qrc">:/settings_icons/icons/settings_icon/right_arrow.png</pixmap>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>false</bool>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="step2_btn">
+                   <property name="font">
+                    <font>
+                     <pointsize>-1</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="text">
+                    <string>2</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="arrow2_label">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="pixmap">
+                    <pixmap resource="assets/assets.qrc">:/settings_icons/icons/settings_icon/right_arrow.png</pixmap>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="step3_btn">
+                   <property name="font">
+                    <font>
+                     <pointsize>-1</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="text">
+                    <string>3</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_7">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QStackedWidget" name="algorithm_stackedWidget">
+                <property name="currentIndex">
+                 <number>0</number>
+                </property>
+                <widget class="QWidget" name="step1">
+                 <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="25,75">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
                   <item>
-                   <widget class="QFrame" name="frame_step1">
-                    <property name="maximumSize">
-                     <size>
-                      <width>16777215</width>
-                      <height>400</height>
-                     </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">#algo_setting_step1_frame,
-#frame_step1
-{
-border: 2 solid rgba(12, 53, 106, 100);
-background-color:#ffffff;
-
-}
-</string>
-                    </property>
+                   <widget class="QFrame" name="step1_settings_frame">
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
                     </property>
                     <property name="frameShadow">
                      <enum>QFrame::Raised</enum>
                     </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_19">
+                    <layout class="QVBoxLayout" name="verticalLayout_28">
+                     <property name="spacing">
+                      <number>50</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>20</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>20</number>
+                     </property>
                      <item>
-                      <widget class="QFrame" name="algo_setting_step1_frame">
+                      <widget class="QLabel" name="step1_label">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true">border-bottom: 2px solid #D7D7D9;</string>
                        </property>
-                       <property name="frameShape">
-                        <enum>QFrame::StyledPanel</enum>
+                       <property name="text">
+                        <string>Step 1</string>
                        </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Raised</enum>
-                       </property>
-                       <layout class="QVBoxLayout" name="verticalLayout_29">
-                        <item>
-                         <widget class="QLabel" name="label_63">
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>50</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">font-size: 26px;
-font-weight: bold;
-color:rgb(12, 53, 106);</string>
-                          </property>
-                          <property name="text">
-                           <string>Step 1</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QFrame" name="frame_34">
-                          <property name="frameShape">
-                           <enum>QFrame::StyledPanel</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Raised</enum>
-                          </property>
-                          <layout class="QGridLayout" name="gridLayout_8">
-                           <item row="1" column="0">
-                            <widget class="QLabel" name="label_61">
-                             <property name="text">
-                              <string>Convolotion Window Size</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="0" column="1">
-                            <widget class="QSpinBox" name="alghoritm_background_thresh">
-                             <property name="enabled">
-                              <bool>true</bool>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true"/>
-                             </property>
-                             <property name="maximum">
-                              <number>255</number>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="1" column="1">
-                            <widget class="QSpinBox" name="alghoritm_conv_window_size">
-                             <property name="enabled">
-                              <bool>true</bool>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true"/>
-                             </property>
-                             <property name="alignment">
-                              <set>Qt::AlignCenter</set>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="0" column="0">
-                            <widget class="QLabel" name="label_49">
-                             <property name="text">
-                              <string>Background Threshould</string>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
-                         </widget>
-                        </item>
-                       </layout>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QFrame" name="frame_36">
-                       <property name="frameShape">
-                        <enum>QFrame::StyledPanel</enum>
+                      <layout class="QVBoxLayout" name="verticalLayout_5">
+                       <property name="spacing">
+                        <number>7</number>
                        </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Raised</enum>
+                       <item>
+                        <widget class="QLabel" name="background_th_label">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>Background Threshould</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QSpinBox" name="alghoritm_background_thresh">
+                         <property name="enabled">
+                          <bool>true</bool>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true"/>
+                         </property>
+                         <property name="maximum">
+                          <number>255</number>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_13">
+                       <property name="spacing">
+                        <number>7</number>
                        </property>
-                       <layout class="QVBoxLayout" name="verticalLayout_19">
-                        <item>
-                         <widget class="QLabel" name="algorithm_image1">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="text">
-                           <string/>
-                          </property>
-                          <property name="abas" stdset="0">
-                           <string>card</string>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </widget>
+                       <item>
+                        <widget class="QLabel" name="conv_wsize_label">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>Convolotion Window Size</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QSpinBox" name="alghoritm_conv_window_size">
+                         <property name="enabled">
+                          <bool>true</bool>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true"/>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_3">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
                      </item>
                     </layout>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QFrame" name="frame_step2">
-                    <property name="maximumSize">
-                     <size>
-                      <width>16777215</width>
-                      <height>400</height>
-                     </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">#algo_setting_step2_frame,
-#frame_step2
-{
-border: 2 solid rgba(12, 53, 106, 100);
-background-color:#ffffff;
-
-}
-</string>
-                    </property>
+                   <widget class="QFrame" name="step1_image_frame">
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
                     </property>
                     <property name="frameShadow">
                      <enum>QFrame::Raised</enum>
                     </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_21">
+                    <layout class="QVBoxLayout" name="verticalLayout_29">
                      <item>
-                      <widget class="QFrame" name="algo_setting_step2_frame">
-                       <property name="styleSheet">
-                        <string notr="true"/>
+                      <widget class="QLabel" name="algorithm_image1">
+                       <property name="text">
+                        <string/>
                        </property>
-                       <property name="frameShape">
-                        <enum>QFrame::StyledPanel</enum>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Raised</enum>
-                       </property>
-                       <layout class="QVBoxLayout" name="verticalLayout_50">
-                        <item>
-                         <widget class="QLabel" name="label_67">
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>50</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">font-size: 26px;
-font-weight: bold;
-color:rgb(12, 53, 106);</string>
-                          </property>
-                          <property name="text">
-                           <string>Step 2</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QFrame" name="frame_35">
-                          <property name="frameShape">
-                           <enum>QFrame::StyledPanel</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Raised</enum>
-                          </property>
-                          <layout class="QGridLayout" name="gridLayout_10">
-                           <property name="bottomMargin">
-                            <number>11</number>
-                           </property>
-                           <item row="0" column="1">
-                            <widget class="QComboBox" name="anomaly_alghorithm_combo">
-                             <property name="enabled">
-                              <bool>true</bool>
-                             </property>
-                             <property name="styleSheet">
-                              <string notr="true"/>
-                             </property>
-                             <item>
-                              <property name="text">
-                               <string>dsdas</string>
-                              </property>
-                             </item>
-                            </widget>
-                           </item>
-                           <item row="0" column="0">
-                            <layout class="QGridLayout" name="gridLayout_11">
-                             <item row="0" column="0">
-                              <widget class="QLabel" name="label_70">
-                               <property name="text">
-                                <string>Algorithm</string>
-                               </property>
-                              </widget>
-                             </item>
-                            </layout>
-                           </item>
-                           <item row="1" column="1">
-                            <widget class="QSpinBox" name="anomaly_thresh_error"/>
-                           </item>
-                           <item row="1" column="0">
-                            <widget class="QLabel" name="label_69">
-                             <property name="text">
-                              <string>Thresh Error</string>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
-                         </widget>
-                        </item>
-                       </layout>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QFrame" name="frame_37">
-                       <property name="frameShape">
-                        <enum>QFrame::StyledPanel</enum>
-                       </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Raised</enum>
-                       </property>
-                       <layout class="QVBoxLayout" name="verticalLayout_51">
-                        <item>
-                         <widget class="QLabel" name="algorithm_image2">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="text">
-                           <string/>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
                       </widget>
                      </item>
                     </layout>
                    </widget>
                   </item>
+                 </layout>
+                </widget>
+                <widget class="QWidget" name="step2">
+                 <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="25,75">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
                   <item>
-                   <widget class="QFrame" name="frame_step3">
-                    <property name="maximumSize">
-                     <size>
-                      <width>16777215</width>
-                      <height>400</height>
-                     </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">#algo_setting_step3_frame,
-#frame_step3
-{
-border: 2 solid rgba(12, 53, 106, 100);
-background-color:#ffffff;
-
-}
-</string>
-                    </property>
+                   <widget class="QFrame" name="step2_settings_frame">
                     <property name="frameShape">
                      <enum>QFrame::StyledPanel</enum>
                     </property>
                     <property name="frameShadow">
                      <enum>QFrame::Raised</enum>
                     </property>
-                    <layout class="QHBoxLayout" name="horizontalLayout_22">
+                    <layout class="QVBoxLayout" name="verticalLayout_33">
+                     <property name="spacing">
+                      <number>50</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>20</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>20</number>
+                     </property>
                      <item>
-                      <widget class="QFrame" name="algo_setting_step3_frame">
+                      <widget class="QLabel" name="step2_label">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true">border-bottom: 2px solid #D7D7D9;</string>
                        </property>
-                       <property name="frameShape">
-                        <enum>QFrame::StyledPanel</enum>
+                       <property name="text">
+                        <string>Step 2</string>
                        </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Raised</enum>
-                       </property>
-                       <layout class="QVBoxLayout" name="verticalLayout_52">
-                        <item>
-                         <widget class="QLabel" name="label_68">
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>50</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">font-size: 26px;
-font-weight: bold;
-color:rgb(12, 53, 106);</string>
-                          </property>
-                          <property name="text">
-                           <string>Step 3</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QFrame" name="frame_38">
-                          <property name="frameShape">
-                           <enum>QFrame::StyledPanel</enum>
-                          </property>
-                          <property name="frameShadow">
-                           <enum>QFrame::Raised</enum>
-                          </property>
-                          <layout class="QGridLayout" name="gridLayout_12">
-                           <property name="bottomMargin">
-                            <number>11</number>
-                           </property>
-                           <item row="0" column="1">
-                            <widget class="QSpinBox" name="defect_extractor_min_width">
-                             <property name="styleSheet">
-                              <string notr="true"/>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="0" column="0">
-                            <widget class="QLabel" name="label_72">
-                             <property name="text">
-                              <string>Min Width</string>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
-                         </widget>
-                        </item>
-                       </layout>
                       </widget>
                      </item>
                      <item>
-                      <widget class="QFrame" name="frame_39">
-                       <property name="frameShape">
-                        <enum>QFrame::StyledPanel</enum>
+                      <layout class="QVBoxLayout" name="verticalLayout_31">
+                       <property name="spacing">
+                        <number>7</number>
                        </property>
-                       <property name="frameShadow">
-                        <enum>QFrame::Raised</enum>
+                       <item>
+                        <widget class="QLabel" name="algorithm_label">
+                         <property name="text">
+                          <string>Algorithm</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QComboBox" name="anomaly_alghorithm_combo">
+                         <property name="enabled">
+                          <bool>true</bool>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true"/>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_32">
+                       <property name="spacing">
+                        <number>7</number>
                        </property>
-                       <layout class="QVBoxLayout" name="verticalLayout_53">
-                        <item>
-                         <widget class="QLabel" name="algorithm_image3">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="text">
-                           <string/>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
+                       <item>
+                        <widget class="QLabel" name="thresh_error_label">
+                         <property name="text">
+                          <string>Thresh Error</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QSpinBox" name="anomaly_thresh_error">
+                         <property name="enabled">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_4">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QFrame" name="step2_image_frame">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_34">
+                     <item>
+                      <widget class="QLabel" name="algorithm_image2">
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+                <widget class="QWidget" name="step3">
+                 <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="25,75">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QFrame" name="step3_settings_frame">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_36">
+                     <property name="spacing">
+                      <number>50</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>20</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>20</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="step3_label">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">border-bottom: 2px solid #D7D7D9;</string>
+                       </property>
+                       <property name="text">
+                        <string>Step 3</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_35">
+                       <property name="spacing">
+                        <number>7</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="label_72">
+                         <property name="text">
+                          <string>Min Width</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QSpinBox" name="defect_extractor_min_width">
+                         <property name="styleSheet">
+                          <string notr="true"/>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_6">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>296</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QFrame" name="step3_image_frame">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_40">
+                     <item>
+                      <widget class="QLabel" name="algorithm_image3">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
                       </widget>
                      </item>
                     </layout>
@@ -3109,766 +3087,64 @@ color:rgb(12, 53, 106);</string>
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_12">
                 <item>
-                 <widget class="QPushButton" name="Save_algorithm_setting">
-                  <property name="maximumSize">
+                 <spacer name="horizontalSpacer_5">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
                    <size>
-                    <width>200</width>
-                    <height>16777215</height>
+                    <width>40</width>
+                    <height>20</height>
                    </size>
                   </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="save_algorithm_setting">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
                   </property>
-                  <property name="toolTip">
-                   <string>Save Parameters</string>
+                  <property name="minimumSize">
+                   <size>
+                    <width>273</width>
+                    <height>46</height>
+                   </size>
                   </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton{
-	color: white;
-    background-color:#31304D;
-	padding: 5px;
-	font-size:12px;
-	font-weight: bold;
-	border-radius:7px;
-	background-color: rgb(12, 53, 106);
-	padding: 15px 15px;
-}
-
-QPushButton:hover{
-	background: #a3a3a3;
-}
-
-QPushButton:disabled {
-    color: #8D8D8D;
-}
-
-QPushButton:pressed {
-	background: rgb(0, 0, 0);
-}
-
-</string>
+                  <property name="maximumSize">
+                   <size>
+                    <width>273</width>
+                    <height>46</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
                   </property>
                   <property name="text">
                    <string>Save Prameters</string>
                   </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>26</width>
-                    <height>26</height>
-                   </size>
-                  </property>
                  </widget>
                 </item>
+                <item>
+                 <spacer name="horizontalSpacer_6">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
                </layout>
-              </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="tab_11">
-             <attribute name="title">
-              <string>Tab 2</string>
-             </attribute>
-             <layout class="QHBoxLayout" name="horizontalLayout_16">
-              <item>
-               <widget class="QGroupBox" name="groupBox_21">
-                <property name="styleSheet">
-                 <string notr="true">font: 18pt &quot;Mongolian Baiti&quot;;
-border: 3px solid back</string>
-                </property>
-                <property name="title">
-                 <string>Show Tear Depth</string>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_30">
-                 <item>
-                  <spacer name="verticalSpacer_11">
-                   <property name="orientation">
-                    <enum>Qt::Vertical</enum>
-                   </property>
-                   <property name="sizeType">
-                    <enum>QSizePolicy::Fixed</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>20</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_23">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>39</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">border: 2px solid back</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_36">
-                    <item>
-                     <widget class="QLabel" name="label_38">
-                      <property name="maximumSize">
-                       <size>
-                        <width>244</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">font: 13pt &quot;Mongolian Baiti&quot;;
-border: no</string>
-                      </property>
-                      <property name="text">
-                       <string>TEAR_DEPTH</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLabel" name="Show_Tear_Depth_Label">
-                      <property name="maximumSize">
-                       <size>
-                        <width>100</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">background-color :rgb(219, 219, 219);
-border-style: solid;
-border-width: 1;
-border-radius: 3;
-font-size:18px;</string>
-                      </property>
-                      <property name="text">
-                       <string/>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <spacer name="verticalSpacer_20">
-                   <property name="orientation">
-                    <enum>Qt::Vertical</enum>
-                   </property>
-                   <property name="sizeType">
-                    <enum>QSizePolicy::Fixed</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>20</width>
-                     <height>29</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_24">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>59</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>67</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">border:no
-</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_85">
-                    <item>
-                     <widget class="QFrame" name="frame_93">
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>36</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>179</width>
-                        <height>66</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QFrame{
-	background: #0C356A;
-border-radius:5px;
-}
-</string>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::Box</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <property name="lineWidth">
-                       <number>3</number>
-                      </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_84">
-                       <item>
-                        <widget class="QPushButton" name="Show_Tear_Depth_Button">
-                         <property name="maximumSize">
-                          <size>
-                           <width>120</width>
-                           <height>16777215</height>
-                          </size>
-                         </property>
-                         <property name="toolTip">
-                          <string/>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QPushButton{
-	color: white;
-    background-color:#0C356A;
-	padding: 5px;
-	font-size:12px;
-	font-weight: bold;
-	border-radius:7px;
-background-color:transparent;
-}
-
-QPushButton:hover{
-	background: #a3a3a3;
-}
-
-QPushButton:disabled {
-    color: #8D8D8D;
-}
-
-QPushButton:pressed {
-	background: rgb(0, 0, 0);
-}
-</string>
-                         </property>
-                         <property name="text">
-                          <string>Show Tear Depth</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QGroupBox" name="groupBox_19">
-                <property name="styleSheet">
-                 <string notr="true">font: 18pt &quot;Mongolian Baiti&quot;;
-border: 3px solid back</string>
-                </property>
-                <property name="title">
-                 <string>Algorithm Parameters</string>
-                </property>
-                <layout class="QVBoxLayout" name="verticalLayout_26">
-                 <item>
-                  <spacer name="verticalSpacer_12">
-                   <property name="orientation">
-                    <enum>Qt::Vertical</enum>
-                   </property>
-                   <property name="sizeType">
-                    <enum>QSizePolicy::Fixed</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>20</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_84">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">border: 2px solid back</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_79">
-                    <item>
-                     <widget class="QLabel" name="label_56">
-                      <property name="styleSheet">
-                       <string notr="true">font: 13pt &quot;Mongolian Baiti&quot;;
-border: no</string>
-                      </property>
-                      <property name="text">
-                       <string>GRADIENT_SIZE</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QSpinBox" name="SpinBox_GRADIENT_SIZE">
-                      <property name="maximumSize">
-                       <size>
-                        <width>60</width>
-                        <height>29</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true"/>
-                      </property>
-                      <property name="maximum">
-                       <number>100000</number>
-                      </property>
-                      <property name="stepType">
-                       <enum>QAbstractSpinBox::DefaultStepType</enum>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_89">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">border: 2px solid back</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_80">
-                    <item>
-                     <widget class="QLabel" name="label_57">
-                      <property name="styleSheet">
-                       <string notr="true">font: 13pt &quot;Mongolian Baiti&quot;;
-border: no</string>
-                      </property>
-                      <property name="text">
-                       <string>Critical_Depth</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QSpinBox" name="SpinBox_Critical_Depth">
-                      <property name="maximumSize">
-                       <size>
-                        <width>60</width>
-                        <height>33</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true"/>
-                      </property>
-                      <property name="maximum">
-                       <number>10000</number>
-                      </property>
-                      <property name="stepType">
-                       <enum>QAbstractSpinBox::DefaultStepType</enum>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_90">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">border: 2px solid back</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_81">
-                    <item>
-                     <widget class="QLabel" name="label_58">
-                      <property name="styleSheet">
-                       <string notr="true">font: 13pt &quot;Mongolian Baiti&quot;;
-border: no</string>
-                      </property>
-                      <property name="text">
-                       <string>TEAR_DEPTH</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QSpinBox" name="SpinBox_TEAR_DEPTH">
-                      <property name="maximumSize">
-                       <size>
-                        <width>60</width>
-                        <height>33</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true"/>
-                      </property>
-                      <property name="maximum">
-                       <number>2000</number>
-                      </property>
-                      <property name="stepType">
-                       <enum>QAbstractSpinBox::DefaultStepType</enum>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_91">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">border: 2px solid back</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_82">
-                    <item>
-                     <widget class="QLabel" name="label_59">
-                      <property name="styleSheet">
-                       <string notr="true">font: 13pt &quot;Mongolian Baiti&quot;;
-border: no</string>
-                      </property>
-                      <property name="text">
-                       <string>MAX_ERROR</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QSpinBox" name="SpinBox_MAX_ERROR">
-                      <property name="minimumSize">
-                       <size>
-                        <width>72</width>
-                        <height>27</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>60</width>
-                        <height>33</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">background-color :rgb(219, 219, 219);
-border-style: solid;
-border-width: 1;
-border-radius: 3;
-font-size:18px;</string>
-                      </property>
-                      <property name="maximum">
-                       <number>10000000</number>
-                      </property>
-                      <property name="stepType">
-                       <enum>QAbstractSpinBox::DefaultStepType</enum>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_26">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_86">
-                    <item>
-                     <widget class="QLabel" name="label_23">
-                      <property name="styleSheet">
-                       <string notr="true">font: 13pt &quot;Mongolian Baiti&quot;;
-border: no</string>
-                      </property>
-                      <property name="text">
-                       <string>Pix_length</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLineEdit" name="pix_length">
-                      <property name="maximumSize">
-                       <size>
-                        <width>60</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">background-color :rgb(219, 219, 219);
-border-style: solid;
-border-width: 1;
-border-radius: 3;
-font-size:18px;</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_94">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_87">
-                    <item>
-                     <widget class="QLabel" name="label_39">
-                      <property name="styleSheet">
-                       <string notr="true">font: 13pt &quot;Mongolian Baiti&quot;;
-border: no</string>
-                      </property>
-                      <property name="text">
-                       <string>Pix_Width</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLineEdit" name="pix_width">
-                      <property name="maximumSize">
-                       <size>
-                        <width>60</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">background-color :rgb(219, 219, 219);
-border-style: solid;
-border-width: 1;
-border-radius: 3;
-font-size:18px;</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_95">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>40</height>
-                    </size>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_88">
-                    <item>
-                     <widget class="QLabel" name="label_137">
-                      <property name="styleSheet">
-                       <string notr="true">font: 13pt &quot;Mongolian Baiti&quot;;
-border: no</string>
-                      </property>
-                      <property name="text">
-                       <string>GRADIENT_NUMBER</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QLineEdit" name="gradient_number">
-                      <property name="maximumSize">
-                       <size>
-                        <width>60</width>
-                        <height>16777215</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">background-color :rgb(219, 219, 219);
-border-style: solid;
-border-width: 1;
-border-radius: 3;
-font-size:18px;</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_22">
-                   <property name="styleSheet">
-                    <string notr="true">border:no
-</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_35">
-                    <item>
-                     <widget class="QFrame" name="frame_92">
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>36</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>150</width>
-                        <height>59</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QFrame{
-	background: #0C356A;
-border-radius:5px;
-}
-</string>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::Box</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <property name="lineWidth">
-                       <number>3</number>
-                      </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_83">
-                       <item>
-                        <widget class="QPushButton" name="Save_Algorithm_Parameters">
-                         <property name="maximumSize">
-                          <size>
-                           <width>120</width>
-                           <height>16777215</height>
-                          </size>
-                         </property>
-                         <property name="cursor">
-                          <cursorShape>PointingHandCursor</cursorShape>
-                         </property>
-                         <property name="toolTip">
-                          <string/>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QPushButton{
-	color: white;
-    background-color:#0C356A;
-	padding: 5px;
-	font-size:12px;
-	font-weight: bold;
-	border-radius:7px;
-background-color:transparent;
-}
-
-QPushButton:hover{
-	background: #a3a3a3;
-}
-
-QPushButton:disabled {
-    color: #8D8D8D;
-}
-
-QPushButton:pressed {
-	background: rgb(0, 0, 0);
-}
-
-</string>
-                         </property>
-                         <property name="text">
-                          <string>Save Prameters</string>
-                         </property>
-                         <property name="icon">
-                          <iconset>
-                           <normaloff>../icons/save.png</normaloff>../icons/save.png</iconset>
-                         </property>
-                         <property name="iconSize">
-                          <size>
-                           <width>26</width>
-                           <height>26</height>
-                          </size>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
               </item>
              </layout>
             </widget>
@@ -4727,6 +4003,13 @@ QHeaderView::section:vertical
    </layout>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>SwitchControl</class>
+   <extends>QCheckBox</extends>
+   <header location="global">switchcontrol.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="assets/assets.qrc"/>
  </resources>

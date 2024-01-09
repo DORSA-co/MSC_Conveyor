@@ -10,10 +10,7 @@ from PySide6.QtUiTools import QUiLoader
 from PySide6.QtWidgets import QApplication
 #from PyQt5 import uic
 
-
-
-
-
+from qfluentwidgets.components.widgets.combo_box import ComboBox
 
 class GUIBackend:
 
@@ -259,7 +256,7 @@ class GUIBackend:
 
 
         """
-        if isinstance(wgt, QtWidgets.QComboBox):
+        if isinstance(wgt, QtWidgets.QComboBox) or isinstance(wgt, ComboBox):
             GUIBackend.set_combobox_current_item(wgt, value)
         
         elif isinstance(wgt, QtWidgets.QSpinBox) or isinstance(wgt, QtWidgets.QDoubleSpinBox):
@@ -279,7 +276,7 @@ class GUIBackend:
     def connector(wgt, func):
         """
         """
-        if isinstance(wgt, QtWidgets.QComboBox):
+        if isinstance(wgt, QtWidgets.QComboBox) or isinstance(wgt, ComboBox):
             return GUIBackend.combobox_changeg_connector(wgt, func)
         
         elif isinstance(wgt, QtWidgets.QSpinBox) or isinstance(wgt, QtWidgets.QDoubleSpinBox):
@@ -506,7 +503,7 @@ class GUIBackend:
 
         #resie image to fix in label
         img_h, img_w = image.shape[:2]
-        lbl_h, lbl_w = lbl.height(), lbl.width()
+        lbl_h, lbl_w = lbl.height()-10, lbl.width()-10
         
         scale = min(lbl_h/img_h, lbl_w/img_w)
         image = cv2.resize(image, None, fx= scale, fy=scale)

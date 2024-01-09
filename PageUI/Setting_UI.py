@@ -47,8 +47,8 @@ class CameraSetting_UI(Common_Function_UI):
         
         
         self.buttons = {
-            'save': self.ui.Save_Camera_Parameters,
-            'play': self.ui.Camera_connection_Camera_setting,
+            'save': self.ui.save_camera_settings,
+            'play': self.ui.connect_camera_switch,
         }
         
         self.parms_camera = {
@@ -68,16 +68,16 @@ class CameraSetting_UI(Common_Function_UI):
             "offsetY_2": 0,
         }
 
-        self.general_information_algorithm = {
-            "GRADIENT_SIZE": self.ui.SpinBox_GRADIENT_SIZE,
-            "Critical_Depth": self.ui.SpinBox_Critical_Depth,
-            "TEAR_DEPTH": self.ui.SpinBox_TEAR_DEPTH,
-            "MAX_ERROR": self.ui.SpinBox_MAX_ERROR,
-            "pix_length":self.ui.pix_length,
-            "pix_width":self.ui.pix_width,
-            "gradient_number":self.ui.gradient_number
+        # self.general_information_algorithm = {
+        #     "GRADIENT_SIZE": self.ui.SpinBox_GRADIENT_SIZE,
+        #     "Critical_Depth": self.ui.SpinBox_Critical_Depth,
+        #     "TEAR_DEPTH": self.ui.SpinBox_TEAR_DEPTH,
+        #     "MAX_ERROR": self.ui.SpinBox_MAX_ERROR,
+        #     "pix_length":self.ui.pix_length,
+        #     "pix_width":self.ui.pix_width,
+        #     "gradient_number":self.ui.gradient_number
            
-        }
+        # }
         
         self.parms_algorithm = {
             "GRADIENT_SIZE": 0,
@@ -89,26 +89,25 @@ class CameraSetting_UI(Common_Function_UI):
             "gradient_number": 0
         }
 
-        self.ui.Stop_connection_Camera_setting.setEnabled(False)
+        # self.ui.Stop_connection_Camera_setting.setEnabled(False)
 
     def button_connector(self, btn_name:str, function):
-        self.buttons[btn_name].clicked.connect( function )
+        if isinstance(self.buttons[btn_name], QtWidgets.QPushButton):
+            self.buttons[btn_name].clicked.connect( function )
+        elif isinstance(self.buttons[btn_name], QtWidgets.QCheckBox):
+            self.buttons[btn_name].stateChanged.connect( function )
         
     def setting_change_connector(self, func):
         for name, field in self.camera_setting_fields.items():
             field.valueChanged.connect( self.__create_event_func__(func, (name,)) )
             
     def set_playing_status(self, is_playing):
-        if is_playing:
-            pixmap = QPixmap(':/icons/icon/camera_disconnected.png')
-        else:
-            pixmap = QPixmap(':/icons/icon/camera_connected.png')
-        
-        icon = QIcon( pixmap )
-        self.buttons['play'].setIcon(icon)
+        GUIBackend.set_signal_connection(self.buttons['play'], False)
+        GUIBackend.set_checkbox_value(self.buttons['play'], is_playing)
+        GUIBackend.set_signal_connection(self.buttons['play'], True)
+ 
         self.handle_fields_enablity(is_playing)
-        
-    
+
     def handle_fields_enablity(self, is_playing):
         for name, flag in self.enable_on_playing.items():
             field = self.camera_setting_fields[name]
@@ -127,12 +126,8 @@ class CameraSetting_UI(Common_Function_UI):
          self.ui.Show_Tear_Depth_Label.setText(str(max))
 
 
-    def button_connector_camera(self,fun):
-        self.ui.Camera_connection_Camera_setting.clicked.connect(fun)
-
-
     def connect_camera(self):
-        self.ui.Camera_connection_Camera_setting.setEnabled(False)
+        # self.ui.Camera_connection_Camera_setting.setEnabled(False)
         self.set_message(
             label_name=self.ui.Message_Camera,
             text="Connect to Camera Successfully",
@@ -143,8 +138,8 @@ class CameraSetting_UI(Common_Function_UI):
     def disconnect_camera(self):
         # print("disconnect_camera")
         # self.enable_disable_camera_btns(False)
-        self.ui.Camera_connection_Camera_setting.setEnabled(True)
-        self.ui.Stop_connection_Camera_setting.setEnabled(False)
+        # self.ui.Camera_connection_Camera_setting.setEnabled(True)
+        # self.ui.Stop_connection_Camera_setting.setEnabled(False)
         self.set_message(
             label_name=self.ui.Message_Camera,
             text="Disconnect to Camera Successfully",
@@ -209,7 +204,7 @@ class CameraSetting_UI(Common_Function_UI):
 
 
     def show_image(self, image):
-        GUIBackend.set_label_image(self.ui.Showlive_Setting, image )
+        GUIBackend.set_label_image(self.ui.camera_settings_live_label, image )
 
 
 
@@ -238,7 +233,7 @@ class AlgorithmSetting_UI(Common_Function_UI):
         }
 
         self.buttons = {
-            'save': self.ui.Save_algorithm_setting
+            'save': self.ui.save_algorithm_setting
         }
 
     def button_connector(self, name:str, func):

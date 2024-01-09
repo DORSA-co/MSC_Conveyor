@@ -13,6 +13,7 @@ class RefreshRates:
 
 class User:
     UNLOGIN_USER_ROLE = 'unknown'
+    UNLOGIN_USER_ROLE = 'unknown'
     MIN_USERNAME_LENGHT = 4
     MIN_PASS_LENGHT = 5
     USER_ROLES = ['admin', 'user']

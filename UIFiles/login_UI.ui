@@ -86,19 +86,19 @@ border-radius: 20px;
 }
 
 #login_btn{
-	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(20, 47, 78, 219), stop:1 rgba(85, 98, 112, 226));
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 #1F2A4D, stop:1 #7E84A2);
 	color: rgba(255, 255, 255, 210);
 	border-radius: 5px;
 }
 
 #login_btn:hover{
-background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(40, 67, 98, 219), stop:1 rgba(105, 118, 132, 226));
+background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(40, 67, 98, 219), stop:1 #8B92B3);
 }
 
 #login_btn:pressed{
 padding-left: 5px;
 padding-top: 5px;
-background-color: rgba(105, 118, 132, 200);
+
 }
 
 #login_error_lbl{
@@ -329,6 +329,9 @@ background-color: rgba(105, 118, 132, 200);
                              <property name="styleSheet">
                               <string notr="true"/>
                              </property>
+                             <property name="text">
+                              <string>admin</string>
+                             </property>
                              <property name="placeholderText">
                               <string>Username</string>
                              </property>
@@ -422,6 +425,9 @@ background-color: rgba(105, 118, 132, 200);
                              </property>
                              <property name="styleSheet">
                               <string notr="true"/>
+                             </property>
+                             <property name="text">
+                              <string>admin</string>
                              </property>
                              <property name="echoMode">
                               <enum>QLineEdit::Password</enum>

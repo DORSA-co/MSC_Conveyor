@@ -72,9 +72,7 @@ class CameraSetting_API:
         
         self.setup_camera_settings_availables_value()
         self.load_camera_settings()
-        
 
-        
     def startup(self,):
         name = self.ui_cam.get_camera_name()
         grabbing = self.cameras[name].Status.is_grabbing()

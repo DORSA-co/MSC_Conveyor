@@ -88,19 +88,19 @@ class Ui_Dialog(object):
 "}\n"
 "\n"
 "#login_btn{\n"
-"	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(20, 47, 78, 219), stop:1 rgba(85, 98, 112, 226));\n"
+"	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 #1F2A4D, stop:1 #7E84A2);\n"
 "	color: rgba(255, 255, 255, 210);\n"
 "	border-radius: 5px;\n"
 "}\n"
 "\n"
 "#login_btn:hover{\n"
-"background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(40, 67, 98, 219), stop:1 rgba(105, 118, 132, 226));\n"
+"background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(40, 67, 98, 219), stop:1 #8B92B3);\n"
 "}\n"
 "\n"
 "#login_btn:pressed{\n"
 "padding-left: 5px;\n"
 "padding-top: 5px;\n"
-"background-color: rgba(105, 118, 132, 200);\n"
+"\n"
 "}\n"
 "\n"
 "#login_error_lbl{\n"
@@ -347,9 +347,11 @@ class Ui_Dialog(object):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
         self.close_btn.setText("")
         self.username_icon.setText("")
+        self.username_input.setText(QCoreApplication.translate("Dialog", u"admin", None))
         self.username_input.setPlaceholderText(QCoreApplication.translate("Dialog", u"Username", None))
         self.temp_btn.setText("")
         self.password_icon.setText("")
+        self.password_input.setText(QCoreApplication.translate("Dialog", u"admin", None))
         self.password_input.setPlaceholderText(QCoreApplication.translate("Dialog", u"Password", None))
         self.eye_btn.setText("")
         self.login_btn.setText(QCoreApplication.translate("Dialog", u"LOGIN", None))

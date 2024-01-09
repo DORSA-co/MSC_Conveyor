@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>986</width>
+    <height>694</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_12">
+      <item>
+       <widget class="QPushButton" name="Save_algorithm_setting">
+        <property name="maximumSize">
+         <size>
+          <width>200</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="toolTip">
+         <string>Save Parameters</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	color: white;
+    background-color:#31304D;
+	padding: 5px;
+	font-size:12px;
+	font-weight: bold;
+	border-radius:7px;
+	background-color: rgb(12, 53, 106);
+	padding: 15px 15px;
+}
+
+QPushButton:hover{
+	background: #a3a3a3;
+}
+
+QPushButton:disabled {
+    color: #8D8D8D;
+}
+
+QPushButton:pressed {
+	background: rgb(0, 0, 0);
+}
+
+</string>
+        </property>
+        <property name="text">
+         <string>Save Prameters</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>26</width>
+          <height>26</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>966</width>
+         <height>599</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_40">
+        <item>
+         <widget class="QFrame" name="frame_step1">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>400</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#algo_setting_step1_frame,
+#frame_step1
+{
+border: 2 solid rgba(12, 53, 106, 100);
+background-color:#ffffff;
+
+}
+</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_20">
+           <item>
+            <widget class="QFrame" name="algo_setting_step1_frame_2">
+             <property name="minimumSize">
+              <size>
+               <width>280</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <item>
+               <widget class="QLabel" name="label_64">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">font-size: 26px;
+font-weight: bold;
+color:rgb(12, 53, 106);</string>
+                </property>
+                <property name="text">
+                 <string>Step 1</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="frame_35">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_7">
+                 <property name="spacing">
+                  <number>10</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_50">
+                   <property name="font">
+                    <font>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Background Threshould</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QSpinBox" name="alghoritm_background_thresh_2">
+                   <property name="enabled">
+                    <bool>true</bool>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="maximum">
+                    <number>255</number>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="verticalSpacer_5">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Preferred</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_62">
+                   <property name="font">
+                    <font>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Convolotion Window Size</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QSpinBox" name="alghoritm_conv_window_size_2">
+                   <property name="enabled">
+                    <bool>true</bool>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QFrame" name="frame_37">
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_20">
+              <item>
+               <widget class="QLabel" name="algorithm_image1_2">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="abas" stdset="0">
+                 <string>card</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="frame_step2">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>400</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#algo_setting_step2_frame,
+#frame_step2
+{
+border: 2 solid rgba(12, 53, 106, 100);
+background-color:#ffffff;
+
+}
+</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_21">
+           <item>
+            <widget class="QFrame" name="algo_setting_step2_frame">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_50">
+              <item>
+               <widget class="QLabel" name="label_67">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">font-size: 26px;
+font-weight: bold;
+color:rgb(12, 53, 106);</string>
+                </property>
+                <property name="text">
+                 <string>Step 2</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="frame_38">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_10">
+                 <property name="bottomMargin">
+                  <number>11</number>
+                 </property>
+                 <item row="2" column="0">
+                  <widget class="QLabel" name="label_69">
+                   <property name="text">
+                    <string>Thresh Error</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <layout class="QGridLayout" name="gridLayout_11">
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="label_70">
+                     <property name="text">
+                      <string>Algorithm</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item row="2" column="1">
+                  <widget class="QSpinBox" name="anomaly_thresh_error">
+                   <property name="enabled">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="1" column="0" colspan="2">
+                  <widget class="QComboBox" name="anomaly_alghorithm_combo">
+                   <property name="enabled">
+                    <bool>true</bool>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>1</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>2</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>3</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QFrame" name="frame_39">
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_51">
+              <item>
+               <widget class="QLabel" name="algorithm_image2">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="frame_step3">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>400</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#algo_setting_step3_frame,
+#frame_step3
+{
+border: 2 solid rgba(12, 53, 106, 100);
+background-color:#ffffff;
+
+}
+</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_22">
+           <item>
+            <widget class="QFrame" name="algo_setting_step3_frame">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_52">
+              <item>
+               <widget class="QLabel" name="label_68">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>50</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">font-size: 26px;
+font-weight: bold;
+color:rgb(12, 53, 106);</string>
+                </property>
+                <property name="text">
+                 <string>Step 3</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="frame_40">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_12">
+                 <property name="bottomMargin">
+                  <number>11</number>
+                 </property>
+                 <item row="0" column="1">
+                  <widget class="QSpinBox" name="defect_extractor_min_width">
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="label_72">
+                   <property name="text">
+                    <string>Min Width</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QFrame" name="frame_41">
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_53">
+              <item>
+               <widget class="QLabel" name="algorithm_image3">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
