@@ -275,7 +275,7 @@ class mainUI(QMainWindow):
             self.group.addAnimation(self.maxWidth)
             self.group.start()
 
-            GUIBackend.set_button_icon(self.ui.menu_btn, IconsPath.MenuIcons.OPEN_MENU_ICON)
+            GUIBackend.set_button_icon(self.ui.menu_btn, IconsPath.IconsPath.OPEN_MENU_ICON)
 
         else:
             self.minWidth = QtCore.QPropertyAnimation(self.ui.side_frame, b"minimumWidth")
@@ -294,6 +294,6 @@ class mainUI(QMainWindow):
             self.group.addAnimation(self.maxWidth)
             self.group.start()
 
-            GUIBackend.set_button_icon(self.ui.menu_btn, IconsPath.MenuIcons.CLOSE_MENU_ICON)
+            GUIBackend.set_button_icon(self.ui.menu_btn, IconsPath.IconsPath.CLOSE_MENU_ICON)
 
 

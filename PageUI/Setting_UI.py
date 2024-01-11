@@ -4,9 +4,8 @@ from PySide6.QtGui import QImage, QPixmap, QIcon
 from PySide6 import QtWidgets
 from UIFiles.main_UI import Ui_MainWindow
 from uiUtils.guiBackend import GUIBackend
+from uiUtils.GUIComponents import MULTISTEP_SELECT_STYLE, MULTISTEP_UNSELECT_STYLE
 import copy
-
-
 
 
 class Setting_UI:
@@ -206,9 +205,6 @@ class CameraSetting_UI(Common_Function_UI):
     def show_image(self, image):
         GUIBackend.set_label_image(self.ui.camera_settings_live_label, image )
 
-
-
-
 class AlgorithmSetting_UI(Common_Function_UI):
 
     def __init__(self, ui:Ui_MainWindow):
@@ -232,13 +228,27 @@ class AlgorithmSetting_UI(Common_Function_UI):
             'step3': self.ui.algorithm_image3,
         }
 
-        self.buttons = {
-            'save': self.ui.save_algorithm_setting
+        self.multistep_buttons = {
+            'step1': self.ui.step1_btn,
+            'step2': self.ui.step2_btn,
+            'step3': self.ui.step3_btn,
         }
+
+        self.buttons = {
+            'save': self.ui.save_algorithm_settings
+        }
+
+        self.multistep_button_connector('step1', lambda: self.change_steps_stackedwidget_page(0, 'step1') )
+        self.multistep_button_connector('step2', lambda: self.change_steps_stackedwidget_page(1, 'step2') )
+        self.multistep_button_connector('step3', lambda: self.change_steps_stackedwidget_page(2, 'step3') )
+
+        self.change_steps_stackedwidget_page(0, 'step1')
 
     def button_connector(self, name:str, func):
         GUIBackend.button_connector(self.buttons[name], func)
-    
+
+    def multistep_button_connector(self, name:str, func):
+        GUIBackend.button_connector(self.multistep_buttons[name], func)
 
     def get_parms(self,):
         parms = {}
@@ -275,6 +285,13 @@ class AlgorithmSetting_UI(Common_Function_UI):
     def set_image(self, name: str, image):
         GUIBackend.set_label_image(self.images_lbl[name], image)
 
+    def change_steps_stackedwidget_page(self, idx: int, name: str):
+        GUIBackend.set_stack_widget_idx(self.ui.algorithm_stackedWidget, idx)
+        for key in self.multistep_buttons:
+            if key == name:
+                GUIBackend.set_style(self.multistep_buttons[key], MULTISTEP_SELECT_STYLE)
+            else:
+                GUIBackend.set_style(self.multistep_buttons[key], MULTISTEP_UNSELECT_STYLE)
 
     def setting_change_connector(self, func):
         for name, field in self.setting_parms.items():

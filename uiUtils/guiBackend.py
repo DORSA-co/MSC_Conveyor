@@ -10,8 +10,6 @@ from PySide6.QtUiTools import QUiLoader
 from PySide6.QtWidgets import QApplication
 #from PyQt5 import uic
 
-from qfluentwidgets.components.widgets.combo_box import ComboBox
-
 class GUIBackend:
 
 
@@ -256,7 +254,7 @@ class GUIBackend:
 
 
         """
-        if isinstance(wgt, QtWidgets.QComboBox) or isinstance(wgt, ComboBox):
+        if isinstance(wgt, QtWidgets.QComboBox):
             GUIBackend.set_combobox_current_item(wgt, value)
         
         elif isinstance(wgt, QtWidgets.QSpinBox) or isinstance(wgt, QtWidgets.QDoubleSpinBox):
@@ -276,7 +274,7 @@ class GUIBackend:
     def connector(wgt, func):
         """
         """
-        if isinstance(wgt, QtWidgets.QComboBox) or isinstance(wgt, ComboBox):
+        if isinstance(wgt, QtWidgets.QComboBox):
             return GUIBackend.combobox_changeg_connector(wgt, func)
         
         elif isinstance(wgt, QtWidgets.QSpinBox) or isinstance(wgt, QtWidgets.QDoubleSpinBox):

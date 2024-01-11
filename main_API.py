@@ -96,9 +96,7 @@ class main_API:
         self.uiHandeler.set_access_pages( Constant.User.ACCESS[role]['pages'],)
         self.uiHandeler.set_access_tabs( Constant.User.ACCESS[role]['tabs'])
 
-        
-    
-    
+
     def page_change_event(self,prev_page, new_page ):
         if self.pages_api_dict.get(prev_page):
             permision = self.pages_api_dict[prev_page].endup()

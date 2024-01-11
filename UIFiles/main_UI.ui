@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1294</width>
-    <height>777</height>
+    <height>785</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,6 +24,22 @@
 
 QLabel:disabled{
 	color: rgb(120, 120, 120);
+}
+
+/************************************************************/
+
+QLineEdit {
+  	border:1px solid #E0E4EC;
+	background-color: #F7F8FA;
+	border-radius: 10px;
+	padding-left: 15px;
+	min-height: 25px;
+	min-width: 70px;
+	font-size: 16px;
+}
+
+QLineEdit:focus {
+	border-bottom: 2px solid #7892DF;
 }
 
 /************************************************************/
@@ -149,6 +165,61 @@ QTabBar::tab:selected {
 
 /************************************************************/
 
+QTableWidget {
+    background-color: #F7F8FA;
+	gridline-color: #D7D7D9;
+	color: rgb(20, 20, 20);
+	border: 2px solid #F7F8FA;
+	border-radius: 8px;
+}
+
+QHeaderView::section {
+    background-color: #F7F8FA;
+    padding: 5px;
+	border-top-left-radius: 0px;
+	border-bottom: 2px solid #BDBDBF;
+	border-right: 1px solid #D7D7D9;
+	font-weight: bold;
+	color: rgb(20, 20, 20);
+}
+
+QHeaderView::section:first {
+   border-top-left-radius: 4px;
+	border-left: None;
+}
+
+QHeaderView::section:last {
+   border-top-right-radius: 4px;
+	border-right: None;
+}
+
+QTableWidget::item:selected {
+    background-color: #E0E4EC;
+	color: rgb(20, 20, 20);
+}
+
+QTableWidget::item:hover {
+    background-color: #D7D7D9;
+}
+
+QHeaderView::up-arrow {
+	
+	image: url(:/general_icons/icons/general_icons/table_sort_icon.png);
+}
+
+QScrollBar:horizontal, QScrollBar:vertical {
+    border: 1px solid #BDBDBF;
+    background: #BDBDBF;
+    height: 4px;
+}
+
+QScrollBar::handle:horizontal, QScrollBar::handle:vertical {
+    background: #646466;
+}
+
+
+/************************************************************/
+
 QComboBox
 {
 	border:1px solid #E0E4EC;
@@ -229,64 +300,40 @@ QComboBox:focus{
 	background-color: #E0E4EC;
 }
 
-#camera_tab .QFrame{
+#camera_tab .QFrame, #algorithm_stackedWidget .QFrame{
 	background-color: #F7F8FA;
 	border:1px solid #D7D7D9;
 }
 
-#connect_camera_btn, #disconnect_camera_btn{
-	background-color: transparent;
-	border:1px solid #D7D7D9;
-	border-radius: 10px;
+#connect_camera_switch::indicator{
+	border: None;
 }
 
-#connect_camera_btn:hover, #disconnect_camera_btn:hover{
-	border-bottom: 2px solid #7892DF;
-}
-
-#save_camera_settings, #save_algorithm_setting{
+#save_camera_settings, #save_algorithm_settings{
 	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 #1F2A4D, stop:1 #7E84A2);
 	color: rgba(255, 255, 255, 210);
 	border-radius: 5px;
+	min-width: 270;
+	max-width: 270;
+	min-height: 40;
+	max-height: 40;
 }
 
-#save_camera_settings:hover, #save_algorithm_setting:hover{
+#save_camera_settings:hover, #save_algorithm_settings:hover{
 	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(40, 67, 98, 219), stop:1 #8B92B3);
 }
 
-#save_camera_settings:pressed, #save_algorithm_setting:pressed{
+#save_camera_settings:pressed, #save_algorithm_settings:pressed{
 	padding-left: 5px;
 	padding-top: 5px;
 }
 
-#algorithm_stackedWidget .QFrame{
-	background-color: #F7F8FA;
-	border:1px solid #D7D7D9;
-}
-
-#step1_settings_frame .QLabel{
+#step1_settings_frame .QLabel, #step2_settings_frame .QLabel, #step3_settings_frame .QLabel
+{
 	font-weight: bold;
 }
 
-#step1_label{
-	font-size: 26px;
-	color: #4C7EFF;
-}
-
-#step2_settings_frame .QLabel{
-	font-weight: bold;
-}
-
-#step2_label{
-	font-size: 26px;
-	color: #4C7EFF;
-}
-
-#step3_settings_frame .QLabel{
-	font-weight: bold;
-}
-
-#step3_label{
+#step1_label, #step2_label, #step3_label{
 	font-size: 26px;
 	color: #4C7EFF;
 }
@@ -296,23 +343,34 @@ QComboBox:focus{
 }
 
 #show_steps_frame .QPushButton{
-	background-color: #4C7EFF;
-	border:1px solid #D7D7D9;
-	border-radius: 35px;
-	min-width: 70px;
-	max-width: 70px;
-	min-height: 70px;
-	max-heigth: 70px;
+	background-color: transparent;
+	border:5px solid #7E84A2;
+	border-radius: 32px;
+	min-width: 55px;
+	max-width: 55px;
+	min-height: 55px;
+	max-height: 55px;
 	font-size: 24px;
-	color: rgb(200, 200, 200);
+	color: rgb(20, 20, 20);
 	font-weight: bold;
 }
 
+#show_steps_frame .QPushButton:hover{
+	border:5px solid #BDBDBF;
+}
 
+#show_steps_frame .QFrame{
+	border: 2px solid #7E84A2;
+	min-height: 0px;
+	max-height: 0px;
+}
 
-
-
-</string>
+#userspage_user_heading_lbl{
+	font-weight: bold;
+	font-size: 20px;
+	color: #4C7EFF;
+	min-height: 70px;
+}</string>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
     <property name="spacing">
@@ -773,7 +831,7 @@ QComboBox:focus{
       <item>
        <widget class="QStackedWidget" name="main_stackedWidget">
         <property name="currentIndex">
-         <number>1</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="live_view_page">
          <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -2152,13 +2210,13 @@ border: no</string>
           <item>
            <widget class="QTabWidget" name="settings_tabs">
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="camera_tab">
              <attribute name="title">
               <string>Camera</string>
              </attribute>
-             <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="30,70">
+             <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="25,75">
               <item>
                <widget class="QFrame" name="camera_settings_frame">
                 <property name="frameShape">
@@ -2169,7 +2227,7 @@ border: no</string>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_24">
                  <property name="spacing">
-                  <number>10</number>
+                  <number>12</number>
                  </property>
                  <property name="leftMargin">
                   <number>20</number>
@@ -2190,6 +2248,12 @@ border: no</string>
                    </property>
                    <item>
                     <widget class="QLabel" name="camera_settings_off_label">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
                      <property name="font">
                       <font>
                        <weight>75</weight>
@@ -2207,13 +2271,7 @@ border: no</string>
                    <item>
                     <widget class="SwitchControl" name="connect_camera_switch">
                      <property name="styleSheet">
-                      <string notr="true">QCheckBox{
-	border: 2px solid red;
-}
-
-QCheckBox::indicator{
-	border: None;
-}</string>
+                      <string notr="true"/>
                      </property>
                      <property name="text">
                       <string/>
@@ -2224,6 +2282,12 @@ QCheckBox::indicator{
                     <widget class="QLabel" name="camera_settings_on_label">
                      <property name="enabled">
                       <bool>true</bool>
+                     </property>
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
                      </property>
                      <property name="font">
                       <font>
@@ -2257,7 +2321,7 @@ QCheckBox::indicator{
                  <item>
                   <layout class="QVBoxLayout" name="verticalLayout_21">
                    <property name="spacing">
-                    <number>3</number>
+                    <number>1</number>
                    </property>
                    <item>
                     <widget class="QLabel" name="camera_settings_camera_label">
@@ -2280,7 +2344,7 @@ QCheckBox::indicator{
                  <item>
                   <layout class="QVBoxLayout" name="verticalLayout_23">
                    <property name="spacing">
-                    <number>3</number>
+                    <number>1</number>
                    </property>
                    <item>
                     <widget class="QLabel" name="camera_settings_serial_label">
@@ -2303,7 +2367,7 @@ QCheckBox::indicator{
                  <item>
                   <layout class="QVBoxLayout" name="verticalLayout_6">
                    <property name="spacing">
-                    <number>3</number>
+                    <number>1</number>
                    </property>
                    <item>
                     <widget class="QLabel" name="camera_settings_gain_label">
@@ -2323,11 +2387,8 @@ QCheckBox::indicator{
                    </item>
                    <item>
                     <widget class="QSpinBox" name="gain_spinbox">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
                      </property>
                     </widget>
                    </item>
@@ -2336,7 +2397,7 @@ QCheckBox::indicator{
                  <item>
                   <layout class="QVBoxLayout" name="verticalLayout_10">
                    <property name="spacing">
-                    <number>3</number>
+                    <number>1</number>
                    </property>
                    <item>
                     <widget class="QLabel" name="camera_settings_width_label">
@@ -2355,14 +2416,18 @@ QCheckBox::indicator{
                     </widget>
                    </item>
                    <item>
-                    <widget class="QSpinBox" name="width_spinbox"/>
+                    <widget class="QSpinBox" name="width_spinbox">
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
                    </item>
                   </layout>
                  </item>
                  <item>
                   <layout class="QVBoxLayout" name="verticalLayout_11">
                    <property name="spacing">
-                    <number>3</number>
+                    <number>1</number>
                    </property>
                    <item>
                     <widget class="QLabel" name="camera_settings_height_label">
@@ -2381,14 +2446,18 @@ QCheckBox::indicator{
                     </widget>
                    </item>
                    <item>
-                    <widget class="QSpinBox" name="height_spinbox"/>
+                    <widget class="QSpinBox" name="height_spinbox">
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
                    </item>
                   </layout>
                  </item>
                  <item>
                   <layout class="QVBoxLayout" name="verticalLayout_12">
                    <property name="spacing">
-                    <number>3</number>
+                    <number>1</number>
                    </property>
                    <item>
                     <widget class="QLabel" name="camera_settings_exposure_label">
@@ -2407,14 +2476,18 @@ QCheckBox::indicator{
                     </widget>
                    </item>
                    <item>
-                    <widget class="QSpinBox" name="expo_spinbox"/>
+                    <widget class="QSpinBox" name="expo_spinbox">
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
                    </item>
                   </layout>
                  </item>
                  <item>
                   <layout class="QVBoxLayout" name="verticalLayout_14">
                    <property name="spacing">
-                    <number>3</number>
+                    <number>1</number>
                    </property>
                    <item>
                     <widget class="QLabel" name="camera_settings_offsetx_label">
@@ -2433,14 +2506,18 @@ QCheckBox::indicator{
                     </widget>
                    </item>
                    <item>
-                    <widget class="QSpinBox" name="offsetx_spinbox"/>
+                    <widget class="QSpinBox" name="offsetx_spinbox">
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
                    </item>
                   </layout>
                  </item>
                  <item>
                   <layout class="QVBoxLayout" name="verticalLayout_20">
                    <property name="spacing">
-                    <number>3</number>
+                    <number>1</number>
                    </property>
                    <item>
                     <widget class="QLabel" name="camera_settings_offsety_label">
@@ -2459,7 +2536,11 @@ QCheckBox::indicator{
                     </widget>
                    </item>
                    <item>
-                    <widget class="QSpinBox" name="offsety_spinbox"/>
+                    <widget class="QSpinBox" name="offsety_spinbox">
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
                    </item>
                   </layout>
                  </item>
@@ -2555,42 +2636,30 @@ QCheckBox::indicator{
                    <property name="cursor">
                     <cursorShape>PointingHandCursor</cursorShape>
                    </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
+                   </property>
                    <property name="text">
                     <string>1</string>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="arrow1_label">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>0</height>
-                    </size>
-                   </property>
+                  <widget class="QFrame" name="frame_3">
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>16777215</height>
+                     <height>4</height>
                     </size>
                    </property>
-                   <property name="text">
-                    <string/>
+                   <property name="styleSheet">
+                    <string notr="true"/>
                    </property>
-                   <property name="pixmap">
-                    <pixmap resource="assets/assets.qrc">:/settings_icons/icons/settings_icon/right_arrow.png</pixmap>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
                    </property>
-                   <property name="scaledContents">
-                    <bool>false</bool>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
                    </property>
                   </widget>
                  </item>
@@ -2612,21 +2681,12 @@ QCheckBox::indicator{
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="arrow2_label">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
+                  <widget class="QFrame" name="frame_4">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
                    </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                   <property name="pixmap">
-                    <pixmap resource="assets/assets.qrc">:/settings_icons/icons/settings_icon/right_arrow.png</pixmap>
-                   </property>
-                   <property name="scaledContents">
-                    <bool>false</bool>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
                    </property>
                   </widget>
                  </item>
@@ -2646,19 +2706,6 @@ QCheckBox::indicator{
                     <string>3</string>
                    </property>
                   </widget>
-                 </item>
-                 <item>
-                  <spacer name="horizontalSpacer_7">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
                  </item>
                 </layout>
                </widget>
@@ -2750,6 +2797,9 @@ QCheckBox::indicator{
                          </property>
                          <property name="styleSheet">
                           <string notr="true"/>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
                          </property>
                          <property name="maximum">
                           <number>255</number>
@@ -2926,6 +2976,9 @@ QCheckBox::indicator{
                          <property name="enabled">
                           <bool>true</bool>
                          </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
                         </widget>
                        </item>
                       </layout>
@@ -3035,6 +3088,9 @@ QCheckBox::indicator{
                          <property name="styleSheet">
                           <string notr="true"/>
                          </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
                         </widget>
                        </item>
                       </layout>
@@ -3100,23 +3156,23 @@ QCheckBox::indicator{
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="save_algorithm_setting">
+                 <widget class="QPushButton" name="save_algorithm_settings">
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
                   <property name="minimumSize">
                    <size>
-                    <width>273</width>
-                    <height>46</height>
+                    <width>270</width>
+                    <height>40</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>273</width>
-                    <height>46</height>
+                    <width>270</width>
+                    <height>40</height>
                    </size>
                   </property>
                   <property name="font">
@@ -3158,17 +3214,10 @@ QCheckBox::indicator{
           <item>
            <widget class="QTabWidget" name="user_tabs">
             <property name="styleSheet">
-             <string notr="true">#all_users_tab,
-#user_profile_tab,
-#user_register_tab
-{
-	
-	background-color: #ffffff;
-
-}</string>
+             <string notr="true"/>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>2</number>
             </property>
             <widget class="QWidget" name="user_register_tab">
              <attribute name="title">
@@ -3251,6 +3300,9 @@ QLineEdit
                   <widget class="QLineEdit" name="userpage_confirm_password_inpt">
                    <property name="styleSheet">
                     <string notr="true"/>
+                   </property>
+                   <property name="placeholderText">
+                    <string>confirm password</string>
                    </property>
                   </widget>
                  </item>
@@ -3891,11 +3943,7 @@ color: #ffffff;
               <item>
                <widget class="QLabel" name="userspage_user_heading_lbl">
                 <property name="styleSheet">
-                 <string notr="true">font-size: 16px;
-font-weight: bold;
-color: rgb(6, 76, 130);
-min-height: 80px;
-max-height: 80px;</string>
+                 <string notr="true"/>
                 </property>
                 <property name="text">
                  <string>Only Admin Can Access</string>
@@ -3904,89 +3952,108 @@ max-height: 80px;</string>
               </item>
               <item>
                <widget class="QTableWidget" name="userpage_all_users_table">
-                <property name="autoFillBackground">
-                 <bool>false</bool>
-                </property>
                 <property name="styleSheet">
-                 <string notr="true">
-QHeaderView::section {
-    background-color:rgb(12, 53, 106);
-	color: #ffffff;
-    padding: 4px;
-    font-size: 10pt;
-    border-style: none;
-    border-bottom: 1px solid #fffff8;
-    border-right: 1px solid #fffff8;
-}
-
-QHeaderView::section:horizontal
-{
-    border-top: 1px solid #fffff8;
-}
-
-QHeaderView::section:vertical
-{
-    border: 1px solid #fffff8;
-}
-
-</string>
-                </property>
-                <property name="frameShape">
-                 <enum>QFrame::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
-                </property>
-                <property name="sizeAdjustPolicy">
-                 <enum>QAbstractScrollArea::AdjustToContents</enum>
+                 <string notr="true"/>
                 </property>
                 <property name="editTriggers">
                  <set>QAbstractItemView::NoEditTriggers</set>
                 </property>
-                <property name="defaultDropAction">
-                 <enum>Qt::IgnoreAction</enum>
-                </property>
-                <property name="alternatingRowColors">
-                 <bool>false</bool>
-                </property>
-                <property name="selectionMode">
-                 <enum>QAbstractItemView::NoSelection</enum>
-                </property>
-                <property name="selectionBehavior">
-                 <enum>QAbstractItemView::SelectRows</enum>
-                </property>
-                <property name="textElideMode">
-                 <enum>Qt::ElideMiddle</enum>
-                </property>
-                <property name="sortingEnabled">
-                 <bool>false</bool>
-                </property>
-                <property name="cornerButtonEnabled">
+                <property name="showGrid">
                  <bool>true</bool>
                 </property>
-                <property name="rowCount">
-                 <number>3</number>
+                <property name="gridStyle">
+                 <enum>Qt::SolidLine</enum>
                 </property>
-                <property name="columnCount">
-                 <number>5</number>
+                <property name="sortingEnabled">
+                 <bool>true</bool>
                 </property>
-                <attribute name="horizontalHeaderVisible">
-                 <bool>false</bool>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+                <attribute name="horizontalHeaderMinimumSectionSize">
+                 <number>57</number>
                 </attribute>
-                <attribute name="horizontalHeaderDefaultSectionSize">
-                 <number>150</number>
+                <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+                 <bool>true</bool>
+                </attribute>
+                <attribute name="horizontalHeaderStretchLastSection">
+                 <bool>true</bool>
                 </attribute>
                 <attribute name="verticalHeaderVisible">
                  <bool>false</bool>
                 </attribute>
-                <row/>
-                <row/>
-                <row/>
-                <column/>
-                <column/>
-                <column/>
-                <column/>
-                <column/>
+                <attribute name="verticalHeaderCascadingSectionResizes">
+                 <bool>false</bool>
+                </attribute>
+                <row>
+                 <property name="text">
+                  <string>New Row</string>
+                 </property>
+                </row>
+                <column>
+                 <property name="text">
+                  <string>ID</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>User Name</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Password</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Role</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Edit</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Delete</string>
+                 </property>
+                </column>
+                <item row="0" column="0">
+                 <property name="text">
+                  <string>1</string>
+                 </property>
+                </item>
+                <item row="0" column="1">
+                 <property name="text">
+                  <string>Admin</string>
+                 </property>
+                </item>
+                <item row="0" column="2">
+                 <property name="text">
+                  <string>Admin</string>
+                 </property>
+                </item>
+                <item row="0" column="3">
+                 <property name="text">
+                  <string>Admin</string>
+                 </property>
+                </item>
+                <item row="0" column="4">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="background">
+                  <brush brushstyle="NoBrush">
+                   <color alpha="255">
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                   </color>
+                  </brush>
+                 </property>
+                </item>
                </widget>
               </item>
              </layout>
@@ -4007,7 +4074,7 @@ QHeaderView::section:vertical
   <customwidget>
    <class>SwitchControl</class>
    <extends>QCheckBox</extends>
-   <header location="global">switchcontrol.h</header>
+   <header location="global">GUIComponents.h</header>
   </customwidget>
  </customwidgets>
  <resources>

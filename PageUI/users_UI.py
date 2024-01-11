@@ -111,14 +111,6 @@ class RegisterUserTabUI(Common_Function_UI):
             GUIBackend.set_label_text( self.ui.userspage_editprofile_success_lbl, txt)
             GUIComponents.single_timer_runner(3000, lambda: self.show_success_msg(None) )
 
-        
-
-
-
-
-
-
-
 class AllUserTabUI(Common_Function_UI):
 
     def __init__(self, ui:Ui_MainWindow) -> None:
@@ -135,11 +127,6 @@ class AllUserTabUI(Common_Function_UI):
         self.users_table_headers = ['id', 'username', 'password', 'role', 'edit', 'delete']
         GUIBackend.set_table_dim(self.users_table, row=10, col=len(self.users_table_headers))
         GUIBackend.set_table_cheaders(self.users_table, self.users_table_headers)
-        
-        
-        
-
-
 
 
     def table_external_event_connector(self, func):
@@ -187,12 +174,12 @@ class AllUserTabUI(Common_Function_UI):
             #insert buttons into table
             GUIBackend.set_table_cell_widget(self.users_table, (row, info_count), edit_btn)
 
-            if user['id'] != 1:
-                #we shouldn't remove main user
-                GUIBackend.set_table_cell_widget(self.users_table, (row, info_count+1), del_btn)
+            # if user['id'] != 1:
+            #     #we shouldn't remove main user
+            GUIBackend.set_table_cell_widget(self.users_table, (row, info_count+1), del_btn)
 
-
-
+            # if user['id'] == 1:
+            #     GUIBackend.set_disable_enable(del_btn, status=False)
 
 class EditUserTabUI:
 
@@ -317,8 +304,8 @@ class LoginUserUI(Common_Function_UI):
             state (str): flags that determine icon. it could be 'login' or 'logout'
         """
         if state == 'login':
-            GUIBackend.set_button_icon(self.ui.login_logout_btn, IconsPath.LoginIcons.LOGIN_ICON)
+            GUIBackend.set_button_icon(self.ui.login_logout_btn, IconsPath.IconsPath.LOGIN_ICON)
         
         elif state == 'logout':
-            GUIBackend.set_button_icon(self.ui.login_logout_btn, IconsPath.LoginIcons.LOGOUT_ICON)
+            GUIBackend.set_button_icon(self.ui.login_logout_btn, IconsPath.IconsPath.LOGOUT_ICON)
             

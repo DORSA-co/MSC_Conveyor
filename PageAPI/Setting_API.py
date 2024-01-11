@@ -46,12 +46,6 @@ class SettingAPI:
         self.AlgorithmSettingAPI.load_algorithm_settings()
         self.cameraSettingAPI.load_camera_settings()
 
-
-
-
-
-
-
 class CameraSetting_API:
 
     """Description of the code
@@ -189,13 +183,8 @@ class CameraSetting_API:
     #        #max=defect_detection_find_max(img ,470)
     #        #print(a)
     #        self.ui_cam.show_tear_depth(a)
-            
-
-
-
 
 class AlgorithmSetting_API:
-
     def __init__(self, 
                  uiHandeler:AlgorithmSetting_UI, 
                  belt_inspection:beltInspection, 
@@ -214,7 +203,9 @@ class AlgorithmSetting_API:
         self.mapDict = mapDictionary(self.map_items)
 
         self.uiHandeler.setting_change_connector(self.setting_change_event)
+
         self.uiHandeler.button_connector('save', self.save_algorithm_settings)
+
         for combo_name in self.mapDict.get_maps_names():
             items = self.mapDict.get_values(combo_name)
             self.uiHandeler.set_combobox_items(combo_name, items)

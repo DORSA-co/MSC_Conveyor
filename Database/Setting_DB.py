@@ -42,8 +42,8 @@ class settingDB:
 class cameraSettingDB(parentSettingDB):
     TABLE_NAME = "camera_setting"
     TABLE_COLS = [
-        {"col_name": "name",  "type": "VARCHAR", "len": 50},
-        {"col_name": "serial_number",  "type": "VARCHAR", "len": 50},
+        {"col_name": "name",  "type": "VARCHAR(255)", "len": 50},
+        {"col_name": "serial_number",  "type": "VARCHAR(255)", "len": 50},
         {"col_name": "width", "type": "INT"},
         {"col_name": "height", "type": "INT"},
         {"col_name": "exposure", "type": "INT"},
