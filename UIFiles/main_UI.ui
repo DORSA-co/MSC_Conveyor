@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1294</width>
-    <height>785</height>
+    <width>1370</width>
+    <height>807</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -310,17 +310,18 @@ QComboBox:focus{
 }
 
 #save_camera_settings, #save_algorithm_settings{
-	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 #1F2A4D, stop:1 #7E84A2);
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(68, 95, 172, 255), stop:1 rgba(120, 146, 223, 255));
 	color: rgba(255, 255, 255, 210);
-	border-radius: 5px;
-	min-width: 270;
-	max-width: 270;
-	min-height: 40;
-	max-height: 40;
+	border-radius: 22px;
+	min-width: 200;
+	max-width: 200;
+	min-height: 44;
+	max-height: 44;
+	font-size: 14px;
 }
 
 #save_camera_settings:hover, #save_algorithm_settings:hover{
-	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(40, 67, 98, 219), stop:1 #8B92B3);
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(47, 65, 117, 255), stop:1 rgba(77, 93, 142, 255));
 }
 
 #save_camera_settings:pressed, #save_algorithm_settings:pressed{
@@ -831,7 +832,7 @@ QComboBox:focus{
       <item>
        <widget class="QStackedWidget" name="main_stackedWidget">
         <property name="currentIndex">
-         <number>3</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="live_view_page">
          <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -2544,7 +2545,7 @@ border: no</string>
                    </item>
                   </layout>
                  </item>
-                 <item>
+                 <item alignment="Qt::AlignHCenter">
                   <widget class="QPushButton" name="save_camera_settings">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
@@ -2554,7 +2555,7 @@ border: no</string>
                    </property>
                    <property name="font">
                     <font>
-                     <pointsize>12</pointsize>
+                     <pointsize>-1</pointsize>
                      <weight>75</weight>
                      <bold>true</bold>
                     </font>
@@ -3165,19 +3166,19 @@ border: no</string>
                   </property>
                   <property name="minimumSize">
                    <size>
-                    <width>270</width>
-                    <height>40</height>
+                    <width>200</width>
+                    <height>44</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>270</width>
-                    <height>40</height>
+                    <width>200</width>
+                    <height>44</height>
                    </size>
                   </property>
                   <property name="font">
                    <font>
-                    <pointsize>12</pointsize>
+                    <pointsize>-1</pointsize>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
