@@ -33,7 +33,7 @@ QLineEdit {
 	background-color: #F7F8FA;
 	border-radius: 10px;
 	padding-left: 15px;
-	min-height: 25px;
+	min-height: 35px;
 	min-width: 70px;
 	font-size: 16px;
 }
@@ -226,7 +226,7 @@ QComboBox
 	background-color: #F7F8FA;
 	border-radius: 10px;
 	padding-left: 15px;
-	min-height: 25px;
+	min-height: 35px;
 	min-width: 70px;
 	font-size: 16px;
 }
@@ -832,7 +832,7 @@ QComboBox:focus{
       <item>
        <widget class="QStackedWidget" name="main_stackedWidget">
         <property name="currentIndex">
-         <number>1</number>
+         <number>3</number>
         </property>
         <widget class="QWidget" name="live_view_page">
          <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -2714,7 +2714,7 @@ border: no</string>
               <item>
                <widget class="QStackedWidget" name="algorithm_stackedWidget">
                 <property name="currentIndex">
-                 <number>0</number>
+                 <number>1</number>
                 </property>
                 <widget class="QWidget" name="step1">
                  <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="25,75">
@@ -3218,7 +3218,7 @@ border: no</string>
              <string notr="true"/>
             </property>
             <property name="currentIndex">
-             <number>2</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="user_register_tab">
              <attribute name="title">

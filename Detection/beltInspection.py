@@ -60,7 +60,7 @@ class beltInspection:
         self.DefectTracker.check_defects_completion(self.Encoder.line_idx)
 
         image = self.ImageCreator.feed(self.anomaly_pts, 'color_gradient', self.Encoder.step)
-        blure_image = cv2.blur(image, ksize=(5, 5))
+        blure_image = cv2.blur(image, ksize=(3, 3))
         res_image = self.DefectTracker.draw(blure_image.copy(), self.Encoder.line_idx)
 
         # print(time.time() - t)

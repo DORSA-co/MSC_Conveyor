@@ -48,7 +48,7 @@ class Ui_MainWindow(object):
 "	background-color: #F7F8FA;\n"
 "	border-radius: 10px;\n"
 "	padding-left: 15px;\n"
-"	min-height: 25px;\n"
+"	min-height: 35px;\n"
 "	min-width: 70px;\n"
 "	font-size: 16px;\n"
 "}\n"
@@ -245,7 +245,7 @@ class Ui_MainWindow(object):
 "	background-color: #F7F8FA;\n"
 "	border-radius: 10px;\n"
 "	padding-left: 15px;\n"
-"	min-height: 25px;\n"
+"	min-height: 35px;\n"
 "	min-width: 70px;\n"
 "	font-size: 16px;\n"
 "}\n"
@@ -2367,11 +2367,11 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.main_stackedWidget.setCurrentIndex(1)
+        self.main_stackedWidget.setCurrentIndex(3)
         self.tabWidget.setCurrentIndex(0)
         self.settings_tabs.setCurrentIndex(1)
-        self.algorithm_stackedWidget.setCurrentIndex(0)
-        self.user_tabs.setCurrentIndex(2)
+        self.algorithm_stackedWidget.setCurrentIndex(1)
+        self.user_tabs.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
