@@ -22,25 +22,55 @@ class DefectTracker:
             start_idx, end_idx, defect_type = defect_index
             find_defect_flag = False
 
-            depthes_line = error_ys[start_idx:end_idx]
+            updated_defects_id = []
+            for defect_id in range(len(self.non_completed_defects)):
 
-            for non_complete_defect in self.non_completed_defects:
+                non_complete_defect = self.non_completed_defects[defect_id]
+
                 if non_complete_defect.is_part_of(start_idx, end_idx):
                     find_defect_flag = True
-                    non_complete_defect.append_line(start_idx, end_idx, depthes_line, line_idx)
+                    non_complete_defect.append_temp_indices(start_idx, end_idx)
+                    updated_defects_id.append(defect_id)
                 else:
                     if find_defect_flag:
                         break
+
+            #check if multi defects update with same idices merge them    
+            if len(updated_defects_id)>1:
+                merge_defect = None
+                #check from end to start beacuse after delete, other defect id not change
+                updated_defects_id.reverse()
+                for defect_id in updated_defects_id:
+                    merge_defect  = self.non_completed_defects[defect_id] + merge_defect                  
+                    self.non_completed_defects.pop(defect_id)
+                
+                self.non_completed_defects.append(merge_defect)
+            
             
             if not find_defect_flag:
                 new_defect = Defect(
                     start_anomaly_idx=start_idx,
                     end_anomaly_idx=end_idx,
-                    depthes=depthes_line,
+                    depthes=error_ys,
                     start_line_idx=line_idx
                 )
 
                 self.non_completed_defects.append(new_defect)
+
+        # for i in range(len(self.non_completed_defects)):
+        #     d1 = self.non_completed_defects[i]
+        #     for j in range(i+1, len(self.non_completed_defects)):
+        #         d2 = self.non_completed_defects[j]
+        #         if d2.temp_indices.shape[0]:
+        #             defect_start_idx = d2.defect_indices[:, 0].min()
+        #             defect_end_idx = d2.defect_indices[:, 1].max()
+        #             if d1.is_part_of(defect_start_idx, defect_end_idx):
+        #                 print(defect_start_idx, defect_end_idx)
+                
+
+
+        for non_complete_defect in self.non_completed_defects:
+            non_complete_defect.render(error_ys, line_idx=line_idx)
 
     def check_defects_completion(self, line_idx):
         i = 0
@@ -68,3 +98,6 @@ class DefectTracker:
             image = cv2.rectangle(image, pt1, pt2, color=color, thickness=2)
 
         return image
+    
+
+    
