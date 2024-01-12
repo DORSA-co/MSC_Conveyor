@@ -162,7 +162,13 @@ class Defect:
 
         res_defect.temp_indices = np.vstack(( self.temp_indices, other.temp_indices ))
         
-        res_defect.defect_indices = self.defect_indices
+        #---------------------------------------------
+        start_defect_idx = min(self.defect_indices[:,0].min(), other.defect_indices[:,0].min() )
+        end_defect_idx = max(self.defect_indices[:,1].max(), other.defect_indices[:,1].max() )
+        res_defect.defect_indices = np.array([[start_defect_idx, end_defect_idx]])
+        #---------------------------------------------
+
+        
 
         res_defect.depthInfo = self.depthInfo + other.depthInfo
         res_defect.widthInfo = self.widthInfo + other.widthInfo
