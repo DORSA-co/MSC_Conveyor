@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="general_icons">
+    <file>icons/general_icons/eye_off.png</file>
+    <file>icons/general_icons/eye.png</file>
     <file>icons/general_icons/delete_icon.png</file>
     <file>icons/general_icons/delete_icon_hover.png</file>
     <file>icons/general_icons/minus_icon_gray.png</file>

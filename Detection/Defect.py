@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 import numpy as np
+
 
 class numberStatics:
     def __init__(self):
@@ -29,6 +32,17 @@ class numberStatics:
     def update_min(self, values: np.ndarray) -> None:
         self.min = min(self.min, values.min())
 
+    
+    def __add__(self, other:numberStatics):
+        res = numberStatics()
+        res.max = max(self.max, other.max)
+        res.min = min(self.min, other.min)
+        res.count = self.count + other.count
+        res.mean = (self.mean * self.count + other.mean * other.count) / res.count
+        return res
+
+
+
 
 class Defect:
     def __init__(
@@ -44,16 +58,35 @@ class Defect:
 
         self.n_last_defects = n_last_defects
         self.defect_indices = np.array(([[start_anomaly_idx, end_anomaly_idx]]))
+        self.temp_indices = np.array([])
+
         
         self.start_line_idx = start_line_idx
         self.end_line_idx = self.start_line_idx
 
         self.defect_width_boundries = (start_anomaly_idx, end_anomaly_idx)
+        
+        if start_anomaly_idx is not None:
+            self.__append_width_info(start_anomaly_idx, end_anomaly_idx)
+            self.__append_depth_info(depthes[start_anomaly_idx:end_anomaly_idx])
 
-        self.__append_width_info(start_anomaly_idx, end_anomaly_idx)
-        self.__append_depth_info(depthes)
+    
+    def append_temp_indices(self, start_anomaly_idx, end_anomaly_idx):
+        if self.temp_indices.shape[0]:
+            new_row = np.array([[start_anomaly_idx, end_anomaly_idx ]])
+            self.temp_indices = np.append( self.temp_indices, new_row, axis=0 )
+        else:
+            self.temp_indices = np.array(([[start_anomaly_idx, end_anomaly_idx]]))
 
-    def append_line(self, start_anomaly_idx, end_anomaly_idx, depthes, line_idx):
+    def render(self, depthes, line_idx):
+        if not self.temp_indices.shape[0]:
+            return
+        start_anomaly_idx = self.temp_indices[:,0].min()
+        end_anomaly_idx = self.temp_indices[:,1].max()
+        self.temp_indices = np.array([])
+
+        depthes = depthes[start_anomaly_idx:end_anomaly_idx]
+
         self.__append_width_info(start_anomaly_idx, end_anomaly_idx)
         self.__append_depth_info(depthes)
         self.__append_idx(start_anomaly_idx, end_anomaly_idx)
@@ -116,3 +149,34 @@ class Defect:
         distance = min(e1, e2) - max(s1, s2)
 
         return distance
+    
+
+    def __add__(self, other:Defect):
+        if other is None:
+            return self
+        res_defect = Defect(None,None,None,None)
+
+        res_defect.start_line_idx = min(self.start_line_idx, other.start_line_idx)
+        res_defect.end_line_idx = max(self.end_line_idx, other.end_line_idx)
+        res_defect.n_last_defects = max(self.n_last_defects, other.n_last_defects)
+
+        res_defect.temp_indices = np.vstack(( self.temp_indices, other.temp_indices ))
+        
+        #---------------------------------------------
+        start_defect_idx = min(self.defect_indices[:,0].min(), other.defect_indices[:,0].min() )
+        end_defect_idx = max(self.defect_indices[:,1].max(), other.defect_indices[:,1].max() )
+        res_defect.defect_indices = np.array([[start_defect_idx, end_defect_idx]])
+        #---------------------------------------------
+
+        
+
+        res_defect.depthInfo = self.depthInfo + other.depthInfo
+        res_defect.widthInfo = self.widthInfo + other.widthInfo
+        
+        start_width_idx = min(self.defect_width_boundries[0], other.defect_width_boundries[0])
+        end_width_idx = max(self.defect_width_boundries[1], other.defect_width_boundries[1])
+
+        res_defect.defect_width_boundries = (start_width_idx,end_width_idx)
+
+        
+        return res_defect

@@ -86,19 +86,18 @@ border-radius: 20px;
 }
 
 #login_btn{
-	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 #1F2A4D, stop:1 #7E84A2);
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgb(126, 132, 162), stop:1 rgb(31, 42, 77));
 	color: rgba(255, 255, 255, 210);
-	border-radius: 5px;
+	border-radius: 20px;
 }
 
 #login_btn:hover{
-background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(40, 67, 98, 219), stop:1 #8B92B3);
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgb(139, 146, 179), stop:1 rgba(40, 67, 98, 219));
 }
 
 #login_btn:pressed{
-padding-left: 5px;
-padding-top: 5px;
-
+	padding-left: 5px;
+	padding-top: 5px;
 }
 
 #login_error_lbl{

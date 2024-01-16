@@ -27,7 +27,7 @@ class beltInspection:
         self.DefectExtractor = DefectExtractor()
         self.Encoder = Encoder()
         self.DefectTracker = DefectTracker(min_frame_gap=self.Encoder.step*10, min_length=5)
-        self.ImageCreator = ImageCreator((640,1000),
+        self.ImageCreator = ImageCreator((4090,1000),
                                          max_y_errors=10 )
     
     
@@ -42,30 +42,42 @@ class beltInspection:
         # SHOULD BE CHANGED
         self.Encoder.counter()
         # SHOULD BE CHANGED
-
+        t = time.time()
         self.laser_pts = self.LaserScanner.laserExtraction(image,
                                      thresh=self.kwargs['background_thresh'],
-                                      win_size=self.kwargs['conv_window_size'] )
+                                      win_size=self.kwargs['conv_window_size'] ) 
+        # print('laser extraction: ', time.time() - t)
         
         # detect start and stop points
-
+        t = time.time()
         self.anomaly_pts = self.AnomalyDetection.feed(self.laser_pts, 
                                    diff_thresh=self.kwargs['diff_thresh'],
                                    algorithm=self.kwargs['anomaly_algorithm']
         )
+        # print('anomaly detection: ', time.time() - t)
         
+        t = time.time()
         self.defect_indices = self.DefectExtractor.feed(self.anomaly_pts, min_width=self.kwargs['defect_min_width'])
+        # print('defect extractor: ', time.time() - t)
 
+        t = time.time()
         self.DefectTracker.feed(self.defect_indices, self.anomaly_pts[:, 1], self.Encoder.line_idx)
+        # print('defect tracker: ', time.time() - t)
+
+        t = time.time()
         self.DefectTracker.check_defects_completion(self.Encoder.line_idx)
+        # print('check completion: ', time.time() - t)
 
+        t = time.time()
         image = self.ImageCreator.feed(self.anomaly_pts, 'color_gradient', self.Encoder.step)
-        blure_image = cv2.blur(image, ksize=(5, 5))
-        res_image = self.DefectTracker.draw(blure_image.copy(), self.Encoder.line_idx)
+        # print('image creator: ', time.time() - t)
 
-        # print(time.time() - t)
+        t = time.time()
+        # blure_image = cv2.blur(image, ksize=(3, 3))
+        res_image = self.DefectTracker.draw(image.copy(), self.Encoder.line_idx)
+        # print('last draw: ', time.time() - t)
 
-        cv2.imshow('', res_image)
+        # cv2.imshow('', res_image)
 
 if __name__ == "__main__":
     

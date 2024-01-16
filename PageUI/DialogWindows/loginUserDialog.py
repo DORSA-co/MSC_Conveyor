@@ -66,7 +66,7 @@ class loginUserDialog(QDialog):
             GUIBackend.set_button_icon(self.ui.eye_btn, IconsPath.IconsPath.HIDE_PASSWORD)
         else:
             GUIBackend.set_input_password(self.ui.password_input)
-            GUIBackend.set_button_icon(self.ui.eye_btn, IconsPath.IconsPath.SHOW_PASSWORD)
+            GUIBackend.set_button_icon(self.ui.eye_btn, IconsPath.IconsPath.WHITE_SHOW_PASSWORD)
 
     def get_inputs(self):
         username = GUIBackend.get_input(self.ui.username_input)

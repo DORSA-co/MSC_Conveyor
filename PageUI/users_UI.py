@@ -16,7 +16,6 @@ class usersPageUI:
         self.editUserTab = EditUserTabUI(ui)
         self.LoginUser = LoginUserUI(ui)
 
-
 class RegisterUserTabUI(Common_Function_UI):
     
     def __init__(self, ui:Ui_MainWindow) -> None:
@@ -31,13 +30,36 @@ class RegisterUserTabUI(Common_Function_UI):
             'role': self.ui.userpage_user_role_combobox
         }
 
+        self.register_eye_buttons = {
+            'password': self.ui.userpage_password_eye,
+            'password_confirm': self.ui.userpage_confirm_password_eye
+        }
+
+        self.register_eye_flags = {
+            'password': False,
+            'password_confirm': False
+        }
+
         
         #set input type as password to show password as *
         for name in ['password', 'password_confirm']:
             GUIBackend.set_input_password(self.register_users_field[name])
+            self.eye_buttons_connector(name)
         
         self.show_success_msg(None)
         self.reset()
+
+    def eye_buttons_connector(self, name):
+        self.register_eye_buttons[name].clicked.connect(lambda: self.show_hide_password(name))
+
+    def show_hide_password(self, name):
+        self.register_eye_flags[name] = not self.register_eye_flags[name]
+        if self.register_eye_flags[name]:
+            GUIBackend.set_input_normal(self.register_users_field[name])
+            GUIBackend.set_button_icon(self.register_eye_buttons[name], IconsPath.IconsPath.BLACK_HIDE_PASSWORD)
+        else:
+            GUIBackend.set_input_password(self.register_users_field[name])
+            GUIBackend.set_button_icon(self.register_eye_buttons[name], IconsPath.IconsPath.BLACK_SHOW_PASSWORD)
 
     def reset(self):
         """reset ui to default
@@ -56,7 +78,7 @@ class RegisterUserTabUI(Common_Function_UI):
     def register_button_connector(self, func):
         """connect function into register button clicked event
         """
-        GUIBackend.button_connector(self.ui.userspage_add_user_btn, func)
+        GUIBackend.button_connector(self.ui.register_user, func)
     
     def get_register_fields(self)-> dict:
         """returns register fields in dictionary type
@@ -97,18 +119,18 @@ class RegisterUserTabUI(Common_Function_UI):
             txt (str): error message
         """
         if txt is None:
-            GUIBackend.set_wgt_visible(self.ui.userspage_register_error_lbl, False)
+            GUIBackend.set_wgt_visible(self.ui.register_message_label, False)
         else:
-            GUIBackend.set_wgt_visible(self.ui.userspage_register_error_lbl, True)
-            GUIBackend.set_label_text( self.ui.userspage_register_error_lbl, txt)
+            GUIBackend.set_wgt_visible(self.ui.register_message_label, True)
+            GUIBackend.set_label_text( self.ui.register_message_label, txt)
 
     def show_success_msg(self, txt):
         if txt is None:
-            GUIBackend.set_wgt_visible( self.ui.userspage_editprofile_success_frame , False)
+            GUIBackend.set_wgt_visible( self.ui.register_message_label , False)
     
         else:
-            GUIBackend.set_wgt_visible( self.ui.userspage_editprofile_success_frame , True)
-            GUIBackend.set_label_text( self.ui.userspage_editprofile_success_lbl, txt)
+            GUIBackend.set_wgt_visible( self.ui.register_message_label , True)
+            GUIBackend.set_label_text( self.ui.register_message_label, txt)
             GUIComponents.single_timer_runner(3000, lambda: self.show_success_msg(None) )
 
 class AllUserTabUI(Common_Function_UI):
@@ -178,8 +200,8 @@ class AllUserTabUI(Common_Function_UI):
             #     #we shouldn't remove main user
             GUIBackend.set_table_cell_widget(self.users_table, (row, info_count+1), del_btn)
 
-            # if user['id'] == 1:
-            #     GUIBackend.set_disable_enable(del_btn, status=False)
+            if user['id'] == 1:
+                GUIBackend.set_disable_enable(del_btn, status=False)
 
 class EditUserTabUI:
 
@@ -187,14 +209,13 @@ class EditUserTabUI:
         self.ui = ui
 
         self.buttons = {
-            'update_profile': self.ui.userpage_editprofile_update_btn,
-            'cancel_edit': self.ui.userpage_editprofile_cancel_btn,
+            'change_username': self.ui.userpage_editprofile_change_username_btn,
             'change_password': self.ui.userpage_editprofile_change_password_btn
         }
 
-        self.error_labels = {
-            'change_password':self.ui.changepass_error_lbl,
-            'update_profile':self.ui.editprofile_error_lbl
+        self.message_labels = {
+            'change_password':self.ui.change_password_message_label,
+            'change_username':self.ui.change_username_message_label
         }
 
         self.change_password_fields = {
@@ -203,24 +224,50 @@ class EditUserTabUI:
             'confirm_new_password': self.ui.userpage_editprofile_confirm_new_password_inpt,
         }
 
+        self.change_password_eye_buttons = {
+            'old_password': self.ui.userpage_editprofile_old_password_eye,
+            'new_password': self.ui.userpage_editprofile_new_password_eye,
+            'confirm_new_password': self.ui.userpage_editprofile_confirm_new_password_eye,
+        }
+
+        self.change_password_eye_flags = {
+            'old_password': False,
+            'new_password': False,
+            'confirm_new_password': False,
+        }
+
         self.edit_profile_fields = {
             'username': self.ui.userpage_editprofile_username_inpt,
+            'new_username': self.ui.userpage_editprofile_new_username_inpt,
         }
 
         
         for name in ['old_password', 'new_password', 'confirm_new_password']:
             GUIBackend.set_input_password(self.change_password_fields[name])
+            self.eye_buttons_connector(name)
         
 
-        self.write_error('update_profile',None)
-        self.write_error('change_password',None)
-        self.show_success_msg(None)
+        self.write_error('change_username', None)
+        self.write_error('change_password', None)
+        self.show_success_msg('change_username', None)
+        self.show_success_msg('change_password', None)
 
 
     def button_connector(self, name, func):
         GUIBackend.button_connector(self.buttons[name], func)
 
-    
+    def eye_buttons_connector(self, name):
+        self.change_password_eye_buttons[name].clicked.connect(lambda: self.show_hide_password(name))
+
+    def show_hide_password(self, name):
+        self.change_password_eye_flags[name] = not self.change_password_eye_flags[name]
+        if self.change_password_eye_flags[name]:
+            GUIBackend.set_input_normal(self.change_password_fields[name])
+            GUIBackend.set_button_icon(self.change_password_eye_buttons[name], IconsPath.IconsPath.BLACK_HIDE_PASSWORD)
+        else:
+            GUIBackend.set_input_password(self.change_password_fields[name])
+            GUIBackend.set_button_icon(self.change_password_eye_buttons[name], IconsPath.IconsPath.BLACK_SHOW_PASSWORD)
+
     def get_change_password_fields(self,):
         data = {}
         for name, filed in self.change_password_fields.items():
@@ -237,17 +284,16 @@ class EditUserTabUI:
         for name, field in self.edit_profile_fields.items():
             data[name] = GUIBackend.get_input(field)
         
-        data['username'] = data['username'].lower() 
+        data['username'] = data['new_username'].lower()
+        data.pop('new_username')
         return data
 
 
     def set_edit_profile_fields(self, data:dict):
         for name, field in self.edit_profile_fields.items():
             GUIBackend.set_input(field, data.get(name, ""))
-    
-    
 
-    def write_error(self,name, txt:str):
+    def write_error(self, name:str, txt:str):
         """Write Errors message in change password
 
         Args:
@@ -255,20 +301,20 @@ class EditUserTabUI:
         """
         
         if txt is None:
-            GUIBackend.set_wgt_visible(self.error_labels[name], False)
+            GUIBackend.set_wgt_visible(self.message_labels[name], False)
         else:
-            GUIBackend.set_wgt_visible(self.error_labels[name], True)
-            GUIBackend.set_label_text(self.error_labels[name], txt)
+            GUIBackend.set_wgt_visible(self.message_labels[name], True)
+            GUIBackend.set_label_text(self.message_labels[name], txt)
             GUIComponents.single_timer_runner(3000, lambda: self.write_error(name,None) )
 
-    def show_success_msg(self, txt):
+    def show_success_msg(self, name: str, txt:str):
         if txt is None:
-            GUIBackend.set_wgt_visible( self.ui.userspage_editprofile_success_frame , False)
+            GUIBackend.set_wgt_visible( self.message_labels[name] , False)
     
         else:
-            GUIBackend.set_wgt_visible( self.ui.userspage_editprofile_success_frame , True)
-            GUIBackend.set_label_text( self.ui.userspage_editprofile_success_lbl, txt)
-            GUIComponents.single_timer_runner(3000, lambda: self.show_success_msg(None) )
+            GUIBackend.set_wgt_visible( self.message_labels[name] , True)
+            GUIBackend.set_label_text( self.message_labels[name], txt)
+            GUIComponents.single_timer_runner(3000, lambda: self.show_success_msg(name, None) )
 
 class LoginUserUI(Common_Function_UI):
     

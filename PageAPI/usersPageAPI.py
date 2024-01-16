@@ -60,11 +60,6 @@ class usersPageAPI:
         self.allUser.load_users()
 
 
-
-
-
-
-
 class RegisterUserTabAPI:
 
     def __init__(self, ui:RegisterUserTabUI ,database: usersDB, data_passer: dataPasser):
@@ -112,9 +107,6 @@ class RegisterUserTabAPI:
 
     def set_register_event(self, func):
         self.register_event_func = func
-
-    
-
 
 
 class AllUserTabAPI:
@@ -201,9 +193,8 @@ class EditUserTabAPI:
         self.user = {}
         self.user_edit_event_func = None
 
-        self.uiHandeler.button_connector('update_profile', self.update_profile)
+        self.uiHandeler.button_connector('change_username', self.change_username)
         self.uiHandeler.button_connector('change_password', self.change_password)
-        self.uiHandeler.button_connector('cancel_edit',self.refresh)
 
 
     def set_user_edit_event_func(self, func):
@@ -212,25 +203,25 @@ class EditUserTabAPI:
     def refresh(self,):
         self.uiHandeler.set_edit_profile_fields(self.data_passer.logined_user)
 
-    def update_profile(self):
+    def change_username(self):
         login_flag = self.data_passer.login_flag
         logined_user = self.data_passer.logined_user
 
         if not login_flag:
-            self.uiHandeler.write_error('update_profile',
+            self.uiHandeler.write_error('change_username',
                                         "Please login first")
             return
 
         new_info = self.uiHandeler.get_edit_profile_fields()
 
         if len(new_info['username']) < Constant.User.MIN_USERNAME_LENGHT:
-            self.uiHandeler.write_error('update_profile',
+            self.uiHandeler.write_error('change_username',
                                         f"Username should be at least {Constant.User.MIN_USERNAME_LENGHT} character!")
             return
 
         if new_info['username'] != logined_user['username']:
             if self.database.is_exist(new_info['username']):
-                self.uiHandeler.write_error('update_profile',
+                self.uiHandeler.write_error('change_username',
                                             "This Username is already exist!")
                 return 
             
@@ -243,9 +234,10 @@ class EditUserTabAPI:
         #save new logined user information into database
         self.database.update(logined_user)
         
-        self.uiHandeler.show_success_msg("User Information Updated")
+        self.uiHandeler.show_success_msg("change_username", "User Information Updated")
         if self.user_edit_event_func is not None:
             self.user_edit_event_func()
+        self.refresh()
     
 
     def change_password(self):
@@ -279,17 +271,13 @@ class EditUserTabAPI:
         self.data_passer.logined_user['password'] = hashed_new_password
         self.database.save(self.data_passer.logined_user)
         
-        self.uiHandeler.write_error('change_password',None)
+        self.uiHandeler.write_error('change_password', None)
         self.uiHandeler.clear_change_password_fields()
-        self.uiHandeler.show_success_msg("password changed")
+        self.uiHandeler.show_success_msg("change_password", "password changed")
 
         if self.user_edit_event_func is not None:
             self.user_edit_event_func()
 
-        
-        
-
-        
 
 
 

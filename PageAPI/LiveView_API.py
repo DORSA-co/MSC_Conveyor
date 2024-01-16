@@ -10,7 +10,7 @@ from backend.Camera.dorsaPylon import Collector, Camera
 from backend.Camera import dorsaPylon
 
 
-Blank_img = np.zeros((640,480),dtype='uint8')
+Blank_img = np.zeros((4090,200),dtype='uint8')
 
 class LiveView_API:
 

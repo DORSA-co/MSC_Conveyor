@@ -18,7 +18,7 @@ from uiUtils.guiBackend import GUIBackend
 from uiUtils.GUIComponents import SIDEBAR_BUTTON_SELECTED_STYLE, SIDEBAR_BUTTON_UNSELECTED_STYLE
 from Constants import Constant
 from Constants import IconsPath
-
+from uiUtils.uiStyler import Styler
 
 class mainUI(QMainWindow):
 
@@ -34,6 +34,9 @@ class mainUI(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.setWindowFlags(QtCore.Qt.WindowFlags(QtCore.Qt.FramelessWindowHint))
+
+        uiStyler = Styler(self.ui)
+        uiStyler.render()
 
         self.Page_LiveView = LiveView_UI(self.ui)
         # self.Page_Report = Report_UI(self.ui)

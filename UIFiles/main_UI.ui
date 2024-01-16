@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1294</width>
-    <height>785</height>
+    <width>1370</width>
+    <height>827</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -33,7 +33,7 @@ QLineEdit {
 	background-color: #F7F8FA;
 	border-radius: 10px;
 	padding-left: 15px;
-	min-height: 25px;
+	min-height: 35px;
 	min-width: 70px;
 	font-size: 16px;
 }
@@ -226,7 +226,7 @@ QComboBox
 	background-color: #F7F8FA;
 	border-radius: 10px;
 	padding-left: 15px;
-	min-height: 25px;
+	min-height: 35px;
 	min-width: 70px;
 	font-size: 16px;
 }
@@ -300,30 +300,41 @@ QComboBox:focus{
 	background-color: #E0E4EC;
 }
 
-#camera_tab .QFrame, #algorithm_stackedWidget .QFrame{
+#camera_tab .QFrame, #algorithm_stackedWidget .QFrame, #user_register_tab .QFrame, #user_profile_tab .QFrame{
 	background-color: #F7F8FA;
 	border:1px solid #D7D7D9;
+}
+
+#camera_settings_frame .QLabel, #register_info_frame .QLabel,
+#profile_change_username_frame .QLabel,
+#profile_change_password_frame .QLabel
+{
+	font-weight: bold;
+	font-size: 15px;
 }
 
 #connect_camera_switch::indicator{
 	border: None;
 }
 
-#save_camera_settings, #save_algorithm_settings{
-	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 #1F2A4D, stop:1 #7E84A2);
+#save_camera_settings, #save_algorithm_settings, #register_user
+{
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));
 	color: rgba(255, 255, 255, 210);
-	border-radius: 5px;
-	min-width: 270;
-	max-width: 270;
-	min-height: 40;
-	max-height: 40;
+	border-radius: 22px;
+	min-width: 200;
+	max-width: 200;
+	min-height: 44;
+	max-height: 44;
+	font-size: 14px;
+	font-weight: bold;
 }
 
-#save_camera_settings:hover, #save_algorithm_settings:hover{
-	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(40, 67, 98, 219), stop:1 #8B92B3);
+#save_camera_settings:hover, #save_algorithm_settings:hover, #register_user:hover{
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));
 }
 
-#save_camera_settings:pressed, #save_algorithm_settings:pressed{
+#save_camera_settings:pressed, #save_algorithm_settings:pressed, #register_user:pressed {
 	padding-left: 5px;
 	padding-top: 5px;
 }
@@ -370,7 +381,70 @@ QComboBox:focus{
 	font-size: 20px;
 	color: #4C7EFF;
 	min-height: 70px;
-}</string>
+}
+
+#profile_change_username_label, #profile_change_password_label{
+	font-weight: bold;
+	font-size: 20px;
+	color: #4C7EFF;
+}
+
+#userpage_editprofile_change_username_btn,
+#userpage_editprofile_change_password_btn
+{
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));
+	color: rgba(255, 255, 255, 210);
+	border-radius: 15px;
+	min-width: 150;
+	max-width: 150;
+	min-height: 30;
+	max-height: 30;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#userpage_editprofile_change_username_btn:hover,
+#userpage_editprofile_change_password_btn:hover
+{
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));
+}
+
+#userpage_editprofile_change_username_btn:pressed 
+#userpage_editprofile_change_password_btn:pressed
+{
+	padding-left: 5px;
+	padding-top: 5px;
+}
+
+#userpage_password_eye,
+#userpage_confirm_password_eye,
+#userpage_editprofile_old_password_eye,
+#userpage_editprofile_new_password_eye,
+#userpage_editprofile_confirm_new_password_eye
+{
+	border: 0px;
+	background-color: rgba(0,0,0,0);
+	border:1px solid #E0E4EC;
+	background-color: #F7F8FA;
+	border-radius: 10px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border-left: None;
+	padding-right: 3px;
+}
+
+#userpage_password_inpt,
+#userpage_confirm_password_inpt,
+#userpage_editprofile_old_password_inpt,
+#userpage_editprofile_new_password_inpt,
+#userpage_editprofile_confirm_new_password_inpt
+{
+	border-right: None;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+</string>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
     <property name="spacing">
@@ -2210,7 +2284,7 @@ border: no</string>
           <item>
            <widget class="QTabWidget" name="settings_tabs">
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="camera_tab">
              <attribute name="title">
@@ -2256,6 +2330,7 @@ border: no</string>
                      </property>
                      <property name="font">
                       <font>
+                       <pointsize>-1</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -2291,6 +2366,7 @@ border: no</string>
                      </property>
                      <property name="font">
                       <font>
+                       <pointsize>-1</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -2327,6 +2403,7 @@ border: no</string>
                     <widget class="QLabel" name="camera_settings_camera_label">
                      <property name="font">
                       <font>
+                       <pointsize>-1</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -2350,6 +2427,7 @@ border: no</string>
                     <widget class="QLabel" name="camera_settings_serial_label">
                      <property name="font">
                       <font>
+                       <pointsize>-1</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -2373,6 +2451,7 @@ border: no</string>
                     <widget class="QLabel" name="camera_settings_gain_label">
                      <property name="font">
                       <font>
+                       <pointsize>-1</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -2403,6 +2482,7 @@ border: no</string>
                     <widget class="QLabel" name="camera_settings_width_label">
                      <property name="font">
                       <font>
+                       <pointsize>-1</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -2433,6 +2513,7 @@ border: no</string>
                     <widget class="QLabel" name="camera_settings_height_label">
                      <property name="font">
                       <font>
+                       <pointsize>-1</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -2463,6 +2544,7 @@ border: no</string>
                     <widget class="QLabel" name="camera_settings_exposure_label">
                      <property name="font">
                       <font>
+                       <pointsize>-1</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -2493,6 +2575,7 @@ border: no</string>
                     <widget class="QLabel" name="camera_settings_offsetx_label">
                      <property name="font">
                       <font>
+                       <pointsize>-1</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -2523,6 +2606,7 @@ border: no</string>
                     <widget class="QLabel" name="camera_settings_offsety_label">
                      <property name="font">
                       <font>
+                       <pointsize>-1</pointsize>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -2544,7 +2628,7 @@ border: no</string>
                    </item>
                   </layout>
                  </item>
-                 <item>
+                 <item alignment="Qt::AlignHCenter">
                   <widget class="QPushButton" name="save_camera_settings">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
@@ -2554,7 +2638,7 @@ border: no</string>
                    </property>
                    <property name="font">
                     <font>
-                     <pointsize>12</pointsize>
+                     <pointsize>-1</pointsize>
                      <weight>75</weight>
                      <bold>true</bold>
                     </font>
@@ -2674,6 +2758,9 @@ border: no</string>
                    </property>
                    <property name="cursor">
                     <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
                    </property>
                    <property name="text">
                     <string>2</string>
@@ -3165,22 +3252,25 @@ border: no</string>
                   </property>
                   <property name="minimumSize">
                    <size>
-                    <width>270</width>
-                    <height>40</height>
+                    <width>200</width>
+                    <height>44</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>270</width>
-                    <height>40</height>
+                    <width>200</width>
+                    <height>44</height>
                    </size>
                   </property>
                   <property name="font">
                    <font>
-                    <pointsize>12</pointsize>
+                    <pointsize>-1</pointsize>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
                   </property>
                   <property name="text">
                    <string>Save Prameters</string>
@@ -3225,143 +3315,175 @@ border: no</string>
              </attribute>
              <layout class="QVBoxLayout" name="verticalLayout_41">
               <item>
-               <widget class="QFrame" name="gridFrame_2">
-                <property name="styleSheet">
-                 <string notr="true">QLabel{
-	font-size: 16px;
-	color: rgb(52, 52, 52);
-	padding-right: 20px;
-	
-}
-
-
-QLineEdit
-{
-	max-width: 300px;
-
-}</string>
+               <widget class="QFrame" name="register_info_frame">
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
                 </property>
-                <layout class="QGridLayout" name="gridLayout_9">
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_30">
                  <property name="spacing">
-                  <number>3</number>
+                  <number>20</number>
                  </property>
-                 <item row="6" column="1">
-                  <widget class="QComboBox" name="userpage_user_role_combobox">
+                 <property name="leftMargin">
+                  <number>20</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>20</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>20</number>
+                 </property>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_19">
+                   <property name="spacing">
+                    <number>6</number>
+                   </property>
                    <item>
-                    <property name="text">
-                     <string>admin</string>
-                    </property>
+                    <widget class="QLabel" name="register_username_label">
+                     <property name="text">
+                      <string>Username</string>
+                     </property>
+                    </widget>
                    </item>
+                   <item>
+                    <widget class="QLineEdit" name="userpage_username_inpt"/>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_25">
+                   <property name="spacing">
+                    <number>6</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="register_password_label">
+                     <property name="text">
+                      <string>Password</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_21">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLineEdit" name="userpage_password_inpt"/>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="userpage_password_eye">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="assets/assets.qrc">
+                         <normaloff>:/general_icons/icons/general_icons/eye.png</normaloff>:/general_icons/icons/general_icons/eye.png</iconset>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_26">
+                   <property name="spacing">
+                    <number>6</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="register_confirm_password_label">
+                     <property name="text">
+                      <string>Confirm Password</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_22">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLineEdit" name="userpage_confirm_password_inpt">
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="userpage_confirm_password_eye">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="assets/assets.qrc">
+                         <normaloff>:/general_icons/icons/general_icons/eye.png</normaloff>:/general_icons/icons/general_icons/eye.png</iconset>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_27">
+                   <property name="spacing">
+                    <number>6</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="register_user_role_label">
+                     <property name="text">
+                      <string>User Role</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QComboBox" name="userpage_user_role_combobox"/>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="register_message_label">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
                   </widget>
                  </item>
-                 <item row="5" column="0">
-                  <spacer name="verticalSpacer_15">
+                 <item>
+                  <spacer name="verticalSpacer_5">
                    <property name="orientation">
                     <enum>Qt::Vertical</enum>
-                   </property>
-                   <property name="sizeType">
-                    <enum>QSizePolicy::Maximum</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>20</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item row="2" column="1">
-                  <widget class="QLineEdit" name="userpage_password_inpt"/>
-                 </item>
-                 <item row="0" column="1">
-                  <widget class="QLineEdit" name="userpage_username_inpt"/>
-                 </item>
-                 <item row="6" column="0">
-                  <widget class="QLabel" name="label_62">
-                   <property name="text">
-                    <string>User Role:</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="0">
-                  <widget class="QLabel" name="label_64">
-                   <property name="text">
-                    <string>Username:</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="4" column="1">
-                  <widget class="QLineEdit" name="userpage_confirm_password_inpt">
-                   <property name="styleSheet">
-                    <string notr="true"/>
-                   </property>
-                   <property name="placeholderText">
-                    <string>confirm password</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="0">
-                  <widget class="QLabel" name="label_65">
-                   <property name="text">
-                    <string>Password:</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="0" column="2">
-                  <spacer name="horizontalSpacer_23">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item row="3" column="0">
-                  <spacer name="verticalSpacer_13">
-                   <property name="orientation">
-                    <enum>Qt::Vertical</enum>
-                   </property>
-                   <property name="sizeType">
-                    <enum>QSizePolicy::Maximum</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>20</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item row="4" column="0">
-                  <widget class="QLabel" name="label_66">
-                   <property name="text">
-                    <string>Pasword Confirm:</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="7" column="0">
-                  <spacer name="verticalSpacer_16">
-                   <property name="orientation">
-                    <enum>Qt::Vertical</enum>
-                   </property>
-                   <property name="sizeType">
-                    <enum>QSizePolicy::Maximum</enum>
                    </property>
                    <property name="sizeHint" stdset="0">
                     <size>
@@ -3371,163 +3493,29 @@ QLineEdit
                    </property>
                   </spacer>
                  </item>
-                 <item row="1" column="0">
-                  <spacer name="verticalSpacer_18">
-                   <property name="orientation">
-                    <enum>Qt::Vertical</enum>
-                   </property>
-                   <property name="sizeType">
-                    <enum>QSizePolicy::Maximum</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>20</width>
-                     <height>15</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item row="8" column="1">
-                  <widget class="QPushButton" name="userspage_add_user_btn">
-                   <property name="styleSheet">
-                    <string notr="true">max-width: 120px;</string>
-                   </property>
-                   <property name="text">
-                    <string>Register</string>
-                   </property>
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>:/assets/Assets/icons/icons8-plus-white-50.png</normaloff>:/assets/Assets/icons/icons8-plus-white-50.png</iconset>
-                   </property>
-                  </widget>
-                 </item>
                 </layout>
                </widget>
               </item>
               <item>
-               <spacer name="verticalSpacer_21">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeType">
-                 <enum>QSizePolicy::Maximum</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>15</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QLabel" name="userspage_register_error_lbl">
-                <property name="minimumSize">
-                 <size>
-                  <width>310</width>
-                  <height>35</height>
-                 </size>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">font-size: 16px;
-font-weight: bold;
-color: #ffffff;
-background-color: rgb(255, 95, 84);
-padding:5px;
-
-min-width: 300px;
-max-width: 16777px;
-</string>
-                </property>
-                <property name="text">
-                 <string>Username exist</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QFrame" name="userspage_register_success_frame">
-                <property name="styleSheet">
-                 <string notr="true">QFrame{
-background-color: rgb(58, 209, 154);
-}</string>
-                </property>
-                <property name="frameShape">
-                 <enum>QFrame::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_39">
-                 <item>
-                  <widget class="QLabel" name="label_88">
-                   <property name="maximumSize">
-                    <size>
-                     <width>50</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                   <property name="pixmap">
-                    <pixmap>:/assets/icons/icons8-check-150.png</pixmap>
-                   </property>
-                   <property name="scaledContents">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="userspage_register_success_lbl">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">font-size: 16px;
-font-weight: bold;
-color: #ffffff;
-
-</string>
-                   </property>
-                   <property name="text">
-                    <string>Success</string>
-                   </property>
-                   <property name="scaledContents">
-                    <bool>false</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <spacer name="horizontalSpacer_70">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <spacer name="verticalSpacer_19">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>40</height>
-                 </size>
-                </property>
-               </spacer>
+               <layout class="QHBoxLayout" name="horizontalLayout_16">
+                <item>
+                 <widget class="QPushButton" name="register_user">
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
+                  <property name="text">
+                   <string>Register</string>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>:/assets/Assets/icons/icons8-plus-white-50.png</normaloff>:/assets/Assets/icons/icons8-plus-white-50.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
              </layout>
             </widget>
@@ -3535,403 +3523,395 @@ color: #ffffff;
              <attribute name="title">
               <string>Edit Profile</string>
              </attribute>
-             <layout class="QVBoxLayout" name="verticalLayout_42">
+             <layout class="QHBoxLayout" name="horizontalLayout_20">
               <item>
-               <widget class="QGroupBox" name="userpage_editprofile_edit_profile_groupbox">
-                <property name="styleSheet">
-                 <string notr="true">QLabel{
-	font-size: 16px;
-	color: rgb(52, 52, 52);
-	padding-right: 20px;
-	
-}
-
-
-QLineEdit
-{
-	max-width: 300px;
-
-}</string>
+               <layout class="QVBoxLayout" name="verticalLayout_52">
+                <property name="spacing">
+                 <number>0</number>
                 </property>
-                <property name="title">
-                 <string>Edit Profile</string>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_40">
-                 <property name="leftMargin">
-                  <number>50</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>50</number>
-                 </property>
-                 <item>
-                  <layout class="QVBoxLayout" name="verticalLayout_43">
+                <item>
+                 <widget class="QFrame" name="profile_change_username_title_frame">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_53">
+                   <item>
+                    <widget class="QLabel" name="profile_change_username_label">
+                     <property name="font">
+                      <font>
+                       <pointsize>-1</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true"/>
+                     </property>
+                     <property name="text">
+                      <string>Change Username</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="profile_change_username_frame">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_54">
+                   <property name="spacing">
+                    <number>20</number>
+                   </property>
                    <property name="leftMargin">
-                    <number>0</number>
+                    <number>20</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>20</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>20</number>
                    </property>
                    <item>
-                    <layout class="QGridLayout" name="gridLayout_18">
-                     <property name="verticalSpacing">
-                      <number>25</number>
+                    <layout class="QVBoxLayout" name="verticalLayout_46">
+                     <property name="spacing">
+                      <number>6</number>
                      </property>
-                     <item row="0" column="1">
-                      <widget class="QLineEdit" name="userpage_editprofile_username_inpt"/>
-                     </item>
-                     <item row="0" column="0">
-                      <widget class="QLabel" name="label_79">
+                     <item>
+                      <widget class="QLabel" name="profile_old_username_label">
+                       <property name="layoutDirection">
+                        <enum>Qt::LeftToRight</enum>
+                       </property>
                        <property name="text">
-                        <string>Username:</string>
+                        <string>Old Username</string>
                        </property>
                        <property name="alignment">
-                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                        </property>
                       </widget>
                      </item>
-                     <item row="0" column="2">
-                      <spacer name="horizontalSpacer_39">
-                       <property name="orientation">
-                        <enum>Qt::Horizontal</enum>
+                     <item>
+                      <widget class="QLineEdit" name="userpage_editprofile_username_inpt">
+                       <property name="enabled">
+                        <bool>false</bool>
                        </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>40</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                      </spacer>
+                      </widget>
                      </item>
                     </layout>
                    </item>
                    <item>
-                    <widget class="QLabel" name="editprofile_error_lbl">
-                     <property name="styleSheet">
-                      <string notr="true">font-size: 16px;
-font-weight: bold;
-color: #ffffff;
-background-color: rgb(255, 95, 84);
-padding:5px;
-
-min-width: 100px;
-max-width: 16777px;
-max-height: 30px;
-</string>
+                    <layout class="QVBoxLayout" name="verticalLayout_42">
+                     <property name="spacing">
+                      <number>6</number>
                      </property>
-                     <property name="text">
-                      <string>Username exist</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QFrame" name="horizontalFrame_7">
-                     <property name="styleSheet">
-                      <string notr="true">QPushButton {
-max-width: 120px;
-}</string>
-                     </property>
-                     <layout class="QHBoxLayout" name="horizontalLayout_41">
-                      <property name="topMargin">
-                       <number>30</number>
-                      </property>
-                      <item>
-                       <widget class="QPushButton" name="userpage_editprofile_update_btn">
-                        <property name="minimumSize">
-                         <size>
-                          <width>150</width>
-                          <height>0</height>
-                         </size>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>122</width>
-                          <height>16777215</height>
-                         </size>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true"/>
-                        </property>
-                        <property name="text">
-                         <string>Update Profile</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QPushButton" name="userpage_editprofile_cancel_btn">
-                        <property name="text">
-                         <string>Cancel</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <spacer name="horizontalSpacer_69">
-                        <property name="orientation">
-                         <enum>Qt::Horizontal</enum>
-                        </property>
-                        <property name="sizeHint" stdset="0">
-                         <size>
-                          <width>40</width>
-                          <height>20</height>
-                         </size>
-                        </property>
-                       </spacer>
-                      </item>
-                     </layout>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <spacer name="verticalSpacer_35">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeType">
-                 <enum>QSizePolicy::Maximum</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>40</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QGroupBox" name="userpage_editprofile_change_pass_groupbox">
-                <property name="styleSheet">
-                 <string notr="true">QLabel{
-	font-size: 16px;
-	color: rgb(52, 52, 52);
-	padding-right: 20px;
-	
-}
-
-
-QLineEdit
-{
-	max-width: 300px;
-
-}</string>
-                </property>
-                <property name="title">
-                 <string>Change Password</string>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_43">
-                 <property name="leftMargin">
-                  <number>50</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>50</number>
-                 </property>
-                 <item>
-                  <layout class="QVBoxLayout" name="verticalLayout_44">
-                   <property name="leftMargin">
-                    <number>0</number>
-                   </property>
-                   <item>
-                    <layout class="QGridLayout" name="gridLayout_22">
-                     <property name="verticalSpacing">
-                      <number>30</number>
-                     </property>
-                     <item row="0" column="0">
-                      <widget class="QLabel" name="label_80">
+                     <item>
+                      <widget class="QLabel" name="profile_username_label">
+                       <property name="layoutDirection">
+                        <enum>Qt::LeftToRight</enum>
+                       </property>
                        <property name="text">
-                        <string>Password:</string>
+                        <string>New Username</string>
                        </property>
                        <property name="alignment">
-                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                        </property>
                       </widget>
                      </item>
-                     <item row="1" column="0">
-                      <widget class="QLabel" name="label_81">
+                     <item>
+                      <widget class="QLineEdit" name="userpage_editprofile_new_username_inpt"/>
+                     </item>
+                    </layout>
+                   </item>
+                   <item alignment="Qt::AlignHCenter">
+                    <widget class="QPushButton" name="userpage_editprofile_change_username_btn">
+                     <property name="minimumSize">
+                      <size>
+                       <width>150</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>150</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true"/>
+                     </property>
+                     <property name="text">
+                      <string>Change Username</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="change_username_message_label">
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="verticalSpacer_7">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_50">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QFrame" name="profile_change_password_title_frame">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_44">
+                   <item>
+                    <widget class="QLabel" name="profile_change_password_label">
+                     <property name="styleSheet">
+                      <string notr="true"/>
+                     </property>
+                     <property name="text">
+                      <string>Change Password</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QFrame" name="profile_change_password_frame">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_51">
+                   <property name="spacing">
+                    <number>20</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>20</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>20</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>20</number>
+                   </property>
+                   <item>
+                    <layout class="QVBoxLayout" name="verticalLayout_43">
+                     <property name="spacing">
+                      <number>6</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="profile_password_label">
+                       <property name="text">
+                        <string>Password</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_17">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QLineEdit" name="userpage_editprofile_old_password_inpt">
+                         <property name="styleSheet">
+                          <string notr="true"/>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="userpage_editprofile_old_password_eye">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true"/>
+                         </property>
+                         <property name="text">
+                          <string/>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="assets/assets.qrc">
+                           <normaloff>:/general_icons/icons/general_icons/eye.png</normaloff>:/general_icons/icons/general_icons/eye.png</iconset>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QVBoxLayout" name="verticalLayout_47">
+                     <property name="spacing">
+                      <number>6</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="profile_new_password_label">
                        <property name="text">
                         <string>New Password</string>
                        </property>
-                       <property name="alignment">
-                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                       </property>
                       </widget>
                      </item>
-                     <item row="2" column="1">
-                      <widget class="QLineEdit" name="userpage_editprofile_confirm_new_password_inpt"/>
-                     </item>
-                     <item row="0" column="1">
-                      <widget class="QLineEdit" name="userpage_editprofile_old_password_inpt"/>
-                     </item>
-                     <item row="2" column="0">
-                      <widget class="QLabel" name="label_86">
-                       <property name="text">
-                        <string>Confirm New Password</string>
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_18">
+                       <property name="spacing">
+                        <number>0</number>
                        </property>
-                       <property name="alignment">
-                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="1" column="1">
-                      <widget class="QLineEdit" name="userpage_editprofile_new_password_inpt"/>
-                     </item>
-                     <item row="0" column="2">
-                      <spacer name="horizontalSpacer_73">
-                       <property name="orientation">
-                        <enum>Qt::Horizontal</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>40</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                      </spacer>
+                       <item>
+                        <widget class="QLineEdit" name="userpage_editprofile_new_password_inpt"/>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="userpage_editprofile_new_password_eye">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
+                         <property name="text">
+                          <string/>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="assets/assets.qrc">
+                           <normaloff>:/general_icons/icons/general_icons/eye.png</normaloff>:/general_icons/icons/general_icons/eye.png</iconset>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
                      </item>
                     </layout>
                    </item>
                    <item>
-                    <widget class="QLabel" name="changepass_error_lbl">
+                    <layout class="QVBoxLayout" name="verticalLayout_49">
+                     <property name="spacing">
+                      <number>6</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="profile_confirm_password_label">
+                       <property name="text">
+                        <string>Confirm New Password</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_19">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <item>
+                        <widget class="QLineEdit" name="userpage_editprofile_confirm_new_password_inpt"/>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="userpage_editprofile_confirm_new_password_eye">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
+                         <property name="text">
+                          <string/>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="assets/assets.qrc">
+                           <normaloff>:/general_icons/icons/general_icons/eye.png</normaloff>:/general_icons/icons/general_icons/eye.png</iconset>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </item>
+                   <item alignment="Qt::AlignHCenter">
+                    <widget class="QPushButton" name="userpage_editprofile_change_password_btn">
+                     <property name="maximumSize">
+                      <size>
+                       <width>120</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
                      <property name="styleSheet">
-                      <string notr="true">font-size: 16px;
-font-weight: bold;
-color: #ffffff;
-background-color: rgb(255, 95, 84);
-padding:5px;
-
-min-width: 300px;
-max-width: 16777px;
-max-height: 30px;
-</string>
+                      <string notr="true">max-width: 120px;</string>
                      </property>
                      <property name="text">
-                      <string>Username exist</string>
+                      <string>Change Password</string>
                      </property>
                     </widget>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_44">
-                     <property name="topMargin">
-                      <number>30</number>
+                    <widget class="QLabel" name="change_password_message_label">
+                     <property name="text">
+                      <string/>
                      </property>
-                     <item>
-                      <widget class="QPushButton" name="userpage_editprofile_change_password_btn">
-                       <property name="maximumSize">
-                        <size>
-                         <width>122</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">max-width: 120px;</string>
-                       </property>
-                       <property name="text">
-                        <string>Change Password</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <spacer name="horizontalSpacer_97">
-                       <property name="orientation">
-                        <enum>Qt::Horizontal</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>40</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
-                    </layout>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="verticalSpacer_8">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                    </spacer>
                    </item>
                   </layout>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <widget class="QFrame" name="userspage_editprofile_success_frame">
-                <property name="styleSheet">
-                 <string notr="true">QFrame{
-background-color: rgb(58, 209, 154);
-}</string>
-                </property>
-                <property name="frameShape">
-                 <enum>QFrame::StyledPanel</enum>
-                </property>
-                <property name="frameShadow">
-                 <enum>QFrame::Raised</enum>
-                </property>
-                <layout class="QHBoxLayout" name="horizontalLayout_45">
-                 <item>
-                  <widget class="QLabel" name="label_89">
-                   <property name="maximumSize">
-                    <size>
-                     <width>50</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                   <property name="pixmap">
-                    <pixmap>:/assets/icons/icons8-check-150.png</pixmap>
-                   </property>
-                   <property name="scaledContents">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="userspage_editprofile_success_lbl">
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>50</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">font-size: 16px;
-font-weight: bold;
-color: #ffffff;
-
-</string>
-                   </property>
-                   <property name="text">
-                    <string>Success</string>
-                   </property>
-                   <property name="scaledContents">
-                    <bool>false</bool>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <spacer name="horizontalSpacer_71">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                </layout>
-               </widget>
-              </item>
-              <item>
-               <spacer name="verticalSpacer_36">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>40</height>
-                 </size>
-                </property>
-               </spacer>
+                 </widget>
+                </item>
+               </layout>
               </item>
              </layout>
             </widget>
@@ -3990,70 +3970,6 @@ color: #ffffff;
                   <string>New Row</string>
                  </property>
                 </row>
-                <column>
-                 <property name="text">
-                  <string>ID</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>User Name</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>Password</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>Role</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>Edit</string>
-                 </property>
-                </column>
-                <column>
-                 <property name="text">
-                  <string>Delete</string>
-                 </property>
-                </column>
-                <item row="0" column="0">
-                 <property name="text">
-                  <string>1</string>
-                 </property>
-                </item>
-                <item row="0" column="1">
-                 <property name="text">
-                  <string>Admin</string>
-                 </property>
-                </item>
-                <item row="0" column="2">
-                 <property name="text">
-                  <string>Admin</string>
-                 </property>
-                </item>
-                <item row="0" column="3">
-                 <property name="text">
-                  <string>Admin</string>
-                 </property>
-                </item>
-                <item row="0" column="4">
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="background">
-                  <brush brushstyle="NoBrush">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </property>
-                </item>
                </widget>
               </item>
              </layout>

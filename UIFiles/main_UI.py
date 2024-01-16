@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1294, 785)
+        MainWindow.resize(1370, 827)
         self.StyleSheet = QWidget(MainWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
         self.StyleSheet.setEnabled(True)
@@ -48,7 +48,7 @@ class Ui_MainWindow(object):
 "	background-color: #F7F8FA;\n"
 "	border-radius: 10px;\n"
 "	padding-left: 15px;\n"
-"	min-height: 25px;\n"
+"	min-height: 35px;\n"
 "	min-width: 70px;\n"
 "	font-size: 16px;\n"
 "}\n"
@@ -245,7 +245,7 @@ class Ui_MainWindow(object):
 "	background-color: #F7F8FA;\n"
 "	border-radius: 10px;\n"
 "	padding-left: 15px;\n"
-"	min-height: 25px;\n"
+"	min-height: 35px;\n"
 "	min-width: 70px;\n"
 "	font-size: 16px;\n"
 "}\n"
@@ -321,31 +321,42 @@ class Ui_MainWindow(object):
 "	background-color: #E0E4EC;\n"
 "}\n"
 "\n"
-"#camera_tab .QFrame, #algorithm_stackedWidget .QFrame{\n"
+"#camera_tab .QFrame, #algorithm_stackedWidget .QFrame, #user_register_tab .QFrame, #user_profile_tab .QFrame{\n"
 "	background-color: #F7F8FA;\n"
 "	border:1px solid #D7D7D9;\n"
+"}\n"
+"\n"
+"#camera_settings_frame .QLabel, #register_info_frame .QLabel,\n"
+"#profile_change_username_frame .QLabel,\n"
+"#profile_change_password_frame .QLabel\n"
+"{\n"
+"	font-weight: bold;\n"
+"	font-size: 15px;\n"
 "}\n"
 "\n"
 "#connect_camera_switch::indicator{\n"
 "	border: None;\n"
 "}\n"
 "\n"
-"#save_camera_settings, #save_algorithm_settings{\n"
-"	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 #1F2A4D, stop:1 #7E84A2);\n"
+"#save_camera_settings, #save_algorithm_settings, #register_user\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
 "	color: rgba(255, 255, 255, 210);\n"
-"	border-radius: 5px;\n"
-"	min-width: 270;\n"
-"	max-width: 270;\n"
-"	min-height: 40;\n"
-"	max-height: 40;\n"
+"	border-radius: 22px;\n"
+"	min-width: 200;\n"
+"	max"
+                        "-width: 200;\n"
+"	min-height: 44;\n"
+"	max-height: 44;\n"
+"	font-size: 14px;\n"
+"	font-weight: bold;\n"
 "}\n"
 "\n"
-"#save_camera_settings:hover, #save_algorithm_settings:hover{\n"
-"	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgba(40, 67, 98, 219), stop:1 #8B92B3);\n"
+"#save_camera_settings:hover, #save_algorithm_settings:hover, #register_user:hover{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
 "}\n"
 "\n"
-"#save_camera_settings:pressed, #save_algo"
-                        "rithm_settings:pressed{\n"
+"#save_camera_settings:pressed, #save_algorithm_settings:pressed, #register_user:pressed {\n"
 "	padding-left: 5px;\n"
 "	padding-top: 5px;\n"
 "}\n"
@@ -372,7 +383,8 @@ class Ui_MainWindow(object):
 "	max-width: 55px;\n"
 "	min-height: 55px;\n"
 "	max-height: 55px;\n"
-"	font-size: 24px;\n"
+"	fo"
+                        "nt-size: 24px;\n"
 "	color: rgb(20, 20, 20);\n"
 "	font-weight: bold;\n"
 "}\n"
@@ -392,7 +404,72 @@ class Ui_MainWindow(object):
 "	font-size: 20px;\n"
 "	color: #4C7EFF;\n"
 "	min-height: 70px;\n"
-"}")
+"}\n"
+"\n"
+"#profile_change_username_label, #profile_change_password_label{\n"
+"	font-weight: bold;\n"
+"	font-size: 20px;\n"
+"	color: #4C7EFF;\n"
+"}\n"
+"\n"
+"#userpage_editprofile_change_username_btn,\n"
+"#userpage_editprofile_change_password_btn\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
+"	color: rgba(255, 255, 255, 210);\n"
+"	border-radius: 15px;\n"
+"	min-width: 150;\n"
+"	max-width: 150;\n"
+"	min-height: 30;\n"
+"	max-height: 30;\n"
+"	font-size: 14px;\n"
+"	font-weight: bold;\n"
+"}\n"
+"\n"
+"#userpage_"
+                        "editprofile_change_username_btn:hover,\n"
+"#userpage_editprofile_change_password_btn:hover\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
+"}\n"
+"\n"
+"#userpage_editprofile_change_username_btn:pressed \n"
+"#userpage_editprofile_change_password_btn:pressed\n"
+"{\n"
+"	padding-left: 5px;\n"
+"	padding-top: 5px;\n"
+"}\n"
+"\n"
+"#userpage_password_eye,\n"
+"#userpage_confirm_password_eye,\n"
+"#userpage_editprofile_old_password_eye,\n"
+"#userpage_editprofile_new_password_eye,\n"
+"#userpage_editprofile_confirm_new_password_eye\n"
+"{\n"
+"	border: 0px;\n"
+"	background-color: rgba(0,0,0,0);\n"
+"	border:1px solid #E0E4EC;\n"
+"	background-color: #F7F8FA;\n"
+"	border-radius: 10px;\n"
+"	border-top-left-radius: 0px;\n"
+"	border-bottom-left-radius: 0px;\n"
+"	border-left: None;\n"
+"	padding-right: 3px;\n"
+"}\n"
+"\n"
+"#userpage_password_inpt,\n"
+"#userpage_confirm_password_inpt,\n"
+"#userpage_editprofile_old_password_inpt,\n"
+""
+                        "#userpage_editprofile_new_password_inpt,\n"
+"#userpage_editprofile_confirm_new_password_inpt\n"
+"{\n"
+"	border-right: None;\n"
+"	border-top-right-radius: 0px;\n"
+"	border-bottom-right-radius: 0px;\n"
+"}\n"
+"\n"
+"")
         self.horizontalLayout = QHBoxLayout(self.StyleSheet)
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -1522,13 +1599,10 @@ class Ui_MainWindow(object):
         self.save_camera_settings.setObjectName(u"save_camera_settings")
         sizePolicy1.setHeightForWidth(self.save_camera_settings.sizePolicy().hasHeightForWidth())
         self.save_camera_settings.setSizePolicy(sizePolicy1)
-        font1 = QFont()
-        font1.setPointSize(12)
-        font1.setBold(True)
-        self.save_camera_settings.setFont(font1)
+        self.save_camera_settings.setFont(font)
         self.save_camera_settings.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.verticalLayout_24.addWidget(self.save_camera_settings)
+        self.verticalLayout_24.addWidget(self.save_camera_settings, 0, Qt.AlignHCenter)
 
         self.label = QLabel(self.camera_settings_frame)
         self.label.setObjectName(u"label")
@@ -1589,6 +1663,7 @@ class Ui_MainWindow(object):
         self.step2_btn.setObjectName(u"step2_btn")
         self.step2_btn.setFont(font)
         self.step2_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.step2_btn.setStyleSheet(u"")
 
         self.horizontalLayout_13.addWidget(self.step2_btn)
 
@@ -1863,9 +1938,10 @@ class Ui_MainWindow(object):
         self.save_algorithm_settings.setObjectName(u"save_algorithm_settings")
         sizePolicy1.setHeightForWidth(self.save_algorithm_settings.sizePolicy().hasHeightForWidth())
         self.save_algorithm_settings.setSizePolicy(sizePolicy1)
-        self.save_algorithm_settings.setMinimumSize(QSize(270, 40))
-        self.save_algorithm_settings.setMaximumSize(QSize(270, 40))
-        self.save_algorithm_settings.setFont(font1)
+        self.save_algorithm_settings.setMinimumSize(QSize(200, 44))
+        self.save_algorithm_settings.setMaximumSize(QSize(200, 44))
+        self.save_algorithm_settings.setFont(font)
+        self.save_algorithm_settings.setCursor(QCursor(Qt.PointingHandCursor))
 
         self.horizontalLayout_12.addWidget(self.save_algorithm_settings)
 
@@ -1895,402 +1971,381 @@ class Ui_MainWindow(object):
         self.user_register_tab.setObjectName(u"user_register_tab")
         self.verticalLayout_41 = QVBoxLayout(self.user_register_tab)
         self.verticalLayout_41.setObjectName(u"verticalLayout_41")
-        self.gridFrame_2 = QFrame(self.user_register_tab)
-        self.gridFrame_2.setObjectName(u"gridFrame_2")
-        self.gridFrame_2.setStyleSheet(u"QLabel{\n"
-"	font-size: 16px;\n"
-"	color: rgb(52, 52, 52);\n"
-"	padding-right: 20px;\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"QLineEdit\n"
-"{\n"
-"	max-width: 300px;\n"
-"\n"
-"}")
-        self.gridLayout_9 = QGridLayout(self.gridFrame_2)
-        self.gridLayout_9.setSpacing(3)
-        self.gridLayout_9.setObjectName(u"gridLayout_9")
-        self.userpage_user_role_combobox = QComboBox(self.gridFrame_2)
-        self.userpage_user_role_combobox.addItem("")
-        self.userpage_user_role_combobox.setObjectName(u"userpage_user_role_combobox")
+        self.register_info_frame = QFrame(self.user_register_tab)
+        self.register_info_frame.setObjectName(u"register_info_frame")
+        self.register_info_frame.setFrameShape(QFrame.StyledPanel)
+        self.register_info_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_30 = QVBoxLayout(self.register_info_frame)
+        self.verticalLayout_30.setSpacing(20)
+        self.verticalLayout_30.setObjectName(u"verticalLayout_30")
+        self.verticalLayout_30.setContentsMargins(20, 20, 20, -1)
+        self.verticalLayout_19 = QVBoxLayout()
+        self.verticalLayout_19.setSpacing(6)
+        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
+        self.register_username_label = QLabel(self.register_info_frame)
+        self.register_username_label.setObjectName(u"register_username_label")
 
-        self.gridLayout_9.addWidget(self.userpage_user_role_combobox, 6, 1, 1, 1)
+        self.verticalLayout_19.addWidget(self.register_username_label)
 
-        self.verticalSpacer_15 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Maximum)
-
-        self.gridLayout_9.addItem(self.verticalSpacer_15, 5, 0, 1, 1)
-
-        self.userpage_password_inpt = QLineEdit(self.gridFrame_2)
-        self.userpage_password_inpt.setObjectName(u"userpage_password_inpt")
-
-        self.gridLayout_9.addWidget(self.userpage_password_inpt, 2, 1, 1, 1)
-
-        self.userpage_username_inpt = QLineEdit(self.gridFrame_2)
+        self.userpage_username_inpt = QLineEdit(self.register_info_frame)
         self.userpage_username_inpt.setObjectName(u"userpage_username_inpt")
 
-        self.gridLayout_9.addWidget(self.userpage_username_inpt, 0, 1, 1, 1)
+        self.verticalLayout_19.addWidget(self.userpage_username_inpt)
 
-        self.label_62 = QLabel(self.gridFrame_2)
-        self.label_62.setObjectName(u"label_62")
-        self.label_62.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout_9.addWidget(self.label_62, 6, 0, 1, 1)
+        self.verticalLayout_30.addLayout(self.verticalLayout_19)
 
-        self.label_64 = QLabel(self.gridFrame_2)
-        self.label_64.setObjectName(u"label_64")
-        self.label_64.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.verticalLayout_25 = QVBoxLayout()
+        self.verticalLayout_25.setSpacing(6)
+        self.verticalLayout_25.setObjectName(u"verticalLayout_25")
+        self.register_password_label = QLabel(self.register_info_frame)
+        self.register_password_label.setObjectName(u"register_password_label")
 
-        self.gridLayout_9.addWidget(self.label_64, 0, 0, 1, 1)
+        self.verticalLayout_25.addWidget(self.register_password_label)
 
-        self.userpage_confirm_password_inpt = QLineEdit(self.gridFrame_2)
+        self.horizontalLayout_21 = QHBoxLayout()
+        self.horizontalLayout_21.setSpacing(0)
+        self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
+        self.userpage_password_inpt = QLineEdit(self.register_info_frame)
+        self.userpage_password_inpt.setObjectName(u"userpage_password_inpt")
+
+        self.horizontalLayout_21.addWidget(self.userpage_password_inpt)
+
+        self.userpage_password_eye = QPushButton(self.register_info_frame)
+        self.userpage_password_eye.setObjectName(u"userpage_password_eye")
+        sizePolicy6 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy6.setHorizontalStretch(0)
+        sizePolicy6.setVerticalStretch(0)
+        sizePolicy6.setHeightForWidth(self.userpage_password_eye.sizePolicy().hasHeightForWidth())
+        self.userpage_password_eye.setSizePolicy(sizePolicy6)
+        self.userpage_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
+        self.userpage_password_eye.setStyleSheet(u"")
+        icon15 = QIcon()
+        icon15.addFile(u":/general_icons/icons/general_icons/eye.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.userpage_password_eye.setIcon(icon15)
+
+        self.horizontalLayout_21.addWidget(self.userpage_password_eye)
+
+
+        self.verticalLayout_25.addLayout(self.horizontalLayout_21)
+
+
+        self.verticalLayout_30.addLayout(self.verticalLayout_25)
+
+        self.verticalLayout_26 = QVBoxLayout()
+        self.verticalLayout_26.setSpacing(6)
+        self.verticalLayout_26.setObjectName(u"verticalLayout_26")
+        self.register_confirm_password_label = QLabel(self.register_info_frame)
+        self.register_confirm_password_label.setObjectName(u"register_confirm_password_label")
+
+        self.verticalLayout_26.addWidget(self.register_confirm_password_label)
+
+        self.horizontalLayout_22 = QHBoxLayout()
+        self.horizontalLayout_22.setSpacing(0)
+        self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
+        self.userpage_confirm_password_inpt = QLineEdit(self.register_info_frame)
         self.userpage_confirm_password_inpt.setObjectName(u"userpage_confirm_password_inpt")
         self.userpage_confirm_password_inpt.setStyleSheet(u"")
 
-        self.gridLayout_9.addWidget(self.userpage_confirm_password_inpt, 4, 1, 1, 1)
+        self.horizontalLayout_22.addWidget(self.userpage_confirm_password_inpt)
 
-        self.label_65 = QLabel(self.gridFrame_2)
-        self.label_65.setObjectName(u"label_65")
-        self.label_65.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.userpage_confirm_password_eye = QPushButton(self.register_info_frame)
+        self.userpage_confirm_password_eye.setObjectName(u"userpage_confirm_password_eye")
+        sizePolicy6.setHeightForWidth(self.userpage_confirm_password_eye.sizePolicy().hasHeightForWidth())
+        self.userpage_confirm_password_eye.setSizePolicy(sizePolicy6)
+        self.userpage_confirm_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
+        self.userpage_confirm_password_eye.setStyleSheet(u"")
+        self.userpage_confirm_password_eye.setIcon(icon15)
 
-        self.gridLayout_9.addWidget(self.label_65, 2, 0, 1, 1)
-
-        self.horizontalSpacer_23 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_9.addItem(self.horizontalSpacer_23, 0, 2, 1, 1)
-
-        self.verticalSpacer_13 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Maximum)
-
-        self.gridLayout_9.addItem(self.verticalSpacer_13, 3, 0, 1, 1)
-
-        self.label_66 = QLabel(self.gridFrame_2)
-        self.label_66.setObjectName(u"label_66")
-        self.label_66.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout_9.addWidget(self.label_66, 4, 0, 1, 1)
-
-        self.verticalSpacer_16 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Maximum)
-
-        self.gridLayout_9.addItem(self.verticalSpacer_16, 7, 0, 1, 1)
-
-        self.verticalSpacer_18 = QSpacerItem(20, 15, QSizePolicy.Minimum, QSizePolicy.Maximum)
-
-        self.gridLayout_9.addItem(self.verticalSpacer_18, 1, 0, 1, 1)
-
-        self.userspage_add_user_btn = QPushButton(self.gridFrame_2)
-        self.userspage_add_user_btn.setObjectName(u"userspage_add_user_btn")
-        self.userspage_add_user_btn.setStyleSheet(u"max-width: 120px;")
-        icon15 = QIcon()
-        icon15.addFile(u":/assets/Assets/icons/icons8-plus-white-50.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.userspage_add_user_btn.setIcon(icon15)
-
-        self.gridLayout_9.addWidget(self.userspage_add_user_btn, 8, 1, 1, 1)
+        self.horizontalLayout_22.addWidget(self.userpage_confirm_password_eye)
 
 
-        self.verticalLayout_41.addWidget(self.gridFrame_2)
-
-        self.verticalSpacer_21 = QSpacerItem(20, 15, QSizePolicy.Minimum, QSizePolicy.Maximum)
-
-        self.verticalLayout_41.addItem(self.verticalSpacer_21)
-
-        self.userspage_register_error_lbl = QLabel(self.user_register_tab)
-        self.userspage_register_error_lbl.setObjectName(u"userspage_register_error_lbl")
-        self.userspage_register_error_lbl.setMinimumSize(QSize(310, 35))
-        self.userspage_register_error_lbl.setStyleSheet(u"font-size: 16px;\n"
-"font-weight: bold;\n"
-"color: #ffffff;\n"
-"background-color: rgb(255, 95, 84);\n"
-"padding:5px;\n"
-"\n"
-"min-width: 300px;\n"
-"max-width: 16777px;\n"
-"")
-
-        self.verticalLayout_41.addWidget(self.userspage_register_error_lbl)
-
-        self.userspage_register_success_frame = QFrame(self.user_register_tab)
-        self.userspage_register_success_frame.setObjectName(u"userspage_register_success_frame")
-        self.userspage_register_success_frame.setStyleSheet(u"QFrame{\n"
-"background-color: rgb(58, 209, 154);\n"
-"}")
-        self.userspage_register_success_frame.setFrameShape(QFrame.StyledPanel)
-        self.userspage_register_success_frame.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_39 = QHBoxLayout(self.userspage_register_success_frame)
-        self.horizontalLayout_39.setObjectName(u"horizontalLayout_39")
-        self.label_88 = QLabel(self.userspage_register_success_frame)
-        self.label_88.setObjectName(u"label_88")
-        self.label_88.setMaximumSize(QSize(50, 50))
-        self.label_88.setPixmap(QPixmap(u":/assets/icons/icons8-check-150.png"))
-        self.label_88.setScaledContents(True)
-
-        self.horizontalLayout_39.addWidget(self.label_88)
-
-        self.userspage_register_success_lbl = QLabel(self.userspage_register_success_frame)
-        self.userspage_register_success_lbl.setObjectName(u"userspage_register_success_lbl")
-        self.userspage_register_success_lbl.setMinimumSize(QSize(0, 50))
-        self.userspage_register_success_lbl.setStyleSheet(u"font-size: 16px;\n"
-"font-weight: bold;\n"
-"color: #ffffff;\n"
-"\n"
-"")
-        self.userspage_register_success_lbl.setScaledContents(False)
-
-        self.horizontalLayout_39.addWidget(self.userspage_register_success_lbl)
-
-        self.horizontalSpacer_70 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_39.addItem(self.horizontalSpacer_70)
+        self.verticalLayout_26.addLayout(self.horizontalLayout_22)
 
 
-        self.verticalLayout_41.addWidget(self.userspage_register_success_frame)
+        self.verticalLayout_30.addLayout(self.verticalLayout_26)
 
-        self.verticalSpacer_19 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalLayout_27 = QVBoxLayout()
+        self.verticalLayout_27.setSpacing(6)
+        self.verticalLayout_27.setObjectName(u"verticalLayout_27")
+        self.register_user_role_label = QLabel(self.register_info_frame)
+        self.register_user_role_label.setObjectName(u"register_user_role_label")
 
-        self.verticalLayout_41.addItem(self.verticalSpacer_19)
+        self.verticalLayout_27.addWidget(self.register_user_role_label)
+
+        self.userpage_user_role_combobox = QComboBox(self.register_info_frame)
+        self.userpage_user_role_combobox.setObjectName(u"userpage_user_role_combobox")
+
+        self.verticalLayout_27.addWidget(self.userpage_user_role_combobox)
+
+
+        self.verticalLayout_30.addLayout(self.verticalLayout_27)
+
+        self.register_message_label = QLabel(self.register_info_frame)
+        self.register_message_label.setObjectName(u"register_message_label")
+        sizePolicy2.setHeightForWidth(self.register_message_label.sizePolicy().hasHeightForWidth())
+        self.register_message_label.setSizePolicy(sizePolicy2)
+
+        self.verticalLayout_30.addWidget(self.register_message_label)
+
+        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_30.addItem(self.verticalSpacer_5)
+
+
+        self.verticalLayout_41.addWidget(self.register_info_frame)
+
+        self.horizontalLayout_16 = QHBoxLayout()
+        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
+        self.register_user = QPushButton(self.user_register_tab)
+        self.register_user.setObjectName(u"register_user")
+        self.register_user.setStyleSheet(u"")
+        icon16 = QIcon()
+        icon16.addFile(u":/assets/Assets/icons/icons8-plus-white-50.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.register_user.setIcon(icon16)
+
+        self.horizontalLayout_16.addWidget(self.register_user)
+
+
+        self.verticalLayout_41.addLayout(self.horizontalLayout_16)
 
         self.user_tabs.addTab(self.user_register_tab, "")
         self.user_profile_tab = QWidget()
         self.user_profile_tab.setObjectName(u"user_profile_tab")
-        self.verticalLayout_42 = QVBoxLayout(self.user_profile_tab)
-        self.verticalLayout_42.setObjectName(u"verticalLayout_42")
-        self.userpage_editprofile_edit_profile_groupbox = QGroupBox(self.user_profile_tab)
-        self.userpage_editprofile_edit_profile_groupbox.setObjectName(u"userpage_editprofile_edit_profile_groupbox")
-        self.userpage_editprofile_edit_profile_groupbox.setStyleSheet(u"QLabel{\n"
-"	font-size: 16px;\n"
-"	color: rgb(52, 52, 52);\n"
-"	padding-right: 20px;\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"QLineEdit\n"
-"{\n"
-"	max-width: 300px;\n"
-"\n"
-"}")
-        self.horizontalLayout_40 = QHBoxLayout(self.userpage_editprofile_edit_profile_groupbox)
-        self.horizontalLayout_40.setObjectName(u"horizontalLayout_40")
-        self.horizontalLayout_40.setContentsMargins(50, 50, -1, -1)
-        self.verticalLayout_43 = QVBoxLayout()
-        self.verticalLayout_43.setObjectName(u"verticalLayout_43")
-        self.verticalLayout_43.setContentsMargins(0, -1, -1, -1)
-        self.gridLayout_18 = QGridLayout()
-        self.gridLayout_18.setObjectName(u"gridLayout_18")
-        self.gridLayout_18.setVerticalSpacing(25)
-        self.userpage_editprofile_username_inpt = QLineEdit(self.userpage_editprofile_edit_profile_groupbox)
+        self.horizontalLayout_20 = QHBoxLayout(self.user_profile_tab)
+        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
+        self.verticalLayout_52 = QVBoxLayout()
+        self.verticalLayout_52.setSpacing(0)
+        self.verticalLayout_52.setObjectName(u"verticalLayout_52")
+        self.profile_change_username_title_frame = QFrame(self.user_profile_tab)
+        self.profile_change_username_title_frame.setObjectName(u"profile_change_username_title_frame")
+        self.profile_change_username_title_frame.setFrameShape(QFrame.StyledPanel)
+        self.profile_change_username_title_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_53 = QVBoxLayout(self.profile_change_username_title_frame)
+        self.verticalLayout_53.setObjectName(u"verticalLayout_53")
+        self.profile_change_username_label = QLabel(self.profile_change_username_title_frame)
+        self.profile_change_username_label.setObjectName(u"profile_change_username_label")
+        self.profile_change_username_label.setFont(font)
+        self.profile_change_username_label.setStyleSheet(u"")
+
+        self.verticalLayout_53.addWidget(self.profile_change_username_label)
+
+
+        self.verticalLayout_52.addWidget(self.profile_change_username_title_frame)
+
+        self.profile_change_username_frame = QFrame(self.user_profile_tab)
+        self.profile_change_username_frame.setObjectName(u"profile_change_username_frame")
+        self.profile_change_username_frame.setFrameShape(QFrame.StyledPanel)
+        self.profile_change_username_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_54 = QVBoxLayout(self.profile_change_username_frame)
+        self.verticalLayout_54.setSpacing(20)
+        self.verticalLayout_54.setObjectName(u"verticalLayout_54")
+        self.verticalLayout_54.setContentsMargins(20, 20, 20, -1)
+        self.verticalLayout_46 = QVBoxLayout()
+        self.verticalLayout_46.setSpacing(6)
+        self.verticalLayout_46.setObjectName(u"verticalLayout_46")
+        self.profile_old_username_label = QLabel(self.profile_change_username_frame)
+        self.profile_old_username_label.setObjectName(u"profile_old_username_label")
+        self.profile_old_username_label.setLayoutDirection(Qt.LeftToRight)
+        self.profile_old_username_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.verticalLayout_46.addWidget(self.profile_old_username_label)
+
+        self.userpage_editprofile_username_inpt = QLineEdit(self.profile_change_username_frame)
         self.userpage_editprofile_username_inpt.setObjectName(u"userpage_editprofile_username_inpt")
+        self.userpage_editprofile_username_inpt.setEnabled(False)
 
-        self.gridLayout_18.addWidget(self.userpage_editprofile_username_inpt, 0, 1, 1, 1)
-
-        self.label_79 = QLabel(self.userpage_editprofile_edit_profile_groupbox)
-        self.label_79.setObjectName(u"label_79")
-        self.label_79.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout_18.addWidget(self.label_79, 0, 0, 1, 1)
-
-        self.horizontalSpacer_39 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_18.addItem(self.horizontalSpacer_39, 0, 2, 1, 1)
+        self.verticalLayout_46.addWidget(self.userpage_editprofile_username_inpt)
 
 
-        self.verticalLayout_43.addLayout(self.gridLayout_18)
+        self.verticalLayout_54.addLayout(self.verticalLayout_46)
 
-        self.editprofile_error_lbl = QLabel(self.userpage_editprofile_edit_profile_groupbox)
-        self.editprofile_error_lbl.setObjectName(u"editprofile_error_lbl")
-        self.editprofile_error_lbl.setStyleSheet(u"font-size: 16px;\n"
-"font-weight: bold;\n"
-"color: #ffffff;\n"
-"background-color: rgb(255, 95, 84);\n"
-"padding:5px;\n"
-"\n"
-"min-width: 100px;\n"
-"max-width: 16777px;\n"
-"max-height: 30px;\n"
-"")
+        self.verticalLayout_42 = QVBoxLayout()
+        self.verticalLayout_42.setSpacing(6)
+        self.verticalLayout_42.setObjectName(u"verticalLayout_42")
+        self.profile_username_label = QLabel(self.profile_change_username_frame)
+        self.profile_username_label.setObjectName(u"profile_username_label")
+        self.profile_username_label.setLayoutDirection(Qt.LeftToRight)
+        self.profile_username_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
-        self.verticalLayout_43.addWidget(self.editprofile_error_lbl)
+        self.verticalLayout_42.addWidget(self.profile_username_label)
 
-        self.horizontalFrame_7 = QFrame(self.userpage_editprofile_edit_profile_groupbox)
-        self.horizontalFrame_7.setObjectName(u"horizontalFrame_7")
-        self.horizontalFrame_7.setStyleSheet(u"QPushButton {\n"
-"max-width: 120px;\n"
-"}")
-        self.horizontalLayout_41 = QHBoxLayout(self.horizontalFrame_7)
-        self.horizontalLayout_41.setObjectName(u"horizontalLayout_41")
-        self.horizontalLayout_41.setContentsMargins(-1, 30, -1, -1)
-        self.userpage_editprofile_update_btn = QPushButton(self.horizontalFrame_7)
-        self.userpage_editprofile_update_btn.setObjectName(u"userpage_editprofile_update_btn")
-        self.userpage_editprofile_update_btn.setMinimumSize(QSize(150, 0))
-        self.userpage_editprofile_update_btn.setMaximumSize(QSize(122, 16777215))
-        self.userpage_editprofile_update_btn.setStyleSheet(u"")
+        self.userpage_editprofile_new_username_inpt = QLineEdit(self.profile_change_username_frame)
+        self.userpage_editprofile_new_username_inpt.setObjectName(u"userpage_editprofile_new_username_inpt")
 
-        self.horizontalLayout_41.addWidget(self.userpage_editprofile_update_btn)
-
-        self.userpage_editprofile_cancel_btn = QPushButton(self.horizontalFrame_7)
-        self.userpage_editprofile_cancel_btn.setObjectName(u"userpage_editprofile_cancel_btn")
-
-        self.horizontalLayout_41.addWidget(self.userpage_editprofile_cancel_btn)
-
-        self.horizontalSpacer_69 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_41.addItem(self.horizontalSpacer_69)
+        self.verticalLayout_42.addWidget(self.userpage_editprofile_new_username_inpt)
 
 
-        self.verticalLayout_43.addWidget(self.horizontalFrame_7)
+        self.verticalLayout_54.addLayout(self.verticalLayout_42)
+
+        self.userpage_editprofile_change_username_btn = QPushButton(self.profile_change_username_frame)
+        self.userpage_editprofile_change_username_btn.setObjectName(u"userpage_editprofile_change_username_btn")
+        self.userpage_editprofile_change_username_btn.setMinimumSize(QSize(150, 30))
+        self.userpage_editprofile_change_username_btn.setMaximumSize(QSize(150, 30))
+        self.userpage_editprofile_change_username_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.userpage_editprofile_change_username_btn.setStyleSheet(u"")
+
+        self.verticalLayout_54.addWidget(self.userpage_editprofile_change_username_btn, 0, Qt.AlignHCenter)
+
+        self.change_username_message_label = QLabel(self.profile_change_username_frame)
+        self.change_username_message_label.setObjectName(u"change_username_message_label")
+
+        self.verticalLayout_54.addWidget(self.change_username_message_label)
+
+        self.verticalSpacer_7 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_54.addItem(self.verticalSpacer_7)
 
 
-        self.horizontalLayout_40.addLayout(self.verticalLayout_43)
+        self.verticalLayout_52.addWidget(self.profile_change_username_frame)
 
 
-        self.verticalLayout_42.addWidget(self.userpage_editprofile_edit_profile_groupbox)
+        self.horizontalLayout_20.addLayout(self.verticalLayout_52)
 
-        self.verticalSpacer_35 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Maximum)
-
-        self.verticalLayout_42.addItem(self.verticalSpacer_35)
-
-        self.userpage_editprofile_change_pass_groupbox = QGroupBox(self.user_profile_tab)
-        self.userpage_editprofile_change_pass_groupbox.setObjectName(u"userpage_editprofile_change_pass_groupbox")
-        self.userpage_editprofile_change_pass_groupbox.setStyleSheet(u"QLabel{\n"
-"	font-size: 16px;\n"
-"	color: rgb(52, 52, 52);\n"
-"	padding-right: 20px;\n"
-"	\n"
-"}\n"
-"\n"
-"\n"
-"QLineEdit\n"
-"{\n"
-"	max-width: 300px;\n"
-"\n"
-"}")
-        self.horizontalLayout_43 = QHBoxLayout(self.userpage_editprofile_change_pass_groupbox)
-        self.horizontalLayout_43.setObjectName(u"horizontalLayout_43")
-        self.horizontalLayout_43.setContentsMargins(50, 50, -1, -1)
-        self.verticalLayout_44 = QVBoxLayout()
+        self.verticalLayout_50 = QVBoxLayout()
+        self.verticalLayout_50.setSpacing(0)
+        self.verticalLayout_50.setObjectName(u"verticalLayout_50")
+        self.profile_change_password_title_frame = QFrame(self.user_profile_tab)
+        self.profile_change_password_title_frame.setObjectName(u"profile_change_password_title_frame")
+        self.profile_change_password_title_frame.setFrameShape(QFrame.StyledPanel)
+        self.profile_change_password_title_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_44 = QVBoxLayout(self.profile_change_password_title_frame)
         self.verticalLayout_44.setObjectName(u"verticalLayout_44")
-        self.verticalLayout_44.setContentsMargins(0, -1, -1, -1)
-        self.gridLayout_22 = QGridLayout()
-        self.gridLayout_22.setObjectName(u"gridLayout_22")
-        self.gridLayout_22.setVerticalSpacing(30)
-        self.label_80 = QLabel(self.userpage_editprofile_change_pass_groupbox)
-        self.label_80.setObjectName(u"label_80")
-        self.label_80.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.profile_change_password_label = QLabel(self.profile_change_password_title_frame)
+        self.profile_change_password_label.setObjectName(u"profile_change_password_label")
+        self.profile_change_password_label.setStyleSheet(u"")
 
-        self.gridLayout_22.addWidget(self.label_80, 0, 0, 1, 1)
+        self.verticalLayout_44.addWidget(self.profile_change_password_label)
 
-        self.label_81 = QLabel(self.userpage_editprofile_change_pass_groupbox)
-        self.label_81.setObjectName(u"label_81")
-        self.label_81.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.gridLayout_22.addWidget(self.label_81, 1, 0, 1, 1)
+        self.verticalLayout_50.addWidget(self.profile_change_password_title_frame)
 
-        self.userpage_editprofile_confirm_new_password_inpt = QLineEdit(self.userpage_editprofile_change_pass_groupbox)
-        self.userpage_editprofile_confirm_new_password_inpt.setObjectName(u"userpage_editprofile_confirm_new_password_inpt")
+        self.profile_change_password_frame = QFrame(self.user_profile_tab)
+        self.profile_change_password_frame.setObjectName(u"profile_change_password_frame")
+        self.profile_change_password_frame.setFrameShape(QFrame.StyledPanel)
+        self.profile_change_password_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_51 = QVBoxLayout(self.profile_change_password_frame)
+        self.verticalLayout_51.setSpacing(20)
+        self.verticalLayout_51.setObjectName(u"verticalLayout_51")
+        self.verticalLayout_51.setContentsMargins(20, 20, 20, -1)
+        self.verticalLayout_43 = QVBoxLayout()
+        self.verticalLayout_43.setSpacing(6)
+        self.verticalLayout_43.setObjectName(u"verticalLayout_43")
+        self.profile_password_label = QLabel(self.profile_change_password_frame)
+        self.profile_password_label.setObjectName(u"profile_password_label")
 
-        self.gridLayout_22.addWidget(self.userpage_editprofile_confirm_new_password_inpt, 2, 1, 1, 1)
+        self.verticalLayout_43.addWidget(self.profile_password_label)
 
-        self.userpage_editprofile_old_password_inpt = QLineEdit(self.userpage_editprofile_change_pass_groupbox)
+        self.horizontalLayout_17 = QHBoxLayout()
+        self.horizontalLayout_17.setSpacing(0)
+        self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
+        self.userpage_editprofile_old_password_inpt = QLineEdit(self.profile_change_password_frame)
         self.userpage_editprofile_old_password_inpt.setObjectName(u"userpage_editprofile_old_password_inpt")
+        self.userpage_editprofile_old_password_inpt.setStyleSheet(u"")
 
-        self.gridLayout_22.addWidget(self.userpage_editprofile_old_password_inpt, 0, 1, 1, 1)
+        self.horizontalLayout_17.addWidget(self.userpage_editprofile_old_password_inpt)
 
-        self.label_86 = QLabel(self.userpage_editprofile_change_pass_groupbox)
-        self.label_86.setObjectName(u"label_86")
-        self.label_86.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.userpage_editprofile_old_password_eye = QPushButton(self.profile_change_password_frame)
+        self.userpage_editprofile_old_password_eye.setObjectName(u"userpage_editprofile_old_password_eye")
+        sizePolicy6.setHeightForWidth(self.userpage_editprofile_old_password_eye.sizePolicy().hasHeightForWidth())
+        self.userpage_editprofile_old_password_eye.setSizePolicy(sizePolicy6)
+        self.userpage_editprofile_old_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
+        self.userpage_editprofile_old_password_eye.setStyleSheet(u"")
+        self.userpage_editprofile_old_password_eye.setIcon(icon15)
 
-        self.gridLayout_22.addWidget(self.label_86, 2, 0, 1, 1)
+        self.horizontalLayout_17.addWidget(self.userpage_editprofile_old_password_eye)
 
-        self.userpage_editprofile_new_password_inpt = QLineEdit(self.userpage_editprofile_change_pass_groupbox)
+
+        self.verticalLayout_43.addLayout(self.horizontalLayout_17)
+
+
+        self.verticalLayout_51.addLayout(self.verticalLayout_43)
+
+        self.verticalLayout_47 = QVBoxLayout()
+        self.verticalLayout_47.setSpacing(6)
+        self.verticalLayout_47.setObjectName(u"verticalLayout_47")
+        self.verticalLayout_47.setContentsMargins(-1, -1, -1, 0)
+        self.profile_new_password_label = QLabel(self.profile_change_password_frame)
+        self.profile_new_password_label.setObjectName(u"profile_new_password_label")
+
+        self.verticalLayout_47.addWidget(self.profile_new_password_label)
+
+        self.horizontalLayout_18 = QHBoxLayout()
+        self.horizontalLayout_18.setSpacing(0)
+        self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
+        self.userpage_editprofile_new_password_inpt = QLineEdit(self.profile_change_password_frame)
         self.userpage_editprofile_new_password_inpt.setObjectName(u"userpage_editprofile_new_password_inpt")
 
-        self.gridLayout_22.addWidget(self.userpage_editprofile_new_password_inpt, 1, 1, 1, 1)
+        self.horizontalLayout_18.addWidget(self.userpage_editprofile_new_password_inpt)
 
-        self.horizontalSpacer_73 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.userpage_editprofile_new_password_eye = QPushButton(self.profile_change_password_frame)
+        self.userpage_editprofile_new_password_eye.setObjectName(u"userpage_editprofile_new_password_eye")
+        sizePolicy6.setHeightForWidth(self.userpage_editprofile_new_password_eye.sizePolicy().hasHeightForWidth())
+        self.userpage_editprofile_new_password_eye.setSizePolicy(sizePolicy6)
+        self.userpage_editprofile_new_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
+        self.userpage_editprofile_new_password_eye.setIcon(icon15)
 
-        self.gridLayout_22.addItem(self.horizontalSpacer_73, 0, 2, 1, 1)
+        self.horizontalLayout_18.addWidget(self.userpage_editprofile_new_password_eye)
 
 
-        self.verticalLayout_44.addLayout(self.gridLayout_22)
+        self.verticalLayout_47.addLayout(self.horizontalLayout_18)
 
-        self.changepass_error_lbl = QLabel(self.userpage_editprofile_change_pass_groupbox)
-        self.changepass_error_lbl.setObjectName(u"changepass_error_lbl")
-        self.changepass_error_lbl.setStyleSheet(u"font-size: 16px;\n"
-"font-weight: bold;\n"
-"color: #ffffff;\n"
-"background-color: rgb(255, 95, 84);\n"
-"padding:5px;\n"
-"\n"
-"min-width: 300px;\n"
-"max-width: 16777px;\n"
-"max-height: 30px;\n"
-"")
 
-        self.verticalLayout_44.addWidget(self.changepass_error_lbl)
+        self.verticalLayout_51.addLayout(self.verticalLayout_47)
 
-        self.horizontalLayout_44 = QHBoxLayout()
-        self.horizontalLayout_44.setObjectName(u"horizontalLayout_44")
-        self.horizontalLayout_44.setContentsMargins(-1, 30, -1, -1)
-        self.userpage_editprofile_change_password_btn = QPushButton(self.userpage_editprofile_change_pass_groupbox)
+        self.verticalLayout_49 = QVBoxLayout()
+        self.verticalLayout_49.setSpacing(6)
+        self.verticalLayout_49.setObjectName(u"verticalLayout_49")
+        self.profile_confirm_password_label = QLabel(self.profile_change_password_frame)
+        self.profile_confirm_password_label.setObjectName(u"profile_confirm_password_label")
+
+        self.verticalLayout_49.addWidget(self.profile_confirm_password_label)
+
+        self.horizontalLayout_19 = QHBoxLayout()
+        self.horizontalLayout_19.setSpacing(0)
+        self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
+        self.userpage_editprofile_confirm_new_password_inpt = QLineEdit(self.profile_change_password_frame)
+        self.userpage_editprofile_confirm_new_password_inpt.setObjectName(u"userpage_editprofile_confirm_new_password_inpt")
+
+        self.horizontalLayout_19.addWidget(self.userpage_editprofile_confirm_new_password_inpt)
+
+        self.userpage_editprofile_confirm_new_password_eye = QPushButton(self.profile_change_password_frame)
+        self.userpage_editprofile_confirm_new_password_eye.setObjectName(u"userpage_editprofile_confirm_new_password_eye")
+        sizePolicy6.setHeightForWidth(self.userpage_editprofile_confirm_new_password_eye.sizePolicy().hasHeightForWidth())
+        self.userpage_editprofile_confirm_new_password_eye.setSizePolicy(sizePolicy6)
+        self.userpage_editprofile_confirm_new_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
+        self.userpage_editprofile_confirm_new_password_eye.setIcon(icon15)
+
+        self.horizontalLayout_19.addWidget(self.userpage_editprofile_confirm_new_password_eye)
+
+
+        self.verticalLayout_49.addLayout(self.horizontalLayout_19)
+
+
+        self.verticalLayout_51.addLayout(self.verticalLayout_49)
+
+        self.userpage_editprofile_change_password_btn = QPushButton(self.profile_change_password_frame)
         self.userpage_editprofile_change_password_btn.setObjectName(u"userpage_editprofile_change_password_btn")
-        self.userpage_editprofile_change_password_btn.setMaximumSize(QSize(122, 16777215))
+        self.userpage_editprofile_change_password_btn.setMaximumSize(QSize(120, 30))
+        self.userpage_editprofile_change_password_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.userpage_editprofile_change_password_btn.setStyleSheet(u"max-width: 120px;")
 
-        self.horizontalLayout_44.addWidget(self.userpage_editprofile_change_password_btn)
+        self.verticalLayout_51.addWidget(self.userpage_editprofile_change_password_btn, 0, Qt.AlignHCenter)
 
-        self.horizontalSpacer_97 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.change_password_message_label = QLabel(self.profile_change_password_frame)
+        self.change_password_message_label.setObjectName(u"change_password_message_label")
 
-        self.horizontalLayout_44.addItem(self.horizontalSpacer_97)
+        self.verticalLayout_51.addWidget(self.change_password_message_label)
 
+        self.verticalSpacer_8 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_44.addLayout(self.horizontalLayout_44)
-
-
-        self.horizontalLayout_43.addLayout(self.verticalLayout_44)
-
-
-        self.verticalLayout_42.addWidget(self.userpage_editprofile_change_pass_groupbox)
-
-        self.userspage_editprofile_success_frame = QFrame(self.user_profile_tab)
-        self.userspage_editprofile_success_frame.setObjectName(u"userspage_editprofile_success_frame")
-        self.userspage_editprofile_success_frame.setStyleSheet(u"QFrame{\n"
-"background-color: rgb(58, 209, 154);\n"
-"}")
-        self.userspage_editprofile_success_frame.setFrameShape(QFrame.StyledPanel)
-        self.userspage_editprofile_success_frame.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_45 = QHBoxLayout(self.userspage_editprofile_success_frame)
-        self.horizontalLayout_45.setObjectName(u"horizontalLayout_45")
-        self.label_89 = QLabel(self.userspage_editprofile_success_frame)
-        self.label_89.setObjectName(u"label_89")
-        self.label_89.setMaximumSize(QSize(50, 50))
-        self.label_89.setPixmap(QPixmap(u":/assets/icons/icons8-check-150.png"))
-        self.label_89.setScaledContents(True)
-
-        self.horizontalLayout_45.addWidget(self.label_89)
-
-        self.userspage_editprofile_success_lbl = QLabel(self.userspage_editprofile_success_frame)
-        self.userspage_editprofile_success_lbl.setObjectName(u"userspage_editprofile_success_lbl")
-        self.userspage_editprofile_success_lbl.setMinimumSize(QSize(0, 50))
-        self.userspage_editprofile_success_lbl.setStyleSheet(u"font-size: 16px;\n"
-"font-weight: bold;\n"
-"color: #ffffff;\n"
-"\n"
-"")
-        self.userspage_editprofile_success_lbl.setScaledContents(False)
-
-        self.horizontalLayout_45.addWidget(self.userspage_editprofile_success_lbl)
-
-        self.horizontalSpacer_71 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_45.addItem(self.horizontalSpacer_71)
+        self.verticalLayout_51.addItem(self.verticalSpacer_8)
 
 
-        self.verticalLayout_42.addWidget(self.userspage_editprofile_success_frame)
+        self.verticalLayout_50.addWidget(self.profile_change_password_frame)
 
-        self.verticalSpacer_36 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_42.addItem(self.verticalSpacer_36)
+        self.horizontalLayout_20.addLayout(self.verticalLayout_50)
 
         self.user_tabs.addTab(self.user_profile_tab, "")
         self.all_users_tab = QWidget()
@@ -2370,9 +2425,9 @@ class Ui_MainWindow(object):
 
         self.main_stackedWidget.setCurrentIndex(3)
         self.tabWidget.setCurrentIndex(0)
-        self.settings_tabs.setCurrentIndex(1)
+        self.settings_tabs.setCurrentIndex(0)
         self.algorithm_stackedWidget.setCurrentIndex(0)
-        self.user_tabs.setCurrentIndex(2)
+        self.user_tabs.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -2477,31 +2532,29 @@ class Ui_MainWindow(object):
         self.algorithm_image3.setText("")
         self.save_algorithm_settings.setText(QCoreApplication.translate("MainWindow", u"Save Prameters", None))
         self.settings_tabs.setTabText(self.settings_tabs.indexOf(self.algorithm_tab), QCoreApplication.translate("MainWindow", u"Algorithm", None))
-        self.userpage_user_role_combobox.setItemText(0, QCoreApplication.translate("MainWindow", u"admin", None))
-
-        self.label_62.setText(QCoreApplication.translate("MainWindow", u"User Role:", None))
-        self.label_64.setText(QCoreApplication.translate("MainWindow", u"Username:", None))
-        self.userpage_confirm_password_inpt.setPlaceholderText(QCoreApplication.translate("MainWindow", u"confirm password", None))
-        self.label_65.setText(QCoreApplication.translate("MainWindow", u"Password:", None))
-        self.label_66.setText(QCoreApplication.translate("MainWindow", u"Pasword Confirm:", None))
-        self.userspage_add_user_btn.setText(QCoreApplication.translate("MainWindow", u"Register", None))
-        self.userspage_register_error_lbl.setText(QCoreApplication.translate("MainWindow", u"Username exist", None))
-        self.label_88.setText("")
-        self.userspage_register_success_lbl.setText(QCoreApplication.translate("MainWindow", u"Success", None))
+        self.register_username_label.setText(QCoreApplication.translate("MainWindow", u"Username", None))
+        self.register_password_label.setText(QCoreApplication.translate("MainWindow", u"Password", None))
+        self.userpage_password_eye.setText("")
+        self.register_confirm_password_label.setText(QCoreApplication.translate("MainWindow", u"Confirm Password", None))
+        self.userpage_confirm_password_eye.setText("")
+        self.register_user_role_label.setText(QCoreApplication.translate("MainWindow", u"User Role", None))
+        self.register_message_label.setText("")
+        self.register_user.setText(QCoreApplication.translate("MainWindow", u"Register", None))
         self.user_tabs.setTabText(self.user_tabs.indexOf(self.user_register_tab), QCoreApplication.translate("MainWindow", u"register user", None))
-        self.userpage_editprofile_edit_profile_groupbox.setTitle(QCoreApplication.translate("MainWindow", u"Edit Profile", None))
-        self.label_79.setText(QCoreApplication.translate("MainWindow", u"Username:", None))
-        self.editprofile_error_lbl.setText(QCoreApplication.translate("MainWindow", u"Username exist", None))
-        self.userpage_editprofile_update_btn.setText(QCoreApplication.translate("MainWindow", u"Update Profile", None))
-        self.userpage_editprofile_cancel_btn.setText(QCoreApplication.translate("MainWindow", u"Cancel", None))
-        self.userpage_editprofile_change_pass_groupbox.setTitle(QCoreApplication.translate("MainWindow", u"Change Password", None))
-        self.label_80.setText(QCoreApplication.translate("MainWindow", u"Password:", None))
-        self.label_81.setText(QCoreApplication.translate("MainWindow", u"New Password", None))
-        self.label_86.setText(QCoreApplication.translate("MainWindow", u"Confirm New Password", None))
-        self.changepass_error_lbl.setText(QCoreApplication.translate("MainWindow", u"Username exist", None))
+        self.profile_change_username_label.setText(QCoreApplication.translate("MainWindow", u"Change Username", None))
+        self.profile_old_username_label.setText(QCoreApplication.translate("MainWindow", u"Old Username", None))
+        self.profile_username_label.setText(QCoreApplication.translate("MainWindow", u"New Username", None))
+        self.userpage_editprofile_change_username_btn.setText(QCoreApplication.translate("MainWindow", u"Change Username", None))
+        self.change_username_message_label.setText("")
+        self.profile_change_password_label.setText(QCoreApplication.translate("MainWindow", u"Change Password", None))
+        self.profile_password_label.setText(QCoreApplication.translate("MainWindow", u"Password", None))
+        self.userpage_editprofile_old_password_eye.setText("")
+        self.profile_new_password_label.setText(QCoreApplication.translate("MainWindow", u"New Password", None))
+        self.userpage_editprofile_new_password_eye.setText("")
+        self.profile_confirm_password_label.setText(QCoreApplication.translate("MainWindow", u"Confirm New Password", None))
+        self.userpage_editprofile_confirm_new_password_eye.setText("")
         self.userpage_editprofile_change_password_btn.setText(QCoreApplication.translate("MainWindow", u"Change Password", None))
-        self.label_89.setText("")
-        self.userspage_editprofile_success_lbl.setText(QCoreApplication.translate("MainWindow", u"Success", None))
+        self.change_password_message_label.setText("")
         self.user_tabs.setTabText(self.user_tabs.indexOf(self.user_profile_tab), QCoreApplication.translate("MainWindow", u"Edit Profile", None))
         self.userspage_user_heading_lbl.setText(QCoreApplication.translate("MainWindow", u"Only Admin Can Access", None))
         ___qtablewidgetitem = self.userpage_all_users_table.horizontalHeaderItem(0)
