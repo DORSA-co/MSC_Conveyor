@@ -1,7 +1,7 @@
 from uiUtils.guiBackend import GUIBackend
 from uiUtils import GUIComponents
 from Constants import IconsPath
-#import Constants.CONSTANTS as CONSTANTS
+from Constants import Constant
 
 from PageUI.Common_Function_UI import Common_Function_UI
 from UIFiles.main_UI import Ui_MainWindow
@@ -46,7 +46,7 @@ class RegisterUserTabUI(Common_Function_UI):
             GUIBackend.set_input_password(self.register_users_field[name])
             self.eye_buttons_connector(name)
         
-        self.show_success_msg(None)
+        # self.show_success_msg(None)
         self.reset()
 
     def eye_buttons_connector(self, name):
@@ -69,7 +69,7 @@ class RegisterUserTabUI(Common_Function_UI):
             'password' : "",
             'password_confirm': "",
         })
-        self.write_register_error(None)
+        # self.write_register_error(None)
 
     
     def set_user_roles_items(self, items: list[str]):
@@ -118,20 +118,12 @@ class RegisterUserTabUI(Common_Function_UI):
         Args:
             txt (str): error message
         """
-        if txt is None:
-            GUIBackend.set_wgt_visible(self.ui.register_message_label, False)
-        else:
-            GUIBackend.set_wgt_visible(self.ui.register_message_label, True)
-            GUIBackend.set_label_text( self.ui.register_message_label, txt)
+        message = GUIComponents.ErrorMessage(parent=self.ui.register_message_frame, text=txt)
+        message.show_message()
 
     def show_success_msg(self, txt):
-        if txt is None:
-            GUIBackend.set_wgt_visible( self.ui.register_message_label , False)
-    
-        else:
-            GUIBackend.set_wgt_visible( self.ui.register_message_label , True)
-            GUIBackend.set_label_text( self.ui.register_message_label, txt)
-            GUIComponents.single_timer_runner(3000, lambda: self.show_success_msg(None) )
+        message = GUIComponents.SuccessMessage(parent=self.ui.register_message_frame, text=txt)
+        message.show_message()
 
 class AllUserTabUI(Common_Function_UI):
 
@@ -214,8 +206,8 @@ class EditUserTabUI:
         }
 
         self.message_labels = {
-            'change_password':self.ui.change_password_message_label,
-            'change_username':self.ui.change_username_message_label
+            'change_password':self.ui.change_password_message_frame,
+            'change_username':self.ui.change_username_message_frame
         }
 
         self.change_password_fields = {
@@ -247,10 +239,10 @@ class EditUserTabUI:
             self.eye_buttons_connector(name)
         
 
-        self.write_error('change_username', None)
-        self.write_error('change_password', None)
-        self.show_success_msg('change_username', None)
-        self.show_success_msg('change_password', None)
+        # self.write_error('change_username', None)
+        # self.write_error('change_password', None)
+        # self.show_success_msg('change_username', None)
+        # self.show_success_msg('change_password', None)
 
 
     def button_connector(self, name, func):
@@ -300,21 +292,12 @@ class EditUserTabUI:
             txt (str): error message
         """
         
-        if txt is None:
-            GUIBackend.set_wgt_visible(self.message_labels[name], False)
-        else:
-            GUIBackend.set_wgt_visible(self.message_labels[name], True)
-            GUIBackend.set_label_text(self.message_labels[name], txt)
-            GUIComponents.single_timer_runner(3000, lambda: self.write_error(name,None) )
+        message = GUIComponents.ErrorMessage(parent=self.message_labels[name], text=txt)
+        message.show_message()
 
     def show_success_msg(self, name: str, txt:str):
-        if txt is None:
-            GUIBackend.set_wgt_visible( self.message_labels[name] , False)
-    
-        else:
-            GUIBackend.set_wgt_visible( self.message_labels[name] , True)
-            GUIBackend.set_label_text( self.message_labels[name], txt)
-            GUIComponents.single_timer_runner(3000, lambda: self.show_success_msg(name, None) )
+        message = GUIComponents.SuccessMessage(parent=self.message_labels[name], text=txt)
+        message.show_message()
 
 class LoginUserUI(Common_Function_UI):
     

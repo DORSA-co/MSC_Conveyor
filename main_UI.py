@@ -103,7 +103,7 @@ class mainUI(QMainWindow):
         if self.offset is not None and event.buttons() == QtCore.Qt.LeftButton and event.y() < self.ui.top_frame.height():
             if time.time() - self.move_refresh_time > Constant.RefreshRates.MOUSE_MOVE:
                 self.move_refresh_time = time.time()
-                self.move(self.pos() + QtCore.QPoint(event.scenePosition().x(),event.scenePosition().y()) - self.offset)
+                self.move(self.pos() + QtCore.QPoint(event.scenePosition().x(), event.scenePosition().y()) - self.offset)
 
         else:
             super().mouseMoveEvent(event)
@@ -112,6 +112,10 @@ class mainUI(QMainWindow):
     def mouseReleaseEvent(self, event):
         self.offset = None
         super().mouseReleaseEvent(event)
+
+    def mouseDoubleClickEvent(self, event):
+        self.maxmize_minimize()
+        super().mouseDoubleClickEvent(event)
     
 
     def sidebar_button_connector(self):
@@ -255,12 +259,13 @@ class mainUI(QMainWindow):
         """Maximize or Minimize window"""
         if self.isMaximized():
             self.showNormal()
+            GUIBackend.set_button_icon(self.ui.maximize_btn, IconsPath.IconsPath.MAXIMIZE_ICON)
         else:
             self.showMaximized()
+            GUIBackend.set_button_icon(self.ui.maximize_btn, IconsPath.IconsPath.MINIMIZE_ICON)
 
     def move_side_frame(self):
         w = self.ui.side_frame.width()
-
         if w <= Constant.SideBarAnimation.WIDTH_START_VALUE:
             self.minWidth = QtCore.QPropertyAnimation(self.ui.side_frame, b"minimumWidth")
             self.minWidth.setDuration(Constant.SideBarAnimation.ANIMATION_DURATION)

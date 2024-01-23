@@ -149,7 +149,7 @@ class AllUserTabAPI:
 
         if flag == 'edit':    
             self.selected_user_for_edit = user
-            self.uiHandeler.editUserDialog.show(user)
+            self.uiHandeler.editUserDialog.show_win(user)
     
 
     def update_user(self,):

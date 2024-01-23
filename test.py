@@ -1,71 +1,31 @@
-import functools
-from PyQt5 import QtCore, QtGui, QtWidgets
+style_text = """QTextEdit
+            {{
+                color: rgb(20, 20, 20);
+                border: None;
+                border-bottom: 2px solid rgba({0}, {1}, {2}, 255);
+                background-color: rgba({0}, {1}, {2}, 50);
+                padding-left: 55px;
+                padding-top: 6px;
+                padding-bottom: 3x;
+                background-image: url({3});
+                background-position: left center;
+                background-repeat: no-repeat;
+                min-height: 55px;
+                max-height: 55px;
+            }}
 
+            QTextEdit:disabled
+            {{
+                color: rgb(20, 20, 20)
+            }}"""
 
-def helper_function(widget, color):
-    widget.setStyleSheet('''
-                            background-color: transparent;
-                            border:5px solid #7E84A2;
-                            border-radius: 32px;
-                            min-width: 55px;
-                            max-width: 55px;
-                            min-height: 55px;
-                            max-height: 55px;
-                            font-size: 24px;
-                            color: rgb(20, 20, 20);
-                            font-weight: bold;
-                            border: 5px solid {}
-                        '''.format(color.name()))
+# Example usage
+red = 255
+green = 0
+blue = 0
+imageUrl = "path/to/image.png"
 
-def apply_color_animation(widget, start_color, end_color, duration=1000):
-    anim = QtCore.QVariantAnimation(
-        widget,
-        duration=duration,
-        startValue=start_color,
-        endValue=end_color,
-        loopCount=1,
-    )
-    anim.valueChanged.connect(functools.partial(helper_function, widget))
-    anim.start(QtCore.QAbstractAnimation.DeleteWhenStopped)
+single_line_style_text = style_text.replace('\n', ' ').replace('\t', ' ')
+formatted_style_text = single_line_style_text.format(red, green, blue, imageUrl)
 
-
-class Widget(QtWidgets.QWidget):
-    def __init__(self, parent=None):
-        super().__init__(parent)
-
-        self.button = QtWidgets.QPushButton()
-
-        lay = QtWidgets.QVBoxLayout(self)
-        lay.addWidget(self.button)
-
-        self.button.clicked.connect(self.handle_timeout)
-        self.button.setStyleSheet('''
-                                background-color: transparent;
-                                border:5px solid #7E84A2;
-                                border-radius: 32px;
-                                min-width: 55px;
-                                max-width: 55px;
-                                min-height: 55px;
-                                max-height: 55px;
-                                font-size: 24px;
-                                color: rgb(20, 20, 20);
-                                font-weight: bold;
-                            ''')
-
-    def handle_timeout(self):
-        apply_color_animation(
-            self.button,
-            QtGui.QColor("#7E84A2"),
-            QtGui.QColor("#4C7EFF"),
-            duration=1000,
-        )
-
-
-if __name__ == "__main__":
-    import sys
-
-    app = QtWidgets.QApplication(sys.argv)
-    app.setStyle("fusion")
-    w = Widget()
-    w.show()
-    sys.exit(app.exec_())
+print(formatted_style_text)

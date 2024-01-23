@@ -16,22 +16,20 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QDialog, QFrame, QHBoxLayout,
-    QLabel, QLayout, QLineEdit, QPushButton,
-    QSizePolicy, QSpacerItem, QStackedWidget, QVBoxLayout,
-    QWidget)
-import assets_rc
+    QLabel, QLineEdit, QPushButton, QSizePolicy,
+    QSpacerItem, QStackedWidget, QVBoxLayout, QWidget)
 import assets_rc
 
-class Ui_Dialog(object):
-    def setupUi(self, Dialog):
-        if not Dialog.objectName():
-            Dialog.setObjectName(u"Dialog")
-        Dialog.resize(372, 533)
-        self.verticalLayout = QVBoxLayout(Dialog)
+class Ui_loginDialogWin(object):
+    def setupUi(self, loginDialogWin):
+        if not loginDialogWin.objectName():
+            loginDialogWin.setObjectName(u"loginDialogWin")
+        loginDialogWin.resize(372, 533)
+        self.verticalLayout = QVBoxLayout(loginDialogWin)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.StyleSheet = QWidget(Dialog)
+        self.StyleSheet = QWidget(loginDialogWin)
         self.StyleSheet.setObjectName(u"StyleSheet")
         self.StyleSheet.setStyleSheet(u"QLineEdit{\n"
 "	background-color: rgba(0, 0, 0, 0);\n"
@@ -41,9 +39,13 @@ class Ui_Dialog(object):
 "	padding-bottom: 7px;\n"
 "}\n"
 "\n"
+"QLineEdit:focus {\n"
+"	border-bottom: 3px solid #7E84A2;\n"
+"}\n"
+"\n"
 "#main_frame{\n"
-"border-image: url(:/login_icons/icons/login_icons/dorsa.jpg);\n"
-"border-radius: 20px;\n"
+"	border-image: url(:/icons/icons/bg_image.jpg);\n"
+"	border-radius: 20px;\n"
 "}\n"
 "\n"
 "#inner_frame{\n"
@@ -73,13 +75,13 @@ class Ui_Dialog(object):
 "\n"
 "#temp_btn:pressed{\n"
 "	border: 0px;\n"
-"	background-color: rgba(0,0,0,0);\n"
+"	background-color: rgba"
+                        "(0,0,0,0);\n"
 "}\n"
 "\n"
 "#eye_btn{\n"
 "	border: 0px;\n"
-"	"
-                        "background-color: rgba(0,0,0,0);\n"
+"	background-color: rgba(0,0,0,0);\n"
 "}\n"
 "\n"
 "#eye_btn:pressed{\n"
@@ -148,7 +150,7 @@ class Ui_Dialog(object):
         self.close_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.close_btn.setStyleSheet(u"")
         icon = QIcon()
-        icon.addFile(u":/login_icons/icons/login_icons/close.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/icons/icons/close.png", QSize(), QIcon.Normal, QIcon.Off)
         self.close_btn.setIcon(icon)
 
         self.horizontalLayout_6.addWidget(self.close_btn)
@@ -171,6 +173,7 @@ class Ui_Dialog(object):
         self.login_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_5 = QVBoxLayout(self.login_frame)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_5.setContentsMargins(-1, 50, -1, -1)
         self.horizontalLayout_7 = QHBoxLayout()
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.horizontalSpacer_9 = QSpacerItem(13, 124, QSizePolicy.Expanding, QSizePolicy.Minimum)
@@ -186,7 +189,7 @@ class Ui_Dialog(object):
         sizePolicy.setHeightForWidth(self.username_icon.sizePolicy().hasHeightForWidth())
         self.username_icon.setSizePolicy(sizePolicy)
         self.username_icon.setMaximumSize(QSize(25, 25))
-        self.username_icon.setPixmap(QPixmap(u":/login_icons/icons/login_icons/username.png"))
+        self.username_icon.setPixmap(QPixmap(u":/icons/icons/username.png"))
         self.username_icon.setScaledContents(True)
 
         self.horizontalLayout_4.addWidget(self.username_icon)
@@ -229,7 +232,7 @@ class Ui_Dialog(object):
         sizePolicy.setHeightForWidth(self.password_icon.sizePolicy().hasHeightForWidth())
         self.password_icon.setSizePolicy(sizePolicy)
         self.password_icon.setMaximumSize(QSize(25, 25))
-        self.password_icon.setPixmap(QPixmap(u":/login_icons/icons/login_icons/password.png"))
+        self.password_icon.setPixmap(QPixmap(u":/icons/icons/password.png"))
         self.password_icon.setScaledContents(True)
 
         self.horizontalLayout_5.addWidget(self.password_icon)
@@ -254,7 +257,7 @@ class Ui_Dialog(object):
         self.eye_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.eye_btn.setStyleSheet(u"")
         icon1 = QIcon()
-        icon1.addFile(u":/login_icons/icons/login_icons/eye.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(u":/icons/icons/white_eye.png", QSize(), QIcon.Normal, QIcon.Off)
         self.eye_btn.setIcon(icon1)
 
         self.horizontalLayout_2.addWidget(self.eye_btn)
@@ -275,14 +278,9 @@ class Ui_Dialog(object):
 
         self.verticalLayout_5.addLayout(self.horizontalLayout_7)
 
-        self.verticalLayout_9 = QVBoxLayout()
-        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
-        self.horizontalLayout_10 = QHBoxLayout()
-        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
-        self.horizontalLayout_10.setSizeConstraint(QLayout.SetDefaultConstraint)
-        self.horizontalSpacer_11 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Preferred)
 
-        self.horizontalLayout_10.addItem(self.horizontalSpacer_11)
+        self.verticalLayout_5.addItem(self.verticalSpacer_2)
 
         self.login_btn = QPushButton(self.login_frame)
         self.login_btn.setObjectName(u"login_btn")
@@ -295,17 +293,7 @@ class Ui_Dialog(object):
         self.login_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.login_btn.setStyleSheet(u"")
 
-        self.horizontalLayout_10.addWidget(self.login_btn)
-
-        self.horizontalSpacer_12 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_10.addItem(self.horizontalSpacer_12)
-
-
-        self.verticalLayout_9.addLayout(self.horizontalLayout_10)
-
-
-        self.verticalLayout_5.addLayout(self.verticalLayout_9)
+        self.verticalLayout_5.addWidget(self.login_btn, 0, Qt.AlignHCenter)
 
         self.login_error_lbl = QLabel(self.login_frame)
         self.login_error_lbl.setObjectName(u"login_error_lbl")
@@ -316,6 +304,10 @@ class Ui_Dialog(object):
         self.login_error_lbl.setSizePolicy(sizePolicy1)
 
         self.verticalLayout_5.addWidget(self.login_error_lbl)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_5.addItem(self.verticalSpacer)
 
 
         self.verticalLayout_10.addWidget(self.login_frame)
@@ -334,26 +326,26 @@ class Ui_Dialog(object):
         self.verticalLayout.addWidget(self.StyleSheet)
 
 
-        self.retranslateUi(Dialog)
+        self.retranslateUi(loginDialogWin)
 
         self.stackedWidget.setCurrentIndex(0)
 
 
-        QMetaObject.connectSlotsByName(Dialog)
+        QMetaObject.connectSlotsByName(loginDialogWin)
     # setupUi
 
-    def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
+    def retranslateUi(self, loginDialogWin):
+        loginDialogWin.setWindowTitle(QCoreApplication.translate("loginDialogWin", u"Dialog", None))
         self.close_btn.setText("")
         self.username_icon.setText("")
-        self.username_input.setText(QCoreApplication.translate("Dialog", u"admin", None))
-        self.username_input.setPlaceholderText(QCoreApplication.translate("Dialog", u"Username", None))
+        self.username_input.setText(QCoreApplication.translate("loginDialogWin", u"admin", None))
+        self.username_input.setPlaceholderText(QCoreApplication.translate("loginDialogWin", u"Username", None))
         self.temp_btn.setText("")
         self.password_icon.setText("")
-        self.password_input.setText(QCoreApplication.translate("Dialog", u"admin", None))
-        self.password_input.setPlaceholderText(QCoreApplication.translate("Dialog", u"Password", None))
+        self.password_input.setText(QCoreApplication.translate("loginDialogWin", u"admin", None))
+        self.password_input.setPlaceholderText(QCoreApplication.translate("loginDialogWin", u"Password", None))
         self.eye_btn.setText("")
-        self.login_btn.setText(QCoreApplication.translate("Dialog", u"LOGIN", None))
+        self.login_btn.setText(QCoreApplication.translate("loginDialogWin", u"LOGIN", None))
         self.login_error_lbl.setText("")
     # retranslateUi
 

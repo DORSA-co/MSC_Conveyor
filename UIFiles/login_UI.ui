@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>loginDialogWin</class>
+ <widget class="QDialog" name="loginDialogWin">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -40,9 +40,13 @@
 	padding-bottom: 7px;
 }
 
+QLineEdit:focus {
+	border-bottom: 3px solid #7E84A2;
+}
+
 #main_frame{
-border-image: url(:/login_icons/icons/login_icons/dorsa.jpg);
-border-radius: 20px;
+	border-image: url(:/icons/icons/bg_image.jpg);
+	border-radius: 20px;
 }
 
 #inner_frame{
@@ -216,7 +220,7 @@ border-radius: 20px;
                  </property>
                  <property name="icon">
                   <iconset resource="assets/assets.qrc">
-                   <normaloff>:/login_icons/icons/login_icons/close.png</normaloff>:/login_icons/icons/login_icons/close.png</iconset>
+                   <normaloff>:/icons/icons/close.png</normaloff>:/icons/icons/close.png</iconset>
                  </property>
                 </widget>
                </item>
@@ -257,6 +261,9 @@ border-radius: 20px;
                    <enum>QFrame::Raised</enum>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayout_5">
+                   <property name="topMargin">
+                    <number>50</number>
+                   </property>
                    <item>
                     <layout class="QHBoxLayout" name="horizontalLayout_7">
                      <item>
@@ -294,7 +301,7 @@ border-radius: 20px;
                             <string/>
                            </property>
                            <property name="pixmap">
-                            <pixmap resource="assets/assets.qrc">:/login_icons/icons/login_icons/username.png</pixmap>
+                            <pixmap resource="assets/assets.qrc">:/icons/icons/username.png</pixmap>
                            </property>
                            <property name="scaledContents">
                             <bool>true</bool>
@@ -391,7 +398,7 @@ border-radius: 20px;
                             <string/>
                            </property>
                            <property name="pixmap">
-                            <pixmap resource="assets/assets.qrc">:/login_icons/icons/login_icons/password.png</pixmap>
+                            <pixmap resource="assets/assets.qrc">:/icons/icons/password.png</pixmap>
                            </property>
                            <property name="scaledContents">
                             <bool>true</bool>
@@ -455,7 +462,7 @@ border-radius: 20px;
                              </property>
                              <property name="icon">
                               <iconset resource="assets/assets.qrc">
-                               <normaloff>:/login_icons/icons/login_icons/eye.png</normaloff>:/login_icons/icons/login_icons/eye.png</iconset>
+                               <normaloff>:/icons/icons/white_eye.png</normaloff>:/icons/icons/white_eye.png</iconset>
                              </property>
                             </widget>
                            </item>
@@ -481,73 +488,52 @@ border-radius: 20px;
                     </layout>
                    </item>
                    <item>
-                    <layout class="QVBoxLayout" name="verticalLayout_9">
-                     <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_10">
-                       <property name="sizeConstraint">
-                        <enum>QLayout::SetDefaultConstraint</enum>
-                       </property>
-                       <item>
-                        <spacer name="horizontalSpacer_11">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                       <item>
-                        <widget class="QPushButton" name="login_btn">
-                         <property name="minimumSize">
-                          <size>
-                           <width>200</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>200</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                         <property name="font">
-                          <font>
-                           <pointsize>12</pointsize>
-                           <weight>75</weight>
-                           <bold>true</bold>
-                          </font>
-                         </property>
-                         <property name="cursor">
-                          <cursorShape>PointingHandCursor</cursorShape>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true"/>
-                         </property>
-                         <property name="text">
-                          <string>LOGIN</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <spacer name="horizontalSpacer_12">
-                         <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                         </property>
-                         <property name="sizeHint" stdset="0">
-                          <size>
-                           <width>40</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                        </spacer>
-                       </item>
-                      </layout>
-                     </item>
-                    </layout>
+                    <spacer name="verticalSpacer_2">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Preferred</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item alignment="Qt::AlignHCenter">
+                    <widget class="QPushButton" name="login_btn">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>200</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>12</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true"/>
+                     </property>
+                     <property name="text">
+                      <string>LOGIN</string>
+                     </property>
+                    </widget>
                    </item>
                    <item>
                     <widget class="QLabel" name="login_error_lbl">
@@ -561,6 +547,19 @@ border-radius: 20px;
                       <string/>
                      </property>
                     </widget>
+                   </item>
+                   <item>
+                    <spacer name="verticalSpacer">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                    </spacer>
                    </item>
                   </layout>
                  </widget>
@@ -581,7 +580,6 @@ border-radius: 20px;
   </layout>
  </widget>
  <resources>
-  <include location="assets/assets.qrc"/>
   <include location="assets/assets.qrc"/>
  </resources>
  <connections/>

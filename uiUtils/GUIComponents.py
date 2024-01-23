@@ -1,10 +1,11 @@
-import time
+import re
 
 from PySide6 import QtWidgets, QtCore, QtGui
-import guiBackend
+# import guiBackend
 import PySide6.QtWidgets 
-from Constants import IconsPath
 
+from Constants import Constant
+from Constants import IconsPath
 
 CODE_NAME_BUTTON_STYLE ={
     'normal': """ QPushButton{
@@ -32,8 +33,6 @@ CODE_NAME_BUTTON_STYLE ={
 
 }
 
-
-
 TABEL_BUTTON_STYLE = """
     QPushButton{ 
         background-color: rgba(255,255,255,0);
@@ -54,7 +53,6 @@ SIDEBAR_BUTTON_UNSELECTED_STYLE = """
     None
 
 """
-
 
 MULTISTEP_SELECT_STYLE = """
     QPushButton{
@@ -94,7 +92,6 @@ MULTISTEP_UNSELECT_STYLE = """
     }
 """
 
-
 REPORT_BUTTON_STYLE = """
 QPushButton{
 	min-height:30px;
@@ -113,6 +110,7 @@ QPushButton:hover{
 }
 
 """
+
 TABLE_BUTTON_STYLE = """
 QPushButton{
 	min-height:30px;
@@ -237,6 +235,190 @@ QSpinBox:focus, QDoubleSpinBox:focus{
 
 def take_closest(num, collection):
     return min(collection, key=lambda x: abs(x - num))
+
+
+def single_timer_runner( t, func):
+    """runs a function after a delay time
+
+    Args:
+        t (_type_): delay time in ms`
+        func (_type_): function event after time finished
+    """
+    timer = QtCore.QTimer()
+    timer.singleShot(t, func)
+
+
+class Color:
+    def __init__(self, color) -> None:
+        if self.is_hex_color(color):
+            self.hex_color = color
+            self.rgb_color = self.hex2rgb(color)
+
+        elif self.is_rgb_color(color):
+            self.hex_color = self.rgb2hex(color)
+            self.rgb_color = tuple(map(int, color.strip('()').split(', ')))
+
+        else:
+            raise "{color} is not a valid Hex or RGB color."
+
+    def is_hex_color(self, color):
+        """
+        Check if the given color is a valid hexadecimal color code.
+        """
+        hex_color_pattern = r'^#(?:[0-9a-fA-F]{3}){1,2}$'
+        return re.match(hex_color_pattern, color) is not None
+
+    def is_rgb_color(self, color):
+        """
+        Check if the given color is a valid RGB color in the format (x, y, z).
+        """
+        rgb_color_pattern = r'^\(\s*(\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\s*\)$'
+        match = re.match(rgb_color_pattern, color)
+        if match:
+            r, g, b = map(int, match.groups())
+            return all(0 <= val <= 255 for val in [r, g, b])
+        return False
+        
+    def rgb2hex(self, color):
+        """
+        Convert RGB to Hexadecimal color code.
+        """
+        if self.is_rgb_color(color):
+            r, g, b = map(int, color.strip('()').split(', '))
+            return '#{0:02x}{1:02x}{2:02x}'.format(r, g, b)
+        else:
+            raise ValueError("Invalid RGB color format")
+
+    def hex2rgb(self, color):
+        """
+        Convert Hexadecimal color code to RGB.
+        """
+        if self.is_hex_color(color):
+            hexcolor = color.lstrip('#')
+            if len(hexcolor) == 6:
+                r, g, b = tuple(int(hexcolor[i:i+2], 16) for i in (0, 2, 4))
+            elif len(hexcolor) == 3:
+                r, g, b = tuple(int(hexcolor[i:i+1]*2, 16) for i in (0, 1, 2))
+            else:
+                raise ValueError("Invalid hex color format")
+            return r, g, b
+        else:
+            raise ValueError("Invalid hex color format")
+
+
+class AnimatedTextEdit(QtWidgets.QTextEdit):
+    def __init__(self, text="", parent=None):
+        super().__init__(text, parent)
+
+        self.opacity_effect = QtWidgets.QGraphicsOpacityEffect(self)
+        self.setGraphicsEffect(self.opacity_effect)
+        self.opacity_effect.setOpacity(0.0)
+
+    def fade_in(self, duration=1000, callback=None):
+        self.__fade(0.0, 1.0, duration, callback)
+
+    def fade_out(self, duration=1000, callback=None):
+        self.__fade(1.0, 0.0, duration,callback)
+
+    def __fade(self, start_opacity, end_opacity, duration, callback=None):
+        self.animation = QtCore.QPropertyAnimation(self.opacity_effect, b"opacity")
+        self.animation.setDuration(duration)
+        self.animation.setStartValue(start_opacity)
+        self.animation.setEndValue(end_opacity)
+        self.animation.setEasingCurve(QtCore.QEasingCurve.InOutQuad)
+        self.animation.finished.connect(callback)
+        self.animation.start()
+
+
+class Message(AnimatedTextEdit):
+    def __init__(self, parent, title:str, text:str, color:tuple, icon_path:str):
+        super().__init__(text, parent)
+        self.setEnabled(False)
+        parent.layout().insertWidget(0, self)
+
+        self.style = (
+            """QTextEdit
+            {{
+                color: rgb(20, 20, 20);
+                border: None;
+                border-bottom: 2px solid rgba({0}, {1}, {2}, 255);
+                background-color: rgba({0}, {1}, {2}, 50);
+                padding-left: 55px;
+                padding-top: 6px;
+                padding-bottom: 3x;
+                background-image: url({3});
+                background-position: left center;
+                background-repeat: no-repeat;
+                min-height: 55px;
+                max-height: 55px;
+            }}
+
+            QTextEdit:disabled
+            {{
+                color: rgb(20, 20, 20)
+            }}"""
+
+)
+
+        self.style = self.style.replace('\n', '').replace('\t', '')
+
+        self.set_style(color, icon_path)
+
+        self.html_text = (
+                """<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:14pt; font-weight:600; color:{};">{}</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">{}</p></body></html>"""
+            )
+        
+        self.set_message(title, text, color)
+
+    def set_message(self, title:str, text:str, color:tuple):
+        color_obj = Color(color)
+        self.setHtml(self.html_text.format(color_obj.hex_color, title, text))
+
+    def set_style(self, color, icon_path):
+        color_obj = Color(color)
+        self.setStyleSheet(
+            self.style.format(color_obj.rgb_color[0], color_obj.rgb_color[1], color_obj.rgb_color[2], icon_path)
+        )
+
+    def show_message(self):
+        self.fade_in(duration=Constant.MessagesAnimation.FADE_IN_DURATION)
+
+        single_timer_runner(Constant.MessagesAnimation.MESSAGE_DURARTION, 
+                                          lambda: self.fade_out(duration=Constant.MessagesAnimation.FADE_OUT_DURATION, callback=self.deleteLater)
+        )
+
+
+class SuccessMessage(Message):
+    def __init__(self, parent, text=""):
+        title = "SUCCESS"
+        color = Constant.MessageColors.SUCCESS
+        icon_path = IconsPath.IconsPath.SUCCESS_PATH
+        super().__init__(parent, title, text, color, icon_path)
+
+
+class WarningMessage(Message):
+    def __init__(self, parent, text=""):
+        title = "WARNING"
+        color = Constant.MessageColors.WARNING
+        icon_path = IconsPath.IconsPath.WARNING_PATH
+        super().__init__(parent, title, text, color, icon_path)
+
+
+class ErrorMessage(Message):
+    def __init__(self, parent, text=""):
+        title = "ERROR"
+        color = Constant.MessageColors.ERROR
+        icon_path = IconsPath.IconsPath.ERROR_PATH
+        super().__init__(parent, title, text, color, icon_path)
+
+
+class InfoMessage(Message):
+    def __init__(self, parent, text=""):
+        title = "INFO"
+        color = Constant.MessageColors.INFO
+        icon_path = IconsPath.IconsPath.INFO_PATH
+        super().__init__(parent, title, text, color, icon_path)
 
 
 class SwitchCircle(QtWidgets.QWidget):
@@ -420,6 +602,7 @@ class editButton(QtWidgets.QPushButton):
         self._icon_over = QtGui.QIcon(IconsPath.IconsPath.EDIT_ICON_HOVER)
         self.setStyleSheet(TABEL_BUTTON_STYLE)
         self.setIcon(self._icon_normal)
+        self.setCursor(QtCore.Qt.PointingHandCursor)
 
     def enterEvent(self, event):
         self.setIcon(self._icon_over)
@@ -428,7 +611,6 @@ class editButton(QtWidgets.QPushButton):
     def leaveEvent(self, event):
         self.setIcon(self._icon_normal)
         #return super(editButton, self).enterEvent(event)
-
 
 
 class deleteButton(QtWidgets.QPushButton):
@@ -439,6 +621,7 @@ class deleteButton(QtWidgets.QPushButton):
         self._icon_over = QtGui.QIcon(IconsPath.IconsPath.DELETE_ICON_HOVER)
         self.setStyleSheet(TABEL_BUTTON_STYLE)
         self.setIcon(self._icon_normal)
+        self.setCursor(QtCore.Qt.PointingHandCursor)
 
     def enterEvent(self, event):
         self.setIcon(self._icon_over)
@@ -447,7 +630,6 @@ class deleteButton(QtWidgets.QPushButton):
     def leaveEvent(self, event):
         self.setIcon(self._icon_normal)
         #return super(deleteButton, self).enterEvent(event)
-
 
 
 class reportButton(QtWidgets.QPushButton):
@@ -466,11 +648,6 @@ class tableButton(QtWidgets.QPushButton):
         super(tableButton, self).__init__(*a, **kw)
         self.setStyleSheet(TABLE_BUTTON_STYLE)
         self.setText(text)
-        
-        
-
-
-
 
 
 class tabelCheckbox(QtWidgets.QCheckBox):
@@ -489,6 +666,7 @@ class tabelCheckbox(QtWidgets.QCheckBox):
         #self.setMaximumWidth(h+5)
         #self.setMaximumWidth(w+5)
 
+
 class compareComboBox(QtWidgets.QComboBox):
 
     def __init__(self, *a, **kw):
@@ -496,7 +674,6 @@ class compareComboBox(QtWidgets.QComboBox):
 
         self.insertItems(0, ['none', '>','>=', '<', '<=', '=='])
         self.setStyleSheet(COMPARE_COMBOBOXE)
-
 
 
 class Input(QtWidgets.QLineEdit):
@@ -547,10 +724,6 @@ class LabelTable(QtWidgets.QLabel):
 class inputTable(QtWidgets.QLineEdit):
     def __init__(self, *a, **kw):
         super(inputTable, self).__init__(*a, **kw)
-
-
-
-        
 
 
 class confirmMessageBox:
@@ -618,21 +791,6 @@ class timerBuilder:
         self.timer.deleteLater()
 
 
-
-    
-def single_timer_runner( t, func):
-    """runs a function after a delay time
-
-    Args:
-        t (_type_): delay time in ms`
-        func (_type_): function event after time finished
-    """
-    timer = QtCore.QTimer()
-    timer.singleShot(t, func)
-    
-    
-
-
 class singleAnimation:
 
     def __init__(self, obj ,atribute, time, key1, key2) -> None:
@@ -686,7 +844,6 @@ class singleAnimation:
             self.backward()
 
 
-
 class gifPlayer:
 
     def __init__(self, label: QtWidgets.QLabel, gif_path: str) -> None:
@@ -725,14 +882,12 @@ class gifPlayer:
         self.label.setMaximumWidth(0)
 
         self.stop_animation()
-        
-    
-       
-                
+
 
 def selectDirectoryDialog():
     path = QtWidgets.QFileDialog.getExistingDirectory()
     return path
+
 
 def selectSaveFile(file_name:str = 'All', file_extention:str='.*'):
     """opens a dialog file to select a file to save
@@ -762,8 +917,6 @@ def selectFileDialog(file_name:str = 'All', file_extention:str='.*'):
     filter = f'{file_name} (*{file_extention})'
     path = QtWidgets.QFileDialog.getOpenFileName(filter=filter)
     return path
-
-
 
 
 class overlayMassage(QtWidgets.QWidget):

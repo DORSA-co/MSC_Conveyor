@@ -26,6 +26,15 @@ class CameraSetting_UI(Common_Function_UI):
         self.ui = ui  # self.Page_CameraSetting = CameraSetting_UI(self.ui)   on main_UI
         #self.serial_number_cobobox = self.ui.serial_number_spinBox
 
+        self.camera_setting_labels = {
+            "gain": self.ui.camera_settings_gain_label,
+            "exposure": self.ui.camera_settings_exposure_label,
+            "width": self.ui.camera_settings_width_label,
+            "height": self.ui.camera_settings_height_label,
+            "offset_x": self.ui.camera_settings_offsetx_label,
+            "offset_y": self.ui.camera_settings_offsety_label,
+        }
+
         self.camera_setting_fields = {
             "gain": self.ui.gain_spinbox,
             "exposure": self.ui.expo_spinbox,
@@ -109,14 +118,18 @@ class CameraSetting_UI(Common_Function_UI):
 
     def handle_fields_enablity(self, is_playing):
         for name, flag in self.enable_on_playing.items():
+            label = self.camera_setting_labels[name]
             field = self.camera_setting_fields[name]
             if is_playing:
                 if flag:
+                    label.setEnabled(True)
                     field.setEnabled(True)
                 else:
+                    label.setEnabled(False)
                     field.setEnabled(False)
                     
             else:
+                label.setEnabled(True)
                 field.setEnabled(True)
                     
                     

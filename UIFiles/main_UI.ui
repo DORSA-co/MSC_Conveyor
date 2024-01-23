@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1370</width>
-    <height>827</height>
+    <width>1294</width>
+    <height>798</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -64,28 +64,28 @@ QDoubleSpinBox:disabled
 
 QSpinBox::up-arrow, QDoubleSpinBox::up-arrow
 {   
-	image: url(:/general_icons/icons/general_icons/plus_icon_black.png);
+	image: url(:/icons/icons/plus_icon_black.png);
 	width: 16px;
 	height: 16px;
 }
 
 QSpinBox::down-arrow ,  QDoubleSpinBox::down-arrow
 {   
-	image: url(:/general_icons/icons/general_icons/minus_icon_black.png);
+	image: url(:/icons/icons/minus_icon_black.png);
 	width: 16px;
 	height: 16px;
 }
 
 QSpinBox::up-arrow:disabled, QDoubleSpinBox::up-arrow:disabled
 {   
-	image: url(:/general_icons/icons/general_icons/plus_icon_gray.png);
+	image: url(:/icons/icons/plus_icon_gray.png);
 	width: 16px;
 	height: 16px;
 }
 
 QSpinBox::down-arrow:disabled ,  QDoubleSpinBox::down-arrow:disabled
 {   
-	image: url(:/general_icons/icons/general_icons/minus_icon_gray.png);
+	image: url(:/icons/icons/minus_icon_gray.png);
 	width: 16px;
 	height: 16px;
 }
@@ -204,7 +204,7 @@ QTableWidget::item:hover {
 
 QHeaderView::up-arrow {
 	
-	image: url(:/general_icons/icons/general_icons/table_sort_icon.png);
+	image: url(:/icons/icons/table_sort_icon.png);
 }
 
 QScrollBar:horizontal, QScrollBar:vertical {
@@ -243,14 +243,14 @@ QComboBox:disabled
 
 QComboBox::down-arrow:disabled
 {   
-	image: url(:/general_icons/icons/general_icons/down_icon_gray.png);
+	image: url(:/icons/icons/down_icon_gray.png);
 	width: 12px;
     height: 12px;
 }
 
 QComboBox::down-arrow
 {   
-	image: url(:/general_icons/icons/general_icons/down_icon_black.png);
+	image: url(:/icons/icons/down_icon_black.png);
 	width: 12px;
     height: 12px;
 }
@@ -444,6 +444,22 @@ QComboBox:focus{
 	border-bottom-right-radius: 0px;
 }
 
+#register_message_scrollArea, 
+#change_username_message_scrollArea,
+#change_password_message_scrollArea
+{
+	border: None;
+}
+
+#register_message_frame, 
+#change_username_message_frame,
+#change_password_message_frame
+{
+	background-color: #F7F8FA;
+}
+
+
+
 </string>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
@@ -522,7 +538,7 @@ QComboBox:focus{
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap resource="assets/assets.qrc">:/general_icons/icons/general_icons/dorsa_logo.png</pixmap>
+          <pixmap resource="assets/assets.qrc">:/icons/icons/dorsa_logo.png</pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>
@@ -570,7 +586,7 @@ QComboBox:focus{
          </property>
          <property name="icon">
           <iconset resource="assets/assets.qrc">
-           <normaloff>:/general_icons/icons/general_icons/live_icon.png</normaloff>:/general_icons/icons/general_icons/live_icon.png</iconset>
+           <normaloff>:/icons/icons/live_icon.png</normaloff>:/icons/icons/live_icon.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -596,7 +612,7 @@ QComboBox:focus{
          </property>
          <property name="icon">
           <iconset resource="assets/assets.qrc">
-           <normaloff>:/general_icons/icons/general_icons/settings_icon.png</normaloff>:/general_icons/icons/general_icons/settings_icon.png</iconset>
+           <normaloff>:/icons/icons/settings_icon.png</normaloff>:/icons/icons/settings_icon.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -628,7 +644,7 @@ QComboBox:focus{
          </property>
          <property name="icon">
           <iconset resource="assets/assets.qrc">
-           <normaloff>:/general_icons/icons/general_icons/report_icon.png</normaloff>:/general_icons/icons/general_icons/report_icon.png</iconset>
+           <normaloff>:/icons/icons/report_icon.png</normaloff>:/icons/icons/report_icon.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -654,7 +670,7 @@ QComboBox:focus{
          </property>
          <property name="icon">
           <iconset resource="assets/assets.qrc">
-           <normaloff>:/general_icons/icons/general_icons/users_icon.png</normaloff>:/general_icons/icons/general_icons/users_icon.png</iconset>
+           <normaloff>:/icons/icons/users_icon.png</normaloff>:/icons/icons/users_icon.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -680,7 +696,7 @@ QComboBox:focus{
          </property>
          <property name="icon">
           <iconset resource="assets/assets.qrc">
-           <normaloff>:/general_icons/icons/general_icons/about_icon.png</normaloff>:/general_icons/icons/general_icons/about_icon.png</iconset>
+           <normaloff>:/icons/icons/about_icon.png</normaloff>:/icons/icons/about_icon.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -739,7 +755,7 @@ QComboBox:focus{
            </property>
            <property name="icon">
             <iconset resource="assets/assets.qrc">
-             <normaloff>:/general_icons/icons/general_icons/open_menus_icon.png</normaloff>:/general_icons/icons/general_icons/open_menus_icon.png</iconset>
+             <normaloff>:/icons/icons/open_menus_icon.png</normaloff>:/icons/icons/open_menus_icon.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -785,7 +801,7 @@ QComboBox:focus{
            </property>
            <property name="icon">
             <iconset resource="assets/assets.qrc">
-             <normaloff>:/general_icons/icons/general_icons/login_icon.png</normaloff>:/general_icons/icons/general_icons/login_icon.png</iconset>
+             <normaloff>:/icons/icons/login_icon.png</normaloff>:/icons/icons/login_icon.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -811,7 +827,7 @@ QComboBox:focus{
            </property>
            <property name="icon">
             <iconset resource="assets/assets.qrc">
-             <normaloff>:/general_icons/icons/general_icons/help_icon.png</normaloff>:/general_icons/icons/general_icons/help_icon.png</iconset>
+             <normaloff>:/icons/icons/help_icon.png</normaloff>:/icons/icons/help_icon.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -837,7 +853,7 @@ QComboBox:focus{
            </property>
            <property name="icon">
             <iconset resource="assets/assets.qrc">
-             <normaloff>:/general_icons/icons/general_icons/minimize_icon.png</normaloff>:/general_icons/icons/general_icons/minimize_icon.png</iconset>
+             <normaloff>:/icons/icons/minus_icon.png</normaloff>:/icons/icons/minus_icon.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -863,12 +879,12 @@ QComboBox:focus{
            </property>
            <property name="icon">
             <iconset resource="assets/assets.qrc">
-             <normaloff>:/general_icons/icons/general_icons/maximize_icon.png</normaloff>:/general_icons/icons/general_icons/maximize_icon.png</iconset>
+             <normaloff>:/icons/icons/maximize.png</normaloff>:/icons/icons/maximize.png</iconset>
            </property>
            <property name="iconSize">
             <size>
-             <width>18</width>
-             <height>18</height>
+             <width>25</width>
+             <height>25</height>
             </size>
            </property>
           </widget>
@@ -889,7 +905,7 @@ QComboBox:focus{
            </property>
            <property name="icon">
             <iconset resource="assets/assets.qrc">
-             <normaloff>:/general_icons/icons/general_icons/close_icon.png</normaloff>:/general_icons/icons/general_icons/close_icon.png</iconset>
+             <normaloff>:/icons/icons/close_icon.png</normaloff>:/icons/icons/close_icon.png</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -2480,6 +2496,9 @@ border: no</string>
                    </property>
                    <item>
                     <widget class="QLabel" name="camera_settings_width_label">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
                      <property name="font">
                       <font>
                        <pointsize>-1</pointsize>
@@ -2628,7 +2647,7 @@ border: no</string>
                    </item>
                   </layout>
                  </item>
-                 <item alignment="Qt::AlignHCenter">
+                 <item>
                   <widget class="QPushButton" name="save_camera_settings">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
@@ -2663,6 +2682,19 @@ border: no</string>
                     <string/>
                    </property>
                   </widget>
+                 </item>
+                 <item>
+                  <spacer name="verticalSpacer_9">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
                  </item>
                 </layout>
                </widget>
@@ -3307,7 +3339,7 @@ border: no</string>
              <string notr="true"/>
             </property>
             <property name="currentIndex">
-             <number>2</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="user_register_tab">
              <attribute name="title">
@@ -3391,7 +3423,7 @@ border: no</string>
                        </property>
                        <property name="icon">
                         <iconset resource="assets/assets.qrc">
-                         <normaloff>:/general_icons/icons/general_icons/eye.png</normaloff>:/general_icons/icons/general_icons/eye.png</iconset>
+                         <normaloff>:/icons/icons/black_eye.png</normaloff>:/icons/icons/black_eye.png</iconset>
                        </property>
                       </widget>
                      </item>
@@ -3442,7 +3474,7 @@ border: no</string>
                        </property>
                        <property name="icon">
                         <iconset resource="assets/assets.qrc">
-                         <normaloff>:/general_icons/icons/general_icons/eye.png</normaloff>:/general_icons/icons/general_icons/eye.png</iconset>
+                         <normaloff>:/icons/icons/black_eye.png</normaloff>:/icons/icons/black_eye.png</iconset>
                        </property>
                       </widget>
                      </item>
@@ -3467,55 +3499,69 @@ border: no</string>
                    </item>
                   </layout>
                  </item>
-                 <item>
-                  <widget class="QLabel" name="register_message_label">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
+                 <item alignment="Qt::AlignHCenter">
+                  <widget class="QPushButton" name="register_user">
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true"/>
                    </property>
                    <property name="text">
-                    <string/>
+                    <string>Register</string>
+                   </property>
+                   <property name="icon">
+                    <iconset>
+                     <normaloff>:/assets/Assets/icons/icons8-plus-white-50.png</normaloff>:/assets/Assets/icons/icons8-plus-white-50.png</iconset>
                    </property>
                   </widget>
                  </item>
                  <item>
-                  <spacer name="verticalSpacer_5">
-                   <property name="orientation">
-                    <enum>Qt::Vertical</enum>
+                  <widget class="QScrollArea" name="register_message_scrollArea">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
                    </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>20</width>
-                     <height>40</height>
-                    </size>
+                   <property name="widgetResizable">
+                    <bool>true</bool>
                    </property>
-                  </spacer>
+                   <widget class="QWidget" name="register_message_frame">
+                    <property name="geometry">
+                     <rect>
+                      <x>0</x>
+                      <y>0</y>
+                      <width>1014</width>
+                      <height>231</height>
+                     </rect>
+                    </property>
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_55">
+                     <item>
+                      <spacer name="verticalSpacer_5">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </widget>
+                  </widget>
                  </item>
                 </layout>
                </widget>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_16">
-                <item>
-                 <widget class="QPushButton" name="register_user">
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true"/>
-                  </property>
-                  <property name="text">
-                   <string>Register</string>
-                  </property>
-                  <property name="icon">
-                   <iconset>
-                    <normaloff>:/assets/Assets/icons/icons8-plus-white-50.png</normaloff>:/assets/Assets/icons/icons8-plus-white-50.png</iconset>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
               </item>
              </layout>
             </widget>
@@ -3655,24 +3701,21 @@ border: no</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLabel" name="change_username_message_label">
-                     <property name="text">
-                      <string/>
+                    <widget class="QScrollArea" name="change_username_message_scrollArea">
+                     <property name="widgetResizable">
+                      <bool>true</bool>
                      </property>
+                     <widget class="QWidget" name="change_username_message_frame">
+                      <property name="geometry">
+                       <rect>
+                        <x>0</x>
+                        <y>0</y>
+                        <width>481</width>
+                        <height>368</height>
+                       </rect>
+                      </property>
+                     </widget>
                     </widget>
-                   </item>
-                   <item>
-                    <spacer name="verticalSpacer_7">
-                     <property name="orientation">
-                      <enum>Qt::Vertical</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>20</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                    </spacer>
                    </item>
                   </layout>
                  </widget>
@@ -3770,7 +3813,7 @@ border: no</string>
                          </property>
                          <property name="icon">
                           <iconset resource="assets/assets.qrc">
-                           <normaloff>:/general_icons/icons/general_icons/eye.png</normaloff>:/general_icons/icons/general_icons/eye.png</iconset>
+                           <normaloff>:/icons/icons/black_eye.png</normaloff>:/icons/icons/black_eye.png</iconset>
                          </property>
                         </widget>
                        </item>
@@ -3817,7 +3860,7 @@ border: no</string>
                          </property>
                          <property name="icon">
                           <iconset resource="assets/assets.qrc">
-                           <normaloff>:/general_icons/icons/general_icons/eye.png</normaloff>:/general_icons/icons/general_icons/eye.png</iconset>
+                           <normaloff>:/icons/icons/black_eye.png</normaloff>:/icons/icons/black_eye.png</iconset>
                          </property>
                         </widget>
                        </item>
@@ -3861,7 +3904,7 @@ border: no</string>
                          </property>
                          <property name="icon">
                           <iconset resource="assets/assets.qrc">
-                           <normaloff>:/general_icons/icons/general_icons/eye.png</normaloff>:/general_icons/icons/general_icons/eye.png</iconset>
+                           <normaloff>:/icons/icons/black_eye.png</normaloff>:/icons/icons/black_eye.png</iconset>
                          </property>
                         </widget>
                        </item>
@@ -3889,24 +3932,21 @@ border: no</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLabel" name="change_password_message_label">
-                     <property name="text">
-                      <string/>
+                    <widget class="QScrollArea" name="change_password_message_scrollArea">
+                     <property name="widgetResizable">
+                      <bool>true</bool>
                      </property>
+                     <widget class="QWidget" name="change_password_message_frame">
+                      <property name="geometry">
+                       <rect>
+                        <x>0</x>
+                        <y>0</y>
+                        <width>481</width>
+                        <height>280</height>
+                       </rect>
+                      </property>
+                     </widget>
                     </widget>
-                   </item>
-                   <item>
-                    <spacer name="verticalSpacer_8">
-                     <property name="orientation">
-                      <enum>Qt::Vertical</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>20</width>
-                       <height>40</height>
-                      </size>
-                     </property>
-                    </spacer>
                    </item>
                   </layout>
                  </widget>

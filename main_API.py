@@ -121,7 +121,7 @@ class main_API:
             t = time.time()
             self.beltIncpetcion.feed(image)
             t = time.time() - t
-            print(t)
+            # print(t)
             if self.uiHandeler.current_page_name == 'settings':
                 self.API_Page_Setting.grab_image_event(image)
             

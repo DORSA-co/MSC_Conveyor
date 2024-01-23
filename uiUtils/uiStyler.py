@@ -50,12 +50,25 @@ class Styler:
 
         }
 
+        self.layout_obj: dict[QtWidgets.QWidget] = {
+            'message': 
+                {   
+                    'style': {'layout_type': 'vertical',
+                              'spacer_type': 'vertical'
+                              },
+                    'objects':[ self.ui.register_message_frame,
+                                self.ui.change_username_message_frame,
+                                self.ui.change_password_message_frame
+                                ]
+                },
+        } 
+
     def render(self,):
         self.__set_shadow()
+        self.__set_layout()
 
-    
     def __set_shadow(self, ):
-        for group_name,group in self.shadows_obj.items():
+        for group_name, group in self.shadows_obj.items():
             style = group['style']
             objects:list[QtWidgets.QWidget] = group['objects']
             for obj in objects:
@@ -64,3 +77,14 @@ class Styler:
                 shadow.setOffset(*style['offset'])
                 shadow.setColor(QtGui.QColor(*style['color']))
                 obj.setGraphicsEffect(shadow)
+
+    def __set_layout(self, ):
+        for group_name, group in self.layout_obj.items():
+            style = group['style']
+            objects:list[QtWidgets.QWidget] = group['objects']
+            for obj in objects:
+                layout = QtWidgets.QHBoxLayout() if style['layout_type']=='horizontal' else QtWidgets.QVBoxLayout()
+                spacer = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum) if style['layout_type']=='horizontal' \
+                    else QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+                obj.setLayout(layout)
+                layout.addItem(spacer)

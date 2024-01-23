@@ -18,9 +18,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QAbstractItemView, QApplication, QComboBox, QFrame,
     QGridLayout, QGroupBox, QHBoxLayout, QHeaderView,
     QLabel, QLineEdit, QMainWindow, QPushButton,
-    QSizePolicy, QSpacerItem, QSpinBox, QStackedWidget,
-    QTabWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,
-    QWidget)
+    QScrollArea, QSizePolicy, QSpacerItem, QSpinBox,
+    QStackedWidget, QTabWidget, QTableWidget, QTableWidgetItem,
+    QVBoxLayout, QWidget)
 
 from GUIComponents import SwitchControl
 import assets_rc
@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1370, 827)
+        MainWindow.resize(1294, 798)
         self.StyleSheet = QWidget(MainWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
         self.StyleSheet.setEnabled(True)
@@ -79,29 +79,29 @@ class Ui_MainWindow(object):
 "\n"
 "QSpinBox::up-arrow, QDoubleSpinBox::up-arrow\n"
 "{   \n"
-"	image: url(:/general_icons/i"
-                        "cons/general_icons/plus_icon_black.png);\n"
+"	image: url(:/icons/icons/plu"
+                        "s_icon_black.png);\n"
 "	width: 16px;\n"
 "	height: 16px;\n"
 "}\n"
 "\n"
 "QSpinBox::down-arrow ,  QDoubleSpinBox::down-arrow\n"
 "{   \n"
-"	image: url(:/general_icons/icons/general_icons/minus_icon_black.png);\n"
+"	image: url(:/icons/icons/minus_icon_black.png);\n"
 "	width: 16px;\n"
 "	height: 16px;\n"
 "}\n"
 "\n"
 "QSpinBox::up-arrow:disabled, QDoubleSpinBox::up-arrow:disabled\n"
 "{   \n"
-"	image: url(:/general_icons/icons/general_icons/plus_icon_gray.png);\n"
+"	image: url(:/icons/icons/plus_icon_gray.png);\n"
 "	width: 16px;\n"
 "	height: 16px;\n"
 "}\n"
 "\n"
 "QSpinBox::down-arrow:disabled ,  QDoubleSpinBox::down-arrow:disabled\n"
 "{   \n"
-"	image: url(:/general_icons/icons/general_icons/minus_icon_gray.png);\n"
+"	image: url(:/icons/icons/minus_icon_gray.png);\n"
 "	width: 16px;\n"
 "	height: 16px;\n"
 "}\n"
@@ -122,13 +122,13 @@ class Ui_MainWindow(object):
 "    min-width:30px;\n"
 "    min-height: 29px;\n"
 "    subcontrol-origin: margin;\n"
-"    subco"
-                        "ntrol-position: left;\n"
+"    subcontrol-position: left;\n"
 "    top: 0px;\n"
 "    right: 0px;\n"
 "}\n"
 "\n"
-"QSpinBox::up-button,\n"
+"QSpinBox::up-"
+                        "button,\n"
 "QSpinBox::down-button,\n"
 "QDoubleSpinBox::up-button,\n"
 "QDoubleSpinBox::down-button   {\n"
@@ -167,11 +167,11 @@ class Ui_MainWindow(object):
 "	color: rgb(120, 120, 120);\n"
 "}\n"
 "\n"
-"/* "
-                        "Tab Content Area */\n"
+"/* Tab Content Area */\n"
 "QTabWidget::pane {\n"
 "    border: 1px solid #E0E4EC;\n"
-"    border-top: none;\n"
+"    bo"
+                        "rder-top: none;\n"
 "    background-color: #E0E4EC;\n"
 "}\n"
 "\n"
@@ -207,13 +207,13 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QHeaderView::section:last {\n"
-"   border-top-right"
-                        "-radius: 4px;\n"
+"   border-top-right-radius: 4px;\n"
 "	border-right: None;\n"
 "}\n"
 "\n"
 "QTableWidget::item:selected {\n"
-"    background-color: #E0E4EC;\n"
+""
+                        "    background-color: #E0E4EC;\n"
 "	color: rgb(20, 20, 20);\n"
 "}\n"
 "\n"
@@ -223,7 +223,7 @@ class Ui_MainWindow(object):
 "\n"
 "QHeaderView::up-arrow {\n"
 "	\n"
-"	image: url(:/general_icons/icons/general_icons/table_sort_icon.png);\n"
+"	image: url(:/icons/icons/table_sort_icon.png);\n"
 "}\n"
 "\n"
 "QScrollBar:horizontal, QScrollBar:vertical {\n"
@@ -257,20 +257,20 @@ class Ui_MainWindow(object):
 "QComboBox:disabled\n"
 "{\n"
 "	border: 2px solid #F0F0F2;\n"
-"	co"
-                        "lor: rgb(120, 120, 120);\n"
+"	color: rgb(120, 120, 120);\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:disabled\n"
 "{   \n"
-"	image: url(:/general_icons/icons/general_icons/down_icon_gray.png);\n"
+"	image: url(:/icons/icons/"
+                        "down_icon_gray.png);\n"
 "	width: 12px;\n"
 "    height: 12px;\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow\n"
 "{   \n"
-"	image: url(:/general_icons/icons/general_icons/down_icon_black.png);\n"
+"	image: url(:/icons/icons/down_icon_black.png);\n"
 "	width: 12px;\n"
 "    height: 12px;\n"
 "}\n"
@@ -303,8 +303,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "#side_frame QPushButton{\n"
-"	border: 0px;"
-                        "\n"
+"	border: 0px;\n"
 "	color: white;\n"
 "	font-weight: bold;\n"
 "}\n"
@@ -314,7 +313,8 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "#top_frame QPushButton{\n"
-"	border: 0px;\n"
+"	border:"
+                        " 0px;\n"
 "}\n"
 "\n"
 "#main_stackedWidget{\n"
@@ -344,15 +344,15 @@ class Ui_MainWindow(object):
 "	color: rgba(255, 255, 255, 210);\n"
 "	border-radius: 22px;\n"
 "	min-width: 200;\n"
-"	max"
-                        "-width: 200;\n"
+"	max-width: 200;\n"
 "	min-height: 44;\n"
 "	max-height: 44;\n"
 "	font-size: 14px;\n"
 "	font-weight: bold;\n"
 "}\n"
 "\n"
-"#save_camera_settings:hover, #save_algorithm_settings:hover, #register_user:hover{\n"
+"#save_camera_settings:hover, #save_alg"
+                        "orithm_settings:hover, #register_user:hover{\n"
 "	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
 "}\n"
 "\n"
@@ -383,15 +383,15 @@ class Ui_MainWindow(object):
 "	max-width: 55px;\n"
 "	min-height: 55px;\n"
 "	max-height: 55px;\n"
-"	fo"
-                        "nt-size: 24px;\n"
+"	font-size: 24px;\n"
 "	color: rgb(20, 20, 20);\n"
 "	font-weight: bold;\n"
 "}\n"
 "\n"
 "#show_steps_frame .QPushButton:hover{\n"
 "	border:5px solid #BDBDBF;\n"
-"}\n"
+""
+                        "}\n"
 "\n"
 "#show_steps_frame .QFrame{\n"
 "	border: 2px solid #7E84A2;\n"
@@ -426,11 +426,11 @@ class Ui_MainWindow(object):
 "	font-weight: bold;\n"
 "}\n"
 "\n"
-"#userpage_"
-                        "editprofile_change_username_btn:hover,\n"
+"#userpage_editprofile_change_username_btn:hover,\n"
 "#userpage_editprofile_change_password_btn:hover\n"
 "{\n"
-"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635"
+                        ", y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
 "}\n"
 "\n"
 "#userpage_editprofile_change_username_btn:pressed \n"
@@ -460,14 +460,30 @@ class Ui_MainWindow(object):
 "#userpage_password_inpt,\n"
 "#userpage_confirm_password_inpt,\n"
 "#userpage_editprofile_old_password_inpt,\n"
-""
-                        "#userpage_editprofile_new_password_inpt,\n"
+"#userpage_editprofile_new_password_inpt,\n"
 "#userpage_editprofile_confirm_new_password_inpt\n"
 "{\n"
 "	border-right: None;\n"
-"	border-top-right-radius: 0px;\n"
+"	border-top-right-radius:"
+                        " 0px;\n"
 "	border-bottom-right-radius: 0px;\n"
 "}\n"
+"\n"
+"#register_message_scrollArea, \n"
+"#change_username_message_scrollArea,\n"
+"#change_password_message_scrollArea\n"
+"{\n"
+"	border: None;\n"
+"}\n"
+"\n"
+"#register_message_frame, \n"
+"#change_username_message_frame,\n"
+"#change_password_message_frame\n"
+"{\n"
+"	background-color: #F7F8FA;\n"
+"}\n"
+"\n"
+"\n"
 "\n"
 "")
         self.horizontalLayout = QHBoxLayout(self.StyleSheet)
@@ -493,7 +509,7 @@ class Ui_MainWindow(object):
         self.dorsa_label.setSizePolicy(sizePolicy)
         self.dorsa_label.setMinimumSize(QSize(196, 88))
         self.dorsa_label.setMaximumSize(QSize(196, 88))
-        self.dorsa_label.setPixmap(QPixmap(u":/general_icons/icons/general_icons/dorsa_logo.png"))
+        self.dorsa_label.setPixmap(QPixmap(u":/icons/icons/dorsa_logo.png"))
         self.dorsa_label.setScaledContents(True)
         self.dorsa_label.setAlignment(Qt.AlignCenter)
 
@@ -516,7 +532,7 @@ class Ui_MainWindow(object):
         self.side_live_view_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.side_live_view_btn.setStyleSheet(u"")
         icon = QIcon()
-        icon.addFile(u":/general_icons/icons/general_icons/live_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/icons/icons/live_icon.png", QSize(), QIcon.Normal, QIcon.Off)
         self.side_live_view_btn.setIcon(icon)
         self.side_live_view_btn.setIconSize(QSize(35, 35))
 
@@ -528,7 +544,7 @@ class Ui_MainWindow(object):
         self.side_settings_btn.setSizePolicy(sizePolicy1)
         self.side_settings_btn.setCursor(QCursor(Qt.PointingHandCursor))
         icon1 = QIcon()
-        icon1.addFile(u":/general_icons/icons/general_icons/settings_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(u":/icons/icons/settings_icon.png", QSize(), QIcon.Normal, QIcon.Off)
         self.side_settings_btn.setIcon(icon1)
         self.side_settings_btn.setIconSize(QSize(30, 30))
 
@@ -541,7 +557,7 @@ class Ui_MainWindow(object):
         self.side_report_btn.setMinimumSize(QSize(0, 0))
         self.side_report_btn.setCursor(QCursor(Qt.PointingHandCursor))
         icon2 = QIcon()
-        icon2.addFile(u":/general_icons/icons/general_icons/report_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(u":/icons/icons/report_icon.png", QSize(), QIcon.Normal, QIcon.Off)
         self.side_report_btn.setIcon(icon2)
         self.side_report_btn.setIconSize(QSize(30, 30))
 
@@ -553,7 +569,7 @@ class Ui_MainWindow(object):
         self.side_users_btn.setSizePolicy(sizePolicy1)
         self.side_users_btn.setCursor(QCursor(Qt.PointingHandCursor))
         icon3 = QIcon()
-        icon3.addFile(u":/general_icons/icons/general_icons/users_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon3.addFile(u":/icons/icons/users_icon.png", QSize(), QIcon.Normal, QIcon.Off)
         self.side_users_btn.setIcon(icon3)
         self.side_users_btn.setIconSize(QSize(30, 30))
 
@@ -565,7 +581,7 @@ class Ui_MainWindow(object):
         self.side_about_btn.setSizePolicy(sizePolicy1)
         self.side_about_btn.setCursor(QCursor(Qt.PointingHandCursor))
         icon4 = QIcon()
-        icon4.addFile(u":/general_icons/icons/general_icons/about_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon4.addFile(u":/icons/icons/about_icon.png", QSize(), QIcon.Normal, QIcon.Off)
         self.side_about_btn.setIcon(icon4)
         self.side_about_btn.setIconSize(QSize(35, 35))
 
@@ -605,7 +621,7 @@ class Ui_MainWindow(object):
         self.menu_btn.setSizePolicy(sizePolicy1)
         self.menu_btn.setCursor(QCursor(Qt.PointingHandCursor))
         icon5 = QIcon()
-        icon5.addFile(u":/general_icons/icons/general_icons/open_menus_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon5.addFile(u":/icons/icons/open_menus_icon.png", QSize(), QIcon.Normal, QIcon.Off)
         self.menu_btn.setIcon(icon5)
         self.menu_btn.setIconSize(QSize(40, 40))
 
@@ -626,7 +642,7 @@ class Ui_MainWindow(object):
         self.login_logout_btn.setSizePolicy(sizePolicy1)
         self.login_logout_btn.setCursor(QCursor(Qt.PointingHandCursor))
         icon6 = QIcon()
-        icon6.addFile(u":/general_icons/icons/general_icons/login_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon6.addFile(u":/icons/icons/login_icon.png", QSize(), QIcon.Normal, QIcon.Off)
         self.login_logout_btn.setIcon(icon6)
         self.login_logout_btn.setIconSize(QSize(25, 25))
 
@@ -638,7 +654,7 @@ class Ui_MainWindow(object):
         self.help_btn.setSizePolicy(sizePolicy1)
         self.help_btn.setCursor(QCursor(Qt.PointingHandCursor))
         icon7 = QIcon()
-        icon7.addFile(u":/general_icons/icons/general_icons/help_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon7.addFile(u":/icons/icons/help_icon.png", QSize(), QIcon.Normal, QIcon.Off)
         self.help_btn.setIcon(icon7)
         self.help_btn.setIconSize(QSize(22, 22))
 
@@ -650,7 +666,7 @@ class Ui_MainWindow(object):
         self.minimize_btn.setSizePolicy(sizePolicy1)
         self.minimize_btn.setCursor(QCursor(Qt.PointingHandCursor))
         icon8 = QIcon()
-        icon8.addFile(u":/general_icons/icons/general_icons/minimize_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon8.addFile(u":/icons/icons/minus_icon.png", QSize(), QIcon.Normal, QIcon.Off)
         self.minimize_btn.setIcon(icon8)
         self.minimize_btn.setIconSize(QSize(20, 20))
 
@@ -662,9 +678,9 @@ class Ui_MainWindow(object):
         self.maximize_btn.setSizePolicy(sizePolicy1)
         self.maximize_btn.setCursor(QCursor(Qt.PointingHandCursor))
         icon9 = QIcon()
-        icon9.addFile(u":/general_icons/icons/general_icons/maximize_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon9.addFile(u":/icons/icons/maximize.png", QSize(), QIcon.Normal, QIcon.Off)
         self.maximize_btn.setIcon(icon9)
-        self.maximize_btn.setIconSize(QSize(18, 18))
+        self.maximize_btn.setIconSize(QSize(25, 25))
 
         self.horizontalLayout_14.addWidget(self.maximize_btn)
 
@@ -674,7 +690,7 @@ class Ui_MainWindow(object):
         self.close_btn.setSizePolicy(sizePolicy1)
         self.close_btn.setCursor(QCursor(Qt.PointingHandCursor))
         icon10 = QIcon()
-        icon10.addFile(u":/general_icons/icons/general_icons/close_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon10.addFile(u":/icons/icons/close_icon.png", QSize(), QIcon.Normal, QIcon.Off)
         self.close_btn.setIcon(icon10)
         self.close_btn.setIconSize(QSize(18, 18))
 
@@ -1505,6 +1521,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.camera_settings_width_label = QLabel(self.camera_settings_frame)
         self.camera_settings_width_label.setObjectName(u"camera_settings_width_label")
+        self.camera_settings_width_label.setEnabled(True)
         self.camera_settings_width_label.setFont(font)
         self.camera_settings_width_label.setStyleSheet(u"")
 
@@ -1602,7 +1619,7 @@ class Ui_MainWindow(object):
         self.save_camera_settings.setFont(font)
         self.save_camera_settings.setCursor(QCursor(Qt.PointingHandCursor))
 
-        self.verticalLayout_24.addWidget(self.save_camera_settings, 0, Qt.AlignHCenter)
+        self.verticalLayout_24.addWidget(self.save_camera_settings)
 
         self.label = QLabel(self.camera_settings_frame)
         self.label.setObjectName(u"label")
@@ -1610,6 +1627,10 @@ class Ui_MainWindow(object):
         self.label.setSizePolicy(sizePolicy2)
 
         self.verticalLayout_24.addWidget(self.label)
+
+        self.verticalSpacer_9 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_24.addItem(self.verticalSpacer_9)
 
 
         self.horizontalLayout_7.addWidget(self.camera_settings_frame)
@@ -2021,7 +2042,7 @@ class Ui_MainWindow(object):
         self.userpage_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
         self.userpage_password_eye.setStyleSheet(u"")
         icon15 = QIcon()
-        icon15.addFile(u":/general_icons/icons/general_icons/eye.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon15.addFile(u":/icons/icons/black_eye.png", QSize(), QIcon.Normal, QIcon.Off)
         self.userpage_password_eye.setIcon(icon15)
 
         self.horizontalLayout_21.addWidget(self.userpage_password_eye)
@@ -2081,33 +2102,38 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_30.addLayout(self.verticalLayout_27)
 
-        self.register_message_label = QLabel(self.register_info_frame)
-        self.register_message_label.setObjectName(u"register_message_label")
-        sizePolicy2.setHeightForWidth(self.register_message_label.sizePolicy().hasHeightForWidth())
-        self.register_message_label.setSizePolicy(sizePolicy2)
-
-        self.verticalLayout_30.addWidget(self.register_message_label)
-
-        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.verticalLayout_30.addItem(self.verticalSpacer_5)
-
-
-        self.verticalLayout_41.addWidget(self.register_info_frame)
-
-        self.horizontalLayout_16 = QHBoxLayout()
-        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
-        self.register_user = QPushButton(self.user_register_tab)
+        self.register_user = QPushButton(self.register_info_frame)
         self.register_user.setObjectName(u"register_user")
+        self.register_user.setCursor(QCursor(Qt.PointingHandCursor))
         self.register_user.setStyleSheet(u"")
         icon16 = QIcon()
         icon16.addFile(u":/assets/Assets/icons/icons8-plus-white-50.png", QSize(), QIcon.Normal, QIcon.Off)
         self.register_user.setIcon(icon16)
 
-        self.horizontalLayout_16.addWidget(self.register_user)
+        self.verticalLayout_30.addWidget(self.register_user, 0, Qt.AlignHCenter)
+
+        self.register_message_scrollArea = QScrollArea(self.register_info_frame)
+        self.register_message_scrollArea.setObjectName(u"register_message_scrollArea")
+        sizePolicy4.setHeightForWidth(self.register_message_scrollArea.sizePolicy().hasHeightForWidth())
+        self.register_message_scrollArea.setSizePolicy(sizePolicy4)
+        self.register_message_scrollArea.setWidgetResizable(True)
+        self.register_message_frame = QWidget()
+        self.register_message_frame.setObjectName(u"register_message_frame")
+        self.register_message_frame.setGeometry(QRect(0, 0, 1014, 231))
+        sizePolicy3.setHeightForWidth(self.register_message_frame.sizePolicy().hasHeightForWidth())
+        self.register_message_frame.setSizePolicy(sizePolicy3)
+        self.verticalLayout_55 = QVBoxLayout(self.register_message_frame)
+        self.verticalLayout_55.setObjectName(u"verticalLayout_55")
+        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_55.addItem(self.verticalSpacer_5)
+
+        self.register_message_scrollArea.setWidget(self.register_message_frame)
+
+        self.verticalLayout_30.addWidget(self.register_message_scrollArea)
 
 
-        self.verticalLayout_41.addLayout(self.horizontalLayout_16)
+        self.verticalLayout_41.addWidget(self.register_info_frame)
 
         self.user_tabs.addTab(self.user_register_tab, "")
         self.user_profile_tab = QWidget()
@@ -2187,14 +2213,15 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_54.addWidget(self.userpage_editprofile_change_username_btn, 0, Qt.AlignHCenter)
 
-        self.change_username_message_label = QLabel(self.profile_change_username_frame)
-        self.change_username_message_label.setObjectName(u"change_username_message_label")
+        self.change_username_message_scrollArea = QScrollArea(self.profile_change_username_frame)
+        self.change_username_message_scrollArea.setObjectName(u"change_username_message_scrollArea")
+        self.change_username_message_scrollArea.setWidgetResizable(True)
+        self.change_username_message_frame = QWidget()
+        self.change_username_message_frame.setObjectName(u"change_username_message_frame")
+        self.change_username_message_frame.setGeometry(QRect(0, 0, 481, 368))
+        self.change_username_message_scrollArea.setWidget(self.change_username_message_frame)
 
-        self.verticalLayout_54.addWidget(self.change_username_message_label)
-
-        self.verticalSpacer_7 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.verticalLayout_54.addItem(self.verticalSpacer_7)
+        self.verticalLayout_54.addWidget(self.change_username_message_scrollArea)
 
 
         self.verticalLayout_52.addWidget(self.profile_change_username_frame)
@@ -2332,14 +2359,15 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_51.addWidget(self.userpage_editprofile_change_password_btn, 0, Qt.AlignHCenter)
 
-        self.change_password_message_label = QLabel(self.profile_change_password_frame)
-        self.change_password_message_label.setObjectName(u"change_password_message_label")
+        self.change_password_message_scrollArea = QScrollArea(self.profile_change_password_frame)
+        self.change_password_message_scrollArea.setObjectName(u"change_password_message_scrollArea")
+        self.change_password_message_scrollArea.setWidgetResizable(True)
+        self.change_password_message_frame = QWidget()
+        self.change_password_message_frame.setObjectName(u"change_password_message_frame")
+        self.change_password_message_frame.setGeometry(QRect(0, 0, 481, 280))
+        self.change_password_message_scrollArea.setWidget(self.change_password_message_frame)
 
-        self.verticalLayout_51.addWidget(self.change_password_message_label)
-
-        self.verticalSpacer_8 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.verticalLayout_51.addItem(self.verticalSpacer_8)
+        self.verticalLayout_51.addWidget(self.change_password_message_scrollArea)
 
 
         self.verticalLayout_50.addWidget(self.profile_change_password_frame)
@@ -2359,37 +2387,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_45.addWidget(self.userspage_user_heading_lbl)
 
         self.userpage_all_users_table = QTableWidget(self.all_users_tab)
-        if (self.userpage_all_users_table.columnCount() < 6):
-            self.userpage_all_users_table.setColumnCount(6)
-        __qtablewidgetitem = QTableWidgetItem()
-        self.userpage_all_users_table.setHorizontalHeaderItem(0, __qtablewidgetitem)
-        __qtablewidgetitem1 = QTableWidgetItem()
-        self.userpage_all_users_table.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        __qtablewidgetitem2 = QTableWidgetItem()
-        self.userpage_all_users_table.setHorizontalHeaderItem(2, __qtablewidgetitem2)
-        __qtablewidgetitem3 = QTableWidgetItem()
-        self.userpage_all_users_table.setHorizontalHeaderItem(3, __qtablewidgetitem3)
-        __qtablewidgetitem4 = QTableWidgetItem()
-        self.userpage_all_users_table.setHorizontalHeaderItem(4, __qtablewidgetitem4)
-        __qtablewidgetitem5 = QTableWidgetItem()
-        self.userpage_all_users_table.setHorizontalHeaderItem(5, __qtablewidgetitem5)
         if (self.userpage_all_users_table.rowCount() < 1):
             self.userpage_all_users_table.setRowCount(1)
-        __qtablewidgetitem6 = QTableWidgetItem()
-        self.userpage_all_users_table.setVerticalHeaderItem(0, __qtablewidgetitem6)
-        __qtablewidgetitem7 = QTableWidgetItem()
-        self.userpage_all_users_table.setItem(0, 0, __qtablewidgetitem7)
-        __qtablewidgetitem8 = QTableWidgetItem()
-        self.userpage_all_users_table.setItem(0, 1, __qtablewidgetitem8)
-        __qtablewidgetitem9 = QTableWidgetItem()
-        self.userpage_all_users_table.setItem(0, 2, __qtablewidgetitem9)
-        __qtablewidgetitem10 = QTableWidgetItem()
-        self.userpage_all_users_table.setItem(0, 3, __qtablewidgetitem10)
-        brush = QBrush(QColor(0, 0, 0, 255))
-        brush.setStyle(Qt.NoBrush)
-        __qtablewidgetitem11 = QTableWidgetItem()
-        __qtablewidgetitem11.setBackground(brush);
-        self.userpage_all_users_table.setItem(0, 4, __qtablewidgetitem11)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.userpage_all_users_table.setVerticalHeaderItem(0, __qtablewidgetitem)
         self.userpage_all_users_table.setObjectName(u"userpage_all_users_table")
         self.userpage_all_users_table.setStyleSheet(u"")
         self.userpage_all_users_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
@@ -2538,14 +2539,12 @@ class Ui_MainWindow(object):
         self.register_confirm_password_label.setText(QCoreApplication.translate("MainWindow", u"Confirm Password", None))
         self.userpage_confirm_password_eye.setText("")
         self.register_user_role_label.setText(QCoreApplication.translate("MainWindow", u"User Role", None))
-        self.register_message_label.setText("")
         self.register_user.setText(QCoreApplication.translate("MainWindow", u"Register", None))
         self.user_tabs.setTabText(self.user_tabs.indexOf(self.user_register_tab), QCoreApplication.translate("MainWindow", u"register user", None))
         self.profile_change_username_label.setText(QCoreApplication.translate("MainWindow", u"Change Username", None))
         self.profile_old_username_label.setText(QCoreApplication.translate("MainWindow", u"Old Username", None))
         self.profile_username_label.setText(QCoreApplication.translate("MainWindow", u"New Username", None))
         self.userpage_editprofile_change_username_btn.setText(QCoreApplication.translate("MainWindow", u"Change Username", None))
-        self.change_username_message_label.setText("")
         self.profile_change_password_label.setText(QCoreApplication.translate("MainWindow", u"Change Password", None))
         self.profile_password_label.setText(QCoreApplication.translate("MainWindow", u"Password", None))
         self.userpage_editprofile_old_password_eye.setText("")
@@ -2554,36 +2553,10 @@ class Ui_MainWindow(object):
         self.profile_confirm_password_label.setText(QCoreApplication.translate("MainWindow", u"Confirm New Password", None))
         self.userpage_editprofile_confirm_new_password_eye.setText("")
         self.userpage_editprofile_change_password_btn.setText(QCoreApplication.translate("MainWindow", u"Change Password", None))
-        self.change_password_message_label.setText("")
         self.user_tabs.setTabText(self.user_tabs.indexOf(self.user_profile_tab), QCoreApplication.translate("MainWindow", u"Edit Profile", None))
         self.userspage_user_heading_lbl.setText(QCoreApplication.translate("MainWindow", u"Only Admin Can Access", None))
-        ___qtablewidgetitem = self.userpage_all_users_table.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"ID", None));
-        ___qtablewidgetitem1 = self.userpage_all_users_table.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"User Name", None));
-        ___qtablewidgetitem2 = self.userpage_all_users_table.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Password", None));
-        ___qtablewidgetitem3 = self.userpage_all_users_table.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Role", None));
-        ___qtablewidgetitem4 = self.userpage_all_users_table.horizontalHeaderItem(4)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Edit", None));
-        ___qtablewidgetitem5 = self.userpage_all_users_table.horizontalHeaderItem(5)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"Delete", None));
-        ___qtablewidgetitem6 = self.userpage_all_users_table.verticalHeaderItem(0)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-
-        __sortingEnabled = self.userpage_all_users_table.isSortingEnabled()
-        self.userpage_all_users_table.setSortingEnabled(False)
-        ___qtablewidgetitem7 = self.userpage_all_users_table.item(0, 0)
-        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"1", None));
-        ___qtablewidgetitem8 = self.userpage_all_users_table.item(0, 1)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"Admin", None));
-        ___qtablewidgetitem9 = self.userpage_all_users_table.item(0, 2)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"Admin", None));
-        ___qtablewidgetitem10 = self.userpage_all_users_table.item(0, 3)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"Admin", None));
-        self.userpage_all_users_table.setSortingEnabled(__sortingEnabled)
-
+        ___qtablewidgetitem = self.userpage_all_users_table.verticalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
         self.user_tabs.setTabText(self.user_tabs.indexOf(self.all_users_tab), QCoreApplication.translate("MainWindow", u"All Users", None))
     # retranslateUi
 

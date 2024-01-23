@@ -1,18 +1,18 @@
 import time
-from Constants import Constant
-from Constants import IconsPath
 
-from uiUtils.guiBackend import GUIBackend
-from UIFiles.login_UI import Ui_Dialog
 from PySide6.QtWidgets import QDialog
 from PySide6 import QtCore
-from PySide6 import QtGui
+
+from Constants import Constant
+from Constants import IconsPath
+from uiUtils.guiBackend import GUIBackend
+from UIFiles.login_UI import Ui_loginDialogWin
 
 class loginUserDialog(QDialog):
     def __init__(self) -> None:
         super(loginUserDialog, self).__init__()
 
-        self.ui = Ui_Dialog()
+        self.ui = Ui_loginDialogWin()
         self.ui.setupUi(self)
 
         GUIBackend.set_input_password(self.ui.password_input)
@@ -23,6 +23,8 @@ class loginUserDialog(QDialog):
 
         self.move_refresh_time = 0
         self.show_password = False
+
+        self.offset = None
 
     def mousePressEvent(self, event):
         if event.button() == QtCore.Qt.LeftButton and event.y() < self.ui.top_frame.height():
@@ -52,7 +54,7 @@ class loginUserDialog(QDialog):
         GUIBackend.button_connector(self.ui.login_btn, func)
 
     def show_win(self):
-        # self.write_error(None)
+        self.write_error(None)
         GUIBackend.show_window(self, always_on_top=True)
 
     def close_win(self):
@@ -63,7 +65,7 @@ class loginUserDialog(QDialog):
         self.show_password = not self.show_password
         if self.show_password:
             GUIBackend.set_input_normal(self.ui.password_input)
-            GUIBackend.set_button_icon(self.ui.eye_btn, IconsPath.IconsPath.HIDE_PASSWORD)
+            GUIBackend.set_button_icon(self.ui.eye_btn, IconsPath.IconsPath.WHITE_HIDE_PASSWORD)
         else:
             GUIBackend.set_input_password(self.ui.password_input)
             GUIBackend.set_button_icon(self.ui.eye_btn, IconsPath.IconsPath.WHITE_SHOW_PASSWORD)
