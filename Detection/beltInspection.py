@@ -27,7 +27,7 @@ class beltInspection:
         self.DefectExtractor = DefectExtractor()
         self.Encoder = Encoder()
         self.DefectTracker = DefectTracker(min_frame_gap=self.Encoder.step*10, min_length=5)
-        self.ImageCreator = ImageCreator((4090,1000),
+        self.ImageCreator = ImageCreator((640, 480),
                                          max_y_errors=10 )
     
     

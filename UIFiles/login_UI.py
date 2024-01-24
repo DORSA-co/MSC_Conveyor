@@ -295,6 +295,10 @@ class Ui_loginDialogWin(object):
 
         self.verticalLayout_5.addWidget(self.login_btn, 0, Qt.AlignHCenter)
 
+        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Preferred)
+
+        self.verticalLayout_5.addItem(self.verticalSpacer_3)
+
         self.login_error_lbl = QLabel(self.login_frame)
         self.login_error_lbl.setObjectName(u"login_error_lbl")
         sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
@@ -302,6 +306,7 @@ class Ui_loginDialogWin(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.login_error_lbl.sizePolicy().hasHeightForWidth())
         self.login_error_lbl.setSizePolicy(sizePolicy1)
+        self.login_error_lbl.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_5.addWidget(self.login_error_lbl)
 

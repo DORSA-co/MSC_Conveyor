@@ -1,4 +1,5 @@
 import re
+import cv2
 
 from PySide6 import QtWidgets, QtCore, QtGui
 # import guiBackend
@@ -246,6 +247,74 @@ def single_timer_runner( t, func):
     """
     timer = QtCore.QTimer()
     timer.singleShot(t, func)
+
+
+class PhotoViewer(QtWidgets.QGraphicsView):
+    def __init__(self, parent):
+        if parent is None:
+            super().__init__()
+        else:
+            super().__init__(parent=parent)
+
+        self.scene = QtWidgets.QGraphicsScene(self)
+        self.setScene(self.scene)
+        self.pixmap_item = QtWidgets.QGraphicsPixmapItem()
+        self.scene.addItem(self.pixmap_item)
+
+        self.setDragMode(QtWidgets.QGraphicsView.ScrollHandDrag)
+        self._zoom_factor = 1.15
+        self.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+
+    def set_image(self, image):
+        # if isinstance(image, str):
+        #     image = cv2.imread(image)        
+
+        #resie image to fix in label
+        img_h, img_w = image.shape[:2]
+        lbl_h, lbl_w = self.height()-10, self.width()-10
+        
+        scale = min(lbl_h/img_h, lbl_w/img_w)
+        image = cv2.resize(image, None, fx= scale, fy=scale)
+
+        #color image
+        if len(image.shape)==3:
+            #alpha channel image
+            if image.shape[2] ==4:
+                qformat=QtGui.QImage.Format_RGBA8888
+            else:
+                qformat=QtGui.QImage.Format_RGB888          
+
+        #grayscale image
+        if len(image.shape) == 2:
+            qformat=QtGui.QImage.Format_Grayscale8
+
+        img = QtGui.QImage(image.data,
+            image.shape[1],
+            image.shape[0], 
+            image.strides[0], # <--- +++
+            qformat)
+        
+        img = img.rgbSwapped()
+
+        height, width = image.shape[:2]
+        bytes_per_line = 3 * width
+        # q_img = QtGui.QImage(image.data, width, height, bytes_per_line, QtGui.QImage.Format_RGB888)
+        pixmap = QtGui.QPixmap.fromImage(img)
+        self.pixmap_item.setPixmap(pixmap)
+        self.setSceneRect(pixmap.rect())
+
+    def wheelEvent(self, event):
+        if event.angleDelta().y() > 0:
+            self.zoom_in()
+        else:
+            self.zoom_out()
+
+    def zoom_in(self):
+        self.scale(self._zoom_factor, self._zoom_factor)
+
+    def zoom_out(self):
+        self.scale(1 / self._zoom_factor, 1 / self._zoom_factor)
 
 
 class Color:

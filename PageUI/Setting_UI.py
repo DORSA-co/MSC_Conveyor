@@ -216,7 +216,8 @@ class CameraSetting_UI(Common_Function_UI):
 
 
     def show_image(self, image):
-        GUIBackend.set_label_image(self.ui.camera_settings_live_label, image )
+        # GUIBackend.set_label_image(self.ui.camera_settings_live_label, image )
+        self.ui.camera_settings_live_view.set_image(image)
 
 class AlgorithmSetting_UI(Common_Function_UI):
 
