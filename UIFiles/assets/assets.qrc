@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/tick.png</file>
+    <file>icons/notification_icon.png</file>
     <file>icons/success_icon.png</file>
     <file>icons/error_icon.png</file>
     <file>icons/warning_icon.png</file>

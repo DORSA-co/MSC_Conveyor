@@ -1054,7 +1054,7 @@ class overlayMassage(QtWidgets.QWidget):
 
 
 
-from UIFiles.defect_notification import Ui_Form
+from UIFiles.defect_notification import Ui_Notification
 import datetime
 from persiantools.jdatetime import JalaliDate
 
@@ -1068,7 +1068,7 @@ class defectNotification(QtWidgets.QWidget):
                  defect_color:tuple) -> None:
         
         super(defectNotification, self).__init__()
-        self.ui = Ui_Form()
+        self.ui = Ui_Notification()
         self.ui.setupUi(self)
 
         self.side = side
@@ -1099,7 +1099,7 @@ class defectNotification(QtWidgets.QWidget):
         elif diff.days == 0:
             txt = 'today'
         else:
-            txt = f'{diff.day} days ago'
+            txt = f'{diff.days} days ago'
         self.ui.date_label.setText(txt)
     
     def set_time(self, t:datetime.time):
@@ -1107,7 +1107,14 @@ class defectNotification(QtWidgets.QWidget):
         self.ui.time_label.setText(txt)
 
     def set_defect_color(self, color:tuple):
-        self.ui.defect_color.setStyleSheet(f"background-color:rgb{color}")
+        style = f"""
+    #defect_color_frame{{
+    background-color: rgb{color};
+    border-radius:15px;
+    border: None;
+}}
+"""
+        self.ui.defect_color_frame.setStyleSheet(style)
     
     def is_checked(self,):
         return self.ui.select_checkBox.isChecked()

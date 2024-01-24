@@ -17,9 +17,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractItemView, QApplication, QComboBox, QFrame,
     QHBoxLayout, QHeaderView, QLabel, QLineEdit,
-    QMainWindow, QPushButton, QScrollArea, QSizePolicy,
-    QSpacerItem, QSpinBox, QStackedWidget, QTabWidget,
-    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
+    QMainWindow, QMenuBar, QPushButton, QScrollArea,
+    QSizePolicy, QSpacerItem, QSpinBox, QStackedWidget,
+    QTabWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,
+    QWidget)
 
 from GUIComponents import (PhotoViewer, SwitchControl)
 import assets_rc
@@ -225,7 +226,7 @@ class Ui_MainWindow(object):
 "	image: url(:/icons/icons/table_sort_icon.png);\n"
 "}\n"
 "\n"
-"QScrollBar:horizontal, QScrollBar:vertical {\n"
+"/*QScrollBar:horizontal, QScrollBar:vertical {\n"
 "    border: 1px solid #BDBDBF;\n"
 "    background: #BDBDBF;\n"
 "    height: 4px;\n"
@@ -234,7 +235,7 @@ class Ui_MainWindow(object):
 "QScrollBar::handle:horizontal, QScrollBar::handle:vertical {\n"
 "    background: #646466;\n"
 "}\n"
-"\n"
+"*/\n"
 "\n"
 "/************************************************************/\n"
 "\n"
@@ -261,8 +262,8 @@ class Ui_MainWindow(object):
 "\n"
 "QComboBox::down-arrow:disabled\n"
 "{   \n"
-"	image: url(:/icons/icons/"
-                        "down_icon_gray.png);\n"
+"	image: url(:/icons/ic"
+                        "ons/down_icon_gray.png);\n"
 "	width: 12px;\n"
 "    height: 12px;\n"
 "}\n"
@@ -312,8 +313,8 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "#top_frame QPushButton{\n"
-"	border:"
-                        " 0px;\n"
+"	bor"
+                        "der: 0px;\n"
 "}\n"
 "\n"
 "#main_stackedWidget{\n"
@@ -350,8 +351,8 @@ class Ui_MainWindow(object):
 "	font-weight: bold;\n"
 "}\n"
 "\n"
-"#save_camera_settings:hover, #save_alg"
-                        "orithm_settings:hover, #register_user:hover{\n"
+"#save_camera_settings:hover, #save"
+                        "_algorithm_settings:hover, #register_user:hover{\n"
 "	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
 "}\n"
 "\n"
@@ -388,9 +389,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "#show_steps_frame .QPushButton:hover{\n"
-"	border:5px solid #BDBDBF;\n"
-""
-                        "}\n"
+"	border:5px solid #BDBDBF"
+                        ";\n"
+"}\n"
 "\n"
 "#show_steps_frame .QFrame{\n"
 "	border: 2px solid #7E84A2;\n"
@@ -428,8 +429,8 @@ class Ui_MainWindow(object):
 "#userpage_editprofile_change_username_btn:hover,\n"
 "#userpage_editprofile_change_password_btn:hover\n"
 "{\n"
-"	background-color: qlineargradient(spread:pad, x1:0.635"
-                        ", y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
+"	background-color: qlineargradient(spread:pad, x1"
+                        ":0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
 "}\n"
 "\n"
 "#userpage_editprofile_change_username_btn:pressed \n"
@@ -463,8 +464,8 @@ class Ui_MainWindow(object):
 "#userpage_editprofile_confirm_new_password_inpt\n"
 "{\n"
 "	border-right: None;\n"
-"	border-top-right-radius:"
-                        " 0px;\n"
+"	border-top-right-r"
+                        "adius: 0px;\n"
 "	border-bottom-right-radius: 0px;\n"
 "}\n"
 "\n"
@@ -482,6 +483,10 @@ class Ui_MainWindow(object):
 "	background-color: #F7F8FA;\n"
 "}\n"
 "\n"
+"#defects_notifications_widget{\n"
+"	background-color: #F7F8FA;\n"
+"	border:1px solid #D7D7D9;\n"
+"}\n"
 "\n"
 "\n"
 "")
@@ -702,21 +707,74 @@ class Ui_MainWindow(object):
         self.main_stackedWidget.setObjectName(u"main_stackedWidget")
         self.live_view_page = QWidget()
         self.live_view_page.setObjectName(u"live_view_page")
-        self.verticalLayout_7 = QVBoxLayout(self.live_view_page)
+        self.horizontalLayout_2 = QHBoxLayout(self.live_view_page)
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.defect_notifications_frame = QFrame(self.live_view_page)
+        self.defect_notifications_frame.setObjectName(u"defect_notifications_frame")
+        sizePolicy3 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.defect_notifications_frame.sizePolicy().hasHeightForWidth())
+        self.defect_notifications_frame.setSizePolicy(sizePolicy3)
+        self.defect_notifications_frame.setMinimumSize(QSize(320, 0))
+        self.defect_notifications_frame.setMaximumSize(QSize(320, 16777215))
+        self.defect_notifications_frame.setFrameShape(QFrame.StyledPanel)
+        self.defect_notifications_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_3 = QVBoxLayout(self.defect_notifications_frame)
+        self.verticalLayout_3.setSpacing(0)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.frame = QFrame(self.defect_notifications_frame)
+        self.frame.setObjectName(u"frame")
+        self.frame.setMinimumSize(QSize(0, 0))
+        self.frame.setMaximumSize(QSize(16777215, 16777215))
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_3.addWidget(self.frame)
+
+        self.defects_notifications_scrollArea = QScrollArea(self.defect_notifications_frame)
+        self.defects_notifications_scrollArea.setObjectName(u"defects_notifications_scrollArea")
+        self.defects_notifications_scrollArea.setMinimumSize(QSize(0, 0))
+        self.defects_notifications_scrollArea.setMaximumSize(QSize(16777215, 16777215))
+        self.defects_notifications_scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        self.defects_notifications_scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.defects_notifications_scrollArea.setWidgetResizable(True)
+        self.defects_notifications_widget = QWidget()
+        self.defects_notifications_widget.setObjectName(u"defects_notifications_widget")
+        self.defects_notifications_widget.setGeometry(QRect(0, 0, 302, 680))
+        self.verticalLayout_9 = QVBoxLayout(self.defects_notifications_widget)
+        self.verticalLayout_9.setSpacing(0)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_7 = QVBoxLayout()
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.defects_notifications = QFrame(self.live_view_page)
-        self.defects_notifications.setObjectName(u"defects_notifications")
-        self.defects_notifications.setMaximumSize(QSize(200, 16777215))
-        self.defect_notifications = QVBoxLayout(self.defects_notifications)
-        self.defect_notifications.setSpacing(0)
-        self.defect_notifications.setObjectName(u"defect_notifications")
+        self.verticalSpacer_7 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_7.addWidget(self.defects_notifications)
+        self.verticalLayout_7.addItem(self.verticalSpacer_7)
 
-        self.pushButton = QPushButton(self.live_view_page)
-        self.pushButton.setObjectName(u"pushButton")
 
-        self.verticalLayout_7.addWidget(self.pushButton)
+        self.verticalLayout_9.addLayout(self.verticalLayout_7)
+
+        self.defects_notifications_scrollArea.setWidget(self.defects_notifications_widget)
+
+        self.verticalLayout_3.addWidget(self.defects_notifications_scrollArea)
+
+        self.frame_2 = QFrame(self.defect_notifications_frame)
+        self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setMinimumSize(QSize(0, 0))
+        self.frame_2.setMaximumSize(QSize(16777215, 16777215))
+        self.frame_2.setFrameShape(QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_3.addWidget(self.frame_2)
+
+
+        self.horizontalLayout_2.addWidget(self.defect_notifications_frame)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_2)
 
         self.main_stackedWidget.addWidget(self.live_view_page)
         self.settings_page = QWidget()
@@ -1249,11 +1307,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_40.setObjectName(u"verticalLayout_40")
         self.algorithm_image3 = QLabel(self.step3_image_frame)
         self.algorithm_image3.setObjectName(u"algorithm_image3")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.algorithm_image3.sizePolicy().hasHeightForWidth())
-        self.algorithm_image3.setSizePolicy(sizePolicy3)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.algorithm_image3.sizePolicy().hasHeightForWidth())
+        self.algorithm_image3.setSizePolicy(sizePolicy4)
 
         self.verticalLayout_40.addWidget(self.algorithm_image3)
 
@@ -1351,11 +1409,11 @@ class Ui_MainWindow(object):
 
         self.userpage_password_eye = QPushButton(self.register_info_frame)
         self.userpage_password_eye.setObjectName(u"userpage_password_eye")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.userpage_password_eye.sizePolicy().hasHeightForWidth())
-        self.userpage_password_eye.setSizePolicy(sizePolicy4)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.userpage_password_eye.sizePolicy().hasHeightForWidth())
+        self.userpage_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
         self.userpage_password_eye.setStyleSheet(u"")
         icon11 = QIcon()
@@ -1389,8 +1447,8 @@ class Ui_MainWindow(object):
 
         self.userpage_confirm_password_eye = QPushButton(self.register_info_frame)
         self.userpage_confirm_password_eye.setObjectName(u"userpage_confirm_password_eye")
-        sizePolicy4.setHeightForWidth(self.userpage_confirm_password_eye.sizePolicy().hasHeightForWidth())
-        self.userpage_confirm_password_eye.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.userpage_confirm_password_eye.sizePolicy().hasHeightForWidth())
+        self.userpage_confirm_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_confirm_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
         self.userpage_confirm_password_eye.setStyleSheet(u"")
         self.userpage_confirm_password_eye.setIcon(icon11)
@@ -1431,20 +1489,17 @@ class Ui_MainWindow(object):
 
         self.register_message_scrollArea = QScrollArea(self.register_info_frame)
         self.register_message_scrollArea.setObjectName(u"register_message_scrollArea")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.register_message_scrollArea.sizePolicy().hasHeightForWidth())
-        self.register_message_scrollArea.setSizePolicy(sizePolicy5)
+        sizePolicy6 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy6.setHorizontalStretch(0)
+        sizePolicy6.setVerticalStretch(0)
+        sizePolicy6.setHeightForWidth(self.register_message_scrollArea.sizePolicy().hasHeightForWidth())
+        self.register_message_scrollArea.setSizePolicy(sizePolicy6)
         self.register_message_scrollArea.setWidgetResizable(True)
         self.register_message_frame = QWidget()
         self.register_message_frame.setObjectName(u"register_message_frame")
-        self.register_message_frame.setGeometry(QRect(0, 0, 938, 227))
-        sizePolicy6 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy6.setHorizontalStretch(0)
-        sizePolicy6.setVerticalStretch(0)
-        sizePolicy6.setHeightForWidth(self.register_message_frame.sizePolicy().hasHeightForWidth())
-        self.register_message_frame.setSizePolicy(sizePolicy6)
+        self.register_message_frame.setGeometry(QRect(0, 0, 946, 223))
+        sizePolicy3.setHeightForWidth(self.register_message_frame.sizePolicy().hasHeightForWidth())
+        self.register_message_frame.setSizePolicy(sizePolicy3)
         self.verticalLayout_55 = QVBoxLayout(self.register_message_frame)
         self.verticalLayout_55.setObjectName(u"verticalLayout_55")
         self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
@@ -1541,7 +1596,7 @@ class Ui_MainWindow(object):
         self.change_username_message_scrollArea.setWidgetResizable(True)
         self.change_username_message_frame = QWidget()
         self.change_username_message_frame.setObjectName(u"change_username_message_frame")
-        self.change_username_message_frame.setGeometry(QRect(0, 0, 16, 16))
+        self.change_username_message_frame.setGeometry(QRect(0, 0, 447, 360))
         self.change_username_message_scrollArea.setWidget(self.change_username_message_frame)
 
         self.verticalLayout_54.addWidget(self.change_username_message_scrollArea)
@@ -1597,8 +1652,8 @@ class Ui_MainWindow(object):
 
         self.userpage_editprofile_old_password_eye = QPushButton(self.profile_change_password_frame)
         self.userpage_editprofile_old_password_eye.setObjectName(u"userpage_editprofile_old_password_eye")
-        sizePolicy4.setHeightForWidth(self.userpage_editprofile_old_password_eye.sizePolicy().hasHeightForWidth())
-        self.userpage_editprofile_old_password_eye.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.userpage_editprofile_old_password_eye.sizePolicy().hasHeightForWidth())
+        self.userpage_editprofile_old_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_editprofile_old_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
         self.userpage_editprofile_old_password_eye.setStyleSheet(u"")
         self.userpage_editprofile_old_password_eye.setIcon(icon11)
@@ -1630,8 +1685,8 @@ class Ui_MainWindow(object):
 
         self.userpage_editprofile_new_password_eye = QPushButton(self.profile_change_password_frame)
         self.userpage_editprofile_new_password_eye.setObjectName(u"userpage_editprofile_new_password_eye")
-        sizePolicy4.setHeightForWidth(self.userpage_editprofile_new_password_eye.sizePolicy().hasHeightForWidth())
-        self.userpage_editprofile_new_password_eye.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.userpage_editprofile_new_password_eye.sizePolicy().hasHeightForWidth())
+        self.userpage_editprofile_new_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_editprofile_new_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
         self.userpage_editprofile_new_password_eye.setIcon(icon11)
 
@@ -1661,8 +1716,8 @@ class Ui_MainWindow(object):
 
         self.userpage_editprofile_confirm_new_password_eye = QPushButton(self.profile_change_password_frame)
         self.userpage_editprofile_confirm_new_password_eye.setObjectName(u"userpage_editprofile_confirm_new_password_eye")
-        sizePolicy4.setHeightForWidth(self.userpage_editprofile_confirm_new_password_eye.sizePolicy().hasHeightForWidth())
-        self.userpage_editprofile_confirm_new_password_eye.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.userpage_editprofile_confirm_new_password_eye.sizePolicy().hasHeightForWidth())
+        self.userpage_editprofile_confirm_new_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_editprofile_confirm_new_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
         self.userpage_editprofile_confirm_new_password_eye.setIcon(icon11)
 
@@ -1687,7 +1742,7 @@ class Ui_MainWindow(object):
         self.change_password_message_scrollArea.setWidgetResizable(True)
         self.change_password_message_frame = QWidget()
         self.change_password_message_frame.setObjectName(u"change_password_message_frame")
-        self.change_password_message_frame.setGeometry(QRect(0, 0, 16, 16))
+        self.change_password_message_frame.setGeometry(QRect(0, 0, 447, 272))
         self.change_password_message_scrollArea.setWidget(self.change_password_message_frame)
 
         self.verticalLayout_51.addWidget(self.change_password_message_scrollArea)
@@ -1744,6 +1799,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addLayout(self.verticalLayout)
 
         MainWindow.setCentralWidget(self.StyleSheet)
+        self.menuBar = QMenuBar(MainWindow)
+        self.menuBar.setObjectName(u"menuBar")
+        self.menuBar.setGeometry(QRect(0, 0, 1226, 22))
+        MainWindow.setMenuBar(self.menuBar)
 
         self.retranslateUi(MainWindow)
 
@@ -1771,7 +1830,6 @@ class Ui_MainWindow(object):
         self.minimize_btn.setText("")
         self.maximize_btn.setText("")
         self.close_btn.setText("")
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.camera_settings_off_label.setText(QCoreApplication.translate("MainWindow", u"Off", None))
         self.connect_camera_switch.setText("")
         self.camera_settings_on_label.setText(QCoreApplication.translate("MainWindow", u"On", None))

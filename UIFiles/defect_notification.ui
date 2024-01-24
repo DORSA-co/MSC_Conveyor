@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>Notification</class>
+ <widget class="QWidget" name="Notification">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>305</width>
-    <height>78</height>
+    <width>316</width>
+    <height>100</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,14 +32,62 @@
    <item>
     <widget class="QWidget" name="StyleSheet" native="true">
      <property name="styleSheet">
-      <string notr="true">#main_frame
-{
-	border-bottom: 3px solid gray;
-	background-color: #F7F8FA;
-}
-QLabel{
+      <string notr="true">QLabel{
 	color:#202020;
 
+}
+
+QCheckBox {
+    spacing: 0px;
+}
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+}
+
+/* Unchecked State */
+QCheckBox::indicator:unchecked {
+    border: 2px solid #E0E4EC;
+    background-color: white;
+}
+
+/* Checked State */
+QCheckBox::indicator:checked {
+    border: 2px solid #7892DF;
+    background-color: #7892DF;
+    image: url(:/icons/icons/tick.png)  /* Path to your check mark icon */
+}
+
+/* Hover State */
+QCheckBox::indicator:hover {
+    border: 2px solid rgba(194, 197, 204, 255);
+}
+
+/* Disabled State */
+QCheckBox::indicator:disabled {
+    border: 2px solid #E0E4EC;
+    background-color: #F6F6F6;
+}
+
+
+#main_frame
+{
+	border: 1px solid rgba(194, 197, 204, 255);
+	background-color: #F7F8FA;
+}
+
+#defect_color_frame{
+	border: None;
+}
+
+#defect_color_frame .QLabel
+{
+	border-radius:4px;
+}
+
+#i_label{
+	color: #FFFFFF
 }</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -60,6 +108,18 @@ QLabel{
       </property>
       <item>
        <widget class="QFrame" name="main_frame">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>100</height>
+         </size>
+        </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
@@ -77,70 +137,27 @@ QLabel{
           <number>0</number>
          </property>
          <property name="rightMargin">
-          <number>0</number>
+          <number>15</number>
          </property>
          <property name="bottomMargin">
           <number>3</number>
          </property>
          <item>
-          <widget class="QFrame" name="frame">
-           <property name="maximumSize">
-            <size>
-             <width>10</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-           <layout class="QHBoxLayout" name="horizontalLayout_5">
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="defect_color">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>10</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color:rgb(197, 63, 59);</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
           <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <property name="spacing">
+            <number>6</number>
+           </property>
            <property name="leftMargin">
             <number>10</number>
            </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
            <item>
             <widget class="QCheckBox" name="select_checkBox">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -148,39 +165,7 @@ QLabel{
               </sizepolicy>
              </property>
              <property name="styleSheet">
-              <string notr="true">QCheckBox {
-    spacing: 0px;
-}
-
-QCheckBox::indicator {
-    width: 20px;
-    height: 20px;
-}
-
-/* Unchecked State */
-QCheckBox::indicator:unchecked {
-    border: 2px solid #C8C8C8;
-    background-color: white;
-}
-
-/* Checked State */
-QCheckBox::indicator:checked {
-    border: 2px solid #3A9AD9;
-    background-color: #3A9AD9;
-    image: url(:/icons/checked-icon.png);  /* Path to your check mark icon */
-}
-
-/* Hover State */
-QCheckBox::indicator:hover {
-    border: 2px solid #3A9AD9;
-}
-
-/* Disabled State */
-QCheckBox::indicator:disabled {
-    border: 2px solid #E5E5E5;
-    background-color: #F6F6F6;
-}
-</string>
+              <string notr="true"/>
              </property>
              <property name="text">
               <string/>
@@ -189,35 +174,52 @@ QCheckBox::indicator:disabled {
            </item>
            <item>
             <layout class="QVBoxLayout" name="verticalLayout">
+             <property name="spacing">
+              <number>6</number>
+             </property>
              <property name="leftMargin">
               <number>10</number>
              </property>
              <property name="topMargin">
-              <number>3</number>
+              <number>10</number>
              </property>
              <property name="bottomMargin">
-              <number>3</number>
+              <number>10</number>
              </property>
              <item>
-              <widget class="QLabel" name="side_label">
-               <property name="text">
-                <string>Top Side</string>
+              <layout class="QHBoxLayout" name="horizontalLayout_6">
+               <property name="topMargin">
+                <number>0</number>
                </property>
-              </widget>
+               <item>
+                <widget class="QLabel" name="side_label">
+                 <property name="text">
+                  <string>Top Side</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
              <item>
-              <widget class="QLabel" name="defect_type_label">
-               <property name="text">
-                <string>Critical</string>
+              <layout class="QHBoxLayout" name="horizontalLayout_5">
+               <property name="topMargin">
+                <number>0</number>
                </property>
-              </widget>
+               <item>
+                <widget class="QLabel" name="defect_type_label">
+                 <property name="text">
+                  <string>Critical</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout">
                <item>
                 <widget class="QLabel" name="date_label">
                  <property name="styleSheet">
-                  <string notr="true">color:#404040;</string>
+                  <string notr="true"/>
                  </property>
                  <property name="text">
                   <string>24/01/2024 </string>
@@ -252,19 +254,107 @@ QCheckBox::indicator:disabled {
             </layout>
            </item>
            <item>
-            <widget class="QLabel" name="icon_label">
-             <property name="maximumSize">
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
               <size>
-               <width>47</width>
-               <height>50</height>
+               <width>5</width>
+               <height>20</height>
               </size>
              </property>
-             <property name="text">
-              <string/>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QFrame" name="defect_color_frame">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
              </property>
-             <property name="pixmap">
-              <pixmap resource="assets/assets.qrc">:/icons/icons/warning_icon.png</pixmap>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
              </property>
+             <property name="font">
+              <font>
+               <pointsize>16</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">#defect_color_frame{
+	background-color: red;
+	border-radius:15px;
+	border: None;
+}
+</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_3">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QLabel" name="i_label">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>TeX Gyre Schola</family>
+                  <pointsize>15</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>i</string>
+                </property>
+                <property name="scaledContents">
+                 <bool>true</bool>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
           </layout>

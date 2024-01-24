@@ -1,3 +1,6 @@
+import numpy as np
+import random
+
 from PySide6.QtWidgets import *
 from functools import partial
 from .Common_Function_UI import Common_Function_UI
@@ -21,15 +24,15 @@ class LiveView_UI(Common_Function_UI):
 
         self.ui = ui
 
-        layout = self.ui.defects_notifications.layout()
-        for i in range(10):
+        layout = self.ui.defects_notifications_widget.layout()
+        for i in range(15):
             not1 = defectNotification('clean side', 
-                                  JalaliDate.today(), 
+                                  random.choice([JalaliDate.today(), JalaliDate(year=1402, month=10, day=10), JalaliDate(year=1402, month=10, day=30)]),
                                   JalaliDateTime.today(),
                                   'normal',
-                                  (250,0,0))
+                                  (np.random.randint(0, 254), np.random.randint(0, 254), np.random.randint(0, 254)))
         
-            layout.addWidget(not1)
+            layout.insertWidget(0, not1)
     #     self.general_information_live = {
     #         "Length": self.ui.Length,
     #         "Width": self.ui.Width,
