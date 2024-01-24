@@ -36,14 +36,13 @@ class main_API:
     
     def __init__(self, uiHandeler:mainUI) -> None:
 
-        #########self.collector = Collector()   
-        ########self.connect_to_Camera() 
-        self.uiHandeler = uiHandeler  #============================== > API = main_API(main_ui)  on main_UI page
+        self.uiHandeler = uiHandeler
         self.db = mainDatabase()
 
         #--------------------------------------------------------
         kwargs = self.db.Setting_DB.algorithm_setting_db.load()
         self.beltIncpetcion = beltInspection(kwargs)
+        self.beltIncpetcion.set_new_defect_event(self.new_defect_event)
         #--------------------------------------------------------
         
 
@@ -72,6 +71,9 @@ class main_API:
         
         self.API_Page_Users = usersPageAPI(self.uiHandeler.Page_Users,
                                            self.db.Users_DB)
+        
+        self.API_Live_View = LiveView_API(self.uiHandeler.Page_LiveView,
+                                          self.db)
         
         
         
@@ -124,50 +126,15 @@ class main_API:
             # print(t)
             if self.uiHandeler.current_page_name == 'settings':
                 self.API_Page_Setting.grab_image_event(image)
+
+            elif self.uiHandeler.current_page_name == 'live':
+                self.API_Live_View.uiHandeler.set_liveview_belt_img(self.beltIncpetcion.res_image)
             
         self.is_during_process = False
 
 
-        return
-        ###############################      AlgorithmCalibration_API    ################################
-        self.API_Page_AlgorithmCalibration = AlgorithmCalibration_API(
-            self.uiHandeler.Page_AlgorithmCalibration
-        )  # Create Object of AlgorithmCalibration_API  =========== > self.Page_AlgorithmCalibration = AlgorithmCalibration_UI(self.uiHandeler)  on main_UI page
-        self.API_Page_AlgorithmCalibration.set_back_event_func(self.get_calibration_paprameter_main_API)   #  introduce and send the name of the  "get_calibration_paprameter_main_API" function to AlgorithmCalibration_API to call this function when the parameters of the calibration is changed on "Save_Calibration_parms"  function in AlgorithmCalibration_API
-        param_calibration_API=self.API_Page_AlgorithmCalibration.get_Calibration_parms()     # for getting the initial parameters of the Calibration
-        
 
 
-
-        ###############################      CameraSetting_API    ################################
-        # Create Object of CameraSetting_API   =========== >self.uiHandeler.Page_CameraSetting=CameraSetting_UI(self.uiHandeler)  on main_UI page
-        self.API_Page_Setting.set_back_event_func_camera(self.get_camera_paprameter_main_API)   # introduce and send the name of the  "get_camera_paprameter_main_API"  function to API_Page_Setting to call this function when the parameters of the camera is changed
-        self.API_Page_Setting.set_back_event_func_algorithm(self.get_algorithm_paprameter_main_API)   # introduce and send the name of the  "get_camera_paprameter_main_API"  function to API_Page_Setting to call this function when the parameters of the camera is changed
-        param_camera_API=self.API_Page_Setting.get_Camera_parms()        # for getting the initial parameters of the Camera_Setting
-        param_Alghorithm_API=self.API_Page_Setting.get_Algorithhm_parms()        # for getting the initial parameters of the Camera_Setting
-
-
-
-
-
-
-        ###############################      LiveView_API    ################################
-        self.API_Page_LiveView = LiveView_API(
-            self.uiHandeler.Page_LiveView,self.db.Report_DB 
-        )  # Create Object of Page_LiveView   =========== > self.Page_LiveView = LiveView_UI(self.uiHandeler)  on main_UI page
-        self.API_Page_LiveView.set_initial_param_calibration(param_calibration_API)  # set the initial param of the calibration on liveViewPage
-        self.API_Page_LiveView.set_initial_param_camera(param_camera_API)            # set the initial param  of the camera on liveViewPage
-        self.API_Page_LiveView.set_initial_param_algorithm(param_Alghorithm_API) 
-
-        ################################      Report_API    ################################
-        self.API_Page_Report = Report_API(
-            self.uiHandeler.Page_Report,self.db.Report_DB
-        )  # Create Object of Report_API   =========== >self.Page_Report = Report_UI(self.uiHandeler)  on main_UI page
-
-
-        ###################  self.camera = self.collector.get_camera_by_serial(str(self.parms_camera_liveView["Serial"]))
-      
-        
     def build_camera(self, camera_meta: dict):
         """get camera meta_data and build that camera
         meta data is a dictionary with two key
@@ -261,3 +228,8 @@ class main_API:
              
     def error_grab_image_event(self,):
         print('ERROR GRABBING IMAGE')
+
+
+    
+    def new_defect_event(self, defect):
+        self.API_Live_View.new_defect_event(defect)

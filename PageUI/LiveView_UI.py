@@ -5,12 +5,14 @@ from PySide6.QtWidgets import *
 from functools import partial
 from .Common_Function_UI import Common_Function_UI
 from PySide6.QtGui import QImage, QPixmap
-from PySide6.QtCore import QTimer
+from PySide6.QtCore import QTimer, QRect
 from PySide6 import QtGui
 import time
 from UIFiles.main_UI import Ui_MainWindow
 from uiUtils.GUIComponents import defectNotification
-from persiantools.jdatetime import JalaliDateTime, JalaliDate
+from uiUtils.guiBackend import GUIBackend
+from UIFiles.popup_slider import Ui_slider
+from uiUtils.GUIComponents import singleAnimation
 
 class LiveView_UI(Common_Function_UI):
 
@@ -23,16 +25,71 @@ class LiveView_UI(Common_Function_UI):
         """Description of the code"""
 
         self.ui = ui
+        self.notifications = [] 
+        self.defect_info_tables_header = ['x','y', 'width','lenght', 'min depth', 'max depth', 'date','time']
 
-        layout = self.ui.defects_notifications_widget.layout()
-        for i in range(15):
-            not1 = defectNotification('clean side', 
-                                  random.choice([JalaliDate.today(), JalaliDate(year=1402, month=10, day=10), JalaliDate(year=1402, month=10, day=30)]),
-                                  JalaliDateTime.today(),
-                                  'normal',
-                                  (np.random.randint(0, 254), np.random.randint(0, 254), np.random.randint(0, 254)))
+        self.setup_defect_info_talbe()
+        self.setup_slider()
+
+        self.ui.system_status_btn.clicked.connect(self.slide_in)
+        self.slider.close.clicked.connect(self.slide_out)
+
         
-            layout.insertWidget(0, not1)
+
+        
+        
+
+    def setup_slider(self,):
+        self.slider = Ui_slider()
+        self.slider.setupUi(self.ui.live_view_page)
+        self.slider.frame.setParent(self.ui.live_view_page)
+        parent_w = self.ui.live_view_page.width()
+        self.slider.frame.setGeometry(parent_w,0,0,0)
+        
+
+
+    def __slider_animation_builder(self,):
+        parent_w = self.ui.live_view_page.width()
+        parent_h =self.ui.live_view_page.height()
+        slider_w = self.slider.frame.width()
+
+        self.slide_animation = singleAnimation(self.slider.frame, 
+                                               b'geometry', 
+                                               400, 
+                                               QRect(parent_w,0,slider_w,parent_h),
+                                               QRect(parent_w-slider_w,0,slider_w,parent_h)
+                                               )
+        
+    
+    def slide_in(self,):
+        self.__slider_animation_builder()
+        self.slide_animation.forward()
+        
+    def slide_out(self,):
+        self.__slider_animation_builder()
+        self.slide_animation.backward()
+
+
+        
+
+
+    def setup_defect_info_talbe(self,):
+        GUIBackend.set_table_dim(self.ui.defect_info_table, 1, len(self.defect_info_tables_header))
+        GUIBackend.set_table_cheaders(self.ui.defect_info_table, self.defect_info_tables_header)
+
+
+    def set_liveview_belt_img(self, image:np.ndarray):
+        self.ui.belt_live_view_lbl.set_image(image)
+    
+    def append_notification(self, notification:defectNotification):
+        layout = self.ui.defects_notifications_widget.layout()
+        layout.insertWidget(0, notification)
+        self.notifications.insert(0, notification)
+        self.ui.alarms_count_lbl.setText(f'{len(self.notifications)} Alarms')
+    
+    
+        
+
     #     self.general_information_live = {
     #         "Length": self.ui.Length,
     #         "Width": self.ui.Width,

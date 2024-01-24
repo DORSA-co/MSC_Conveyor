@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1226</width>
-    <height>812</height>
+    <height>838</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -300,7 +300,12 @@ QComboBox:focus{
 	background-color: #E0E4EC;
 }
 
-#camera_tab .QFrame, #algorithm_stackedWidget .QFrame, #user_register_tab .QFrame, #user_profile_tab .QFrame{
+#camera_tab .QFrame, 
+#algorithm_stackedWidget .QFrame, 
+#user_register_tab .QFrame, 
+#user_profile_tab .QFrame,
+#live_view_page .QFrame
+{
 	background-color: #F7F8FA;
 	border:1px solid #D7D7D9;
 }
@@ -949,6 +954,14 @@ QComboBox:focus{
               <height>16777215</height>
              </size>
             </property>
+            <property name="styleSheet">
+             <string notr="true">#defect_notifications_frame
+{
+	background-color: #F7F8FA;
+	border:1px solid #D7D7D9;
+}
+</string>
+            </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -960,38 +973,41 @@ QComboBox:focus{
               <number>0</number>
              </property>
              <property name="leftMargin">
-              <number>0</number>
+              <number>10</number>
              </property>
              <property name="topMargin">
-              <number>0</number>
+              <number>10</number>
              </property>
              <property name="rightMargin">
-              <number>0</number>
+              <number>10</number>
              </property>
              <property name="bottomMargin">
-              <number>0</number>
+              <number>10</number>
              </property>
              <item>
-              <widget class="QFrame" name="frame">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>0</height>
-                </size>
+              <layout class="QHBoxLayout" name="horizontalLayout_10">
+               <property name="leftMargin">
+                <number>0</number>
                </property>
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>16777215</height>
-                </size>
+               <property name="topMargin">
+                <number>0</number>
                </property>
-               <property name="frameShape">
-                <enum>QFrame::StyledPanel</enum>
+               <property name="bottomMargin">
+                <number>10</number>
                </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
-               </property>
-              </widget>
+               <item>
+                <widget class="QLabel" name="alarms_count_lbl">
+                 <property name="styleSheet">
+                  <string notr="true">color:#7E84A2;
+font-size:18px;
+font-weight:bold;</string>
+                 </property>
+                 <property name="text">
+                  <string>15/33 Alarms</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
              <item>
               <widget class="QScrollArea" name="defects_notifications_scrollArea">
@@ -1021,8 +1037,8 @@ QComboBox:focus{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>302</width>
-                  <height>680</height>
+                  <width>275</width>
+                  <height>584</height>
                  </rect>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -1063,42 +1079,231 @@ QComboBox:focus{
               </widget>
              </item>
              <item>
-              <widget class="QFrame" name="frame_2">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>0</height>
-                </size>
+              <widget class="QFrame" name="notifications_buttons_frame">
+               <property name="styleSheet">
+                <string notr="true">#notifications_buttons_frame{
+border:none;
+}
+QPushButton{
+	padding-top:5px;
+	border:none
+}
+
+QPushButton:hover{
+border-radius: 25px;
+	border: 2px solid #7892DF;
+}</string>
                </property>
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="frameShape">
-                <enum>QFrame::StyledPanel</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
-               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_5">
+                <property name="spacing">
+                 <number>14</number>
+                </property>
+                <property name="topMargin">
+                 <number>25</number>
+                </property>
+                <item>
+                 <widget class="QPushButton" name="pushButton_2">
+                  <property name="minimumSize">
+                   <size>
+                    <width>50</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>50</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="assets/assets.qrc">
+                    <normaloff>:/icons/icons/filter.png</normaloff>:/icons/icons/filter.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton">
+                  <property name="minimumSize">
+                   <size>
+                    <width>50</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>50</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="assets/assets.qrc">
+                    <normaloff>:/icons/icons/clear_filters.png</normaloff>:/icons/icons/clear_filters.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>30</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_3">
+                  <property name="minimumSize">
+                   <size>
+                    <width>50</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>50</width>
+                    <height>50</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="assets/assets.qrc">
+                    <normaloff>:/icons/icons/delete.png</normaloff>:/icons/icons/delete.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>32</width>
+                    <height>32</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </item>
             </layout>
            </widget>
           </item>
           <item>
-           <spacer name="horizontalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
+           <layout class="QVBoxLayout" name="verticalLayout_15">
+            <item>
+             <widget class="QTabWidget" name="live_tabWidget">
+              <widget class="QWidget" name="tab">
+               <attribute name="title">
+                <string>Tab 1</string>
+               </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_15">
+                <item>
+                 <widget class="PhotoViewer" name="belt_live_view_lbl"/>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tab_2">
+               <attribute name="title">
+                <string>Tab 2</string>
+               </attribute>
+              </widget>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="frame">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>160</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>200</height>
+               </size>
+              </property>
+              <property name="sizeIncrement">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_17">
+               <item>
+                <widget class="QTableWidget" name="defect_info_table">
+                 <column>
+                  <property name="text">
+                   <string>x</string>
+                  </property>
+                 </column>
+                 <column>
+                  <property name="text">
+                   <string>y</string>
+                  </property>
+                 </column>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QFrame" name="verticalFrame_2">
+            <property name="minimumSize">
              <size>
-              <width>40</width>
-              <height>20</height>
+              <width>50</width>
+              <height>0</height>
              </size>
             </property>
-           </spacer>
+            <layout class="QVBoxLayout" name="verticalLayout_16">
+             <property name="leftMargin">
+              <number>6</number>
+             </property>
+             <property name="topMargin">
+              <number>6</number>
+             </property>
+             <property name="rightMargin">
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="system_status_btn">
+               <property name="text">
+                <string>Status</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="verticalSpacer_8">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -2342,8 +2547,8 @@ QComboBox:focus{
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>946</width>
-                      <height>223</height>
+                      <width>938</width>
+                      <height>227</height>
                      </rect>
                     </property>
                     <property name="sizePolicy">
@@ -2520,8 +2725,8 @@ QComboBox:focus{
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>447</width>
-                        <height>360</height>
+                        <width>16</width>
+                        <height>16</height>
                        </rect>
                       </property>
                      </widget>
@@ -2751,8 +2956,8 @@ QComboBox:focus{
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>447</width>
-                        <height>272</height>
+                        <width>16</width>
+                        <height>16</height>
                        </rect>
                       </property>
                      </widget>
@@ -2841,7 +3046,7 @@ QComboBox:focus{
      <x>0</x>
      <y>0</y>
      <width>1226</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>

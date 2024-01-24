@@ -1,6 +1,9 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/clear_filters.png</file>
+    <file>icons/delete.png</file>
     <file>icons/tick.png</file>
+    <file>icons/filter.png</file>
     <file>icons/notification_icon.png</file>
     <file>icons/success_icon.png</file>
     <file>icons/error_icon.png</file>

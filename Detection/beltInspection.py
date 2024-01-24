@@ -15,7 +15,7 @@ from Detection.DefectExtractor import DefectExtractor
 from Detection.ImageCreator import ImageCreator
 from Detection.Encoder import Encoder
 from Detection.DefectTracker import DefectTracker
-
+from Detection.Defect import Defect
 
 class beltInspection:
 
@@ -27,8 +27,20 @@ class beltInspection:
         self.DefectExtractor = DefectExtractor()
         self.Encoder = Encoder()
         self.DefectTracker = DefectTracker(min_frame_gap=self.Encoder.step*10, min_length=5)
-        self.ImageCreator = ImageCreator((640, 480),
+        self.ImageCreator = ImageCreator((640, 1000),
                                          max_y_errors=10 )
+    
+        self.new_defect_event_func = None
+
+        self.DefectTracker.set_new_defect_event(self.new_defect_happend)
+
+    def set_new_defect_event(self, func):
+        self.new_defect_event_func = func
+
+    def new_defect_happend(self, defect:Defect):
+        """this function call from DefectTracker when new defect occur
+        """
+        self.new_defect_event_func(defect)
     
     
     def change_settings(self, kwargs:dict):
@@ -74,7 +86,7 @@ class beltInspection:
 
         t = time.time()
         # blure_image = cv2.blur(image, ksize=(3, 3))
-        res_image = self.DefectTracker.draw(image.copy(), self.Encoder.line_idx)
+        self.res_image = self.DefectTracker.draw(image.copy(), self.Encoder.line_idx)
         # print('last draw: ', time.time() - t)
 
         # cv2.imshow('', res_image)

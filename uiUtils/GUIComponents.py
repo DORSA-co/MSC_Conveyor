@@ -1056,14 +1056,14 @@ class overlayMassage(QtWidgets.QWidget):
 
 from UIFiles.defect_notification import Ui_Notification
 import datetime
-from persiantools.jdatetime import JalaliDate
+from persiantools.jdatetime import JalaliDateTime, JalaliDate
 
 class defectNotification(QtWidgets.QWidget):
 
     def __init__(self, 
+                 id: int,
                  side:str,
-                 date:JalaliDate, 
-                 time:datetime.time, 
+                 datetime:JalaliDateTime,  
                  defect_type:str,
                  defect_color:tuple) -> None:
         
@@ -1072,14 +1072,14 @@ class defectNotification(QtWidgets.QWidget):
         self.ui.setupUi(self)
 
         self.side = side
-        self.date = date
-        self.time = time
+        self.datetime = datetime
         self.defect_type = defect_type
         self.defect_color = defect_color
+        self.id = id
 
         self.set_side(self.side)
-        self.set_date(self.date)
-        self.set_time(self.time)
+        self.set_date(self.datetime.date())
+        self.set_time(self.datetime.time())
         self.set_defect_color(self.defect_color)
         self.set_defect_type(self.defect_type)
 

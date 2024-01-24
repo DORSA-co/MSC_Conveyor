@@ -149,7 +149,7 @@ class Ui_Notification(object):
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.date_label = QLabel(self.main_frame)
         self.date_label.setObjectName(u"date_label")
-        self.date_label.setStyleSheet(u"color:#404040;")
+        self.date_label.setStyleSheet(u"")
 
         self.horizontalLayout.addWidget(self.date_label)
 

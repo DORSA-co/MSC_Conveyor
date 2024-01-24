@@ -131,9 +131,8 @@ class mainUI(QMainWindow):
             new_page_name (str): name of page that its button clicked
         """
         def func():
-            self.previouse_page_name = self.current_page_name
+            
             self.go_to_page(new_page_name)
-            self.current_page_name = new_page_name
 
             if (self.current_page_name != self.previouse_page_name 
                 and self.external_page_change_event is not None):
@@ -153,6 +152,8 @@ class mainUI(QMainWindow):
         """
         self.ui.main_stackedWidget.setCurrentWidget(self.pages[page_name])
         self.sidebar_btns_style_handler(page_name)
+        self.current_page_name = page_name
+
 
 
     def internal_page_change_event(self, ):

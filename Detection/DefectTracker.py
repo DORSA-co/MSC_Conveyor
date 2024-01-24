@@ -11,6 +11,11 @@ class DefectTracker:
         self.min_frame_gap = min_frame_gap
         self.min_length = min_length
 
+        self.external_new_defect_event = None
+    
+    def set_new_defect_event(self, func):
+        self.external_new_defect_event = func
+
     def set_min_frame_gap(self, min_frame_gap):
         self.min_frame_gap = min_frame_gap
 
@@ -57,18 +62,6 @@ class DefectTracker:
 
                 self.non_completed_defects.append(new_defect)
 
-        # for i in range(len(self.non_completed_defects)):
-        #     d1 = self.non_completed_defects[i]
-        #     for j in range(i+1, len(self.non_completed_defects)):
-        #         d2 = self.non_completed_defects[j]
-        #         if d2.temp_indices.shape[0]:
-        #             defect_start_idx = d2.defect_indices[:, 0].min()
-        #             defect_end_idx = d2.defect_indices[:, 1].max()
-        #             if d1.is_part_of(defect_start_idx, defect_end_idx):
-        #                 print(defect_start_idx, defect_end_idx)
-                
-
-
         for non_complete_defect in self.non_completed_defects:
             non_complete_defect.render(error_ys, line_idx=line_idx)
 
@@ -80,6 +73,7 @@ class DefectTracker:
                 self.non_completed_defects.remove(defect)
                 if defect.is_defect(self.min_length):
                     self.completed_defects.append(defect)
+                    self.external_new_defect_event(defect)
             
             else:
                 i+=1

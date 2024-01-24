@@ -2,37 +2,37 @@ import numpy as np
 from Detection import cvToolsCython
 from scipy.signal import argrelextrema
 
-def local_maximums(error_ys, min_width):
-    """Finds the local maxima in a 1D array of error values."""
-    max_width = 15
-    defect_counts = 0
-    res_defect_indices = np.zeros((error_ys.shape[0], 3), dtype=np.uint8)
-    for i in range(error_ys.shape[0]):
-        start_idx = -1
-        end_idx = -1
-        if error_ys[i, 1] >= 2 and error_ys[i, 1] > error_ys[i-1, 1] and error_ys[i, 1] >= error_ys[i+1, 1]:
-            a = max(i-max_width, 0)
-            b = min(i+max_width+1, error_ys.shape[0])
-            for j in range(i, a-1, -1):
-                if error_ys[j, 1]==0:
-                    start_idx = j
-                    break
-            if start_idx == -1:
-                start_idx = a
-            for j in range(i, b, 1):
-                if error_ys[j, 1]==0:
-                    end_idx = j
-                    break
-            if end_idx == -1:
-                end_idx = b
+# def local_maximums(error_ys, min_width):
+#     """Finds the local maxima in a 1D array of error values."""
+#     max_width = 15
+#     defect_counts = 0
+#     res_defect_indices = np.zeros((error_ys.shape[0], 3), dtype=np.uint8)
+#     for i in range(error_ys.shape[0]):
+#         start_idx = -1
+#         end_idx = -1
+#         if error_ys[i, 1] >= 2 and error_ys[i, 1] > error_ys[i-1, 1] and error_ys[i, 1] >= error_ys[i+1, 1]:
+#             a = max(i-max_width, 0)
+#             b = min(i+max_width+1, error_ys.shape[0])
+#             for j in range(i, a-1, -1):
+#                 if error_ys[j, 1]==0:
+#                     start_idx = j
+#                     break
+#             if start_idx == -1:
+#                 start_idx = a
+#             for j in range(i, b, 1):
+#                 if error_ys[j, 1]==0:
+#                     end_idx = j
+#                     break
+#             if end_idx == -1:
+#                 end_idx = b
             
-            if (end_idx - start_idx) > min_width:
-                res_defect_indices[defect_counts, 0] = start_idx
-                res_defect_indices[defect_counts, 1] = end_idx
-                res_defect_indices[defect_counts, 2] = 0
-                defect_counts += 1
+#             if (end_idx - start_idx) > min_width:
+#                 res_defect_indices[defect_counts, 0] = start_idx
+#                 res_defect_indices[defect_counts, 1] = end_idx
+#                 res_defect_indices[defect_counts, 2] = 0
+#                 defect_counts += 1
     
-    return res_defect_indices[:defect_counts]
+#     return res_defect_indices[:defect_counts]
 
 class DefectExtractor:
     def __init__(self) -> None:

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from persiantools.jdatetime import JalaliDate,JalaliDateTime
 import numpy as np
 
 
@@ -55,6 +56,7 @@ class Defect:
         ):
         self.widthInfo = numberStatics()
         self.depthInfo = numberStatics()
+        self.jdatetime = JalaliDateTime.now()
 
         self.n_last_defects = n_last_defects
         self.defect_indices = np.array(([[start_anomaly_idx, end_anomaly_idx]]))
