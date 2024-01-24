@@ -1052,3 +1052,65 @@ class overlayMassage(QtWidgets.QWidget):
         self.showMaximized()
 
 
+
+
+from UIFiles.defect_notification import Ui_Form
+import datetime
+from persiantools.jdatetime import JalaliDate
+
+class defectNotification(QtWidgets.QWidget):
+
+    def __init__(self, 
+                 side:str,
+                 date:JalaliDate, 
+                 time:datetime.time, 
+                 defect_type:str,
+                 defect_color:tuple) -> None:
+        
+        super(defectNotification, self).__init__()
+        self.ui = Ui_Form()
+        self.ui.setupUi(self)
+
+        self.side = side
+        self.date = date
+        self.time = time
+        self.defect_type = defect_type
+        self.defect_color = defect_color
+
+        self.set_side(self.side)
+        self.set_date(self.date)
+        self.set_time(self.time)
+        self.set_defect_color(self.defect_color)
+        self.set_defect_type(self.defect_type)
+
+
+    
+    def set_side(self, side:str):
+        self.ui.side_label.setText(side.capitalize())
+    
+    def set_defect_type(self, defect_type:str):
+        self.ui.defect_type_label.setText(defect_type)
+
+    def set_date(self, date:JalaliDate):
+        today = JalaliDate.today()
+        diff = today - date
+        if diff.days > 10 :
+            txt = date.strftime("%Y/%m/%d")
+        elif diff.days == 0:
+            txt = 'today'
+        else:
+            txt = f'{diff.day} days ago'
+        self.ui.date_label.setText(txt)
+    
+    def set_time(self, t:datetime.time):
+        txt = t.strftime('%H:%M:%S')
+        self.ui.time_label.setText(txt)
+
+    def set_defect_color(self, color:tuple):
+        self.ui.defect_color.setStyleSheet(f"background-color:rgb{color}")
+    
+    def is_checked(self,):
+        return self.ui.select_checkBox.isChecked()
+    
+    
+

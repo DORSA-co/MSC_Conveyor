@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1226</width>
-    <height>788</height>
+    <height>812</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -921,9 +921,34 @@ QComboBox:focus{
       <item>
        <widget class="QStackedWidget" name="main_stackedWidget">
         <property name="currentIndex">
-         <number>3</number>
+         <number>0</number>
         </property>
-        <widget class="QWidget" name="live_view_page"/>
+        <widget class="QWidget" name="live_view_page">
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <item>
+           <widget class="QFrame" name="defects_notifications">
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <layout class="QVBoxLayout" name="defect_notifications">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="text">
+             <string>PushButton</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
         <widget class="QWidget" name="settings_page">
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
@@ -2164,8 +2189,8 @@ QComboBox:focus{
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>946</width>
-                      <height>221</height>
+                      <width>938</width>
+                      <height>227</height>
                      </rect>
                     </property>
                     <property name="sizePolicy">
@@ -2342,8 +2367,8 @@ QComboBox:focus{
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>481</width>
-                        <height>368</height>
+                        <width>16</width>
+                        <height>16</height>
                        </rect>
                       </property>
                      </widget>
@@ -2573,8 +2598,8 @@ QComboBox:focus{
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>481</width>
-                        <height>280</height>
+                        <width>16</width>
+                        <height>16</height>
                        </rect>
                       </property>
                      </widget>
