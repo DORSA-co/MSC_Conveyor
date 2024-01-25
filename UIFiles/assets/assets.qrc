@@ -1,7 +1,23 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/delete_white.png</file>
+    <file>icons/clear_filter_white.png</file>
+    <file>icons/depth.png</file>
+    <file>icons/height.png</file>
+    <file>icons/width.png</file>
+    <file>icons/database.png</file>
+    <file>icons/date.png</file>
+    <file>icons/filter_white.png</file>
+    <file>icons/heart-monitor.png</file>
+    <file>icons/laser.png</file>
+    <file>icons/plc.png</file>
+    <file>icons/camera.png</file>
+    <file>icons/left_arrow_white.png</file>
+    <file>icons/left_arrow.png</file>
+    <file>icons/left_double_arrow.png</file>
     <file>icons/tick.png</file>
     <file>icons/clear_filter.png</file>
+    <file>icons/left_triangle.png</file>
     <file>icons/clear_filter_hover.png</file>
     <file>icons/delete.png</file>
     <file>icons/delete_hover.png</file>

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>316</width>
+    <width>324</width>
     <height>100</height>
    </rect>
   </property>
@@ -33,7 +33,7 @@
     <widget class="QWidget" name="StyleSheet" native="true">
      <property name="styleSheet">
       <string notr="true">QLabel{
-	color:#202020;
+	color:#505050;
 
 }
 
@@ -73,7 +73,8 @@ QCheckBox::indicator:disabled {
 
 #main_frame
 {
-	border: 1px solid rgba(194, 197, 204, 255);
+	border:1px solid #E0E4EC;
+	border-radius: 15px;
 	background-color: #F7F8FA;
 }
 

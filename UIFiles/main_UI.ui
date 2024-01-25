@@ -207,7 +207,7 @@ QHeaderView::up-arrow {
 	image: url(:/icons/icons/table_sort_icon.png);
 }
 
-/*QScrollBar:horizontal, QScrollBar:vertical {
+QScrollBar:horizontal, QScrollBar:vertical {
     border: 1px solid #BDBDBF;
     background: #BDBDBF;
     height: 4px;
@@ -216,7 +216,7 @@ QHeaderView::up-arrow {
 QScrollBar::handle:horizontal, QScrollBar::handle:vertical {
     background: #646466;
 }
-*/
+
 
 /************************************************************/
 
@@ -472,6 +472,8 @@ QComboBox:focus{
 	background-color: None;
 	border: None;
 }
+
+
 
 
 
@@ -998,13 +1000,13 @@ QComboBox:focus{
               </property>
               <property name="minimumSize">
                <size>
-                <width>320</width>
+                <width>352</width>
                 <height>0</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>320</width>
+                <width>352</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -1077,6 +1079,11 @@ font-weight:bold;</string>
                    <height>16777215</height>
                   </size>
                  </property>
+                 <property name="styleSheet">
+                  <string notr="true">#defects_notifications_scrollArea{
+	border:None;
+}</string>
+                 </property>
                  <property name="verticalScrollBarPolicy">
                   <enum>Qt::ScrollBarAlwaysOn</enum>
                  </property>
@@ -1091,9 +1098,15 @@ font-weight:bold;</string>
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>282</width>
-                    <height>582</height>
+                    <width>330</width>
+                    <height>670</height>
                    </rect>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">#defects_notifications_widget{
+	border:None;
+	border-top: 2px solid gray;
+}</string>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayout_9">
                    <property name="spacing">
@@ -1113,6 +1126,9 @@ font-weight:bold;</string>
                    </property>
                    <item>
                     <layout class="QVBoxLayout" name="verticalLayout_7">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
                      <item>
                       <spacer name="verticalSpacer_7">
                        <property name="orientation">
@@ -1130,130 +1146,6 @@ font-weight:bold;</string>
                    </item>
                   </layout>
                  </widget>
-                </widget>
-               </item>
-               <item>
-                <widget class="QFrame" name="notifications_buttons_frame">
-                 <property name="styleSheet">
-                  <string notr="true">#filter_btn:hover{
-	icon:url(:/icons/icons/filter_hover.png);
-}
-
-#clear_filter_btn:hover{
-	icon:url(:/icons/icons/clear_filter_hover.png);
-}
-
-#delete_notifs_btn:hover{
-	icon:url(:/icons/icons/delete_hover.png);
-}</string>
-                 </property>
-                 <layout class="QHBoxLayout" name="horizontalLayout_5">
-                  <property name="spacing">
-                   <number>14</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>25</number>
-                  </property>
-                  <item>
-                   <widget class="QPushButton" name="filter_btn">
-                    <property name="minimumSize">
-                     <size>
-                      <width>50</width>
-                      <height>50</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>50</width>
-                      <height>50</height>
-                     </size>
-                    </property>
-                    <property name="cursor">
-                     <cursorShape>PointingHandCursor</cursorShape>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true"/>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="icon">
-                     <iconset resource="assets/assets.qrc">
-                      <normaloff>:/icons/icons/filter.png</normaloff>:/icons/icons/filter.png</iconset>
-                    </property>
-                    <property name="iconSize">
-                     <size>
-                      <width>30</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="clear_filter_btn">
-                    <property name="minimumSize">
-                     <size>
-                      <width>50</width>
-                      <height>50</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>50</width>
-                      <height>50</height>
-                     </size>
-                    </property>
-                    <property name="cursor">
-                     <cursorShape>PointingHandCursor</cursorShape>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="icon">
-                     <iconset resource="assets/assets.qrc">
-                      <normaloff>:/icons/icons/clear_filter.png</normaloff>:/icons/icons/clear_filter.png</iconset>
-                    </property>
-                    <property name="iconSize">
-                     <size>
-                      <width>30</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="delete_notifs_btn">
-                    <property name="minimumSize">
-                     <size>
-                      <width>50</width>
-                      <height>50</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>50</width>
-                      <height>50</height>
-                     </size>
-                    </property>
-                    <property name="cursor">
-                     <cursorShape>PointingHandCursor</cursorShape>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="icon">
-                     <iconset resource="assets/assets.qrc">
-                      <normaloff>:/icons/icons/delete.png</normaloff>:/icons/icons/delete.png</iconset>
-                    </property>
-                    <property name="iconSize">
-                     <size>
-                      <width>30</width>
-                      <height>30</height>
-                     </size>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
                 </widget>
                </item>
               </layout>
@@ -1281,7 +1173,7 @@ font-weight:bold;</string>
                </widget>
               </item>
               <item>
-               <widget class="QFrame" name="frame">
+               <widget class="QFrame" name="defect_info_frame">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
@@ -1300,6 +1192,12 @@ font-weight:bold;</string>
                   <height>0</height>
                  </size>
                 </property>
+                <property name="styleSheet">
+                 <string notr="true">#defect_info_frame{
+	background-color: transparent;
+	border: None;
+}</string>
+                </property>
                 <property name="frameShape">
                  <enum>QFrame::StyledPanel</enum>
                 </property>
@@ -1309,6 +1207,12 @@ font-weight:bold;</string>
                 <layout class="QVBoxLayout" name="verticalLayout_17">
                  <item>
                   <widget class="QTableWidget" name="defect_info_table">
+                   <attribute name="horizontalHeaderStretchLastSection">
+                    <bool>true</bool>
+                   </attribute>
+                   <attribute name="verticalHeaderVisible">
+                    <bool>false</bool>
+                   </attribute>
                    <column>
                     <property name="text">
                      <string>x</string>
@@ -1329,7 +1233,7 @@ font-weight:bold;</string>
            </layout>
           </item>
           <item>
-           <widget class="QFrame" name="verticalFrame_2">
+           <widget class="QFrame" name="expanding_frame">
             <property name="minimumSize">
              <size>
               <width>50</width>
@@ -1337,34 +1241,274 @@ font-weight:bold;</string>
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color: #7E84A2</string>
+             <string notr="true">#expanding_frame{
+	background-color: #17203A;
+}
+
+#expanding_frame .QPushButton{
+	border: 0px solid red;
+}</string>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_16">
              <property name="leftMargin">
               <number>6</number>
              </property>
              <property name="topMargin">
-              <number>6</number>
+              <number>20</number>
              </property>
              <property name="rightMargin">
               <number>6</number>
              </property>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_16">
+               <property name="spacing">
+                <number>0</number>
+               </property>
                <property name="topMargin">
                 <number>0</number>
                </property>
                <item>
-                <widget class="QLabel" name="label_2">
+                <widget class="QPushButton" name="system_status_expanding_btn">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>20</width>
+                   <height>55</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>20</width>
+                   <height>55</height>
+                  </size>
+                 </property>
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
                  <property name="text">
-                  <string>&lt;&lt;</string>
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="assets/assets.qrc">
+                   <normaloff>:/icons/icons/left_arrow_white.png</normaloff>:/icons/icons/left_arrow_white.png</iconset>
                  </property>
                 </widget>
                </item>
                <item>
                 <widget class="QPushButton" name="system_status_btn">
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                   <weight>50</weight>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="toolTip">
+                  <string>System Status</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
                  <property name="text">
-                  <string>Status</string>
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="assets/assets.qrc">
+                   <normaloff>:/icons/icons/heart-monitor.png</normaloff>:/icons/icons/heart-monitor.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>55</width>
+                   <height>55</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="system_status_label">
+                 <property name="minimumSize">
+                  <size>
+                   <width>7</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>7</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">background-color: rgb(250, 65, 55);</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_24">
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>13</number>
+               </property>
+               <item>
+                <widget class="QPushButton" name="notif_filter_expanding_btn">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>20</width>
+                   <height>55</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>20</width>
+                   <height>55</height>
+                  </size>
+                 </property>
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="assets/assets.qrc">
+                   <normaloff>:/icons/icons/left_arrow_white.png</normaloff>:/icons/icons/left_arrow_white.png</iconset>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="notif_filter_btn">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="toolTip">
+                  <string>Filter Notifications</string>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="assets/assets.qrc">
+                   <normaloff>:/icons/icons/filter_white.png</normaloff>:/icons/icons/filter_white.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>35</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_25">
+               <property name="leftMargin">
+                <number>26</number>
+               </property>
+               <property name="topMargin">
+                <number>10</number>
+               </property>
+               <property name="rightMargin">
+                <number>13</number>
+               </property>
+               <property name="bottomMargin">
+                <number>10</number>
+               </property>
+               <item>
+                <widget class="QPushButton" name="notif_clear_filter_btn">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="assets/assets.qrc">
+                   <normaloff>:/icons/icons/clear_filter_white.png</normaloff>:/icons/icons/clear_filter_white.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>35</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_34">
+               <property name="leftMargin">
+                <number>26</number>
+               </property>
+               <property name="topMargin">
+                <number>10</number>
+               </property>
+               <property name="rightMargin">
+                <number>13</number>
+               </property>
+               <property name="bottomMargin">
+                <number>10</number>
+               </property>
+               <item>
+                <widget class="QPushButton" name="notif_clear_filter_btn_3">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="assets/assets.qrc">
+                   <normaloff>:/icons/icons/delete_white.png</normaloff>:/icons/icons/delete_white.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>35</width>
+                   <height>35</height>
+                  </size>
                  </property>
                 </widget>
                </item>
@@ -2628,8 +2772,8 @@ font-weight:bold;</string>
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>38</width>
-                      <height>18</height>
+                      <width>990</width>
+                      <height>243</height>
                      </rect>
                     </property>
                     <property name="sizePolicy">
@@ -2806,8 +2950,8 @@ font-weight:bold;</string>
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>16</width>
-                        <height>16</height>
+                        <width>469</width>
+                        <height>380</height>
                        </rect>
                       </property>
                      </widget>
@@ -3037,8 +3181,8 @@ font-weight:bold;</string>
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>16</width>
-                        <height>16</height>
+                        <width>469</width>
+                        <height>292</height>
                        </rect>
                       </property>
                      </widget>
@@ -3137,5 +3281,38 @@ font-weight:bold;</string>
  <resources>
   <include location="assets/assets.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>system_status_expanding_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>system_status_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1184</x>
+     <y>116</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1224</x>
+     <y>116</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>notif_filter_expanding_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>notif_filter_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1184</x>
+     <y>179</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1224</x>
+     <y>179</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

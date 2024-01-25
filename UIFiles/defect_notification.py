@@ -24,7 +24,7 @@ class Ui_Notification(object):
     def setupUi(self, Notification):
         if not Notification.objectName():
             Notification.setObjectName(u"Notification")
-        Notification.resize(316, 100)
+        Notification.resize(324, 100)
         self.horizontalLayout_2 = QHBoxLayout(Notification)
         self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
@@ -32,7 +32,7 @@ class Ui_Notification(object):
         self.StyleSheet = QWidget(Notification)
         self.StyleSheet.setObjectName(u"StyleSheet")
         self.StyleSheet.setStyleSheet(u"QLabel{\n"
-"	color:#202020;\n"
+"	color:#505050;\n"
 "\n"
 "}\n"
 "\n"
@@ -72,7 +72,8 @@ class Ui_Notification(object):
 "\n"
 "#main_frame\n"
 "{\n"
-"	border: 1px solid rgba(194, 197, 204, 255);\n"
+"	border:1px solid #E0E4EC;\n"
+"	border-radius: 15px;\n"
 "	background-color: #F7F8FA;\n"
 "}\n"
 "\n"
@@ -82,8 +83,8 @@ class Ui_Notification(object):
 "\n"
 "#defect_color_frame .QLabel\n"
 "{\n"
-"	border-radius"
-                        ":4px;\n"
+"	borde"
+                        "r-radius:4px;\n"
 "}\n"
 "\n"
 "#i_label{\n"

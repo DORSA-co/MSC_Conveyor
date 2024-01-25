@@ -84,6 +84,8 @@ class LiveView_UI(Common_Function_UI):
     def append_notification(self, notification:defectNotification):
         layout = self.ui.defects_notifications_widget.layout()
         layout.insertWidget(0, notification)
+        layout.setSpacing(9)
+        layout.setContentsMargins(9, 9, 9, 9)
         self.notifications.insert(0, notification)
         self.ui.alarms_count_lbl.setText(f'{len(self.notifications)} Alarms')
     
