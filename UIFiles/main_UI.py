@@ -17,10 +17,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractItemView, QApplication, QComboBox, QFrame,
     QHBoxLayout, QHeaderView, QLabel, QLineEdit,
-    QMainWindow, QMenuBar, QPushButton, QScrollArea,
-    QSizePolicy, QSpacerItem, QSpinBox, QStackedWidget,
-    QTabWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,
-    QWidget)
+    QMainWindow, QPushButton, QScrollArea, QSizePolicy,
+    QSpacerItem, QSpinBox, QStackedWidget, QTabWidget,
+    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
 
 from GUIComponents import (PhotoViewer, SwitchControl)
 import assets_rc
@@ -29,7 +28,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1226, 838)
+        MainWindow.resize(1270, 810)
         self.StyleSheet = QWidget(MainWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
         self.StyleSheet.setEnabled(True)
@@ -493,6 +492,15 @@ class Ui_MainWindow(object):
 "	border:1px solid #D7D7D9;\n"
 "}\n"
 "\n"
+"#notifications_buttons_frame .QPushButton{\n"
+"	background-color: None;\n"
+"	border: None;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
 "\n"
 "")
         self.horizontalLayout = QHBoxLayout(self.StyleSheet)
@@ -559,6 +567,14 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.side_settings_btn)
 
+        self.pushButton_4 = QPushButton(self.side_frame)
+        self.pushButton_4.setObjectName(u"pushButton_4")
+        sizePolicy1.setHeightForWidth(self.pushButton_4.sizePolicy().hasHeightForWidth())
+        self.pushButton_4.setSizePolicy(sizePolicy1)
+        self.pushButton_4.setMaximumSize(QSize(16777215, 0))
+
+        self.verticalLayout_2.addWidget(self.pushButton_4)
+
         self.side_report_btn = QPushButton(self.side_frame)
         self.side_report_btn.setObjectName(u"side_report_btn")
         sizePolicy1.setHeightForWidth(self.side_report_btn.sizePolicy().hasHeightForWidth())
@@ -607,7 +623,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.setStretch(4, 10)
         self.verticalLayout_2.setStretch(5, 10)
         self.verticalLayout_2.setStretch(6, 10)
-        self.verticalLayout_2.setStretch(7, 38)
+        self.verticalLayout_2.setStretch(7, 10)
+        self.verticalLayout_2.setStretch(8, 28)
 
         self.horizontalLayout.addWidget(self.side_frame)
 
@@ -758,7 +775,7 @@ class Ui_MainWindow(object):
         self.defects_notifications_scrollArea.setWidgetResizable(True)
         self.defects_notifications_widget = QWidget()
         self.defects_notifications_widget.setObjectName(u"defects_notifications_widget")
-        self.defects_notifications_widget.setGeometry(QRect(0, 0, 275, 584))
+        self.defects_notifications_widget.setGeometry(QRect(0, 0, 282, 582))
         self.verticalLayout_9 = QVBoxLayout(self.defects_notifications_widget)
         self.verticalLayout_9.setSpacing(0)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
@@ -778,55 +795,57 @@ class Ui_MainWindow(object):
 
         self.notifications_buttons_frame = QFrame(self.defect_notifications_frame)
         self.notifications_buttons_frame.setObjectName(u"notifications_buttons_frame")
-        self.notifications_buttons_frame.setStyleSheet(u"#notifications_buttons_frame{\n"
-"border:none;\n"
-"}\n"
-"QPushButton{\n"
-"	padding-top:5px;\n"
-"	border:none\n"
+        self.notifications_buttons_frame.setStyleSheet(u"#filter_btn:hover{\n"
+"	icon:url(:/icons/icons/filter_hover.png);\n"
 "}\n"
 "\n"
-"QPushButton:hover{\n"
-"border-radius: 25px;\n"
-"	border: 2px solid #7892DF;\n"
+"#clear_filter_btn:hover{\n"
+"	icon:url(:/icons/icons/clear_filter_hover.png);\n"
+"}\n"
+"\n"
+"#delete_notifs_btn:hover{\n"
+"	icon:url(:/icons/icons/delete_hover.png);\n"
 "}")
         self.horizontalLayout_5 = QHBoxLayout(self.notifications_buttons_frame)
         self.horizontalLayout_5.setSpacing(14)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.horizontalLayout_5.setContentsMargins(-1, 25, -1, -1)
-        self.pushButton_2 = QPushButton(self.notifications_buttons_frame)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setMinimumSize(QSize(50, 50))
-        self.pushButton_2.setMaximumSize(QSize(50, 50))
-        self.pushButton_2.setStyleSheet(u"")
+        self.filter_btn = QPushButton(self.notifications_buttons_frame)
+        self.filter_btn.setObjectName(u"filter_btn")
+        self.filter_btn.setMinimumSize(QSize(50, 50))
+        self.filter_btn.setMaximumSize(QSize(50, 50))
+        self.filter_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.filter_btn.setStyleSheet(u"")
         icon11 = QIcon()
         icon11.addFile(u":/icons/icons/filter.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_2.setIcon(icon11)
-        self.pushButton_2.setIconSize(QSize(30, 30))
+        self.filter_btn.setIcon(icon11)
+        self.filter_btn.setIconSize(QSize(30, 30))
 
-        self.horizontalLayout_5.addWidget(self.pushButton_2)
+        self.horizontalLayout_5.addWidget(self.filter_btn)
 
-        self.pushButton = QPushButton(self.notifications_buttons_frame)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setMinimumSize(QSize(50, 50))
-        self.pushButton.setMaximumSize(QSize(50, 50))
+        self.clear_filter_btn = QPushButton(self.notifications_buttons_frame)
+        self.clear_filter_btn.setObjectName(u"clear_filter_btn")
+        self.clear_filter_btn.setMinimumSize(QSize(50, 50))
+        self.clear_filter_btn.setMaximumSize(QSize(50, 50))
+        self.clear_filter_btn.setCursor(QCursor(Qt.PointingHandCursor))
         icon12 = QIcon()
-        icon12.addFile(u":/icons/icons/clear_filters.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton.setIcon(icon12)
-        self.pushButton.setIconSize(QSize(30, 30))
+        icon12.addFile(u":/icons/icons/clear_filter.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.clear_filter_btn.setIcon(icon12)
+        self.clear_filter_btn.setIconSize(QSize(30, 30))
 
-        self.horizontalLayout_5.addWidget(self.pushButton)
+        self.horizontalLayout_5.addWidget(self.clear_filter_btn)
 
-        self.pushButton_3 = QPushButton(self.notifications_buttons_frame)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setMinimumSize(QSize(50, 50))
-        self.pushButton_3.setMaximumSize(QSize(50, 50))
+        self.delete_notifs_btn = QPushButton(self.notifications_buttons_frame)
+        self.delete_notifs_btn.setObjectName(u"delete_notifs_btn")
+        self.delete_notifs_btn.setMinimumSize(QSize(50, 50))
+        self.delete_notifs_btn.setMaximumSize(QSize(50, 50))
+        self.delete_notifs_btn.setCursor(QCursor(Qt.PointingHandCursor))
         icon13 = QIcon()
         icon13.addFile(u":/icons/icons/delete.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_3.setIcon(icon13)
-        self.pushButton_3.setIconSize(QSize(32, 32))
+        self.delete_notifs_btn.setIcon(icon13)
+        self.delete_notifs_btn.setIconSize(QSize(30, 30))
 
-        self.horizontalLayout_5.addWidget(self.pushButton_3)
+        self.horizontalLayout_5.addWidget(self.delete_notifs_btn)
 
 
         self.verticalLayout_3.addWidget(self.notifications_buttons_frame)
@@ -838,16 +857,16 @@ class Ui_MainWindow(object):
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.live_tabWidget = QTabWidget(self.live_view_page)
         self.live_tabWidget.setObjectName(u"live_tabWidget")
-        self.tab = QWidget()
-        self.tab.setObjectName(u"tab")
-        self.horizontalLayout_15 = QHBoxLayout(self.tab)
+        self.belt_live_tab = QWidget()
+        self.belt_live_tab.setObjectName(u"belt_live_tab")
+        self.horizontalLayout_15 = QHBoxLayout(self.belt_live_tab)
         self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
-        self.belt_live_view_lbl = PhotoViewer(self.tab)
+        self.belt_live_view_lbl = PhotoViewer(self.belt_live_tab)
         self.belt_live_view_lbl.setObjectName(u"belt_live_view_lbl")
 
         self.horizontalLayout_15.addWidget(self.belt_live_view_lbl)
 
-        self.live_tabWidget.addTab(self.tab, "")
+        self.live_tabWidget.addTab(self.belt_live_tab, "")
         self.tab_2 = QWidget()
         self.tab_2.setObjectName(u"tab_2")
         self.live_tabWidget.addTab(self.tab_2, "")
@@ -1619,7 +1638,7 @@ class Ui_MainWindow(object):
         self.register_message_scrollArea.setWidgetResizable(True)
         self.register_message_frame = QWidget()
         self.register_message_frame.setObjectName(u"register_message_frame")
-        self.register_message_frame.setGeometry(QRect(0, 0, 938, 227))
+        self.register_message_frame.setGeometry(QRect(0, 0, 100, 30))
         sizePolicy3.setHeightForWidth(self.register_message_frame.sizePolicy().hasHeightForWidth())
         self.register_message_frame.setSizePolicy(sizePolicy3)
         self.verticalLayout_55 = QVBoxLayout(self.register_message_frame)
@@ -1718,7 +1737,7 @@ class Ui_MainWindow(object):
         self.change_username_message_scrollArea.setWidgetResizable(True)
         self.change_username_message_frame = QWidget()
         self.change_username_message_frame.setObjectName(u"change_username_message_frame")
-        self.change_username_message_frame.setGeometry(QRect(0, 0, 16, 16))
+        self.change_username_message_frame.setGeometry(QRect(0, 0, 100, 30))
         self.change_username_message_scrollArea.setWidget(self.change_username_message_frame)
 
         self.verticalLayout_54.addWidget(self.change_username_message_scrollArea)
@@ -1864,7 +1883,7 @@ class Ui_MainWindow(object):
         self.change_password_message_scrollArea.setWidgetResizable(True)
         self.change_password_message_frame = QWidget()
         self.change_password_message_frame.setObjectName(u"change_password_message_frame")
-        self.change_password_message_frame.setGeometry(QRect(0, 0, 16, 16))
+        self.change_password_message_frame.setGeometry(QRect(0, 0, 100, 30))
         self.change_password_message_scrollArea.setWidget(self.change_password_message_frame)
 
         self.verticalLayout_51.addWidget(self.change_password_message_scrollArea)
@@ -1921,10 +1940,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addLayout(self.verticalLayout)
 
         MainWindow.setCentralWidget(self.StyleSheet)
-        self.menuBar = QMenuBar(MainWindow)
-        self.menuBar.setObjectName(u"menuBar")
-        self.menuBar.setGeometry(QRect(0, 0, 1226, 26))
-        MainWindow.setMenuBar(self.menuBar)
 
         self.retranslateUi(MainWindow)
 
@@ -1942,6 +1957,7 @@ class Ui_MainWindow(object):
         self.dorsa_label.setText("")
         self.side_live_view_btn.setText(QCoreApplication.translate("MainWindow", u" Live View  ", None))
         self.side_settings_btn.setText(QCoreApplication.translate("MainWindow", u" Settings    ", None))
+        self.pushButton_4.setText("")
         self.side_report_btn.setText(QCoreApplication.translate("MainWindow", u" Report     ", None))
         self.side_users_btn.setText(QCoreApplication.translate("MainWindow", u" Users        ", None))
         self.side_about_btn.setText(QCoreApplication.translate("MainWindow", u" About Us ", None))
@@ -1953,10 +1969,10 @@ class Ui_MainWindow(object):
         self.maximize_btn.setText("")
         self.close_btn.setText("")
         self.alarms_count_lbl.setText(QCoreApplication.translate("MainWindow", u"15/33 Alarms", None))
-        self.pushButton_2.setText("")
-        self.pushButton.setText("")
-        self.pushButton_3.setText("")
-        self.live_tabWidget.setTabText(self.live_tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Tab 1", None))
+        self.filter_btn.setText("")
+        self.clear_filter_btn.setText("")
+        self.delete_notifs_btn.setText("")
+        self.live_tabWidget.setTabText(self.live_tabWidget.indexOf(self.belt_live_tab), QCoreApplication.translate("MainWindow", u"Belt Live ", None))
         self.live_tabWidget.setTabText(self.live_tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Tab 2", None))
         ___qtablewidgetitem = self.defect_info_table.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"x", None));
@@ -2001,7 +2017,7 @@ class Ui_MainWindow(object):
         self.userpage_confirm_password_eye.setText("")
         self.register_user_role_label.setText(QCoreApplication.translate("MainWindow", u"User Role", None))
         self.register_user.setText(QCoreApplication.translate("MainWindow", u"Register", None))
-        self.user_tabs.setTabText(self.user_tabs.indexOf(self.user_register_tab), QCoreApplication.translate("MainWindow", u"register user", None))
+        self.user_tabs.setTabText(self.user_tabs.indexOf(self.user_register_tab), QCoreApplication.translate("MainWindow", u"Register User", None))
         self.profile_change_username_label.setText(QCoreApplication.translate("MainWindow", u"Change Username", None))
         self.profile_old_username_label.setText(QCoreApplication.translate("MainWindow", u"Old Username", None))
         self.profile_username_label.setText(QCoreApplication.translate("MainWindow", u"New Username", None))
