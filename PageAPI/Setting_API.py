@@ -245,7 +245,7 @@ class AlgorithmSetting_API:
     
     def load_algorithm_settings(self,):
         parms = self.db.load()
-        parms = self.mapDict.multi_value2key(parms)
+        parms = self.mapDict.multi_key2value(parms)
         self.uiHandeler.set_parms(parms)
 
     
