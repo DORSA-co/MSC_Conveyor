@@ -94,17 +94,9 @@ class mainUI(QMainWindow):
         self.current_page_name = ''
         self.previouse_page_name = ''
 
-        self.flag = False
-        self.test_cheshmak()
+        
 
-
-    def test_cheshmak(self):
-        self.flag = not self.flag
-        if self.flag:
-            self.ui.system_status_label.setStyleSheet("border-radius: 10px; background-color: rgb{};".format((255, 0, 0)))
-        else:
-            self.ui.system_status_label.setStyleSheet("border-radius: 10px; background-color: rgb{};".format((40, 40, 40)))
-        GUIComponents.single_timer_runner(300, self.test_cheshmak)
+    
 
 
     def mousePressEvent(self, event):
@@ -279,6 +271,10 @@ class mainUI(QMainWindow):
         else:
             self.showMaximized()
             GUIBackend.set_button_icon(self.ui.maximize_btn, IconsPath.IconsPath.MINIMIZE_ICON)
+
+        #--------------------------------------------------------
+        self.Page_LiveView.sliderMenu.disapear()
+        
 
     def move_side_frame(self):
         w = self.ui.side_frame.width()

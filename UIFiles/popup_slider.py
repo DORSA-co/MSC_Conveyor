@@ -28,11 +28,11 @@ class Ui_slider(object):
         self.verticalLayout = QVBoxLayout(slider)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.frame = QFrame(slider)
-        self.frame.setObjectName(u"frame")
-        self.frame.setMinimumSize(QSize(400, 0))
-        self.frame.setMaximumSize(QSize(800, 16777215))
-        self.frame.setStyleSheet(u"QSpinBox, QDoubleSpinBox , QDateEdit\n"
+        self.main_frame = QFrame(slider)
+        self.main_frame.setObjectName(u"main_frame")
+        self.main_frame.setMinimumSize(QSize(400, 0))
+        self.main_frame.setMaximumSize(QSize(800, 16777215))
+        self.main_frame.setStyleSheet(u"QSpinBox, QDoubleSpinBox , QDateEdit\n"
 "{\n"
 "	background-color: transparent;\n"
 "	border-bottom: 2px solid #D7D7D9;\n"
@@ -197,14 +197,14 @@ class Ui_slider(object):
 "}\n"
 "\n"
 "")
-        self.frame.setFrameShape(QFrame.StyledPanel)
-        self.frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_2 = QVBoxLayout(self.frame)
+        self.main_frame.setFrameShape(QFrame.StyledPanel)
+        self.main_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_2 = QVBoxLayout(self.main_frame)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(-1, 0, -1, -1)
-        self.close = QPushButton(self.frame)
+        self.close = QPushButton(self.main_frame)
         self.close.setObjectName(u"close")
         self.close.setCursor(QCursor(Qt.PointingHandCursor))
         self.close.setStyleSheet(u"border:none;\n"
@@ -222,8 +222,8 @@ class Ui_slider(object):
 
         self.verticalLayout_2.addLayout(self.horizontalLayout)
 
-        self.stackedWidget = QStackedWidget(self.frame)
-        self.stackedWidget.setObjectName(u"stackedWidget")
+        self.pages = QStackedWidget(self.main_frame)
+        self.pages.setObjectName(u"pages")
         self.system_status_page = QWidget()
         self.system_status_page.setObjectName(u"system_status_page")
         self.verticalLayout_3 = QVBoxLayout(self.system_status_page)
@@ -356,7 +356,7 @@ class Ui_slider(object):
 
         self.verticalLayout_3.addItem(self.verticalSpacer)
 
-        self.stackedWidget.addWidget(self.system_status_page)
+        self.pages.addWidget(self.system_status_page)
         self.notification_filter_page = QWidget()
         self.notification_filter_page.setObjectName(u"notification_filter_page")
         self.verticalLayout_4 = QVBoxLayout(self.notification_filter_page)
@@ -422,11 +422,11 @@ class Ui_slider(object):
         self.horizontalLayout_10.setSpacing(15)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
         self.horizontalLayout_10.setContentsMargins(12, -1, 12, -1)
-        self.dateEdit = QDateEdit(self.date_frame)
-        self.dateEdit.setObjectName(u"dateEdit")
-        self.dateEdit.setEnabled(True)
+        self.start_date_input = QDateEdit(self.date_frame)
+        self.start_date_input.setObjectName(u"start_date_input")
+        self.start_date_input.setEnabled(True)
 
-        self.horizontalLayout_10.addWidget(self.dateEdit)
+        self.horizontalLayout_10.addWidget(self.start_date_input)
 
         self.label_2 = QLabel(self.date_frame)
         self.label_2.setObjectName(u"label_2")
@@ -438,11 +438,11 @@ class Ui_slider(object):
 
         self.horizontalLayout_10.addWidget(self.label_2)
 
-        self.dateEdit_2 = QDateEdit(self.date_frame)
-        self.dateEdit_2.setObjectName(u"dateEdit_2")
-        self.dateEdit_2.setEnabled(True)
+        self.end_date_input = QDateEdit(self.date_frame)
+        self.end_date_input.setObjectName(u"end_date_input")
+        self.end_date_input.setEnabled(True)
 
-        self.horizontalLayout_10.addWidget(self.dateEdit_2)
+        self.horizontalLayout_10.addWidget(self.end_date_input)
 
 
         self.verticalLayout_8.addLayout(self.horizontalLayout_10)
@@ -486,11 +486,11 @@ class Ui_slider(object):
         self.horizontalLayout_11.setSpacing(15)
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
         self.horizontalLayout_11.setContentsMargins(12, -1, 12, -1)
-        self.doubleSpinBox = QDoubleSpinBox(self.width_frame)
-        self.doubleSpinBox.setObjectName(u"doubleSpinBox")
-        self.doubleSpinBox.setAlignment(Qt.AlignCenter)
+        self.low_width_input = QDoubleSpinBox(self.width_frame)
+        self.low_width_input.setObjectName(u"low_width_input")
+        self.low_width_input.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_11.addWidget(self.doubleSpinBox)
+        self.horizontalLayout_11.addWidget(self.low_width_input)
 
         self.label_3 = QLabel(self.width_frame)
         self.label_3.setObjectName(u"label_3")
@@ -499,11 +499,11 @@ class Ui_slider(object):
 
         self.horizontalLayout_11.addWidget(self.label_3)
 
-        self.doubleSpinBox_2 = QDoubleSpinBox(self.width_frame)
-        self.doubleSpinBox_2.setObjectName(u"doubleSpinBox_2")
-        self.doubleSpinBox_2.setAlignment(Qt.AlignCenter)
+        self.high_width_input = QDoubleSpinBox(self.width_frame)
+        self.high_width_input.setObjectName(u"high_width_input")
+        self.high_width_input.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_11.addWidget(self.doubleSpinBox_2)
+        self.horizontalLayout_11.addWidget(self.high_width_input)
 
 
         self.verticalLayout_5.addLayout(self.horizontalLayout_11)
@@ -547,11 +547,11 @@ class Ui_slider(object):
         self.horizontalLayout_12.setSpacing(15)
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
         self.horizontalLayout_12.setContentsMargins(12, -1, 12, -1)
-        self.doubleSpinBox_3 = QDoubleSpinBox(self.height_frame)
-        self.doubleSpinBox_3.setObjectName(u"doubleSpinBox_3")
-        self.doubleSpinBox_3.setAlignment(Qt.AlignCenter)
+        self.low_height_input = QDoubleSpinBox(self.height_frame)
+        self.low_height_input.setObjectName(u"low_height_input")
+        self.low_height_input.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_12.addWidget(self.doubleSpinBox_3)
+        self.horizontalLayout_12.addWidget(self.low_height_input)
 
         self.label_4 = QLabel(self.height_frame)
         self.label_4.setObjectName(u"label_4")
@@ -560,11 +560,11 @@ class Ui_slider(object):
 
         self.horizontalLayout_12.addWidget(self.label_4)
 
-        self.doubleSpinBox_4 = QDoubleSpinBox(self.height_frame)
-        self.doubleSpinBox_4.setObjectName(u"doubleSpinBox_4")
-        self.doubleSpinBox_4.setAlignment(Qt.AlignCenter)
+        self.high_height_input = QDoubleSpinBox(self.height_frame)
+        self.high_height_input.setObjectName(u"high_height_input")
+        self.high_height_input.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_12.addWidget(self.doubleSpinBox_4)
+        self.horizontalLayout_12.addWidget(self.high_height_input)
 
 
         self.verticalLayout_6.addLayout(self.horizontalLayout_12)
@@ -608,11 +608,11 @@ class Ui_slider(object):
         self.horizontalLayout_13.setSpacing(15)
         self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
         self.horizontalLayout_13.setContentsMargins(12, -1, 12, -1)
-        self.doubleSpinBox_5 = QDoubleSpinBox(self.depth_frame)
-        self.doubleSpinBox_5.setObjectName(u"doubleSpinBox_5")
-        self.doubleSpinBox_5.setAlignment(Qt.AlignCenter)
+        self.low_depth_input = QDoubleSpinBox(self.depth_frame)
+        self.low_depth_input.setObjectName(u"low_depth_input")
+        self.low_depth_input.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_13.addWidget(self.doubleSpinBox_5)
+        self.horizontalLayout_13.addWidget(self.low_depth_input)
 
         self.label_5 = QLabel(self.depth_frame)
         self.label_5.setObjectName(u"label_5")
@@ -621,11 +621,11 @@ class Ui_slider(object):
 
         self.horizontalLayout_13.addWidget(self.label_5)
 
-        self.doubleSpinBox_6 = QDoubleSpinBox(self.depth_frame)
-        self.doubleSpinBox_6.setObjectName(u"doubleSpinBox_6")
-        self.doubleSpinBox_6.setAlignment(Qt.AlignCenter)
+        self.high_depth_input = QDoubleSpinBox(self.depth_frame)
+        self.high_depth_input.setObjectName(u"high_depth_input")
+        self.high_depth_input.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_13.addWidget(self.doubleSpinBox_6)
+        self.horizontalLayout_13.addWidget(self.high_depth_input)
 
 
         self.verticalLayout_7.addLayout(self.horizontalLayout_13)
@@ -649,17 +649,17 @@ class Ui_slider(object):
 
         self.verticalLayout_4.addWidget(self.filters_frame)
 
-        self.stackedWidget.addWidget(self.notification_filter_page)
+        self.pages.addWidget(self.notification_filter_page)
 
-        self.verticalLayout_2.addWidget(self.stackedWidget)
+        self.verticalLayout_2.addWidget(self.pages)
 
 
-        self.verticalLayout.addWidget(self.frame)
+        self.verticalLayout.addWidget(self.main_frame)
 
 
         self.retranslateUi(slider)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.pages.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(slider)

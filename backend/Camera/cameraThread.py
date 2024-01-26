@@ -79,7 +79,7 @@ class cameraWorker(QObject):
                 pass
                 #print('camera Error happend in thread while !', e)
             
-            time.sleep(0.02)
+            time.sleep(0.06)
 
         print('end of Camra Thread While')
         self.finished.emit()

@@ -15,11 +15,12 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QAbstractItemView, QApplication, QComboBox, QFrame,
-    QHBoxLayout, QHeaderView, QLabel, QLineEdit,
-    QMainWindow, QPushButton, QScrollArea, QSizePolicy,
-    QSpacerItem, QSpinBox, QStackedWidget, QTabWidget,
-    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QCheckBox, QComboBox,
+    QFrame, QHBoxLayout, QHeaderView, QLabel,
+    QLineEdit, QMainWindow, QPushButton, QScrollArea,
+    QSizePolicy, QSpacerItem, QSpinBox, QStackedWidget,
+    QTabWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,
+    QWidget)
 
 from GUIComponents import (PhotoViewer, SwitchControl)
 import assets_rc
@@ -28,7 +29,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1270, 810)
+        MainWindow.resize(1270, 812)
         self.StyleSheet = QWidget(MainWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
         self.StyleSheet.setEnabled(True)
@@ -759,8 +760,49 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(10, 10, 10, 10)
         self.horizontalLayout_10 = QHBoxLayout()
+        self.horizontalLayout_10.setSpacing(15)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
-        self.horizontalLayout_10.setContentsMargins(0, 0, -1, 10)
+        self.horizontalLayout_10.setContentsMargins(10, 0, -1, 10)
+        self.select_all_notif_checkbox = QCheckBox(self.defect_notifications_frame)
+        self.select_all_notif_checkbox.setObjectName(u"select_all_notif_checkbox")
+        self.select_all_notif_checkbox.setEnabled(True)
+        sizePolicy.setHeightForWidth(self.select_all_notif_checkbox.sizePolicy().hasHeightForWidth())
+        self.select_all_notif_checkbox.setSizePolicy(sizePolicy)
+        self.select_all_notif_checkbox.setStyleSheet(u"QCheckBox {\n"
+"    spacing: 0px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 20px;\n"
+"    height: 20px;\n"
+"}\n"
+"\n"
+"/* Unchecked State */\n"
+"QCheckBox::indicator:unchecked {\n"
+"    border: 2px solid #E0E4EC;\n"
+"    background-color: white;\n"
+"}\n"
+"\n"
+"/* Checked State */\n"
+"QCheckBox::indicator:checked {\n"
+"    border: 2px solid #7892DF;\n"
+"    background-color: #7892DF;\n"
+"    image: url(:/icons/icons/tick.png)  /* Path to your check mark icon */\n"
+"}\n"
+"\n"
+"/* Hover State */\n"
+"QCheckBox::indicator:hover {\n"
+"    border: 2px solid rgba(194, 197, 204, 255);\n"
+"}\n"
+"\n"
+"/* Disabled State */\n"
+"QCheckBox::indicator:disabled {\n"
+"    border: 2px solid #E0E4EC;\n"
+"    background-color: #F6F6F6;\n"
+"}")
+
+        self.horizontalLayout_10.addWidget(self.select_all_notif_checkbox)
+
         self.alarms_count_lbl = QLabel(self.defect_notifications_frame)
         self.alarms_count_lbl.setObjectName(u"alarms_count_lbl")
         self.alarms_count_lbl.setStyleSheet(u"color:#7E84A2;\n"
@@ -784,7 +826,7 @@ class Ui_MainWindow(object):
         self.defects_notifications_scrollArea.setWidgetResizable(True)
         self.defects_notifications_widget = QWidget()
         self.defects_notifications_widget.setObjectName(u"defects_notifications_widget")
-        self.defects_notifications_widget.setGeometry(QRect(0, 0, 330, 670))
+        self.defects_notifications_widget.setGeometry(QRect(0, 0, 330, 664))
         self.defects_notifications_widget.setStyleSheet(u"#defects_notifications_widget{\n"
 "	border:None;\n"
 "	border-top: 2px solid gray;\n"
@@ -975,17 +1017,17 @@ class Ui_MainWindow(object):
         self.horizontalLayout_34 = QHBoxLayout()
         self.horizontalLayout_34.setObjectName(u"horizontalLayout_34")
         self.horizontalLayout_34.setContentsMargins(26, 10, 13, 10)
-        self.notif_clear_filter_btn_3 = QPushButton(self.expanding_frame)
-        self.notif_clear_filter_btn_3.setObjectName(u"notif_clear_filter_btn_3")
-        sizePolicy4.setHeightForWidth(self.notif_clear_filter_btn_3.sizePolicy().hasHeightForWidth())
-        self.notif_clear_filter_btn_3.setSizePolicy(sizePolicy4)
-        self.notif_clear_filter_btn_3.setCursor(QCursor(Qt.PointingHandCursor))
+        self.notif_remove_btn = QPushButton(self.expanding_frame)
+        self.notif_remove_btn.setObjectName(u"notif_remove_btn")
+        sizePolicy4.setHeightForWidth(self.notif_remove_btn.sizePolicy().hasHeightForWidth())
+        self.notif_remove_btn.setSizePolicy(sizePolicy4)
+        self.notif_remove_btn.setCursor(QCursor(Qt.PointingHandCursor))
         icon15 = QIcon()
         icon15.addFile(u":/icons/icons/delete_white.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.notif_clear_filter_btn_3.setIcon(icon15)
-        self.notif_clear_filter_btn_3.setIconSize(QSize(35, 35))
+        self.notif_remove_btn.setIcon(icon15)
+        self.notif_remove_btn.setIconSize(QSize(35, 35))
 
-        self.horizontalLayout_34.addWidget(self.notif_clear_filter_btn_3)
+        self.horizontalLayout_34.addWidget(self.notif_remove_btn)
 
 
         self.verticalLayout_16.addLayout(self.horizontalLayout_34)
@@ -1718,7 +1760,7 @@ class Ui_MainWindow(object):
         self.register_message_scrollArea.setWidgetResizable(True)
         self.register_message_frame = QWidget()
         self.register_message_frame.setObjectName(u"register_message_frame")
-        self.register_message_frame.setGeometry(QRect(0, 0, 990, 243))
+        self.register_message_frame.setGeometry(QRect(0, 0, 982, 227))
         sizePolicy3.setHeightForWidth(self.register_message_frame.sizePolicy().hasHeightForWidth())
         self.register_message_frame.setSizePolicy(sizePolicy3)
         self.verticalLayout_55 = QVBoxLayout(self.register_message_frame)
@@ -1817,7 +1859,7 @@ class Ui_MainWindow(object):
         self.change_username_message_scrollArea.setWidgetResizable(True)
         self.change_username_message_frame = QWidget()
         self.change_username_message_frame.setObjectName(u"change_username_message_frame")
-        self.change_username_message_frame.setGeometry(QRect(0, 0, 469, 380))
+        self.change_username_message_frame.setGeometry(QRect(0, 0, 16, 16))
         self.change_username_message_scrollArea.setWidget(self.change_username_message_frame)
 
         self.verticalLayout_54.addWidget(self.change_username_message_scrollArea)
@@ -1963,7 +2005,7 @@ class Ui_MainWindow(object):
         self.change_password_message_scrollArea.setWidgetResizable(True)
         self.change_password_message_frame = QWidget()
         self.change_password_message_frame.setObjectName(u"change_password_message_frame")
-        self.change_password_message_frame.setGeometry(QRect(0, 0, 469, 292))
+        self.change_password_message_frame.setGeometry(QRect(0, 0, 16, 16))
         self.change_password_message_scrollArea.setWidget(self.change_password_message_frame)
 
         self.verticalLayout_51.addWidget(self.change_password_message_scrollArea)
@@ -2050,6 +2092,7 @@ class Ui_MainWindow(object):
         self.minimize_btn.setText("")
         self.maximize_btn.setText("")
         self.close_btn.setText("")
+        self.select_all_notif_checkbox.setText("")
         self.alarms_count_lbl.setText(QCoreApplication.translate("MainWindow", u"15/33 Alarms", None))
         self.live_tabWidget.setTabText(self.live_tabWidget.indexOf(self.belt_live_tab), QCoreApplication.translate("MainWindow", u"Belt Live ", None))
         self.live_tabWidget.setTabText(self.live_tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Tab 2", None))
@@ -2069,7 +2112,7 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.notif_filter_btn.setText("")
         self.notif_clear_filter_btn.setText("")
-        self.notif_clear_filter_btn_3.setText("")
+        self.notif_remove_btn.setText("")
         self.camera_settings_off_label.setText(QCoreApplication.translate("MainWindow", u"Off", None))
         self.connect_camera_switch.setText("")
         self.camera_settings_on_label.setText(QCoreApplication.translate("MainWindow", u"On", None))

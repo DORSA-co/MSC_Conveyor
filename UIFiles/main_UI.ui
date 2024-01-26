@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1270</width>
-    <height>810</height>
+    <height>812</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1042,8 +1042,11 @@ QComboBox:focus{
                </property>
                <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_10">
+                 <property name="spacing">
+                  <number>15</number>
+                 </property>
                  <property name="leftMargin">
-                  <number>0</number>
+                  <number>10</number>
                  </property>
                  <property name="topMargin">
                   <number>0</number>
@@ -1051,6 +1054,56 @@ QComboBox:focus{
                  <property name="bottomMargin">
                   <number>10</number>
                  </property>
+                 <item>
+                  <widget class="QCheckBox" name="select_all_notif_checkbox">
+                   <property name="enabled">
+                    <bool>true</bool>
+                   </property>
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QCheckBox {
+    spacing: 0px;
+}
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+}
+
+/* Unchecked State */
+QCheckBox::indicator:unchecked {
+    border: 2px solid #E0E4EC;
+    background-color: white;
+}
+
+/* Checked State */
+QCheckBox::indicator:checked {
+    border: 2px solid #7892DF;
+    background-color: #7892DF;
+    image: url(:/icons/icons/tick.png)  /* Path to your check mark icon */
+}
+
+/* Hover State */
+QCheckBox::indicator:hover {
+    border: 2px solid rgba(194, 197, 204, 255);
+}
+
+/* Disabled State */
+QCheckBox::indicator:disabled {
+    border: 2px solid #E0E4EC;
+    background-color: #F6F6F6;
+}</string>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
                  <item>
                   <widget class="QLabel" name="alarms_count_lbl">
                    <property name="styleSheet">
@@ -1099,7 +1152,7 @@ font-weight:bold;</string>
                     <x>0</x>
                     <y>0</y>
                     <width>330</width>
-                    <height>670</height>
+                    <height>664</height>
                    </rect>
                   </property>
                   <property name="styleSheet">
@@ -1487,7 +1540,7 @@ font-weight:bold;</string>
                 <number>10</number>
                </property>
                <item>
-                <widget class="QPushButton" name="notif_clear_filter_btn_3">
+                <widget class="QPushButton" name="notif_remove_btn">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -2772,8 +2825,8 @@ font-weight:bold;</string>
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>990</width>
-                      <height>243</height>
+                      <width>982</width>
+                      <height>227</height>
                      </rect>
                     </property>
                     <property name="sizePolicy">
@@ -2950,8 +3003,8 @@ font-weight:bold;</string>
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>469</width>
-                        <height>380</height>
+                        <width>16</width>
+                        <height>16</height>
                        </rect>
                       </property>
                      </widget>
@@ -3181,8 +3234,8 @@ font-weight:bold;</string>
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>469</width>
-                        <height>292</height>
+                        <width>16</width>
+                        <height>16</height>
                        </rect>
                       </property>
                      </widget>

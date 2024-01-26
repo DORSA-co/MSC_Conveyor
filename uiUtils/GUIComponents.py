@@ -2,7 +2,8 @@ import re
 import cv2
 
 from PySide6 import QtWidgets, QtCore, QtGui
-# import guiBackend
+
+from uiUtils.guiBackend import GUIBackend
 import PySide6.QtWidgets 
 
 from Constants import Constant
@@ -462,7 +463,7 @@ class SuccessMessage(Message):
     def __init__(self, parent, text=""):
         title = "SUCCESS"
         color = Constant.MessageColors.SUCCESS
-        icon_path = IconsPath.IconsPath.SUCCESS_PATH
+        icon_path = IconsPath.IconsPath.SUCCESS_ICON
         super().__init__(parent, title, text, color, icon_path)
 
 
@@ -478,7 +479,7 @@ class ErrorMessage(Message):
     def __init__(self, parent, text=""):
         title = "ERROR"
         color = Constant.MessageColors.ERROR
-        icon_path = IconsPath.IconsPath.ERROR_PATH
+        icon_path = IconsPath.IconsPath.ERROR_ICON
         super().__init__(parent, title, text, color, icon_path)
 
 
@@ -1063,6 +1064,7 @@ class defectNotification(QtWidgets.QWidget):
     def __init__(self, 
                  id: int,
                  side:str,
+                 tag:str,
                  datetime:JalaliDateTime,  
                  defect_type:str,
                  defect_color:tuple) -> None:
@@ -1072,21 +1074,36 @@ class defectNotification(QtWidgets.QWidget):
         self.ui.setupUi(self)
 
         self.side = side
+        self.tag = tag
         self.datetime = datetime
         self.defect_type = defect_type
         self.defect_color = defect_color
         self.id = id
 
         self.set_side(self.side)
+        self.set_tag(self.tag)
         self.set_date(self.datetime.date())
         self.set_time(self.datetime.time())
         self.set_defect_color(self.defect_color)
         self.set_defect_type(self.defect_type)
-
-
     
+    def mouseDoubleClickEvent(self, event):
+        self.external_select_event_func(self)
+
+    def select_connector(self, func):
+        self.external_select_event_func = func
+
+    def close_connector(self, func):
+        GUIBackend.button_connector_argument_pass(self.ui.close_btn,
+                                                  func,
+                                                  (self,) )
+
     def set_side(self, side:str):
         self.ui.side_label.setText(side.capitalize())
+    
+    def set_tag(self, tag:str):
+        tag = f'({tag})'
+        self.ui.tag_label.setText(tag.capitalize())
     
     def set_defect_type(self, defect_type:str):
         self.ui.defect_type_label.setText(defect_type)
@@ -1108,16 +1125,23 @@ class defectNotification(QtWidgets.QWidget):
 
     def set_defect_color(self, color:tuple):
         style = f"""
-    #defect_color_frame{{
-    background-color: rgb{color};
-    border-radius:15px;
-    border: None;
-}}
-"""
+            #defect_color_frame{{
+            background-color: rgb{color};
+            border-radius:15px;
+            border: None;
+        }}
+        """
         self.ui.defect_color_frame.setStyleSheet(style)
     
     def is_checked(self,):
         return self.ui.select_checkBox.isChecked()
     
     
+    def set_selected(self,flag):
+        if flag:
+            self.ui.main_frame.setStyleSheet("#main_frame{background-color:  rgb(194, 204, 238);}")
+        else:
+            self.ui.main_frame.setStyleSheet("#main_frame{background-color:#F7F8FA;}")
 
+    def set_checkbox(self, flag):
+        self.ui.select_checkBox.setChecked(flag)

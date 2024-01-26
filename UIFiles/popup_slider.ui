@@ -27,7 +27,7 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QFrame" name="frame">
+    <widget class="QFrame" name="main_frame">
      <property name="minimumSize">
       <size>
        <width>400</width>
@@ -250,7 +250,7 @@ background-color:transparent;</string>
        </layout>
       </item>
       <item>
-       <widget class="QStackedWidget" name="stackedWidget">
+       <widget class="QStackedWidget" name="pages">
         <property name="currentIndex">
          <number>1</number>
         </property>
@@ -605,7 +605,7 @@ background-color:transparent;</string>
                    <number>12</number>
                   </property>
                   <item>
-                   <widget class="QDateEdit" name="dateEdit">
+                   <widget class="QDateEdit" name="start_date_input">
                     <property name="enabled">
                      <bool>true</bool>
                     </property>
@@ -625,7 +625,7 @@ background-color:transparent;</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QDateEdit" name="dateEdit_2">
+                   <widget class="QDateEdit" name="end_date_input">
                     <property name="enabled">
                      <bool>true</bool>
                     </property>
@@ -710,7 +710,7 @@ background-color:transparent;</string>
                    <number>12</number>
                   </property>
                   <item>
-                   <widget class="QDoubleSpinBox" name="doubleSpinBox">
+                   <widget class="QDoubleSpinBox" name="low_width_input">
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
@@ -730,7 +730,7 @@ background-color:transparent;</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
+                   <widget class="QDoubleSpinBox" name="high_width_input">
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
@@ -815,7 +815,7 @@ background-color:transparent;</string>
                    <number>12</number>
                   </property>
                   <item>
-                   <widget class="QDoubleSpinBox" name="doubleSpinBox_3">
+                   <widget class="QDoubleSpinBox" name="low_height_input">
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
@@ -835,7 +835,7 @@ background-color:transparent;</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QDoubleSpinBox" name="doubleSpinBox_4">
+                   <widget class="QDoubleSpinBox" name="high_height_input">
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
@@ -920,7 +920,7 @@ background-color:transparent;</string>
                    <number>12</number>
                   </property>
                   <item>
-                   <widget class="QDoubleSpinBox" name="doubleSpinBox_5">
+                   <widget class="QDoubleSpinBox" name="low_depth_input">
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
@@ -940,7 +940,7 @@ background-color:transparent;</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QDoubleSpinBox" name="doubleSpinBox_6">
+                   <widget class="QDoubleSpinBox" name="high_depth_input">
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>

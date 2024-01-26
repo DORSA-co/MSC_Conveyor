@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import time
+
 from persiantools.jdatetime import JalaliDate,JalaliDateTime
 import numpy as np
 
@@ -54,6 +56,7 @@ class Defect:
             depthes: np.ndarray,
             n_last_defects: int = 3
         ):
+        self.id = time.time()
         self.widthInfo = numberStatics()
         self.depthInfo = numberStatics()
         self.jdatetime = JalaliDateTime.now()
@@ -65,6 +68,8 @@ class Defect:
         
         self.start_line_idx = start_line_idx
         self.end_line_idx = self.start_line_idx
+        
+        self.lenght = 0
 
         self.defect_width_boundries = (start_anomaly_idx, end_anomaly_idx)
         
@@ -97,6 +102,8 @@ class Defect:
             min(self.defect_width_boundries[0], start_anomaly_idx),
             max(self.defect_width_boundries[1], end_anomaly_idx)
         )
+
+        self.lenght = self.end_line_idx - self.start_line_idx
 
     def is_complete(self, line_idx:int, min_idx_gap):
         if line_idx - self.end_line_idx >= min_idx_gap:

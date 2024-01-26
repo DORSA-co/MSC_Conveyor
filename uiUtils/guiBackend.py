@@ -240,12 +240,15 @@ class GUIBackend:
 
         elif isinstance(wgt, QtWidgets.QCheckBox):
             return GUIBackend.get_checkbox_value(wgt)
+        
+        elif isinstance(wgt, QtWidgets.QDateEdit):
+            return GUIBackend.get_date_input(wgt)
 
         else:
             assert False, f"get_input method doesn't support {wgt} object"
 
     @staticmethod
-    def set_input(wgt, value):
+    def set_input(wgt, value, block_signal=False):
         """set value to a input widget in any type like ComboBox, SpinBox and LineEdit
 
         Args:
@@ -254,6 +257,9 @@ class GUIBackend:
 
 
         """
+        if block_signal:
+            GUIBackend.set_signal_connection(wgt, False)
+
         if isinstance(wgt, QtWidgets.QComboBox):
             GUIBackend.set_combobox_current_item(wgt, value)
         
@@ -266,9 +272,14 @@ class GUIBackend:
         elif isinstance(wgt, QtWidgets.QCheckBox):
             GUIBackend.set_checkbox_value(wgt, value)
 
+        elif isinstance(wgt, QtWidgets.QDateEdit):
+            GUIBackend.set_date_input(wgt, value)
+
         else:
             assert False, f"set_input method doesn't support {wgt} object"
 
+        if block_signal:
+            GUIBackend.set_signal_connection(wgt, True)
 
     @staticmethod
     def connector(wgt, func):
@@ -286,9 +297,26 @@ class GUIBackend:
         elif isinstance(wgt, QtWidgets.QCheckBox):
             return GUIBackend.checkbox_connector(wgt, lambda x: func())
         
+        elif isinstance(wgt, QtWidgets.QDateEdit):
+            return GUIBackend.date_input_connector(wgt, func)
+        
         else:
             assert False, f"connector method doesn't support {wgt} object"
 
+
+    @staticmethod
+    def set_input_limit(wgt, _range:tuple):
+        """set minimum acceptable value to a input widget
+        """
+        if isinstance(wgt, QtWidgets.QSpinBox) or isinstance(wgt, QtWidgets.QDoubleSpinBox):
+            GUIBackend.set_spinbox_range(wgt, _range)
+        
+        elif isinstance(wgt, QtWidgets.QDateEdit):
+            return GUIBackend.set_date_input_range(wgt, _range)
+        
+
+        else:
+            assert False, f"set_input method doesn't support {wgt} object"
 
     #--------------------------------- GLOBAL BUTTON FUNCTIONs ---------------------------------
     @staticmethod
@@ -568,14 +596,18 @@ class GUIBackend:
         """
         inpt.valueChanged.connect(func)
 
-    def set_spinbox_range(inpt, value_range: tuple[int, int]):
+    def set_spinbox_range(inpt:QtWidgets.QSpinBox, value_range: tuple[int, int]):
         """set range of spinbox
 
         Args:
             inpt (QtWidgets.QSpinBox): Qt spinbox object
             value_range (tuple[int, int]): (low_range, highe_range )
         """
-        inpt.setRange(*value_range)
+        low , high = value_range
+        if low is not None:
+            inpt.setMinimum(low)
+        if high is not None:
+            inpt.setMaximum(high)
 
 
 
@@ -919,11 +951,12 @@ class GUIBackend:
         return obj.minimumDate().toPython(), obj.maximumDate().toPython()
     
     def set_date_input_range(obj: QtWidgets.QDateEdit,
-                             min_date:datetime=None, 
-                             max_date:datetime=None):
+                             date_range:tuple[datetime,datetime]):
+        
+        min_date , max_date = date_range
         if min_date is not None:
             min_date = QtCore.QDate(min_date.year, min_date.month, min_date.day)
-            obj.setMinimumDate(min_date)
+            obj.setMinimumDate(date_range)
         
         if max_date is not None:
             max_date = QtCore.QDate(max_date.year, max_date.month, max_date.day)
