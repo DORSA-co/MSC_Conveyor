@@ -189,3 +189,14 @@ class Defect:
 
         
         return res_defect
+    
+    def is_same(self, other:Defect):
+        intersect_y1 = max(self.defect_width_boundries[0], other.defect_width_boundries[0])
+        intersect_y2 = min(self.defect_width_boundries[1], other.defect_width_boundries[1])
+
+        if intersect_y2 > intersect_y1:
+            intersect_x1 = max(self.start_line_idx, other.start_line_idx)
+            intersect_x2 = min(self.end_line_idx, other.end_line_idx)
+            if intersect_x2> intersect_x1:
+                return True
+        return False
