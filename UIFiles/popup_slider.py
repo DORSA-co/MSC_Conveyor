@@ -659,7 +659,7 @@ class Ui_slider(object):
 
         self.retranslateUi(slider)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(slider)
