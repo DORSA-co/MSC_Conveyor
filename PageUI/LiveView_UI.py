@@ -1,18 +1,25 @@
 import numpy as np
 import random
-
-from PySide6.QtWidgets import *
 from functools import partial
+
+from persiantools.jdatetime import JalaliDateTime, JalaliDate
+from PySide6.QtWidgets import *
 from .Common_Function_UI import Common_Function_UI
 from PySide6.QtGui import QImage, QPixmap
 from PySide6.QtCore import QTimer, QRect
 from PySide6 import QtGui
-import time
+
 from UIFiles.main_UI import Ui_MainWindow
 from uiUtils.GUIComponents import defectNotification
 from uiUtils.guiBackend import GUIBackend
 from UIFiles.popup_slider import Ui_slider
 from uiUtils.GUIComponents import singleAnimation
+from Constants.IconsPath import IconsPath
+from uiUtils import GUIComponents 
+
+
+
+            
 
 class LiveView_UI(Common_Function_UI):
 
@@ -25,53 +32,74 @@ class LiveView_UI(Common_Function_UI):
         """Description of the code"""
 
         self.ui = ui
-        self.notifications = [] 
-        self.defect_info_tables_header = ['x','y', 'width','lenght', 'min depth', 'max depth', 'date','time']
+        self.notifications:list[defectNotification] = [] 
+        self.defect_info_tables_header = ['x',
+                                          'y', 
+                                          'width',
+                                          'lenght', 
+                                          'min depth', 
+                                          'max depth', 
+                                          'date',
+                                          'time'
+                                          ]
+        
+        self.sidebar_alamrms = {
+            'system_status': self.ui.system_status_label
+        }
+        self.active_notificaion = None
+        self.__blink_flag = False
+        self.__blink_alarms_list = []
+        self.external_select_notification_event = None
 
         self.setup_defect_info_talbe()
-        self.setup_slider()
+        self.sliderMenu = sliderMenu(self.ui.live_view_page)
 
-        self.ui.system_status_btn.clicked.connect(self.slide_in)
-        self.slider.close.clicked.connect(self.slide_out)
-
-        
-
-        
-        
-
-    def setup_slider(self,):
-        self.slider = Ui_slider()
-        self.slider.setupUi(self.ui.live_view_page)
-        self.slider.frame.setParent(self.ui.live_view_page)
-        parent_w = self.ui.live_view_page.width()
-        self.slider.frame.setGeometry(parent_w,0,0,0)
-        
-
-
-    def __slider_animation_builder(self,):
-        parent_w = self.ui.live_view_page.width()
-        parent_h =self.ui.live_view_page.height()
-        slider_w = self.slider.frame.width()
-
-        self.slide_animation = singleAnimation(self.slider.frame, 
-                                               b'geometry', 
-                                               400, 
-                                               QRect(parent_w,0,slider_w,parent_h),
-                                               QRect(parent_w-slider_w,0,slider_w,parent_h)
-                                               )
-        
-    
-    def slide_in(self,):
-        self.__slider_animation_builder()
-        self.slide_animation.forward()
-        
-    def slide_out(self,):
-        self.__slider_animation_builder()
-        self.slide_animation.backward()
-
+        GUIBackend.button_connector_argument_pass(self.ui.system_status_btn,
+                                                  self.sliderMenu.slide_in,
+                                                  ('system_status',)
+                                                )
+        GUIBackend.button_connector_argument_pass(self.ui.notif_filter_btn,
+                                                  self.sliderMenu.slide_in,
+                                                  ('filters',)
+                                                )
+        GUIBackend.button_connector(self.ui.notif_remove_btn, self.remove_notifications)
+        GUIBackend.checkbox_connector(self.ui.select_all_notif_checkbox, self.select_all_notification)
 
         
+        #ONLY FOR TEST
+        self.sliderMenu.set_system_status('camera', True)
+        self.sliderMenu.set_system_status('plc', False)
+        self.set_sidebar_alarm('system_status', False)
+        a = self.sliderMenu.get_filters()
+        #ONLY FOR TEST
 
+
+    def __blink_alarms(self):
+        self.__blink_flag = not(self.__blink_flag)
+        for name in self.__blink_alarms_list:
+            obj = self.sidebar_alamrms[name]
+            if self.__blink_flag:
+                obj.setStyleSheet("background-color: #e83323;")
+            else:
+                obj.setStyleSheet("background-color: #303030;")
+        
+        #loop blink if any alarm exist 
+        if len(self.__blink_alarms_list):
+            GUIComponents.single_timer_runner(300, self.__blink_alarms)
+
+
+    def set_sidebar_alarm(self, name, state):
+        if state:
+            if name in self.__blink_alarms_list:
+                self.__blink_alarms_list.remove(name)
+            self.sidebar_alamrms[name].setStyleSheet( "background-color:#5ad44e;")
+
+        else:
+            self.__blink_alarms_list.append(name)
+            #check if it is first alarm, run blink, O.W the blink timer is running
+            if len(self.__blink_alarms_list) == 1:
+                self.__blink_alarms()
+            
 
     def setup_defect_info_talbe(self,):
         GUIBackend.set_table_dim(self.ui.defect_info_table, 1, len(self.defect_info_tables_header))
@@ -81,173 +109,184 @@ class LiveView_UI(Common_Function_UI):
     def set_liveview_belt_img(self, image:np.ndarray):
         self.ui.belt_live_view_lbl.set_image(image)
     
-    def append_notification(self, notification:defectNotification):
+    def append_notification(self, 
+                            _id: int,
+                            side:str,
+                            tag:str,
+                            datetime:JalaliDateTime,  
+                            defect_type:str,
+                            defect_color:tuple
+                            ):
+
+        notif = defectNotification( _id, 
+                                    side, 
+                                    tag,
+                                    datetime,
+                                    defect_type,
+                                    defect_color,
+                                   )
+        self.notifications.insert(0, notif)
+
         layout = self.ui.defects_notifications_widget.layout()
-        layout.insertWidget(0, notification)
+        layout.insertWidget(0, notif)
         layout.setSpacing(9)
         layout.setContentsMargins(9, 9, 9, 9)
-        self.notifications.insert(0, notification)
+        
         self.ui.alarms_count_lbl.setText(f'{len(self.notifications)} Alarms')
+
+        notif.select_connector(self.click_notification_event)
+        notif.close_connector(self.close_notification_event)
+
+    def pop_notification(self, notif:defectNotification):
+        layout = self.ui.defects_notifications_widget.layout()
+        layout.removeWidget(notif)
+        notif.setParent(None)
+        self.notifications.remove(notif)
+
+        layout.setSpacing(9)
+        layout.setContentsMargins(9, 9, 9, 9)
+
+        self.ui.alarms_count_lbl.setText(f'{len(self.notifications)} Alarms')
+
+    def remove_notifications(self,):
+        ans = self.show_confirm_box('close notification',
+                                    'Are you sure to close all selected notifications?',
+                                    ['yes', 'cancel'])
+        if ans == 'yes':
+            for notif in self.notifications.copy():
+                if notif.is_checked():
+                    self.pop_notification(notif)
+
+    def select_all_notification(self, state):
+        state = GUIBackend.get_checkbox_value(self.ui.select_all_notif_checkbox)
+        for notif in self.notifications:
+            notif.set_checkbox(state)
+
+    def set_notification_click_event(self, func):
+        self.external_select_notification_event = func
+
+    def click_notification_event(self, notif:defectNotification):
+        if self.active_notificaion is not None:
+            self.active_notificaion.set_selected(False)
+
+        notif.set_selected(True)
+        self.active_notificaion = notif
+        self.external_select_notification_event(notif.id)
+
+    def close_notification_event(self, notif:defectNotification):
+        ans = self.show_confirm_box('close notification',
+                                    'Are you sure to close this notification?',
+                                    ['yes', 'cancel'])
+        if ans == 'yes':
+            self.pop_notification(notif)
     
     
         
 
-    #     self.general_information_live = {
-    #         "Length": self.ui.Length,
-    #         "Width": self.ui.Width,
-    #         "Depth": self.ui.Depth,
-    #         "Total_Number_Defect": self.ui.Total_Number_Defect,
-    #         "Total_Number_Critical_defect": self.ui.Total_Number_Critical_defect,
-    #     }
-    #     self.style_information_live = {
-    #         "Not_Critical_live_view": self.ui.Not_Critical_live_view,
-    #         "Critical_live_view": self.ui.Critical_live_view,
-    #         "Normal_live_view": self.ui.Normal_live_view,
-    #     }
-
-    #     self.style_information_laser={
-
-    #      "Laser" : self.ui.Laser_Connection
-
-    #     }
-
-    #     self.style_information_Camera={
-
-    #      "Camera" : self.ui.Laser_Connection_Check
-
-    #     }
-
-    #     self.ui.Stop_connection.setEnabled(False)
-    #     self.ui.live.setEnabled(False)
-    #     self.ui.Stop.setEnabled(False)
-    #     self.camera_connection=False
-       
-    #     #self.camera=False
-    #     self.t = time.time()
-    #     self.picktimer=None
+    def show_defect_info(self, info:dict):
+        for key, value in info.items():
+            col = self.defect_info_tables_header.index(key)
+            GUIBackend.set_table_cell_value(self.ui.defect_info_table,
+                                            (0,col),
+                                            value)
 
 
 
-    # #def button_connector(self,camera_connection):   # input fun for getting image from folder
-    # def button_connector(self,fun1,fun2):   # input fun for getting image from folder
-    #     #self.camera_connection=camera_connection
-    #    ####### self.ui.Camera_connection.clicked.connect(partial(self.connect_camera))
-    #    ########## self.ui.Stop_connection.clicked.connect(partial(self.disconnect_camera))
-    #     self.ui.Camera_connection.clicked.connect(partial(fun1))
-    #     self.ui.Stop_connection.clicked.connect(partial(fun2))
-       
 
-    #    # self.ui.live.clicked.connect(
-    #    #     fun
-    #    # )  ###################  for getting image from  folder
 
-    # def Set_fn(self, fun):
-    #     self.fn = fun
+class sliderMenu:
 
-    # def Get_fn(self):
-    #     return self.fn
-
-    # def button_connector_QTimer(self, fun):
-    #     self.Set_fn(fun)
-    #     self.ui.live.clicked.connect(self.button_connector_QTimer_fun)
-
-    # def button_connector_stop(self):
+    def __init__(self, parent:QWidget) -> None:
+        self.parent = parent
+        self.__setup()
         
-    #    self.ui.Stop.clicked.connect(self.stop_live)
-      
+        self.pages_name = {
+            'filters': self.ui.notification_filter_page,
+            'system_status': self.ui.system_status_page,
+        }
+        self.system_status = {
+            'camera': self.ui.camera_status,
+            'plc': self.ui.plc_staus,
+            'laser': self.ui.laser_status, 
+            'database': self.ui.database_staus
+        }
 
-    # def stop_live(self):
-    #     self.picktimer.stop()
-    #     self.ui.live.setEnabled(True)
-    #     self.ui.Stop.setEnabled(False)
+        self.filters = {
+            'date': (self.ui.start_date_input, self.ui.end_date_input),
+            'width': (self.ui.low_width_input, self.ui.high_width_input),
+            'height': (self.ui.low_height_input, self.ui.high_height_input),
+            'depth': (self.ui.low_depth_input, self.ui.high_depth_input),
+        }
+        GUIBackend.button_connector(self.ui.close, self.slide_out)
 
-    # def button_connector_QTimer_fun(self):
-    #     fun = self.Get_fn()
-    #     self.picktimer = QTimer()
-    #     #self.picktimer.setInterval(0.001)
-    #     self.picktimer.timeout.connect(fun)
-    #     #self.picktimer.start(20)
-    #     self.picktimer.start(5)
-
-
-    #    ################ self.time = QTimer()
-    #     #self.picktimer.setInterval(0.001)
-    #    ################# self.time.timeout.connect(self.show_time)
-    #   #############  self.time.start(1000)
-
-
-    # def show_time(self):
-
-    #     print(time.time()-self.t)
-
-
-    # def connect_camera(self):
-    #     ##print("connect_camera")
-    #     ##self.enable_disable_camera_btns(True)
-    #     pass
-    # def disable_live(self):
-    #     self.ui.live.setEnabled(False)
-
-    # def enable_stop(self):
-    #     self.ui.Stop.setEnabled(True)
-
-
-    # def connect_Camera_liveView_button(self):
-    #         self.ui.Camera_connection.setEnabled(False)
-    #         self.ui.Stop_connection.setEnabled(True)
-    #         self.ui.live.setEnabled(True)
-
-
-
-
-    # def disconnect_Camera_liveView_button(self):
-    #         if self.picktimer:
-    #          self.picktimer.stop()
-    #         self.ui.live.setEnabled(False)
-    #         self.ui.Stop_connection.setEnabled(False)
-    #         self.ui.Camera_connection.setEnabled(True)
-    #         self.ui.Stop.setEnabled(False)
+        for name in self.filters.keys():
+            low_field, high_feild = self.filters[name]
+            GUIBackend.connector(low_field, self.__setup_input_limits(name,'low'))
+            GUIBackend.connector(high_feild, self.__setup_input_limits(name,'high'))
         
-    # def disconnect_camera(self):  
-    #    pass
 
-    # def set_general_information(self, infoes: dict):
-    #     for name, value in infoes.items():
-    #         self.general_information_live[name].setText(value)
+    def __setup_input_limits(self, name:str, limit_type:str ):
+        def func():
+            low_field,high_feild = self.filters[name]
+            low_value = GUIBackend.get_input(low_field)
+            high_value = GUIBackend.get_input(high_feild)
 
-    # def set_style_information(self, styles: dict):
-    #     for name, value in styles.items():
-    #         self.style_information_live[name].setStyleSheet(value)
+            if high_value < low_value:
+                if limit_type == 'high':
+                    GUIBackend.set_input(low_field, high_value, block_signal=True)
+                elif limit_type == 'low':
+                    GUIBackend.set_input(high_feild, low_value, block_signal=True)
+        return func
 
-
-    # def set_style_laser(self, styles: dict):
-    #       for name, value in styles.items():
-    #         self.style_information_laser[name].setStyleSheet(value)
-
-
-    # def set_style_Camera(self, styles: dict):
-    #       for name, value in styles.items():
-    #         self.style_information_Camera[name].setStyleSheet(value)
-
-
+    def __setup(self,):
+        self.ui = Ui_slider()
+        self.ui.setupUi(self.parent)
+        self.ui.main_frame.setParent(self.parent)
+        parent_w = self.parent.width()
+        self.ui.main_frame.setGeometry(parent_w,0,0,0)
 
 
+    def __slider_animation_builder(self,):
+        parent_w = self.parent.width()
+        parent_h =self.parent.height()
+        slider_w = self.ui.main_frame.width()
 
-    # def set_Meassage_on_API(self, text_on_UI):
-    #         self.set_message(
-    #             label_name=self.ui.Message_LiveView,
-    #             text=text_on_UI,
-    #         )
+        self.slide_animation = singleAnimation(self.ui.main_frame, 
+                                               b'geometry', 
+                                               400, 
+                                               QRect(parent_w,0,slider_w,parent_h),
+                                               QRect(parent_w-slider_w,0,slider_w,parent_h)
+                                               )
+    
+    def slide_in(self, page_name):
+        self.ui.pages.setCurrentWidget(self.pages_name[page_name])
+        self.__slider_animation_builder()
+        self.slide_animation.forward()
+        
+    def slide_out(self,):
+        self.__slider_animation_builder()
+        self.slide_animation.backward()
+
+    def disapear(self,):
+        self.ui.main_frame.setGeometry(0,0,0,0)
+
+    def set_system_status(self, name, state):
+        icon_obj = self.system_status[name]
+        if state:
+            pixmap  = QPixmap(IconsPath.SUCCESS_ICON)
+        else:
+            pixmap  = QPixmap(IconsPath.ERROR_ICON)
+        icon_obj.setPixmap(pixmap)
 
 
-
-    # def set_Pixmap(self, img_data, w, h, bytes_per_line):
-    #     convert_to_Qt_format = QImage(
-    #         img_data,
-    #         w,
-    #         h,
-    #         bytes_per_line,
-    #         QImage.Format_BGR888,  # This is used to show the heatmap of the defect in output
-    #     )
-    #     ######self.ui.Showlive.setPixmap(QPixmap.fromImage(convert_to_Qt_format))
-    #     self.ui.Showlive.setPixmap(QPixmap.fromImage(convert_to_Qt_format).transformed(QtGui.QTransform().rotate(90)))    ########## for rotate image
+    def get_filters(self, ):
+        res = {}
+        for name in self.filters.keys():
+            low_obj, high_obj = self.filters[name]
+            low_value = GUIBackend.get_input(low_obj)
+            high_value = GUIBackend.get_input(high_obj)
+            res[name] = (low_value,high_value)
+        return res
+    
+    def apply_filter_connector(self, func):
+        GUIBackend.button_connector(self.ui.filters_apply_btn, func)

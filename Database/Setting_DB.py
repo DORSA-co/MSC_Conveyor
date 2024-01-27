@@ -24,8 +24,9 @@ class parentSettingDB:
         for default_data in self.TABLE_DEFAULT_DATAS:
             self.save(default_data)
         
-    def save(self,record):
-        pass
+    def save(self,record:dict):
+        assert len(record) != len(self.TABLE_COLS), 'data count arent equal to table columns'
+
         #Re Implement this method
 
 
@@ -86,6 +87,7 @@ class cameraSettingDB(parentSettingDB):
 
 
     def save(self, data):
+        super().save(data)
         if self.is_exist(data[self.PRIMERY_KEY_COL_NAME]):
             self.db_manager.update_record_dict(self.TABLE_NAME,data, self.PRIMERY_KEY_COL_NAME, data[self.PRIMERY_KEY_COL_NAME])
         else:
@@ -154,6 +156,7 @@ class algorithmSettingDB(parentSettingDB):
 
     def save(self, data):
         data['id'] = 1
+        super().save(data)
         if self.is_exist(data[self.PRIMERY_KEY_COL_NAME]):
             self.db_manager.update_record_dict(self.TABLE_NAME,data, self.PRIMERY_KEY_COL_NAME, data[self.PRIMERY_KEY_COL_NAME])
         else:

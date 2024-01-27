@@ -297,7 +297,8 @@ class AlgorithmSetting_UI(Common_Function_UI):
                                       items)
 
     def set_image(self, name: str, image):
-        GUIBackend.set_label_image(self.images_lbl[name], image)
+        # GUIBackend.set_label_image(self.images_lbl[name], image)
+        self.images_lbl[name].set_image(image)
 
     def change_steps_stackedwidget_page(self, idx: int, name: str):
         GUIBackend.set_stack_widget_idx(self.ui.algorithm_stackedWidget, idx)

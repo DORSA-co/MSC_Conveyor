@@ -11,6 +11,7 @@ from Constants import Constant
 
 def DemoImageLoader(path):
         files = sorted(os.listdir(path))
+        files.reverse()
         while True:
             for fname in files:
                 fpath = os.path.join(path, fname)
@@ -79,7 +80,7 @@ class cameraWorker(QObject):
                 pass
                 #print('camera Error happend in thread while !', e)
             
-            time.sleep(0.02)
+            time.sleep(0.01)
 
         print('end of Camra Thread While')
         self.finished.emit()

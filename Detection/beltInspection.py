@@ -91,6 +91,12 @@ class beltInspection:
 
         # cv2.imshow('', res_image)
 
+    
+    def find_defect(self, _id)-> Defect:
+        for defect in self.DefectTracker.completed_defects:
+            if defect.id == _id:
+                return defect
+
 if __name__ == "__main__":
     
     img = cv2.imread('C:\\Users\\amir\\Desktop\\conveyor_monitoring_system\\demo imgs\\Basler_acA640-300gm__23287291__20231223_170443566_0164.bmp',0)

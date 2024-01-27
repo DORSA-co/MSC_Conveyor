@@ -73,7 +73,8 @@ class main_API:
                                            self.db.Users_DB)
         
         self.API_Live_View = LiveView_API(self.uiHandeler.Page_LiveView,
-                                          self.db)
+                                          self.db,
+                                          self.beltIncpetcion)
         
         
         

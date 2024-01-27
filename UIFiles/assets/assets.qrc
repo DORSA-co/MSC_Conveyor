@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/close_gray.png</file>
     <file>icons/delete_white.png</file>
     <file>icons/clear_filter_white.png</file>
     <file>icons/depth.png</file>

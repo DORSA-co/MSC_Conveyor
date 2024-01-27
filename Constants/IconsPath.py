@@ -20,5 +20,7 @@ class IconsPath:
 
     INFO_PATH = ':/icons/icons/info_icon.png'
     WARNING_PATH = ':/icons/icons/warning_icon.png'
-    ERROR_PATH = ':/icons/icons/error_icon.png'
-    SUCCESS_PATH = ':/icons/icons/success_icon.png'
+    ERROR_ICON = ':/icons/icons/error_icon.png'
+    SUCCESS_ICON = ':/icons/icons/success_icon.png'
+
+

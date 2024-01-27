@@ -70,16 +70,28 @@ class DefectTracker:
         while i<len(self.non_completed_defects): 
             defect = self.non_completed_defects[i]
             if defect.is_complete(line_idx, self.min_frame_gap):
+                
                 self.non_completed_defects.remove(defect)
                 if defect.is_defect(self.min_length):
-                    self.completed_defects.append(defect)
-                    self.external_new_defect_event(defect)
+                    
+                    #------------------------------------
+                    #check if defect is update of another defect
+                    for i in range(len(self.completed_defects)):
+                        if defect.is_same(self.completed_defects[i]):
+                            defect.id = self.completed_defects[i].id
+                            self.completed_defects[i] = defect
+                            break
+                    #------------------------------------
+                    else:
+                        self.completed_defects.append(defect)
+                        self.external_new_defect_event(defect)
             
             else:
                 i+=1
 
     def draw(self, image: np.ndarray, line_idx: int, color: tuple = (33, 33, 133)):
         h, w = image.shape[:2]
+
         for defect in self.non_completed_defects + self.completed_defects:
             pt1, pt2 = defect.get_bounding_box(line_idx)
 
@@ -90,7 +102,7 @@ class DefectTracker:
                 continue
 
             image = cv2.rectangle(image, pt1, pt2, color=color, thickness=2)
-
+        
         return image
     
 
