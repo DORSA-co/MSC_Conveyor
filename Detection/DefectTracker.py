@@ -7,6 +7,7 @@ class DefectTracker:
     def __init__(self, min_frame_gap, min_length) -> None:
         self.completed_defects: list[Defect] = []
         self.non_completed_defects: list[Defect] = []
+        self.__not_pass_completed_defects: list[Defect] = []
 
         self.min_frame_gap = min_frame_gap
         self.min_length = min_length
@@ -74,6 +75,7 @@ class DefectTracker:
                 self.non_completed_defects.remove(defect)
                 if defect.is_defect(self.min_length):
                     
+                    self.__not_pass_completed_defects.append(defect)
                     #------------------------------------
                     #check if defect is update of another defect
                     for i in range(len(self.completed_defects)):
@@ -88,22 +90,43 @@ class DefectTracker:
             
             else:
                 i+=1
+        
+        
+    def check_defect_passed(self, line_idx, img_width):
+        i  = 0
+        while i < len(self.__not_pass_completed_defects):
+            if self.__not_pass_completed_defects[i].is_present_in_image(line_idx, img_width):
+                i+=1
+                continue
+            self.__not_pass_completed_defects.pop(i)
+
 
     def draw(self, image: np.ndarray, line_idx: int, color: tuple = (33, 33, 133)):
         h, w = image.shape[:2]
 
-        for defect in self.non_completed_defects + self.completed_defects:
+        for defect in self.non_completed_defects:
             pt1, pt2 = defect.get_bounding_box(line_idx)
-
-            if pt1[0] > w:
-                continue
 
             if not defect.is_defect(self.min_length):
                 continue
 
             image = cv2.rectangle(image, pt1, pt2, color=color, thickness=2)
+
+        for defect in self.__not_pass_completed_defects:
+            pt1, pt2 = defect.get_bounding_box(line_idx)
+
+            if pt1[0] > w:
+                self.__not_pass_completed_defects.remove(defect)
+                continue
+
+
+            image = cv2.rectangle(image, pt1, pt2, color=(255,0,0), thickness=2)
+        
+
+        
         
         return image
+    
     
 
     

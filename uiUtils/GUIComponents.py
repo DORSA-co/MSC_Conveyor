@@ -1145,3 +1145,4 @@ class defectNotification(QtWidgets.QWidget):
 
     def set_checkbox(self, flag):
         self.ui.select_checkBox.setChecked(flag)
+

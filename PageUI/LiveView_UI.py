@@ -16,7 +16,7 @@ from UIFiles.popup_slider import Ui_slider
 from uiUtils.GUIComponents import singleAnimation
 from Constants.IconsPath import IconsPath
 from uiUtils import GUIComponents 
-
+from backend.Utils.Filter import applyFilter
 
 
             
@@ -50,6 +50,7 @@ class LiveView_UI(Common_Function_UI):
         self.__blink_flag = False
         self.__blink_alarms_list = []
         self.external_select_notification_event = None
+        self.compareFilters = applyFilter()
 
         self.setup_defect_info_talbe()
         self.sliderMenu = sliderMenu(self.ui.live_view_page)
@@ -64,7 +65,7 @@ class LiveView_UI(Common_Function_UI):
                                                 )
         GUIBackend.button_connector(self.ui.notif_remove_btn, self.remove_notifications)
         GUIBackend.checkbox_connector(self.ui.select_all_notif_checkbox, self.select_all_notification)
-
+        #self.sliderMenu.apply_filter_connector(self.apply_filter)
         
         #ONLY FOR TEST
         self.sliderMenu.set_system_status('camera', True)
@@ -194,6 +195,13 @@ class LiveView_UI(Common_Function_UI):
 
 
 
+
+
+
+
+
+
+
 class sliderMenu:
 
     def __init__(self, parent:QWidget) -> None:
@@ -217,7 +225,15 @@ class sliderMenu:
             'height': (self.ui.low_height_input, self.ui.high_height_input),
             'depth': (self.ui.low_depth_input, self.ui.high_depth_input),
         }
+
+        self.filters_activation = {
+            'date': self.ui.filter_date_checkBox,
+            'width': self.ui.filter_width_checkBox,
+            'height': self.ui.filter_height_checkBox,
+            'depth': self.ui.filter_depth_checkBox,
+        }
         GUIBackend.button_connector(self.ui.close, self.slide_out)
+        
 
         for name in self.filters.keys():
             low_field, high_feild = self.filters[name]
@@ -282,6 +298,11 @@ class sliderMenu:
     def get_filters(self, ):
         res = {}
         for name in self.filters.keys():
+            checkbox = self.filters_activation.get(name)
+            if checkbox is not None:
+                if not GUIBackend.get_checkbox_value(checkbox):
+                    continue
+                
             low_obj, high_obj = self.filters[name]
             low_value = GUIBackend.get_input(low_obj)
             high_value = GUIBackend.get_input(high_obj)
@@ -290,3 +311,5 @@ class sliderMenu:
     
     def apply_filter_connector(self, func):
         GUIBackend.button_connector(self.ui.filters_apply_btn, func)
+        
+    

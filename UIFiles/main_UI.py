@@ -664,21 +664,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_14.addWidget(self.menu_btn)
 
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_14.addItem(self.horizontalSpacer_2)
-
-        self.label = QLabel(self.top_frame)
-        self.label.setObjectName(u"label")
-        self.label.setMinimumSize(QSize(250, 0))
-        self.label.setMaximumSize(QSize(250, 16777215))
-        self.label.setFont(font)
-        self.label.setStyleSheet(u"background-color: rgb(250, 65, 55);\n"
-"color: white;\n"
-"border-radius: 10px;")
-
-        self.horizontalLayout_14.addWidget(self.label)
-
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_14.addItem(self.horizontalSpacer)
@@ -791,38 +776,7 @@ class Ui_MainWindow(object):
         self.select_all_notif_checkbox.setEnabled(True)
         sizePolicy.setHeightForWidth(self.select_all_notif_checkbox.sizePolicy().hasHeightForWidth())
         self.select_all_notif_checkbox.setSizePolicy(sizePolicy)
-        self.select_all_notif_checkbox.setStyleSheet(u"QCheckBox {\n"
-"    spacing: 0px;\n"
-"}\n"
-"\n"
-"QCheckBox::indicator {\n"
-"    width: 20px;\n"
-"    height: 20px;\n"
-"}\n"
-"\n"
-"/* Unchecked State */\n"
-"QCheckBox::indicator:unchecked {\n"
-"    border: 2px solid #E0E4EC;\n"
-"    background-color: white;\n"
-"}\n"
-"\n"
-"/* Checked State */\n"
-"QCheckBox::indicator:checked {\n"
-"    border: 2px solid #7892DF;\n"
-"    background-color: #7892DF;\n"
-"    image: url(:/icons/icons/tick.png)  /* Path to your check mark icon */\n"
-"}\n"
-"\n"
-"/* Hover State */\n"
-"QCheckBox::indicator:hover {\n"
-"    border: 2px solid rgba(194, 197, 204, 255);\n"
-"}\n"
-"\n"
-"/* Disabled State */\n"
-"QCheckBox::indicator:disabled {\n"
-"    border: 2px solid #E0E4EC;\n"
-"    background-color: #F6F6F6;\n"
-"}")
+        self.select_all_notif_checkbox.setStyleSheet(u"")
 
         self.horizontalLayout_10.addWidget(self.select_all_notif_checkbox)
 
@@ -849,7 +803,7 @@ class Ui_MainWindow(object):
         self.defects_notifications_scrollArea.setWidgetResizable(True)
         self.defects_notifications_widget = QWidget()
         self.defects_notifications_widget.setObjectName(u"defects_notifications_widget")
-        self.defects_notifications_widget.setGeometry(QRect(0, 0, 330, 669))
+        self.defects_notifications_widget.setGeometry(QRect(0, 0, 330, 672))
         self.defects_notifications_widget.setStyleSheet(u"#defects_notifications_widget{\n"
 "	border:None;\n"
 "	border-top: 2px solid gray;\n"
@@ -883,6 +837,16 @@ class Ui_MainWindow(object):
         self.belt_live_tab.setObjectName(u"belt_live_tab")
         self.horizontalLayout_15 = QHBoxLayout(self.belt_live_tab)
         self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
+        self.label = QLabel(self.belt_live_tab)
+        self.label.setObjectName(u"label")
+        self.label.setMinimumSize(QSize(40, 0))
+        self.label.setMaximumSize(QSize(40, 16777215))
+        self.label.setFont(font)
+        self.label.setStyleSheet(u"background-color: rgb(250, 65, 55);\n"
+"color: white;")
+
+        self.horizontalLayout_15.addWidget(self.label)
+
         self.belt_live_view_lbl = PhotoViewer(self.belt_live_tab)
         self.belt_live_view_lbl.setObjectName(u"belt_live_view_lbl")
 
@@ -1291,7 +1255,7 @@ class Ui_MainWindow(object):
         self.camera_settings_message_scrollArea.setWidgetResizable(True)
         self.camera_settings_message_frame = QWidget()
         self.camera_settings_message_frame.setObjectName(u"camera_settings_message_frame")
-        self.camera_settings_message_frame.setGeometry(QRect(0, 0, 38, 18))
+        self.camera_settings_message_frame.setGeometry(QRect(0, 0, 215, 56))
         sizePolicy3.setHeightForWidth(self.camera_settings_message_frame.sizePolicy().hasHeightForWidth())
         self.camera_settings_message_frame.setSizePolicy(sizePolicy3)
         self.verticalLayout_57 = QVBoxLayout(self.camera_settings_message_frame)
@@ -1791,7 +1755,7 @@ class Ui_MainWindow(object):
         self.register_message_scrollArea.setWidgetResizable(True)
         self.register_message_frame = QWidget()
         self.register_message_frame.setObjectName(u"register_message_frame")
-        self.register_message_frame.setGeometry(QRect(0, 0, 40, 18))
+        self.register_message_frame.setGeometry(QRect(0, 0, 100, 30))
         sizePolicy3.setHeightForWidth(self.register_message_frame.sizePolicy().hasHeightForWidth())
         self.register_message_frame.setSizePolicy(sizePolicy3)
         self.verticalLayout_55 = QVBoxLayout(self.register_message_frame)
@@ -1886,7 +1850,7 @@ class Ui_MainWindow(object):
         self.change_username_message_scrollArea.setWidgetResizable(True)
         self.change_username_message_frame = QWidget()
         self.change_username_message_frame.setObjectName(u"change_username_message_frame")
-        self.change_username_message_frame.setGeometry(QRect(0, 0, 16, 16))
+        self.change_username_message_frame.setGeometry(QRect(0, 0, 100, 30))
         self.change_username_message_scrollArea.setWidget(self.change_username_message_frame)
 
         self.verticalLayout_54.addWidget(self.change_username_message_scrollArea)
@@ -2032,7 +1996,7 @@ class Ui_MainWindow(object):
         self.change_password_message_scrollArea.setWidgetResizable(True)
         self.change_password_message_frame = QWidget()
         self.change_password_message_frame.setObjectName(u"change_password_message_frame")
-        self.change_password_message_frame.setGeometry(QRect(0, 0, 16, 16))
+        self.change_password_message_frame.setGeometry(QRect(0, 0, 100, 30))
         self.change_password_message_scrollArea.setWidget(self.change_password_message_frame)
 
         self.verticalLayout_51.addWidget(self.change_password_message_scrollArea)
@@ -2094,7 +2058,7 @@ class Ui_MainWindow(object):
         self.system_status_expanding_btn.clicked.connect(self.system_status_btn.click)
         self.notif_filter_expanding_btn.clicked.connect(self.notif_filter_btn.click)
 
-        self.main_stackedWidget.setCurrentIndex(0)
+        self.main_stackedWidget.setCurrentIndex(1)
         self.settings_tabs.setCurrentIndex(1)
         self.algorithm_stackedWidget.setCurrentIndex(0)
         self.user_tabs.setCurrentIndex(0)
@@ -2113,7 +2077,6 @@ class Ui_MainWindow(object):
         self.side_users_btn.setText(QCoreApplication.translate("MainWindow", u" Users        ", None))
         self.side_about_btn.setText(QCoreApplication.translate("MainWindow", u" About Us ", None))
         self.menu_btn.setText("")
-        self.label.setText("")
         self.logined_username_lbl.setText("")
         self.login_logout_btn.setText("")
         self.help_btn.setText("")
@@ -2122,6 +2085,7 @@ class Ui_MainWindow(object):
         self.close_btn.setText("")
         self.select_all_notif_checkbox.setText("")
         self.alarms_count_lbl.setText(QCoreApplication.translate("MainWindow", u"15/33 Alarms", None))
+        self.label.setText("")
         self.live_tabWidget.setTabText(self.live_tabWidget.indexOf(self.belt_live_tab), QCoreApplication.translate("MainWindow", u"Belt Live ", None))
         self.live_tabWidget.setTabText(self.live_tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Tab 2", None))
         ___qtablewidgetitem = self.defect_info_table.horizontalHeaderItem(0)

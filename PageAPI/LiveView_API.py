@@ -10,6 +10,7 @@ from uiUtils.GUIComponents import defectNotification
 from PageUI.LiveView_UI import LiveView_UI
 from Detection.Defect import Defect
 from Detection.beltInspection import beltInspection
+from backend.Utils.Filter import applyFilter
 
 class LiveView_API:
 
@@ -22,7 +23,11 @@ class LiveView_API:
         self.uiHandeler = uiHandeler
         self.beltInspection = belt_incpetcion
 
+        self.compareFilters = applyFilter()
+
         self.uiHandeler.set_notification_click_event(self.notification_click)
+        
+        self.button_connector()
 
 
 
@@ -35,17 +40,19 @@ class LiveView_API:
     
 
     def new_defect_event(self, defect:Defect):
-        self.uiHandeler.append_notification( defect.id,
-                                            'material_side', 
-                                            'new',
-                                            defect.jdatetime, 
-                                            'should be change', 
-                                            (100,200,20)
-                                            )
+        info = defect.get_info_for_filter()
+        if self.compareFilters.check_filter(info):
+            self.uiHandeler.append_notification( defect.id,
+                                                'material_side', 
+                                                'new',
+                                                defect.jdatetime, 
+                                                'should be change', 
+                                                (100,200,20)
+                                                )
 
     def button_connector(self,):
-        self.uiHandeler.button_connector(self.connect_camera_API,self.dis_connect_camera_API)    ############## for getting image from camera
-        ########self.uiHandeler.button_connector(self.start_selection)  # for getting image from folder
+        self.uiHandeler.sliderMenu.apply_filter_connector(self.apply_filter)
+
 
     def notification_click(self, _id):
         defect = self.beltInspection.find_defect(_id)
@@ -60,3 +67,8 @@ class LiveView_API:
                 }
 
         self.uiHandeler.show_defect_info(info)
+    
+
+    def apply_filter(self,):
+        filters = self.uiHandeler.sliderMenu.get_filters()
+        self.compareFilters.set_filters_refrence(filters)
