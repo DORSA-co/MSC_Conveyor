@@ -75,13 +75,13 @@ class LiveView_API:
         self.compareFilters.set_filters_refrence(filters)
 
         ids = self.uiHandeler.notifications.ids()
-        filterd_notifs = []
         defect:Defect
         for _id in ids:
             _,defect = self.beltInspection.find_defect(_id)
             if self.compareFilters.check_filter(defect.get_info_for_filter()):
-                filterd_notifs.append(_id)
+                self.uiHandeler.visible_notification(_id, True)
+            else:
+                self.uiHandeler.visible_notification(_id, False)
         
-        self.uiHandeler.filter_notifications(filterd_notifs)
 
             

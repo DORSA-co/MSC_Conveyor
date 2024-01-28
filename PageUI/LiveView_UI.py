@@ -185,15 +185,13 @@ class LiveView_UI(Common_Function_UI):
         if ans == 'yes':
             self.pop_notification(notif)
     
-    
-    def filter_notifications(self, filtered_ids):
+    def visible_notification(self, _id, state):
         notif:defectNotification
-        for _id in self.notifications.ids():
-            _,notif = self.notifications.get_by_id(_id)
-            if _id in filtered_ids:
-                notif.setMaximumHeight(10000)
-            else:
-                notif.setMaximumHeight(0)
+        _,notif = self.notifications.get_by_id(_id)
+        if state:
+            notif.setMaximumHeight(10000)
+        else:
+            notif.setMaximumHeight(0)
 
     
 
