@@ -140,9 +140,14 @@ class Defect:
         else:
             return False
         
-    def get_bounding_box(self, line_idx):
-        x1 = line_idx - self.end_line_idx
-        x2 = line_idx - self.start_line_idx
+    def get_bounding_box(self, line_idx, end_line_idx):
+        #when belt pass the end and start from 0 again
+        if line_idx < self.end_line_idx:
+            x1 = line_idx + (end_line_idx - self.end_line_idx)
+            x2 = line_idx + (end_line_idx - self.start_line_idx)
+        else:
+            x1 = line_idx - self.end_line_idx
+            x2 = line_idx - self.start_line_idx
 
         y1 = self.defect_width_boundries[0]
         y2 = self.defect_width_boundries[1]
