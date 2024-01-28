@@ -101,6 +101,7 @@ class CameraSetting_UI(Common_Function_UI):
             "gradient_number": 0
         }
 
+        self.__setting_change_connector__()
         self.gif_player = gifPlayer(self.ui.camera_settings_saved_gif, GifsPath.SAVED_GIF)
 
         # self.ui.Stop_connection_Camera_setting.setEnabled(False)
@@ -110,6 +111,10 @@ class CameraSetting_UI(Common_Function_UI):
                          self.buttons['cancel'], 
                          self.ui.camera_settings_saved_message, 
                          self.gif_player)
+        
+    def __setting_change_connector__(self,):
+        for setting_name,  field_obj in self.camera_setting_fields.items():
+                GUIBackend.connector(field_obj, lambda : self.save_state(False))
 
     def button_connector(self, btn_name:str, function):
         if isinstance(self.buttons[btn_name], QtWidgets.QPushButton):
@@ -272,6 +277,7 @@ class AlgorithmSetting_UI(Common_Function_UI):
 
         self.change_steps_stackedwidget_page(0, 'step1')
 
+        self.__setting_change_connector__()
         self.gif_player = gifPlayer(self.ui.algorithm_settings_saved_gif, GifsPath.SAVED_GIF)
 
     def save_state(self, is_saved):
@@ -279,6 +285,10 @@ class AlgorithmSetting_UI(Common_Function_UI):
                          self.buttons['cancel'], 
                          self.ui.algorithm_settings_saved_message, 
                          self.gif_player)
+        
+    def __setting_change_connector__(self,):
+        for setting_name,  field_obj in self.setting_parms.items():
+                GUIBackend.connector(field_obj, lambda : self.save_state(False))
 
     def button_connector(self, name:str, func):
         GUIBackend.button_connector(self.buttons[name], func)

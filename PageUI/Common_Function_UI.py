@@ -19,7 +19,7 @@ class Common_Function_UI:
             single_timer_runner(400, lambda: self.__show_saved__(save_msg, gif_player))
             
         else:
-            GUIBackend.set_label_text(save_msg, "*temp")
+            GUIBackend.set_label_text(save_msg, "")
         
     def __show_is_saving__(self, save_msg, gif_player):
         GUIBackend.set_label_text(save_msg, "Saving Settings...")

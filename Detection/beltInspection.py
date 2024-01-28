@@ -86,7 +86,6 @@ class beltInspection:
         t = time.time()
         # blure_image = cv2.blur(image, ksize=(3, 3))
         #--------------------------------------
-        print(self.Encoder.line_idx)
         self.DefectTracker.check_defect_passed(line_idx=self.Encoder.line_idx,
                                                img_width=image.shape[1])
         self.res_image = self.DefectTracker.draw(image.copy(), 
@@ -99,9 +98,7 @@ class beltInspection:
 
     
     def find_defect(self, _id)-> Defect:
-        for defect in self.DefectTracker.completed_defects:
-            if defect.id == _id:
-                return defect
+        return self.DefectTracker.completed_defects.get_by_id(_id)
 
 if __name__ == "__main__":
     

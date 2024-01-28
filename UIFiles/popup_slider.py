@@ -573,12 +573,12 @@ class Ui_slider(object):
         self.verticalLayout_6.setContentsMargins(-1, 0, -1, -1)
         self.horizontalLayout_7 = QHBoxLayout()
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.filter_height_checkBox = QCheckBox(self.height_frame)
-        self.filter_height_checkBox.setObjectName(u"filter_height_checkBox")
-        sizePolicy1.setHeightForWidth(self.filter_height_checkBox.sizePolicy().hasHeightForWidth())
-        self.filter_height_checkBox.setSizePolicy(sizePolicy1)
+        self.filter_lenght_checkBox = QCheckBox(self.height_frame)
+        self.filter_lenght_checkBox.setObjectName(u"filter_lenght_checkBox")
+        sizePolicy1.setHeightForWidth(self.filter_lenght_checkBox.sizePolicy().hasHeightForWidth())
+        self.filter_lenght_checkBox.setSizePolicy(sizePolicy1)
 
-        self.horizontalLayout_7.addWidget(self.filter_height_checkBox)
+        self.horizontalLayout_7.addWidget(self.filter_lenght_checkBox)
 
         self.height_icon = QPushButton(self.height_frame)
         self.height_icon.setObjectName(u"height_icon")
@@ -607,11 +607,11 @@ class Ui_slider(object):
         self.horizontalLayout_12.setSpacing(15)
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
         self.horizontalLayout_12.setContentsMargins(12, -1, 12, -1)
-        self.low_height_input = QDoubleSpinBox(self.height_frame)
-        self.low_height_input.setObjectName(u"low_height_input")
-        self.low_height_input.setAlignment(Qt.AlignCenter)
+        self.low_lenght_input = QDoubleSpinBox(self.height_frame)
+        self.low_lenght_input.setObjectName(u"low_lenght_input")
+        self.low_lenght_input.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_12.addWidget(self.low_height_input)
+        self.horizontalLayout_12.addWidget(self.low_lenght_input)
 
         self.label_4 = QLabel(self.height_frame)
         self.label_4.setObjectName(u"label_4")
@@ -620,11 +620,11 @@ class Ui_slider(object):
 
         self.horizontalLayout_12.addWidget(self.label_4)
 
-        self.high_height_input = QDoubleSpinBox(self.height_frame)
-        self.high_height_input.setObjectName(u"high_height_input")
-        self.high_height_input.setAlignment(Qt.AlignCenter)
+        self.high_lenght_input = QDoubleSpinBox(self.height_frame)
+        self.high_lenght_input.setObjectName(u"high_lenght_input")
+        self.high_lenght_input.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_12.addWidget(self.high_height_input)
+        self.horizontalLayout_12.addWidget(self.high_lenght_input)
 
 
         self.verticalLayout_6.addLayout(self.horizontalLayout_12)
@@ -754,15 +754,15 @@ class Ui_slider(object):
         self.label_2.setText(QCoreApplication.translate("slider", u"To", None))
         self.filter_width_checkBox.setText("")
         self.width_icon.setText("")
-        self.width_label.setText(QCoreApplication.translate("slider", u"Width", None))
+        self.width_label.setText(QCoreApplication.translate("slider", u"Width (cm)", None))
         self.label_3.setText(QCoreApplication.translate("slider", u"To", None))
-        self.filter_height_checkBox.setText("")
+        self.filter_lenght_checkBox.setText("")
         self.height_icon.setText("")
-        self.height_label.setText(QCoreApplication.translate("slider", u"Height", None))
+        self.height_label.setText(QCoreApplication.translate("slider", u"Lenght (m)", None))
         self.label_4.setText(QCoreApplication.translate("slider", u"To", None))
         self.filter_depth_checkBox.setText("")
         self.depth_icon.setText("")
-        self.depth_label.setText(QCoreApplication.translate("slider", u"Depth", None))
+        self.depth_label.setText(QCoreApplication.translate("slider", u"Depth (mm)", None))
         self.label_5.setText(QCoreApplication.translate("slider", u"To", None))
         self.filters_apply_btn.setText(QCoreApplication.translate("slider", u"Apply", None))
     # retranslateUi

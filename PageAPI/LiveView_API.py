@@ -55,7 +55,8 @@ class LiveView_API:
 
 
     def notification_click(self, _id):
-        defect = self.beltInspection.find_defect(_id)
+        defect:Defect
+        _,defect = self.beltInspection.find_defect(_id)
         info = {'x':defect.start_line_idx,
                 'y':defect.defect_width_boundries[0], 
                 'width': defect.widthInfo.max,
@@ -72,3 +73,15 @@ class LiveView_API:
     def apply_filter(self,):
         filters = self.uiHandeler.sliderMenu.get_filters()
         self.compareFilters.set_filters_refrence(filters)
+
+        ids = self.uiHandeler.notifications.ids()
+        defect:Defect
+        for _id in ids:
+            _,defect = self.beltInspection.find_defect(_id)
+            if self.compareFilters.check_filter(defect.get_info_for_filter()):
+                self.uiHandeler.visible_notification(_id, True)
+            else:
+                self.uiHandeler.visible_notification(_id, False)
+        
+
+            

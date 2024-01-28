@@ -47,6 +47,7 @@ class _AnomalyDetection:
     def __init__(self) -> None:
         self.error_ys = None
         self.pts = None
+        self.MAX_STD = 10
 
     def threshould_errors(self, error_ys:np.ndarray, thresh:int):
         error_ys[abs(error_ys)<thresh] = 0
@@ -86,22 +87,24 @@ class LineFitAnomalyDetection(_AnomalyDetection):
         return image
 
 
+    def __calc_error_ys(self, pts):
+        self.slope, self.intercept = mathUtils.linear_regression(pts)
+        self.pred_ys = self.calculate_ys( self.xs, self.slope, self.intercept)
+        self.error_ys = self.pred_ys - self.pts[:,1]
+        return self.error_ys
+
+
     def feed(self, pts:np.ndarray, diff_thresh:int=2):
         self.pts = pts
-
-        self.slope, self.intercept = mathUtils.linear_regression(pts)
-
         self.xs = pts[:,0]
-        self.pred_ys = self.calculate_ys( pts[:,0], self.slope, self.intercept)
 
-        self.error_ys = self.pred_ys - pts[:,1]
+        error_ys = self.__calc_error_ys(pts)
+        filter_pts = pts[np.abs(error_ys)<self.MAX_STD]
+        self.__calc_error_ys(filter_pts)
 
         #threshould errors smaller than diff_thresh into 0
         self.error_ys = self.threshould_errors(self.error_ys, diff_thresh)
 
-
-
-        
         return self.stackXY(self.xs, self.error_ys)
 
 
@@ -133,16 +136,19 @@ class CurveFitAnomalyDetection(_AnomalyDetection):
         image[self.pred_ys, self.xs] = line_color
         return image
 
+    def __calc_error_ys(self, pts):
+        self.curve_parms, pcov = curve_fit(self.__curve_function, pts[:,0], pts[:,1], self.curve_parms)
+        self.pred_ys = self.calculate_ys(self.xs, self.curve_parms)
+        self.error_ys = self.pred_ys - self.pts[:,1]
+        return self.error_ys
 
     def feed(self, pts:np.ndarray, diff_thresh:int=2):
         self.pts = pts
-
-        self.curve_parms, pcov = curve_fit(self.__curve_function, pts[:,0], pts[:,1], self.curve_parms)
-
         self.xs = pts[:,0]
-        self.pred_ys = self.calculate_ys(self.xs, self.curve_parms)
 
-        self.error_ys = self.pred_ys - pts[:,1]
+        error_ys = self.__calc_error_ys(pts)
+        filter_pts = pts[np.abs(error_ys)<self.MAX_STD]
+        self.__calc_error_ys(filter_pts)
 
         #threshould errors smaller than diff_thresh into 0
         self.error_ys = self.threshould_errors(self.error_ys, diff_thresh)

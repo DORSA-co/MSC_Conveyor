@@ -17,7 +17,7 @@ from uiUtils.GUIComponents import singleAnimation
 from Constants.IconsPath import IconsPath
 from uiUtils import GUIComponents 
 from backend.Utils.Filter import applyFilter
-
+from backend.Utils.idList import idList
 
             
 
@@ -32,7 +32,9 @@ class LiveView_UI(Common_Function_UI):
         """Description of the code"""
 
         self.ui = ui
-        self.notifications:list[defectNotification] = [] 
+        #self.notifications:list[defectNotification] = [] 
+        self.notifications = idList()
+        
         self.defect_info_tables_header = ['x',
                                           'y', 
                                           'width',
@@ -46,11 +48,13 @@ class LiveView_UI(Common_Function_UI):
         self.sidebar_alamrms = {
             'system_status': self.ui.system_status_label
         }
+
         self.active_notificaion = None
         self.__blink_flag = False
         self.__blink_alarms_list = []
         self.external_select_notification_event = None
         self.compareFilters = applyFilter()
+
 
         self.setup_defect_info_talbe()
         self.sliderMenu = sliderMenu(self.ui.live_view_page)
@@ -126,14 +130,14 @@ class LiveView_UI(Common_Function_UI):
                                     defect_type,
                                     defect_color,
                                    )
-        self.notifications.insert(0, notif)
+        self.notifications.insert(0, notif, _id)
 
         layout = self.ui.defects_notifications_widget.layout()
         layout.insertWidget(0, notif)
         layout.setSpacing(9)
         layout.setContentsMargins(9, 9, 9, 9)
         
-        self.ui.alarms_count_lbl.setText(f'{len(self.notifications)} Alarms')
+        self.ui.alarms_count_lbl.setText(f'{self.notifications.count()} Alarms')
 
         notif.select_connector(self.click_notification_event)
         notif.close_connector(self.close_notification_event)
@@ -142,12 +146,12 @@ class LiveView_UI(Common_Function_UI):
         layout = self.ui.defects_notifications_widget.layout()
         layout.removeWidget(notif)
         notif.setParent(None)
-        self.notifications.remove(notif)
+        self.notifications.remove_by_id(notif.id)
 
         layout.setSpacing(9)
         layout.setContentsMargins(9, 9, 9, 9)
 
-        self.ui.alarms_count_lbl.setText(f'{len(self.notifications)} Alarms')
+        self.ui.alarms_count_lbl.setText(f'{self.notifications.count()} Alarms')
 
     def remove_notifications(self,):
         ans = self.show_confirm_box('close notification',
@@ -160,7 +164,7 @@ class LiveView_UI(Common_Function_UI):
 
     def select_all_notification(self, state):
         state = GUIBackend.get_checkbox_value(self.ui.select_all_notif_checkbox)
-        for notif in self.notifications:
+        for notif in self.notifications.main_list:
             notif.set_checkbox(state)
 
     def set_notification_click_event(self, func):
@@ -181,8 +185,15 @@ class LiveView_UI(Common_Function_UI):
         if ans == 'yes':
             self.pop_notification(notif)
     
+    def visible_notification(self, _id, state):
+        notif:defectNotification
+        _,notif = self.notifications.get_by_id(_id)
+        if state:
+            notif.setMaximumHeight(10000)
+        else:
+            notif.setMaximumHeight(0)
+
     
-        
 
     def show_defect_info(self, info:dict):
         for key, value in info.items():
@@ -222,14 +233,14 @@ class sliderMenu:
         self.filters = {
             'date': (self.ui.start_date_input, self.ui.end_date_input),
             'width': (self.ui.low_width_input, self.ui.high_width_input),
-            'height': (self.ui.low_height_input, self.ui.high_height_input),
+            'lenght': (self.ui.low_lenght_input, self.ui.high_lenght_input),
             'depth': (self.ui.low_depth_input, self.ui.high_depth_input),
         }
 
         self.filters_activation = {
             'date': self.ui.filter_date_checkBox,
             'width': self.ui.filter_width_checkBox,
-            'height': self.ui.filter_height_checkBox,
+            'lenght': self.ui.filter_lenght_checkBox,
             'depth': self.ui.filter_depth_checkBox,
         }
         GUIBackend.button_connector(self.ui.close, self.slide_out)

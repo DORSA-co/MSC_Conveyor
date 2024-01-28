@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1214, 767)
+        MainWindow.resize(1241, 787)
         self.StyleSheet = QWidget(MainWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
         self.StyleSheet.setEnabled(True)
@@ -1811,8 +1811,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12.setContentsMargins(-1, 0, -1, -1)
         self.algorithm_settings_saved_gif = QLabel(self.algorithm_tab)
         self.algorithm_settings_saved_gif.setObjectName(u"algorithm_settings_saved_gif")
-        sizePolicy3.setHeightForWidth(self.algorithm_settings_saved_gif.sizePolicy().hasHeightForWidth())
-        self.algorithm_settings_saved_gif.setSizePolicy(sizePolicy3)
+        sizePolicy5.setHeightForWidth(self.algorithm_settings_saved_gif.sizePolicy().hasHeightForWidth())
+        self.algorithm_settings_saved_gif.setSizePolicy(sizePolicy5)
 
         self.horizontalLayout_12.addWidget(self.algorithm_settings_saved_gif)
 
