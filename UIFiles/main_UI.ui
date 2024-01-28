@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1270</width>
-    <height>812</height>
+    <width>1214</width>
+    <height>767</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -328,28 +328,6 @@ QComboBox:focus{
 	border: None;
 }
 
-#save_camera_settings, #save_algorithm_settings, #register_user
-{
-	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));
-	color: rgba(255, 255, 255, 210);
-	border-radius: 22px;
-	min-width: 200;
-	max-width: 200;
-	min-height: 44;
-	max-height: 44;
-	font-size: 14px;
-	font-weight: bold;
-}
-
-#save_camera_settings:hover, #save_algorithm_settings:hover, #register_user:hover{
-	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));
-}
-
-#save_camera_settings:pressed, #save_algorithm_settings:pressed, #register_user:pressed {
-	padding-left: 5px;
-	padding-top: 5px;
-}
-
 #step1_settings_frame .QLabel, #step2_settings_frame .QLabel, #step3_settings_frame .QLabel
 {
 	font-weight: bold;
@@ -398,33 +376,6 @@ QComboBox:focus{
 	font-weight: bold;
 	font-size: 20px;
 	color: #4C7EFF;
-}
-
-#userpage_editprofile_change_username_btn,
-#userpage_editprofile_change_password_btn
-{
-	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));
-	color: rgba(255, 255, 255, 210);
-	border-radius: 15px;
-	min-width: 150;
-	max-width: 150;
-	min-height: 30;
-	max-height: 30;
-	font-size: 14px;
-	font-weight: bold;
-}
-
-#userpage_editprofile_change_username_btn:hover,
-#userpage_editprofile_change_password_btn:hover
-{
-	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));
-}
-
-#userpage_editprofile_change_username_btn:pressed 
-#userpage_editprofile_change_password_btn:pressed
-{
-	padding-left: 5px;
-	padding-top: 5px;
 }
 
 #userpage_password_eye,
@@ -480,9 +431,6 @@ QComboBox:focus{
 	background-color: None;
 	border: None;
 }
-
-
-
 
 
 
@@ -1128,8 +1076,8 @@ font-weight:bold;</string>
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>330</width>
-                    <height>672</height>
+                    <width>100</width>
+                    <height>30</height>
                    </rect>
                   </property>
                   <property name="styleSheet">
@@ -1641,7 +1589,7 @@ color: white;</string>
                   <number>20</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>10</number>
+                  <number>20</number>
                  </property>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_8">
@@ -1742,7 +1690,11 @@ color: white;</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QComboBox" name="comboBox"/>
+                    <widget class="QComboBox" name="camera_comboBox">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
                    </item>
                   </layout>
                  </item>
@@ -1959,72 +1911,186 @@ color: white;</string>
                    </item>
                   </layout>
                  </item>
-                 <item alignment="Qt::AlignHCenter">
-                  <widget class="QPushButton" name="save_camera_settings">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
+                 <item>
+                  <spacer name="verticalSpacer_9">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
                    </property>
-                   <property name="font">
-                    <font>
-                     <pointsize>-1</pointsize>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
                    </property>
-                   <property name="cursor">
-                    <cursorShape>PointingHandCursor</cursorShape>
-                   </property>
-                   <property name="text">
-                    <string>Save Prameters</string>
-                   </property>
-                  </widget>
+                  </spacer>
                  </item>
                  <item>
-                  <widget class="QScrollArea" name="camera_settings_message_scrollArea">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
+                  <layout class="QHBoxLayout" name="horizontalLayout_26">
+                   <property name="spacing">
+                    <number>6</number>
                    </property>
-                   <property name="widgetResizable">
-                    <bool>true</bool>
+                   <property name="topMargin">
+                    <number>0</number>
                    </property>
-                   <widget class="QWidget" name="camera_settings_message_frame">
-                    <property name="geometry">
-                     <rect>
-                      <x>0</x>
-                      <y>0</y>
-                      <width>215</width>
-                      <height>56</height>
-                     </rect>
-                    </property>
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <layout class="QVBoxLayout" name="verticalLayout_57">
-                     <item>
-                      <spacer name="verticalSpacer_9">
-                       <property name="orientation">
-                        <enum>Qt::Vertical</enum>
-                       </property>
-                       <property name="sizeHint" stdset="0">
-                        <size>
-                         <width>20</width>
-                         <height>40</height>
-                        </size>
-                       </property>
-                      </spacer>
-                     </item>
-                    </layout>
-                   </widget>
-                  </widget>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QPushButton" name="save_camera_settings">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <pointsize>-1</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">#save_camera_settings
+{
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));
+	color: rgba(255, 255, 255, 210);
+	border-radius: 20px;
+	min-width: 100;
+	max-width: 100;
+	min-height: 40;
+	max-height: 40;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#save_camera_settings:hover
+{
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));
+}
+
+#save_camera_settings:pressed
+{
+	padding-left: 5px;
+	padding-top: 5px;
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>Save</string>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="assets/assets.qrc">
+                       <normaloff>:/icons/icons/save_icon.png</normaloff>:/icons/icons/save_icon.png</iconset>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="cancel_camera_settings">
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">#cancel_camera_settings
+{
+	border: 2px solid  rgba(46, 76, 153, 255);
+	color:  rgba(46, 76, 153, 255);
+	border-radius: 18px;
+	min-width: 100;
+	max-width: 100;
+	min-height: 36;
+	max-height: 36;
+	font-size: 14px;
+	font-weight: bold;
+	qproperty-icon: url(:/icons/icons/cancel_icon.png);
+}
+
+#cancel_camera_settings:hover
+{
+	border: 2px solid rgba(76, 126, 255, 255);
+	color:  rgba(76, 126, 255, 255);
+	qproperty-icon: url(:/icons/icons/cancel_hover.png);
+}
+
+#cancel_camera_settings:pressed
+{
+	padding-left: 5px;
+	padding-top: 5px;
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>Cancel</string>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="assets/assets.qrc">
+                       <normaloff>:/icons/icons/cancel_icon.png</normaloff>:/icons/icons/cancel_icon.png</iconset>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_4">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="reset_camera_settings">
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="layoutDirection">
+                      <enum>Qt::LeftToRight</enum>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">#reset_camera_settings
+{
+	background-color: transparent;
+	color:  rgba(46, 76, 153, 255);
+	border-radius: 20px;
+	min-width: 80;
+	max-width: 80;
+	min-height: 40;
+	max-height: 40;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: right;
+	qproperty-icon: url(:/icons/icons/reset_icon.png);
+}
+
+#reset_camera_settings:hover
+{
+	color:  rgba(76, 126, 255, 255);
+	qproperty-icon: url(:/icons/icons/reset_hover.png);
+}
+
+#reset_camera_settings:pressed
+{
+	padding-left: 5px;
+	padding-top: 5px;
+}
+</string>
+                     </property>
+                     <property name="text">
+                      <string>Reset</string>
+                     </property>
+                     <property name="icon">
+                      <iconset resource="assets/assets.qrc">
+                       <normaloff>:/icons/icons/reset_icon.png</normaloff>:/icons/icons/reset_icon.png</iconset>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
                  </item>
                 </layout>
                </widget>
@@ -2619,20 +2685,10 @@ color: white;</string>
                </widget>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_12">
-                <item>
-                 <spacer name="horizontalSpacer_5">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>40</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
+               <layout class="QHBoxLayout" name="horizontalLayout_28">
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
                 <item>
                  <widget class="QPushButton" name="save_algorithm_settings">
                   <property name="sizePolicy">
@@ -2643,14 +2699,14 @@ color: white;</string>
                   </property>
                   <property name="minimumSize">
                    <size>
-                    <width>200</width>
-                    <height>44</height>
+                    <width>100</width>
+                    <height>40</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>200</width>
-                    <height>44</height>
+                    <width>100</width>
+                    <height>40</height>
                    </size>
                   </property>
                   <property name="font">
@@ -2663,13 +2719,144 @@ color: white;</string>
                   <property name="cursor">
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
+                  <property name="styleSheet">
+                   <string notr="true">#save_algorithm_settings
+{
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));
+	color: rgba(255, 255, 255, 210);
+	border-radius: 20px;
+	min-width: 100;
+	max-width: 100;
+	min-height: 40;
+	max-height: 40;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#save_algorithm_settings:hover
+{
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));
+}
+
+#save_algorithm_settings:pressed
+{
+	padding-left: 5px;
+	padding-top: 5px;
+}
+</string>
+                  </property>
                   <property name="text">
-                   <string>Save Prameters</string>
+                   <string>Save</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="assets/assets.qrc">
+                    <normaloff>:/icons/icons/save_icon.png</normaloff>:/icons/icons/save_icon.png</iconset>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <spacer name="horizontalSpacer_6">
+                 <widget class="QPushButton" name="cancel_algorithm_settings">
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">#cancel_algorithm_settings
+{
+	border: 2px solid  rgba(46, 76, 153, 255);
+	color:  rgba(46, 76, 153, 255);
+	border-radius: 18px;
+	min-width: 100;
+	max-width: 100;
+	min-height: 36;
+	max-height: 36;
+	font-size: 14px;
+	font-weight: bold;
+	qproperty-icon: url(:/icons/icons/cancel_icon.png);
+}
+
+#cancel_algorithm_settings:hover
+{
+	border: 2px solid rgba(76, 126, 255, 255);
+	color:  rgba(76, 126, 255, 255);
+	qproperty-icon: url(:/icons/icons/cancel_hover.png);
+}
+
+#cancel_algorithm_settings:pressed
+{
+	padding-left: 5px;
+	padding-top: 5px;
+}
+</string>
+                  </property>
+                  <property name="text">
+                   <string>Cancel</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="assets/assets.qrc">
+                    <normaloff>:/icons/icons/cancel_icon.png</normaloff>:/icons/icons/cancel_icon.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeType">
+                   <enum>QSizePolicy::Preferred</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="reset_algorithm_settings">
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">#reset_algorithm_settings
+{
+	background-color: transparent;
+	color:  rgba(46, 76, 153, 255);
+	border-radius: 20px;
+	min-width: 80;
+	max-width: 80;
+	min-height: 40;
+	max-height: 40;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+}
+
+#reset_algorithm_settings:hover
+{
+	color:  rgba(76, 126, 255, 255);
+	qproperty-icon: url(:/icons/icons/reset_hover.png);
+}
+
+#reset_algorithm_settings:pressed
+{
+	padding-left: 5px;
+	padding-top: 5px;
+}
+</string>
+                  </property>
+                  <property name="text">
+                   <string>Reset</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="assets/assets.qrc">
+                    <normaloff>:/icons/icons/reset_icon.png</normaloff>:/icons/icons/reset_icon.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_3">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
                   </property>
@@ -2864,7 +3051,30 @@ color: white;</string>
                     <cursorShape>PointingHandCursor</cursorShape>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true"/>
+                    <string notr="true">#register_user
+{
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));
+	color: rgba(255, 255, 255, 210);
+	border-radius: 22px;
+	min-width: 200;
+	max-width: 200;
+	min-height: 44;
+	max-height: 44;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#register_user:hover
+{
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));
+}
+
+#register_user:pressed
+{
+	padding-left: 5px;
+	padding-top: 5px;
+}
+</string>
                    </property>
                    <property name="text">
                     <string>Register</string>
@@ -2891,8 +3101,8 @@ color: white;</string>
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>100</width>
-                      <height>30</height>
+                      <width>934</width>
+                      <height>200</height>
                      </rect>
                     </property>
                     <property name="sizePolicy">
@@ -3025,20 +3235,43 @@ color: white;</string>
                      <property name="minimumSize">
                       <size>
                        <width>150</width>
-                       <height>30</height>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
                        <width>150</width>
-                       <height>30</height>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="cursor">
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true"/>
+                      <string notr="true">#userpage_editprofile_change_username_btn
+{
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));
+	color: rgba(255, 255, 255, 210);
+	border-radius: 20px;
+	min-width: 150;
+	max-width: 150;
+	min-height:40;
+	max-height: 40;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#userpage_editprofile_change_username_btn:hover
+{
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));
+}
+
+#userpage_editprofile_change_username_btn:pressed
+{
+	padding-left: 5px;
+	padding-top: 5px;
+}
+</string>
                      </property>
                      <property name="text">
                       <string>Change Username</string>
@@ -3055,8 +3288,8 @@ color: white;</string>
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>100</width>
-                        <height>30</height>
+                        <width>441</width>
+                        <height>327</height>
                        </rect>
                       </property>
                      </widget>
@@ -3261,15 +3494,38 @@ color: white;</string>
                     <widget class="QPushButton" name="userpage_editprofile_change_password_btn">
                      <property name="maximumSize">
                       <size>
-                       <width>120</width>
-                       <height>30</height>
+                       <width>150</width>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="cursor">
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">max-width: 120px;</string>
+                      <string notr="true">#userpage_editprofile_change_password_btn
+{
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));
+	color: rgba(255, 255, 255, 210);
+	border-radius: 20px;
+	min-width: 150;
+	max-width: 150;
+	min-height:40;
+	max-height: 40;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#userpage_editprofile_change_password_btn:hover
+{
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));
+}
+
+#userpage_editprofile_change_password_btn:pressed
+{
+	padding-left: 5px;
+	padding-top: 5px;
+}
+</string>
                      </property>
                      <property name="text">
                       <string>Change Password</string>
@@ -3286,8 +3542,8 @@ color: white;</string>
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>100</width>
-                        <height>30</height>
+                        <width>441</width>
+                        <height>239</height>
                        </rect>
                       </property>
                      </widget>

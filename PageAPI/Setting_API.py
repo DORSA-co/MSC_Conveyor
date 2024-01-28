@@ -61,6 +61,8 @@ class CameraSetting_API:
         
         
         self.ui_cam.button_connector('save', self.save_camera_settings)
+        self.ui_cam.button_connector('cancel', self.load_camera_settings)
+        self.ui_cam.button_connector('default', self.reset_camera_settings)
         self.ui_cam.button_connector('play', self.play_camera)
         self.ui_cam.setting_change_connector(self.camera_setting_change_event)
         
@@ -85,8 +87,11 @@ class CameraSetting_API:
         parms['name'] = self.ui_cam.get_camera_name()
         parms['serial_number'] = self.ui_cam.get_serial_number()
         self.db.save(parms)
-        
-    
+
+    def reset_camera_settings(self, ):
+        self.db.restor_default()
+        self.load_camera_settings()
+
     def play_camera(self,):
         name = self.ui_cam.get_camera_name()
         grabbing = self.cameras[name].Status.is_grabbing()
@@ -205,6 +210,8 @@ class AlgorithmSetting_API:
         self.uiHandeler.setting_change_connector(self.setting_change_event)
 
         self.uiHandeler.button_connector('save', self.save_algorithm_settings)
+        self.uiHandeler.button_connector('reset', self.reset_algorithm_settings)
+        self.uiHandeler.button_connector('cancel', self.load_algorithm_settings)
 
         for combo_name in self.mapDict.get_maps_names():
             items = self.mapDict.get_values(combo_name)
@@ -253,5 +260,9 @@ class AlgorithmSetting_API:
         parms = self.uiHandeler.get_parms()
         parms = self.mapDict.multi_value2key(parms)
         self.db.save(parms)
+
+    def reset_algorithm_settings(self):
+        self.db.restor_default()
+        self.load_algorithm_settings()
 
     

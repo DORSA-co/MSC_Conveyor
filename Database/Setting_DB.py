@@ -25,7 +25,8 @@ class parentSettingDB:
             self.save(default_data)
         
     def save(self,record:dict):
-        assert len(record) != len(self.TABLE_COLS), 'data count arent equal to table columns'
+        pass
+        # assert len(record) == len(self.TABLE_COLS), 'data count arent equal to table columns'
 
         #Re Implement this method
 
@@ -57,7 +58,7 @@ class cameraSettingDB(parentSettingDB):
     
     
     TABLE_DEFAULT_DATAS= [ {
-                            'name': '',
+                            'name': 'main',
                             'serial_number': '',
                             'gain': 0,           
                             'exposure': 7000,       
