@@ -23,4 +23,7 @@ class IconsPath:
     ERROR_ICON = ':/icons/icons/error_icon.png'
     SUCCESS_ICON = ':/icons/icons/success_icon.png'
 
+class GifsPath:
+    SAVED_GIF = ':/gifs/gifs/saving.gif'
+
 

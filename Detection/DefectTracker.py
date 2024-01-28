@@ -101,11 +101,11 @@ class DefectTracker:
             self.__not_pass_completed_defects.pop(i)
 
 
-    def draw(self, image: np.ndarray, line_idx: int, color: tuple = (33, 33, 133)):
+    def draw(self, image: np.ndarray, line_idx: int, end_belt_line_idx:int, color: tuple = (33, 33, 133)):
         h, w = image.shape[:2]
 
         for defect in self.non_completed_defects:
-            pt1, pt2 = defect.get_bounding_box(line_idx)
+            pt1, pt2 = defect.get_bounding_box(line_idx, end_belt_line_idx)
 
             if not defect.is_defect(self.min_length):
                 continue
@@ -113,7 +113,7 @@ class DefectTracker:
             image = cv2.rectangle(image, pt1, pt2, color=color, thickness=2)
 
         for defect in self.__not_pass_completed_defects:
-            pt1, pt2 = defect.get_bounding_box(line_idx)
+            pt1, pt2 = defect.get_bounding_box(line_idx, end_belt_line_idx)
 
             if pt1[0] > w:
                 self.__not_pass_completed_defects.remove(defect)

@@ -21,7 +21,6 @@ class beltInspection:
 
     def __init__(self, kwargs:dict) -> None:
         self.kwargs = kwargs
-        # self.kwargs['defect_min_width'] = 2
         self.LaserScanner = laserScanner()
         self.AnomalyDetection = AnomalyDetectionHandeler()
         self.DefectExtractor = DefectExtractor()
@@ -88,9 +87,11 @@ class beltInspection:
         # blure_image = cv2.blur(image, ksize=(3, 3))
         #--------------------------------------
         print(self.Encoder.line_idx)
-        self.DefectTracker.check_defect_passed(line_idx=self.Encoder.line_idx, 
+        self.DefectTracker.check_defect_passed(line_idx=self.Encoder.line_idx,
                                                img_width=image.shape[1])
-        self.res_image = self.DefectTracker.draw(image.copy(), self.Encoder.line_idx)
+        self.res_image = self.DefectTracker.draw(image.copy(), 
+                                                 self.Encoder.line_idx,
+                                                 self.Encoder.end_line_idx)
         
         # print('last draw: ', time.time() - t)
 
