@@ -55,7 +55,8 @@ class LiveView_API:
 
 
     def notification_click(self, _id):
-        defect = self.beltInspection.find_defect(_id)
+        defect:Defect
+        _,defect = self.beltInspection.find_defect(_id)
         info = {'x':defect.start_line_idx,
                 'y':defect.defect_width_boundries[0], 
                 'width': defect.widthInfo.max,
