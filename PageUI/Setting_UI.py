@@ -57,6 +57,8 @@ class CameraSetting_UI(Common_Function_UI):
         self.buttons = {
             'save': self.ui.save_camera_settings,
             'play': self.ui.connect_camera_switch,
+            'cancel': self.ui.cancel_camera_settings,
+            'default': self.ui.reset_camera_settings
         }
         
         self.parms_camera = {
@@ -249,7 +251,9 @@ class AlgorithmSetting_UI(Common_Function_UI):
         }
 
         self.buttons = {
-            'save': self.ui.save_algorithm_settings
+            'save': self.ui.save_algorithm_settings,
+            'cancel': self.ui.cancel_algorithm_settings,
+            'reset': self.ui.reset_algorithm_settings
         }
 
         self.multistep_button_connector('step1', lambda: self.change_steps_stackedwidget_page(0, 'step1') )

@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1270, 812)
+        MainWindow.resize(1214, 767)
         self.StyleSheet = QWidget(MainWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
         self.StyleSheet.setEnabled(True)
@@ -349,29 +349,6 @@ class Ui_MainWindow(object):
 "	border: None;\n"
 "}\n"
 "\n"
-"#save_camera_settings, #save_algorithm_settings, #register_user\n"
-"{\n"
-"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
-"	color: rgba(255, 255, 255, 210);\n"
-"	border-radius: 22px;\n"
-"	min-widt"
-                        "h: 200;\n"
-"	max-width: 200;\n"
-"	min-height: 44;\n"
-"	max-height: 44;\n"
-"	font-size: 14px;\n"
-"	font-weight: bold;\n"
-"}\n"
-"\n"
-"#save_camera_settings:hover, #save_algorithm_settings:hover, #register_user:hover{\n"
-"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
-"}\n"
-"\n"
-"#save_camera_settings:pressed, #save_algorithm_settings:pressed, #register_user:pressed {\n"
-"	padding-left: 5px;\n"
-"	padding-top: 5px;\n"
-"}\n"
-"\n"
 "#step1_settings_frame .QLabel, #step2_settings_frame .QLabel, #step3_settings_frame .QLabel\n"
 "{\n"
 "	font-weight: bold;\n"
@@ -386,15 +363,15 @@ class Ui_MainWindow(object):
 "	border: None;\n"
 "}\n"
 "\n"
-"#show_steps_frame .QPushButton{\n"
+"#sh"
+                        "ow_steps_frame .QPushButton{\n"
 "	background-color: transparent;\n"
 "	border:5px solid #7E84A2;\n"
 "	border-radius: 32px;\n"
 "	min-width: 55px;\n"
 "	max-width: 55px;\n"
 "	min-height: 55px;\n"
-"	max-heigh"
-                        "t: 55px;\n"
+"	max-height: 55px;\n"
 "	font-size: 24px;\n"
 "	color: rgb(20, 20, 20);\n"
 "	font-weight: bold;\n"
@@ -423,34 +400,6 @@ class Ui_MainWindow(object):
 "	color: #4C7EFF;\n"
 "}\n"
 "\n"
-"#userpage_editprofile_change_username_btn,\n"
-"#userpage_editprofile_change_password_btn\n"
-"{\n"
-"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
-"	color: rgba(255, 255, 255, 210);\n"
-"	border-radius: 15px;\n"
-"	min-width: 150;\n"
-"	max-width: 150;\n"
-"	min-height: 30;\n"
-"	max-height: 30;\n"
-"	font-size: 14px;\n"
-"	font-weight: bold;\n"
-"}\n"
-""
-                        "\n"
-"#userpage_editprofile_change_username_btn:hover,\n"
-"#userpage_editprofile_change_password_btn:hover\n"
-"{\n"
-"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
-"}\n"
-"\n"
-"#userpage_editprofile_change_username_btn:pressed \n"
-"#userpage_editprofile_change_password_btn:pressed\n"
-"{\n"
-"	padding-left: 5px;\n"
-"	padding-top: 5px;\n"
-"}\n"
-"\n"
 "#userpage_password_eye,\n"
 "#userpage_confirm_password_eye,\n"
 "#userpage_editprofile_old_password_eye,\n"
@@ -458,7 +407,8 @@ class Ui_MainWindow(object):
 "#userpage_editprofile_confirm_new_password_eye\n"
 "{\n"
 "	border: 0px;\n"
-"	background-color: rgba(0,0,0,0);\n"
+"	background-co"
+                        "lor: rgba(0,0,0,0);\n"
 "	border:1px solid #E0E4EC;\n"
 "	background-color: #F7F8FA;\n"
 "	border-radius: 10px;\n"
@@ -470,8 +420,7 @@ class Ui_MainWindow(object):
 "\n"
 "#userpage_password_inpt,\n"
 "#userpage_confirm_password_inpt,\n"
-"#userpage_editprofile_old_p"
-                        "assword_inpt,\n"
+"#userpage_editprofile_old_password_inpt,\n"
 "#userpage_editprofile_new_password_inpt,\n"
 "#userpage_editprofile_confirm_new_password_inpt\n"
 "{\n"
@@ -498,16 +447,14 @@ class Ui_MainWindow(object):
 "\n"
 "#defects_notifications_widget{\n"
 "	background-color: #F7F8FA;\n"
-"	border:1px solid #D7D7D9;\n"
+"	border:1px "
+                        "solid #D7D7D9;\n"
 "}\n"
 "\n"
 "#notifications_buttons_frame .QPushButton{\n"
 "	background-color: None;\n"
 "	border: None;\n"
 "}\n"
-"\n"
-"\n"
-"\n"
 "\n"
 "\n"
 "\n"
@@ -803,7 +750,7 @@ class Ui_MainWindow(object):
         self.defects_notifications_scrollArea.setWidgetResizable(True)
         self.defects_notifications_widget = QWidget()
         self.defects_notifications_widget.setObjectName(u"defects_notifications_widget")
-        self.defects_notifications_widget.setGeometry(QRect(0, 0, 330, 672))
+        self.defects_notifications_widget.setGeometry(QRect(0, 0, 100, 30))
         self.defects_notifications_widget.setStyleSheet(u"#defects_notifications_widget{\n"
 "	border:None;\n"
 "	border-top: 2px solid gray;\n"
@@ -1048,7 +995,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_24 = QVBoxLayout(self.camera_settings_frame)
         self.verticalLayout_24.setSpacing(12)
         self.verticalLayout_24.setObjectName(u"verticalLayout_24")
-        self.verticalLayout_24.setContentsMargins(20, 11, 20, 10)
+        self.verticalLayout_24.setContentsMargins(20, 11, 20, 20)
         self.horizontalLayout_8 = QHBoxLayout()
         self.horizontalLayout_8.setSpacing(10)
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
@@ -1096,10 +1043,11 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_21.addWidget(self.camera_settings_camera_label)
 
-        self.comboBox = QComboBox(self.camera_settings_frame)
-        self.comboBox.setObjectName(u"comboBox")
+        self.camera_comboBox = QComboBox(self.camera_settings_frame)
+        self.camera_comboBox.setObjectName(u"camera_comboBox")
+        self.camera_comboBox.setEnabled(False)
 
-        self.verticalLayout_21.addWidget(self.comboBox)
+        self.verticalLayout_21.addWidget(self.camera_comboBox)
 
 
         self.verticalLayout_24.addLayout(self.verticalLayout_21)
@@ -1236,37 +1184,129 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_24.addLayout(self.verticalLayout_20)
 
+        self.verticalSpacer_9 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_24.addItem(self.verticalSpacer_9)
+
+        self.horizontalLayout_26 = QHBoxLayout()
+        self.horizontalLayout_26.setSpacing(6)
+        self.horizontalLayout_26.setObjectName(u"horizontalLayout_26")
+        self.horizontalLayout_26.setContentsMargins(-1, 0, 0, -1)
         self.save_camera_settings = QPushButton(self.camera_settings_frame)
         self.save_camera_settings.setObjectName(u"save_camera_settings")
         sizePolicy1.setHeightForWidth(self.save_camera_settings.sizePolicy().hasHeightForWidth())
         self.save_camera_settings.setSizePolicy(sizePolicy1)
         self.save_camera_settings.setFont(font)
         self.save_camera_settings.setCursor(QCursor(Qt.PointingHandCursor))
+        self.save_camera_settings.setStyleSheet(u"#save_camera_settings\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
+"	color: rgba(255, 255, 255, 210);\n"
+"	border-radius: 20px;\n"
+"	min-width: 100;\n"
+"	max-width: 100;\n"
+"	min-height: 40;\n"
+"	max-height: 40;\n"
+"	font-size: 14px;\n"
+"	font-weight: bold;\n"
+"}\n"
+"\n"
+"#save_camera_settings:hover\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
+"}\n"
+"\n"
+"#save_camera_settings:pressed\n"
+"{\n"
+"	padding-left: 5px;\n"
+"	padding-top: 5px;\n"
+"}\n"
+"")
+        icon16 = QIcon()
+        icon16.addFile(u":/icons/icons/save_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.save_camera_settings.setIcon(icon16)
 
-        self.verticalLayout_24.addWidget(self.save_camera_settings, 0, Qt.AlignHCenter)
+        self.horizontalLayout_26.addWidget(self.save_camera_settings)
 
-        self.camera_settings_message_scrollArea = QScrollArea(self.camera_settings_frame)
-        self.camera_settings_message_scrollArea.setObjectName(u"camera_settings_message_scrollArea")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.camera_settings_message_scrollArea.sizePolicy().hasHeightForWidth())
-        self.camera_settings_message_scrollArea.setSizePolicy(sizePolicy5)
-        self.camera_settings_message_scrollArea.setWidgetResizable(True)
-        self.camera_settings_message_frame = QWidget()
-        self.camera_settings_message_frame.setObjectName(u"camera_settings_message_frame")
-        self.camera_settings_message_frame.setGeometry(QRect(0, 0, 215, 56))
-        sizePolicy3.setHeightForWidth(self.camera_settings_message_frame.sizePolicy().hasHeightForWidth())
-        self.camera_settings_message_frame.setSizePolicy(sizePolicy3)
-        self.verticalLayout_57 = QVBoxLayout(self.camera_settings_message_frame)
-        self.verticalLayout_57.setObjectName(u"verticalLayout_57")
-        self.verticalSpacer_9 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.cancel_camera_settings = QPushButton(self.camera_settings_frame)
+        self.cancel_camera_settings.setObjectName(u"cancel_camera_settings")
+        self.cancel_camera_settings.setCursor(QCursor(Qt.PointingHandCursor))
+        self.cancel_camera_settings.setStyleSheet(u"#cancel_camera_settings\n"
+"{\n"
+"	border: 2px solid  rgba(46, 76, 153, 255);\n"
+"	color:  rgba(46, 76, 153, 255);\n"
+"	border-radius: 18px;\n"
+"	min-width: 100;\n"
+"	max-width: 100;\n"
+"	min-height: 36;\n"
+"	max-height: 36;\n"
+"	font-size: 14px;\n"
+"	font-weight: bold;\n"
+"	qproperty-icon: url(:/icons/icons/cancel_icon.png);\n"
+"}\n"
+"\n"
+"#cancel_camera_settings:hover\n"
+"{\n"
+"	border: 2px solid rgba(76, 126, 255, 255);\n"
+"	color:  rgba(76, 126, 255, 255);\n"
+"	qproperty-icon: url(:/icons/icons/cancel_hover.png);\n"
+"}\n"
+"\n"
+"#cancel_camera_settings:pressed\n"
+"{\n"
+"	padding-left: 5px;\n"
+"	padding-top: 5px;\n"
+"}\n"
+"")
+        icon17 = QIcon()
+        icon17.addFile(u":/icons/icons/cancel_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.cancel_camera_settings.setIcon(icon17)
 
-        self.verticalLayout_57.addItem(self.verticalSpacer_9)
+        self.horizontalLayout_26.addWidget(self.cancel_camera_settings)
 
-        self.camera_settings_message_scrollArea.setWidget(self.camera_settings_message_frame)
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.verticalLayout_24.addWidget(self.camera_settings_message_scrollArea)
+        self.horizontalLayout_26.addItem(self.horizontalSpacer_4)
+
+        self.reset_camera_settings = QPushButton(self.camera_settings_frame)
+        self.reset_camera_settings.setObjectName(u"reset_camera_settings")
+        self.reset_camera_settings.setCursor(QCursor(Qt.PointingHandCursor))
+        self.reset_camera_settings.setLayoutDirection(Qt.LeftToRight)
+        self.reset_camera_settings.setStyleSheet(u"#reset_camera_settings\n"
+"{\n"
+"	background-color: transparent;\n"
+"	color:  rgba(46, 76, 153, 255);\n"
+"	border-radius: 20px;\n"
+"	min-width: 80;\n"
+"	max-width: 80;\n"
+"	min-height: 40;\n"
+"	max-height: 40;\n"
+"	font-size: 14px;\n"
+"	font-weight: bold;\n"
+"	text-align: right;\n"
+"	qproperty-icon: url(:/icons/icons/reset_icon.png);\n"
+"}\n"
+"\n"
+"#reset_camera_settings:hover\n"
+"{\n"
+"	color:  rgba(76, 126, 255, 255);\n"
+"	qproperty-icon: url(:/icons/icons/reset_hover.png);\n"
+"}\n"
+"\n"
+"#reset_camera_settings:pressed\n"
+"{\n"
+"	padding-left: 5px;\n"
+"	padding-top: 5px;\n"
+"}\n"
+"")
+        icon18 = QIcon()
+        icon18.addFile(u":/icons/icons/reset_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.reset_camera_settings.setIcon(icon18)
+
+        self.horizontalLayout_26.addWidget(self.reset_camera_settings)
+
+
+        self.verticalLayout_24.addLayout(self.horizontalLayout_26)
 
 
         self.horizontalLayout_7.addWidget(self.camera_settings_frame)
@@ -1585,29 +1625,122 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addWidget(self.algorithm_stackedWidget)
 
-        self.horizontalLayout_12 = QHBoxLayout()
-        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
-        self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_12.addItem(self.horizontalSpacer_5)
-
+        self.horizontalLayout_28 = QHBoxLayout()
+        self.horizontalLayout_28.setObjectName(u"horizontalLayout_28")
+        self.horizontalLayout_28.setContentsMargins(-1, 0, -1, -1)
         self.save_algorithm_settings = QPushButton(self.algorithm_tab)
         self.save_algorithm_settings.setObjectName(u"save_algorithm_settings")
         sizePolicy1.setHeightForWidth(self.save_algorithm_settings.sizePolicy().hasHeightForWidth())
         self.save_algorithm_settings.setSizePolicy(sizePolicy1)
-        self.save_algorithm_settings.setMinimumSize(QSize(200, 44))
-        self.save_algorithm_settings.setMaximumSize(QSize(200, 44))
+        self.save_algorithm_settings.setMinimumSize(QSize(100, 40))
+        self.save_algorithm_settings.setMaximumSize(QSize(100, 40))
         self.save_algorithm_settings.setFont(font)
         self.save_algorithm_settings.setCursor(QCursor(Qt.PointingHandCursor))
+        self.save_algorithm_settings.setStyleSheet(u"#save_algorithm_settings\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
+"	color: rgba(255, 255, 255, 210);\n"
+"	border-radius: 20px;\n"
+"	min-width: 100;\n"
+"	max-width: 100;\n"
+"	min-height: 40;\n"
+"	max-height: 40;\n"
+"	font-size: 14px;\n"
+"	font-weight: bold;\n"
+"}\n"
+"\n"
+"#save_algorithm_settings:hover\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
+"}\n"
+"\n"
+"#save_algorithm_settings:pressed\n"
+"{\n"
+"	padding-left: 5px;\n"
+"	padding-top: 5px;\n"
+"}\n"
+"")
+        self.save_algorithm_settings.setIcon(icon16)
 
-        self.horizontalLayout_12.addWidget(self.save_algorithm_settings)
+        self.horizontalLayout_28.addWidget(self.save_algorithm_settings)
 
-        self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.cancel_algorithm_settings = QPushButton(self.algorithm_tab)
+        self.cancel_algorithm_settings.setObjectName(u"cancel_algorithm_settings")
+        self.cancel_algorithm_settings.setCursor(QCursor(Qt.PointingHandCursor))
+        self.cancel_algorithm_settings.setStyleSheet(u"#cancel_algorithm_settings\n"
+"{\n"
+"	border: 2px solid  rgba(46, 76, 153, 255);\n"
+"	color:  rgba(46, 76, 153, 255);\n"
+"	border-radius: 18px;\n"
+"	min-width: 100;\n"
+"	max-width: 100;\n"
+"	min-height: 36;\n"
+"	max-height: 36;\n"
+"	font-size: 14px;\n"
+"	font-weight: bold;\n"
+"	qproperty-icon: url(:/icons/icons/cancel_icon.png);\n"
+"}\n"
+"\n"
+"#cancel_algorithm_settings:hover\n"
+"{\n"
+"	border: 2px solid rgba(76, 126, 255, 255);\n"
+"	color:  rgba(76, 126, 255, 255);\n"
+"	qproperty-icon: url(:/icons/icons/cancel_hover.png);\n"
+"}\n"
+"\n"
+"#cancel_algorithm_settings:pressed\n"
+"{\n"
+"	padding-left: 5px;\n"
+"	padding-top: 5px;\n"
+"}\n"
+"")
+        self.cancel_algorithm_settings.setIcon(icon17)
 
-        self.horizontalLayout_12.addItem(self.horizontalSpacer_6)
+        self.horizontalLayout_28.addWidget(self.cancel_algorithm_settings)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Preferred, QSizePolicy.Minimum)
+
+        self.horizontalLayout_28.addItem(self.horizontalSpacer_2)
+
+        self.reset_algorithm_settings = QPushButton(self.algorithm_tab)
+        self.reset_algorithm_settings.setObjectName(u"reset_algorithm_settings")
+        self.reset_algorithm_settings.setCursor(QCursor(Qt.PointingHandCursor))
+        self.reset_algorithm_settings.setStyleSheet(u"#reset_algorithm_settings\n"
+"{\n"
+"	background-color: transparent;\n"
+"	color:  rgba(46, 76, 153, 255);\n"
+"	border-radius: 20px;\n"
+"	min-width: 80;\n"
+"	max-width: 80;\n"
+"	min-height: 40;\n"
+"	max-height: 40;\n"
+"	font-size: 14px;\n"
+"	font-weight: bold;\n"
+"	text-align: left;\n"
+"}\n"
+"\n"
+"#reset_algorithm_settings:hover\n"
+"{\n"
+"	color:  rgba(76, 126, 255, 255);\n"
+"	qproperty-icon: url(:/icons/icons/reset_hover.png);\n"
+"}\n"
+"\n"
+"#reset_algorithm_settings:pressed\n"
+"{\n"
+"	padding-left: 5px;\n"
+"	padding-top: 5px;\n"
+"}\n"
+"")
+        self.reset_algorithm_settings.setIcon(icon18)
+
+        self.horizontalLayout_28.addWidget(self.reset_algorithm_settings)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_28.addItem(self.horizontalSpacer_3)
 
 
-        self.verticalLayout_4.addLayout(self.horizontalLayout_12)
+        self.verticalLayout_4.addLayout(self.horizontalLayout_28)
 
         self.settings_tabs.addTab(self.algorithm_tab, "")
 
@@ -1670,16 +1803,16 @@ class Ui_MainWindow(object):
 
         self.userpage_password_eye = QPushButton(self.register_info_frame)
         self.userpage_password_eye.setObjectName(u"userpage_password_eye")
-        sizePolicy6 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
-        sizePolicy6.setHorizontalStretch(0)
-        sizePolicy6.setVerticalStretch(0)
-        sizePolicy6.setHeightForWidth(self.userpage_password_eye.sizePolicy().hasHeightForWidth())
-        self.userpage_password_eye.setSizePolicy(sizePolicy6)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.userpage_password_eye.sizePolicy().hasHeightForWidth())
+        self.userpage_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
         self.userpage_password_eye.setStyleSheet(u"")
-        icon16 = QIcon()
-        icon16.addFile(u":/icons/icons/black_eye.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.userpage_password_eye.setIcon(icon16)
+        icon19 = QIcon()
+        icon19.addFile(u":/icons/icons/black_eye.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.userpage_password_eye.setIcon(icon19)
 
         self.horizontalLayout_21.addWidget(self.userpage_password_eye)
 
@@ -1708,11 +1841,11 @@ class Ui_MainWindow(object):
 
         self.userpage_confirm_password_eye = QPushButton(self.register_info_frame)
         self.userpage_confirm_password_eye.setObjectName(u"userpage_confirm_password_eye")
-        sizePolicy6.setHeightForWidth(self.userpage_confirm_password_eye.sizePolicy().hasHeightForWidth())
-        self.userpage_confirm_password_eye.setSizePolicy(sizePolicy6)
+        sizePolicy5.setHeightForWidth(self.userpage_confirm_password_eye.sizePolicy().hasHeightForWidth())
+        self.userpage_confirm_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_confirm_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
         self.userpage_confirm_password_eye.setStyleSheet(u"")
-        self.userpage_confirm_password_eye.setIcon(icon16)
+        self.userpage_confirm_password_eye.setIcon(icon19)
 
         self.horizontalLayout_22.addWidget(self.userpage_confirm_password_eye)
 
@@ -1741,21 +1874,47 @@ class Ui_MainWindow(object):
         self.register_user = QPushButton(self.register_info_frame)
         self.register_user.setObjectName(u"register_user")
         self.register_user.setCursor(QCursor(Qt.PointingHandCursor))
-        self.register_user.setStyleSheet(u"")
-        icon17 = QIcon()
-        icon17.addFile(u":/assets/Assets/icons/icons8-plus-white-50.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.register_user.setIcon(icon17)
+        self.register_user.setStyleSheet(u"#register_user\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
+"	color: rgba(255, 255, 255, 210);\n"
+"	border-radius: 22px;\n"
+"	min-width: 200;\n"
+"	max-width: 200;\n"
+"	min-height: 44;\n"
+"	max-height: 44;\n"
+"	font-size: 14px;\n"
+"	font-weight: bold;\n"
+"}\n"
+"\n"
+"#register_user:hover\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
+"}\n"
+"\n"
+"#register_user:pressed\n"
+"{\n"
+"	padding-left: 5px;\n"
+"	padding-top: 5px;\n"
+"}\n"
+"")
+        icon20 = QIcon()
+        icon20.addFile(u":/assets/Assets/icons/icons8-plus-white-50.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.register_user.setIcon(icon20)
 
         self.verticalLayout_30.addWidget(self.register_user, 0, Qt.AlignHCenter)
 
         self.register_message_scrollArea = QScrollArea(self.register_info_frame)
         self.register_message_scrollArea.setObjectName(u"register_message_scrollArea")
-        sizePolicy5.setHeightForWidth(self.register_message_scrollArea.sizePolicy().hasHeightForWidth())
-        self.register_message_scrollArea.setSizePolicy(sizePolicy5)
+        sizePolicy6 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy6.setHorizontalStretch(0)
+        sizePolicy6.setVerticalStretch(0)
+        sizePolicy6.setHeightForWidth(self.register_message_scrollArea.sizePolicy().hasHeightForWidth())
+        self.register_message_scrollArea.setSizePolicy(sizePolicy6)
         self.register_message_scrollArea.setWidgetResizable(True)
         self.register_message_frame = QWidget()
         self.register_message_frame.setObjectName(u"register_message_frame")
-        self.register_message_frame.setGeometry(QRect(0, 0, 100, 30))
+        self.register_message_frame.setGeometry(QRect(0, 0, 934, 200))
         sizePolicy3.setHeightForWidth(self.register_message_frame.sizePolicy().hasHeightForWidth())
         self.register_message_frame.setSizePolicy(sizePolicy3)
         self.verticalLayout_55 = QVBoxLayout(self.register_message_frame)
@@ -1838,10 +1997,33 @@ class Ui_MainWindow(object):
 
         self.userpage_editprofile_change_username_btn = QPushButton(self.profile_change_username_frame)
         self.userpage_editprofile_change_username_btn.setObjectName(u"userpage_editprofile_change_username_btn")
-        self.userpage_editprofile_change_username_btn.setMinimumSize(QSize(150, 30))
-        self.userpage_editprofile_change_username_btn.setMaximumSize(QSize(150, 30))
+        self.userpage_editprofile_change_username_btn.setMinimumSize(QSize(150, 40))
+        self.userpage_editprofile_change_username_btn.setMaximumSize(QSize(150, 40))
         self.userpage_editprofile_change_username_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.userpage_editprofile_change_username_btn.setStyleSheet(u"")
+        self.userpage_editprofile_change_username_btn.setStyleSheet(u"#userpage_editprofile_change_username_btn\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
+"	color: rgba(255, 255, 255, 210);\n"
+"	border-radius: 20px;\n"
+"	min-width: 150;\n"
+"	max-width: 150;\n"
+"	min-height:40;\n"
+"	max-height: 40;\n"
+"	font-size: 14px;\n"
+"	font-weight: bold;\n"
+"}\n"
+"\n"
+"#userpage_editprofile_change_username_btn:hover\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
+"}\n"
+"\n"
+"#userpage_editprofile_change_username_btn:pressed\n"
+"{\n"
+"	padding-left: 5px;\n"
+"	padding-top: 5px;\n"
+"}\n"
+"")
 
         self.verticalLayout_54.addWidget(self.userpage_editprofile_change_username_btn, 0, Qt.AlignHCenter)
 
@@ -1850,7 +2032,7 @@ class Ui_MainWindow(object):
         self.change_username_message_scrollArea.setWidgetResizable(True)
         self.change_username_message_frame = QWidget()
         self.change_username_message_frame.setObjectName(u"change_username_message_frame")
-        self.change_username_message_frame.setGeometry(QRect(0, 0, 100, 30))
+        self.change_username_message_frame.setGeometry(QRect(0, 0, 441, 327))
         self.change_username_message_scrollArea.setWidget(self.change_username_message_frame)
 
         self.verticalLayout_54.addWidget(self.change_username_message_scrollArea)
@@ -1906,11 +2088,11 @@ class Ui_MainWindow(object):
 
         self.userpage_editprofile_old_password_eye = QPushButton(self.profile_change_password_frame)
         self.userpage_editprofile_old_password_eye.setObjectName(u"userpage_editprofile_old_password_eye")
-        sizePolicy6.setHeightForWidth(self.userpage_editprofile_old_password_eye.sizePolicy().hasHeightForWidth())
-        self.userpage_editprofile_old_password_eye.setSizePolicy(sizePolicy6)
+        sizePolicy5.setHeightForWidth(self.userpage_editprofile_old_password_eye.sizePolicy().hasHeightForWidth())
+        self.userpage_editprofile_old_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_editprofile_old_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
         self.userpage_editprofile_old_password_eye.setStyleSheet(u"")
-        self.userpage_editprofile_old_password_eye.setIcon(icon16)
+        self.userpage_editprofile_old_password_eye.setIcon(icon19)
 
         self.horizontalLayout_17.addWidget(self.userpage_editprofile_old_password_eye)
 
@@ -1939,10 +2121,10 @@ class Ui_MainWindow(object):
 
         self.userpage_editprofile_new_password_eye = QPushButton(self.profile_change_password_frame)
         self.userpage_editprofile_new_password_eye.setObjectName(u"userpage_editprofile_new_password_eye")
-        sizePolicy6.setHeightForWidth(self.userpage_editprofile_new_password_eye.sizePolicy().hasHeightForWidth())
-        self.userpage_editprofile_new_password_eye.setSizePolicy(sizePolicy6)
+        sizePolicy5.setHeightForWidth(self.userpage_editprofile_new_password_eye.sizePolicy().hasHeightForWidth())
+        self.userpage_editprofile_new_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_editprofile_new_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
-        self.userpage_editprofile_new_password_eye.setIcon(icon16)
+        self.userpage_editprofile_new_password_eye.setIcon(icon19)
 
         self.horizontalLayout_18.addWidget(self.userpage_editprofile_new_password_eye)
 
@@ -1970,10 +2152,10 @@ class Ui_MainWindow(object):
 
         self.userpage_editprofile_confirm_new_password_eye = QPushButton(self.profile_change_password_frame)
         self.userpage_editprofile_confirm_new_password_eye.setObjectName(u"userpage_editprofile_confirm_new_password_eye")
-        sizePolicy6.setHeightForWidth(self.userpage_editprofile_confirm_new_password_eye.sizePolicy().hasHeightForWidth())
-        self.userpage_editprofile_confirm_new_password_eye.setSizePolicy(sizePolicy6)
+        sizePolicy5.setHeightForWidth(self.userpage_editprofile_confirm_new_password_eye.sizePolicy().hasHeightForWidth())
+        self.userpage_editprofile_confirm_new_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_editprofile_confirm_new_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
-        self.userpage_editprofile_confirm_new_password_eye.setIcon(icon16)
+        self.userpage_editprofile_confirm_new_password_eye.setIcon(icon19)
 
         self.horizontalLayout_19.addWidget(self.userpage_editprofile_confirm_new_password_eye)
 
@@ -1985,9 +2167,32 @@ class Ui_MainWindow(object):
 
         self.userpage_editprofile_change_password_btn = QPushButton(self.profile_change_password_frame)
         self.userpage_editprofile_change_password_btn.setObjectName(u"userpage_editprofile_change_password_btn")
-        self.userpage_editprofile_change_password_btn.setMaximumSize(QSize(120, 30))
+        self.userpage_editprofile_change_password_btn.setMaximumSize(QSize(150, 40))
         self.userpage_editprofile_change_password_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.userpage_editprofile_change_password_btn.setStyleSheet(u"max-width: 120px;")
+        self.userpage_editprofile_change_password_btn.setStyleSheet(u"#userpage_editprofile_change_password_btn\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
+"	color: rgba(255, 255, 255, 210);\n"
+"	border-radius: 20px;\n"
+"	min-width: 150;\n"
+"	max-width: 150;\n"
+"	min-height:40;\n"
+"	max-height: 40;\n"
+"	font-size: 14px;\n"
+"	font-weight: bold;\n"
+"}\n"
+"\n"
+"#userpage_editprofile_change_password_btn:hover\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
+"}\n"
+"\n"
+"#userpage_editprofile_change_password_btn:pressed\n"
+"{\n"
+"	padding-left: 5px;\n"
+"	padding-top: 5px;\n"
+"}\n"
+"")
 
         self.verticalLayout_51.addWidget(self.userpage_editprofile_change_password_btn, 0, Qt.AlignHCenter)
 
@@ -1996,7 +2201,7 @@ class Ui_MainWindow(object):
         self.change_password_message_scrollArea.setWidgetResizable(True)
         self.change_password_message_frame = QWidget()
         self.change_password_message_frame.setObjectName(u"change_password_message_frame")
-        self.change_password_message_frame.setGeometry(QRect(0, 0, 100, 30))
+        self.change_password_message_frame.setGeometry(QRect(0, 0, 441, 239))
         self.change_password_message_scrollArea.setWidget(self.change_password_message_frame)
 
         self.verticalLayout_51.addWidget(self.change_password_message_scrollArea)
@@ -2116,7 +2321,9 @@ class Ui_MainWindow(object):
         self.camera_settings_exposure_label.setText(QCoreApplication.translate("MainWindow", u"Exposure", None))
         self.camera_settings_offsetx_label.setText(QCoreApplication.translate("MainWindow", u"Offset X", None))
         self.camera_settings_offsety_label.setText(QCoreApplication.translate("MainWindow", u"Offset Y", None))
-        self.save_camera_settings.setText(QCoreApplication.translate("MainWindow", u"Save Prameters", None))
+        self.save_camera_settings.setText(QCoreApplication.translate("MainWindow", u"Save", None))
+        self.cancel_camera_settings.setText(QCoreApplication.translate("MainWindow", u"Cancel", None))
+        self.reset_camera_settings.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
         self.settings_tabs.setTabText(self.settings_tabs.indexOf(self.camera_tab), QCoreApplication.translate("MainWindow", u"Camera", None))
         self.step1_btn.setText(QCoreApplication.translate("MainWindow", u"1", None))
         self.step2_btn.setText(QCoreApplication.translate("MainWindow", u"2", None))
@@ -2129,7 +2336,9 @@ class Ui_MainWindow(object):
         self.thresh_error_label.setText(QCoreApplication.translate("MainWindow", u"Thresh Error", None))
         self.step3_label.setText(QCoreApplication.translate("MainWindow", u"Step 3", None))
         self.label_72.setText(QCoreApplication.translate("MainWindow", u"Min Width", None))
-        self.save_algorithm_settings.setText(QCoreApplication.translate("MainWindow", u"Save Prameters", None))
+        self.save_algorithm_settings.setText(QCoreApplication.translate("MainWindow", u"Save", None))
+        self.cancel_algorithm_settings.setText(QCoreApplication.translate("MainWindow", u"Cancel", None))
+        self.reset_algorithm_settings.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
         self.settings_tabs.setTabText(self.settings_tabs.indexOf(self.algorithm_tab), QCoreApplication.translate("MainWindow", u"Algorithm", None))
         self.register_username_label.setText(QCoreApplication.translate("MainWindow", u"Username", None))
         self.register_password_label.setText(QCoreApplication.translate("MainWindow", u"Password", None))

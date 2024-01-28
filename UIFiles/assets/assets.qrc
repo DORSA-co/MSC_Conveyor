@@ -1,5 +1,10 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/reset_hover.png</file>
+    <file>icons/reset_icon.png</file>
+    <file>icons/save_icon.png</file>
+    <file>icons/cancel_hover.png</file>
+    <file>icons/cancel_icon.png</file>
     <file>icons/close_gray.png</file>
     <file>icons/delete_white.png</file>
     <file>icons/clear_filter_white.png</file>
