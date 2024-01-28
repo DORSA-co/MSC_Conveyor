@@ -40,6 +40,9 @@ class idList:
     def values(self,):
         return self.main_list
     
+    def ids(self,):
+        return self.ids_list
+    
     def __getitem__(self, idx):
         return self.main_list[idx]
     

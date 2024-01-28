@@ -15,9 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QDateEdit, QDoubleSpinBox, QFrame,
-    QHBoxLayout, QLabel, QPushButton, QSizePolicy,
-    QSpacerItem, QStackedWidget, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QDateEdit, QDoubleSpinBox,
+    QFrame, QHBoxLayout, QLabel, QPushButton,
+    QSizePolicy, QSpacerItem, QStackedWidget, QVBoxLayout,
+    QWidget)
 import assets_rc
 
 class Ui_slider(object):
@@ -140,6 +141,43 @@ class Ui_slider(object):
 "\n"
 "/************************************************************/\n"
 "\n"
+"QCheckBox {\n"
+"    spacing: 0px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 12px;\n"
+"    height: 12px;\n"
+"}\n"
+"\n"
+"/* Unchecked State */\n"
+"QCheckBox::indicator:unchecked {\n"
+"    border: 2px solid #E0E4EC;\n"
+"    background-color: white;\n"
+"}\n"
+"\n"
+"/* Checked State */\n"
+"QCheckBox::indicator:checked {\n"
+"    border: 2px solid #7892DF;\n"
+"    background-color: #7892DF;\n"
+"    image: url(:/icons/icons/tick.png)  /* Path to your check mark icon */\n"
+"}\n"
+"\n"
+"/* Hover State */\n"
+"QCheckBox::indicator:hover {\n"
+"    border: 2px solid rgba(194,"
+                        " 197, 204, 255);\n"
+"}\n"
+"\n"
+"/* Disabled State */\n"
+"QCheckBox::indicator:disabled {\n"
+"    border: 2px solid #E0E4EC;\n"
+"    background-color: #F6F6F6;\n"
+"}\n"
+"\n"
+"\n"
+"/************************************************************/\n"
+"\n"
 "#frame{\n"
 "	background-color: #F7F8FA;\n"
 "}\n"
@@ -170,8 +208,7 @@ class Ui_slider(object):
 "#filters_frame .QFrame{\n"
 "	border:1px solid #E0E4EC;\n"
 "	border-radius: 20px;\n"
-"	min-height: 120p"
-                        "x;\n"
+"	min-height: 120px;\n"
 "	max-height: 120px;\n"
 "}\n"
 "\n"
@@ -185,7 +222,8 @@ class Ui_slider(object):
 "\n"
 "#filters_apply_btn\n"
 "{\n"
-"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
+"	back"
+                        "ground-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
 "	color: rgba(255, 255, 255, 210);\n"
 "	border-radius: 22px;\n"
 "	min-width: 200;\n"
@@ -391,13 +429,21 @@ class Ui_slider(object):
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.verticalLayout_8.setContentsMargins(-1, 0, -1, -1)
         self.horizontalLayout_9 = QHBoxLayout()
+        self.horizontalLayout_9.setSpacing(6)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.date_icon = QPushButton(self.date_frame)
-        self.date_icon.setObjectName(u"date_icon")
-        self.date_icon.setEnabled(True)
+        self.filter_date_checkBox = QCheckBox(self.date_frame)
+        self.filter_date_checkBox.setObjectName(u"filter_date_checkBox")
         sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.filter_date_checkBox.sizePolicy().hasHeightForWidth())
+        self.filter_date_checkBox.setSizePolicy(sizePolicy1)
+
+        self.horizontalLayout_9.addWidget(self.filter_date_checkBox)
+
+        self.date_icon = QPushButton(self.date_frame)
+        self.date_icon.setObjectName(u"date_icon")
+        self.date_icon.setEnabled(True)
         sizePolicy1.setHeightForWidth(self.date_icon.sizePolicy().hasHeightForWidth())
         self.date_icon.setSizePolicy(sizePolicy1)
         icon1 = QIcon()
@@ -459,6 +505,13 @@ class Ui_slider(object):
         self.verticalLayout_5.setContentsMargins(-1, 0, -1, -1)
         self.horizontalLayout_8 = QHBoxLayout()
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.filter_width_checkBox = QCheckBox(self.width_frame)
+        self.filter_width_checkBox.setObjectName(u"filter_width_checkBox")
+        sizePolicy1.setHeightForWidth(self.filter_width_checkBox.sizePolicy().hasHeightForWidth())
+        self.filter_width_checkBox.setSizePolicy(sizePolicy1)
+
+        self.horizontalLayout_8.addWidget(self.filter_width_checkBox)
+
         self.width_icon = QPushButton(self.width_frame)
         self.width_icon.setObjectName(u"width_icon")
         self.width_icon.setEnabled(True)
@@ -520,6 +573,13 @@ class Ui_slider(object):
         self.verticalLayout_6.setContentsMargins(-1, 0, -1, -1)
         self.horizontalLayout_7 = QHBoxLayout()
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.filter_lenght_checkBox = QCheckBox(self.height_frame)
+        self.filter_lenght_checkBox.setObjectName(u"filter_lenght_checkBox")
+        sizePolicy1.setHeightForWidth(self.filter_lenght_checkBox.sizePolicy().hasHeightForWidth())
+        self.filter_lenght_checkBox.setSizePolicy(sizePolicy1)
+
+        self.horizontalLayout_7.addWidget(self.filter_lenght_checkBox)
+
         self.height_icon = QPushButton(self.height_frame)
         self.height_icon.setObjectName(u"height_icon")
         self.height_icon.setEnabled(True)
@@ -547,11 +607,11 @@ class Ui_slider(object):
         self.horizontalLayout_12.setSpacing(15)
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
         self.horizontalLayout_12.setContentsMargins(12, -1, 12, -1)
-        self.low_height_input = QDoubleSpinBox(self.height_frame)
-        self.low_height_input.setObjectName(u"low_height_input")
-        self.low_height_input.setAlignment(Qt.AlignCenter)
+        self.low_lenght_input = QDoubleSpinBox(self.height_frame)
+        self.low_lenght_input.setObjectName(u"low_lenght_input")
+        self.low_lenght_input.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_12.addWidget(self.low_height_input)
+        self.horizontalLayout_12.addWidget(self.low_lenght_input)
 
         self.label_4 = QLabel(self.height_frame)
         self.label_4.setObjectName(u"label_4")
@@ -560,11 +620,11 @@ class Ui_slider(object):
 
         self.horizontalLayout_12.addWidget(self.label_4)
 
-        self.high_height_input = QDoubleSpinBox(self.height_frame)
-        self.high_height_input.setObjectName(u"high_height_input")
-        self.high_height_input.setAlignment(Qt.AlignCenter)
+        self.high_lenght_input = QDoubleSpinBox(self.height_frame)
+        self.high_lenght_input.setObjectName(u"high_lenght_input")
+        self.high_lenght_input.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_12.addWidget(self.high_height_input)
+        self.horizontalLayout_12.addWidget(self.high_lenght_input)
 
 
         self.verticalLayout_6.addLayout(self.horizontalLayout_12)
@@ -581,6 +641,13 @@ class Ui_slider(object):
         self.verticalLayout_7.setContentsMargins(-1, 0, -1, -1)
         self.horizontalLayout_6 = QHBoxLayout()
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.filter_depth_checkBox = QCheckBox(self.depth_frame)
+        self.filter_depth_checkBox.setObjectName(u"filter_depth_checkBox")
+        sizePolicy1.setHeightForWidth(self.filter_depth_checkBox.sizePolicy().hasHeightForWidth())
+        self.filter_depth_checkBox.setSizePolicy(sizePolicy1)
+
+        self.horizontalLayout_6.addWidget(self.filter_depth_checkBox)
+
         self.depth_icon = QPushButton(self.depth_frame)
         self.depth_icon.setObjectName(u"depth_icon")
         self.depth_icon.setEnabled(True)
@@ -681,17 +748,21 @@ class Ui_slider(object):
         self.database_status_title.setText(QCoreApplication.translate("slider", u"Database Connection", None))
         self.database_staus.setText("")
         self.filter_by_label.setText(QCoreApplication.translate("slider", u"Filter By", None))
+        self.filter_date_checkBox.setText("")
         self.date_icon.setText("")
         self.date_label.setText(QCoreApplication.translate("slider", u"Date", None))
         self.label_2.setText(QCoreApplication.translate("slider", u"To", None))
+        self.filter_width_checkBox.setText("")
         self.width_icon.setText("")
-        self.width_label.setText(QCoreApplication.translate("slider", u"Width", None))
+        self.width_label.setText(QCoreApplication.translate("slider", u"Width (cm)", None))
         self.label_3.setText(QCoreApplication.translate("slider", u"To", None))
+        self.filter_lenght_checkBox.setText("")
         self.height_icon.setText("")
-        self.height_label.setText(QCoreApplication.translate("slider", u"Height", None))
+        self.height_label.setText(QCoreApplication.translate("slider", u"Lenght (m)", None))
         self.label_4.setText(QCoreApplication.translate("slider", u"To", None))
+        self.filter_depth_checkBox.setText("")
         self.depth_icon.setText("")
-        self.depth_label.setText(QCoreApplication.translate("slider", u"Depth", None))
+        self.depth_label.setText(QCoreApplication.translate("slider", u"Depth (mm)", None))
         self.label_5.setText(QCoreApplication.translate("slider", u"To", None))
         self.filters_apply_btn.setText(QCoreApplication.translate("slider", u"Apply", None))
     # retranslateUi

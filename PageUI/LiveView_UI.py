@@ -186,7 +186,16 @@ class LiveView_UI(Common_Function_UI):
             self.pop_notification(notif)
     
     
-        
+    def filter_notifications(self, filtered_ids):
+        notif:defectNotification
+        for _id in self.notifications.ids():
+            _,notif = self.notifications.get_by_id(_id)
+            if _id in filtered_ids:
+                notif.setMaximumHeight(10000)
+            else:
+                notif.setMaximumHeight(0)
+
+    
 
     def show_defect_info(self, info:dict):
         for key, value in info.items():
@@ -226,14 +235,14 @@ class sliderMenu:
         self.filters = {
             'date': (self.ui.start_date_input, self.ui.end_date_input),
             'width': (self.ui.low_width_input, self.ui.high_width_input),
-            'height': (self.ui.low_height_input, self.ui.high_height_input),
+            'lenght': (self.ui.low_lenght_input, self.ui.high_lenght_input),
             'depth': (self.ui.low_depth_input, self.ui.high_depth_input),
         }
 
         self.filters_activation = {
             'date': self.ui.filter_date_checkBox,
             'width': self.ui.filter_width_checkBox,
-            'height': self.ui.filter_height_checkBox,
+            'lenght': self.ui.filter_lenght_checkBox,
             'depth': self.ui.filter_depth_checkBox,
         }
         GUIBackend.button_connector(self.ui.close, self.slide_out)
