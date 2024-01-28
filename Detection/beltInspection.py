@@ -86,7 +86,12 @@ class beltInspection:
 
         t = time.time()
         # blure_image = cv2.blur(image, ksize=(3, 3))
+        #--------------------------------------
+        print(self.Encoder.line_idx)
+        self.DefectTracker.check_defect_passed(line_idx=self.Encoder.line_idx, 
+                                               img_width=image.shape[1])
         self.res_image = self.DefectTracker.draw(image.copy(), self.Encoder.line_idx)
+        
         # print('last draw: ', time.time() - t)
 
         # cv2.imshow('', res_image)

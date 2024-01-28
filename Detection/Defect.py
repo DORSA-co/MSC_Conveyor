@@ -115,6 +115,13 @@ class Defect:
             return True
         else:
             return False
+        
+    def is_present_in_image(self,line_idx, img_w):
+        x1 = line_idx - self.end_line_idx
+        if -img_w< x1 < img_w :
+            return True
+        return False
+    
 
     def is_part_of(self, start_idx, end_idx, max_distance=20):
         try:
@@ -200,3 +207,14 @@ class Defect:
             if intersect_x2> intersect_x1:
                 return True
         return False
+
+
+    def get_info_for_filter(self,):
+        res = {
+            'width': (self.widthInfo.min, self.widthInfo.max),
+            'depth': (self.depthInfo.min, self.depthInfo.max),
+            'lenght': self.lenght,
+            'date': self.jdatetime.date(),
+        }
+
+        return res

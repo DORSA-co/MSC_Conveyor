@@ -2264,7 +2264,7 @@ class Ui_MainWindow(object):
         self.notif_filter_expanding_btn.clicked.connect(self.notif_filter_btn.click)
 
         self.main_stackedWidget.setCurrentIndex(1)
-        self.settings_tabs.setCurrentIndex(0)
+        self.settings_tabs.setCurrentIndex(1)
         self.algorithm_stackedWidget.setCurrentIndex(0)
         self.user_tabs.setCurrentIndex(0)
 
