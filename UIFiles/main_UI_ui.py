@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1214, 767)
+        MainWindow.resize(1241, 787)
         self.StyleSheet = QWidget(MainWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
         self.StyleSheet.setEnabled(True)
@@ -750,7 +750,7 @@ class Ui_MainWindow(object):
         self.defects_notifications_scrollArea.setWidgetResizable(True)
         self.defects_notifications_widget = QWidget()
         self.defects_notifications_widget.setObjectName(u"defects_notifications_widget")
-        self.defects_notifications_widget.setGeometry(QRect(0, 0, 100, 30))
+        self.defects_notifications_widget.setGeometry(QRect(0, 0, 330, 16))
         self.defects_notifications_widget.setStyleSheet(u"#defects_notifications_widget{\n"
 "	border:None;\n"
 "	border-top: 2px solid gray;\n"
@@ -995,7 +995,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_24 = QVBoxLayout(self.camera_settings_frame)
         self.verticalLayout_24.setSpacing(12)
         self.verticalLayout_24.setObjectName(u"verticalLayout_24")
-        self.verticalLayout_24.setContentsMargins(20, 11, 20, 20)
+        self.verticalLayout_24.setContentsMargins(20, 11, 20, 9)
         self.horizontalLayout_8 = QHBoxLayout()
         self.horizontalLayout_8.setSpacing(10)
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
@@ -1194,6 +1194,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_26.setContentsMargins(-1, 0, 0, -1)
         self.save_camera_settings = QPushButton(self.camera_settings_frame)
         self.save_camera_settings.setObjectName(u"save_camera_settings")
+        self.save_camera_settings.setEnabled(True)
         sizePolicy1.setHeightForWidth(self.save_camera_settings.sizePolicy().hasHeightForWidth())
         self.save_camera_settings.setSizePolicy(sizePolicy1)
         self.save_camera_settings.setFont(font)
@@ -1211,6 +1212,12 @@ class Ui_MainWindow(object):
 "	font-weight: bold;\n"
 "}\n"
 "\n"
+"#save_camera_settings:disabled\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(189, 189, 191, 255), stop:1 rgba(189, 189, 191, 255));\n"
+"	color: rgba(120, 120, 120, 255);\n"
+"}\n"
+"\n"
 "#save_camera_settings:hover\n"
 "{\n"
 "	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
@@ -1224,12 +1231,14 @@ class Ui_MainWindow(object):
 "")
         icon16 = QIcon()
         icon16.addFile(u":/icons/icons/save_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon16.addFile(u":/icons/icons/save_disable.png", QSize(), QIcon.Disabled, QIcon.Off)
         self.save_camera_settings.setIcon(icon16)
 
         self.horizontalLayout_26.addWidget(self.save_camera_settings)
 
         self.cancel_camera_settings = QPushButton(self.camera_settings_frame)
         self.cancel_camera_settings.setObjectName(u"cancel_camera_settings")
+        self.cancel_camera_settings.setEnabled(True)
         self.cancel_camera_settings.setCursor(QCursor(Qt.PointingHandCursor))
         self.cancel_camera_settings.setStyleSheet(u"#cancel_camera_settings\n"
 "{\n"
@@ -1243,6 +1252,12 @@ class Ui_MainWindow(object):
 "	font-size: 14px;\n"
 "	font-weight: bold;\n"
 "	qproperty-icon: url(:/icons/icons/cancel_icon.png);\n"
+"}\n"
+"\n"
+"#cancel_camera_settings:disabled\n"
+"{\n"
+"	border: 2px solid rgba(189, 189, 191, 255);\n"
+"	color: rgba(120, 120, 120, 255);\n"
 "}\n"
 "\n"
 "#cancel_camera_settings:hover\n"
@@ -1270,6 +1285,7 @@ class Ui_MainWindow(object):
 
         self.reset_camera_settings = QPushButton(self.camera_settings_frame)
         self.reset_camera_settings.setObjectName(u"reset_camera_settings")
+        self.reset_camera_settings.setEnabled(True)
         self.reset_camera_settings.setCursor(QCursor(Qt.PointingHandCursor))
         self.reset_camera_settings.setLayoutDirection(Qt.LeftToRight)
         self.reset_camera_settings.setStyleSheet(u"#reset_camera_settings\n"
@@ -1285,6 +1301,11 @@ class Ui_MainWindow(object):
 "	font-weight: bold;\n"
 "	text-align: right;\n"
 "	qproperty-icon: url(:/icons/icons/reset_icon.png);\n"
+"}\n"
+"\n"
+"#reset_camera_settings:disabled\n"
+"{\n"
+"	color:  rgba(120, 120, 120, 255);\n"
 "}\n"
 "\n"
 "#reset_camera_settings:hover\n"
@@ -1307,6 +1328,29 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_24.addLayout(self.horizontalLayout_26)
+
+        self.horizontalLayout_27 = QHBoxLayout()
+        self.horizontalLayout_27.setObjectName(u"horizontalLayout_27")
+        self.horizontalLayout_27.setContentsMargins(-1, 0, -1, -1)
+        self.camera_settings_saved_gif = QLabel(self.camera_settings_frame)
+        self.camera_settings_saved_gif.setObjectName(u"camera_settings_saved_gif")
+        sizePolicy5 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.camera_settings_saved_gif.sizePolicy().hasHeightForWidth())
+        self.camera_settings_saved_gif.setSizePolicy(sizePolicy5)
+
+        self.horizontalLayout_27.addWidget(self.camera_settings_saved_gif)
+
+        self.camera_settings_saved_message = QLabel(self.camera_settings_frame)
+        self.camera_settings_saved_message.setObjectName(u"camera_settings_saved_message")
+        self.camera_settings_saved_message.setFont(font)
+        self.camera_settings_saved_message.setStyleSheet(u"color: rgb(120, 120, 120);")
+
+        self.horizontalLayout_27.addWidget(self.camera_settings_saved_message)
+
+
+        self.verticalLayout_24.addLayout(self.horizontalLayout_27)
 
 
         self.horizontalLayout_7.addWidget(self.camera_settings_frame)
@@ -1630,6 +1674,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_28.setContentsMargins(-1, 0, -1, -1)
         self.save_algorithm_settings = QPushButton(self.algorithm_tab)
         self.save_algorithm_settings.setObjectName(u"save_algorithm_settings")
+        self.save_algorithm_settings.setEnabled(True)
         sizePolicy1.setHeightForWidth(self.save_algorithm_settings.sizePolicy().hasHeightForWidth())
         self.save_algorithm_settings.setSizePolicy(sizePolicy1)
         self.save_algorithm_settings.setMinimumSize(QSize(100, 40))
@@ -1649,6 +1694,12 @@ class Ui_MainWindow(object):
 "	font-weight: bold;\n"
 "}\n"
 "\n"
+"#save_algorithm_settings:disabled\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(189, 189, 191, 255), stop:1 rgba(189, 189, 191, 255));\n"
+"	color: rgba(120, 120, 120, 255);\n"
+"}\n"
+"\n"
 "#save_algorithm_settings:hover\n"
 "{\n"
 "	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
@@ -1666,6 +1717,7 @@ class Ui_MainWindow(object):
 
         self.cancel_algorithm_settings = QPushButton(self.algorithm_tab)
         self.cancel_algorithm_settings.setObjectName(u"cancel_algorithm_settings")
+        self.cancel_algorithm_settings.setEnabled(True)
         self.cancel_algorithm_settings.setCursor(QCursor(Qt.PointingHandCursor))
         self.cancel_algorithm_settings.setStyleSheet(u"#cancel_algorithm_settings\n"
 "{\n"
@@ -1679,6 +1731,12 @@ class Ui_MainWindow(object):
 "	font-size: 14px;\n"
 "	font-weight: bold;\n"
 "	qproperty-icon: url(:/icons/icons/cancel_icon.png);\n"
+"}\n"
+"\n"
+"#cancel_algorithm_settings:disabled\n"
+"{\n"
+"	border: 2px solid rgba(189, 189, 191, 255);\n"
+"	color: rgba(120, 120, 120, 255);\n"
 "}\n"
 "\n"
 "#cancel_algorithm_settings:hover\n"
@@ -1704,6 +1762,7 @@ class Ui_MainWindow(object):
 
         self.reset_algorithm_settings = QPushButton(self.algorithm_tab)
         self.reset_algorithm_settings.setObjectName(u"reset_algorithm_settings")
+        self.reset_algorithm_settings.setEnabled(True)
         self.reset_algorithm_settings.setCursor(QCursor(Qt.PointingHandCursor))
         self.reset_algorithm_settings.setStyleSheet(u"#reset_algorithm_settings\n"
 "{\n"
@@ -1717,6 +1776,11 @@ class Ui_MainWindow(object):
 "	font-size: 14px;\n"
 "	font-weight: bold;\n"
 "	text-align: left;\n"
+"}\n"
+"\n"
+"#reset_algorithm_settings:disabled\n"
+"{\n"
+"	color:  rgba(120, 120, 120, 255);\n"
 "}\n"
 "\n"
 "#reset_algorithm_settings:hover\n"
@@ -1741,6 +1805,24 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_4.addLayout(self.horizontalLayout_28)
+
+        self.horizontalLayout_12 = QHBoxLayout()
+        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.horizontalLayout_12.setContentsMargins(-1, 0, -1, -1)
+        self.algorithm_settings_saved_gif = QLabel(self.algorithm_tab)
+        self.algorithm_settings_saved_gif.setObjectName(u"algorithm_settings_saved_gif")
+        sizePolicy5.setHeightForWidth(self.algorithm_settings_saved_gif.sizePolicy().hasHeightForWidth())
+        self.algorithm_settings_saved_gif.setSizePolicy(sizePolicy5)
+
+        self.horizontalLayout_12.addWidget(self.algorithm_settings_saved_gif)
+
+        self.algorithm_settings_saved_message = QLabel(self.algorithm_tab)
+        self.algorithm_settings_saved_message.setObjectName(u"algorithm_settings_saved_message")
+
+        self.horizontalLayout_12.addWidget(self.algorithm_settings_saved_message)
+
+
+        self.verticalLayout_4.addLayout(self.horizontalLayout_12)
 
         self.settings_tabs.addTab(self.algorithm_tab, "")
 
@@ -1803,9 +1885,6 @@ class Ui_MainWindow(object):
 
         self.userpage_password_eye = QPushButton(self.register_info_frame)
         self.userpage_password_eye.setObjectName(u"userpage_password_eye")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
         sizePolicy5.setHeightForWidth(self.userpage_password_eye.sizePolicy().hasHeightForWidth())
         self.userpage_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
@@ -2324,6 +2403,8 @@ class Ui_MainWindow(object):
         self.save_camera_settings.setText(QCoreApplication.translate("MainWindow", u"Save", None))
         self.cancel_camera_settings.setText(QCoreApplication.translate("MainWindow", u"Cancel", None))
         self.reset_camera_settings.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
+        self.camera_settings_saved_gif.setText("")
+        self.camera_settings_saved_message.setText("")
         self.settings_tabs.setTabText(self.settings_tabs.indexOf(self.camera_tab), QCoreApplication.translate("MainWindow", u"Camera", None))
         self.step1_btn.setText(QCoreApplication.translate("MainWindow", u"1", None))
         self.step2_btn.setText(QCoreApplication.translate("MainWindow", u"2", None))
@@ -2339,6 +2420,8 @@ class Ui_MainWindow(object):
         self.save_algorithm_settings.setText(QCoreApplication.translate("MainWindow", u"Save", None))
         self.cancel_algorithm_settings.setText(QCoreApplication.translate("MainWindow", u"Cancel", None))
         self.reset_algorithm_settings.setText(QCoreApplication.translate("MainWindow", u"Reset", None))
+        self.algorithm_settings_saved_gif.setText("")
+        self.algorithm_settings_saved_message.setText("")
         self.settings_tabs.setTabText(self.settings_tabs.indexOf(self.algorithm_tab), QCoreApplication.translate("MainWindow", u"Algorithm", None))
         self.register_username_label.setText(QCoreApplication.translate("MainWindow", u"Username", None))
         self.register_password_label.setText(QCoreApplication.translate("MainWindow", u"Password", None))
