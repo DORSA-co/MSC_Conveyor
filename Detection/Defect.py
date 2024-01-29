@@ -5,7 +5,7 @@ import time
 from persiantools.jdatetime import JalaliDate,JalaliDateTime
 import numpy as np
 
-from Constants.Constant import DecimalRound
+from Constants.Constant import DecimalRound, RefernceTime
 
 
 class numberStatics:
@@ -58,7 +58,7 @@ class Defect:
             depthes: np.ndarray,
             n_last_lines: int = 3
         ):
-        self.id = time.time()
+        self.id = int((time.time() - RefernceTime.REFERENCE_TIME)*(10000))
         self.widthInfo = numberStatics()
         self.depthInfo = numberStatics()
         self.jdatetime = JalaliDateTime.now()
@@ -229,8 +229,8 @@ class Defect:
         res = {}
         res['defect_id'] = self.id
 
-        res['date'] = self.jdatetime.strftime('%Y/%m/%d')
-        res['time'] = self.jdatetime.strftime('%H:%M:%S')
+        res['date'] = self.jdatetime.date()
+        res['time'] = self.jdatetime.time()
 
         res['x'] = self.start_line_idx
         res['y'] = self.defect_width_boundries[0]

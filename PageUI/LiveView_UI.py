@@ -190,7 +190,7 @@ class LiveView_UI(Common_Function_UI):
     
     def visible_notification(self, _id, state):
         notif:defectNotification
-        _,notif = self.notifications.get_by_id(_id)
+        notif = self.notifications.get_by_id(_id)
         if state:
             notif.setMaximumHeight(10000)
         else:

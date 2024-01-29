@@ -48,3 +48,11 @@ class DefectFileManager:
 
         with open(path, 'w') as f:
             json.dump(json_dict, f)
+
+    def remove(self, defect_id: str):
+        path = self.path_builder(defect_id)
+        if os.path.exists(path):
+            os.remove(path)
+
+        else:
+            print('DefectFileManager: Path does not exist')

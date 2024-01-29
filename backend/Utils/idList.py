@@ -28,7 +28,7 @@ class idList:
 
     def get_by_id(self, _id):
         idx = self.ids_list.index(_id)
-        return idx, self.main_list[idx]
+        return self.main_list[idx]
 
     def set_by_index(self, idx, value, _id):
         self.main_list[idx] = value

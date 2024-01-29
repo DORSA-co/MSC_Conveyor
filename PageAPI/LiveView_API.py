@@ -56,7 +56,7 @@ class LiveView_API:
 
     def notification_click(self, _id):
         defect:Defect
-        _,defect = self.beltInspection.find_defect(_id)
+        defect = self.beltInspection.find_defect(_id)
         info = defect.get_info()
 
         self.uiHandeler.show_defect_info(info)
@@ -69,7 +69,7 @@ class LiveView_API:
         ids = self.uiHandeler.notifications.ids()
         defect:Defect
         for _id in ids:
-            _,defect = self.beltInspection.find_defect(_id)
+            defect = self.beltInspection.find_defect(_id)
             if self.compareFilters.check_filter(defect.get_info_for_filter()):
                 self.uiHandeler.visible_notification(_id, True)
             else:

@@ -1,6 +1,5 @@
 
 from Database.databaseManager import databaseManager
-from Database.Report_DB import Report_DB
 from Database.Setting_DB import settingDB
 from Database.users_DB import usersDB
 from Database.Defects_DB import Defect_DB
@@ -19,7 +18,6 @@ class mainDatabase:
         self.dbManager = None
         self.__connect__()
 
-        self.Report_DB = Report_DB(self.dbManager)
         self.Setting_DB = settingDB(self.dbManager)
         self.Users_DB = usersDB(self.dbManager)
         self.Defects_DB = Defect_DB(self.dbManager)

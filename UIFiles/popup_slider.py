@@ -447,7 +447,7 @@ class Ui_slider(object):
         sizePolicy1.setHeightForWidth(self.date_icon.sizePolicy().hasHeightForWidth())
         self.date_icon.setSizePolicy(sizePolicy1)
         icon1 = QIcon()
-        icon1.addFile(u":/icons/icons/date.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(u":/icons/icons/date_gray.png", QSize(), QIcon.Normal, QIcon.Off)
         self.date_icon.setIcon(icon1)
         self.date_icon.setIconSize(QSize(25, 25))
 

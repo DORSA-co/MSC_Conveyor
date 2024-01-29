@@ -612,8 +612,8 @@ background-color:transparent;</string>
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset>
-                      <normaloff>:/icons/icons/date.png</normaloff>:/icons/icons/date.png</iconset>
+                     <iconset resource="assets/assets.qrc">
+                      <normaloff>:/icons/icons/date_gray.png</normaloff>:/icons/icons/date_gray.png</iconset>
                     </property>
                     <property name="iconSize">
                      <size>

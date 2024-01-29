@@ -20,6 +20,9 @@ class DemoImage:
 class DecimalRound:
     ROUND_DECIMAL = 3
 
+class RefernceTime:
+    REFERENCE_TIME = 1706536738.7368271
+
 class RefreshRates:
     MOUSE_MOVE = 0.01
 

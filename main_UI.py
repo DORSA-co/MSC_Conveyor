@@ -41,7 +41,7 @@ class mainUI(QMainWindow):
         uiStyler.render()
 
         self.Page_LiveView = LiveView_UI(self.ui)
-        # self.Page_Report = Report_UI(self.ui)
+        self.Page_Report = Report_UI(self.ui)
         # self.Page_AlgorithmCalibration = AlgorithmCalibration_UI(self.ui)
         self.Page_Setting = Setting_UI(self.ui)
         self.Page_Users = usersPageUI(self.ui)

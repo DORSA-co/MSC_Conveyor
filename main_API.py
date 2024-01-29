@@ -81,14 +81,17 @@ class main_API:
                                           self.db,
                                           self.beltIncpetcion)
         
+        self.API_Report = Report_API(self.uiHandeler.Page_Report,
+                                     self.db.Defects_DB)
         
-        
+
         self.uiHandeler.change_page_connector(self.page_change_event)
         self.API_Page_Users.set_login_event(self.login_user_event)
         
         self.pages_api_dict = {
             'settings': self.API_Page_Setting,
-            'users': self.API_Page_Users
+            'users': self.API_Page_Users,
+            'reports': self.API_Report,
         }
 
         self.login_user_event()
@@ -183,9 +186,6 @@ class main_API:
             print('Warning: camera {camera_name} is empty')
 
 
-
-
-    
     def check_camera_devices_event(self,):
         if not self.is_during_checking_device:
             t = time.time()
@@ -241,3 +241,10 @@ class main_API:
         info['main_path'] = self.DefectFileManager.main_path
         self.db.Defects_DB.save(info)
         threading.Thread(target=self.DefectFileManager.save, args=(defect,)).start()
+
+    def delete_defect(self, defect:dict):
+        defect_id = defect['defect_id']
+        self.beltIncpetcion.DefectTracker.completed_defects.remove_by_id(defect_id)
+        notif = self.API_Live_View.uiHandeler.notifications.get_by_id(defect_id)
+        if notif !=None :
+            self.API_Live_View.uiHandeler.pop_notification(notif)

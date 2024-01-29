@@ -2112,10 +2112,10 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_31.addWidget(self.report_width_to_label)
 
-        self.report_width_high_input = QDoubleSpinBox(self.report_filter_frame)
-        self.report_width_high_input.setObjectName(u"report_width_high_input")
+        self.report_high_width_input = QDoubleSpinBox(self.report_filter_frame)
+        self.report_high_width_input.setObjectName(u"report_high_width_input")
 
-        self.horizontalLayout_31.addWidget(self.report_width_high_input)
+        self.horizontalLayout_31.addWidget(self.report_high_width_input)
 
 
         self.verticalLayout_22.addLayout(self.horizontalLayout_31)
@@ -2309,12 +2309,22 @@ class Ui_MainWindow(object):
         self.report_table.setHorizontalHeaderItem(5, __qtablewidgetitem7)
         __qtablewidgetitem8 = QTableWidgetItem()
         self.report_table.setHorizontalHeaderItem(6, __qtablewidgetitem8)
+        if (self.report_table.rowCount() < 3):
+            self.report_table.setRowCount(3)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        self.report_table.setVerticalHeaderItem(0, __qtablewidgetitem9)
+        __qtablewidgetitem10 = QTableWidgetItem()
+        self.report_table.setVerticalHeaderItem(1, __qtablewidgetitem10)
+        __qtablewidgetitem11 = QTableWidgetItem()
+        self.report_table.setVerticalHeaderItem(2, __qtablewidgetitem11)
         self.report_table.setObjectName(u"report_table")
-        self.report_table.setStyleSheet(u"QTable{\n"
-"	border-radius: 0px;\n"
-"}")
-        self.report_table.horizontalHeader().setDefaultSectionSize(80)
+        self.report_table.setStyleSheet(u"alternate-background-color: rgba(120, 146, 223, 30);")
+        self.report_table.setAlternatingRowColors(True)
+        self.report_table.setCornerButtonEnabled(True)
+        self.report_table.horizontalHeader().setDefaultSectionSize(120)
         self.report_table.horizontalHeader().setStretchLastSection(True)
+        self.report_table.verticalHeader().setVisible(False)
+        self.report_table.verticalHeader().setDefaultSectionSize(60)
 
         self.horizontalLayout_29.addWidget(self.report_table)
 
@@ -2815,8 +2825,8 @@ class Ui_MainWindow(object):
         self.userpage_all_users_table = QTableWidget(self.all_users_tab)
         if (self.userpage_all_users_table.rowCount() < 1):
             self.userpage_all_users_table.setRowCount(1)
-        __qtablewidgetitem9 = QTableWidgetItem()
-        self.userpage_all_users_table.setVerticalHeaderItem(0, __qtablewidgetitem9)
+        __qtablewidgetitem12 = QTableWidgetItem()
+        self.userpage_all_users_table.setVerticalHeaderItem(0, __qtablewidgetitem12)
         self.userpage_all_users_table.setObjectName(u"userpage_all_users_table")
         self.userpage_all_users_table.setStyleSheet(u"")
         self.userpage_all_users_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
@@ -2965,6 +2975,12 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"Depth", None));
         ___qtablewidgetitem8 = self.report_table.horizontalHeaderItem(6)
         ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"Class", None));
+        ___qtablewidgetitem9 = self.report_table.verticalHeaderItem(0)
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
+        ___qtablewidgetitem10 = self.report_table.verticalHeaderItem(1)
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
+        ___qtablewidgetitem11 = self.report_table.verticalHeaderItem(2)
+        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
         self.register_username_label.setText(QCoreApplication.translate("MainWindow", u"Username", None))
         self.register_password_label.setText(QCoreApplication.translate("MainWindow", u"Password", None))
         self.userpage_password_eye.setText("")
@@ -2987,8 +3003,8 @@ class Ui_MainWindow(object):
         self.userpage_editprofile_change_password_btn.setText(QCoreApplication.translate("MainWindow", u"Change Password", None))
         self.user_tabs.setTabText(self.user_tabs.indexOf(self.user_profile_tab), QCoreApplication.translate("MainWindow", u"Edit Profile", None))
         self.userspage_user_heading_lbl.setText(QCoreApplication.translate("MainWindow", u"Only Admin Can Access", None))
-        ___qtablewidgetitem9 = self.userpage_all_users_table.verticalHeaderItem(0)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
+        ___qtablewidgetitem12 = self.userpage_all_users_table.verticalHeaderItem(0)
+        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
         self.user_tabs.setTabText(self.user_tabs.indexOf(self.all_users_tab), QCoreApplication.translate("MainWindow", u"All Users", None))
     # retranslateUi
 

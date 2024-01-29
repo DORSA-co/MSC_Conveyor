@@ -1,4 +1,5 @@
 from Database.databaseManager import databaseManager
+from persiantools import jdatetime
 
 class Defect_DB:
     TABLE_NAME = "Defect_Table"
@@ -48,6 +49,8 @@ class Defect_DB:
         return False
 
     def save(self, data):
+        data['date'] = data['date'].strftime('%Y/%m/%d')
+        data['time'] = data['time'].strftime('%H:%M:%S')
         if self.is_exist(data[self.PRIMERY_KEY_COL_NAME]):
             self.db_manager.update_record_dict(
                 self.TABLE_NAME,
@@ -59,13 +62,16 @@ class Defect_DB:
             self.db_manager.add_record_dict(self.TABLE_NAME, data)
 
 
-    def get_all_content(self):
-         record=self.db_manager.get_all_content(self.TABLE_NAME)
-         return record
+    def load(self):
+         records=self.db_manager.get_all_content(self.TABLE_NAME)
+         for record in records:
+            record['date'] = jdatetime.JalaliDateTime.strptime(record['date'], '%Y/%m/%d')
+            record['time'] = jdatetime.JalaliDateTime.strptime(record['time'], '%H:%M:%S')
+         return records
       
     def remove_record(self,column_name, Select_ID):
 
-        records = self.db_manager.remove_record(self.TABLE_NAME, column_name, Select_ID)
+        records = self.db_manager.remove_record(self.TABLE_NAME, column_name, str(Select_ID))
         return records
     
     

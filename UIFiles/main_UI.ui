@@ -3355,7 +3355,7 @@ border-radius: 20px;</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QDoubleSpinBox" name="report_width_high_input"/>
+                  <widget class="QDoubleSpinBox" name="report_high_width_input"/>
                  </item>
                 </layout>
                </item>
@@ -3599,16 +3599,41 @@ border-radius: 20px;</string>
           <item>
            <widget class="QTableWidget" name="report_table">
             <property name="styleSheet">
-             <string notr="true">QTable{
-	border-radius: 0px;
-}</string>
+             <string notr="true">alternate-background-color: rgba(120, 146, 223, 30);</string>
+            </property>
+            <property name="alternatingRowColors">
+             <bool>true</bool>
+            </property>
+            <property name="cornerButtonEnabled">
+             <bool>true</bool>
             </property>
             <attribute name="horizontalHeaderDefaultSectionSize">
-             <number>80</number>
+             <number>120</number>
             </attribute>
             <attribute name="horizontalHeaderStretchLastSection">
              <bool>true</bool>
             </attribute>
+            <attribute name="verticalHeaderVisible">
+             <bool>false</bool>
+            </attribute>
+            <attribute name="verticalHeaderDefaultSectionSize">
+             <number>60</number>
+            </attribute>
+            <row>
+             <property name="text">
+              <string>New Row</string>
+             </property>
+            </row>
+            <row>
+             <property name="text">
+              <string>New Row</string>
+             </property>
+            </row>
+            <row>
+             <property name="text">
+              <string>New Row</string>
+             </property>
+            </row>
             <column>
              <property name="text">
               <string>X</string>
