@@ -1,6 +1,7 @@
 
 import sys
 import os
+import threading
 
 import numpy as np
 import cv2
@@ -32,6 +33,8 @@ class beltInspection:
         self.new_defect_event_func = None
 
         self.DefectTracker.set_new_defect_event(self.new_defect_happend)
+        self.Encoder.set_finish_event(self.round_finish_event)
+        self.ImageCreator.set_cycle_image_event(self.cycle_image_event)
 
     def set_new_defect_event(self, func):
         self.new_defect_event_func = func
@@ -88,6 +91,7 @@ class beltInspection:
         #--------------------------------------
         self.DefectTracker.check_defect_passed(line_idx=self.Encoder.line_idx,
                                                img_width=image.shape[1])
+        
         self.res_image = self.DefectTracker.draw(image.copy(), 
                                                  self.Encoder.line_idx,
                                                  self.Encoder.end_line_idx)
@@ -99,6 +103,15 @@ class beltInspection:
     
     def find_defect(self, _id)-> Defect:
         return self.DefectTracker.completed_defects.get_by_id(_id)
+    
+    def round_finish_event(self, finish_idx):
+        print('End Belt',finish_idx)
+        self.ImageCreator.reset_image_index()
+
+    def cycle_image_event(self,):
+        save_thread = threading.Thread(target=self.ImageCreator.save_depth_image, 
+                                       args=('belt_images',))
+        save_thread.start()
 
 if __name__ == "__main__":
     

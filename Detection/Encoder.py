@@ -4,6 +4,7 @@ class Encoder:
         self.x = -1
         self.step = 8
         self.end_line_idx = 0
+        self.external_finish_event_func = None
 
     def counter(self):
         self.x += self.step
@@ -13,5 +14,11 @@ class Encoder:
             self.end_line_idx = self.line_idx
             self.line_idx = 0
             self.x = 0
+            #event
+            self.external_finish_event_func(self.end_line_idx)
+    
+
+    def set_finish_event(self,func):
+        self.external_finish_event_func = func
         
         
