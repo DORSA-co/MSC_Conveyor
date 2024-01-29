@@ -13,22 +13,25 @@ class idList:
         self.ids_list.insert(index, _id)
     
     def remove_by_value(self, value):
-        idx = self.main_list.index(value)
-        self.main_list.pop(idx)
-        self.ids_list.pop(idx)
+        if value in self.main_list:
+            idx = self.main_list.index(value)
+            self.main_list.pop(idx)
+            self.ids_list.pop(idx)
     
     def remove_by_id(self, _id):
-        idx = self.ids_list.index(_id)
-        self.main_list.pop(idx)
-        self.ids_list.pop(idx)
+        if _id in self.ids_list:
+            idx = self.ids_list.index(_id)
+            self.main_list.pop(idx)
+            self.ids_list.pop(idx)
     
     def remove_by_index(self, idx):
         self.main_list.pop(idx)
         self.ids_list.pop(idx)
 
     def get_by_id(self, _id):
-        idx = self.ids_list.index(_id)
-        return self.main_list[idx]
+        if _id in self.ids_list:
+            idx = self.ids_list.index(_id)
+            return self.main_list[idx]
 
     def set_by_index(self, idx, value, _id):
         self.main_list[idx] = value
@@ -43,8 +46,14 @@ class idList:
     def ids(self,):
         return self.ids_list
     
+    def copy(self,):
+        return self.main_list.copy()
+    
     def __getitem__(self, idx):
         return self.main_list[idx]
     
     def __len__(self):
         return len(self.main_list)
+
+    
+    
