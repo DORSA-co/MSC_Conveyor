@@ -57,15 +57,7 @@ class LiveView_API:
     def notification_click(self, _id):
         defect:Defect
         _,defect = self.beltInspection.find_defect(_id)
-        info = {'x':defect.start_line_idx,
-                'y':defect.defect_width_boundries[0], 
-                'width': defect.widthInfo.max,
-                'lenght': defect.lenght, 
-                'min depth':defect.depthInfo.min, 
-                'max depth':defect.depthInfo.max, 
-                'date': defect.jdatetime.strftime('%Y/%m/%d'),
-                'time': defect.jdatetime.strftime('%H:%M:%S'),
-                }
+        info = defect.get_info()
 
         self.uiHandeler.show_defect_info(info)
     

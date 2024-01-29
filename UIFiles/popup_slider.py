@@ -471,18 +471,19 @@ class Ui_slider(object):
         self.start_date_input = QDateEdit(self.date_frame)
         self.start_date_input.setObjectName(u"start_date_input")
         self.start_date_input.setEnabled(True)
+        self.start_date_input.setTimeSpec(Qt.OffsetFromUTC)
 
         self.horizontalLayout_10.addWidget(self.start_date_input)
 
-        self.label_2 = QLabel(self.date_frame)
-        self.label_2.setObjectName(u"label_2")
+        self.date_to_label = QLabel(self.date_frame)
+        self.date_to_label.setObjectName(u"date_to_label")
         sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
         sizePolicy2.setHorizontalStretch(0)
         sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
-        self.label_2.setSizePolicy(sizePolicy2)
+        sizePolicy2.setHeightForWidth(self.date_to_label.sizePolicy().hasHeightForWidth())
+        self.date_to_label.setSizePolicy(sizePolicy2)
 
-        self.horizontalLayout_10.addWidget(self.label_2)
+        self.horizontalLayout_10.addWidget(self.date_to_label)
 
         self.end_date_input = QDateEdit(self.date_frame)
         self.end_date_input.setObjectName(u"end_date_input")
@@ -542,19 +543,22 @@ class Ui_slider(object):
         self.low_width_input = QDoubleSpinBox(self.width_frame)
         self.low_width_input.setObjectName(u"low_width_input")
         self.low_width_input.setAlignment(Qt.AlignCenter)
+        self.low_width_input.setMaximum(140.000000000000000)
 
         self.horizontalLayout_11.addWidget(self.low_width_input)
 
-        self.label_3 = QLabel(self.width_frame)
-        self.label_3.setObjectName(u"label_3")
-        sizePolicy2.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
-        self.label_3.setSizePolicy(sizePolicy2)
+        self.width_to_label = QLabel(self.width_frame)
+        self.width_to_label.setObjectName(u"width_to_label")
+        sizePolicy2.setHeightForWidth(self.width_to_label.sizePolicy().hasHeightForWidth())
+        self.width_to_label.setSizePolicy(sizePolicy2)
 
-        self.horizontalLayout_11.addWidget(self.label_3)
+        self.horizontalLayout_11.addWidget(self.width_to_label)
 
         self.high_width_input = QDoubleSpinBox(self.width_frame)
         self.high_width_input.setObjectName(u"high_width_input")
         self.high_width_input.setAlignment(Qt.AlignCenter)
+        self.high_width_input.setMaximum(140.000000000000000)
+        self.high_width_input.setValue(140.000000000000000)
 
         self.horizontalLayout_11.addWidget(self.high_width_input)
 
@@ -610,19 +614,22 @@ class Ui_slider(object):
         self.low_lenght_input = QDoubleSpinBox(self.height_frame)
         self.low_lenght_input.setObjectName(u"low_lenght_input")
         self.low_lenght_input.setAlignment(Qt.AlignCenter)
+        self.low_lenght_input.setMaximum(200.000000000000000)
 
         self.horizontalLayout_12.addWidget(self.low_lenght_input)
 
-        self.label_4 = QLabel(self.height_frame)
-        self.label_4.setObjectName(u"label_4")
-        sizePolicy2.setHeightForWidth(self.label_4.sizePolicy().hasHeightForWidth())
-        self.label_4.setSizePolicy(sizePolicy2)
+        self.lenght_to_label = QLabel(self.height_frame)
+        self.lenght_to_label.setObjectName(u"lenght_to_label")
+        sizePolicy2.setHeightForWidth(self.lenght_to_label.sizePolicy().hasHeightForWidth())
+        self.lenght_to_label.setSizePolicy(sizePolicy2)
 
-        self.horizontalLayout_12.addWidget(self.label_4)
+        self.horizontalLayout_12.addWidget(self.lenght_to_label)
 
         self.high_lenght_input = QDoubleSpinBox(self.height_frame)
         self.high_lenght_input.setObjectName(u"high_lenght_input")
         self.high_lenght_input.setAlignment(Qt.AlignCenter)
+        self.high_lenght_input.setMaximum(200.000000000000000)
+        self.high_lenght_input.setValue(100.000000000000000)
 
         self.horizontalLayout_12.addWidget(self.high_lenght_input)
 
@@ -678,19 +685,25 @@ class Ui_slider(object):
         self.low_depth_input = QDoubleSpinBox(self.depth_frame)
         self.low_depth_input.setObjectName(u"low_depth_input")
         self.low_depth_input.setAlignment(Qt.AlignCenter)
+        self.low_depth_input.setMinimum(-30.000000000000000)
+        self.low_depth_input.setMaximum(30.000000000000000)
+        self.low_depth_input.setValue(-30.000000000000000)
 
         self.horizontalLayout_13.addWidget(self.low_depth_input)
 
-        self.label_5 = QLabel(self.depth_frame)
-        self.label_5.setObjectName(u"label_5")
-        sizePolicy2.setHeightForWidth(self.label_5.sizePolicy().hasHeightForWidth())
-        self.label_5.setSizePolicy(sizePolicy2)
+        self.depth_to_label = QLabel(self.depth_frame)
+        self.depth_to_label.setObjectName(u"depth_to_label")
+        sizePolicy2.setHeightForWidth(self.depth_to_label.sizePolicy().hasHeightForWidth())
+        self.depth_to_label.setSizePolicy(sizePolicy2)
 
-        self.horizontalLayout_13.addWidget(self.label_5)
+        self.horizontalLayout_13.addWidget(self.depth_to_label)
 
         self.high_depth_input = QDoubleSpinBox(self.depth_frame)
         self.high_depth_input.setObjectName(u"high_depth_input")
         self.high_depth_input.setAlignment(Qt.AlignCenter)
+        self.high_depth_input.setMinimum(-30.000000000000000)
+        self.high_depth_input.setMaximum(30.000000000000000)
+        self.high_depth_input.setValue(30.000000000000000)
 
         self.horizontalLayout_13.addWidget(self.high_depth_input)
 
@@ -751,19 +764,19 @@ class Ui_slider(object):
         self.filter_date_checkBox.setText("")
         self.date_icon.setText("")
         self.date_label.setText(QCoreApplication.translate("slider", u"Date", None))
-        self.label_2.setText(QCoreApplication.translate("slider", u"To", None))
+        self.date_to_label.setText(QCoreApplication.translate("slider", u"To", None))
         self.filter_width_checkBox.setText("")
         self.width_icon.setText("")
         self.width_label.setText(QCoreApplication.translate("slider", u"Width (cm)", None))
-        self.label_3.setText(QCoreApplication.translate("slider", u"To", None))
+        self.width_to_label.setText(QCoreApplication.translate("slider", u"To", None))
         self.filter_lenght_checkBox.setText("")
         self.height_icon.setText("")
         self.height_label.setText(QCoreApplication.translate("slider", u"Lenght (m)", None))
-        self.label_4.setText(QCoreApplication.translate("slider", u"To", None))
+        self.lenght_to_label.setText(QCoreApplication.translate("slider", u"To", None))
         self.filter_depth_checkBox.setText("")
         self.depth_icon.setText("")
         self.depth_label.setText(QCoreApplication.translate("slider", u"Depth (mm)", None))
-        self.label_5.setText(QCoreApplication.translate("slider", u"To", None))
+        self.depth_to_label.setText(QCoreApplication.translate("slider", u"To", None))
         self.filters_apply_btn.setText(QCoreApplication.translate("slider", u"Apply", None))
     # retranslateUi
 

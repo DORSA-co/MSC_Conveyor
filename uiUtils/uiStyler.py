@@ -21,6 +21,7 @@ class Styler:
                                 self.ui.register_user,
                                 self.ui.userpage_editprofile_change_username_btn,
                                 self.ui.userpage_editprofile_change_password_btn,
+                                self.ui.report_filter_apply_btn,
                                 ]
                 },
 

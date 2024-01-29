@@ -17,6 +17,9 @@ class MessageColors:
 class DemoImage:
     DIR = 'demo imgs/'
 
+class DecimalRound:
+    ROUND_DECIMAL = 3
+
 class RefreshRates:
     MOUSE_MOVE = 0.01
 

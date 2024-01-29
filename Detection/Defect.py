@@ -5,6 +5,8 @@ import time
 from persiantools.jdatetime import JalaliDate,JalaliDateTime
 import numpy as np
 
+from Constants.Constant import DecimalRound
+
 
 class numberStatics:
     def __init__(self):
@@ -54,22 +56,20 @@ class Defect:
             end_anomaly_idx: int,
             start_line_idx: int,
             depthes: np.ndarray,
-            n_last_defects: int = 3
+            n_last_lines: int = 3
         ):
         self.id = time.time()
         self.widthInfo = numberStatics()
         self.depthInfo = numberStatics()
         self.jdatetime = JalaliDateTime.now()
 
-        self.n_last_defects = n_last_defects
+        self.n_last_lines = n_last_lines
         self.defect_indices = np.array(([[start_anomaly_idx, end_anomaly_idx]]))
         self.temp_indices = np.array([])
 
         
         self.start_line_idx = start_line_idx
         self.end_line_idx = self.start_line_idx
-        
-        self.lenght = 0
 
         self.defect_width_boundries = (start_anomaly_idx, end_anomaly_idx)
         
@@ -102,8 +102,6 @@ class Defect:
             min(self.defect_width_boundries[0], start_anomaly_idx),
             max(self.defect_width_boundries[1], end_anomaly_idx)
         )
-
-        self.lenght = self.end_line_idx - self.start_line_idx
 
     def is_complete(self, line_idx:int, min_idx_gap):
         if line_idx - self.end_line_idx >= min_idx_gap:
@@ -162,9 +160,9 @@ class Defect:
 
     def __append_idx(self, start_idx, end_idx):
         self.defect_indices = np.append( self.defect_indices, np.array([[start_idx, end_idx ]]), axis=0 )
-        if len(self.defect_indices) > self.n_last_defects:
-            # self.defect_indices = self.defect_indices[-self.n_last_defects]
-            self.defect_indices = self.defect_indices[-self.n_last_defects:, :]
+        if len(self.defect_indices) > self.n_last_lines:
+            # self.defect_indices = self.defect_indices[-self.n_last_lines]
+            self.defect_indices = self.defect_indices[-self.n_last_lines:, :]
 
     def __calc_overlap(self, s1:int,e1:int , s2:int, e2:int):
         distance = min(e1, e2) - max(s1, s2)
@@ -179,7 +177,7 @@ class Defect:
 
         res_defect.start_line_idx = min(self.start_line_idx, other.start_line_idx)
         res_defect.end_line_idx = max(self.end_line_idx, other.end_line_idx)
-        res_defect.n_last_defects = max(self.n_last_defects, other.n_last_defects)
+        res_defect.n_last_lines = max(self.n_last_lines, other.n_last_lines)
 
         res_defect.temp_indices = np.vstack(( self.temp_indices, other.temp_indices ))
         
@@ -212,14 +210,39 @@ class Defect:
             if intersect_x2> intersect_x1:
                 return True
         return False
+    
+    def get_length(self):
+        return np.round(abs(self.end_line_idx - self.start_line_idx), DecimalRound.ROUND_DECIMAL)
 
 
     def get_info_for_filter(self,):
         res = {
             'width': (self.widthInfo.min, self.widthInfo.max),
             'depth': (self.depthInfo.min, self.depthInfo.max),
-            'lenght': self.lenght,
+            'lenght': self.get_length(),
             'date': self.jdatetime.date(),
         }
+
+        return res
+    
+    def get_info(self, ):
+        res = {}
+        res['defect_id'] = self.id
+
+        res['date'] = self.jdatetime.strftime('%Y/%m/%d')
+        res['time'] = self.jdatetime.strftime('%H:%M:%S')
+
+        res['x'] = self.start_line_idx
+        res['y'] = self.defect_width_boundries[0]
+
+        res['min_width'] = np.round(self.widthInfo.min, DecimalRound.ROUND_DECIMAL)
+        res['mean_width'] = np.round(self.widthInfo.mean, DecimalRound.ROUND_DECIMAL)
+        res['max_width'] = np.round(self.widthInfo.max, DecimalRound.ROUND_DECIMAL)
+
+        res['min_depth'] = np.round(self.depthInfo.min, DecimalRound.ROUND_DECIMAL)
+        res['mean_depth'] = np.round(self.depthInfo.mean, DecimalRound.ROUND_DECIMAL)
+        res['max_depth'] = np.round(self.depthInfo.max, DecimalRound.ROUND_DECIMAL)
+
+        res['length'] = self.get_length()
 
         return res

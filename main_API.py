@@ -1,5 +1,6 @@
 import threading
 import time
+import threading
 
 import cv2
 
@@ -15,7 +16,9 @@ from backend.Camera import dorsaPylon
 from main_UI import mainUI
 from uiUtils.GUIComponents import timerBuilder
 from Detection.beltInspection import beltInspection
+from Detection.Defect import Defect
 from Constants import Constant
+from Database.DefectFileManager import DefectFileManager
 
 
 CAMERAS = {
@@ -43,6 +46,8 @@ class main_API:
         kwargs = self.db.Setting_DB.algorithm_setting_db.load()
         self.beltIncpetcion = beltInspection(kwargs)
         self.beltIncpetcion.set_new_defect_event(self.new_defect_event)
+
+        self.DefectFileManager = DefectFileManager('defects_info')
         #--------------------------------------------------------
         
 
@@ -230,7 +235,9 @@ class main_API:
     def error_grab_image_event(self,):
         print('ERROR GRABBING IMAGE')
 
-
-    
-    def new_defect_event(self, defect):
+    def new_defect_event(self, defect:Defect):
         self.API_Live_View.new_defect_event(defect)
+        info = defect.get_info()
+        info['main_path'] = self.DefectFileManager.main_path
+        self.db.Defects_DB.save(info)
+        threading.Thread(target=self.DefectFileManager.save, args=(defect,)).start()

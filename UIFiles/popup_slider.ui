@@ -612,7 +612,7 @@ background-color:transparent;</string>
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset resource="assets/assets.qrc">
+                     <iconset>
                       <normaloff>:/icons/icons/date.png</normaloff>:/icons/icons/date.png</iconset>
                     </property>
                     <property name="iconSize">
@@ -661,10 +661,13 @@ background-color:transparent;</string>
                     <property name="enabled">
                      <bool>true</bool>
                     </property>
+                    <property name="timeSpec">
+                     <enum>Qt::OffsetFromUTC</enum>
+                    </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_2">
+                   <widget class="QLabel" name="date_to_label">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                       <horstretch>0</horstretch>
@@ -779,10 +782,13 @@ background-color:transparent;</string>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
+                    <property name="maximum">
+                     <double>140.000000000000000</double>
+                    </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_3">
+                   <widget class="QLabel" name="width_to_label">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                       <horstretch>0</horstretch>
@@ -798,6 +804,12 @@ background-color:transparent;</string>
                    <widget class="QDoubleSpinBox" name="high_width_input">
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
+                    </property>
+                    <property name="maximum">
+                     <double>140.000000000000000</double>
+                    </property>
+                    <property name="value">
+                     <double>140.000000000000000</double>
                     </property>
                    </widget>
                   </item>
@@ -897,10 +909,13 @@ background-color:transparent;</string>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
+                    <property name="maximum">
+                     <double>200.000000000000000</double>
+                    </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_4">
+                   <widget class="QLabel" name="lenght_to_label">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                       <horstretch>0</horstretch>
@@ -916,6 +931,12 @@ background-color:transparent;</string>
                    <widget class="QDoubleSpinBox" name="high_lenght_input">
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
+                    </property>
+                    <property name="maximum">
+                     <double>200.000000000000000</double>
+                    </property>
+                    <property name="value">
+                     <double>100.000000000000000</double>
                     </property>
                    </widget>
                   </item>
@@ -1015,10 +1036,19 @@ background-color:transparent;</string>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
+                    <property name="minimum">
+                     <double>-30.000000000000000</double>
+                    </property>
+                    <property name="maximum">
+                     <double>30.000000000000000</double>
+                    </property>
+                    <property name="value">
+                     <double>-30.000000000000000</double>
+                    </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_5">
+                   <widget class="QLabel" name="depth_to_label">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                       <horstretch>0</horstretch>
@@ -1034,6 +1064,15 @@ background-color:transparent;</string>
                    <widget class="QDoubleSpinBox" name="high_depth_input">
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
+                    </property>
+                    <property name="minimum">
+                     <double>-30.000000000000000</double>
+                    </property>
+                    <property name="maximum">
+                     <double>30.000000000000000</double>
+                    </property>
+                    <property name="value">
+                     <double>30.000000000000000</double>
                     </property>
                    </widget>
                   </item>

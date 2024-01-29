@@ -13,8 +13,9 @@
     <file>icons/height.png</file>
     <file>icons/width.png</file>
     <file>icons/database.png</file>
-    <file>icons/date.png</file>
     <file>icons/filter_white.png</file>
+    <file>icons/date_black.png</file>
+    <file>icons/date_gray.png</file>
     <file>icons/heart-monitor.png</file>
     <file>icons/laser.png</file>
     <file>icons/plc.png</file>

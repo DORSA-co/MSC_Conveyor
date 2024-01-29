@@ -37,10 +37,13 @@ class LiveView_UI(Common_Function_UI):
         
         self.defect_info_tables_header = ['x',
                                           'y', 
-                                          'width',
-                                          'lenght', 
-                                          'min depth', 
-                                          'max depth', 
+                                          'min_width',
+                                          'mean_width',
+                                          'max_width',
+                                          'length', 
+                                          'min_depth', 
+                                          'mean_depth', 
+                                          'max_depth', 
                                           'date',
                                           'time'
                                           ]
@@ -197,20 +200,12 @@ class LiveView_UI(Common_Function_UI):
 
     def show_defect_info(self, info:dict):
         for key, value in info.items():
+            if key not in self.defect_info_tables_header:
+                continue
             col = self.defect_info_tables_header.index(key)
             GUIBackend.set_table_cell_value(self.ui.defect_info_table,
                                             (0,col),
                                             value)
-
-
-
-
-
-
-
-
-
-
 
 
 class sliderMenu:
@@ -250,7 +245,12 @@ class sliderMenu:
             low_field, high_feild = self.filters[name]
             GUIBackend.connector(low_field, self.__setup_input_limits(name,'low'))
             GUIBackend.connector(high_feild, self.__setup_input_limits(name,'high'))
-        
+
+        self.__set_dates_default_values()
+
+    def __set_dates_default_values(self):
+        for field in self.filters['date']:
+            GUIBackend.set_date_input(field, JalaliDateTime.now())
 
     def __setup_input_limits(self, name:str, limit_type:str ):
         def func():

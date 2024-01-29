@@ -16,11 +16,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractItemView, QApplication, QCheckBox, QComboBox,
-    QFrame, QHBoxLayout, QHeaderView, QLabel,
-    QLineEdit, QMainWindow, QPushButton, QScrollArea,
-    QSizePolicy, QSpacerItem, QSpinBox, QStackedWidget,
-    QTabWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,
-    QWidget)
+    QDateEdit, QDoubleSpinBox, QFrame, QHBoxLayout,
+    QHeaderView, QLabel, QLineEdit, QMainWindow,
+    QPushButton, QScrollArea, QSizePolicy, QSpacerItem,
+    QSpinBox, QStackedWidget, QTabWidget, QTableWidget,
+    QTableWidgetItem, QVBoxLayout, QWidget)
 
 from GUIComponents import (PhotoViewer, SwitchControl)
 import assets_rc
@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1241, 787)
+        MainWindow.resize(1221, 790)
         self.StyleSheet = QWidget(MainWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
         self.StyleSheet.setEnabled(True)
@@ -43,13 +43,133 @@ class Ui_MainWindow(object):
 "\n"
 "/************************************************************/\n"
 "\n"
+"QScrollBar:vertical {\n"
+"    border: none;\n"
+"    background: #F7F8FA;\n"
+"    width: 10px;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical {\n"
+"    background: #D7D7D9;\n"
+"    min-height: 20px;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:vertical {\n"
+"    border: none;\n"
+"    background: #F7F8FA;\n"
+"    height: 20px;\n"
+"    subcontrol-position: bottom;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::sub-line:vertical {\n"
+"    border: none;\n"
+"    background: #F7F8FA;\n"
+"    height: 20px;\n"
+"    subcontrol-position: top;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {\n"
+"    border: none;\n"
+"    width: 3px;\n"
+"    height: 3px;\n"
+"    background: transparent;\n"
+"}\n"
+"\n"
+"QScrollBar::add"
+                        "-page:vertical, QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"}\n"
+"\n"
+"QScrollBar:horizontal {\n"
+"    border: none;\n"
+"    background: #F7F8FA;\n"
+"    height: 10px;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:horizontal {\n"
+"    background: #D7D7D9;\n"
+"    min-width: 20px;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:horizontal {\n"
+"    border: none;\n"
+"    background: #F7F8FA;\n"
+"    width: 20px;\n"
+"    subcontrol-position: right;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::sub-line:horizontal {\n"
+"    border: none;\n"
+"    background: #F7F8FA;\n"
+"    width: 20px;\n"
+"    subcontrol-position: left;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::left-arrow:horizontal, QScrollBar::right-arrow:horizontal {\n"
+"    border: none;\n"
+"    width: 3px;\n"
+"    height: 3px;\n"
+"    background: transparent;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {\n"
+"    background: none;\n"
+"}\n"
+""
+                        "\n"
+"/************************************************************/\n"
+"\n"
+"QCheckBox {\n"
+"    spacing: 0px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 15px;\n"
+"    height: 15px;\n"
+"}\n"
+"\n"
+"/* Unchecked State */\n"
+"QCheckBox::indicator:unchecked {\n"
+"    border: 2px solid #E0E4EC;\n"
+"    background-color: white;\n"
+"}\n"
+"\n"
+"/* Checked State */\n"
+"QCheckBox::indicator:checked {\n"
+"    border: 2px solid #7892DF;\n"
+"    background-color: #7892DF;\n"
+"    image: url(:/icons/icons/tick.png)  /* Path to your check mark icon */\n"
+"}\n"
+"\n"
+"/* Hover State */\n"
+"QCheckBox::indicator:hover {\n"
+"    border: 2px solid rgba(194, 197, 204, 255);\n"
+"}\n"
+"\n"
+"/* Disabled State */\n"
+"QCheckBox::indicator:disabled {\n"
+"    border: 2px solid #E0E4EC;\n"
+"    background-color: #F6F6F6;\n"
+"}\n"
+"\n"
+"/************************************************************/\n"
+"\n"
 "QGraphicsView{\n"
 "	border: None;\n"
 "}\n"
 "\n"
 "/************************************************************/\n"
 "\n"
-"QLineEdit {\n"
+"QLin"
+                        "eEdit {\n"
 "  	border:1px solid #E0E4EC;\n"
 "	background-color: #F7F8FA;\n"
 "	border-radius: 10px;\n"
@@ -65,7 +185,7 @@ class Ui_MainWindow(object):
 "\n"
 "/************************************************************/\n"
 "\n"
-"QSpinBox, QDoubleSpinBox  \n"
+"QSpinBox, QDoubleSpinBox, QDateEdit\n"
 "{\n"
 "	background-color: transparent;\n"
 "	border-bottom: 2px solid #D7D7D9;\n"
@@ -77,42 +197,53 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QSpinBox:disabled ,\n"
-"QDoubleSpinBox:disabled \n"
+"QDoubleSpinBox:disabled,\n"
+"QDateEdit:disabled\n"
 "{\n"
 "	border-bottom: 2px solid #F0F0F2;\n"
-"	color: r"
-                        "gb(120, 120, 120);\n"
+"	color: rgb(120, 120, 120);\n"
 "}\n"
 "\n"
-"QSpinBox::up-arrow, QDoubleSpinBox::up-arrow\n"
+"QSpinBox::up-arrow, \n"
+"QDoubleSpinBox::up-arrow,\n"
+"QDateEdit::up-arrow\n"
 "{   \n"
 "	image: url(:/icons/icons/plus_icon_black.png);\n"
 "	width: 16px;\n"
 "	height: 16px;\n"
 "}\n"
 "\n"
-"QSpinBox::down-arrow ,  QDoubleSpinBox::down-arrow\n"
+"QSpinBox::down-arrow,  \n"
+"QDoubleSpinBox::down-arrow,\n"
+""
+                        "QDateEdit::down-arrow\n"
 "{   \n"
 "	image: url(:/icons/icons/minus_icon_black.png);\n"
 "	width: 16px;\n"
 "	height: 16px;\n"
 "}\n"
 "\n"
-"QSpinBox::up-arrow:disabled, QDoubleSpinBox::up-arrow:disabled\n"
+"QSpinBox::up-arrow:disabled, \n"
+"QDoubleSpinBox::up-arrow:disabled,\n"
+"QDateEdit::up-arrow:disabled\n"
 "{   \n"
 "	image: url(:/icons/icons/plus_icon_gray.png);\n"
 "	width: 16px;\n"
 "	height: 16px;\n"
 "}\n"
 "\n"
-"QSpinBox::down-arrow:disabled ,  QDoubleSpinBox::down-arrow:disabled\n"
+"QSpinBox::down-arrow:disabled ,  \n"
+"QDoubleSpinBox::down-arrow:disabled,\n"
+"QDateEdit::down-arrow:disabled\n"
 "{   \n"
 "	image: url(:/icons/icons/minus_icon_gray.png);\n"
 "	width: 16px;\n"
 "	height: 16px;\n"
 "}\n"
 "\n"
-"QSpinBox::up-button\n"
+"QSpinBox::up-button,\n"
+"QDoubleSpinBox::up-button,\n"
+"QDateEdit::up-button\n"
 "{\n"
 "	border:none;\n"
 "    min-width:30px;\n"
@@ -123,13 +254,15 @@ class Ui_MainWindow(object):
 "    right: 0px;\n"
 "}\n"
 "\n"
-"QSpinBox::down-button\n"
+"QSpinBox::down-button,\n"
+"QDoubleSpinBox::down-button,\n"
+"QDateEdit::down-button\n"
 "{\n"
 "    min-width:30px;\n"
 "    min-height: 29px;\n"
-"    subcont"
-                        "rol-origin: margin;\n"
-"    subcontrol-position: left;\n"
+"    subcontrol-origin: margin;\n"
+""
+                        "    subcontrol-position: left;\n"
 "    top: 0px;\n"
 "    right: 0px;\n"
 "}\n"
@@ -137,18 +270,24 @@ class Ui_MainWindow(object):
 "QSpinBox::up-button,\n"
 "QSpinBox::down-button,\n"
 "QDoubleSpinBox::up-button,\n"
-"QDoubleSpinBox::down-button   {\n"
+"QDoubleSpinBox::down-button ,\n"
+"QDateEdit::up-button,\n"
+"QDateEdit::down-button\n"
+"{\n"
 "	background-color: transparent;\n"
 "}\n"
 "\n"
 "QSpinBox::up-button:disabled ,\n"
 "QSpinBox::down-button:disabled ,\n"
 "QDoubleSpinBox::up-button:disabled ,\n"
-"QDoubleSpinBox::down-button:disabled    {\n"
+"QDoubleSpinBox::down-button:disabled,\n"
+"QDateEdit::up-button:disabled,\n"
+"QDateEdit::down-button:disabled\n"
+"{\n"
 "    subcontrol-origin: border;\n"
 "}\n"
 "\n"
-"QSpinBox:focus, QDoubleSpinBox:focus{\n"
+"QSpinBox:focus, QDoubleSpinBox:focus, QDateEdit:focus{\n"
 "	border-bottom: 2px solid #7892DF;\n"
 "}\n"
 "\n"
@@ -165,13 +304,13 @@ class Ui_MainWindow(object):
 "	min-width: 100px;\n"
 "    padding: 8px 16px;\n"
 "    border-top-left-radius: 4px;\n"
-"    border-top-right-radius: 4px;\n"
+""
+                        "    border-top-right-radius: 4px;\n"
 "}\n"
 "\n"
 "QTabBar::tab:hover {\n"
 "    background-color: #D7D7D9;\n"
-"	color: rgb(1"
-                        "20, 120, 120);\n"
+"	color: rgb(120, 120, 120);\n"
 "}\n"
 "\n"
 "/* Tab Content Area */\n"
@@ -207,13 +346,13 @@ class Ui_MainWindow(object):
 "	color: rgb(20, 20, 20);\n"
 "}\n"
 "\n"
-"QHeaderView::section:first {\n"
+""
+                        "QHeaderView::section:first {\n"
 "   border-top-left-radius: 4px;\n"
 "	border-left: None;\n"
 "}\n"
 "\n"
-"QHeaderView::secti"
-                        "on:last {\n"
+"QHeaderView::section:last {\n"
 "   border-top-right-radius: 4px;\n"
 "	border-right: None;\n"
 "}\n"
@@ -231,17 +370,6 @@ class Ui_MainWindow(object):
 "	\n"
 "	image: url(:/icons/icons/table_sort_icon.png);\n"
 "}\n"
-"\n"
-"QScrollBar:horizontal, QScrollBar:vertical {\n"
-"    border: 1px solid #BDBDBF;\n"
-"    background: #BDBDBF;\n"
-"    height: 4px;\n"
-"}\n"
-"\n"
-"QScrollBar::handle:horizontal, QScrollBar::handle:vertical {\n"
-"    background: #646466;\n"
-"}\n"
-"\n"
 "\n"
 "/************************************************************/\n"
 "\n"
@@ -262,14 +390,14 @@ class Ui_MainWindow(object):
 "\n"
 "QComboBox:disabled\n"
 "{\n"
-"	border: 2px solid #F0F0"
-                        "F2;\n"
+"	border: 2px solid #F0F0F2;\n"
 "	color: rgb(120, 120, 120);\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:disabled\n"
 "{   \n"
-"	image: url(:/icons/icons/down_icon_gray.png);\n"
+"	image: url(:/icons/icons/down_icon_gr"
+                        "ay.png);\n"
 "	width: 12px;\n"
 "    height: 12px;\n"
 "}\n"
@@ -311,8 +439,7 @@ class Ui_MainWindow(object):
 "#side_frame QPushButton{\n"
 "	border: 0px;\n"
 "	color: white;\n"
-"	font-wei"
-                        "ght: bold;\n"
+"	font-weight: bold;\n"
 "}\n"
 "\n"
 "#top_frame{\n"
@@ -322,7 +449,8 @@ class Ui_MainWindow(object):
 "#top_frame QPushButton{\n"
 "	border: 0px;\n"
 "}\n"
-"\n"
+""
+                        "\n"
 "#main_stackedWidget{\n"
 "	background-color: #E0E4EC;\n"
 "}\n"
@@ -331,7 +459,8 @@ class Ui_MainWindow(object):
 "#algorithm_stackedWidget .QFrame, \n"
 "#user_register_tab .QFrame, \n"
 "#user_profile_tab .QFrame,\n"
-"#live_view_page .QFrame\n"
+"#live_view_page .QFrame,\n"
+"#report_page  .QFrame\n"
 "{\n"
 "	background-color: #F7F8FA;\n"
 "	border:1px solid #D7D7D9;\n"
@@ -363,11 +492,11 @@ class Ui_MainWindow(object):
 "	border: None;\n"
 "}\n"
 "\n"
-"#sh"
-                        "ow_steps_frame .QPushButton{\n"
+"#show_steps_frame .QPushButton{\n"
 "	background-color: transparent;\n"
 "	border:5px solid #7E84A2;\n"
-"	border-radius: 32px;\n"
+"	border-ra"
+                        "dius: 32px;\n"
 "	min-width: 55px;\n"
 "	max-width: 55px;\n"
 "	min-height: 55px;\n"
@@ -407,12 +536,12 @@ class Ui_MainWindow(object):
 "#userpage_editprofile_confirm_new_password_eye\n"
 "{\n"
 "	border: 0px;\n"
-"	background-co"
-                        "lor: rgba(0,0,0,0);\n"
+"	background-color: rgba(0,0,0,0);\n"
 "	border:1px solid #E0E4EC;\n"
 "	background-color: #F7F8FA;\n"
 "	border-radius: 10px;\n"
-"	border-top-left-radius: 0px;\n"
+""
+                        "	border-top-left-radius: 0px;\n"
 "	border-bottom-left-radius: 0px;\n"
 "	border-left: None;\n"
 "	padding-right: 3px;\n"
@@ -447,13 +576,13 @@ class Ui_MainWindow(object):
 "\n"
 "#defects_notifications_widget{\n"
 "	background-color: #F7F8FA;\n"
-"	border:1px "
-                        "solid #D7D7D9;\n"
+"	border:1px solid #D7D7D9;\n"
 "}\n"
 "\n"
 "#notifications_buttons_frame .QPushButton{\n"
 "	background-color: None;\n"
-"	border: None;\n"
+"	border"
+                        ": None;\n"
 "}\n"
 "\n"
 "\n"
@@ -750,7 +879,7 @@ class Ui_MainWindow(object):
         self.defects_notifications_scrollArea.setWidgetResizable(True)
         self.defects_notifications_widget = QWidget()
         self.defects_notifications_widget.setObjectName(u"defects_notifications_widget")
-        self.defects_notifications_widget.setGeometry(QRect(0, 0, 330, 16))
+        self.defects_notifications_widget.setGeometry(QRect(0, 0, 320, 650))
         self.defects_notifications_widget.setStyleSheet(u"#defects_notifications_widget{\n"
 "	border:None;\n"
 "	border-top: 2px solid gray;\n"
@@ -784,20 +913,21 @@ class Ui_MainWindow(object):
         self.belt_live_tab.setObjectName(u"belt_live_tab")
         self.horizontalLayout_15 = QHBoxLayout(self.belt_live_tab)
         self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
-        self.label = QLabel(self.belt_live_tab)
-        self.label.setObjectName(u"label")
-        self.label.setMinimumSize(QSize(40, 0))
-        self.label.setMaximumSize(QSize(40, 16777215))
-        self.label.setFont(font)
-        self.label.setStyleSheet(u"background-color: rgb(250, 65, 55);\n"
-"color: white;")
-
-        self.horizontalLayout_15.addWidget(self.label)
-
         self.belt_live_view_lbl = PhotoViewer(self.belt_live_tab)
         self.belt_live_view_lbl.setObjectName(u"belt_live_view_lbl")
 
         self.horizontalLayout_15.addWidget(self.belt_live_view_lbl)
+
+        self.label = QLabel(self.belt_live_tab)
+        self.label.setObjectName(u"label")
+        self.label.setMinimumSize(QSize(40, 200))
+        self.label.setMaximumSize(QSize(40, 200))
+        self.label.setFont(font)
+        self.label.setStyleSheet(u"background-color: rgb(250, 65, 55);\n"
+"color: white;\n"
+"border-radius: 20px;")
+
+        self.horizontalLayout_15.addWidget(self.label)
 
         self.live_tabWidget.addTab(self.belt_live_tab, "")
         self.tab_2 = QWidget()
@@ -966,9 +1096,17 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_16.addLayout(self.horizontalLayout_34)
 
-        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Preferred)
+        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_16.addItem(self.verticalSpacer_5)
+
+        self.start_stop_btn = QPushButton(self.expanding_frame)
+        self.start_stop_btn.setObjectName(u"start_stop_btn")
+        self.start_stop_btn.setStyleSheet(u"#start_stop_btn{\n"
+"	color: white;\n"
+"}")
+
+        self.verticalLayout_16.addWidget(self.start_stop_btn)
 
         self.verticalSpacer_8 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -1831,6 +1969,357 @@ class Ui_MainWindow(object):
         self.main_stackedWidget.addWidget(self.settings_page)
         self.report_page = QWidget()
         self.report_page.setObjectName(u"report_page")
+        self.horizontalLayout_29 = QHBoxLayout(self.report_page)
+        self.horizontalLayout_29.setObjectName(u"horizontalLayout_29")
+        self.report_filter_frame = QFrame(self.report_page)
+        self.report_filter_frame.setObjectName(u"report_filter_frame")
+        self.report_filter_frame.setStyleSheet(u"QLabel{\n"
+"	font-weight: bold;\n"
+"	font-size: 15px;\n"
+"}")
+        self.report_filter_frame.setFrameShape(QFrame.StyledPanel)
+        self.report_filter_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_39 = QVBoxLayout(self.report_filter_frame)
+        self.verticalLayout_39.setSpacing(30)
+        self.verticalLayout_39.setObjectName(u"verticalLayout_39")
+        self.verticalLayout_39.setContentsMargins(20, 11, 20, -1)
+        self.report_filter_by_label = QLabel(self.report_filter_frame)
+        self.report_filter_by_label.setObjectName(u"report_filter_by_label")
+        self.report_filter_by_label.setStyleSheet(u"#report_filter_by_label{\n"
+"	font-size: 26px;\n"
+"	font-weight: bold;\n"
+"	color: #4C7EFF;\n"
+"}")
+
+        self.verticalLayout_39.addWidget(self.report_filter_by_label)
+
+        self.verticalSpacer_10 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Preferred)
+
+        self.verticalLayout_39.addItem(self.verticalSpacer_10)
+
+        self.verticalLayout_17 = QVBoxLayout()
+        self.verticalLayout_17.setSpacing(0)
+        self.verticalLayout_17.setObjectName(u"verticalLayout_17")
+        self.horizontalLayout_35 = QHBoxLayout()
+        self.horizontalLayout_35.setSpacing(16)
+        self.horizontalLayout_35.setObjectName(u"horizontalLayout_35")
+        self.horizontalLayout_35.setContentsMargins(-1, -1, -1, 10)
+        self.report_date_checkBox = QCheckBox(self.report_filter_frame)
+        self.report_date_checkBox.setObjectName(u"report_date_checkBox")
+        sizePolicy.setHeightForWidth(self.report_date_checkBox.sizePolicy().hasHeightForWidth())
+        self.report_date_checkBox.setSizePolicy(sizePolicy)
+
+        self.horizontalLayout_35.addWidget(self.report_date_checkBox)
+
+        self.report_date_label = QLabel(self.report_filter_frame)
+        self.report_date_label.setObjectName(u"report_date_label")
+
+        self.horizontalLayout_35.addWidget(self.report_date_label)
+
+
+        self.verticalLayout_17.addLayout(self.horizontalLayout_35)
+
+        self.horizontalLayout_30 = QHBoxLayout()
+        self.horizontalLayout_30.setSpacing(16)
+        self.horizontalLayout_30.setObjectName(u"horizontalLayout_30")
+        self.report_start_date_input = QDateEdit(self.report_filter_frame)
+        self.report_start_date_input.setObjectName(u"report_start_date_input")
+
+        self.horizontalLayout_30.addWidget(self.report_start_date_input)
+
+        self.report_date_to_label = QLabel(self.report_filter_frame)
+        self.report_date_to_label.setObjectName(u"report_date_to_label")
+        sizePolicy5.setHeightForWidth(self.report_date_to_label.sizePolicy().hasHeightForWidth())
+        self.report_date_to_label.setSizePolicy(sizePolicy5)
+
+        self.horizontalLayout_30.addWidget(self.report_date_to_label)
+
+        self.report_end_date_input = QDateEdit(self.report_filter_frame)
+        self.report_end_date_input.setObjectName(u"report_end_date_input")
+
+        self.horizontalLayout_30.addWidget(self.report_end_date_input)
+
+
+        self.verticalLayout_17.addLayout(self.horizontalLayout_30)
+
+
+        self.verticalLayout_39.addLayout(self.verticalLayout_17)
+
+        self.verticalLayout_18 = QVBoxLayout()
+        self.verticalLayout_18.setSpacing(0)
+        self.verticalLayout_18.setObjectName(u"verticalLayout_18")
+        self.horizontalLayout_36 = QHBoxLayout()
+        self.horizontalLayout_36.setSpacing(16)
+        self.horizontalLayout_36.setObjectName(u"horizontalLayout_36")
+        self.horizontalLayout_36.setContentsMargins(-1, -1, -1, 10)
+        self.report_class_checkBox = QCheckBox(self.report_filter_frame)
+        self.report_class_checkBox.setObjectName(u"report_class_checkBox")
+        sizePolicy.setHeightForWidth(self.report_class_checkBox.sizePolicy().hasHeightForWidth())
+        self.report_class_checkBox.setSizePolicy(sizePolicy)
+
+        self.horizontalLayout_36.addWidget(self.report_class_checkBox)
+
+        self.report_class_label = QLabel(self.report_filter_frame)
+        self.report_class_label.setObjectName(u"report_class_label")
+
+        self.horizontalLayout_36.addWidget(self.report_class_label)
+
+
+        self.verticalLayout_18.addLayout(self.horizontalLayout_36)
+
+        self.report_class_comboBox = QComboBox(self.report_filter_frame)
+        self.report_class_comboBox.setObjectName(u"report_class_comboBox")
+
+        self.verticalLayout_18.addWidget(self.report_class_comboBox)
+
+
+        self.verticalLayout_39.addLayout(self.verticalLayout_18)
+
+        self.verticalLayout_22 = QVBoxLayout()
+        self.verticalLayout_22.setSpacing(0)
+        self.verticalLayout_22.setObjectName(u"verticalLayout_22")
+        self.horizontalLayout_37 = QHBoxLayout()
+        self.horizontalLayout_37.setSpacing(16)
+        self.horizontalLayout_37.setObjectName(u"horizontalLayout_37")
+        self.horizontalLayout_37.setContentsMargins(-1, -1, -1, 10)
+        self.report_width_checkBox = QCheckBox(self.report_filter_frame)
+        self.report_width_checkBox.setObjectName(u"report_width_checkBox")
+        sizePolicy.setHeightForWidth(self.report_width_checkBox.sizePolicy().hasHeightForWidth())
+        self.report_width_checkBox.setSizePolicy(sizePolicy)
+
+        self.horizontalLayout_37.addWidget(self.report_width_checkBox)
+
+        self.report_width_label = QLabel(self.report_filter_frame)
+        self.report_width_label.setObjectName(u"report_width_label")
+
+        self.horizontalLayout_37.addWidget(self.report_width_label)
+
+
+        self.verticalLayout_22.addLayout(self.horizontalLayout_37)
+
+        self.horizontalLayout_31 = QHBoxLayout()
+        self.horizontalLayout_31.setSpacing(16)
+        self.horizontalLayout_31.setObjectName(u"horizontalLayout_31")
+        self.report_low_width_input = QDoubleSpinBox(self.report_filter_frame)
+        self.report_low_width_input.setObjectName(u"report_low_width_input")
+
+        self.horizontalLayout_31.addWidget(self.report_low_width_input)
+
+        self.report_width_to_label = QLabel(self.report_filter_frame)
+        self.report_width_to_label.setObjectName(u"report_width_to_label")
+        sizePolicy5.setHeightForWidth(self.report_width_to_label.sizePolicy().hasHeightForWidth())
+        self.report_width_to_label.setSizePolicy(sizePolicy5)
+
+        self.horizontalLayout_31.addWidget(self.report_width_to_label)
+
+        self.report_width_high_input = QDoubleSpinBox(self.report_filter_frame)
+        self.report_width_high_input.setObjectName(u"report_width_high_input")
+
+        self.horizontalLayout_31.addWidget(self.report_width_high_input)
+
+
+        self.verticalLayout_22.addLayout(self.horizontalLayout_31)
+
+
+        self.verticalLayout_39.addLayout(self.verticalLayout_22)
+
+        self.verticalLayout_37 = QVBoxLayout()
+        self.verticalLayout_37.setSpacing(0)
+        self.verticalLayout_37.setObjectName(u"verticalLayout_37")
+        self.horizontalLayout_38 = QHBoxLayout()
+        self.horizontalLayout_38.setSpacing(16)
+        self.horizontalLayout_38.setObjectName(u"horizontalLayout_38")
+        self.horizontalLayout_38.setContentsMargins(-1, -1, -1, 10)
+        self.report_length_checkBox = QCheckBox(self.report_filter_frame)
+        self.report_length_checkBox.setObjectName(u"report_length_checkBox")
+        sizePolicy.setHeightForWidth(self.report_length_checkBox.sizePolicy().hasHeightForWidth())
+        self.report_length_checkBox.setSizePolicy(sizePolicy)
+
+        self.horizontalLayout_38.addWidget(self.report_length_checkBox)
+
+        self.report_length_label = QLabel(self.report_filter_frame)
+        self.report_length_label.setObjectName(u"report_length_label")
+
+        self.horizontalLayout_38.addWidget(self.report_length_label)
+
+
+        self.verticalLayout_37.addLayout(self.horizontalLayout_38)
+
+        self.horizontalLayout_32 = QHBoxLayout()
+        self.horizontalLayout_32.setSpacing(16)
+        self.horizontalLayout_32.setObjectName(u"horizontalLayout_32")
+        self.report_low_length_input = QDoubleSpinBox(self.report_filter_frame)
+        self.report_low_length_input.setObjectName(u"report_low_length_input")
+
+        self.horizontalLayout_32.addWidget(self.report_low_length_input)
+
+        self.report_length_to_label = QLabel(self.report_filter_frame)
+        self.report_length_to_label.setObjectName(u"report_length_to_label")
+        sizePolicy5.setHeightForWidth(self.report_length_to_label.sizePolicy().hasHeightForWidth())
+        self.report_length_to_label.setSizePolicy(sizePolicy5)
+
+        self.horizontalLayout_32.addWidget(self.report_length_to_label)
+
+        self.report_high_length_input = QDoubleSpinBox(self.report_filter_frame)
+        self.report_high_length_input.setObjectName(u"report_high_length_input")
+
+        self.horizontalLayout_32.addWidget(self.report_high_length_input)
+
+
+        self.verticalLayout_37.addLayout(self.horizontalLayout_32)
+
+
+        self.verticalLayout_39.addLayout(self.verticalLayout_37)
+
+        self.verticalLayout_38 = QVBoxLayout()
+        self.verticalLayout_38.setSpacing(0)
+        self.verticalLayout_38.setObjectName(u"verticalLayout_38")
+        self.horizontalLayout_39 = QHBoxLayout()
+        self.horizontalLayout_39.setSpacing(16)
+        self.horizontalLayout_39.setObjectName(u"horizontalLayout_39")
+        self.horizontalLayout_39.setContentsMargins(-1, -1, -1, 10)
+        self.report_depth_checkBox = QCheckBox(self.report_filter_frame)
+        self.report_depth_checkBox.setObjectName(u"report_depth_checkBox")
+        sizePolicy.setHeightForWidth(self.report_depth_checkBox.sizePolicy().hasHeightForWidth())
+        self.report_depth_checkBox.setSizePolicy(sizePolicy)
+
+        self.horizontalLayout_39.addWidget(self.report_depth_checkBox)
+
+        self.report_depth_label = QLabel(self.report_filter_frame)
+        self.report_depth_label.setObjectName(u"report_depth_label")
+
+        self.horizontalLayout_39.addWidget(self.report_depth_label)
+
+
+        self.verticalLayout_38.addLayout(self.horizontalLayout_39)
+
+        self.horizontalLayout_33 = QHBoxLayout()
+        self.horizontalLayout_33.setSpacing(16)
+        self.horizontalLayout_33.setObjectName(u"horizontalLayout_33")
+        self.report_low_depth_input = QDoubleSpinBox(self.report_filter_frame)
+        self.report_low_depth_input.setObjectName(u"report_low_depth_input")
+
+        self.horizontalLayout_33.addWidget(self.report_low_depth_input)
+
+        self.report_depth_to_label = QLabel(self.report_filter_frame)
+        self.report_depth_to_label.setObjectName(u"report_depth_to_label")
+        sizePolicy5.setHeightForWidth(self.report_depth_to_label.sizePolicy().hasHeightForWidth())
+        self.report_depth_to_label.setSizePolicy(sizePolicy5)
+
+        self.horizontalLayout_33.addWidget(self.report_depth_to_label)
+
+        self.report_high_depth_input = QDoubleSpinBox(self.report_filter_frame)
+        self.report_high_depth_input.setObjectName(u"report_high_depth_input")
+
+        self.horizontalLayout_33.addWidget(self.report_high_depth_input)
+
+
+        self.verticalLayout_38.addLayout(self.horizontalLayout_33)
+
+
+        self.verticalLayout_39.addLayout(self.verticalLayout_38)
+
+        self.horizontalLayout_40 = QHBoxLayout()
+        self.horizontalLayout_40.setObjectName(u"horizontalLayout_40")
+        self.horizontalLayout_40.setContentsMargins(-1, 0, -1, -1)
+        self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_40.addItem(self.horizontalSpacer_5)
+
+        self.report_filter_apply_btn = QPushButton(self.report_filter_frame)
+        self.report_filter_apply_btn.setObjectName(u"report_filter_apply_btn")
+        self.report_filter_apply_btn.setEnabled(True)
+        self.report_filter_apply_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.report_filter_apply_btn.setStyleSheet(u"#report_filter_apply_btn\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
+"	color: rgba(255, 255, 255, 210);\n"
+"	border-radius: 20px;\n"
+"	min-width: 150;\n"
+"	max-width: 150;\n"
+"	min-height:40;\n"
+"	max-height: 40;\n"
+"	font-size: 14px;\n"
+"	font-weight: bold;\n"
+"}\n"
+"\n"
+"#report_filter_apply_btn:disabled\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(189, 189, 191, 255), stop:1 rgba(189, 189, 191, 255));\n"
+"	color: rgba(120, 120, 120, 255);\n"
+"}\n"
+"\n"
+"#report_filter_apply_btn:hover\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
+"}\n"
+"\n"
+"#report_filter_apply_btn:pressed\n"
+"{\n"
+"	padding-left: 5px;\n"
+"	padding-top: 5px;\n"
+"}\n"
+"")
+
+        self.horizontalLayout_40.addWidget(self.report_filter_apply_btn)
+
+        self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_40.addItem(self.horizontalSpacer_6)
+
+
+        self.verticalLayout_39.addLayout(self.horizontalLayout_40)
+
+        self.report_filter_message_scrollArea = QScrollArea(self.report_filter_frame)
+        self.report_filter_message_scrollArea.setObjectName(u"report_filter_message_scrollArea")
+        self.report_filter_message_scrollArea.setStyleSheet(u"#report_filter_message_scrollArea\n"
+"{\n"
+"	border: None;\n"
+"}\n"
+"\n"
+"#report_filter_message_frame\n"
+"{\n"
+"	background-color: #F7F8FA;\n"
+"}")
+        self.report_filter_message_scrollArea.setWidgetResizable(True)
+        self.report_filter_message_frame = QWidget()
+        self.report_filter_message_frame.setObjectName(u"report_filter_message_frame")
+        self.report_filter_message_frame.setGeometry(QRect(0, 0, 307, 50))
+        self.report_filter_message_scrollArea.setWidget(self.report_filter_message_frame)
+
+        self.verticalLayout_39.addWidget(self.report_filter_message_scrollArea)
+
+
+        self.horizontalLayout_29.addWidget(self.report_filter_frame)
+
+        self.report_table = QTableWidget(self.report_page)
+        if (self.report_table.columnCount() < 7):
+            self.report_table.setColumnCount(7)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.report_table.setHorizontalHeaderItem(0, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.report_table.setHorizontalHeaderItem(1, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.report_table.setHorizontalHeaderItem(2, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.report_table.setHorizontalHeaderItem(3, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        self.report_table.setHorizontalHeaderItem(4, __qtablewidgetitem6)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        self.report_table.setHorizontalHeaderItem(5, __qtablewidgetitem7)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        self.report_table.setHorizontalHeaderItem(6, __qtablewidgetitem8)
+        self.report_table.setObjectName(u"report_table")
+        self.report_table.setStyleSheet(u"QTable{\n"
+"	border-radius: 0px;\n"
+"}")
+        self.report_table.horizontalHeader().setDefaultSectionSize(80)
+        self.report_table.horizontalHeader().setStretchLastSection(True)
+
+        self.horizontalLayout_29.addWidget(self.report_table)
+
+        self.horizontalLayout_29.setStretch(0, 35)
+        self.horizontalLayout_29.setStretch(1, 65)
         self.main_stackedWidget.addWidget(self.report_page)
         self.users_page = QWidget()
         self.users_page.setObjectName(u"users_page")
@@ -1952,6 +2441,7 @@ class Ui_MainWindow(object):
 
         self.register_user = QPushButton(self.register_info_frame)
         self.register_user.setObjectName(u"register_user")
+        self.register_user.setEnabled(True)
         self.register_user.setCursor(QCursor(Qt.PointingHandCursor))
         self.register_user.setStyleSheet(u"#register_user\n"
 "{\n"
@@ -1964,6 +2454,12 @@ class Ui_MainWindow(object):
 "	max-height: 44;\n"
 "	font-size: 14px;\n"
 "	font-weight: bold;\n"
+"}\n"
+"\n"
+"#register_user:disabled\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(189, 189, 191, 255), stop:1 rgba(189, 189, 191, 255));\n"
+"	color: rgba(120, 120, 120, 255);\n"
 "}\n"
 "\n"
 "#register_user:hover\n"
@@ -1993,7 +2489,7 @@ class Ui_MainWindow(object):
         self.register_message_scrollArea.setWidgetResizable(True)
         self.register_message_frame = QWidget()
         self.register_message_frame.setObjectName(u"register_message_frame")
-        self.register_message_frame.setGeometry(QRect(0, 0, 934, 200))
+        self.register_message_frame.setGeometry(QRect(0, 0, 941, 223))
         sizePolicy3.setHeightForWidth(self.register_message_frame.sizePolicy().hasHeightForWidth())
         self.register_message_frame.setSizePolicy(sizePolicy3)
         self.verticalLayout_55 = QVBoxLayout(self.register_message_frame)
@@ -2076,6 +2572,7 @@ class Ui_MainWindow(object):
 
         self.userpage_editprofile_change_username_btn = QPushButton(self.profile_change_username_frame)
         self.userpage_editprofile_change_username_btn.setObjectName(u"userpage_editprofile_change_username_btn")
+        self.userpage_editprofile_change_username_btn.setEnabled(True)
         self.userpage_editprofile_change_username_btn.setMinimumSize(QSize(150, 40))
         self.userpage_editprofile_change_username_btn.setMaximumSize(QSize(150, 40))
         self.userpage_editprofile_change_username_btn.setCursor(QCursor(Qt.PointingHandCursor))
@@ -2090,6 +2587,12 @@ class Ui_MainWindow(object):
 "	max-height: 40;\n"
 "	font-size: 14px;\n"
 "	font-weight: bold;\n"
+"}\n"
+"\n"
+"#userpage_editprofile_change_username_btn:disabled\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(189, 189, 191, 255), stop:1 rgba(189, 189, 191, 255));\n"
+"	color: rgba(120, 120, 120, 255);\n"
 "}\n"
 "\n"
 "#userpage_editprofile_change_username_btn:hover\n"
@@ -2111,7 +2614,7 @@ class Ui_MainWindow(object):
         self.change_username_message_scrollArea.setWidgetResizable(True)
         self.change_username_message_frame = QWidget()
         self.change_username_message_frame.setObjectName(u"change_username_message_frame")
-        self.change_username_message_frame.setGeometry(QRect(0, 0, 441, 327))
+        self.change_username_message_frame.setGeometry(QRect(0, 0, 445, 350))
         self.change_username_message_scrollArea.setWidget(self.change_username_message_frame)
 
         self.verticalLayout_54.addWidget(self.change_username_message_scrollArea)
@@ -2246,6 +2749,7 @@ class Ui_MainWindow(object):
 
         self.userpage_editprofile_change_password_btn = QPushButton(self.profile_change_password_frame)
         self.userpage_editprofile_change_password_btn.setObjectName(u"userpage_editprofile_change_password_btn")
+        self.userpage_editprofile_change_password_btn.setEnabled(True)
         self.userpage_editprofile_change_password_btn.setMaximumSize(QSize(150, 40))
         self.userpage_editprofile_change_password_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.userpage_editprofile_change_password_btn.setStyleSheet(u"#userpage_editprofile_change_password_btn\n"
@@ -2259,6 +2763,12 @@ class Ui_MainWindow(object):
 "	max-height: 40;\n"
 "	font-size: 14px;\n"
 "	font-weight: bold;\n"
+"}\n"
+"\n"
+"#userpage_editprofile_change_password_btn:disabled\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(189, 189, 191, 255), stop:1 rgba(189, 189, 191, 255));\n"
+"	color: rgba(120, 120, 120, 255);\n"
 "}\n"
 "\n"
 "#userpage_editprofile_change_password_btn:hover\n"
@@ -2280,7 +2790,7 @@ class Ui_MainWindow(object):
         self.change_password_message_scrollArea.setWidgetResizable(True)
         self.change_password_message_frame = QWidget()
         self.change_password_message_frame.setObjectName(u"change_password_message_frame")
-        self.change_password_message_frame.setGeometry(QRect(0, 0, 441, 239))
+        self.change_password_message_frame.setGeometry(QRect(0, 0, 444, 262))
         self.change_password_message_scrollArea.setWidget(self.change_password_message_frame)
 
         self.verticalLayout_51.addWidget(self.change_password_message_scrollArea)
@@ -2305,8 +2815,8 @@ class Ui_MainWindow(object):
         self.userpage_all_users_table = QTableWidget(self.all_users_tab)
         if (self.userpage_all_users_table.rowCount() < 1):
             self.userpage_all_users_table.setRowCount(1)
-        __qtablewidgetitem2 = QTableWidgetItem()
-        self.userpage_all_users_table.setVerticalHeaderItem(0, __qtablewidgetitem2)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        self.userpage_all_users_table.setVerticalHeaderItem(0, __qtablewidgetitem9)
         self.userpage_all_users_table.setObjectName(u"userpage_all_users_table")
         self.userpage_all_users_table.setStyleSheet(u"")
         self.userpage_all_users_table.setEditTriggers(QAbstractItemView.NoEditTriggers)
@@ -2342,8 +2852,9 @@ class Ui_MainWindow(object):
         self.system_status_expanding_btn.clicked.connect(self.system_status_btn.click)
         self.notif_filter_expanding_btn.clicked.connect(self.notif_filter_btn.click)
 
-        self.main_stackedWidget.setCurrentIndex(1)
-        self.settings_tabs.setCurrentIndex(1)
+        self.main_stackedWidget.setCurrentIndex(2)
+        self.live_tabWidget.setCurrentIndex(1)
+        self.settings_tabs.setCurrentIndex(0)
         self.algorithm_stackedWidget.setCurrentIndex(0)
         self.user_tabs.setCurrentIndex(0)
 
@@ -2389,6 +2900,7 @@ class Ui_MainWindow(object):
         self.notif_filter_btn.setText("")
         self.notif_clear_filter_btn.setText("")
         self.notif_remove_btn.setText("")
+        self.start_stop_btn.setText(QCoreApplication.translate("MainWindow", u"Play", None))
         self.camera_settings_off_label.setText(QCoreApplication.translate("MainWindow", u"Off", None))
         self.connect_camera_switch.setText("")
         self.camera_settings_on_label.setText(QCoreApplication.translate("MainWindow", u"On", None))
@@ -2423,6 +2935,36 @@ class Ui_MainWindow(object):
         self.algorithm_settings_saved_gif.setText("")
         self.algorithm_settings_saved_message.setText("")
         self.settings_tabs.setTabText(self.settings_tabs.indexOf(self.algorithm_tab), QCoreApplication.translate("MainWindow", u"Algorithm", None))
+        self.report_filter_by_label.setText(QCoreApplication.translate("MainWindow", u"Filter By", None))
+        self.report_date_checkBox.setText("")
+        self.report_date_label.setText(QCoreApplication.translate("MainWindow", u"Date", None))
+        self.report_date_to_label.setText(QCoreApplication.translate("MainWindow", u"To", None))
+        self.report_class_checkBox.setText("")
+        self.report_class_label.setText(QCoreApplication.translate("MainWindow", u"Class", None))
+        self.report_width_checkBox.setText("")
+        self.report_width_label.setText(QCoreApplication.translate("MainWindow", u"Width (cm)", None))
+        self.report_width_to_label.setText(QCoreApplication.translate("MainWindow", u"To", None))
+        self.report_length_checkBox.setText("")
+        self.report_length_label.setText(QCoreApplication.translate("MainWindow", u"Length (m)", None))
+        self.report_length_to_label.setText(QCoreApplication.translate("MainWindow", u"To", None))
+        self.report_depth_checkBox.setText("")
+        self.report_depth_label.setText(QCoreApplication.translate("MainWindow", u"Depth (mm)", None))
+        self.report_depth_to_label.setText(QCoreApplication.translate("MainWindow", u"To", None))
+        self.report_filter_apply_btn.setText(QCoreApplication.translate("MainWindow", u"Apply", None))
+        ___qtablewidgetitem2 = self.report_table.horizontalHeaderItem(0)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"X", None));
+        ___qtablewidgetitem3 = self.report_table.horizontalHeaderItem(1)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Y", None));
+        ___qtablewidgetitem4 = self.report_table.horizontalHeaderItem(2)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Date", None));
+        ___qtablewidgetitem5 = self.report_table.horizontalHeaderItem(3)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"Width", None));
+        ___qtablewidgetitem6 = self.report_table.horizontalHeaderItem(4)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Height", None));
+        ___qtablewidgetitem7 = self.report_table.horizontalHeaderItem(5)
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"Depth", None));
+        ___qtablewidgetitem8 = self.report_table.horizontalHeaderItem(6)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"Class", None));
         self.register_username_label.setText(QCoreApplication.translate("MainWindow", u"Username", None))
         self.register_password_label.setText(QCoreApplication.translate("MainWindow", u"Password", None))
         self.userpage_password_eye.setText("")
@@ -2445,8 +2987,8 @@ class Ui_MainWindow(object):
         self.userpage_editprofile_change_password_btn.setText(QCoreApplication.translate("MainWindow", u"Change Password", None))
         self.user_tabs.setTabText(self.user_tabs.indexOf(self.user_profile_tab), QCoreApplication.translate("MainWindow", u"Edit Profile", None))
         self.userspage_user_heading_lbl.setText(QCoreApplication.translate("MainWindow", u"Only Admin Can Access", None))
-        ___qtablewidgetitem2 = self.userpage_all_users_table.verticalHeaderItem(0)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
+        ___qtablewidgetitem9 = self.userpage_all_users_table.verticalHeaderItem(0)
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
         self.user_tabs.setTabText(self.user_tabs.indexOf(self.all_users_tab), QCoreApplication.translate("MainWindow", u"All Users", None))
     # retranslateUi
 
