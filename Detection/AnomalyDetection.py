@@ -99,15 +99,12 @@ class LineFitAnomalyDetection(_AnomalyDetection):
         self.xs = pts[:,0]
 
         error_ys = self.__calc_error_ys(pts)
-        filter_pts = pts[error_ys<self.MAX_STD]
+        filter_pts = pts[np.abs(error_ys)<self.MAX_STD]
         self.__calc_error_ys(filter_pts)
 
         #threshould errors smaller than diff_thresh into 0
         self.error_ys = self.threshould_errors(self.error_ys, diff_thresh)
 
-
-
-        
         return self.stackXY(self.xs, self.error_ys)
 
 
@@ -143,13 +140,14 @@ class CurveFitAnomalyDetection(_AnomalyDetection):
         self.curve_parms, pcov = curve_fit(self.__curve_function, pts[:,0], pts[:,1], self.curve_parms)
         self.pred_ys = self.calculate_ys(self.xs, self.curve_parms)
         self.error_ys = self.pred_ys - self.pts[:,1]
+        return self.error_ys
 
     def feed(self, pts:np.ndarray, diff_thresh:int=2):
         self.pts = pts
         self.xs = pts[:,0]
 
         error_ys = self.__calc_error_ys(pts)
-        filter_pts = pts[-self.MAX_STD<error_ys<self.MAX_STD]
+        filter_pts = pts[np.abs(error_ys)<self.MAX_STD]
         self.__calc_error_ys(filter_pts)
 
         #threshould errors smaller than diff_thresh into 0

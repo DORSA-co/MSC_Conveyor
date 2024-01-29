@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1214</width>
-    <height>767</height>
+    <width>1241</width>
+    <height>787</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1076,8 +1076,8 @@ font-weight:bold;</string>
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>100</width>
-                    <height>30</height>
+                    <width>330</width>
+                    <height>16</height>
                    </rect>
                   </property>
                   <property name="styleSheet">
@@ -1589,7 +1589,7 @@ color: white;</string>
                   <number>20</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>20</number>
+                  <number>9</number>
                  </property>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_8">
@@ -1937,6 +1937,9 @@ color: white;</string>
                    </property>
                    <item>
                     <widget class="QPushButton" name="save_camera_settings">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                        <horstretch>0</horstretch>
@@ -1967,6 +1970,12 @@ color: white;</string>
 	font-weight: bold;
 }
 
+#save_camera_settings:disabled
+{
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(189, 189, 191, 255), stop:1 rgba(189, 189, 191, 255));
+	color: rgba(120, 120, 120, 255);
+}
+
 #save_camera_settings:hover
 {
 	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));
@@ -1984,12 +1993,16 @@ color: white;</string>
                      </property>
                      <property name="icon">
                       <iconset resource="assets/assets.qrc">
-                       <normaloff>:/icons/icons/save_icon.png</normaloff>:/icons/icons/save_icon.png</iconset>
+                       <normaloff>:/icons/icons/save_icon.png</normaloff>
+                       <disabledoff>:/icons/icons/save_disable.png</disabledoff>:/icons/icons/save_icon.png</iconset>
                      </property>
                     </widget>
                    </item>
                    <item>
                     <widget class="QPushButton" name="cancel_camera_settings">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
                      <property name="cursor">
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
@@ -2006,6 +2019,12 @@ color: white;</string>
 	font-size: 14px;
 	font-weight: bold;
 	qproperty-icon: url(:/icons/icons/cancel_icon.png);
+}
+
+#cancel_camera_settings:disabled
+{
+	border: 2px solid rgba(189, 189, 191, 255);
+	color: rgba(120, 120, 120, 255);
 }
 
 #cancel_camera_settings:hover
@@ -2046,6 +2065,9 @@ color: white;</string>
                    </item>
                    <item>
                     <widget class="QPushButton" name="reset_camera_settings">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
                      <property name="cursor">
                       <cursorShape>PointingHandCursor</cursorShape>
                      </property>
@@ -2068,6 +2090,11 @@ color: white;</string>
 	qproperty-icon: url(:/icons/icons/reset_icon.png);
 }
 
+#reset_camera_settings:disabled
+{
+	color:  rgba(120, 120, 120, 255);
+}
+
 #reset_camera_settings:hover
 {
 	color:  rgba(76, 126, 255, 255);
@@ -2087,6 +2114,43 @@ color: white;</string>
                      <property name="icon">
                       <iconset resource="assets/assets.qrc">
                        <normaloff>:/icons/icons/reset_icon.png</normaloff>:/icons/icons/reset_icon.png</iconset>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_27">
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="camera_settings_saved_gif">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="camera_settings_saved_message">
+                     <property name="font">
+                      <font>
+                       <pointsize>-1</pointsize>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">color: rgb(120, 120, 120);</string>
+                     </property>
+                     <property name="text">
+                      <string/>
                      </property>
                     </widget>
                    </item>
@@ -2691,6 +2755,9 @@ color: white;</string>
                 </property>
                 <item>
                  <widget class="QPushButton" name="save_algorithm_settings">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                     <horstretch>0</horstretch>
@@ -2733,6 +2800,12 @@ color: white;</string>
 	font-weight: bold;
 }
 
+#save_algorithm_settings:disabled
+{
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(189, 189, 191, 255), stop:1 rgba(189, 189, 191, 255));
+	color: rgba(120, 120, 120, 255);
+}
+
 #save_algorithm_settings:hover
 {
 	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));
@@ -2750,12 +2823,16 @@ color: white;</string>
                   </property>
                   <property name="icon">
                    <iconset resource="assets/assets.qrc">
-                    <normaloff>:/icons/icons/save_icon.png</normaloff>:/icons/icons/save_icon.png</iconset>
+                    <normaloff>:/icons/icons/save_icon.png</normaloff>
+                    <disabledoff>:/icons/icons/save_disable.png</disabledoff>:/icons/icons/save_icon.png</iconset>
                   </property>
                  </widget>
                 </item>
                 <item>
                  <widget class="QPushButton" name="cancel_algorithm_settings">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
                   <property name="cursor">
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
@@ -2772,6 +2849,12 @@ color: white;</string>
 	font-size: 14px;
 	font-weight: bold;
 	qproperty-icon: url(:/icons/icons/cancel_icon.png);
+}
+
+#cancel_algorithm_settings:disabled
+{
+	border: 2px solid rgba(189, 189, 191, 255);
+	color: rgba(120, 120, 120, 255);
 }
 
 #cancel_algorithm_settings:hover
@@ -2815,6 +2898,9 @@ color: white;</string>
                 </item>
                 <item>
                  <widget class="QPushButton" name="reset_algorithm_settings">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
                   <property name="cursor">
                    <cursorShape>PointingHandCursor</cursorShape>
                   </property>
@@ -2831,6 +2917,11 @@ color: white;</string>
 	font-size: 14px;
 	font-weight: bold;
 	text-align: left;
+}
+
+#reset_algorithm_settings:disabled
+{
+	color:  rgba(120, 120, 120, 255);
 }
 
 #reset_algorithm_settings:hover
@@ -2867,6 +2958,33 @@ color: white;</string>
                    </size>
                   </property>
                  </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_12">
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="algorithm_settings_saved_gif">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="algorithm_settings_saved_message">
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </item>

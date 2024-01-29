@@ -87,10 +87,12 @@ class CameraSetting_API:
         parms['name'] = self.ui_cam.get_camera_name()
         parms['serial_number'] = self.ui_cam.get_serial_number()
         self.db.save(parms)
+        self.ui_cam.save_state(True)
 
     def reset_camera_settings(self, ):
         self.db.restor_default()
         self.load_camera_settings()
+        self.ui_cam.save_state(True)
 
     def play_camera(self,):
         name = self.ui_cam.get_camera_name()
@@ -109,6 +111,7 @@ class CameraSetting_API:
         parms = self.db.load(name)
         self.ui_cam.set_serial_number(parms.get('serial_number'))
         self.ui_cam.set_camera_parms_UI(parms)
+        self.ui_cam.save_state(True)
         
     
     def setup_camera_settings_availables_value(self,):
@@ -254,15 +257,17 @@ class AlgorithmSetting_API:
         parms = self.db.load()
         parms = self.mapDict.multi_key2value(parms)
         self.uiHandeler.set_parms(parms)
-
+        self.uiHandeler.save_state(True)
     
     def save_algorithm_settings(self,):
         parms = self.uiHandeler.get_parms()
         parms = self.mapDict.multi_value2key(parms)
         self.db.save(parms)
+        self.uiHandeler.save_state(True)
 
     def reset_algorithm_settings(self):
         self.db.restor_default()
         self.load_algorithm_settings()
+        self.uiHandeler.save_state(True)
 
     

@@ -2,9 +2,11 @@ from .Common_Function_UI import Common_Function_UI
 from functools import partial
 from PySide6.QtGui import QImage, QPixmap, QIcon
 from PySide6 import QtWidgets
+
 from UIFiles.main_UI import Ui_MainWindow
 from uiUtils.guiBackend import GUIBackend
-from uiUtils.GUIComponents import MULTISTEP_SELECT_STYLE, MULTISTEP_UNSELECT_STYLE
+from uiUtils.GUIComponents import MULTISTEP_SELECT_STYLE, MULTISTEP_UNSELECT_STYLE, gifPlayer, single_timer_runner
+from Constants.IconsPath import GifsPath
 import copy
 
 
@@ -99,7 +101,20 @@ class CameraSetting_UI(Common_Function_UI):
             "gradient_number": 0
         }
 
+        self.__setting_change_connector__()
+        self.gif_player = gifPlayer(self.ui.camera_settings_saved_gif, GifsPath.SAVED_GIF)
+
         # self.ui.Stop_connection_Camera_setting.setEnabled(False)
+
+    def save_state(self, is_saved):
+        super(CameraSetting_UI, self).save_state(is_saved, self.buttons['save'], 
+                         self.buttons['cancel'], 
+                         self.ui.camera_settings_saved_message, 
+                         self.gif_player)
+        
+    def __setting_change_connector__(self,):
+        for setting_name,  field_obj in self.camera_setting_fields.items():
+                GUIBackend.connector(field_obj, lambda : self.save_state(False))
 
     def button_connector(self, btn_name:str, function):
         if isinstance(self.buttons[btn_name], QtWidgets.QPushButton):
@@ -261,6 +276,19 @@ class AlgorithmSetting_UI(Common_Function_UI):
         self.multistep_button_connector('step3', lambda: self.change_steps_stackedwidget_page(2, 'step3') )
 
         self.change_steps_stackedwidget_page(0, 'step1')
+
+        self.__setting_change_connector__()
+        self.gif_player = gifPlayer(self.ui.algorithm_settings_saved_gif, GifsPath.SAVED_GIF)
+
+    def save_state(self, is_saved):
+        super(AlgorithmSetting_UI, self).save_state(is_saved, self.buttons['save'], 
+                         self.buttons['cancel'], 
+                         self.ui.algorithm_settings_saved_message, 
+                         self.gif_player)
+        
+    def __setting_change_connector__(self,):
+        for setting_name,  field_obj in self.setting_parms.items():
+                GUIBackend.connector(field_obj, lambda : self.save_state(False))
 
     def button_connector(self, name:str, func):
         GUIBackend.button_connector(self.buttons[name], func)

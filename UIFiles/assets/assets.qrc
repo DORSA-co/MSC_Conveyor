@@ -1,8 +1,9 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/save_disable.png</file>
+    <file>icons/save_icon.png</file>
     <file>icons/reset_hover.png</file>
     <file>icons/reset_icon.png</file>
-    <file>icons/save_icon.png</file>
     <file>icons/cancel_hover.png</file>
     <file>icons/cancel_icon.png</file>
     <file>icons/close_gray.png</file>
@@ -74,5 +75,8 @@
     <file>icons/delete_icon_hover.png</file>
     <file>icons/black_eye.png</file>
     <file>icons/black_eye_off.png</file>
+  </qresource>
+  <qresource prefix="gifs">
+    <file>gifs/saving.gif</file>
   </qresource>
 </RCC>
