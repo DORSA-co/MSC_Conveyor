@@ -75,6 +75,21 @@ def depthImage2xyz(img:np.ndarray):
     return xyz
 
 
+def randowm_down_sample(xyz, scale=0.5):
+    count = xyz.shape[0]
+    xyz = xyz[ np.random.randint(0, count, int(count*scale))]
+    return xyz
+
+def perfect_down_sample(xyz, scale=0.2):
+    corect = xyz[ xyz[:,-1] == 0 ]
+    defect = xyz[ xyz[:,-1] != 0 ]
+    
+    count = corect.shape[0]
+    corect = corect[ np.random.randint(0, count, int(count*scale))]
+
+    return np.vstack((corect, defect))
+
+
 # def depthImage2xyz(img:np.ndarray):
 #     xz = list(np.ndindex(img.shape[1], img.shape[0]))
 #     xz = np.array(xz)
@@ -86,14 +101,20 @@ def depthImage2xyz(img:np.ndarray):
 #     return xyz
 
 if __name__ == "__main__":
-
+    print('start')
     #img = np.random.rand(640,1000)
-    with open('belt_images\depth\\2.npy', 'rb') as f:
+    with open('belt_images\depth\\1.npy', 'rb') as f:
         img = np.load(f)
-    
+    import time
+
+    t = time.time()
+    img = np.vstack((img,)*8)
     h,w = img.shape
     xyz = depthImage2xyz(img)
+    #xyz = randowm_down_sample(xyz,0.3)
+    xyz = perfect_down_sample(xyz,0.1)
 
+    
 
     v3 = view3D()
     pcd = v3.numpy2pcd(xyz)
@@ -101,8 +122,11 @@ if __name__ == "__main__":
     bbox = v3.generate_bbox((0,w), (0,h), (-20,20), border=10)
     mesh = v3.crop(mesh, bbox)
 
+    v3.show_mesh(mesh)
     #v3.show_pointcloud(pcd)
 
     # th = threading.Thread(target=v3.show_pointcloud, args=(pcd,))
-    th = threading.Thread(target=v3.show_mesh, args=(mesh,))
-    th.start()
+    #th = threading.Thread(target=v3.show_mesh, args=(mesh,))
+    #th.start()
+
+    t = time.time()
