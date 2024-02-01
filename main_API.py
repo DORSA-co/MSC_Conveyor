@@ -87,6 +87,7 @@ class main_API:
 
         self.uiHandeler.change_page_connector(self.page_change_event)
         self.API_Page_Users.set_login_event(self.login_user_event)
+        self.API_Report.set_external_delete_event_function(self.delete_defect)
         
         self.pages_api_dict = {
             'settings': self.API_Page_Setting,

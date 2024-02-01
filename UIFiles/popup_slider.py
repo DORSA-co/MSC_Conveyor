@@ -49,8 +49,8 @@ class Ui_slider(object):
 "QDoubleSpinBox:disabled ,\n"
 "QDateEdit:disabled\n"
 "{\n"
-"	border-bottom: 2px solid #F0F0F2;\n"
-"	color: rgb(120, 120, 120);\n"
+"	border-bottom: 2px solid #DCDCDC;\n"
+"	color: #DCDCDC;\n"
 "}\n"
 "\n"
 "QSpinBox::up-arrow, QDoubleSpinBox::up-arrow,\n"
@@ -75,10 +75,10 @@ class Ui_slider(object):
 "	image: url(:/icons/icons/plus_icon_gray.png);\n"
 "	width: 16px;\n"
 "	height: 16px;\n"
-"}"
-                        "\n"
+"}\n"
 "\n"
-"QSpinBox::down-arrow:disabled ,  QDoubleSpinBox::down-arrow:disabled,\n"
+"Q"
+                        "SpinBox::down-arrow:disabled ,  QDoubleSpinBox::down-arrow:disabled,\n"
 "QDateEdit::down-arrow:disabled\n"
 "{   \n"
 "	image: url(:/icons/icons/minus_icon_gray.png);\n"
@@ -122,9 +122,9 @@ class Ui_slider(object):
 "	background-color: transparent;\n"
 "}\n"
 "\n"
-"QSpinBox::up-button:"
-                        "disabled ,\n"
-"QSpinBox::down-button:disabled ,\n"
+"QSpinBox::up-button:disabled ,\n"
+""
+                        "QSpinBox::down-button:disabled ,\n"
 "QDoubleSpinBox::up-button:disabled ,\n"
 "QDoubleSpinBox::down-button:disabled,\n"
 "QDateEdit::up-button:disabled,\n"
@@ -165,8 +165,8 @@ class Ui_slider(object):
 "\n"
 "/* Hover State */\n"
 "QCheckBox::indicator:hover {\n"
-"    border: 2px solid rgba(194,"
-                        " 197, 204, 255);\n"
+"    border: 2px solid rgba(194, 197, 204, 255)"
+                        ";\n"
 "}\n"
 "\n"
 "/* Disabled State */\n"
@@ -222,8 +222,8 @@ class Ui_slider(object):
 "\n"
 "#filters_apply_btn\n"
 "{\n"
-"	back"
-                        "ground-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
+"	background-color: q"
+                        "lineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
 "	color: rgba(255, 255, 255, 210);\n"
 "	border-radius: 22px;\n"
 "	min-width: 200;\n"
@@ -422,6 +422,8 @@ class Ui_slider(object):
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.date_frame = QFrame(self.filters_frame)
         self.date_frame.setObjectName(u"date_frame")
+        self.date_frame.setEnabled(True)
+        self.date_frame.setStyleSheet(u"")
         self.date_frame.setFrameShape(QFrame.StyledPanel)
         self.date_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_8 = QVBoxLayout(self.date_frame)
@@ -433,6 +435,7 @@ class Ui_slider(object):
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
         self.filter_date_checkBox = QCheckBox(self.date_frame)
         self.filter_date_checkBox.setObjectName(u"filter_date_checkBox")
+        self.filter_date_checkBox.setEnabled(True)
         sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
@@ -443,11 +446,12 @@ class Ui_slider(object):
 
         self.date_icon = QPushButton(self.date_frame)
         self.date_icon.setObjectName(u"date_icon")
-        self.date_icon.setEnabled(True)
+        self.date_icon.setEnabled(False)
         sizePolicy1.setHeightForWidth(self.date_icon.sizePolicy().hasHeightForWidth())
         self.date_icon.setSizePolicy(sizePolicy1)
         icon1 = QIcon()
         icon1.addFile(u":/icons/icons/date_gray.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(u":/icons/icons/date_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
         self.date_icon.setIcon(icon1)
         self.date_icon.setIconSize(QSize(25, 25))
 
@@ -515,11 +519,12 @@ class Ui_slider(object):
 
         self.width_icon = QPushButton(self.width_frame)
         self.width_icon.setObjectName(u"width_icon")
-        self.width_icon.setEnabled(True)
+        self.width_icon.setEnabled(False)
         sizePolicy1.setHeightForWidth(self.width_icon.sizePolicy().hasHeightForWidth())
         self.width_icon.setSizePolicy(sizePolicy1)
         icon2 = QIcon()
-        icon2.addFile(u":/icons/icons/width.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(u":/icons/icons/width_gray.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(u":/icons/icons/width_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
         self.width_icon.setIcon(icon2)
         self.width_icon.setIconSize(QSize(25, 25))
 
@@ -542,6 +547,7 @@ class Ui_slider(object):
         self.horizontalLayout_11.setContentsMargins(12, -1, 12, -1)
         self.low_width_input = QDoubleSpinBox(self.width_frame)
         self.low_width_input.setObjectName(u"low_width_input")
+        self.low_width_input.setEnabled(True)
         self.low_width_input.setAlignment(Qt.AlignCenter)
         self.low_width_input.setMaximum(140.000000000000000)
 
@@ -586,11 +592,12 @@ class Ui_slider(object):
 
         self.height_icon = QPushButton(self.height_frame)
         self.height_icon.setObjectName(u"height_icon")
-        self.height_icon.setEnabled(True)
+        self.height_icon.setEnabled(False)
         sizePolicy1.setHeightForWidth(self.height_icon.sizePolicy().hasHeightForWidth())
         self.height_icon.setSizePolicy(sizePolicy1)
         icon3 = QIcon()
-        icon3.addFile(u":/icons/icons/height.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon3.addFile(u":/icons/icons/length_gray.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon3.addFile(u":/icons/icons/length_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
         self.height_icon.setIcon(icon3)
         self.height_icon.setIconSize(QSize(25, 25))
 
@@ -657,11 +664,12 @@ class Ui_slider(object):
 
         self.depth_icon = QPushButton(self.depth_frame)
         self.depth_icon.setObjectName(u"depth_icon")
-        self.depth_icon.setEnabled(True)
+        self.depth_icon.setEnabled(False)
         sizePolicy1.setHeightForWidth(self.depth_icon.sizePolicy().hasHeightForWidth())
         self.depth_icon.setSizePolicy(sizePolicy1)
         icon4 = QIcon()
-        icon4.addFile(u":/icons/icons/depth.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon4.addFile(u":/icons/icons/depth_gray.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon4.addFile(u":/icons/icons/depth_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
         self.depth_icon.setIcon(icon4)
         self.depth_icon.setIconSize(QSize(25, 25))
 
@@ -719,6 +727,37 @@ class Ui_slider(object):
 
         self.filters_apply_btn = QPushButton(self.filters_frame)
         self.filters_apply_btn.setObjectName(u"filters_apply_btn")
+        self.filters_apply_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.filters_apply_btn.setStyleSheet(u"#filters_apply_btn\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
+"	color: rgba(255, 255, 255, 210);\n"
+"	border-radius: 22px;\n"
+"	min-width: 180;\n"
+"	max-width: 180;\n"
+"	min-height:44;\n"
+"	max-height: 44;\n"
+"	font-size: 14px;\n"
+"	font-weight: bold;\n"
+"}\n"
+"\n"
+"#filters_apply_btn:disabled\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(189, 189, 191, 255), stop:1 rgba(189, 189, 191, 255));\n"
+"	color: rgba(120, 120, 120, 255);\n"
+"}\n"
+"\n"
+"#filters_apply_btn:hover\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
+"}\n"
+"\n"
+"#filters_apply_btn:pressed\n"
+"{\n"
+"	padding-left: 5px;\n"
+"	padding-top: 5px;\n"
+"}\n"
+"")
 
         self.verticalLayout_9.addWidget(self.filters_apply_btn, 0, Qt.AlignHCenter)
 

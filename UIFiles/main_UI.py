@@ -1530,14 +1530,14 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_13.addWidget(self.step1_btn)
 
-        self.frame_3 = QFrame(self.show_steps_frame)
-        self.frame_3.setObjectName(u"frame_3")
-        self.frame_3.setMaximumSize(QSize(16777215, 4))
-        self.frame_3.setStyleSheet(u"")
-        self.frame_3.setFrameShape(QFrame.StyledPanel)
-        self.frame_3.setFrameShadow(QFrame.Raised)
+        self.step12_line = QFrame(self.show_steps_frame)
+        self.step12_line.setObjectName(u"step12_line")
+        self.step12_line.setMaximumSize(QSize(16777215, 4))
+        self.step12_line.setStyleSheet(u"")
+        self.step12_line.setFrameShape(QFrame.StyledPanel)
+        self.step12_line.setFrameShadow(QFrame.Raised)
 
-        self.horizontalLayout_13.addWidget(self.frame_3)
+        self.horizontalLayout_13.addWidget(self.step12_line)
 
         self.step2_btn = QPushButton(self.show_steps_frame)
         self.step2_btn.setObjectName(u"step2_btn")
@@ -1547,12 +1547,12 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_13.addWidget(self.step2_btn)
 
-        self.frame_4 = QFrame(self.show_steps_frame)
-        self.frame_4.setObjectName(u"frame_4")
-        self.frame_4.setFrameShape(QFrame.StyledPanel)
-        self.frame_4.setFrameShadow(QFrame.Raised)
+        self.step23_line = QFrame(self.show_steps_frame)
+        self.step23_line.setObjectName(u"step23_line")
+        self.step23_line.setFrameShape(QFrame.StyledPanel)
+        self.step23_line.setFrameShadow(QFrame.Raised)
 
-        self.horizontalLayout_13.addWidget(self.frame_4)
+        self.horizontalLayout_13.addWidget(self.step23_line)
 
         self.step3_btn = QPushButton(self.show_steps_frame)
         self.step3_btn.setObjectName(u"step3_btn")
@@ -1973,258 +1973,454 @@ class Ui_MainWindow(object):
         self.horizontalLayout_29.setObjectName(u"horizontalLayout_29")
         self.report_filter_frame = QFrame(self.report_page)
         self.report_filter_frame.setObjectName(u"report_filter_frame")
+        self.report_filter_frame.setMinimumSize(QSize(350, 0))
+        self.report_filter_frame.setMaximumSize(QSize(350, 16777215))
         self.report_filter_frame.setStyleSheet(u"QLabel{\n"
 "	font-weight: bold;\n"
 "	font-size: 15px;\n"
+"}\n"
+"\n"
+"QPushButton{\n"
+"	border: 0px solid transparent;	\n"
+"}\n"
+"\n"
+"QFrame{\n"
+"	border: None;\n"
+"}\n"
+"\n"
+"#date_line, #width_line, #length_line, #depth_line, #class_line, #last_line{\n"
+"	border: 1px solid #E3E3E6;\n"
 "}")
         self.report_filter_frame.setFrameShape(QFrame.StyledPanel)
         self.report_filter_frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_39 = QVBoxLayout(self.report_filter_frame)
-        self.verticalLayout_39.setSpacing(30)
-        self.verticalLayout_39.setObjectName(u"verticalLayout_39")
-        self.verticalLayout_39.setContentsMargins(20, 11, 20, -1)
+        self.verticalLayout_48 = QVBoxLayout(self.report_filter_frame)
+        self.verticalLayout_48.setSpacing(10)
+        self.verticalLayout_48.setObjectName(u"verticalLayout_48")
         self.report_filter_by_label = QLabel(self.report_filter_frame)
         self.report_filter_by_label.setObjectName(u"report_filter_by_label")
+        sizePolicy2.setHeightForWidth(self.report_filter_by_label.sizePolicy().hasHeightForWidth())
+        self.report_filter_by_label.setSizePolicy(sizePolicy2)
+        self.report_filter_by_label.setMinimumSize(QSize(0, 50))
+        self.report_filter_by_label.setMaximumSize(QSize(16777215, 50))
         self.report_filter_by_label.setStyleSheet(u"#report_filter_by_label{\n"
 "	font-size: 26px;\n"
 "	font-weight: bold;\n"
 "	color: #4C7EFF;\n"
 "}")
+        self.report_filter_by_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
 
-        self.verticalLayout_39.addWidget(self.report_filter_by_label)
-
-        self.verticalSpacer_10 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Preferred)
-
-        self.verticalLayout_39.addItem(self.verticalSpacer_10)
+        self.verticalLayout_48.addWidget(self.report_filter_by_label)
 
         self.verticalLayout_17 = QVBoxLayout()
         self.verticalLayout_17.setSpacing(0)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
-        self.horizontalLayout_35 = QHBoxLayout()
-        self.horizontalLayout_35.setSpacing(16)
-        self.horizontalLayout_35.setObjectName(u"horizontalLayout_35")
-        self.horizontalLayout_35.setContentsMargins(-1, -1, -1, 10)
-        self.report_date_checkBox = QCheckBox(self.report_filter_frame)
+        self.date_line = QFrame(self.report_filter_frame)
+        self.date_line.setObjectName(u"date_line")
+        self.date_line.setMinimumSize(QSize(0, 2))
+        self.date_line.setMaximumSize(QSize(16777215, 2))
+        self.date_line.setFrameShape(QFrame.StyledPanel)
+        self.date_line.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_17.addWidget(self.date_line)
+
+        self.report_date_title_frame = QFrame(self.report_filter_frame)
+        self.report_date_title_frame.setObjectName(u"report_date_title_frame")
+        sizePolicy2.setHeightForWidth(self.report_date_title_frame.sizePolicy().hasHeightForWidth())
+        self.report_date_title_frame.setSizePolicy(sizePolicy2)
+        self.report_date_title_frame.setFrameShape(QFrame.StyledPanel)
+        self.report_date_title_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_41 = QHBoxLayout(self.report_date_title_frame)
+        self.horizontalLayout_41.setObjectName(u"horizontalLayout_41")
+        self.report_date_checkBox = QCheckBox(self.report_date_title_frame)
         self.report_date_checkBox.setObjectName(u"report_date_checkBox")
         sizePolicy.setHeightForWidth(self.report_date_checkBox.sizePolicy().hasHeightForWidth())
         self.report_date_checkBox.setSizePolicy(sizePolicy)
 
-        self.horizontalLayout_35.addWidget(self.report_date_checkBox)
+        self.horizontalLayout_41.addWidget(self.report_date_checkBox)
 
-        self.report_date_label = QLabel(self.report_filter_frame)
+        self.report_date_icon = QPushButton(self.report_date_title_frame)
+        self.report_date_icon.setObjectName(u"report_date_icon")
+        self.report_date_icon.setEnabled(False)
+        sizePolicy.setHeightForWidth(self.report_date_icon.sizePolicy().hasHeightForWidth())
+        self.report_date_icon.setSizePolicy(sizePolicy)
+        self.report_date_icon.setStyleSheet(u"")
+        icon19 = QIcon()
+        icon19.addFile(u":/icons/icons/date_black.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon19.addFile(u":/icons/icons/date_black.png", QSize(), QIcon.Disabled, QIcon.Off)
+        self.report_date_icon.setIcon(icon19)
+        self.report_date_icon.setIconSize(QSize(25, 25))
+
+        self.horizontalLayout_41.addWidget(self.report_date_icon)
+
+        self.report_date_label = QLabel(self.report_date_title_frame)
         self.report_date_label.setObjectName(u"report_date_label")
 
-        self.horizontalLayout_35.addWidget(self.report_date_label)
+        self.horizontalLayout_41.addWidget(self.report_date_label)
 
 
-        self.verticalLayout_17.addLayout(self.horizontalLayout_35)
+        self.verticalLayout_17.addWidget(self.report_date_title_frame)
 
-        self.horizontalLayout_30 = QHBoxLayout()
-        self.horizontalLayout_30.setSpacing(16)
-        self.horizontalLayout_30.setObjectName(u"horizontalLayout_30")
-        self.report_start_date_input = QDateEdit(self.report_filter_frame)
+        self.report_date_filter_frame = QFrame(self.report_filter_frame)
+        self.report_date_filter_frame.setObjectName(u"report_date_filter_frame")
+        sizePolicy2.setHeightForWidth(self.report_date_filter_frame.sizePolicy().hasHeightForWidth())
+        self.report_date_filter_frame.setSizePolicy(sizePolicy2)
+        self.report_date_filter_frame.setMaximumSize(QSize(16777215, 0))
+        self.report_date_filter_frame.setFrameShape(QFrame.StyledPanel)
+        self.report_date_filter_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_50 = QHBoxLayout(self.report_date_filter_frame)
+        self.horizontalLayout_50.setSpacing(9)
+        self.horizontalLayout_50.setObjectName(u"horizontalLayout_50")
+        self.horizontalLayout_50.setContentsMargins(6, 10, 6, 10)
+        self.report_start_date_input = QDateEdit(self.report_date_filter_frame)
         self.report_start_date_input.setObjectName(u"report_start_date_input")
 
-        self.horizontalLayout_30.addWidget(self.report_start_date_input)
+        self.horizontalLayout_50.addWidget(self.report_start_date_input)
 
-        self.report_date_to_label = QLabel(self.report_filter_frame)
+        self.report_date_to_label = QLabel(self.report_date_filter_frame)
         self.report_date_to_label.setObjectName(u"report_date_to_label")
         sizePolicy5.setHeightForWidth(self.report_date_to_label.sizePolicy().hasHeightForWidth())
         self.report_date_to_label.setSizePolicy(sizePolicy5)
 
-        self.horizontalLayout_30.addWidget(self.report_date_to_label)
+        self.horizontalLayout_50.addWidget(self.report_date_to_label)
 
-        self.report_end_date_input = QDateEdit(self.report_filter_frame)
+        self.report_end_date_input = QDateEdit(self.report_date_filter_frame)
         self.report_end_date_input.setObjectName(u"report_end_date_input")
 
-        self.horizontalLayout_30.addWidget(self.report_end_date_input)
+        self.horizontalLayout_50.addWidget(self.report_end_date_input)
 
 
-        self.verticalLayout_17.addLayout(self.horizontalLayout_30)
+        self.verticalLayout_17.addWidget(self.report_date_filter_frame)
 
 
-        self.verticalLayout_39.addLayout(self.verticalLayout_17)
-
-        self.verticalLayout_18 = QVBoxLayout()
-        self.verticalLayout_18.setSpacing(0)
-        self.verticalLayout_18.setObjectName(u"verticalLayout_18")
-        self.horizontalLayout_36 = QHBoxLayout()
-        self.horizontalLayout_36.setSpacing(16)
-        self.horizontalLayout_36.setObjectName(u"horizontalLayout_36")
-        self.horizontalLayout_36.setContentsMargins(-1, -1, -1, 10)
-        self.report_class_checkBox = QCheckBox(self.report_filter_frame)
-        self.report_class_checkBox.setObjectName(u"report_class_checkBox")
-        sizePolicy.setHeightForWidth(self.report_class_checkBox.sizePolicy().hasHeightForWidth())
-        self.report_class_checkBox.setSizePolicy(sizePolicy)
-
-        self.horizontalLayout_36.addWidget(self.report_class_checkBox)
-
-        self.report_class_label = QLabel(self.report_filter_frame)
-        self.report_class_label.setObjectName(u"report_class_label")
-
-        self.horizontalLayout_36.addWidget(self.report_class_label)
-
-
-        self.verticalLayout_18.addLayout(self.horizontalLayout_36)
-
-        self.report_class_comboBox = QComboBox(self.report_filter_frame)
-        self.report_class_comboBox.setObjectName(u"report_class_comboBox")
-
-        self.verticalLayout_18.addWidget(self.report_class_comboBox)
-
-
-        self.verticalLayout_39.addLayout(self.verticalLayout_18)
+        self.verticalLayout_48.addLayout(self.verticalLayout_17)
 
         self.verticalLayout_22 = QVBoxLayout()
         self.verticalLayout_22.setSpacing(0)
         self.verticalLayout_22.setObjectName(u"verticalLayout_22")
-        self.horizontalLayout_37 = QHBoxLayout()
-        self.horizontalLayout_37.setSpacing(16)
-        self.horizontalLayout_37.setObjectName(u"horizontalLayout_37")
-        self.horizontalLayout_37.setContentsMargins(-1, -1, -1, 10)
-        self.report_width_checkBox = QCheckBox(self.report_filter_frame)
+        self.width_line = QFrame(self.report_filter_frame)
+        self.width_line.setObjectName(u"width_line")
+        self.width_line.setMinimumSize(QSize(0, 2))
+        self.width_line.setMaximumSize(QSize(16777215, 2))
+        self.width_line.setFrameShape(QFrame.StyledPanel)
+        self.width_line.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_22.addWidget(self.width_line)
+
+        self.report_width_title_frame = QFrame(self.report_filter_frame)
+        self.report_width_title_frame.setObjectName(u"report_width_title_frame")
+        sizePolicy2.setHeightForWidth(self.report_width_title_frame.sizePolicy().hasHeightForWidth())
+        self.report_width_title_frame.setSizePolicy(sizePolicy2)
+        self.report_width_title_frame.setFrameShape(QFrame.StyledPanel)
+        self.report_width_title_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_42 = QHBoxLayout(self.report_width_title_frame)
+        self.horizontalLayout_42.setObjectName(u"horizontalLayout_42")
+        self.report_width_checkBox = QCheckBox(self.report_width_title_frame)
         self.report_width_checkBox.setObjectName(u"report_width_checkBox")
         sizePolicy.setHeightForWidth(self.report_width_checkBox.sizePolicy().hasHeightForWidth())
         self.report_width_checkBox.setSizePolicy(sizePolicy)
 
-        self.horizontalLayout_37.addWidget(self.report_width_checkBox)
+        self.horizontalLayout_42.addWidget(self.report_width_checkBox)
 
-        self.report_width_label = QLabel(self.report_filter_frame)
+        self.report_width_icon = QPushButton(self.report_width_title_frame)
+        self.report_width_icon.setObjectName(u"report_width_icon")
+        sizePolicy.setHeightForWidth(self.report_width_icon.sizePolicy().hasHeightForWidth())
+        self.report_width_icon.setSizePolicy(sizePolicy)
+        self.report_width_icon.setStyleSheet(u"")
+        icon20 = QIcon()
+        icon20.addFile(u":/icons/icons/width_black.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.report_width_icon.setIcon(icon20)
+        self.report_width_icon.setIconSize(QSize(25, 25))
+
+        self.horizontalLayout_42.addWidget(self.report_width_icon)
+
+        self.report_width_label = QLabel(self.report_width_title_frame)
         self.report_width_label.setObjectName(u"report_width_label")
 
-        self.horizontalLayout_37.addWidget(self.report_width_label)
+        self.horizontalLayout_42.addWidget(self.report_width_label)
 
 
-        self.verticalLayout_22.addLayout(self.horizontalLayout_37)
+        self.verticalLayout_22.addWidget(self.report_width_title_frame)
 
-        self.horizontalLayout_31 = QHBoxLayout()
-        self.horizontalLayout_31.setSpacing(16)
-        self.horizontalLayout_31.setObjectName(u"horizontalLayout_31")
-        self.report_low_width_input = QDoubleSpinBox(self.report_filter_frame)
+        self.report_width_filter_frame = QFrame(self.report_filter_frame)
+        self.report_width_filter_frame.setObjectName(u"report_width_filter_frame")
+        sizePolicy2.setHeightForWidth(self.report_width_filter_frame.sizePolicy().hasHeightForWidth())
+        self.report_width_filter_frame.setSizePolicy(sizePolicy2)
+        self.report_width_filter_frame.setMaximumSize(QSize(16777215, 0))
+        self.report_width_filter_frame.setFrameShape(QFrame.StyledPanel)
+        self.report_width_filter_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_35 = QHBoxLayout(self.report_width_filter_frame)
+        self.horizontalLayout_35.setSpacing(9)
+        self.horizontalLayout_35.setObjectName(u"horizontalLayout_35")
+        self.horizontalLayout_35.setContentsMargins(6, 10, 6, 10)
+        self.report_low_width_input = QDoubleSpinBox(self.report_width_filter_frame)
         self.report_low_width_input.setObjectName(u"report_low_width_input")
 
-        self.horizontalLayout_31.addWidget(self.report_low_width_input)
+        self.horizontalLayout_35.addWidget(self.report_low_width_input)
 
-        self.report_width_to_label = QLabel(self.report_filter_frame)
+        self.report_width_to_label = QLabel(self.report_width_filter_frame)
         self.report_width_to_label.setObjectName(u"report_width_to_label")
         sizePolicy5.setHeightForWidth(self.report_width_to_label.sizePolicy().hasHeightForWidth())
         self.report_width_to_label.setSizePolicy(sizePolicy5)
 
-        self.horizontalLayout_31.addWidget(self.report_width_to_label)
+        self.horizontalLayout_35.addWidget(self.report_width_to_label)
 
-        self.report_high_width_input = QDoubleSpinBox(self.report_filter_frame)
+        self.report_high_width_input = QDoubleSpinBox(self.report_width_filter_frame)
         self.report_high_width_input.setObjectName(u"report_high_width_input")
 
-        self.horizontalLayout_31.addWidget(self.report_high_width_input)
+        self.horizontalLayout_35.addWidget(self.report_high_width_input)
 
 
-        self.verticalLayout_22.addLayout(self.horizontalLayout_31)
+        self.verticalLayout_22.addWidget(self.report_width_filter_frame)
 
 
-        self.verticalLayout_39.addLayout(self.verticalLayout_22)
-
-        self.verticalLayout_37 = QVBoxLayout()
-        self.verticalLayout_37.setSpacing(0)
-        self.verticalLayout_37.setObjectName(u"verticalLayout_37")
-        self.horizontalLayout_38 = QHBoxLayout()
-        self.horizontalLayout_38.setSpacing(16)
-        self.horizontalLayout_38.setObjectName(u"horizontalLayout_38")
-        self.horizontalLayout_38.setContentsMargins(-1, -1, -1, 10)
-        self.report_length_checkBox = QCheckBox(self.report_filter_frame)
-        self.report_length_checkBox.setObjectName(u"report_length_checkBox")
-        sizePolicy.setHeightForWidth(self.report_length_checkBox.sizePolicy().hasHeightForWidth())
-        self.report_length_checkBox.setSizePolicy(sizePolicy)
-
-        self.horizontalLayout_38.addWidget(self.report_length_checkBox)
-
-        self.report_length_label = QLabel(self.report_filter_frame)
-        self.report_length_label.setObjectName(u"report_length_label")
-
-        self.horizontalLayout_38.addWidget(self.report_length_label)
-
-
-        self.verticalLayout_37.addLayout(self.horizontalLayout_38)
-
-        self.horizontalLayout_32 = QHBoxLayout()
-        self.horizontalLayout_32.setSpacing(16)
-        self.horizontalLayout_32.setObjectName(u"horizontalLayout_32")
-        self.report_low_length_input = QDoubleSpinBox(self.report_filter_frame)
-        self.report_low_length_input.setObjectName(u"report_low_length_input")
-
-        self.horizontalLayout_32.addWidget(self.report_low_length_input)
-
-        self.report_length_to_label = QLabel(self.report_filter_frame)
-        self.report_length_to_label.setObjectName(u"report_length_to_label")
-        sizePolicy5.setHeightForWidth(self.report_length_to_label.sizePolicy().hasHeightForWidth())
-        self.report_length_to_label.setSizePolicy(sizePolicy5)
-
-        self.horizontalLayout_32.addWidget(self.report_length_to_label)
-
-        self.report_high_length_input = QDoubleSpinBox(self.report_filter_frame)
-        self.report_high_length_input.setObjectName(u"report_high_length_input")
-
-        self.horizontalLayout_32.addWidget(self.report_high_length_input)
-
-
-        self.verticalLayout_37.addLayout(self.horizontalLayout_32)
-
-
-        self.verticalLayout_39.addLayout(self.verticalLayout_37)
+        self.verticalLayout_48.addLayout(self.verticalLayout_22)
 
         self.verticalLayout_38 = QVBoxLayout()
         self.verticalLayout_38.setSpacing(0)
         self.verticalLayout_38.setObjectName(u"verticalLayout_38")
-        self.horizontalLayout_39 = QHBoxLayout()
-        self.horizontalLayout_39.setSpacing(16)
-        self.horizontalLayout_39.setObjectName(u"horizontalLayout_39")
-        self.horizontalLayout_39.setContentsMargins(-1, -1, -1, 10)
-        self.report_depth_checkBox = QCheckBox(self.report_filter_frame)
+        self.length_line = QFrame(self.report_filter_frame)
+        self.length_line.setObjectName(u"length_line")
+        self.length_line.setMinimumSize(QSize(0, 2))
+        self.length_line.setMaximumSize(QSize(16777215, 2))
+        self.length_line.setFrameShape(QFrame.StyledPanel)
+        self.length_line.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_38.addWidget(self.length_line)
+
+        self.report_length_title_frame = QFrame(self.report_filter_frame)
+        self.report_length_title_frame.setObjectName(u"report_length_title_frame")
+        sizePolicy2.setHeightForWidth(self.report_length_title_frame.sizePolicy().hasHeightForWidth())
+        self.report_length_title_frame.setSizePolicy(sizePolicy2)
+        self.report_length_title_frame.setFrameShape(QFrame.StyledPanel)
+        self.report_length_title_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_43 = QHBoxLayout(self.report_length_title_frame)
+        self.horizontalLayout_43.setObjectName(u"horizontalLayout_43")
+        self.report_length_checkBox = QCheckBox(self.report_length_title_frame)
+        self.report_length_checkBox.setObjectName(u"report_length_checkBox")
+        sizePolicy.setHeightForWidth(self.report_length_checkBox.sizePolicy().hasHeightForWidth())
+        self.report_length_checkBox.setSizePolicy(sizePolicy)
+
+        self.horizontalLayout_43.addWidget(self.report_length_checkBox)
+
+        self.report_length_icon = QPushButton(self.report_length_title_frame)
+        self.report_length_icon.setObjectName(u"report_length_icon")
+        sizePolicy.setHeightForWidth(self.report_length_icon.sizePolicy().hasHeightForWidth())
+        self.report_length_icon.setSizePolicy(sizePolicy)
+        self.report_length_icon.setStyleSheet(u"")
+        icon21 = QIcon()
+        icon21.addFile(u":/icons/icons/length_black.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.report_length_icon.setIcon(icon21)
+        self.report_length_icon.setIconSize(QSize(25, 25))
+
+        self.horizontalLayout_43.addWidget(self.report_length_icon)
+
+        self.report_length_label = QLabel(self.report_length_title_frame)
+        self.report_length_label.setObjectName(u"report_length_label")
+
+        self.horizontalLayout_43.addWidget(self.report_length_label)
+
+
+        self.verticalLayout_38.addWidget(self.report_length_title_frame)
+
+        self.report_length_filter_frame = QFrame(self.report_filter_frame)
+        self.report_length_filter_frame.setObjectName(u"report_length_filter_frame")
+        sizePolicy2.setHeightForWidth(self.report_length_filter_frame.sizePolicy().hasHeightForWidth())
+        self.report_length_filter_frame.setSizePolicy(sizePolicy2)
+        self.report_length_filter_frame.setMaximumSize(QSize(16777215, 0))
+        self.report_length_filter_frame.setFrameShape(QFrame.StyledPanel)
+        self.report_length_filter_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_31 = QHBoxLayout(self.report_length_filter_frame)
+        self.horizontalLayout_31.setSpacing(9)
+        self.horizontalLayout_31.setObjectName(u"horizontalLayout_31")
+        self.horizontalLayout_31.setContentsMargins(6, 10, 6, 10)
+        self.report_low_length_input = QDoubleSpinBox(self.report_length_filter_frame)
+        self.report_low_length_input.setObjectName(u"report_low_length_input")
+
+        self.horizontalLayout_31.addWidget(self.report_low_length_input)
+
+        self.report_length_to_label = QLabel(self.report_length_filter_frame)
+        self.report_length_to_label.setObjectName(u"report_length_to_label")
+        sizePolicy5.setHeightForWidth(self.report_length_to_label.sizePolicy().hasHeightForWidth())
+        self.report_length_to_label.setSizePolicy(sizePolicy5)
+
+        self.horizontalLayout_31.addWidget(self.report_length_to_label)
+
+        self.report_high_length_input = QDoubleSpinBox(self.report_length_filter_frame)
+        self.report_high_length_input.setObjectName(u"report_high_length_input")
+
+        self.horizontalLayout_31.addWidget(self.report_high_length_input)
+
+
+        self.verticalLayout_38.addWidget(self.report_length_filter_frame)
+
+
+        self.verticalLayout_48.addLayout(self.verticalLayout_38)
+
+        self.verticalLayout_56 = QVBoxLayout()
+        self.verticalLayout_56.setSpacing(0)
+        self.verticalLayout_56.setObjectName(u"verticalLayout_56")
+        self.depth_line = QFrame(self.report_filter_frame)
+        self.depth_line.setObjectName(u"depth_line")
+        self.depth_line.setMinimumSize(QSize(0, 2))
+        self.depth_line.setMaximumSize(QSize(16777215, 2))
+        self.depth_line.setFrameShape(QFrame.StyledPanel)
+        self.depth_line.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_56.addWidget(self.depth_line)
+
+        self.report_depth_title_frame = QFrame(self.report_filter_frame)
+        self.report_depth_title_frame.setObjectName(u"report_depth_title_frame")
+        sizePolicy2.setHeightForWidth(self.report_depth_title_frame.sizePolicy().hasHeightForWidth())
+        self.report_depth_title_frame.setSizePolicy(sizePolicy2)
+        self.report_depth_title_frame.setFrameShape(QFrame.StyledPanel)
+        self.report_depth_title_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_44 = QHBoxLayout(self.report_depth_title_frame)
+        self.horizontalLayout_44.setObjectName(u"horizontalLayout_44")
+        self.report_depth_checkBox = QCheckBox(self.report_depth_title_frame)
         self.report_depth_checkBox.setObjectName(u"report_depth_checkBox")
         sizePolicy.setHeightForWidth(self.report_depth_checkBox.sizePolicy().hasHeightForWidth())
         self.report_depth_checkBox.setSizePolicy(sizePolicy)
 
-        self.horizontalLayout_39.addWidget(self.report_depth_checkBox)
+        self.horizontalLayout_44.addWidget(self.report_depth_checkBox)
 
-        self.report_depth_label = QLabel(self.report_filter_frame)
+        self.report_depth_icon = QPushButton(self.report_depth_title_frame)
+        self.report_depth_icon.setObjectName(u"report_depth_icon")
+        self.report_depth_icon.setEnabled(False)
+        sizePolicy.setHeightForWidth(self.report_depth_icon.sizePolicy().hasHeightForWidth())
+        self.report_depth_icon.setSizePolicy(sizePolicy)
+        self.report_depth_icon.setStyleSheet(u"")
+        self.report_depth_icon.setIcon(icon19)
+        self.report_depth_icon.setIconSize(QSize(25, 25))
+
+        self.horizontalLayout_44.addWidget(self.report_depth_icon)
+
+        self.report_depth_label = QLabel(self.report_depth_title_frame)
         self.report_depth_label.setObjectName(u"report_depth_label")
 
-        self.horizontalLayout_39.addWidget(self.report_depth_label)
+        self.horizontalLayout_44.addWidget(self.report_depth_label)
 
 
-        self.verticalLayout_38.addLayout(self.horizontalLayout_39)
+        self.verticalLayout_56.addWidget(self.report_depth_title_frame)
 
-        self.horizontalLayout_33 = QHBoxLayout()
-        self.horizontalLayout_33.setSpacing(16)
-        self.horizontalLayout_33.setObjectName(u"horizontalLayout_33")
-        self.report_low_depth_input = QDoubleSpinBox(self.report_filter_frame)
+        self.report_depth_filter_frame = QFrame(self.report_filter_frame)
+        self.report_depth_filter_frame.setObjectName(u"report_depth_filter_frame")
+        sizePolicy2.setHeightForWidth(self.report_depth_filter_frame.sizePolicy().hasHeightForWidth())
+        self.report_depth_filter_frame.setSizePolicy(sizePolicy2)
+        self.report_depth_filter_frame.setMaximumSize(QSize(16777215, 0))
+        self.report_depth_filter_frame.setFrameShape(QFrame.StyledPanel)
+        self.report_depth_filter_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_32 = QHBoxLayout(self.report_depth_filter_frame)
+        self.horizontalLayout_32.setSpacing(9)
+        self.horizontalLayout_32.setObjectName(u"horizontalLayout_32")
+        self.horizontalLayout_32.setContentsMargins(6, 10, 6, 10)
+        self.report_low_depth_input = QDateEdit(self.report_depth_filter_frame)
         self.report_low_depth_input.setObjectName(u"report_low_depth_input")
 
-        self.horizontalLayout_33.addWidget(self.report_low_depth_input)
+        self.horizontalLayout_32.addWidget(self.report_low_depth_input)
 
-        self.report_depth_to_label = QLabel(self.report_filter_frame)
+        self.report_depth_to_label = QLabel(self.report_depth_filter_frame)
         self.report_depth_to_label.setObjectName(u"report_depth_to_label")
         sizePolicy5.setHeightForWidth(self.report_depth_to_label.sizePolicy().hasHeightForWidth())
         self.report_depth_to_label.setSizePolicy(sizePolicy5)
 
-        self.horizontalLayout_33.addWidget(self.report_depth_to_label)
+        self.horizontalLayout_32.addWidget(self.report_depth_to_label)
 
-        self.report_high_depth_input = QDoubleSpinBox(self.report_filter_frame)
+        self.report_high_depth_input = QDateEdit(self.report_depth_filter_frame)
         self.report_high_depth_input.setObjectName(u"report_high_depth_input")
 
-        self.horizontalLayout_33.addWidget(self.report_high_depth_input)
+        self.horizontalLayout_32.addWidget(self.report_high_depth_input)
 
 
-        self.verticalLayout_38.addLayout(self.horizontalLayout_33)
+        self.verticalLayout_56.addWidget(self.report_depth_filter_frame)
 
 
-        self.verticalLayout_39.addLayout(self.verticalLayout_38)
+        self.verticalLayout_48.addLayout(self.verticalLayout_56)
 
-        self.horizontalLayout_40 = QHBoxLayout()
-        self.horizontalLayout_40.setObjectName(u"horizontalLayout_40")
-        self.horizontalLayout_40.setContentsMargins(-1, 0, -1, -1)
+        self.verticalLayout_60 = QVBoxLayout()
+        self.verticalLayout_60.setSpacing(0)
+        self.verticalLayout_60.setObjectName(u"verticalLayout_60")
+        self.class_line = QFrame(self.report_filter_frame)
+        self.class_line.setObjectName(u"class_line")
+        self.class_line.setMinimumSize(QSize(0, 2))
+        self.class_line.setMaximumSize(QSize(16777215, 2))
+        self.class_line.setFrameShape(QFrame.StyledPanel)
+        self.class_line.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_60.addWidget(self.class_line)
+
+        self.report_class_title_frame = QFrame(self.report_filter_frame)
+        self.report_class_title_frame.setObjectName(u"report_class_title_frame")
+        sizePolicy2.setHeightForWidth(self.report_class_title_frame.sizePolicy().hasHeightForWidth())
+        self.report_class_title_frame.setSizePolicy(sizePolicy2)
+        self.report_class_title_frame.setFrameShape(QFrame.StyledPanel)
+        self.report_class_title_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_47 = QHBoxLayout(self.report_class_title_frame)
+        self.horizontalLayout_47.setObjectName(u"horizontalLayout_47")
+        self.report_class_checkBox = QCheckBox(self.report_class_title_frame)
+        self.report_class_checkBox.setObjectName(u"report_class_checkBox")
+        sizePolicy.setHeightForWidth(self.report_class_checkBox.sizePolicy().hasHeightForWidth())
+        self.report_class_checkBox.setSizePolicy(sizePolicy)
+
+        self.horizontalLayout_47.addWidget(self.report_class_checkBox)
+
+        self.report_class_icon = QPushButton(self.report_class_title_frame)
+        self.report_class_icon.setObjectName(u"report_class_icon")
+        self.report_class_icon.setEnabled(False)
+        sizePolicy.setHeightForWidth(self.report_class_icon.sizePolicy().hasHeightForWidth())
+        self.report_class_icon.setSizePolicy(sizePolicy)
+        self.report_class_icon.setStyleSheet(u"")
+        icon22 = QIcon()
+        icon22.addFile(u":/icons/icons/category_black.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon22.addFile(u":/icons/icons/category_black.png", QSize(), QIcon.Disabled, QIcon.Off)
+        self.report_class_icon.setIcon(icon22)
+        self.report_class_icon.setIconSize(QSize(25, 25))
+
+        self.horizontalLayout_47.addWidget(self.report_class_icon)
+
+        self.report_class_label = QLabel(self.report_class_title_frame)
+        self.report_class_label.setObjectName(u"report_class_label")
+
+        self.horizontalLayout_47.addWidget(self.report_class_label)
+
+
+        self.verticalLayout_60.addWidget(self.report_class_title_frame)
+
+        self.report_class_filter_frame = QFrame(self.report_filter_frame)
+        self.report_class_filter_frame.setObjectName(u"report_class_filter_frame")
+        sizePolicy2.setHeightForWidth(self.report_class_filter_frame.sizePolicy().hasHeightForWidth())
+        self.report_class_filter_frame.setSizePolicy(sizePolicy2)
+        self.report_class_filter_frame.setMaximumSize(QSize(16777215, 0))
+        self.report_class_filter_frame.setFrameShape(QFrame.StyledPanel)
+        self.report_class_filter_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_30 = QHBoxLayout(self.report_class_filter_frame)
+        self.horizontalLayout_30.setSpacing(9)
+        self.horizontalLayout_30.setObjectName(u"horizontalLayout_30")
+        self.horizontalLayout_30.setContentsMargins(6, 10, 6, 10)
+        self.report_class_comboBox = QComboBox(self.report_class_filter_frame)
+        self.report_class_comboBox.setObjectName(u"report_class_comboBox")
+
+        self.horizontalLayout_30.addWidget(self.report_class_comboBox)
+
+
+        self.verticalLayout_60.addWidget(self.report_class_filter_frame)
+
+
+        self.verticalLayout_48.addLayout(self.verticalLayout_60)
+
+        self.last_line = QFrame(self.report_filter_frame)
+        self.last_line.setObjectName(u"last_line")
+        self.last_line.setMinimumSize(QSize(0, 2))
+        self.last_line.setMaximumSize(QSize(16777215, 2))
+        self.last_line.setFrameShape(QFrame.StyledPanel)
+        self.last_line.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_48.addWidget(self.last_line)
+
+        self.horizontalLayout_33 = QHBoxLayout()
+        self.horizontalLayout_33.setObjectName(u"horizontalLayout_33")
         self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout_40.addItem(self.horizontalSpacer_5)
+        self.horizontalLayout_33.addItem(self.horizontalSpacer_5)
 
         self.report_filter_apply_btn = QPushButton(self.report_filter_frame)
         self.report_filter_apply_btn.setObjectName(u"report_filter_apply_btn")
@@ -2261,37 +2457,25 @@ class Ui_MainWindow(object):
 "}\n"
 "")
 
-        self.horizontalLayout_40.addWidget(self.report_filter_apply_btn)
+        self.horizontalLayout_33.addWidget(self.report_filter_apply_btn)
 
         self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.horizontalLayout_40.addItem(self.horizontalSpacer_6)
+        self.horizontalLayout_33.addItem(self.horizontalSpacer_6)
 
 
-        self.verticalLayout_39.addLayout(self.horizontalLayout_40)
+        self.verticalLayout_48.addLayout(self.horizontalLayout_33)
 
-        self.report_filter_message_scrollArea = QScrollArea(self.report_filter_frame)
-        self.report_filter_message_scrollArea.setObjectName(u"report_filter_message_scrollArea")
-        self.report_filter_message_scrollArea.setStyleSheet(u"#report_filter_message_scrollArea\n"
-"{\n"
-"	border: None;\n"
-"}\n"
-"\n"
-"#report_filter_message_frame\n"
-"{\n"
-"	background-color: #F7F8FA;\n"
-"}")
-        self.report_filter_message_scrollArea.setWidgetResizable(True)
-        self.report_filter_message_frame = QWidget()
-        self.report_filter_message_frame.setObjectName(u"report_filter_message_frame")
-        self.report_filter_message_frame.setGeometry(QRect(0, 0, 307, 50))
-        self.report_filter_message_scrollArea.setWidget(self.report_filter_message_frame)
+        self.verticalSpacer_10 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_39.addWidget(self.report_filter_message_scrollArea)
+        self.verticalLayout_48.addItem(self.verticalSpacer_10)
 
 
         self.horizontalLayout_29.addWidget(self.report_filter_frame)
 
+        self.verticalLayout_37 = QVBoxLayout()
+        self.verticalLayout_37.setObjectName(u"verticalLayout_37")
+        self.verticalLayout_37.setContentsMargins(-1, -1, 0, -1)
         self.report_table = QTableWidget(self.report_page)
         if (self.report_table.columnCount() < 7):
             self.report_table.setColumnCount(7)
@@ -2326,10 +2510,214 @@ class Ui_MainWindow(object):
         self.report_table.verticalHeader().setVisible(False)
         self.report_table.verticalHeader().setDefaultSectionSize(60)
 
-        self.horizontalLayout_29.addWidget(self.report_table)
+        self.verticalLayout_37.addWidget(self.report_table)
+
+        self.horizontalLayout_37 = QHBoxLayout()
+        self.horizontalLayout_37.setObjectName(u"horizontalLayout_37")
+        self.horizontalLayout_37.setContentsMargins(-1, 0, -1, -1)
+        self.horizontalSpacer_7 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_37.addItem(self.horizontalSpacer_7)
+
+        self.report_prev_btn = QPushButton(self.report_page)
+        self.report_prev_btn.setObjectName(u"report_prev_btn")
+        self.report_prev_btn.setEnabled(True)
+        sizePolicy.setHeightForWidth(self.report_prev_btn.sizePolicy().hasHeightForWidth())
+        self.report_prev_btn.setSizePolicy(sizePolicy)
+        self.report_prev_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.report_prev_btn.setStyleSheet(u"#report_prev_btn\n"
+"{\n"
+"	border: 0px solid gray;\n"
+"	font-size: 14px;\n"
+"	color: rgb(50, 50, 50);\n"
+"	min-width: 60;\n"
+"	max-width: 60;\n"
+"	min-height:30;\n"
+"	max-height: 30;\n"
+"	text-align: right;\n"
+"}\n"
+"\n"
+"#report_prev_btn:disabled\n"
+"{\n"
+"	color: rgba(120, 120, 120, 255);\n"
+"}\n"
+"\n"
+"#report_prev_btn:hover\n"
+"{\n"
+"	color: rgb(80, 80, 80);\n"
+"}\n"
+"\n"
+"#report_prev_btn:pressed\n"
+"{\n"
+"	color: rgb(80, 80, 80);\n"
+"	padding-left: 3px;\n"
+"	padding-top: 3px;\n"
+"}\n"
+"")
+        icon23 = QIcon()
+        icon23.addFile(u":/icons/icons/prev_black.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon23.addFile(u":/icons/icons/prev_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
+        self.report_prev_btn.setIcon(icon23)
+
+        self.horizontalLayout_37.addWidget(self.report_prev_btn)
+
+        self.report_first_page_btn = QPushButton(self.report_page)
+        self.report_first_page_btn.setObjectName(u"report_first_page_btn")
+        self.report_first_page_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.report_first_page_btn.setStyleSheet(u"#report_first_page_btn\n"
+"{\n"
+"	border: 0px solid gray;\n"
+"	font-size: 14px;\n"
+"	color: rgb(50, 50, 50);\n"
+"	min-width: 30;\n"
+"	max-width: 30;\n"
+"	min-height:30;\n"
+"	max-height: 30;\n"
+"}\n"
+"\n"
+"#report_first_page_btn:disabled\n"
+"{\n"
+"	color: rgba(120, 120, 120, 255);\n"
+"}\n"
+"\n"
+"#report_first_page_btn:hover\n"
+"{\n"
+"	font-weight: bold;\n"
+"	background-color: rgba(247, 248, 250, 100);\n"
+"	border-radius: 8px;\n"
+"}\n"
+"\n"
+"#report_first_page_btn:pressed\n"
+"{\n"
+"	font-weight: bold;\n"
+"	background-color: rgba(247, 248, 250, 100);\n"
+"	border-radius: 8px;\n"
+"}\n"
+"")
+
+        self.horizontalLayout_37.addWidget(self.report_first_page_btn)
+
+        self.report_second_page_btn = QPushButton(self.report_page)
+        self.report_second_page_btn.setObjectName(u"report_second_page_btn")
+        self.report_second_page_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.report_second_page_btn.setStyleSheet(u"#report_second_page_btn\n"
+"{\n"
+"	border: 0px solid gray;\n"
+"	font-size: 14px;\n"
+"	color: rgb(50, 50, 50);\n"
+"	min-width: 30;\n"
+"	max-width: 30;\n"
+"	min-height:30;\n"
+"	max-height: 30;\n"
+"}\n"
+"\n"
+"#report_second_page_btn:disabled\n"
+"{\n"
+"	color: rgba(120, 120, 120, 255);\n"
+"}\n"
+"\n"
+"#report_second_page_btn:hover\n"
+"{\n"
+"	font-weight: bold;\n"
+"	background-color: rgba(247, 248, 250, 100);\n"
+"	border-radius: 8px;\n"
+"}\n"
+"\n"
+"#report_second_page_btn:pressed\n"
+"{\n"
+"	font-weight: bold;\n"
+"	background-color: rgba(247, 248, 250, 100);\n"
+"	border-radius: 8px;\n"
+"}\n"
+"")
+
+        self.horizontalLayout_37.addWidget(self.report_second_page_btn)
+
+        self.report_third_page_btn = QPushButton(self.report_page)
+        self.report_third_page_btn.setObjectName(u"report_third_page_btn")
+        self.report_third_page_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.report_third_page_btn.setStyleSheet(u"#report_third_page_btn\n"
+"{\n"
+"	border: 0px solid gray;\n"
+"	font-size: 14px;\n"
+"	color: rgb(50, 50, 50);\n"
+"	min-width: 30;\n"
+"	max-width: 30;\n"
+"	min-height:30;\n"
+"	max-height: 30;\n"
+"}\n"
+"\n"
+"#report_third_page_btn:disabled\n"
+"{\n"
+"	color: rgba(120, 120, 120, 255);\n"
+"}\n"
+"\n"
+"#report_third_page_btn:hover\n"
+"{\n"
+"	font-weight: bold;\n"
+"	background-color: rgba(247, 248, 250, 100);\n"
+"	border-radius: 8px;\n"
+"}\n"
+"\n"
+"#report_third_page_btn:pressed\n"
+"{\n"
+"	font-weight: bold;\n"
+"	background-color: rgba(247, 248, 250, 100);\n"
+"	border-radius: 8px;\n"
+"}\n"
+"")
+
+        self.horizontalLayout_37.addWidget(self.report_third_page_btn)
+
+        self.report_next_btn = QPushButton(self.report_page)
+        self.report_next_btn.setObjectName(u"report_next_btn")
+        self.report_next_btn.setEnabled(True)
+        self.report_next_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.report_next_btn.setLayoutDirection(Qt.RightToLeft)
+        self.report_next_btn.setStyleSheet(u"#report_next_btn\n"
+"{\n"
+"	border: 0px solid gray;\n"
+"	font-size: 14px;\n"
+"	color: rgb(50, 50, 50);\n"
+"	min-width: 60;\n"
+"	max-width: 60;\n"
+"	min-height:30;\n"
+"	max-height: 30;\n"
+"	text-align: right;\n"
+"}\n"
+"\n"
+"#report_next_btn:disabled\n"
+"{\n"
+"	color: rgba(120, 120, 120, 255);\n"
+"}\n"
+"\n"
+"#report_next_btn:hover\n"
+"{\n"
+"	color: rgb(80, 80, 80);\n"
+"}\n"
+"\n"
+"#report_next_btn:pressed\n"
+"{\n"
+"	color: rgb(80, 80, 80);\n"
+"	padding-left: 4px;\n"
+"	padding-top: 4px;\n"
+"}\n"
+"")
+        icon24 = QIcon()
+        icon24.addFile(u":/icons/icons/next_black.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.report_next_btn.setIcon(icon24)
+        self.report_next_btn.setCheckable(False)
+        self.report_next_btn.setFlat(False)
+
+        self.horizontalLayout_37.addWidget(self.report_next_btn)
+
+
+        self.verticalLayout_37.addLayout(self.horizontalLayout_37)
+
+
+        self.horizontalLayout_29.addLayout(self.verticalLayout_37)
 
         self.horizontalLayout_29.setStretch(0, 35)
-        self.horizontalLayout_29.setStretch(1, 65)
         self.main_stackedWidget.addWidget(self.report_page)
         self.users_page = QWidget()
         self.users_page.setObjectName(u"users_page")
@@ -2388,9 +2776,9 @@ class Ui_MainWindow(object):
         self.userpage_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
         self.userpage_password_eye.setStyleSheet(u"")
-        icon19 = QIcon()
-        icon19.addFile(u":/icons/icons/black_eye.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.userpage_password_eye.setIcon(icon19)
+        icon25 = QIcon()
+        icon25.addFile(u":/icons/icons/black_eye.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.userpage_password_eye.setIcon(icon25)
 
         self.horizontalLayout_21.addWidget(self.userpage_password_eye)
 
@@ -2423,7 +2811,7 @@ class Ui_MainWindow(object):
         self.userpage_confirm_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_confirm_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
         self.userpage_confirm_password_eye.setStyleSheet(u"")
-        self.userpage_confirm_password_eye.setIcon(icon19)
+        self.userpage_confirm_password_eye.setIcon(icon25)
 
         self.horizontalLayout_22.addWidget(self.userpage_confirm_password_eye)
 
@@ -2483,9 +2871,9 @@ class Ui_MainWindow(object):
 "	padding-top: 5px;\n"
 "}\n"
 "")
-        icon20 = QIcon()
-        icon20.addFile(u":/assets/Assets/icons/icons8-plus-white-50.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.register_user.setIcon(icon20)
+        icon26 = QIcon()
+        icon26.addFile(u":/assets/Assets/icons/icons8-plus-white-50.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.register_user.setIcon(icon26)
 
         self.verticalLayout_30.addWidget(self.register_user, 0, Qt.AlignHCenter)
 
@@ -2624,7 +3012,7 @@ class Ui_MainWindow(object):
         self.change_username_message_scrollArea.setWidgetResizable(True)
         self.change_username_message_frame = QWidget()
         self.change_username_message_frame.setObjectName(u"change_username_message_frame")
-        self.change_username_message_frame.setGeometry(QRect(0, 0, 445, 350))
+        self.change_username_message_frame.setGeometry(QRect(0, 0, 16, 16))
         self.change_username_message_scrollArea.setWidget(self.change_username_message_frame)
 
         self.verticalLayout_54.addWidget(self.change_username_message_scrollArea)
@@ -2684,7 +3072,7 @@ class Ui_MainWindow(object):
         self.userpage_editprofile_old_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_editprofile_old_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
         self.userpage_editprofile_old_password_eye.setStyleSheet(u"")
-        self.userpage_editprofile_old_password_eye.setIcon(icon19)
+        self.userpage_editprofile_old_password_eye.setIcon(icon25)
 
         self.horizontalLayout_17.addWidget(self.userpage_editprofile_old_password_eye)
 
@@ -2716,7 +3104,7 @@ class Ui_MainWindow(object):
         sizePolicy5.setHeightForWidth(self.userpage_editprofile_new_password_eye.sizePolicy().hasHeightForWidth())
         self.userpage_editprofile_new_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_editprofile_new_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
-        self.userpage_editprofile_new_password_eye.setIcon(icon19)
+        self.userpage_editprofile_new_password_eye.setIcon(icon25)
 
         self.horizontalLayout_18.addWidget(self.userpage_editprofile_new_password_eye)
 
@@ -2747,7 +3135,7 @@ class Ui_MainWindow(object):
         sizePolicy5.setHeightForWidth(self.userpage_editprofile_confirm_new_password_eye.sizePolicy().hasHeightForWidth())
         self.userpage_editprofile_confirm_new_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_editprofile_confirm_new_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
-        self.userpage_editprofile_confirm_new_password_eye.setIcon(icon19)
+        self.userpage_editprofile_confirm_new_password_eye.setIcon(icon25)
 
         self.horizontalLayout_19.addWidget(self.userpage_editprofile_confirm_new_password_eye)
 
@@ -2800,7 +3188,7 @@ class Ui_MainWindow(object):
         self.change_password_message_scrollArea.setWidgetResizable(True)
         self.change_password_message_frame = QWidget()
         self.change_password_message_frame.setObjectName(u"change_password_message_frame")
-        self.change_password_message_frame.setGeometry(QRect(0, 0, 444, 262))
+        self.change_password_message_frame.setGeometry(QRect(0, 0, 16, 16))
         self.change_password_message_scrollArea.setWidget(self.change_password_message_frame)
 
         self.verticalLayout_51.addWidget(self.change_password_message_scrollArea)
@@ -2862,8 +3250,8 @@ class Ui_MainWindow(object):
         self.system_status_expanding_btn.clicked.connect(self.system_status_btn.click)
         self.notif_filter_expanding_btn.clicked.connect(self.notif_filter_btn.click)
 
-        self.main_stackedWidget.setCurrentIndex(2)
-        self.live_tabWidget.setCurrentIndex(1)
+        self.main_stackedWidget.setCurrentIndex(0)
+        self.live_tabWidget.setCurrentIndex(0)
         self.settings_tabs.setCurrentIndex(0)
         self.algorithm_stackedWidget.setCurrentIndex(0)
         self.user_tabs.setCurrentIndex(0)
@@ -2947,19 +3335,24 @@ class Ui_MainWindow(object):
         self.settings_tabs.setTabText(self.settings_tabs.indexOf(self.algorithm_tab), QCoreApplication.translate("MainWindow", u"Algorithm", None))
         self.report_filter_by_label.setText(QCoreApplication.translate("MainWindow", u"Filter By", None))
         self.report_date_checkBox.setText("")
+        self.report_date_icon.setText("")
         self.report_date_label.setText(QCoreApplication.translate("MainWindow", u"Date", None))
         self.report_date_to_label.setText(QCoreApplication.translate("MainWindow", u"To", None))
-        self.report_class_checkBox.setText("")
-        self.report_class_label.setText(QCoreApplication.translate("MainWindow", u"Class", None))
         self.report_width_checkBox.setText("")
+        self.report_width_icon.setText("")
         self.report_width_label.setText(QCoreApplication.translate("MainWindow", u"Width (cm)", None))
         self.report_width_to_label.setText(QCoreApplication.translate("MainWindow", u"To", None))
         self.report_length_checkBox.setText("")
+        self.report_length_icon.setText("")
         self.report_length_label.setText(QCoreApplication.translate("MainWindow", u"Length (m)", None))
         self.report_length_to_label.setText(QCoreApplication.translate("MainWindow", u"To", None))
         self.report_depth_checkBox.setText("")
-        self.report_depth_label.setText(QCoreApplication.translate("MainWindow", u"Depth (mm)", None))
+        self.report_depth_icon.setText("")
+        self.report_depth_label.setText(QCoreApplication.translate("MainWindow", u"Depth", None))
         self.report_depth_to_label.setText(QCoreApplication.translate("MainWindow", u"To", None))
+        self.report_class_checkBox.setText("")
+        self.report_class_icon.setText("")
+        self.report_class_label.setText(QCoreApplication.translate("MainWindow", u"Class", None))
         self.report_filter_apply_btn.setText(QCoreApplication.translate("MainWindow", u"Apply", None))
         ___qtablewidgetitem2 = self.report_table.horizontalHeaderItem(0)
         ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"X", None));
@@ -2981,6 +3374,11 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
         ___qtablewidgetitem11 = self.report_table.verticalHeaderItem(2)
         ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
+        self.report_prev_btn.setText(QCoreApplication.translate("MainWindow", u"Prev", None))
+        self.report_first_page_btn.setText(QCoreApplication.translate("MainWindow", u"1", None))
+        self.report_second_page_btn.setText(QCoreApplication.translate("MainWindow", u"2", None))
+        self.report_third_page_btn.setText(QCoreApplication.translate("MainWindow", u"3", None))
+        self.report_next_btn.setText(QCoreApplication.translate("MainWindow", u"Next", None))
         self.register_username_label.setText(QCoreApplication.translate("MainWindow", u"Username", None))
         self.register_password_label.setText(QCoreApplication.translate("MainWindow", u"Password", None))
         self.userpage_password_eye.setText("")

@@ -1042,7 +1042,7 @@ QComboBox:focus{
       <item>
        <widget class="QStackedWidget" name="main_stackedWidget">
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="live_view_page">
          <layout class="QHBoxLayout" name="horizontalLayout_23">
@@ -1260,7 +1260,7 @@ font-weight:bold;</string>
               <item>
                <widget class="QTabWidget" name="live_tabWidget">
                 <property name="currentIndex">
-                 <number>1</number>
+                 <number>0</number>
                 </property>
                 <widget class="QWidget" name="belt_live_tab">
                  <attribute name="title">
@@ -2371,7 +2371,7 @@ border-radius: 20px;</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QFrame" name="frame_3">
+                  <widget class="QFrame" name="step12_line">
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
@@ -2410,7 +2410,7 @@ border-radius: 20px;</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QFrame" name="frame_4">
+                  <widget class="QFrame" name="step23_line">
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
                    </property>
@@ -3137,13 +3137,37 @@ border-radius: 20px;</string>
          </layout>
         </widget>
         <widget class="QWidget" name="report_page">
-         <layout class="QHBoxLayout" name="horizontalLayout_29" stretch="35,65">
+         <layout class="QHBoxLayout" name="horizontalLayout_29" stretch="35,0">
           <item>
            <widget class="QFrame" name="report_filter_frame">
+            <property name="minimumSize">
+             <size>
+              <width>350</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>350</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="styleSheet">
              <string notr="true">QLabel{
 	font-weight: bold;
 	font-size: 15px;
+}
+
+QPushButton{
+	border: 0px solid transparent;	
+}
+
+QFrame{
+	border: None;
+}
+
+#date_line, #width_line, #length_line, #depth_line, #class_line, #last_line{
+	border: 1px solid #E3E3E6;
 }</string>
             </property>
             <property name="frameShape">
@@ -3152,21 +3176,30 @@ border-radius: 20px;</string>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_39">
+            <layout class="QVBoxLayout" name="verticalLayout_48">
              <property name="spacing">
-              <number>30</number>
-             </property>
-             <property name="leftMargin">
-              <number>20</number>
-             </property>
-             <property name="topMargin">
-              <number>11</number>
-             </property>
-             <property name="rightMargin">
-              <number>20</number>
+              <number>10</number>
              </property>
              <item>
               <widget class="QLabel" name="report_filter_by_label">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>50</height>
+                </size>
+               </property>
                <property name="styleSheet">
                 <string notr="true">#report_filter_by_label{
 	font-size: 26px;
@@ -3177,23 +3210,10 @@ border-radius: 20px;</string>
                <property name="text">
                 <string>Filter By</string>
                </property>
+               <property name="alignment">
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+               </property>
               </widget>
-             </item>
-             <item>
-              <spacer name="verticalSpacer_10">
-               <property name="orientation">
-                <enum>Qt::Vertical</enum>
-               </property>
-               <property name="sizeType">
-                <enum>QSizePolicy::Preferred</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>20</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
              </item>
              <item>
               <layout class="QVBoxLayout" name="verticalLayout_17">
@@ -3201,100 +3221,152 @@ border-radius: 20px;</string>
                 <number>0</number>
                </property>
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_35">
-                 <property name="spacing">
-                  <number>16</number>
+                <widget class="QFrame" name="date_line">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>2</height>
+                  </size>
                  </property>
-                 <property name="bottomMargin">
-                  <number>10</number>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>2</height>
+                  </size>
                  </property>
-                 <item>
-                  <widget class="QCheckBox" name="report_date_checkBox">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="report_date_label">
-                   <property name="text">
-                    <string>Date</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                </widget>
                </item>
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_30">
-                 <property name="spacing">
-                  <number>16</number>
+                <widget class="QFrame" name="report_date_title_frame">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
                  </property>
-                 <item>
-                  <widget class="QDateEdit" name="report_start_date_input"/>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="report_date_to_label">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="text">
-                    <string>To</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QDateEdit" name="report_end_date_input"/>
-                 </item>
-                </layout>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_41">
+                  <item>
+                   <widget class="QCheckBox" name="report_date_checkBox">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="report_date_icon">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="assets/assets.qrc">
+                      <normaloff>:/icons/icons/date_black.png</normaloff>
+                      <disabledoff>:/icons/icons/date_black.png</disabledoff>:/icons/icons/date_black.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>25</width>
+                      <height>25</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="report_date_label">
+                    <property name="text">
+                     <string>Date</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
                </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QVBoxLayout" name="verticalLayout_18">
-               <property name="spacing">
-                <number>0</number>
-               </property>
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_36">
-                 <property name="spacing">
-                  <number>16</number>
+                <widget class="QFrame" name="report_date_filter_frame">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
                  </property>
-                 <property name="bottomMargin">
-                  <number>10</number>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>0</height>
+                  </size>
                  </property>
-                 <item>
-                  <widget class="QCheckBox" name="report_class_checkBox">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="report_class_label">
-                   <property name="text">
-                    <string>Class</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <widget class="QComboBox" name="report_class_comboBox"/>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_50">
+                  <property name="spacing">
+                   <number>9</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>6</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>10</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>6</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <widget class="QDateEdit" name="report_start_date_input"/>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="report_date_to_label">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="text">
+                     <string>To</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QDateEdit" name="report_end_date_input"/>
+                  </item>
+                 </layout>
+                </widget>
                </item>
               </layout>
              </item>
@@ -3304,123 +3376,148 @@ border-radius: 20px;</string>
                 <number>0</number>
                </property>
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_37">
-                 <property name="spacing">
-                  <number>16</number>
+                <widget class="QFrame" name="width_line">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>2</height>
+                  </size>
                  </property>
-                 <property name="bottomMargin">
-                  <number>10</number>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>2</height>
+                  </size>
                  </property>
-                 <item>
-                  <widget class="QCheckBox" name="report_width_checkBox">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="report_width_label">
-                   <property name="text">
-                    <string>Width (cm)</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                </widget>
                </item>
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_31">
-                 <property name="spacing">
-                  <number>16</number>
+                <widget class="QFrame" name="report_width_title_frame">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
                  </property>
-                 <item>
-                  <widget class="QDoubleSpinBox" name="report_low_width_input"/>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="report_width_to_label">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="text">
-                    <string>To</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QDoubleSpinBox" name="report_high_width_input"/>
-                 </item>
-                </layout>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_42">
+                  <item>
+                   <widget class="QCheckBox" name="report_width_checkBox">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="report_width_icon">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="assets/assets.qrc">
+                      <normaloff>:/icons/icons/width_black.png</normaloff>:/icons/icons/width_black.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>25</width>
+                      <height>25</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="report_width_label">
+                    <property name="text">
+                     <string>Width (cm)</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
                </item>
-              </layout>
-             </item>
-             <item>
-              <layout class="QVBoxLayout" name="verticalLayout_37">
-               <property name="spacing">
-                <number>0</number>
-               </property>
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_38">
-                 <property name="spacing">
-                  <number>16</number>
+                <widget class="QFrame" name="report_width_filter_frame">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
                  </property>
-                 <property name="bottomMargin">
-                  <number>10</number>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>0</height>
+                  </size>
                  </property>
-                 <item>
-                  <widget class="QCheckBox" name="report_length_checkBox">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="report_length_label">
-                   <property name="text">
-                    <string>Length (m)</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_32">
-                 <property name="spacing">
-                  <number>16</number>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
                  </property>
-                 <item>
-                  <widget class="QDoubleSpinBox" name="report_low_length_input"/>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="report_length_to_label">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="text">
-                    <string>To</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QDoubleSpinBox" name="report_high_length_input"/>
-                 </item>
-                </layout>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_35">
+                  <property name="spacing">
+                   <number>9</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>6</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>10</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>6</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <widget class="QDoubleSpinBox" name="report_low_width_input"/>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="report_width_to_label">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="text">
+                     <string>To</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QDoubleSpinBox" name="report_high_width_input"/>
+                  </item>
+                 </layout>
+                </widget>
                </item>
               </layout>
              </item>
@@ -3430,68 +3527,469 @@ border-radius: 20px;</string>
                 <number>0</number>
                </property>
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_39">
-                 <property name="spacing">
-                  <number>16</number>
+                <widget class="QFrame" name="length_line">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>2</height>
+                  </size>
                  </property>
-                 <property name="bottomMargin">
-                  <number>10</number>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>2</height>
+                  </size>
                  </property>
-                 <item>
-                  <widget class="QCheckBox" name="report_depth_checkBox">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="report_depth_label">
-                   <property name="text">
-                    <string>Depth (mm)</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                </widget>
                </item>
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_33">
-                 <property name="spacing">
-                  <number>16</number>
+                <widget class="QFrame" name="report_length_title_frame">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
                  </property>
-                 <item>
-                  <widget class="QDoubleSpinBox" name="report_low_depth_input"/>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="report_depth_to_label">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="text">
-                    <string>To</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QDoubleSpinBox" name="report_high_depth_input"/>
-                 </item>
-                </layout>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_43">
+                  <item>
+                   <widget class="QCheckBox" name="report_length_checkBox">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="report_length_icon">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="assets/assets.qrc">
+                      <normaloff>:/icons/icons/length_black.png</normaloff>:/icons/icons/length_black.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>25</width>
+                      <height>25</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="report_length_label">
+                    <property name="text">
+                     <string>Length (m)</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="report_length_filter_frame">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_31">
+                  <property name="spacing">
+                   <number>9</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>6</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>10</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>6</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <widget class="QDoubleSpinBox" name="report_low_length_input"/>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="report_length_to_label">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="text">
+                     <string>To</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QDoubleSpinBox" name="report_high_length_input"/>
+                  </item>
+                 </layout>
+                </widget>
                </item>
               </layout>
              </item>
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_40">
-               <property name="topMargin">
+              <layout class="QVBoxLayout" name="verticalLayout_56">
+               <property name="spacing">
                 <number>0</number>
                </property>
+               <item>
+                <widget class="QFrame" name="depth_line">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>2</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>2</height>
+                  </size>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="report_depth_title_frame">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_44">
+                  <item>
+                   <widget class="QCheckBox" name="report_depth_checkBox">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="report_depth_icon">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="assets/assets.qrc">
+                      <normaloff>:/icons/icons/date_black.png</normaloff>
+                      <disabledoff>:/icons/icons/date_black.png</disabledoff>:/icons/icons/date_black.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>25</width>
+                      <height>25</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="report_depth_label">
+                    <property name="text">
+                     <string>Depth</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="report_depth_filter_frame">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_32">
+                  <property name="spacing">
+                   <number>9</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>6</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>10</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>6</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <widget class="QDateEdit" name="report_low_depth_input"/>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="report_depth_to_label">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="text">
+                     <string>To</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QDateEdit" name="report_high_depth_input"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_60">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QFrame" name="class_line">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>2</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>2</height>
+                  </size>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="report_class_title_frame">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_47">
+                  <item>
+                   <widget class="QCheckBox" name="report_class_checkBox">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="report_class_icon">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="assets/assets.qrc">
+                      <normaloff>:/icons/icons/category_black.png</normaloff>
+                      <disabledoff>:/icons/icons/category_black.png</disabledoff>:/icons/icons/category_black.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>25</width>
+                      <height>25</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="report_class_label">
+                    <property name="text">
+                     <string>Class</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="report_class_filter_frame">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_30">
+                  <property name="spacing">
+                   <number>9</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>6</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>10</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>6</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>10</number>
+                  </property>
+                  <item>
+                   <widget class="QComboBox" name="report_class_comboBox"/>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QFrame" name="last_line">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>2</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>2</height>
+                </size>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_33">
                <item>
                 <spacer name="horizontalSpacer_5">
                  <property name="orientation">
@@ -3566,110 +4064,360 @@ border-radius: 20px;</string>
               </layout>
              </item>
              <item>
-              <widget class="QScrollArea" name="report_filter_message_scrollArea">
-               <property name="styleSheet">
-                <string notr="true">#report_filter_message_scrollArea
-{
-	border: None;
-}
-
-#report_filter_message_frame
-{
-	background-color: #F7F8FA;
-}</string>
+              <spacer name="verticalSpacer_10">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
                </property>
-               <property name="widgetResizable">
-                <bool>true</bool>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
                </property>
-               <widget class="QWidget" name="report_filter_message_frame">
-                <property name="geometry">
-                 <rect>
-                  <x>0</x>
-                  <y>0</y>
-                  <width>307</width>
-                  <height>50</height>
-                 </rect>
-                </property>
-               </widget>
-              </widget>
+              </spacer>
              </item>
             </layout>
            </widget>
           </item>
           <item>
-           <widget class="QTableWidget" name="report_table">
-            <property name="styleSheet">
-             <string notr="true">alternate-background-color: rgba(120, 146, 223, 30);</string>
+           <layout class="QVBoxLayout" name="verticalLayout_37">
+            <property name="rightMargin">
+             <number>0</number>
             </property>
-            <property name="alternatingRowColors">
-             <bool>true</bool>
-            </property>
-            <property name="cornerButtonEnabled">
-             <bool>true</bool>
-            </property>
-            <attribute name="horizontalHeaderDefaultSectionSize">
-             <number>120</number>
-            </attribute>
-            <attribute name="horizontalHeaderStretchLastSection">
-             <bool>true</bool>
-            </attribute>
-            <attribute name="verticalHeaderVisible">
-             <bool>false</bool>
-            </attribute>
-            <attribute name="verticalHeaderDefaultSectionSize">
-             <number>60</number>
-            </attribute>
-            <row>
-             <property name="text">
-              <string>New Row</string>
-             </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>New Row</string>
-             </property>
-            </row>
-            <row>
-             <property name="text">
-              <string>New Row</string>
-             </property>
-            </row>
-            <column>
-             <property name="text">
-              <string>X</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Y</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Date</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Width</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Height</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Depth</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Class</string>
-             </property>
-            </column>
-           </widget>
+            <item>
+             <widget class="QTableWidget" name="report_table">
+              <property name="styleSheet">
+               <string notr="true">alternate-background-color: rgba(120, 146, 223, 30);</string>
+              </property>
+              <property name="alternatingRowColors">
+               <bool>true</bool>
+              </property>
+              <property name="cornerButtonEnabled">
+               <bool>true</bool>
+              </property>
+              <attribute name="horizontalHeaderDefaultSectionSize">
+               <number>120</number>
+              </attribute>
+              <attribute name="horizontalHeaderStretchLastSection">
+               <bool>true</bool>
+              </attribute>
+              <attribute name="verticalHeaderVisible">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="verticalHeaderDefaultSectionSize">
+               <number>60</number>
+              </attribute>
+              <row>
+               <property name="text">
+                <string>New Row</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>New Row</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>New Row</string>
+               </property>
+              </row>
+              <column>
+               <property name="text">
+                <string>X</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Y</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Date</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Width</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Height</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Depth</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Class</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_37">
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <spacer name="horizontalSpacer_7">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QPushButton" name="report_prev_btn">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#report_prev_btn
+{
+	border: 0px solid gray;
+	font-size: 14px;
+	color: rgb(50, 50, 50);
+	min-width: 60;
+	max-width: 60;
+	min-height:30;
+	max-height: 30;
+	text-align: right;
+}
+
+#report_prev_btn:disabled
+{
+	color: rgba(120, 120, 120, 255);
+}
+
+#report_prev_btn:hover
+{
+	color: rgb(80, 80, 80);
+}
+
+#report_prev_btn:pressed
+{
+	color: rgb(80, 80, 80);
+	padding-left: 3px;
+	padding-top: 3px;
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>Prev</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="assets/assets.qrc">
+                  <normaloff>:/icons/icons/prev_black.png</normaloff>
+                  <disabledoff>:/icons/icons/prev_gray.png</disabledoff>:/icons/icons/prev_black.png</iconset>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="report_first_page_btn">
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#report_first_page_btn
+{
+	border: 0px solid gray;
+	font-size: 14px;
+	color: rgb(50, 50, 50);
+	min-width: 30;
+	max-width: 30;
+	min-height:30;
+	max-height: 30;
+}
+
+#report_first_page_btn:disabled
+{
+	color: rgba(120, 120, 120, 255);
+}
+
+#report_first_page_btn:hover
+{
+	font-weight: bold;
+	background-color: rgba(247, 248, 250, 100);
+	border-radius: 8px;
+}
+
+#report_first_page_btn:pressed
+{
+	font-weight: bold;
+	background-color: rgba(247, 248, 250, 100);
+	border-radius: 8px;
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>1</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="report_second_page_btn">
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#report_second_page_btn
+{
+	border: 0px solid gray;
+	font-size: 14px;
+	color: rgb(50, 50, 50);
+	min-width: 30;
+	max-width: 30;
+	min-height:30;
+	max-height: 30;
+}
+
+#report_second_page_btn:disabled
+{
+	color: rgba(120, 120, 120, 255);
+}
+
+#report_second_page_btn:hover
+{
+	font-weight: bold;
+	background-color: rgba(247, 248, 250, 100);
+	border-radius: 8px;
+}
+
+#report_second_page_btn:pressed
+{
+	font-weight: bold;
+	background-color: rgba(247, 248, 250, 100);
+	border-radius: 8px;
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>2</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="report_third_page_btn">
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#report_third_page_btn
+{
+	border: 0px solid gray;
+	font-size: 14px;
+	color: rgb(50, 50, 50);
+	min-width: 30;
+	max-width: 30;
+	min-height:30;
+	max-height: 30;
+}
+
+#report_third_page_btn:disabled
+{
+	color: rgba(120, 120, 120, 255);
+}
+
+#report_third_page_btn:hover
+{
+	font-weight: bold;
+	background-color: rgba(247, 248, 250, 100);
+	border-radius: 8px;
+}
+
+#report_third_page_btn:pressed
+{
+	font-weight: bold;
+	background-color: rgba(247, 248, 250, 100);
+	border-radius: 8px;
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>3</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="report_next_btn">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">#report_next_btn
+{
+	border: 0px solid gray;
+	font-size: 14px;
+	color: rgb(50, 50, 50);
+	min-width: 60;
+	max-width: 60;
+	min-height:30;
+	max-height: 30;
+	text-align: right;
+}
+
+#report_next_btn:disabled
+{
+	color: rgba(120, 120, 120, 255);
+}
+
+#report_next_btn:hover
+{
+	color: rgb(80, 80, 80);
+}
+
+#report_next_btn:pressed
+{
+	color: rgb(80, 80, 80);
+	padding-left: 4px;
+	padding-top: 4px;
+}
+</string>
+                </property>
+                <property name="text">
+                 <string>Next</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="assets/assets.qrc">
+                  <normaloff>:/icons/icons/next_black.png</normaloff>:/icons/icons/next_black.png</iconset>
+                </property>
+                <property name="checkable">
+                 <bool>false</bool>
+                </property>
+                <property name="flat">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
@@ -4102,8 +4850,8 @@ border-radius: 20px;</string>
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>445</width>
-                        <height>350</height>
+                        <width>16</width>
+                        <height>16</height>
                        </rect>
                       </property>
                      </widget>
@@ -4365,8 +5113,8 @@ border-radius: 20px;</string>
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>444</width>
-                        <height>262</height>
+                        <width>16</width>
+                        <height>16</height>
                        </rect>
                       </property>
                      </widget>

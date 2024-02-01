@@ -57,8 +57,8 @@ QSpinBox:disabled ,
 QDoubleSpinBox:disabled ,
 QDateEdit:disabled
 {
-	border-bottom: 2px solid #F0F0F2;
-	color: rgb(120, 120, 120);
+	border-bottom: 2px solid #DCDCDC;
+	color: #DCDCDC;
 }
 
 QSpinBox::up-arrow, QDoubleSpinBox::up-arrow,
@@ -566,6 +566,12 @@ background-color:transparent;</string>
             <layout class="QVBoxLayout" name="verticalLayout_9">
              <item>
               <widget class="QFrame" name="date_frame">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
                <property name="frameShape">
                 <enum>QFrame::StyledPanel</enum>
                </property>
@@ -586,6 +592,9 @@ background-color:transparent;</string>
                   </property>
                   <item>
                    <widget class="QCheckBox" name="filter_date_checkBox">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -600,7 +609,7 @@ background-color:transparent;</string>
                   <item>
                    <widget class="QPushButton" name="date_icon">
                     <property name="enabled">
-                     <bool>true</bool>
+                     <bool>false</bool>
                     </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -613,7 +622,8 @@ background-color:transparent;</string>
                     </property>
                     <property name="icon">
                      <iconset resource="assets/assets.qrc">
-                      <normaloff>:/icons/icons/date_gray.png</normaloff>:/icons/icons/date_gray.png</iconset>
+                      <normaloff>:/icons/icons/date_gray.png</normaloff>
+                      <disabledoff>:/icons/icons/date_gray.png</disabledoff>:/icons/icons/date_gray.png</iconset>
                     </property>
                     <property name="iconSize">
                      <size>
@@ -721,7 +731,7 @@ background-color:transparent;</string>
                   <item>
                    <widget class="QPushButton" name="width_icon">
                     <property name="enabled">
-                     <bool>true</bool>
+                     <bool>false</bool>
                     </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -734,7 +744,8 @@ background-color:transparent;</string>
                     </property>
                     <property name="icon">
                      <iconset resource="assets/assets.qrc">
-                      <normaloff>:/icons/icons/width.png</normaloff>:/icons/icons/width.png</iconset>
+                      <normaloff>:/icons/icons/width_gray.png</normaloff>
+                      <disabledoff>:/icons/icons/width_gray.png</disabledoff>:/icons/icons/width_gray.png</iconset>
                     </property>
                     <property name="iconSize">
                      <size>
@@ -779,6 +790,9 @@ background-color:transparent;</string>
                   </property>
                   <item>
                    <widget class="QDoubleSpinBox" name="low_width_input">
+                    <property name="enabled">
+                     <bool>true</bool>
+                    </property>
                     <property name="alignment">
                      <set>Qt::AlignCenter</set>
                     </property>
@@ -848,7 +862,7 @@ background-color:transparent;</string>
                   <item>
                    <widget class="QPushButton" name="height_icon">
                     <property name="enabled">
-                     <bool>true</bool>
+                     <bool>false</bool>
                     </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -861,7 +875,8 @@ background-color:transparent;</string>
                     </property>
                     <property name="icon">
                      <iconset resource="assets/assets.qrc">
-                      <normaloff>:/icons/icons/height.png</normaloff>:/icons/icons/height.png</iconset>
+                      <normaloff>:/icons/icons/length_gray.png</normaloff>
+                      <disabledoff>:/icons/icons/length_gray.png</disabledoff>:/icons/icons/length_gray.png</iconset>
                     </property>
                     <property name="iconSize">
                      <size>
@@ -975,7 +990,7 @@ background-color:transparent;</string>
                   <item>
                    <widget class="QPushButton" name="depth_icon">
                     <property name="enabled">
-                     <bool>true</bool>
+                     <bool>false</bool>
                     </property>
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -988,7 +1003,8 @@ background-color:transparent;</string>
                     </property>
                     <property name="icon">
                      <iconset resource="assets/assets.qrc">
-                      <normaloff>:/icons/icons/depth.png</normaloff>:/icons/icons/depth.png</iconset>
+                      <normaloff>:/icons/icons/depth_gray.png</normaloff>
+                      <disabledoff>:/icons/icons/depth_gray.png</disabledoff>:/icons/icons/depth_gray.png</iconset>
                     </property>
                     <property name="iconSize">
                      <size>
@@ -1099,6 +1115,41 @@ background-color:transparent;</string>
              </item>
              <item alignment="Qt::AlignHCenter">
               <widget class="QPushButton" name="filters_apply_btn">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">#filters_apply_btn
+{
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));
+	color: rgba(255, 255, 255, 210);
+	border-radius: 22px;
+	min-width: 180;
+	max-width: 180;
+	min-height:44;
+	max-height: 44;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+#filters_apply_btn:disabled
+{
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(189, 189, 191, 255), stop:1 rgba(189, 189, 191, 255));
+	color: rgba(120, 120, 120, 255);
+}
+
+#filters_apply_btn:hover
+{
+	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));
+}
+
+#filters_apply_btn:pressed
+{
+	padding-left: 5px;
+	padding-top: 5px;
+}
+</string>
+               </property>
                <property name="text">
                 <string>Apply</string>
                </property>

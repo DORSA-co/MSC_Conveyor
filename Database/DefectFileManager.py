@@ -1,6 +1,9 @@
 import json
 import os
 
+import numpy as np
+from persiantools.jdatetime import JalaliDateTime
+
 from Detection.Defect import Defect, numberStatics
 
 class DefectFileManager:
@@ -35,9 +38,33 @@ class DefectFileManager:
         json_dict['count'] = int(number_static.count)
 
         return json_dict
+    
+    def json_to_number_statics(self,  json_dict:dict):
+        number_static = numberStatics()
+        number_static.max = json_dict['max']
+        number_static.min = json_dict['min']
+        number_static.mean = json_dict['mean']
+        number_static.count = json_dict['count']
 
-    def json_to_defect():
-        pass
+    def json_to_defect(self, json_dict)-> Defect:
+        defect = Defect()
+        
+        defect.id = int(json_dict['id'])
+        defect.widthInfo = self.json_to_number_statics(json_dict['width_info'])
+        defect.widthInfo = self.json_to_number_statics(json_dict['depth_info'])
+
+        defect.jdatetime = JalaliDateTime.strptime(json_dict['date']+json_dict['time'], '%Y/%m/%d%H:%M:%S')
+
+        defect.n_last_lines = json_dict['n_last_lines']
+
+        defect.defect_indices = np.array(json_dict['defect_indices'], dtype=np.int32)
+
+        defect.start_line_idx = np.array(json_dict['start_line_idx'], dtype=np.int32)
+        defect.end_line_idx = np.array(json_dict['end_line_idx'], dtype=np.int32)
+
+        defect.defect_width_boundries = json_dict['defect_width_boundries']
+
+        return defect
 
     def path_builder(self, defect_id):
         return os.path.join(self.main_path, str(defect_id)+'.json')
@@ -56,3 +83,16 @@ class DefectFileManager:
 
         else:
             print('DefectFileManager: Path does not exist')
+
+    def load_json(self, defect_id) -> dict:
+        path = self.path_builder(defect_id)
+
+        with open(path, 'r') as f:
+            defect_json = json.load(f)
+
+        return defect_json
+
+    def load_defect(self, defect_id) -> Defect:
+        defect_json = self.load_json(defect_id)
+        defect = self.json_to_defect(defect_json)
+        return defect

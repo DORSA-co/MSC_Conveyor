@@ -1,5 +1,13 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/view_icon.png</file>
+    <file>icons/view_icon_hover.png</file>
+    <file>icons/category_black.png</file>
+    <file>icons/next_gray.png</file>
+    <file>icons/prev_black.png</file>
+    <file>icons/prev_gray.png</file>
+    <file>icons/next_black.png</file>
+    <file>icons/category_gray.png</file>
     <file>icons/save_disable.png</file>
     <file>icons/save_icon.png</file>
     <file>icons/reset_hover.png</file>
@@ -9,10 +17,13 @@
     <file>icons/close_gray.png</file>
     <file>icons/delete_white.png</file>
     <file>icons/clear_filter_white.png</file>
-    <file>icons/depth.png</file>
-    <file>icons/height.png</file>
-    <file>icons/width.png</file>
     <file>icons/database.png</file>
+    <file>icons/depth_black.png</file>
+    <file>icons/depth_gray.png</file>
+    <file>icons/length_black.png</file>
+    <file>icons/length_gray.png</file>
+    <file>icons/width_black.png</file>
+    <file>icons/width_gray.png</file>
     <file>icons/filter_white.png</file>
     <file>icons/date_black.png</file>
     <file>icons/date_gray.png</file>

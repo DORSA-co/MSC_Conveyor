@@ -246,6 +246,9 @@ class sliderMenu:
             GUIBackend.connector(low_field, self.__setup_input_limits(name,'low'))
             GUIBackend.connector(high_feild, self.__setup_input_limits(name,'high'))
 
+            GUIBackend.checkbox_connector_with_arg(self.filters_activation[name], self.__handle_fields_enablity, (name,))
+            self.__handle_fields_enablity(name)
+
         self.__set_dates_default_values()
 
     def __set_dates_default_values(self):
@@ -264,6 +267,11 @@ class sliderMenu:
                 elif limit_type == 'low':
                     GUIBackend.set_input(high_feild, low_value, block_signal=True)
         return func
+    
+    def __handle_fields_enablity(self, name):
+        low_field, high_feild = self.filters[name]
+        GUIBackend.set_disable_enable(low_field, GUIBackend.get_checkbox_value(self.filters_activation[name]))
+        GUIBackend.set_disable_enable(high_feild, GUIBackend.get_checkbox_value(self.filters_activation[name]))
 
     def __setup(self,):
         self.ui = Ui_slider()

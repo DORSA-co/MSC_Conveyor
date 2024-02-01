@@ -12,6 +12,10 @@ class IconsPath:
 
     EDIT_ICON = ':/icons/icons/edit_icon.png'
     EDIT_ICON_HOVER = ':/icons/icons/edit_icon_hover.png'
+
+    VIEW_ICON = ':/icons/icons/view_icon.png'
+    VIEW_ICON_HOVER = ':/icons/icons/view_icon_hover.png'
+
     DELETE_ICON = ':/icons/icons/delete_icon.png'
     DELETE_ICON_HOVER = ':/icons/icons/delete_icon_hover.png'
 

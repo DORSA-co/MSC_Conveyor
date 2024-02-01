@@ -12,7 +12,6 @@ from PageUI.Setting_UI import Setting_UI
 from PageUI.users_UI import usersPageUI
 from PageUI.AlgorithmCalibration_UI import AlgorithmCalibration_UI
 from PageUI.Common_Function_UI import Common_Function_UI 
-from UIFiles.assets import assets_rc
 from UIFiles.main_UI import Ui_MainWindow
 from uiUtils.guiBackend import GUIBackend
 from uiUtils.GUIComponents import SIDEBAR_BUTTON_SELECTED_STYLE, SIDEBAR_BUTTON_UNSELECTED_STYLE

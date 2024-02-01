@@ -9,6 +9,7 @@ os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'defect_notifica
 os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'edit_user.ui'), os.path.join('UIFiles', 'edit_user.py')))
 os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'login_UI.ui'), os.path.join('UIFiles', 'login_UI.py')))
 os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'popup_slider.ui'), os.path.join('UIFiles', 'popup_slider.py')))
+os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'image_viewer.ui'), os.path.join('UIFiles', 'image_viewer.py')))
 
 from PySide6.QtWidgets import QApplication
 

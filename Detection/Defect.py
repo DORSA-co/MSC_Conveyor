@@ -52,10 +52,10 @@ class numberStatics:
 class Defect:
     def __init__(
             self,
-            start_anomaly_idx: int,
-            end_anomaly_idx: int,
-            start_line_idx: int,
-            depthes: np.ndarray,
+            start_anomaly_idx: int = None,
+            end_anomaly_idx: int = None,
+            start_line_idx: int = None,
+            depthes: np.ndarray = None,
             n_last_lines: int = 3
         ):
         self.id = int((time.time() - RefernceTime.REFERENCE_TIME)*(10000))
@@ -64,6 +64,7 @@ class Defect:
         self.jdatetime = JalaliDateTime.now()
 
         self.n_last_lines = n_last_lines
+        
         self.defect_indices = np.array(([[start_anomaly_idx, end_anomaly_idx]]))
         self.temp_indices = np.array([])
 
@@ -138,11 +139,11 @@ class Defect:
         else:
             return False
         
-    def get_bounding_box(self, line_idx, end_line_idx):
+    def get_bounding_box(self, line_idx, belt_end_line_idx=None):
         #when belt pass the end and start from 0 again
-        if line_idx < self.end_line_idx:
-            x1 = line_idx + (end_line_idx - self.end_line_idx)
-            x2 = line_idx + (end_line_idx - self.start_line_idx)
+        if belt_end_line_idx is not None and line_idx < self.end_line_idx:
+            x1 = line_idx + (belt_end_line_idx - self.end_line_idx)
+            x2 = line_idx + (belt_end_line_idx - self.start_line_idx)
         else:
             x1 = line_idx - self.end_line_idx
             x2 = line_idx - self.start_line_idx

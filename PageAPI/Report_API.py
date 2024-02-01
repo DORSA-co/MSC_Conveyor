@@ -1,9 +1,12 @@
+import subprocess
+
 import cv2
 
 from Database.Defects_DB import Defect_DB
 from Database.DefectFileManager import DefectFileManager
 from PageUI.Report_UI import Report_UI
 from backend.Utils.Filter import applyFilter
+from Constants.Constant import ViewerInfo
 
 class Report_API:
 
@@ -19,6 +22,7 @@ class Report_API:
         self.uiHandler.button_connector('apply', self.apply_filters)
         self.uiHandler.table_widget_connector(self.table_event)
 
+        self.view_defect_process = None
         self.external_delete_event_func = None
 
     def startup(self,):
@@ -52,14 +56,32 @@ class Report_API:
 
     def table_event(self, result, action):
         if action == 'delete':
-            self.db.remove_record('defect_id', result['defect_id'])
-            defect_file_manager = DefectFileManager(main_path=result['main_path'])
-            defect_file_manager.remove(result['defect_id'])
-            self.load_from_database()
-            self.apply_filters()
+            self.delete_defect(result)
 
-            if self.external_delete_event_func:
-                self.external_delete_event_func(result)
+        elif action == 'view':
+            self.view_defect(result)
+
+    def delete_defect(self, result):
+        response = self.uiHandler.show_confirm_box("Delete Defect",
+                                                "Are you sure you want to delete defect ?",
+                                                  buttons=['yes', 'cancel'])
+        if response == 'cancel':
+            return
+        
+        self.db.remove_record('defect_id', result['defect_id'])
+        defect_file_manager = DefectFileManager(main_path=result['main_path'])
+        defect_file_manager.remove(result['defect_id'])
+        self.load_from_database()
+        self.apply_filters()
+
+        if self.external_delete_event_func:
+            self.external_delete_event_func(result)
+
+    def view_defect(self, result):
+        if not self.view_defect_process or self.view_defect_process.poll() is not None:
+            self.view_defect_process = subprocess.Popen(
+                            [ViewerInfo.PYTHON_COMMAND, ViewerInfo.FILE_PATH, str(result['defect_id'])]
+                            )
 
     def set_external_delete_event_function(self, func):
         self.external_delete_event_func = func

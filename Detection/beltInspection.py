@@ -1,6 +1,7 @@
 
 import sys
 import os
+import threading
 
 import numpy as np
 import cv2
@@ -17,6 +18,8 @@ from Detection.Encoder import Encoder
 from Detection.DefectTracker import DefectTracker
 from Detection.Defect import Defect
 
+from Constants.Constant import DefectConstants
+
 class beltInspection:
 
     def __init__(self, kwargs:dict) -> None:
@@ -27,11 +30,13 @@ class beltInspection:
         self.Encoder = Encoder()
         self.DefectTracker = DefectTracker(min_frame_gap=self.Encoder.step*10, min_length=5)
         self.ImageCreator = ImageCreator((640, 1000),
-                                         max_y_errors=10 )
+                                         max_y_errors=DefectConstants.MAX_Y_ERRORS )
     
         self.new_defect_event_func = None
 
         self.DefectTracker.set_new_defect_event(self.new_defect_happend)
+        self.Encoder.set_finish_event(self.round_finish_event)
+        self.ImageCreator.set_cycle_image_event(self.cycle_image_event)
 
     def set_new_defect_event(self, func):
         self.new_defect_event_func = func
@@ -80,7 +85,7 @@ class beltInspection:
         # print('check completion: ', time.time() - t)
 
         t = time.time()
-        image = self.ImageCreator.feed(self.anomaly_pts, 'color_gradient', self.Encoder.step)
+        image = self.ImageCreator.feed(self.anomaly_pts, 'color_gradient', self.Encoder.step, self.Encoder.line_idx)
         # print('image creator: ', time.time() - t)
 
         t = time.time()
@@ -88,6 +93,7 @@ class beltInspection:
         #--------------------------------------
         self.DefectTracker.check_defect_passed(line_idx=self.Encoder.line_idx,
                                                img_width=image.shape[1])
+        
         self.res_image = self.DefectTracker.draw(image.copy(), 
                                                  self.Encoder.line_idx,
                                                  self.Encoder.end_line_idx)
@@ -95,10 +101,25 @@ class beltInspection:
         # print('last draw: ', time.time() - t)
 
         # cv2.imshow('', res_image)
+        #-------------------------------------------------------------------------------------------------
+        # path = 'belt_images/depth'
+        # path - os.path.join(path, str(Encoder))
+        # with open('depth', 'wb') as f:
+        #     np.save(f, self.depth_image)
+
+        #-------------------------------------------------------------------------------------------------
 
     
     def find_defect(self, _id)-> Defect:
         return self.DefectTracker.completed_defects.get_by_id(_id)
+    
+    def round_finish_event(self, finish_idx):
+        print('End Belt',finish_idx)
+        self.ImageCreator.reset_image_index()
+
+    def cycle_image_event(self,):
+        save_thread = threading.Thread(target=self.ImageCreator.save_depth_image)
+        save_thread.start()
 
 if __name__ == "__main__":
     

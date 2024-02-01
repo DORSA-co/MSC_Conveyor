@@ -38,6 +38,7 @@ CODE_NAME_BUTTON_STYLE ={
 TABEL_BUTTON_STYLE = """
     QPushButton{ 
         background-color: rgba(255,255,255,0);
+        border: 0px solid gray;
         min-height:0px; min-width:0px; 
         width:auto;
         qproperty-iconSize: 24px;
@@ -662,6 +663,24 @@ class SwitchControl(QtWidgets.QCheckBox):
         if self.auto:
             self.auto = False
             self.start_animation(not self.isChecked())
+
+class viewButton(QtWidgets.QPushButton):
+
+    def __init__(self, *a, **kw):
+        super(viewButton, self).__init__(*a, **kw)
+        self._icon_normal = QtGui.QIcon(IconsPath.IconsPath.VIEW_ICON)
+        self._icon_over = QtGui.QIcon(IconsPath.IconsPath.VIEW_ICON_HOVER)
+        self.setStyleSheet(TABEL_BUTTON_STYLE)
+        self.setIcon(self._icon_normal)
+        self.setCursor(QtCore.Qt.PointingHandCursor)
+
+    def enterEvent(self, event):
+        self.setIcon(self._icon_over)
+        #return super(editButton, self).enterEvent(event)
+
+    def leaveEvent(self, event):
+        self.setIcon(self._icon_normal)
+        #return super(editButton, self).enterEvent(event)
 
 
 class editButton(QtWidgets.QPushButton):
