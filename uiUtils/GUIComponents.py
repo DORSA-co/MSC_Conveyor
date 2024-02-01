@@ -1106,8 +1106,9 @@ class defectNotification(QtWidgets.QWidget):
         self.set_defect_color(self.defect_color)
         self.set_defect_type(self.defect_type)
     
-    def mouseDoubleClickEvent(self, event):
-        self.external_select_event_func(self)
+    def mousePressEvent(self, event):
+        if event.button() == QtCore.Qt.LeftButton:
+            self.external_select_event_func(self)
 
     def select_connector(self, func):
         self.external_select_event_func = func

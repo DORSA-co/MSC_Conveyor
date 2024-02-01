@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>802</width>
     <height>629</height>
    </rect>
   </property>
@@ -277,10 +277,11 @@ QGraphicsView{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>780</width>
-             <height>68</height>
+             <width>778</width>
+             <height>85</height>
             </rect>
            </property>
+           <layout class="QHBoxLayout" name="horizontalLayout"/>
           </widget>
          </widget>
         </item>

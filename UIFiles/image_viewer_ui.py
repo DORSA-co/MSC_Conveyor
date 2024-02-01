@@ -26,7 +26,7 @@ class Ui_ViewerWindow(object):
     def setupUi(self, ViewerWindow):
         if not ViewerWindow.objectName():
             ViewerWindow.setObjectName(u"ViewerWindow")
-        ViewerWindow.resize(800, 629)
+        ViewerWindow.resize(802, 629)
         self.StyleSheet = QWidget(ViewerWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
         self.StyleSheet.setStyleSheet(u"QLabel{\n"
@@ -198,7 +198,9 @@ class Ui_ViewerWindow(object):
         self.tiles_scrollArea.setWidgetResizable(True)
         self.tiles_frame = QWidget()
         self.tiles_frame.setObjectName(u"tiles_frame")
-        self.tiles_frame.setGeometry(QRect(0, 0, 780, 68))
+        self.tiles_frame.setGeometry(QRect(0, 0, 778, 85))
+        self.horizontalLayout = QHBoxLayout(self.tiles_frame)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.tiles_scrollArea.setWidget(self.tiles_frame)
 
         self.verticalLayout_2.addWidget(self.tiles_scrollArea)
