@@ -19,9 +19,13 @@ class DefectTracker:
         self.min_length = min_length
 
         self.external_new_defect_event = None
+        self.external_defect_update_event = None
     
     def set_new_defect_event(self, func):
         self.external_new_defect_event = func
+    
+    def set_update_defect_event(self, func):
+        self.external_defect_update_event = func
 
     def set_min_frame_gap(self, min_frame_gap):
         self.min_frame_gap = min_frame_gap
@@ -89,7 +93,7 @@ class DefectTracker:
                             defect.id = self.completed_defects[i].id
                             #self.completed_defects[i] = defect
                             self.completed_defects.set_by_index(i, defect, defect.id)
-                            
+                            self.external_defect_update_event(defect)
                             break
                     #------------------------------------
                     else:

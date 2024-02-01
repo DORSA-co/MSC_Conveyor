@@ -32,19 +32,27 @@ class beltInspection:
         self.ImageCreator = ImageCreator((640, 1000),
                                          max_y_errors=DefectConstants.MAX_Y_ERRORS )
     
-        self.new_defect_event_func = None
+        self.external_new_defect_event_func = None
+        self.external_defect_update_event_func = None
 
         self.DefectTracker.set_new_defect_event(self.new_defect_happend)
+        self.DefectTracker.set_update_defect_event(self.defect_update_event)
         self.Encoder.set_finish_event(self.round_finish_event)
         self.ImageCreator.set_cycle_image_event(self.cycle_image_event)
 
     def set_new_defect_event(self, func):
-        self.new_defect_event_func = func
+        self.external_new_defect_event_func = func
+    
+    def set_update_defect_event(self, func):
+        self.external_defect_update_event_func = func
 
     def new_defect_happend(self, defect:Defect):
         """this function call from DefectTracker when new defect occur
         """
-        self.new_defect_event_func(defect)
+        self.external_new_defect_event_func(defect)
+    
+    def defect_update_event(self, defect:Defect):
+        self.external_defect_update_event_func(defect)
     
     
     def change_settings(self, kwargs:dict):
