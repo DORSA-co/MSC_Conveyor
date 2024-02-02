@@ -60,6 +60,7 @@ class main_API:
         self.checked_device_time = time.time()
         self.is_during_checking_device  = False
         self.is_during_process = False
+        self.system_running = False
         
         self.device_checker_timer = timerBuilder(self.DEVICE_CHECKer_TIMER, self.check_camera_devices_event)
         self.device_checker_timer.start()
@@ -89,6 +90,8 @@ class main_API:
         self.uiHandeler.change_page_connector(self.page_change_event)
         self.API_Page_Users.set_login_event(self.login_user_event)
         self.API_Report.set_external_delete_event_function(self.delete_defect)
+        self.API_Live_View.set_run_stop_evetn( self.run_stop_event)
+
         
         self.pages_api_dict = {
             'settings': self.API_Page_Setting,
@@ -99,6 +102,7 @@ class main_API:
         self.login_user_event()
         self.API_Page_Users.loginUser.uiHandeler.loginDialog.show_win()
         self.startup()
+        
 
 
     def startup(self,):
@@ -131,15 +135,17 @@ class main_API:
     def grabbed_image_event(self, image):
         if not self.is_during_process:
             self.is_during_process = True
-            t = time.time()
-            self.beltIncpetcion.feed(image)
-            t = time.time() - t
-            # print(t)
-            if self.uiHandeler.current_page_name == 'settings':
-                self.API_Page_Setting.grab_image_event(image)
+            if self.API_Live_View.is_running:
+                self.beltIncpetcion.feed(image)
+            
+            
 
-            elif self.uiHandeler.current_page_name == 'live':
-                self.API_Live_View.uiHandeler.set_liveview_belt_img(self.beltIncpetcion.res_image)
+
+        if self.uiHandeler.current_page_name == 'settings':
+            self.API_Page_Setting.grab_image_event(image)
+
+        elif self.uiHandeler.current_page_name == 'live':
+            self.API_Live_View.uiHandeler.set_liveview_belt_img(self.beltIncpetcion.res_image)
             
         self.is_during_process = False
 
@@ -257,3 +263,11 @@ class main_API:
         notif = self.API_Live_View.uiHandeler.notifications.get_by_id(defect_id)
         if notif !=None :
             self.API_Live_View.uiHandeler.pop_notification(notif)
+
+    
+    def run_stop_event(self,):
+        for camera in self.cameras.values():
+            if self.API_Live_View.is_running:
+                camera.Operations.start_grabbing()
+            else:
+                camera.Operations.stop_grabbing()

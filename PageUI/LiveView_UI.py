@@ -34,6 +34,11 @@ class LiveView_UI(Common_Function_UI):
         self.ui = ui
         #self.notifications:list[defectNotification] = [] 
         self.notifications = idList()
+
+        self.buttons = {
+            'run_stop':self.ui.run_stop_btn,
+            'apply_filters':self.ui.notif_filter_btn
+        }
         
         self.defect_info_tables_header = ['x',
                                           'y', 
@@ -107,7 +112,9 @@ class LiveView_UI(Common_Function_UI):
             #check if it is first alarm, run blink, O.W the blink timer is running
             if len(self.__blink_alarms_list) == 1:
                 self.__blink_alarms()
-            
+
+    def button_connector(self, name, func):
+        GUIBackend.button_connector(self.buttons[name], func)      
 
     def setup_defect_info_talbe(self,):
         GUIBackend.set_table_dim(self.ui.defect_info_table, 1, len(self.defect_info_tables_header))
@@ -167,6 +174,7 @@ class LiveView_UI(Common_Function_UI):
 
     def select_all_notification(self, state):
         state = GUIBackend.get_checkbox_value(self.ui.select_all_notif_checkbox)
+        notif:defectNotification
         for notif in self.notifications.main_list:
             notif.set_checkbox(state)
 
@@ -292,7 +300,7 @@ class sliderMenu:
                                                QRect(parent_w,0,slider_w,parent_h),
                                                QRect(parent_w-slider_w,0,slider_w,parent_h)
                                                )
-    
+
     def slide_in(self, page_name):
         self.ui.pages.setCurrentWidget(self.pages_name[page_name])
         self.__slider_animation_builder()
@@ -327,8 +335,6 @@ class sliderMenu:
             high_value = GUIBackend.get_input(high_obj)
             res[name] = (low_value,high_value)
         return res
-    
-    def apply_filter_connector(self, func):
-        GUIBackend.button_connector(self.ui.filters_apply_btn, func)
+
         
     

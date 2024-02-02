@@ -34,6 +34,7 @@ class Report_API:
 
     def endup(self,):
         return True
+
     
     def load_from_database(self):
         self.defects = self.db.load()

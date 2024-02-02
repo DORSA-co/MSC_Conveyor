@@ -35,6 +35,8 @@ class beltInspection:
         self.external_new_defect_event_func = None
         self.external_defect_update_event_func = None
 
+        self.res_image = self.ImageCreator.image.copy()
+
         self.DefectTracker.set_new_defect_event(self.new_defect_happend)
         self.DefectTracker.set_update_defect_event(self.defect_update_event)
         self.Encoder.set_finish_event(self.round_finish_event)

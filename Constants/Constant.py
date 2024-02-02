@@ -8,7 +8,7 @@ class SideBarAnimation:
 class ReportFiltersAnimation:
     ANIMATION_DURATION = 600
     HEIGHT_START_VALUE = 0
-    HEIGHT_STOP_VALUE = 16777215
+    HEIGHT_STOP_VALUE = 100
 
 class MessagesAnimation:
     MESSAGE_DURARTION = 3000

@@ -1042,7 +1042,7 @@ QComboBox:focus{
       <item>
        <widget class="QStackedWidget" name="main_stackedWidget">
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="live_view_page">
          <layout class="QHBoxLayout" name="horizontalLayout_23">
@@ -1668,7 +1668,7 @@ border-radius: 20px;</string>
               </spacer>
              </item>
              <item>
-              <widget class="QPushButton" name="start_stop_btn">
+              <widget class="QPushButton" name="run_stop_btn">
                <property name="styleSheet">
                 <string notr="true">#start_stop_btn{
 	color: white;
@@ -3321,7 +3321,7 @@ QFrame{
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
-                   <height>0</height>
+                   <height>16777215</height>
                   </size>
                  </property>
                  <property name="frameShape">
@@ -3472,7 +3472,7 @@ QFrame{
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
-                   <height>0</height>
+                   <height>16777215</height>
                   </size>
                  </property>
                  <property name="frameShape">
@@ -3623,7 +3623,7 @@ QFrame{
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
-                   <height>0</height>
+                   <height>16777215</height>
                   </size>
                  </property>
                  <property name="frameShape">
@@ -3778,7 +3778,7 @@ QFrame{
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
-                   <height>0</height>
+                   <height>16777215</height>
                   </size>
                  </property>
                  <property name="frameShape">
@@ -3933,7 +3933,7 @@ QFrame{
                  <property name="maximumSize">
                   <size>
                    <width>16777215</width>
-                   <height>0</height>
+                   <height>16777215</height>
                   </size>
                  </property>
                  <property name="frameShape">

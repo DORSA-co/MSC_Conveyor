@@ -686,7 +686,7 @@ class pageNavigationButton(QtWidgets.QPushButton):
 	background-color: rgba(247, 248, 250, 100);
 	border-radius: 8px;
     }
-    
+
     """
 
     SELECT_STYLE = """QPushButton{
@@ -925,8 +925,13 @@ class timerBuilder:
 
 
 class singleAnimation:
+    EASING_CURVES = {
+        'linear': QtCore.QEasingCurve.Linear,
+        'in_out_fast': QtCore.QEasingCurve.InOutExpo,
+        'in_out_slow': QtCore.QEasingCurve.InOutCirc,
+    }
 
-    def __init__(self, obj ,atribute, time, key1, key2) -> None:
+    def __init__(self, obj ,atribute, time, key1, key2, easing_curve='linear') -> None:
         
         self.key1 = key1
         self.key2 = key2
@@ -934,7 +939,7 @@ class singleAnimation:
         self.toggle_flag = True
         self.animation = QtCore.QPropertyAnimation(obj, atribute)
         self.animation.setDuration(time)
-        self.animation.setEasingCurve(QtCore.QEasingCurve.Linear)
+        self.animation.setEasingCurve(self.EASING_CURVES[easing_curve])
     
     def reset(self,):
         self.animation.setDuration(1)

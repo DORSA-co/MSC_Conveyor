@@ -46,7 +46,7 @@ class Report_UI(Common_Function_UI):
 
         self.filter_checkboxes = {
             'date': self.ui.report_date_checkBox,
-            # 'class': self.ui.report_class_checkBox,
+            'class': self.ui.report_class_checkBox,
             'width': self.ui.report_width_checkBox,
             'length': self.ui.report_length_checkBox,
             'depth': self.ui.report_depth_checkBox,
@@ -54,7 +54,7 @@ class Report_UI(Common_Function_UI):
 
         self.filter_frames = {
             'date': self.ui.report_date_filter_frame,
-            # 'class': self.ui.report_class_filter_frame,
+            'class': self.ui.report_class_filter_frame,
             'width': self.ui.report_width_filter_frame,
             'length': self.ui.report_length_filter_frame,
             'depth': self.ui.report_depth_filter_frame,
@@ -69,6 +69,7 @@ class Report_UI(Common_Function_UI):
         
         self.table_widget_func = None
         self.pages_number_navigation_button:dict[int,pageNavigationButton] = {}
+        self.filter_animation:dict[str,singleAnimation] = {}
 
 
         for name in self.filter_frames:
@@ -76,7 +77,8 @@ class Report_UI(Common_Function_UI):
                                                    self.slide_filter,
                                                    (name, )
                                                    )
-            
+        
+        self.__filter_animation_builder()
 
         self.button_connector('next', self.table_next_page)
         self.button_connector('prev', self.table_previous_page)
@@ -206,18 +208,18 @@ class Report_UI(Common_Function_UI):
             self.__slide_filter_out(name)
 
 
-    def __filter_animation_builder(self, name):
-        self.filter_animation = singleAnimation(self.filter_frames[name],
+    def __filter_animation_builder(self,):
+        for name in self.filter_frames.keys():
+            self.filter_animation[name] = singleAnimation(self.filter_frames[name],
                                                b'maximumHeight',
                                                ReportFiltersAnimation.ANIMATION_DURATION,
                                                ReportFiltersAnimation.HEIGHT_START_VALUE,
-                                               ReportFiltersAnimation.HEIGHT_STOP_VALUE
+                                               ReportFiltersAnimation.HEIGHT_STOP_VALUE,
                                                )
+            self.filter_animation[name].reset()
     
     def __slide_filter_in(self, name):
-        self.__filter_animation_builder(name)
-        self.filter_animation.forward()
+        self.filter_animation[name].forward()
         
     def __slide_filter_out(self, name):
-        self.__filter_animation_builder(name)
-        self.filter_animation.backward()
+        self.filter_animation[name].backward()

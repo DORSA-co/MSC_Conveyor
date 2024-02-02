@@ -25,9 +25,12 @@ class LiveView_API:
 
         self.compareFilters = applyFilter()
 
+        self.external_run_stop_event_func = None
+        self.is_running = False
+
         self.uiHandeler.set_notification_click_event(self.notification_click)
         
-        self.button_connector()
+        self.__button_connector()
 
 
 
@@ -50,9 +53,17 @@ class LiveView_API:
                                                 (100,200,20)
                                                 )
 
-    def button_connector(self,):
-        self.uiHandeler.sliderMenu.apply_filter_connector(self.apply_filter)
+    def __button_connector(self,):
+        self.uiHandeler.button_connector('apply_filters', self.apply_filter)
+        self.uiHandeler.button_connector('run_stop', self.run_stop)
 
+    
+    def run_stop(self,):
+        self.is_running = not(self.is_running)
+        self.external_run_stop_event_func()
+
+    def set_run_stop_evetn(self, func):
+        self.external_run_stop_event_func = func
 
     def notification_click(self, _id):
         defect:Defect

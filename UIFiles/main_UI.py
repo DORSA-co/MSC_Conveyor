@@ -1100,13 +1100,13 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_16.addItem(self.verticalSpacer_5)
 
-        self.start_stop_btn = QPushButton(self.expanding_frame)
-        self.start_stop_btn.setObjectName(u"start_stop_btn")
-        self.start_stop_btn.setStyleSheet(u"#start_stop_btn{\n"
+        self.run_stop_btn = QPushButton(self.expanding_frame)
+        self.run_stop_btn.setObjectName(u"run_stop_btn")
+        self.run_stop_btn.setStyleSheet(u"#start_stop_btn{\n"
 "	color: white;\n"
 "}")
 
-        self.verticalLayout_16.addWidget(self.start_stop_btn)
+        self.verticalLayout_16.addWidget(self.run_stop_btn)
 
         self.verticalSpacer_8 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -2064,7 +2064,7 @@ class Ui_MainWindow(object):
         self.report_date_filter_frame.setObjectName(u"report_date_filter_frame")
         sizePolicy2.setHeightForWidth(self.report_date_filter_frame.sizePolicy().hasHeightForWidth())
         self.report_date_filter_frame.setSizePolicy(sizePolicy2)
-        self.report_date_filter_frame.setMaximumSize(QSize(16777215, 0))
+        self.report_date_filter_frame.setMaximumSize(QSize(16777215, 16777215))
         self.report_date_filter_frame.setFrameShape(QFrame.StyledPanel)
         self.report_date_filter_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_50 = QHBoxLayout(self.report_date_filter_frame)
@@ -2145,7 +2145,7 @@ class Ui_MainWindow(object):
         self.report_width_filter_frame.setObjectName(u"report_width_filter_frame")
         sizePolicy2.setHeightForWidth(self.report_width_filter_frame.sizePolicy().hasHeightForWidth())
         self.report_width_filter_frame.setSizePolicy(sizePolicy2)
-        self.report_width_filter_frame.setMaximumSize(QSize(16777215, 0))
+        self.report_width_filter_frame.setMaximumSize(QSize(16777215, 16777215))
         self.report_width_filter_frame.setFrameShape(QFrame.StyledPanel)
         self.report_width_filter_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_35 = QHBoxLayout(self.report_width_filter_frame)
@@ -2226,7 +2226,7 @@ class Ui_MainWindow(object):
         self.report_length_filter_frame.setObjectName(u"report_length_filter_frame")
         sizePolicy2.setHeightForWidth(self.report_length_filter_frame.sizePolicy().hasHeightForWidth())
         self.report_length_filter_frame.setSizePolicy(sizePolicy2)
-        self.report_length_filter_frame.setMaximumSize(QSize(16777215, 0))
+        self.report_length_filter_frame.setMaximumSize(QSize(16777215, 16777215))
         self.report_length_filter_frame.setFrameShape(QFrame.StyledPanel)
         self.report_length_filter_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_31 = QHBoxLayout(self.report_length_filter_frame)
@@ -2306,7 +2306,7 @@ class Ui_MainWindow(object):
         self.report_depth_filter_frame.setObjectName(u"report_depth_filter_frame")
         sizePolicy2.setHeightForWidth(self.report_depth_filter_frame.sizePolicy().hasHeightForWidth())
         self.report_depth_filter_frame.setSizePolicy(sizePolicy2)
-        self.report_depth_filter_frame.setMaximumSize(QSize(16777215, 0))
+        self.report_depth_filter_frame.setMaximumSize(QSize(16777215, 16777215))
         self.report_depth_filter_frame.setFrameShape(QFrame.StyledPanel)
         self.report_depth_filter_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_32 = QHBoxLayout(self.report_depth_filter_frame)
@@ -2389,7 +2389,7 @@ class Ui_MainWindow(object):
         self.report_class_filter_frame.setObjectName(u"report_class_filter_frame")
         sizePolicy2.setHeightForWidth(self.report_class_filter_frame.sizePolicy().hasHeightForWidth())
         self.report_class_filter_frame.setSizePolicy(sizePolicy2)
-        self.report_class_filter_frame.setMaximumSize(QSize(16777215, 0))
+        self.report_class_filter_frame.setMaximumSize(QSize(16777215, 16777215))
         self.report_class_filter_frame.setFrameShape(QFrame.StyledPanel)
         self.report_class_filter_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_30 = QHBoxLayout(self.report_class_filter_frame)
@@ -3155,7 +3155,7 @@ class Ui_MainWindow(object):
         self.system_status_expanding_btn.clicked.connect(self.system_status_btn.click)
         self.notif_filter_expanding_btn.clicked.connect(self.notif_filter_btn.click)
 
-        self.main_stackedWidget.setCurrentIndex(2)
+        self.main_stackedWidget.setCurrentIndex(0)
         self.live_tabWidget.setCurrentIndex(0)
         self.settings_tabs.setCurrentIndex(0)
         self.algorithm_stackedWidget.setCurrentIndex(0)
@@ -3203,7 +3203,7 @@ class Ui_MainWindow(object):
         self.notif_filter_btn.setText("")
         self.notif_clear_filter_btn.setText("")
         self.notif_remove_btn.setText("")
-        self.start_stop_btn.setText(QCoreApplication.translate("MainWindow", u"Play", None))
+        self.run_stop_btn.setText(QCoreApplication.translate("MainWindow", u"Play", None))
         self.camera_settings_off_label.setText(QCoreApplication.translate("MainWindow", u"Off", None))
         self.connect_camera_switch.setText("")
         self.camera_settings_on_label.setText(QCoreApplication.translate("MainWindow", u"On", None))
