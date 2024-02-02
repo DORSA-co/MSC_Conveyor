@@ -1,3 +1,4 @@
+from __future__ import annotations
 import sys
 import time
 
@@ -35,6 +36,7 @@ class viewerUI(QMainWindow):
         self.common_func=Common_Function_UI()
 
         self.move_refresh_time = 0
+        self.tile_external_event_func = None
 
         self.buttons_connection()
 
@@ -111,11 +113,27 @@ class viewerUI(QMainWindow):
     def set_image(self, image: np.ndarray):
         self.ui.tile_image_viewer.set_image(image)
 
+    def add_tile(self, _id, color, meterage):
+        tile = Tile(_id, meterage=meterage, color=color)
+        tile.select_connector(self.tile_select_event)
+        layout = self.ui.tiles_frame.layout()
+        # layout.addWidget(tile)
+        for _ in range(10):
+            layout.insertWidget(0, tile)
+    
+    def tile_select_connector(self, func):
+        self.tile_external_event_func = func
+
+    def tile_select_event(self, tile:Tile):
+        self.tile_external_event_func(tile.id)
+        
+
 
 class Tile(QtWidgets.QWidget):
-    def __init__(self, meterage, color):
+    def __init__(self,_id, meterage, color):
         """this function is used to laod ui file and build GUI application"""
         super(Tile, self).__init__()
+        self.id = _id
 
         self.ui = Ui_Tile()
         self.ui.setupUi(self)
@@ -123,17 +141,20 @@ class Tile(QtWidgets.QWidget):
         self.external_select_event_func = None
 
         self.set_meterage(meterage)
+        self.set_color(color)
 
-    def mouseDoubleClickEvent(self, event):
-        self.external_select_event_func(self)
+    def mousePressEvent(self, event):
+        if event.button() == QtCore.Qt.LeftButton:
+            self.external_select_event_func(self)
 
     def select_connector(self, func):
         self.external_select_event_func = func
 
     def set_meterage(self, meterage:tuple):
-        GUIBackend.set_label_text(self.ui.meterage_label, '{} - {}'.format(meterage[0], meterage[1]))
+        GUIBackend.set_label_text(self.ui.meterage_low_label, str(meterage[0]))
+        GUIBackend.set_label_text(self.ui.meterage_high_label, str(meterage[1]))
 
     def set_color(self, color):
         color_obj = Color(color)
-        GUIBackend.set_style(self.ui.frame, "background-color: {};".format(color_obj.hex_color))
+        GUIBackend.set_style(self.ui.frame2, "background-color: {};".format(color_obj.hex_color))
         

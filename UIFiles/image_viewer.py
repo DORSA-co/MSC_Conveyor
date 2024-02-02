@@ -26,7 +26,7 @@ class Ui_ViewerWindow(object):
     def setupUi(self, ViewerWindow):
         if not ViewerWindow.objectName():
             ViewerWindow.setObjectName(u"ViewerWindow")
-        ViewerWindow.resize(800, 629)
+        ViewerWindow.resize(802, 648)
         self.StyleSheet = QWidget(ViewerWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
         self.StyleSheet.setStyleSheet(u"QLabel{\n"
@@ -57,10 +57,20 @@ class Ui_ViewerWindow(object):
 "	background-color: #E0E4EC;\n"
 "}\n"
 "\n"
-"#tiles_frame, #tile_image_frame\n"
+"#tile_image_frame\n"
 "{\n"
 "	background-color: #F7F8FA;\n"
 "	border:1px solid #D7D7D9;\n"
+"}\n"
+"\n"
+"#tiles_scrollArea{\n"
+"	background-color: #F7F8FA;\n"
+"	border:None;\n"
+"}\n"
+"\n"
+"#tiles_frame{\n"
+"	background-color: #F7F8FA;\n"
+"	border:None;\n"
 "}\n"
 "")
         self.verticalLayout = QVBoxLayout(self.StyleSheet)
@@ -195,10 +205,18 @@ class Ui_ViewerWindow(object):
         sizePolicy2.setVerticalStretch(0)
         sizePolicy2.setHeightForWidth(self.tiles_scrollArea.sizePolicy().hasHeightForWidth())
         self.tiles_scrollArea.setSizePolicy(sizePolicy2)
+        self.tiles_scrollArea.setMinimumSize(QSize(0, 120))
+        self.tiles_scrollArea.setMaximumSize(QSize(16777215, 120))
         self.tiles_scrollArea.setWidgetResizable(True)
         self.tiles_frame = QWidget()
         self.tiles_frame.setObjectName(u"tiles_frame")
-        self.tiles_frame.setGeometry(QRect(0, 0, 780, 68))
+        self.tiles_frame.setGeometry(QRect(0, 0, 784, 120))
+        self.horizontalLayout = QHBoxLayout(self.tiles_frame)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_2)
+
         self.tiles_scrollArea.setWidget(self.tiles_frame)
 
         self.verticalLayout_2.addWidget(self.tiles_scrollArea)

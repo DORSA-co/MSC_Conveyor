@@ -63,7 +63,7 @@ class Defect_DB:
 
 
     def load(self):
-         records=self.db_manager.get_all_content(self.TABLE_NAME)
+         records=self.db_manager.get_all_content(self.TABLE_NAME, reverse_order=True)
          for record in records:
             record['date'] = jdatetime.JalaliDateTime.strptime(record['date'], '%Y/%m/%d')
             record['time'] = jdatetime.JalaliDateTime.strptime(record['time'], '%H:%M:%S')

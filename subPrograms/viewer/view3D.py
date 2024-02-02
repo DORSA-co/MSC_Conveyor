@@ -70,8 +70,6 @@ class view3D:
         vis.create_window()
         vis.add_geometry(mesh)
         vis.get_render_option().load_from_json("subPrograms/viewer/render_option.json")
-            
-
         vis.run()
 
 def depthImage2xyz(img:np.ndarray):

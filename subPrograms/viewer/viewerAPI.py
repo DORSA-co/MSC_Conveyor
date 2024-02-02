@@ -27,10 +27,11 @@ class viewerAPI:
         self.gradiants = {}
         self.gradiants['color_gradient'] = self.create_gradient(heatMap.GRADIENT1)
 
+        self.uiHandeler.tile_select_connector(self.select_tile_evet)
         self.defect_obj = self.get_defect()
         self.metadata = self.load_images_metadate()
-
         self.images_names = self.find_defect_images()
+        self.setup_tiles(self.images_names)
 
         self.current_image_idx = 0
 
@@ -79,7 +80,9 @@ class viewerAPI:
 
     def depth_image_to_gradient_image(self, depth_image, gradient_name):
         image = np.zeros(depth_image.shape + (3,), dtype=np.uint8)
-        image[self.xyz[:, 1], self.xyz[:, 0]] = self.gradiants[gradient_name][self.xyz[:, 2]+self.max_y_errors]
+        normalize_depth = self.xyz[:, 2] + self.max_y_errors
+        normalize_depth = np.clip( normalize_depth, 0, self.max_y_errors * 2 - 1)
+        image[self.xyz[:, 1], self.xyz[:, 0]] = self.gradiants[gradient_name][normalize_depth]
 
         return image
 
@@ -124,3 +127,14 @@ class viewerAPI:
         mesh = v3.crop(mesh, bbox)
         
         v3.show_mesh(mesh)
+
+
+    def setup_tiles(self, images_names):
+        for img_name in images_names:
+            meterage = self.metadata[img_name]    
+            self.uiHandeler.add_tile(img_name, '#969696', meterage)
+
+    def select_tile_evet(self, _id:int):
+        self.current_image_idx = self.images_names.index(_id)
+        print(self.current_image_idx )
+        self.render(self.current_image_idx )

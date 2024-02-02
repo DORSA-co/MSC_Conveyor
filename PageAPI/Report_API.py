@@ -1,4 +1,6 @@
 import subprocess
+import threading
+import os
 
 import cv2
 
@@ -62,11 +64,11 @@ class Report_API:
             self.view_defect(result)
 
     def delete_defect(self, result):
-        response = self.uiHandler.show_confirm_box("Delete Defect",
-                                                "Are you sure you want to delete defect ?",
-                                                  buttons=['yes', 'cancel'])
-        if response == 'cancel':
-            return
+        # response = self.uiHandler.show_confirm_box("Delete Defect",
+        #                                         "Are you sure you want to delete defect ?",
+        #                                           buttons=['yes', 'cancel'])
+        # if response == 'cancel':
+        #     return
         
         self.db.remove_record('defect_id', result['defect_id'])
         defect_file_manager = DefectFileManager(main_path=result['main_path'])
@@ -79,9 +81,17 @@ class Report_API:
 
     def view_defect(self, result):
         if not self.view_defect_process or self.view_defect_process.poll() is not None:
-            self.view_defect_process = subprocess.Popen(
-                            [ViewerInfo.PYTHON_COMMAND, ViewerInfo.FILE_PATH, str(result['defect_id'])]
-                            )
+            # self.view_defect_process = subprocess.Popen(
+            #                 [ViewerInfo.PYTHON_COMMAND, ViewerInfo.FILE_PATH, str(result['defect_id'])]
+            #                 )
+            th = threading.Thread(target=self.run_viewer_app, args=(result,))
+            th.start()
+
+    def run_viewer_app(self, result):
+            if os.name == 'nt':
+                os.system(f"python {ViewerInfo.FILE_PATH} --defect_id={result['defect_id']} --path=\"{os.getcwd()}\"")
+            else:
+                os.system(f"/bin/python3.9 {ViewerInfo.FILE_PATH} --defect_id={result['defect_id']} --path=\"{os.getcwd()}\"")
 
     def set_external_delete_event_function(self, func):
         self.external_delete_event_func = func

@@ -30,11 +30,11 @@
 	"mesh_color_option" : 4,
 	"mesh_shade_option" : 0,
 	"mesh_show_back_face" : true,
-	"mesh_show_wireframe" : false,
+	"mesh_show_wireframe" : true,
 	"point_color_option" : 0,
 	"point_show_normal" : false,
 	"point_size" : 2.0,
-	"show_coordinate_frame" : false,
+	"show_coordinate_frame" : true,
 	"version_major" : 1,
 	"version_minor" : 0
 }

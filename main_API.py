@@ -46,6 +46,7 @@ class main_API:
         kwargs = self.db.Setting_DB.algorithm_setting_db.load()
         self.beltIncpetcion = beltInspection(kwargs)
         self.beltIncpetcion.set_new_defect_event(self.new_defect_event)
+        self.beltIncpetcion.set_update_defect_event(self.update_defect_event)
 
         self.DefectFileManager = DefectFileManager('defects_info')
         #--------------------------------------------------------
@@ -242,6 +243,13 @@ class main_API:
         info['main_path'] = self.DefectFileManager.main_path
         self.db.Defects_DB.save(info)
         threading.Thread(target=self.DefectFileManager.save, args=(defect,)).start()
+    
+    def update_defect_event(self, defect:Defect):
+        info = defect.get_info()
+        info['main_path'] = self.DefectFileManager.main_path
+        self.db.Defects_DB.save(info)
+        threading.Thread(target=self.DefectFileManager.save, args=(defect,)).start()
+
 
     def delete_defect(self, defect:dict):
         defect_id = defect['defect_id']
