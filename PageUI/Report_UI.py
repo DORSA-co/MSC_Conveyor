@@ -128,6 +128,7 @@ class Report_UI(Common_Function_UI):
         self.table_total_contents = results
         self.table_current_page = 1
         self.table_total_pages = math.ceil(len(self.table_total_contents)/ReportTableLimit.REPORT_TABLE_LIMIT)
+        self.table_total_pages = max(self.table_total_pages, 1)
         self.setup_page_navigation_buttons(1, self.table_total_pages, self.table_page_event)
         self.handle_next_prev_enablity()
         # self.handle_page_numbers_enablity()
@@ -178,7 +179,10 @@ class Report_UI(Common_Function_UI):
             GUIBackend.button_connector_argument_pass(btn, event_func, (number,))
             self.pages_number_navigation_button[number] = btn
             layout.addWidget(btn)
-        self.pages_number_navigation_button[start].set_selected(True)
+        
+        first_page = self.pages_number_navigation_button.get(start)
+        if first_page is not None:
+            first_page.set_selected(True)
 
     def table_page_event(self, number:int):
         self.pages_number_navigation_button[self.table_current_page].set_selected(False)
