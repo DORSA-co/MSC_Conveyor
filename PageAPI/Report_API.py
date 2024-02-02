@@ -95,3 +95,6 @@ class Report_API:
 
     def set_external_delete_event_function(self, func):
         self.external_delete_event_func = func
+
+
+    

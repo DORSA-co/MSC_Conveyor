@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1221, 790)
+        MainWindow.resize(1221, 811)
         self.StyleSheet = QWidget(MainWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
         self.StyleSheet.setEnabled(True)
@@ -879,7 +879,7 @@ class Ui_MainWindow(object):
         self.defects_notifications_scrollArea.setWidgetResizable(True)
         self.defects_notifications_widget = QWidget()
         self.defects_notifications_widget.setObjectName(u"defects_notifications_widget")
-        self.defects_notifications_widget.setGeometry(QRect(0, 0, 320, 650))
+        self.defects_notifications_widget.setGeometry(QRect(0, 0, 320, 665))
         self.defects_notifications_widget.setStyleSheet(u"#defects_notifications_widget{\n"
 "	border:None;\n"
 "	border-top: 2px solid gray;\n"
@@ -2561,113 +2561,18 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_37.addWidget(self.report_prev_btn)
 
-        self.report_first_page_btn = QPushButton(self.report_page)
-        self.report_first_page_btn.setObjectName(u"report_first_page_btn")
-        self.report_first_page_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.report_first_page_btn.setStyleSheet(u"#report_first_page_btn\n"
-"{\n"
-"	border: 0px solid gray;\n"
-"	font-size: 14px;\n"
-"	color: rgb(50, 50, 50);\n"
-"	min-width: 30;\n"
-"	max-width: 30;\n"
-"	min-height:30;\n"
-"	max-height: 30;\n"
-"}\n"
-"\n"
-"#report_first_page_btn:disabled\n"
-"{\n"
-"	color: rgba(120, 120, 120, 255);\n"
-"}\n"
-"\n"
-"#report_first_page_btn:hover\n"
-"{\n"
-"	font-weight: bold;\n"
-"	background-color: rgba(247, 248, 250, 100);\n"
-"	border-radius: 8px;\n"
-"}\n"
-"\n"
-"#report_first_page_btn:pressed\n"
-"{\n"
-"	font-weight: bold;\n"
-"	background-color: rgba(247, 248, 250, 100);\n"
-"	border-radius: 8px;\n"
-"}\n"
-"")
+        self.pages_navigation_frame = QFrame(self.report_page)
+        self.pages_navigation_frame.setObjectName(u"pages_navigation_frame")
+        self.pages_navigation_frame.setMinimumSize(QSize(50, 0))
+        self.pages_navigation_frame.setStyleSheet(u"#pages_navigation_frame{\n"
+"	background-color:transparent;\n"
+"}")
+        self.pages_navigation_frame.setFrameShape(QFrame.StyledPanel)
+        self.pages_navigation_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_36 = QHBoxLayout(self.pages_navigation_frame)
+        self.horizontalLayout_36.setObjectName(u"horizontalLayout_36")
 
-        self.horizontalLayout_37.addWidget(self.report_first_page_btn)
-
-        self.report_second_page_btn = QPushButton(self.report_page)
-        self.report_second_page_btn.setObjectName(u"report_second_page_btn")
-        self.report_second_page_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.report_second_page_btn.setStyleSheet(u"#report_second_page_btn\n"
-"{\n"
-"	border: 0px solid gray;\n"
-"	font-size: 14px;\n"
-"	color: rgb(50, 50, 50);\n"
-"	min-width: 30;\n"
-"	max-width: 30;\n"
-"	min-height:30;\n"
-"	max-height: 30;\n"
-"}\n"
-"\n"
-"#report_second_page_btn:disabled\n"
-"{\n"
-"	color: rgba(120, 120, 120, 255);\n"
-"}\n"
-"\n"
-"#report_second_page_btn:hover\n"
-"{\n"
-"	font-weight: bold;\n"
-"	background-color: rgba(247, 248, 250, 100);\n"
-"	border-radius: 8px;\n"
-"}\n"
-"\n"
-"#report_second_page_btn:pressed\n"
-"{\n"
-"	font-weight: bold;\n"
-"	background-color: rgba(247, 248, 250, 100);\n"
-"	border-radius: 8px;\n"
-"}\n"
-"")
-
-        self.horizontalLayout_37.addWidget(self.report_second_page_btn)
-
-        self.report_third_page_btn = QPushButton(self.report_page)
-        self.report_third_page_btn.setObjectName(u"report_third_page_btn")
-        self.report_third_page_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.report_third_page_btn.setStyleSheet(u"#report_third_page_btn\n"
-"{\n"
-"	border: 0px solid gray;\n"
-"	font-size: 14px;\n"
-"	color: rgb(50, 50, 50);\n"
-"	min-width: 30;\n"
-"	max-width: 30;\n"
-"	min-height:30;\n"
-"	max-height: 30;\n"
-"}\n"
-"\n"
-"#report_third_page_btn:disabled\n"
-"{\n"
-"	color: rgba(120, 120, 120, 255);\n"
-"}\n"
-"\n"
-"#report_third_page_btn:hover\n"
-"{\n"
-"	font-weight: bold;\n"
-"	background-color: rgba(247, 248, 250, 100);\n"
-"	border-radius: 8px;\n"
-"}\n"
-"\n"
-"#report_third_page_btn:pressed\n"
-"{\n"
-"	font-weight: bold;\n"
-"	background-color: rgba(247, 248, 250, 100);\n"
-"	border-radius: 8px;\n"
-"}\n"
-"")
-
-        self.horizontalLayout_37.addWidget(self.report_third_page_btn)
+        self.horizontalLayout_37.addWidget(self.pages_navigation_frame)
 
         self.report_next_btn = QPushButton(self.report_page)
         self.report_next_btn.setObjectName(u"report_next_btn")
@@ -2887,7 +2792,7 @@ class Ui_MainWindow(object):
         self.register_message_scrollArea.setWidgetResizable(True)
         self.register_message_frame = QWidget()
         self.register_message_frame.setObjectName(u"register_message_frame")
-        self.register_message_frame.setGeometry(QRect(0, 0, 941, 223))
+        self.register_message_frame.setGeometry(QRect(0, 0, 933, 226))
         sizePolicy3.setHeightForWidth(self.register_message_frame.sizePolicy().hasHeightForWidth())
         self.register_message_frame.setSizePolicy(sizePolicy3)
         self.verticalLayout_55 = QVBoxLayout(self.register_message_frame)
@@ -3012,7 +2917,7 @@ class Ui_MainWindow(object):
         self.change_username_message_scrollArea.setWidgetResizable(True)
         self.change_username_message_frame = QWidget()
         self.change_username_message_frame.setObjectName(u"change_username_message_frame")
-        self.change_username_message_frame.setGeometry(QRect(0, 0, 16, 16))
+        self.change_username_message_frame.setGeometry(QRect(0, 0, 100, 30))
         self.change_username_message_scrollArea.setWidget(self.change_username_message_frame)
 
         self.verticalLayout_54.addWidget(self.change_username_message_scrollArea)
@@ -3188,7 +3093,7 @@ class Ui_MainWindow(object):
         self.change_password_message_scrollArea.setWidgetResizable(True)
         self.change_password_message_frame = QWidget()
         self.change_password_message_frame.setObjectName(u"change_password_message_frame")
-        self.change_password_message_frame.setGeometry(QRect(0, 0, 16, 16))
+        self.change_password_message_frame.setGeometry(QRect(0, 0, 100, 30))
         self.change_password_message_scrollArea.setWidget(self.change_password_message_frame)
 
         self.verticalLayout_51.addWidget(self.change_password_message_scrollArea)
@@ -3250,7 +3155,7 @@ class Ui_MainWindow(object):
         self.system_status_expanding_btn.clicked.connect(self.system_status_btn.click)
         self.notif_filter_expanding_btn.clicked.connect(self.notif_filter_btn.click)
 
-        self.main_stackedWidget.setCurrentIndex(0)
+        self.main_stackedWidget.setCurrentIndex(2)
         self.live_tabWidget.setCurrentIndex(0)
         self.settings_tabs.setCurrentIndex(0)
         self.algorithm_stackedWidget.setCurrentIndex(0)
@@ -3375,9 +3280,6 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem11 = self.report_table.verticalHeaderItem(2)
         ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
         self.report_prev_btn.setText(QCoreApplication.translate("MainWindow", u"Prev", None))
-        self.report_first_page_btn.setText(QCoreApplication.translate("MainWindow", u"1", None))
-        self.report_second_page_btn.setText(QCoreApplication.translate("MainWindow", u"2", None))
-        self.report_third_page_btn.setText(QCoreApplication.translate("MainWindow", u"3", None))
         self.report_next_btn.setText(QCoreApplication.translate("MainWindow", u"Next", None))
         self.register_username_label.setText(QCoreApplication.translate("MainWindow", u"Username", None))
         self.register_password_label.setText(QCoreApplication.translate("MainWindow", u"Password", None))

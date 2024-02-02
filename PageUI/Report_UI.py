@@ -4,7 +4,7 @@ import math
 from UIFiles.main_UI import Ui_MainWindow
 from .Common_Function_UI import Common_Function_UI
 from uiUtils.guiBackend import GUIBackend
-from uiUtils.GUIComponents import deleteButton, viewButton
+from uiUtils.GUIComponents import deleteButton, viewButton, pageNavigationButton
 from uiUtils.GUIComponents import singleAnimation
 from Constants.Constant import ReportFiltersAnimation, ReportTableLimit
 
@@ -64,13 +64,11 @@ class Report_UI(Common_Function_UI):
             'apply': self.ui.report_filter_apply_btn,
             'next': self.ui.report_next_btn,
             'prev': self.ui.report_prev_btn,
-            'first_page': self.ui.report_first_page_btn,
-            'second_page': self.ui.report_second_page_btn,
-            'third_page': self.ui.report_third_page_btn,
         }
 
         
         self.table_widget_func = None
+        self.pages_number_navigation_button:dict[int,pageNavigationButton] = {}
 
 
         for name in self.filter_frames:
@@ -110,14 +108,17 @@ class Report_UI(Common_Function_UI):
         return filters
     
     def table_next_page(self):
-        self.table_current_page += 1
+        #self.table_current_page += 1
+        self.table_page_event(self.table_current_page + 1)
         self.handle_next_prev_enablity()
         self.set_table_contents()
 
     def table_previous_page(self):
-        self.table_current_page -= 1
+        #self.table_current_page -= 1
+        self.table_page_event(self.table_current_page - 1)
         self.handle_next_prev_enablity()
         self.set_table_contents()
+        
 
     def handle_next_prev_enablity(self):
         GUIBackend.set_disable_enable(self.buttons['next'], not(self.table_current_page == self.table_total_pages or self.table_total_pages==0))
@@ -127,6 +128,7 @@ class Report_UI(Common_Function_UI):
         self.table_total_contents = results
         self.table_current_page = 1
         self.table_total_pages = math.ceil(len(self.table_total_contents)/ReportTableLimit.REPORT_TABLE_LIMIT)
+        self.setup_page_navigation_buttons(1, self.table_total_pages, self.table_page_event)
         self.handle_next_prev_enablity()
         # self.handle_page_numbers_enablity()
         self.set_table_contents()
@@ -166,12 +168,39 @@ class Report_UI(Common_Function_UI):
     
     def table_widget_connector(self, func):
         self.table_widget_func = func
+    
+    def setup_page_navigation_buttons(self, start, end, event_func):
+        self.__clear_pages_navigation_buttons()
+        layout = self.ui.pages_navigation_frame.layout()
+
+        for number in range(start, end+1):
+            btn = pageNavigationButton(number=number)
+            GUIBackend.button_connector_argument_pass(btn, event_func, (number,))
+            self.pages_number_navigation_button[number] = btn
+            layout.addWidget(btn)
+        self.pages_number_navigation_button[start].set_selected(True)
+
+    def table_page_event(self, number:int):
+        self.pages_number_navigation_button[self.table_current_page].set_selected(False)
+        self.table_current_page = number
+        self.pages_number_navigation_button[self.table_current_page].set_selected(True)
+        self.handle_next_prev_enablity()
+        self.set_table_contents()
+
+
+    def __clear_pages_navigation_buttons(self):
+        layout = self.ui.pages_navigation_frame.layout()
+        for btn in self.pages_number_navigation_button.values():
+            btn.deleteLater()
+        self.pages_number_navigation_button = {}
+        
 
     def slide_filter(self, name):
         if GUIBackend.get_checkbox_value(self.filter_checkboxes[name]):
             self.__slide_filter_in(name)
         else:
             self.__slide_filter_out(name)
+
 
     def __filter_animation_builder(self, name):
         self.filter_animation = singleAnimation(self.filter_frames[name],

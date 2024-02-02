@@ -664,6 +664,50 @@ class SwitchControl(QtWidgets.QCheckBox):
             self.auto = False
             self.start_animation(not self.isChecked())
 
+class pageNavigationButton(QtWidgets.QPushButton):
+    NORMAL_STYLE = """QPushButton{
+	border: 0px solid gray;
+	font-size: 14px;
+	color: rgb(50, 50, 50);
+	min-width: 30;
+	max-width: 30;
+	min-height:30;
+	max-height: 30;
+    }
+
+    QPushButton:disabled
+    {
+	color: rgba(120, 120, 120, 255);
+    }
+
+    #QPushButton:hover
+    {
+	font-weight: bold;
+	background-color: rgba(247, 248, 250, 100);
+	border-radius: 8px;
+    }
+    
+    """
+
+    SELECT_STYLE = """QPushButton{
+    border:1px solid red;
+    }
+    """
+
+    def __init__(self, number, *a, **kw):
+        super(pageNavigationButton, self).__init__(*a, **kw)
+        self.number = number
+        GUIBackend.set_button_text(self, str(self.number))
+        self.set_selected(False)
+    
+    def set_selected(self, selected):
+        if selected:
+            GUIBackend.set_style(self, self.NORMAL_STYLE + self.SELECT_STYLE)
+        else:
+            GUIBackend.set_style(self, self.NORMAL_STYLE)
+
+    
+
 class viewButton(QtWidgets.QPushButton):
 
     def __init__(self, *a, **kw):
