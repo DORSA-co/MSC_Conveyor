@@ -4,7 +4,7 @@ import math
 from UIFiles.main_UI import Ui_MainWindow
 from .Common_Function_UI import Common_Function_UI
 from uiUtils.guiBackend import GUIBackend
-from uiUtils.GUIComponents import deleteButton, viewButton, pageNavigationButton
+from uiUtils.GUIComponents import deleteButton, viewButton, pageNavigationButton, tabelCheckbox
 from uiUtils.GUIComponents import singleAnimation
 from Constants.Constant import ReportFiltersAnimation, ReportTableLimit
 
@@ -20,6 +20,7 @@ class Report_UI(Common_Function_UI):
         self.ui = ui
 
         self.TABLE_HEADERS = [
+                        ' ',
                         'NO.',
                         'date',
                         'time',
@@ -64,6 +65,7 @@ class Report_UI(Common_Function_UI):
             'apply': self.ui.report_filter_apply_btn,
             'next': self.ui.report_next_btn,
             'prev': self.ui.report_prev_btn,
+            'delete_all': self.ui.delete_selected_defects
         }
 
         
@@ -73,7 +75,7 @@ class Report_UI(Common_Function_UI):
 
 
         for name in self.filter_frames:
-            GUIBackend.checkbox_connector_with_arg(self.filter_checkboxes[name],
+            GUIBackend.checkbox_connector_argument_pass(self.filter_checkboxes[name],
                                                    self.slide_filter,
                                                    (name, )
                                                    )
@@ -82,6 +84,7 @@ class Report_UI(Common_Function_UI):
 
         self.button_connector('next', self.table_next_page)
         self.button_connector('prev', self.table_previous_page)
+        GUIBackend.checkbox_connector(self.ui.select_all_defects_table, self.select_all)
         # self.button_connector('first', self.table_previous_page)
         # self.button_connector('prev', self.table_previous_page)
         # self.button_connector('prev', self.table_previous_page)
@@ -90,6 +93,7 @@ class Report_UI(Common_Function_UI):
         self.table_current_page = 1
         self.table_total_pages = 0
         self.table_total_contents = []
+        self.selected_table_contents = []
         self.handle_next_prev_enablity()
 
     def startup(self,):
@@ -128,6 +132,10 @@ class Report_UI(Common_Function_UI):
 
     def show_filter_results(self, results: list[dict]):
         self.table_total_contents = results
+        for record in  self.selected_table_contents:
+            if record not in results:
+                self.selected_table_contents.remove(record)
+
         self.table_current_page = 1
         self.table_total_pages = math.ceil(len(self.table_total_contents)/ReportTableLimit.REPORT_TABLE_LIMIT)
         self.table_total_pages = max(self.table_total_pages, 1)
@@ -138,7 +146,9 @@ class Report_UI(Common_Function_UI):
     
     def set_table_contents(self):
         table_page_start_idx = ReportTableLimit.REPORT_TABLE_LIMIT*(self.table_current_page-1)
-        table_page_end_idx = min(ReportTableLimit.REPORT_TABLE_LIMIT*(self.table_current_page), len(self.table_total_contents))
+        table_page_end_idx = min(ReportTableLimit.REPORT_TABLE_LIMIT*(self.table_current_page), 
+                                 len(self.table_total_contents)
+                                 )
 
         results = self.table_total_contents[table_page_start_idx:table_page_end_idx]
         GUIBackend.set_table_dim(self.ui.report_table, len(results), len(self.TABLE_HEADERS))
@@ -154,14 +164,34 @@ class Report_UI(Common_Function_UI):
 
                 if value is not None:
                     GUIBackend.set_table_cell_value(self.ui.report_table, (i, j), value=value)
+                
+                elif header == ' ':
+                    checkbox = tabelCheckbox()
+                    GUIBackend.set_table_cell_widget(self.ui.report_table, (i, j), checkbox, layout=True)
+                    GUIBackend.checkbox_connector_argument_pass(checkbox, 
+                                                                self.checked_table_record, 
+                                                                (result,))
+                    
+                    if result in self.selected_table_contents:
+                        GUIBackend.set_checkbox_value(checkbox, True, block_signal=True)
+                    
+                    #self.table_checkboxes[result['defect_id']] = checkbox
 
                 elif header == 'NO.':
-                    GUIBackend.set_table_cell_value(self.ui.report_table, (i, j), value='{}'.format(i+1+table_page_start_idx))
+                    GUIBackend.set_table_cell_value(self.ui.report_table, 
+                                                    (i, j), 
+                                                    value='{}'.format(i+1+table_page_start_idx))
+                    
 
                 elif header == 'delete':
                     delete_btn = deleteButton()
-                    GUIBackend.button_connector_argument_pass(delete_btn, self.table_widget_func, (result, 'delete'))
-                    GUIBackend.set_table_cell_widget(self.ui.report_table, (i, j), delete_btn)
+                    GUIBackend.button_connector_argument_pass(delete_btn, 
+                                                              self.table_widget_func, 
+                                                              (result, 'delete'))
+                    
+                    GUIBackend.set_table_cell_widget(self.ui.report_table, 
+                                                     (i, j), 
+                                                     delete_btn)
 
                 elif header == 'view':
                     view_btn = viewButton()
@@ -193,16 +223,32 @@ class Report_UI(Common_Function_UI):
         self.handle_next_prev_enablity()
         self.set_table_contents()
 
+    def checked_table_record(self,state, record):
+        if state:
+            self.selected_table_contents.append(record)
+        else:
+            self.selected_table_contents.remove(record)
+
+    def select_all(self, state):
+        state = GUIBackend.get_checkbox_value(self.ui.select_all_defects_table)
+        if state:
+            self.selected_table_contents = self.table_total_contents.copy()
+        else:
+            self.selected_table_contents = []
+        self.set_table_contents()
+    
+    def get_selected_defects(self,):
+        return self.selected_table_contents
+        
 
     def __clear_pages_navigation_buttons(self):
-        layout = self.ui.pages_navigation_frame.layout()
         for btn in self.pages_number_navigation_button.values():
             btn.deleteLater()
         self.pages_number_navigation_button = {}
         
 
-    def slide_filter(self, name):
-        if GUIBackend.get_checkbox_value(self.filter_checkboxes[name]):
+    def slide_filter(self,state, name):
+        if state:
             self.__slide_filter_in(name)
         else:
             self.__slide_filter_out(name)
@@ -223,3 +269,4 @@ class Report_UI(Common_Function_UI):
         
     def __slide_filter_out(self, name):
         self.filter_animation[name].backward()
+    

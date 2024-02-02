@@ -22,6 +22,7 @@ class Report_API:
         self.db = db
 
         self.uiHandler.button_connector('apply', self.apply_filters)
+        self.uiHandler.button_connector('delete_all', self.delete_all)
         self.uiHandler.table_widget_connector(self.table_event)
 
         self.view_defect_process = None
@@ -60,6 +61,7 @@ class Report_API:
     def table_event(self, result, action):
         if action == 'delete':
             self.delete_defect(result)
+            self.apply_filters()
 
         elif action == 'view':
             self.view_defect(result)
@@ -75,10 +77,16 @@ class Report_API:
         defect_file_manager = DefectFileManager(main_path=result['main_path'])
         defect_file_manager.remove(result['defect_id'])
         self.load_from_database()
-        self.apply_filters()
 
         if self.external_delete_event_func:
             self.external_delete_event_func(result)
+    
+    def delete_all(self,):
+        results = self.uiHandler.get_selected_defects()
+        for result in results:
+            self.delete_defect(result)
+        
+        self.apply_filters()
 
     def view_defect(self, result):
         if not self.view_defect_process or self.view_defect_process.poll() is not None:

@@ -2476,6 +2476,24 @@ class Ui_MainWindow(object):
         self.verticalLayout_37 = QVBoxLayout()
         self.verticalLayout_37.setObjectName(u"verticalLayout_37")
         self.verticalLayout_37.setContentsMargins(-1, -1, 0, -1)
+        self.horizontalLayout_38 = QHBoxLayout()
+        self.horizontalLayout_38.setObjectName(u"horizontalLayout_38")
+        self.horizontalLayout_38.setContentsMargins(-1, 0, -1, -1)
+        self.select_all_defects_table = QCheckBox(self.report_page)
+        self.select_all_defects_table.setObjectName(u"select_all_defects_table")
+        sizePolicy.setHeightForWidth(self.select_all_defects_table.sizePolicy().hasHeightForWidth())
+        self.select_all_defects_table.setSizePolicy(sizePolicy)
+
+        self.horizontalLayout_38.addWidget(self.select_all_defects_table)
+
+        self.delete_selected_defects = QPushButton(self.report_page)
+        self.delete_selected_defects.setObjectName(u"delete_selected_defects")
+
+        self.horizontalLayout_38.addWidget(self.delete_selected_defects)
+
+
+        self.verticalLayout_37.addLayout(self.horizontalLayout_38)
+
         self.report_table = QTableWidget(self.report_page)
         if (self.report_table.columnCount() < 7):
             self.report_table.setColumnCount(7)
@@ -2917,7 +2935,7 @@ class Ui_MainWindow(object):
         self.change_username_message_scrollArea.setWidgetResizable(True)
         self.change_username_message_frame = QWidget()
         self.change_username_message_frame.setObjectName(u"change_username_message_frame")
-        self.change_username_message_frame.setGeometry(QRect(0, 0, 100, 30))
+        self.change_username_message_frame.setGeometry(QRect(0, 0, 16, 16))
         self.change_username_message_scrollArea.setWidget(self.change_username_message_frame)
 
         self.verticalLayout_54.addWidget(self.change_username_message_scrollArea)
@@ -3093,7 +3111,7 @@ class Ui_MainWindow(object):
         self.change_password_message_scrollArea.setWidgetResizable(True)
         self.change_password_message_frame = QWidget()
         self.change_password_message_frame.setObjectName(u"change_password_message_frame")
-        self.change_password_message_frame.setGeometry(QRect(0, 0, 100, 30))
+        self.change_password_message_frame.setGeometry(QRect(0, 0, 16, 16))
         self.change_password_message_scrollArea.setWidget(self.change_password_message_frame)
 
         self.verticalLayout_51.addWidget(self.change_password_message_scrollArea)
@@ -3155,7 +3173,7 @@ class Ui_MainWindow(object):
         self.system_status_expanding_btn.clicked.connect(self.system_status_btn.click)
         self.notif_filter_expanding_btn.clicked.connect(self.notif_filter_btn.click)
 
-        self.main_stackedWidget.setCurrentIndex(0)
+        self.main_stackedWidget.setCurrentIndex(2)
         self.live_tabWidget.setCurrentIndex(0)
         self.settings_tabs.setCurrentIndex(0)
         self.algorithm_stackedWidget.setCurrentIndex(0)
@@ -3259,6 +3277,8 @@ class Ui_MainWindow(object):
         self.report_class_icon.setText("")
         self.report_class_label.setText(QCoreApplication.translate("MainWindow", u"Class", None))
         self.report_filter_apply_btn.setText(QCoreApplication.translate("MainWindow", u"Apply", None))
+        self.select_all_defects_table.setText("")
+        self.delete_selected_defects.setText(QCoreApplication.translate("MainWindow", u"delete", None))
         ___qtablewidgetitem2 = self.report_table.horizontalHeaderItem(0)
         ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"X", None));
         ___qtablewidgetitem3 = self.report_table.horizontalHeaderItem(1)

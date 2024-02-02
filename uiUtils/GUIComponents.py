@@ -789,15 +789,15 @@ class tabelCheckbox(QtWidgets.QCheckBox):
         super(tabelCheckbox, self).__init__(*a, **kw)
         
 
-    def set_size(self, w, h):
-        self.setStyleSheet(f"""QCheckBox::indicator 
-                                {{
-                               width :{w}px;
-                               height :{h}px;
-                               }}""")
+    # def set_size(self, w, h):
+    #     self.setStyleSheet(f"""QCheckBox::indicator 
+    #                             {{
+    #                            width :{w}px;
+    #                            height :{h}px;
+    #                            }}""")
 
-        #self.setMaximumWidth(h+5)
-        #self.setMaximumWidth(w+5)
+    #     #self.setMaximumWidth(h+5)
+    #     #self.setMaximumWidth(w+5)
 
 
 class compareComboBox(QtWidgets.QComboBox):

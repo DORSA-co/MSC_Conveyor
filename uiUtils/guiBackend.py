@@ -257,32 +257,27 @@ class GUIBackend:
 
 
         """
-        if block_signal:
-            GUIBackend.set_signal_connection(wgt, False)
-
         if isinstance(wgt, QtWidgets.QComboBox):
-            GUIBackend.set_combobox_current_item(wgt, value)
+            GUIBackend.set_combobox_current_item(wgt, value, block_signal)
         
         elif isinstance(wgt, QtWidgets.QSpinBox) or isinstance(wgt, QtWidgets.QDoubleSpinBox):
-            GUIBackend.set_spinbox_value(wgt, value)
+            GUIBackend.set_spinbox_value(wgt, value, block_signal)
         
         elif isinstance(wgt, QtWidgets.QLineEdit):
-            GUIBackend.set_input_text(wgt, value)
+            GUIBackend.set_input_text(wgt, value, block_signal)
         
         elif isinstance(wgt, QtWidgets.QCheckBox):
-            GUIBackend.set_checkbox_value(wgt, value)
+            GUIBackend.set_checkbox_value(wgt, value, block_signal)
 
         elif isinstance(wgt, QtWidgets.QDateEdit):
-            GUIBackend.set_date_input(wgt, value)
+            GUIBackend.set_date_input(wgt, value, block_signal)
 
         else:
             assert False, f"set_input method doesn't support {wgt} object"
 
-        if block_signal:
-            GUIBackend.set_signal_connection(wgt, True)
 
     @staticmethod
-    def connector(wgt, func):
+    def connector(wgt, func, args=None):
         """
         """
         if isinstance(wgt, QtWidgets.QComboBox):
@@ -295,7 +290,10 @@ class GUIBackend:
             return GUIBackend.input_text_connector(wgt, func)
 
         elif isinstance(wgt, QtWidgets.QCheckBox):
-            return GUIBackend.checkbox_connector(wgt, lambda x: func())
+            if args is None:
+                return GUIBackend.checkbox_connector(wgt, lambda x: func())
+            else:
+                pass
         
         elif isinstance(wgt, QtWidgets.QDateEdit):
             return GUIBackend.date_input_connector(wgt, func)
@@ -445,14 +443,18 @@ class GUIBackend:
 
     
     @staticmethod
-    def set_combobox_current_item( combo: QtWidgets.QComboBox, item: str):
+    def set_combobox_current_item( combo: QtWidgets.QComboBox, item: str, block_signal=False):
         """set cobobox selected item to a custom item
 
         Args:
             combo (QtWidgets.QComboBox): Qt comboBox object
             item (str): string item
         """
+        if block_signal:
+            GUIBackend.set_signal_connection(combo, False)
         combo.setCurrentText(item)
+        if block_signal:
+            GUIBackend.set_signal_connection(combo, True)
 
 
     @staticmethod
@@ -479,7 +481,7 @@ class GUIBackend:
         return chbox.isChecked()
     
     @staticmethod
-    def set_checkbox_value(chbox: QtWidgets.QCheckBox, value: bool):
+    def set_checkbox_value(chbox: QtWidgets.QCheckBox, value: bool, block_signal=False):
         """set state of Qt checkbox
 
         Args:
@@ -488,7 +490,13 @@ class GUIBackend:
 
         
         """
-        return chbox.setChecked(value)
+        if block_signal:
+            GUIBackend.set_signal_connection(chbox, False)
+
+        chbox.setChecked(value)
+    
+        if block_signal:
+            GUIBackend.set_signal_connection(chbox, True)
     
     
     @staticmethod
@@ -501,10 +509,19 @@ class GUIBackend:
         """
         chbox.stateChanged.connect(partial( func ))
 
-    def checkbox_connector_with_arg(chbox: QtWidgets.QCheckBox, func, args):
+    def checkbox_connector_argument_pass(chbox: QtWidgets.QCheckBox, func, args):
+        """connects a function to event of Qt checkbox change state and pass args
+        into that function
+        Warning:In addition of args, state of checkbox pass to event function as first argument
+
+        Args:
+            chbox (QtWidgets.QCheckBox): _description_
+            func (_type_): _description_
+            args (_type_): _description_
+        """
 
         def event_func(x):
-            func(*args)
+            func(bool(x),*args)
         
         chbox.stateChanged.connect(partial( event_func ))
 
@@ -615,14 +632,20 @@ class GUIBackend:
         """
         return inpt.value()
     
-    def set_spinbox_value(inpt: QtWidgets.QSpinBox, value):
+    def set_spinbox_value(inpt: QtWidgets.QSpinBox, value, block_signal=False):
         """set a value into spinbox
 
         Args:
             inpt (QtWidgets.QSpinBox): Qt spinbox object
             value (_type_): custom value
         """
+        if block_signal:
+            GUIBackend.set_signal_connection(inpt, False)
+
         inpt.setValue(value)
+
+        if block_signal:
+            GUIBackend.set_signal_connection(inpt, True)
 
     def spinbox_connector(inpt: QtWidgets.QSpinBox, func):
         """connect a function to change value event
@@ -667,7 +690,7 @@ class GUIBackend:
         """
         return inpt.text()
 
-    def set_input_text(inpt:QtWidgets.QLineEdit, txt:str):
+    def set_input_text(inpt:QtWidgets.QLineEdit, txt:str, block_signal=False):
         """returns text of an input box
 
         Args:
@@ -675,7 +698,13 @@ class GUIBackend:
             txt (str): 
 
         """
+        if block_signal:
+            GUIBackend.set_signal_connection(inpt, False)
+
         inpt.setText(txt)
+
+        if block_signal:
+            GUIBackend.set_signal_connection(inpt, True)
 
     def set_input_password(inpt:QtWidgets.QLineEdit):
         """make a input, password format that show charater by *
@@ -791,7 +820,7 @@ class GUIBackend:
             table.item(*index).setForeground(QtGui.QBrush(QtGui.QColor(*color)))
         
     @staticmethod
-    def set_table_cell_widget(table: QtWidgets.QTableWidget, index: tuple, widget, layout=False):
+    def set_table_cell_widget(table: QtWidgets.QTableWidget, index: tuple, widget:QtWidgets.QWidget, layout=False):
         """insert a Qt widget (like QPushButton) into a custom cell of given Qt table
 
         Args:
@@ -801,13 +830,17 @@ class GUIBackend:
         """
         if layout:
             #container = QtWidgets.QWidget()
-            container = QtWidgets.QFrame()
-            layouth = QtWidgets.QHBoxLayout(container)
-            layouth.addWidget(widget)
-            layouth.setContentsMargins(2,2,2,2)
+            container = QtWidgets.QWidget()
+            layout_widget = QtWidgets.QHBoxLayout()
+            layout_widget.setAlignment(Qt.AlignCenter)
+            layout_widget.addWidget(widget)
+            container.setLayout(layout_widget)
+            #layouth.setContentsMargins(2,2,2,2)
             table.setCellWidget(*index, container)
         else:
             table.setCellWidget(*index, widget)
+
+            
             
         
         #item = QtWidgets.QTableWidgetItem(widget)
@@ -973,12 +1006,17 @@ class GUIBackend:
         #return datetime.combine( obj.date().toPython(), datetime.min.time() )
 
     
-    def set_date_input( obj: QtWidgets.QDateEdit, date:date) -> datetime:
+    def set_date_input( obj: QtWidgets.QDateEdit, date:date, block_signal=False) -> datetime:
         """returns date of QDateEdit
         """
+        if block_signal:
+            GUIBackend.set_signal_connection(date, False)
 
         date = QtCore.QDate(date.year, date.month, date.day)
-        return obj.setDate(date)
+        obj.setDate(date)
+
+        if block_signal:
+            GUIBackend.set_signal_connection(date, True)
     
 
     def date_input_connector( obj: QtWidgets.QDateEdit, func):
