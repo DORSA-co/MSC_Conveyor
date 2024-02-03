@@ -20,7 +20,7 @@ from PySide6.QtWidgets import (QAbstractItemView, QApplication, QCheckBox, QComb
     QHeaderView, QLabel, QLineEdit, QMainWindow,
     QPushButton, QScrollArea, QSizePolicy, QSpacerItem,
     QSpinBox, QStackedWidget, QTabWidget, QTableWidget,
-    QTableWidgetItem, QVBoxLayout, QWidget)
+    QTableWidgetItem, QTextEdit, QVBoxLayout, QWidget)
 
 from GUIComponents import (PhotoViewer, SwitchControl)
 import assets_rc
@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1221, 815)
+        MainWindow.resize(1210, 815)
         self.StyleSheet = QWidget(MainWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
         self.StyleSheet.setEnabled(True)
@@ -3276,6 +3276,13 @@ class Ui_MainWindow(object):
         self.main_stackedWidget.addWidget(self.users_page)
         self.about_page = QWidget()
         self.about_page.setObjectName(u"about_page")
+        self.verticalLayout_59 = QVBoxLayout(self.about_page)
+        self.verticalLayout_59.setObjectName(u"verticalLayout_59")
+        self.textEdit = QTextEdit(self.about_page)
+        self.textEdit.setObjectName(u"textEdit")
+
+        self.verticalLayout_59.addWidget(self.textEdit)
+
         self.main_stackedWidget.addWidget(self.about_page)
 
         self.verticalLayout.addWidget(self.main_stackedWidget)
@@ -3289,7 +3296,7 @@ class Ui_MainWindow(object):
         self.system_status_expanding_btn.clicked.connect(self.system_status_btn.click)
         self.notif_filter_expanding_btn.clicked.connect(self.notif_filter_btn.click)
 
-        self.main_stackedWidget.setCurrentIndex(2)
+        self.main_stackedWidget.setCurrentIndex(4)
         self.live_tabWidget.setCurrentIndex(0)
         self.settings_tabs.setCurrentIndex(0)
         self.algorithm_stackedWidget.setCurrentIndex(0)

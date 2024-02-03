@@ -8,7 +8,7 @@ parser.add_argument('--path', type=str, default=os.getcwd())
 args=parser.parse_args()
 print('Start')
 
-#args.defect_id= 325578092
+#args.defect_id= 1893238518
 
 # sys.path.insert(1, os.getcwd())
 sys.path.append(args.path)
@@ -29,7 +29,7 @@ if __name__ == "__main__":
     # if args.defect_id:
     viewer_ui = viewerUI()
     #API = viewerAPI(viewer_ui, sys.argv[1])
-    API = viewerAPI(viewer_ui, '1811128473')#args.defect_id)
+    API = viewerAPI(viewer_ui, args.defect_id)
     viewer_ui.show()
     app.exec()
 

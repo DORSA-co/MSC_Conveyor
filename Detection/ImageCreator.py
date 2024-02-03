@@ -35,7 +35,7 @@ class ImageCreator:
                                                 ((220, 220, 220), 1),
                                                 ))
         
-        self.create_metadata()
+        #self.create_metadata()
     
     def set_cycle_image_event(self, func):
         self.external_cycle_image_event_func = func
@@ -91,8 +91,11 @@ class ImageCreator:
 
     def update_metadata(self, image_index):
         path = os.path.join(SavePathes.IMAGE_SAVE_PATH, SavePathes.METADATA_JASON_FILE)
-        with open(path, 'r') as fp:
-            metadata = json.load(fp)
+        if os.path.exists(path):
+            with open(path, 'r') as fp:
+                metadata = json.load(fp)
+        else:
+            metadata = {}
 
         metadata[str(image_index)] = (self.image_start_line_idx, self.image_start_line_idx+self.total_idx)
 
