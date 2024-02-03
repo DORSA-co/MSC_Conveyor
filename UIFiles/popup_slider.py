@@ -725,6 +725,13 @@ class Ui_slider(object):
 
         self.verticalLayout_9.addItem(self.verticalSpacer_3)
 
+        self.horizontalLayout_25 = QHBoxLayout()
+        self.horizontalLayout_25.setObjectName(u"horizontalLayout_25")
+        self.horizontalLayout_25.setContentsMargins(26, 10, 13, 10)
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_25.addItem(self.horizontalSpacer_2)
+
         self.filters_apply_btn = QPushButton(self.filters_frame)
         self.filters_apply_btn.setObjectName(u"filters_apply_btn")
         self.filters_apply_btn.setCursor(QCursor(Qt.PointingHandCursor))
@@ -732,11 +739,11 @@ class Ui_slider(object):
 "{\n"
 "	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
 "	color: rgba(255, 255, 255, 210);\n"
-"	border-radius: 22px;\n"
-"	min-width: 180;\n"
-"	max-width: 180;\n"
-"	min-height:44;\n"
-"	max-height: 44;\n"
+"	border-radius: 20px;\n"
+"	min-width: 134;\n"
+"	max-width: 134;\n"
+"	min-height:40;\n"
+"	max-height: 40;\n"
 "	font-size: 14px;\n"
 "	font-weight: bold;\n"
 "}\n"
@@ -759,7 +766,62 @@ class Ui_slider(object):
 "}\n"
 "")
 
-        self.verticalLayout_9.addWidget(self.filters_apply_btn, 0, Qt.AlignHCenter)
+        self.horizontalLayout_25.addWidget(self.filters_apply_btn)
+
+        self.notif_clear_filter_btn = QPushButton(self.filters_frame)
+        self.notif_clear_filter_btn.setObjectName(u"notif_clear_filter_btn")
+        sizePolicy3 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.notif_clear_filter_btn.sizePolicy().hasHeightForWidth())
+        self.notif_clear_filter_btn.setSizePolicy(sizePolicy3)
+        self.notif_clear_filter_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.notif_clear_filter_btn.setStyleSheet(u"#notif_clear_filter_btn\n"
+"{\n"
+"	border: 2px solid  rgba(46, 76, 153, 255);\n"
+"	color:  rgba(46, 76, 153, 255);\n"
+"	border-radius: 18px;\n"
+"	min-width: 130;\n"
+"	max-width: 130;\n"
+"	min-height: 36;\n"
+"	max-height: 36;\n"
+"	font-size: 14px;\n"
+"	font-weight: bold;\n"
+"	qproperty-icon: url(:/icons/icons/clear_filter_blue.png);\n"
+"}\n"
+"\n"
+"#notif_clear_filter_btn:disabled\n"
+"{\n"
+"	border: 2px solid rgba(189, 189, 191, 255);\n"
+"	color: rgba(120, 120, 120, 255);\n"
+"}\n"
+"\n"
+"#notif_clear_filter_btn:hover\n"
+"{\n"
+"	border: 2px solid rgba(76, 126, 255, 255);\n"
+"	color:  rgba(76, 126, 255, 255);\n"
+"	qproperty-icon: url(:/icons/icons/clear_filter_blue_hover.png);\n"
+"}\n"
+"\n"
+"#notif_clear_filter_btn:pressed\n"
+"{\n"
+"	padding-left: 5px;\n"
+"	padding-top: 5px;\n"
+"}\n"
+"")
+        icon5 = QIcon()
+        icon5.addFile(u":/icons/icons/clear_filter_blue.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.notif_clear_filter_btn.setIcon(icon5)
+        self.notif_clear_filter_btn.setIconSize(QSize(20, 20))
+
+        self.horizontalLayout_25.addWidget(self.notif_clear_filter_btn)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_25.addItem(self.horizontalSpacer_3)
+
+
+        self.verticalLayout_9.addLayout(self.horizontalLayout_25)
 
         self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -817,5 +879,6 @@ class Ui_slider(object):
         self.depth_label.setText(QCoreApplication.translate("slider", u"Depth (mm)", None))
         self.depth_to_label.setText(QCoreApplication.translate("slider", u"To", None))
         self.filters_apply_btn.setText(QCoreApplication.translate("slider", u"Apply", None))
+        self.notif_clear_filter_btn.setText(QCoreApplication.translate("slider", u"Clear Filters", None))
     # retranslateUi
 

@@ -24,7 +24,7 @@ class MessageColors:
 class ViewerInfo:
     PYTHON_COMMAND = '/bin/python3.9'
     #PYTHON_COMMAND = 'C:\Users\\amir\AppData\Local\Programs\Python\Python39'
-    FILE_PATH = 'subPrograms/viewer/vieweApp.py'
+    FILE_PATH = 'subPrograms/viewer/viewerApp.py'
 
 class DemoImage:
     DIR = 'demo imgs/'

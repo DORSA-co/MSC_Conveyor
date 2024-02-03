@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1221, 811)
+        MainWindow.resize(1221, 815)
         self.StyleSheet = QWidget(MainWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
         self.StyleSheet.setEnabled(True)
@@ -879,7 +879,7 @@ class Ui_MainWindow(object):
         self.defects_notifications_scrollArea.setWidgetResizable(True)
         self.defects_notifications_widget = QWidget()
         self.defects_notifications_widget.setObjectName(u"defects_notifications_widget")
-        self.defects_notifications_widget.setGeometry(QRect(0, 0, 320, 665))
+        self.defects_notifications_widget.setGeometry(QRect(0, 0, 320, 675))
         self.defects_notifications_widget.setStyleSheet(u"#defects_notifications_widget{\n"
 "	border:None;\n"
 "	border-top: 2px solid gray;\n"
@@ -957,6 +957,7 @@ class Ui_MainWindow(object):
         __qtablewidgetitem1 = QTableWidgetItem()
         self.defect_info_table.setHorizontalHeaderItem(1, __qtablewidgetitem1)
         self.defect_info_table.setObjectName(u"defect_info_table")
+        self.defect_info_table.horizontalHeader().setDefaultSectionSize(150)
         self.defect_info_table.horizontalHeader().setStretchLastSection(True)
         self.defect_info_table.verticalHeader().setVisible(False)
 
@@ -1057,38 +1058,20 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_16.addLayout(self.horizontalLayout_24)
 
-        self.horizontalLayout_25 = QHBoxLayout()
-        self.horizontalLayout_25.setObjectName(u"horizontalLayout_25")
-        self.horizontalLayout_25.setContentsMargins(26, 10, 13, 10)
-        self.notif_clear_filter_btn = QPushButton(self.expanding_frame)
-        self.notif_clear_filter_btn.setObjectName(u"notif_clear_filter_btn")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.notif_clear_filter_btn.sizePolicy().hasHeightForWidth())
-        self.notif_clear_filter_btn.setSizePolicy(sizePolicy4)
-        self.notif_clear_filter_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon14 = QIcon()
-        icon14.addFile(u":/icons/icons/clear_filter_white.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.notif_clear_filter_btn.setIcon(icon14)
-        self.notif_clear_filter_btn.setIconSize(QSize(35, 35))
-
-        self.horizontalLayout_25.addWidget(self.notif_clear_filter_btn)
-
-
-        self.verticalLayout_16.addLayout(self.horizontalLayout_25)
-
         self.horizontalLayout_34 = QHBoxLayout()
         self.horizontalLayout_34.setObjectName(u"horizontalLayout_34")
         self.horizontalLayout_34.setContentsMargins(26, 10, 13, 10)
         self.notif_remove_btn = QPushButton(self.expanding_frame)
         self.notif_remove_btn.setObjectName(u"notif_remove_btn")
+        sizePolicy4 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
         sizePolicy4.setHeightForWidth(self.notif_remove_btn.sizePolicy().hasHeightForWidth())
         self.notif_remove_btn.setSizePolicy(sizePolicy4)
         self.notif_remove_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon15 = QIcon()
-        icon15.addFile(u":/icons/icons/delete_white.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.notif_remove_btn.setIcon(icon15)
+        icon14 = QIcon()
+        icon14.addFile(u":/icons/icons/delete_white.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.notif_remove_btn.setIcon(icon14)
         self.notif_remove_btn.setIconSize(QSize(35, 35))
 
         self.horizontalLayout_34.addWidget(self.notif_remove_btn)
@@ -1096,17 +1079,28 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_16.addLayout(self.horizontalLayout_34)
 
-        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Preferred)
 
         self.verticalLayout_16.addItem(self.verticalSpacer_5)
 
+        self.horizontalLayout_39 = QHBoxLayout()
+        self.horizontalLayout_39.setObjectName(u"horizontalLayout_39")
+        self.horizontalLayout_39.setContentsMargins(26, 10, 13, 10)
         self.run_stop_btn = QPushButton(self.expanding_frame)
         self.run_stop_btn.setObjectName(u"run_stop_btn")
-        self.run_stop_btn.setStyleSheet(u"#start_stop_btn{\n"
+        self.run_stop_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.run_stop_btn.setStyleSheet(u"#run_stop_btn{\n"
 "	color: white;\n"
 "}")
+        icon15 = QIcon()
+        icon15.addFile(u":/icons/icons/play.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.run_stop_btn.setIcon(icon15)
+        self.run_stop_btn.setIconSize(QSize(36, 36))
 
-        self.verticalLayout_16.addWidget(self.run_stop_btn)
+        self.horizontalLayout_39.addWidget(self.run_stop_btn)
+
+
+        self.verticalLayout_16.addLayout(self.horizontalLayout_39)
 
         self.verticalSpacer_8 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -1130,10 +1124,10 @@ class Ui_MainWindow(object):
         self.camera_settings_frame.setObjectName(u"camera_settings_frame")
         self.camera_settings_frame.setFrameShape(QFrame.StyledPanel)
         self.camera_settings_frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_24 = QVBoxLayout(self.camera_settings_frame)
-        self.verticalLayout_24.setSpacing(12)
-        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
-        self.verticalLayout_24.setContentsMargins(20, 11, 20, 9)
+        self.verticalLayout_39 = QVBoxLayout(self.camera_settings_frame)
+        self.verticalLayout_39.setSpacing(6)
+        self.verticalLayout_39.setObjectName(u"verticalLayout_39")
+        self.verticalLayout_39.setContentsMargins(20, 11, 20, 3)
         self.horizontalLayout_8 = QHBoxLayout()
         self.horizontalLayout_8.setSpacing(10)
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
@@ -1162,7 +1156,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.addWidget(self.camera_settings_on_label)
 
 
-        self.verticalLayout_24.addLayout(self.horizontalLayout_8)
+        self.verticalLayout_39.addLayout(self.horizontalLayout_8)
 
         self.line = QFrame(self.camera_settings_frame)
         self.line.setObjectName(u"line")
@@ -1170,10 +1164,17 @@ class Ui_MainWindow(object):
         self.line.setFrameShadow(QFrame.Raised)
         self.line.setFrameShape(QFrame.HLine)
 
-        self.verticalLayout_24.addWidget(self.line)
+        self.verticalLayout_39.addWidget(self.line)
 
+        self.verticalLayout_24 = QVBoxLayout()
+        self.verticalLayout_24.setSpacing(20)
+        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
+        self.verticalLayout_24.setContentsMargins(-1, -1, -1, 10)
+        self.verticalLayout_57 = QVBoxLayout()
+        self.verticalLayout_57.setObjectName(u"verticalLayout_57")
+        self.verticalLayout_57.setContentsMargins(-1, 0, -1, -1)
         self.verticalLayout_21 = QVBoxLayout()
-        self.verticalLayout_21.setSpacing(1)
+        self.verticalLayout_21.setSpacing(6)
         self.verticalLayout_21.setObjectName(u"verticalLayout_21")
         self.camera_settings_camera_label = QLabel(self.camera_settings_frame)
         self.camera_settings_camera_label.setObjectName(u"camera_settings_camera_label")
@@ -1186,9 +1187,6 @@ class Ui_MainWindow(object):
         self.camera_comboBox.setEnabled(False)
 
         self.verticalLayout_21.addWidget(self.camera_comboBox)
-
-
-        self.verticalLayout_24.addLayout(self.verticalLayout_21)
 
         self.verticalLayout_23 = QVBoxLayout()
         self.verticalLayout_23.setSpacing(1)
@@ -1205,7 +1203,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_23.addWidget(self.devices_sn_combobox)
 
 
-        self.verticalLayout_24.addLayout(self.verticalLayout_23)
+        self.verticalLayout_21.addLayout(self.verticalLayout_23)
+
+
+        self.verticalLayout_57.addLayout(self.verticalLayout_21)
+
+
+        self.verticalLayout_24.addLayout(self.verticalLayout_57)
 
         self.verticalLayout_6 = QVBoxLayout()
         self.verticalLayout_6.setSpacing(1)
@@ -1322,10 +1326,13 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_24.addLayout(self.verticalLayout_20)
 
-        self.verticalSpacer_9 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_24.addItem(self.verticalSpacer_9)
+        self.verticalLayout_39.addLayout(self.verticalLayout_24)
 
+        self.verticalLayout_18 = QVBoxLayout()
+        self.verticalLayout_18.setSpacing(3)
+        self.verticalLayout_18.setObjectName(u"verticalLayout_18")
+        self.verticalLayout_18.setContentsMargins(-1, 0, -1, -1)
         self.horizontalLayout_26 = QHBoxLayout()
         self.horizontalLayout_26.setSpacing(6)
         self.horizontalLayout_26.setObjectName(u"horizontalLayout_26")
@@ -1465,30 +1472,37 @@ class Ui_MainWindow(object):
         self.horizontalLayout_26.addWidget(self.reset_camera_settings)
 
 
-        self.verticalLayout_24.addLayout(self.horizontalLayout_26)
+        self.verticalLayout_18.addLayout(self.horizontalLayout_26)
 
         self.horizontalLayout_27 = QHBoxLayout()
+        self.horizontalLayout_27.setSpacing(12)
         self.horizontalLayout_27.setObjectName(u"horizontalLayout_27")
         self.horizontalLayout_27.setContentsMargins(-1, 0, -1, -1)
         self.camera_settings_saved_gif = QLabel(self.camera_settings_frame)
         self.camera_settings_saved_gif.setObjectName(u"camera_settings_saved_gif")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.camera_settings_saved_gif.sizePolicy().hasHeightForWidth())
-        self.camera_settings_saved_gif.setSizePolicy(sizePolicy5)
+        sizePolicy.setHeightForWidth(self.camera_settings_saved_gif.sizePolicy().hasHeightForWidth())
+        self.camera_settings_saved_gif.setSizePolicy(sizePolicy)
+        self.camera_settings_saved_gif.setMinimumSize(QSize(0, 28))
+        self.camera_settings_saved_gif.setMaximumSize(QSize(16777215, 28))
 
         self.horizontalLayout_27.addWidget(self.camera_settings_saved_gif)
 
         self.camera_settings_saved_message = QLabel(self.camera_settings_frame)
         self.camera_settings_saved_message.setObjectName(u"camera_settings_saved_message")
+        sizePolicy2.setHeightForWidth(self.camera_settings_saved_message.sizePolicy().hasHeightForWidth())
+        self.camera_settings_saved_message.setSizePolicy(sizePolicy2)
+        self.camera_settings_saved_message.setMinimumSize(QSize(0, 28))
+        self.camera_settings_saved_message.setMaximumSize(QSize(16777215, 28))
         self.camera_settings_saved_message.setFont(font)
         self.camera_settings_saved_message.setStyleSheet(u"color: rgb(120, 120, 120);")
 
         self.horizontalLayout_27.addWidget(self.camera_settings_saved_message)
 
 
-        self.verticalLayout_24.addLayout(self.horizontalLayout_27)
+        self.verticalLayout_18.addLayout(self.horizontalLayout_27)
+
+
+        self.verticalLayout_39.addLayout(self.verticalLayout_18)
 
 
         self.horizontalLayout_7.addWidget(self.camera_settings_frame)
@@ -1949,6 +1963,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12.setContentsMargins(-1, 0, -1, -1)
         self.algorithm_settings_saved_gif = QLabel(self.algorithm_tab)
         self.algorithm_settings_saved_gif.setObjectName(u"algorithm_settings_saved_gif")
+        sizePolicy5 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
         sizePolicy5.setHeightForWidth(self.algorithm_settings_saved_gif.sizePolicy().hasHeightForWidth())
         self.algorithm_settings_saved_gif.setSizePolicy(sizePolicy5)
 
@@ -2078,8 +2095,8 @@ class Ui_MainWindow(object):
 
         self.report_date_to_label = QLabel(self.report_date_filter_frame)
         self.report_date_to_label.setObjectName(u"report_date_to_label")
-        sizePolicy5.setHeightForWidth(self.report_date_to_label.sizePolicy().hasHeightForWidth())
-        self.report_date_to_label.setSizePolicy(sizePolicy5)
+        sizePolicy.setHeightForWidth(self.report_date_to_label.sizePolicy().hasHeightForWidth())
+        self.report_date_to_label.setSizePolicy(sizePolicy)
 
         self.horizontalLayout_50.addWidget(self.report_date_to_label)
 
@@ -2154,18 +2171,20 @@ class Ui_MainWindow(object):
         self.horizontalLayout_35.setContentsMargins(6, 10, 6, 10)
         self.report_low_width_input = QDoubleSpinBox(self.report_width_filter_frame)
         self.report_low_width_input.setObjectName(u"report_low_width_input")
+        self.report_low_width_input.setMaximum(140.000000000000000)
 
         self.horizontalLayout_35.addWidget(self.report_low_width_input)
 
         self.report_width_to_label = QLabel(self.report_width_filter_frame)
         self.report_width_to_label.setObjectName(u"report_width_to_label")
-        sizePolicy5.setHeightForWidth(self.report_width_to_label.sizePolicy().hasHeightForWidth())
-        self.report_width_to_label.setSizePolicy(sizePolicy5)
+        sizePolicy.setHeightForWidth(self.report_width_to_label.sizePolicy().hasHeightForWidth())
+        self.report_width_to_label.setSizePolicy(sizePolicy)
 
         self.horizontalLayout_35.addWidget(self.report_width_to_label)
 
         self.report_high_width_input = QDoubleSpinBox(self.report_width_filter_frame)
         self.report_high_width_input.setObjectName(u"report_high_width_input")
+        self.report_high_width_input.setMaximum(140.000000000000000)
 
         self.horizontalLayout_35.addWidget(self.report_high_width_input)
 
@@ -2235,6 +2254,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_31.setContentsMargins(6, 10, 6, 10)
         self.report_low_length_input = QDoubleSpinBox(self.report_length_filter_frame)
         self.report_low_length_input.setObjectName(u"report_low_length_input")
+        self.report_low_length_input.setMaximum(200.000000000000000)
 
         self.horizontalLayout_31.addWidget(self.report_low_length_input)
 
@@ -2247,6 +2267,7 @@ class Ui_MainWindow(object):
 
         self.report_high_length_input = QDoubleSpinBox(self.report_length_filter_frame)
         self.report_high_length_input.setObjectName(u"report_high_length_input")
+        self.report_high_length_input.setMaximum(200.000000000000000)
 
         self.horizontalLayout_31.addWidget(self.report_high_length_input)
 
@@ -2313,8 +2334,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_32.setSpacing(9)
         self.horizontalLayout_32.setObjectName(u"horizontalLayout_32")
         self.horizontalLayout_32.setContentsMargins(6, 10, 6, 10)
-        self.report_low_depth_input = QDateEdit(self.report_depth_filter_frame)
+        self.report_low_depth_input = QDoubleSpinBox(self.report_depth_filter_frame)
         self.report_low_depth_input.setObjectName(u"report_low_depth_input")
+        self.report_low_depth_input.setMinimum(-30.000000000000000)
+        self.report_low_depth_input.setMaximum(30.000000000000000)
 
         self.horizontalLayout_32.addWidget(self.report_low_depth_input)
 
@@ -2325,8 +2348,10 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_32.addWidget(self.report_depth_to_label)
 
-        self.report_high_depth_input = QDateEdit(self.report_depth_filter_frame)
+        self.report_high_depth_input = QDoubleSpinBox(self.report_depth_filter_frame)
         self.report_high_depth_input.setObjectName(u"report_high_depth_input")
+        self.report_high_depth_input.setMinimum(-30.000000000000000)
+        self.report_high_depth_input.setMaximum(30.000000000000000)
 
         self.horizontalLayout_32.addWidget(self.report_high_depth_input)
 
@@ -2479,17 +2504,105 @@ class Ui_MainWindow(object):
         self.horizontalLayout_38 = QHBoxLayout()
         self.horizontalLayout_38.setObjectName(u"horizontalLayout_38")
         self.horizontalLayout_38.setContentsMargins(-1, 0, -1, -1)
+        self.horizontalSpacer_10 = QSpacerItem(10, 20, QSizePolicy.Minimum, QSizePolicy.Minimum)
+
+        self.horizontalLayout_38.addItem(self.horizontalSpacer_10)
+
         self.select_all_defects_table = QCheckBox(self.report_page)
         self.select_all_defects_table.setObjectName(u"select_all_defects_table")
         sizePolicy.setHeightForWidth(self.select_all_defects_table.sizePolicy().hasHeightForWidth())
         self.select_all_defects_table.setSizePolicy(sizePolicy)
+        self.select_all_defects_table.setStyleSheet(u"QCheckBox::indicator:unchecked {\n"
+"    border: 2px solid #CED1D9;\n"
+"    background-color: white;\n"
+"}\n"
+"")
 
         self.horizontalLayout_38.addWidget(self.select_all_defects_table)
 
+        self.horizontalSpacer_9 = QSpacerItem(10, 20, QSizePolicy.Minimum, QSizePolicy.Minimum)
+
+        self.horizontalLayout_38.addItem(self.horizontalSpacer_9)
+
         self.delete_selected_defects = QPushButton(self.report_page)
         self.delete_selected_defects.setObjectName(u"delete_selected_defects")
+        self.delete_selected_defects.setCursor(QCursor(Qt.PointingHandCursor))
+        self.delete_selected_defects.setStyleSheet(u"#delete_selected_defects\n"
+"{\n"
+"	border: 0px solid  rgba(230, 54, 23, 255);\n"
+"	color:  rgba(230, 54, 23, 255);\n"
+"	border-radius: 14px;\n"
+"	min-width: 100;\n"
+"	max-width: 100;\n"
+"	min-height: 26;\n"
+"	max-height: 26;\n"
+"	font-size: 14px;\n"
+"	font-weight: bold;\n"
+"	qproperty-icon: url(:/icons/icons/delete_icon.png);\n"
+"}\n"
+"\n"
+"#delete_selected_defects:disabled\n"
+"{\n"
+"	border: 0px solid rgba(189, 189, 191, 255);\n"
+"	color: rgba(120, 120, 120, 255);\n"
+"}\n"
+"\n"
+"#delete_selected_defects:hover\n"
+"{\n"
+"	border: 0px solid rgba(175, 41, 17, 150);\n"
+"	color:  rgba(175, 41, 17, 150);\n"
+"	qproperty-icon: url(:/icons/icons/delete_icon_hover.png);\n"
+"}\n"
+"\n"
+"#delete_selected_defects:pressed\n"
+"{\n"
+"	padding-left: 5px;\n"
+"	padding-top: 5px;\n"
+"}\n"
+"")
 
         self.horizontalLayout_38.addWidget(self.delete_selected_defects)
+
+        self.reload_reports_btn = QPushButton(self.report_page)
+        self.reload_reports_btn.setObjectName(u"reload_reports_btn")
+        self.reload_reports_btn.setStyleSheet(u"#reload_reports_btn\n"
+"{\n"
+"	background-color: transparent;\n"
+"	color:  rgba(46, 76, 153, 255);\n"
+"	border-radius: 20px;\n"
+"	min-width: 80;\n"
+"	max-width: 80;\n"
+"	min-height: 40;\n"
+"	max-height: 40;\n"
+"	font-size: 14px;\n"
+"	font-weight: bold;\n"
+"	text-align: right;\n"
+"	qproperty-icon: url(:/icons/icons/reset_icon.png);\n"
+"}\n"
+"\n"
+"#reload_reports_btn:disabled\n"
+"{\n"
+"	color:  rgba(120, 120, 120, 255);\n"
+"}\n"
+"\n"
+"#reload_reports_btn:hover\n"
+"{\n"
+"	color:  rgba(76, 126, 255, 255);\n"
+"	qproperty-icon: url(:/icons/icons/reset_hover.png);\n"
+"}\n"
+"\n"
+"#reload_reports_btn:pressed\n"
+"{\n"
+"	padding-left: 5px;\n"
+"	padding-top: 5px;\n"
+"}\n"
+"")
+
+        self.horizontalLayout_38.addWidget(self.reload_reports_btn)
+
+        self.horizontalSpacer_8 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_38.addItem(self.horizontalSpacer_8)
 
 
         self.verticalLayout_37.addLayout(self.horizontalLayout_38)
@@ -2523,7 +2636,7 @@ class Ui_MainWindow(object):
         self.report_table.setStyleSheet(u"alternate-background-color: rgba(120, 146, 223, 30);")
         self.report_table.setAlternatingRowColors(True)
         self.report_table.setCornerButtonEnabled(True)
-        self.report_table.horizontalHeader().setDefaultSectionSize(120)
+        self.report_table.horizontalHeader().setDefaultSectionSize(150)
         self.report_table.horizontalHeader().setStretchLastSection(True)
         self.report_table.verticalHeader().setVisible(False)
         self.report_table.verticalHeader().setDefaultSectionSize(60)
@@ -2581,9 +2694,12 @@ class Ui_MainWindow(object):
 
         self.pages_navigation_frame = QFrame(self.report_page)
         self.pages_navigation_frame.setObjectName(u"pages_navigation_frame")
+        sizePolicy2.setHeightForWidth(self.pages_navigation_frame.sizePolicy().hasHeightForWidth())
+        self.pages_navigation_frame.setSizePolicy(sizePolicy2)
         self.pages_navigation_frame.setMinimumSize(QSize(50, 0))
         self.pages_navigation_frame.setStyleSheet(u"#pages_navigation_frame{\n"
 "	background-color:transparent;\n"
+"	border: None;\n"
 "}")
         self.pages_navigation_frame.setFrameShape(QFrame.StyledPanel)
         self.pages_navigation_frame.setFrameShadow(QFrame.Raised)
@@ -2810,7 +2926,7 @@ class Ui_MainWindow(object):
         self.register_message_scrollArea.setWidgetResizable(True)
         self.register_message_frame = QWidget()
         self.register_message_frame.setObjectName(u"register_message_frame")
-        self.register_message_frame.setGeometry(QRect(0, 0, 933, 226))
+        self.register_message_frame.setGeometry(QRect(0, 0, 941, 248))
         sizePolicy3.setHeightForWidth(self.register_message_frame.sizePolicy().hasHeightForWidth())
         self.register_message_frame.setSizePolicy(sizePolicy3)
         self.verticalLayout_55 = QVBoxLayout(self.register_message_frame)
@@ -3219,9 +3335,8 @@ class Ui_MainWindow(object):
         self.notif_filter_btn.setToolTip(QCoreApplication.translate("MainWindow", u"Filter Notifications", None))
 #endif // QT_CONFIG(tooltip)
         self.notif_filter_btn.setText("")
-        self.notif_clear_filter_btn.setText("")
         self.notif_remove_btn.setText("")
-        self.run_stop_btn.setText(QCoreApplication.translate("MainWindow", u"Play", None))
+        self.run_stop_btn.setText("")
         self.camera_settings_off_label.setText(QCoreApplication.translate("MainWindow", u"Off", None))
         self.connect_camera_switch.setText("")
         self.camera_settings_on_label.setText(QCoreApplication.translate("MainWindow", u"On", None))
@@ -3271,14 +3386,15 @@ class Ui_MainWindow(object):
         self.report_length_to_label.setText(QCoreApplication.translate("MainWindow", u"To", None))
         self.report_depth_checkBox.setText("")
         self.report_depth_icon.setText("")
-        self.report_depth_label.setText(QCoreApplication.translate("MainWindow", u"Depth", None))
+        self.report_depth_label.setText(QCoreApplication.translate("MainWindow", u"Depth (mm)", None))
         self.report_depth_to_label.setText(QCoreApplication.translate("MainWindow", u"To", None))
         self.report_class_checkBox.setText("")
         self.report_class_icon.setText("")
         self.report_class_label.setText(QCoreApplication.translate("MainWindow", u"Class", None))
         self.report_filter_apply_btn.setText(QCoreApplication.translate("MainWindow", u"Apply", None))
         self.select_all_defects_table.setText("")
-        self.delete_selected_defects.setText(QCoreApplication.translate("MainWindow", u"delete", None))
+        self.delete_selected_defects.setText(QCoreApplication.translate("MainWindow", u"Delete", None))
+        self.reload_reports_btn.setText(QCoreApplication.translate("MainWindow", u"Reload", None))
         ___qtablewidgetitem2 = self.report_table.horizontalHeaderItem(0)
         ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"X", None));
         ___qtablewidgetitem3 = self.report_table.horizontalHeaderItem(1)

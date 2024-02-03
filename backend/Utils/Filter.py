@@ -1,3 +1,5 @@
+import numbers
+
 class applyFilter:
 
     def __init__(self, filter_refrence:dict = dict()) -> None:
@@ -22,12 +24,12 @@ class applyFilter:
 
             #-------------------------------------------                    
             if isinstance(_filter_value, tuple):
-                if isinstance(value, (float, int)):
+                if isinstance(value, numbers.Number):
                     if value < _filter_value[0] or value  > _filter_value[1]:
                         return False
                 
                 elif isinstance(value, tuple):
-                    if value[0] < _filter_value[0] or value[1] > _filter_value[1]:
+                    if value[0] > _filter_value[1] or value[1] < _filter_value[0]:
                         return False
             
             #-------------------------------------------

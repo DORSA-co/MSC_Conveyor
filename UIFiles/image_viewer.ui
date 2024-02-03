@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>802</width>
-    <height>648</height>
+    <width>798</width>
+    <height>726</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,6 +27,50 @@ QLabel:disabled{
 
 QGraphicsView{
 	border: None;
+}
+
+/************************************************************/
+
+QTableWidget {
+    background-color: #F7F8FA;
+	gridline-color: #D7D7D9;
+	color: rgb(20, 20, 20);
+	border: 2px solid #F7F8FA;
+	border-radius: 8px;
+}
+
+QHeaderView::section {
+    background-color: #F7F8FA;
+    padding: 5px;
+	border-top-left-radius: 0px;
+	border-bottom: 2px solid #BDBDBF;
+	border-right: 1px solid #D7D7D9;
+	font-weight: bold;
+	color: rgb(20, 20, 20);
+}
+
+QHeaderView::section:first {
+   border-top-left-radius: 4px;
+	border-left: None;
+}
+
+QHeaderView::section:last {
+   border-top-right-radius: 4px;
+	border-right: None;
+}
+
+QTableWidget::item:selected {
+    background-color: #E0E4EC;
+	color: rgb(20, 20, 20);
+}
+
+QTableWidget::item:hover {
+    background-color: #D7D7D9;
+}
+
+QHeaderView::up-arrow {
+	
+	image: url(:/icons/icons/table_sort_icon.png);
 }
 
 /************************************************************/
@@ -224,29 +268,34 @@ QGraphicsView{
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item alignment="Qt::AlignLeft">
          <widget class="QPushButton" name="view_3d_btn">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="styleSheet">
            <string notr="true">#view_3d_btn
 {
-	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));
-	color: rgba(255, 255, 255, 210);
+	background-color: transparent;
+	color:  rgba(46, 76, 153, 255);
 	border-radius: 20px;
-	min-width: 150;
-	max-width: 150;
-	min-height:40;
+	min-width: 80;
+	max-width: 80;
+	min-height: 40;
 	max-height: 40;
 	font-size: 14px;
 	font-weight: bold;
+	text-align: right;
+	qproperty-icon: url(:/icons/icons/3d_icon.png);
 }
 
 #view_3d_btn:disabled
 {
-	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(189, 189, 191, 255), stop:1 rgba(189, 189, 191, 255));
-	color: rgba(120, 120, 120, 255);
+	color:  rgba(120, 120, 120, 255);
 }
 
 #view_3d_btn:hover
 {
-	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));
+	color:  rgba(76, 126, 255, 255);
+	qproperty-icon: url(:/icons/icons/3d_icon_hover.png);
 }
 
 #view_3d_btn:pressed
@@ -258,6 +307,12 @@ QGraphicsView{
           </property>
           <property name="text">
            <string>3D View</string>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -299,7 +354,7 @@ QGraphicsView{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>784</width>
+             <width>780</width>
              <height>120</height>
             </rect>
            </property>
@@ -319,6 +374,90 @@ QGraphicsView{
             </item>
            </layout>
           </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="viewer_defect_table">
+          <row>
+           <property name="text">
+            <string>New Row</string>
+           </property>
+          </row>
+          <column>
+           <property name="text">
+            <string>New Column</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>New Column</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>New Column</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>New Column</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>New Column</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>New Column</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>New Column</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>New Column</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>New Column</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>New Column</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>New Column</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>New Column</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>New Column</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>New Column</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>New Column</string>
+           </property>
+          </column>
          </widget>
         </item>
        </layout>

@@ -26,10 +26,10 @@ if __name__ == "__main__":
     #sys.argv.append('199918347')
     #sys.
     
-    if args.defect_id:
-        viewer_ui = viewerUI()
-        #API = viewerAPI(viewer_ui, sys.argv[1])
-        API = viewerAPI(viewer_ui, args.defect_id)
-        viewer_ui.show()
-        app.exec()
+    # if args.defect_id:
+    viewer_ui = viewerUI()
+    #API = viewerAPI(viewer_ui, sys.argv[1])
+    API = viewerAPI(viewer_ui, '1811128473')#args.defect_id)
+    viewer_ui.show()
+    app.exec()
 

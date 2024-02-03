@@ -23,6 +23,7 @@ class Report_API:
 
         self.uiHandler.button_connector('apply', self.apply_filters)
         self.uiHandler.button_connector('delete_all', self.delete_all)
+        self.uiHandler.button_connector('reload', self.startup)
         self.uiHandler.table_widget_connector(self.table_event)
 
         self.view_defect_process = None
@@ -31,7 +32,7 @@ class Report_API:
     def startup(self,):
         self.uiHandler.startup()
         self.load_from_database()
-        self.uiHandler.show_filter_results(self.defects)
+        self.apply_filters()
 
     def endup(self,):
         return True
@@ -66,12 +67,13 @@ class Report_API:
         elif action == 'view':
             self.view_defect(result)
 
-    def delete_defect(self, result):
-        # response = self.uiHandler.show_confirm_box("Delete Defect",
-        #                                         "Are you sure you want to delete defect ?",
-        #                                           buttons=['yes', 'cancel'])
-        # if response == 'cancel':
-        #     return
+    def delete_defect(self, result, show_confirm=True):
+        if show_confirm:
+            response = self.uiHandler.show_confirm_box("Delete Defect",
+                                                    "Are you sure you want to delete defect ?",
+                                                    buttons=['yes', 'cancel'])
+            if response == 'cancel':
+                return
         
         self.db.remove_record('defect_id', result['defect_id'])
         defect_file_manager = DefectFileManager(main_path=result['main_path'])
@@ -83,8 +85,15 @@ class Report_API:
     
     def delete_all(self,):
         results = self.uiHandler.get_selected_defects()
+        if len(results) > 0:
+            response = self.uiHandler.show_confirm_box("Delete Defects",
+                                                    "Are you sure you want to delete selected defects ?",
+                                                    buttons=['yes', 'cancel'])
+            if response == 'cancel':
+                return
+            
         for result in results:
-            self.delete_defect(result)
+            self.delete_defect(result, show_confirm=False)
         
         self.apply_filters()
 

@@ -1,5 +1,13 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/clear_filter_blue.png</file>
+    <file>icons/clear_filter_blue_hover.png</file>
+    <file>icons/3d_icon_hover.png</file>
+    <file>icons/pause.png</file>
+    <file>icons/3d_icon.png</file>
+    <file>icons/left_side.png</file>
+    <file>icons/right_side.png</file>
+    <file>icons/play.png</file>
     <file>icons/view_icon.png</file>
     <file>icons/view_icon_hover.png</file>
     <file>icons/category_black.png</file>

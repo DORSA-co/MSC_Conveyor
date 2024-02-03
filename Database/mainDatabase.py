@@ -8,7 +8,7 @@ class mainDatabase:
     username = "root"
     #password = "dorsa-co"
     password = "Dorsa-1400"
-    password = ""
+    # password = ""
     HOST = "localhost"
     DATABASE_NAME = "dci_database"
 

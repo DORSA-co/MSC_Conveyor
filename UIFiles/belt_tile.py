@@ -16,7 +16,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QSizePolicy, QSpacerItem, QVBoxLayout, QWidget)
+    QPushButton, QSizePolicy, QVBoxLayout, QWidget)
+import assets_rc
 
 class Ui_Tile(object):
     def setupUi(self, Tile):
@@ -45,27 +46,42 @@ class Ui_Tile(object):
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_3 = QVBoxLayout(self.frame)
+        self.verticalLayout_3.setSpacing(4)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(-1, 0, -1, -1)
         self.meterage_low_label = QLabel(self.frame)
         self.meterage_low_label.setObjectName(u"meterage_low_label")
+        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.meterage_low_label.sizePolicy().hasHeightForWidth())
+        self.meterage_low_label.setSizePolicy(sizePolicy)
         font = QFont()
         font.setPointSize(11)
         self.meterage_low_label.setFont(font)
 
         self.horizontalLayout.addWidget(self.meterage_low_label)
 
-        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.left_arrow = QPushButton(self.frame)
+        self.left_arrow.setObjectName(u"left_arrow")
+        self.left_arrow.setStyleSheet(u"#left_arrow{\n"
+"	border: 0px solid gray;\n"
+"}")
 
-        self.horizontalLayout.addItem(self.horizontalSpacer_3)
+        self.horizontalLayout.addWidget(self.left_arrow)
+
+        self.right_arrow = QPushButton(self.frame)
+        self.right_arrow.setObjectName(u"right_arrow")
+        self.right_arrow.setStyleSheet(u"#right_arrow{\n"
+"	border: 0px solid gray;\n"
+"}")
+
+        self.horizontalLayout.addWidget(self.right_arrow)
 
         self.meterage_high_label = QLabel(self.frame)
         self.meterage_high_label.setObjectName(u"meterage_high_label")
-        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.meterage_high_label.sizePolicy().hasHeightForWidth())
         self.meterage_high_label.setSizePolicy(sizePolicy)
         font1 = QFont()
@@ -101,6 +117,15 @@ class Ui_Tile(object):
 
         self.verticalLayout_3.addWidget(self.frame2)
 
+        self.label_2 = QLabel(self.frame)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setStyleSheet(u"background-color: #7892DF;\n"
+"min-height: 5px;\n"
+"max-height: 5px;\n"
+"border-radius: 2px;")
+
+        self.verticalLayout_3.addWidget(self.label_2)
+
 
         self.verticalLayout_2.addWidget(self.frame)
 
@@ -116,7 +141,10 @@ class Ui_Tile(object):
     def retranslateUi(self, Tile):
         Tile.setWindowTitle(QCoreApplication.translate("Tile", u"Form", None))
         self.meterage_low_label.setText(QCoreApplication.translate("Tile", u"0", None))
+        self.left_arrow.setText("")
+        self.right_arrow.setText("")
         self.meterage_high_label.setText(QCoreApplication.translate("Tile", u"10 ", None))
         self.label.setText("")
+        self.label_2.setText("")
     # retranslateUi
 

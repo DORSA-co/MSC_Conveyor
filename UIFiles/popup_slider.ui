@@ -1113,21 +1113,48 @@ background-color:transparent;</string>
                </property>
               </spacer>
              </item>
-             <item alignment="Qt::AlignHCenter">
-              <widget class="QPushButton" name="filters_apply_btn">
-               <property name="cursor">
-                <cursorShape>PointingHandCursor</cursorShape>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_25">
+               <property name="leftMargin">
+                <number>26</number>
                </property>
-               <property name="styleSheet">
-                <string notr="true">#filters_apply_btn
+               <property name="topMargin">
+                <number>10</number>
+               </property>
+               <property name="rightMargin">
+                <number>13</number>
+               </property>
+               <property name="bottomMargin">
+                <number>10</number>
+               </property>
+               <item>
+                <spacer name="horizontalSpacer_2">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="filters_apply_btn">
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">#filters_apply_btn
 {
 	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));
 	color: rgba(255, 255, 255, 210);
-	border-radius: 22px;
-	min-width: 180;
-	max-width: 180;
-	min-height:44;
-	max-height: 44;
+	border-radius: 20px;
+	min-width: 134;
+	max-width: 134;
+	min-height:40;
+	max-height: 40;
 	font-size: 14px;
 	font-weight: bold;
 }
@@ -1149,11 +1176,87 @@ background-color:transparent;</string>
 	padding-top: 5px;
 }
 </string>
-               </property>
-               <property name="text">
-                <string>Apply</string>
-               </property>
-              </widget>
+                 </property>
+                 <property name="text">
+                  <string>Apply</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="notif_clear_filter_btn">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">#notif_clear_filter_btn
+{
+	border: 2px solid  rgba(46, 76, 153, 255);
+	color:  rgba(46, 76, 153, 255);
+	border-radius: 18px;
+	min-width: 130;
+	max-width: 130;
+	min-height: 36;
+	max-height: 36;
+	font-size: 14px;
+	font-weight: bold;
+	qproperty-icon: url(:/icons/icons/clear_filter_blue.png);
+}
+
+#notif_clear_filter_btn:disabled
+{
+	border: 2px solid rgba(189, 189, 191, 255);
+	color: rgba(120, 120, 120, 255);
+}
+
+#notif_clear_filter_btn:hover
+{
+	border: 2px solid rgba(76, 126, 255, 255);
+	color:  rgba(76, 126, 255, 255);
+	qproperty-icon: url(:/icons/icons/clear_filter_blue_hover.png);
+}
+
+#notif_clear_filter_btn:pressed
+{
+	padding-left: 5px;
+	padding-top: 5px;
+}
+</string>
+                 </property>
+                 <property name="text">
+                  <string>Clear Filters</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="assets/assets.qrc">
+                   <normaloff>:/icons/icons/clear_filter_blue.png</normaloff>:/icons/icons/clear_filter_blue.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>20</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
              </item>
              <item>
               <spacer name="verticalSpacer_2">

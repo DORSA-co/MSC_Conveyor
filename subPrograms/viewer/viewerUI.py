@@ -44,6 +44,42 @@ class viewerUI(QMainWindow):
             'view_3d': self.ui.view_3d_btn
         }
 
+        self.TABLE_HEADERS = [
+                        ' ',
+                        'NO.',
+                        'date',
+                        'time',
+                        'x',
+                        'y', 
+                        'min_width',
+                        'mean_width',
+                        'max_width',
+                        'length', 
+                        'min_depth', 
+                        'mean_depth', 
+                        'max_depth',
+                        'delete',
+                        'view'
+                    ]
+        
+        self.TABLE_HEADERS_UNITS = [
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            ' (cm)',
+            ' (cm)',
+            ' (cm)',
+            ' (m)',
+            ' (mm)',
+            ' (mm)',
+            ' (mm)',
+            '',
+            ''
+        ]
+
     def mousePressEvent(self, event):
         if event.button() == QtCore.Qt.LeftButton:
             self.offset = QtCore.QPoint(event.position().x(),event.position().y())
@@ -67,6 +103,11 @@ class viewerUI(QMainWindow):
         if event.y() < self.ui.top_frame.height():
             self.maxmize_minimize()
             super().mouseDoubleClickEvent(event)
+
+    def startup(self,):
+        GUIBackend.set_table_cheaders(self.ui.viewer_defect_table, 
+                                      [self.TABLE_HEADERS[i]+self.TABLE_HEADERS_UNITS[i] for i in range(len(self.TABLE_HEADERS))]
+                                    )
 
     def button_connector(self, name, func):
         GUIBackend.button_connector(self.buttons[name], func)
@@ -126,7 +167,6 @@ class viewerUI(QMainWindow):
 
     def tile_select_event(self, tile:Tile):
         self.tile_external_event_func(tile.id)
-        
 
 
 class Tile(QtWidgets.QWidget):

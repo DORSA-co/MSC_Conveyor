@@ -54,12 +54,14 @@ class LiveView_API:
                                                 )
 
     def __button_connector(self,):
-        self.uiHandeler.button_connector('apply_filters', self.apply_filter)
+        self.uiHandeler.sliderMenu.button_connector('apply_filters', self.apply_filter)
+        self.uiHandeler.sliderMenu.button_connector('clear_filters', self.clear_filters)
         self.uiHandeler.button_connector('run_stop', self.run_stop)
 
     
     def run_stop(self,):
         self.is_running = not(self.is_running)
+        self.uiHandeler.set_run_stop_icon('pause' if self.is_running else 'play')
         self.external_run_stop_event_func()
 
     def set_run_stop_evetn(self, func):
@@ -87,4 +89,6 @@ class LiveView_API:
                 self.uiHandeler.visible_notification(_id, False)
         
 
-            
+    def clear_filters(self,):
+        self.uiHandeler.sliderMenu.deactive_filters()
+        self.apply_filter()

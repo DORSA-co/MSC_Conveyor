@@ -37,7 +37,6 @@ class LiveView_UI(Common_Function_UI):
 
         self.buttons = {
             'run_stop':self.ui.run_stop_btn,
-            'apply_filters':self.ui.notif_filter_btn
         }
         
         self.defect_info_tables_header = ['x',
@@ -52,6 +51,20 @@ class LiveView_UI(Common_Function_UI):
                                           'date',
                                           'time'
                                           ]
+
+        self.defect_info_tables_units = [
+            '',
+            '',
+            ' (cm)',
+            ' (cm)',
+            ' (cm)',
+            ' (m)',
+            ' (mm)',
+            ' (mm)',
+            ' (mm)',
+            '',
+            ''
+        ]
         
         self.sidebar_alamrms = {
             'system_status': self.ui.system_status_label
@@ -100,6 +113,11 @@ class LiveView_UI(Common_Function_UI):
         if len(self.__blink_alarms_list):
             GUIComponents.single_timer_runner(300, self.__blink_alarms)
 
+    def set_run_stop_icon(self, state):
+        if state=='play':
+            GUIBackend.set_button_icon(self.buttons['run_stop'], IconsPath.PLAY_ICON)
+        else:
+            GUIBackend.set_button_icon(self.buttons['run_stop'], IconsPath.PAUSE_ICON)
 
     def set_sidebar_alarm(self, name, state):
         if state:
@@ -118,7 +136,10 @@ class LiveView_UI(Common_Function_UI):
 
     def setup_defect_info_talbe(self,):
         GUIBackend.set_table_dim(self.ui.defect_info_table, 1, len(self.defect_info_tables_header))
-        GUIBackend.set_table_cheaders(self.ui.defect_info_table, self.defect_info_tables_header)
+        GUIBackend.set_table_cheaders(self.ui.defect_info_table, 
+                                      [self.defect_info_tables_header[i]+self.defect_info_tables_units[i] 
+                                       for i in range(len(self.defect_info_tables_header))]
+                                    )
 
 
     def set_liveview_belt_img(self, image:np.ndarray):
@@ -246,6 +267,12 @@ class sliderMenu:
             'lenght': self.ui.filter_lenght_checkBox,
             'depth': self.ui.filter_depth_checkBox,
         }
+
+        self.buttons = {
+            'apply_filters':self.ui.filters_apply_btn,
+            'clear_filters': self.ui.notif_clear_filter_btn,
+        }
+
         GUIBackend.button_connector(self.ui.close, self.slide_out)
         
 
@@ -302,6 +329,9 @@ class sliderMenu:
                                                QRect(parent_w,0,slider_w,parent_h),
                                                QRect(parent_w-slider_w,0,slider_w,parent_h)
                                                )
+        
+    def button_connector(self, name, func):
+        GUIBackend.button_connector(self.buttons[name], func)
 
     def slide_in(self, page_name):
         self.ui.pages.setCurrentWidget(self.pages_name[page_name])
@@ -338,5 +368,7 @@ class sliderMenu:
             res[name] = (low_value,high_value)
         return res
 
-        
+    def deactive_filters(self):
+        for filter_activation in self.filters_activation.values():
+            GUIBackend.set_checkbox_value(filter_activation, False)
     

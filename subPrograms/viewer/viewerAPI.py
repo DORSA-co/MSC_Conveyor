@@ -39,6 +39,11 @@ class viewerAPI:
 
         self.uiHandeler.button_connector('view_3d', self.view_3d)
 
+        self.startup()
+
+    def startup(self,):
+        self.uiHandeler.startup()
+
     def get_defect(self) -> Defect:
         defect = self.db.Defects_DB.search('defect_id', self.defect_id)
         if not defect or len(defect) > 1:

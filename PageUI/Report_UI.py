@@ -37,6 +37,24 @@ class Report_UI(Common_Function_UI):
                         'view'
                     ]
         
+        self.TABLE_HEADERS_UNITS = [
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            ' (cm)',
+            ' (cm)',
+            ' (cm)',
+            ' (m)',
+            ' (mm)',
+            ' (mm)',
+            ' (mm)',
+            '',
+            ''
+        ]
+        
         self.filters = {
             'ranges': {'date': (self.ui.report_start_date_input, self.ui.report_end_date_input),
                        'width': (self.ui.report_low_width_input, self.ui.report_high_width_input),
@@ -65,7 +83,8 @@ class Report_UI(Common_Function_UI):
             'apply': self.ui.report_filter_apply_btn,
             'next': self.ui.report_next_btn,
             'prev': self.ui.report_prev_btn,
-            'delete_all': self.ui.delete_selected_defects
+            'delete_all': self.ui.delete_selected_defects,
+            'reload': self.ui.reload_reports_btn
         }
 
         
@@ -97,7 +116,9 @@ class Report_UI(Common_Function_UI):
         self.handle_next_prev_enablity()
 
     def startup(self,):
-        GUIBackend.set_table_cheaders(self.ui.report_table, self.TABLE_HEADERS)
+        GUIBackend.set_table_cheaders(self.ui.report_table, 
+                                      [self.TABLE_HEADERS[i]+self.TABLE_HEADERS_UNITS[i] for i in range(len(self.TABLE_HEADERS))]
+                                    )
         
     def button_connector(self, name, func):
         GUIBackend.button_connector(self.buttons[name], func)

@@ -690,7 +690,9 @@ class pageNavigationButton(QtWidgets.QPushButton):
     """
 
     SELECT_STYLE = """QPushButton{
-    border:1px solid red;
+    font-weight: bold;
+	background-color: rgba(247, 248, 250, 100);
+	border-radius: 8px;
     }
     """
 
@@ -698,6 +700,7 @@ class pageNavigationButton(QtWidgets.QPushButton):
         super(pageNavigationButton, self).__init__(*a, **kw)
         self.number = number
         GUIBackend.set_button_text(self, str(self.number))
+        self.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.set_selected(False)
     
     def set_selected(self, selected):
