@@ -84,7 +84,9 @@ class Report_UI(Common_Function_UI):
             'next': self.ui.report_next_btn,
             'prev': self.ui.report_prev_btn,
             'delete_all': self.ui.delete_selected_defects,
-            'reload': self.ui.reload_reports_btn
+            'reload': self.ui.reload_reports_btn,
+            'move_table_hscroll_end': self.ui.move_table_end_btn,
+            'move_table_hscroll_start': self.ui.move_table_start_btn
         }
 
         
@@ -103,6 +105,9 @@ class Report_UI(Common_Function_UI):
 
         self.button_connector('next', self.table_next_page)
         self.button_connector('prev', self.table_previous_page)
+        self.button_connector('move_table_hscroll_start', self.__set_table_scrollbar_to_start)
+        self.button_connector('move_table_hscroll_end', self.__set_table_scrollbar_to_end)
+
         GUIBackend.checkbox_connector(self.ui.select_all_defects_table, self.select_all)
         # self.button_connector('first', self.table_previous_page)
         # self.button_connector('prev', self.table_previous_page)
@@ -290,4 +295,11 @@ class Report_UI(Common_Function_UI):
         
     def __slide_filter_out(self, name):
         self.filter_animation[name].backward()
-    
+
+    def __set_table_scrollbar_to_start(self):
+        self.ui.report_table.horizontalScrollBar().setValue(0)
+
+    def __set_table_scrollbar_to_end(self):
+        x = self.ui.report_table.horizontalScrollBar().maximum()
+        self.ui.report_table.horizontalScrollBar().setValue(x)
+

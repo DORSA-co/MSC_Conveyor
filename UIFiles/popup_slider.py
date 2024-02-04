@@ -274,6 +274,7 @@ class Ui_slider(object):
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.camera_status_icon = QLabel(self.camera_staus_frame)
         self.camera_status_icon.setObjectName(u"camera_status_icon")
+        self.camera_status_icon.setMinimumSize(QSize(50, 0))
         self.camera_status_icon.setPixmap(QPixmap(u":/icons/icons/camera.png"))
         self.camera_status_icon.setAlignment(Qt.AlignCenter)
 
@@ -840,7 +841,7 @@ class Ui_slider(object):
 
         self.retranslateUi(slider)
 
-        self.pages.setCurrentIndex(1)
+        self.pages.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(slider)

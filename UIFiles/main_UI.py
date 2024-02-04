@@ -2684,7 +2684,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_38 = QHBoxLayout()
         self.horizontalLayout_38.setObjectName(u"horizontalLayout_38")
         self.horizontalLayout_38.setContentsMargins(-1, 0, -1, -1)
-        self.horizontalSpacer_10 = QSpacerItem(10, 20, QSizePolicy.Minimum, QSizePolicy.Minimum)
+        self.horizontalSpacer_10 = QSpacerItem(15, 20, QSizePolicy.Minimum, QSizePolicy.Minimum)
 
         self.horizontalLayout_38.addItem(self.horizontalSpacer_10)
 
@@ -2784,6 +2784,34 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_38.addItem(self.horizontalSpacer_8)
 
+        self.move_table_start_btn = QPushButton(self.report_page)
+        self.move_table_start_btn.setObjectName(u"move_table_start_btn")
+        sizePolicy.setHeightForWidth(self.move_table_start_btn.sizePolicy().hasHeightForWidth())
+        self.move_table_start_btn.setSizePolicy(sizePolicy)
+        self.move_table_start_btn.setMinimumSize(QSize(40, 0))
+        self.move_table_start_btn.setMaximumSize(QSize(40, 16777215))
+        self.move_table_start_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.move_table_start_btn.setStyleSheet(u"border: 0px solid gray;")
+        icon23 = QIcon()
+        icon23.addFile(u":/icons/icons/prev_black.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.move_table_start_btn.setIcon(icon23)
+
+        self.horizontalLayout_38.addWidget(self.move_table_start_btn)
+
+        self.move_table_end_btn = QPushButton(self.report_page)
+        self.move_table_end_btn.setObjectName(u"move_table_end_btn")
+        sizePolicy.setHeightForWidth(self.move_table_end_btn.sizePolicy().hasHeightForWidth())
+        self.move_table_end_btn.setSizePolicy(sizePolicy)
+        self.move_table_end_btn.setMinimumSize(QSize(40, 0))
+        self.move_table_end_btn.setMaximumSize(QSize(40, 16777215))
+        self.move_table_end_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.move_table_end_btn.setStyleSheet(u"border: 0px solid gray;")
+        icon24 = QIcon()
+        icon24.addFile(u":/icons/icons/next_black.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.move_table_end_btn.setIcon(icon24)
+
+        self.horizontalLayout_38.addWidget(self.move_table_end_btn)
+
 
         self.verticalLayout_37.addLayout(self.horizontalLayout_38)
 
@@ -2865,10 +2893,10 @@ class Ui_MainWindow(object):
 "	padding-top: 3px;\n"
 "}\n"
 "")
-        icon23 = QIcon()
-        icon23.addFile(u":/icons/icons/prev_black.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon23.addFile(u":/icons/icons/prev_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
-        self.report_prev_btn.setIcon(icon23)
+        icon25 = QIcon()
+        icon25.addFile(u":/icons/icons/prev_black.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon25.addFile(u":/icons/icons/prev_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
+        self.report_prev_btn.setIcon(icon25)
 
         self.horizontalLayout_37.addWidget(self.report_prev_btn)
 
@@ -2922,8 +2950,6 @@ class Ui_MainWindow(object):
 "	padding-top: 4px;\n"
 "}\n"
 "")
-        icon24 = QIcon()
-        icon24.addFile(u":/icons/icons/next_black.png", QSize(), QIcon.Normal, QIcon.Off)
         self.report_next_btn.setIcon(icon24)
         self.report_next_btn.setCheckable(False)
         self.report_next_btn.setFlat(False)
@@ -2995,9 +3021,9 @@ class Ui_MainWindow(object):
         self.userpage_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
         self.userpage_password_eye.setStyleSheet(u"")
-        icon25 = QIcon()
-        icon25.addFile(u":/icons/icons/black_eye.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.userpage_password_eye.setIcon(icon25)
+        icon26 = QIcon()
+        icon26.addFile(u":/icons/icons/black_eye.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.userpage_password_eye.setIcon(icon26)
 
         self.horizontalLayout_21.addWidget(self.userpage_password_eye)
 
@@ -3030,7 +3056,7 @@ class Ui_MainWindow(object):
         self.userpage_confirm_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_confirm_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
         self.userpage_confirm_password_eye.setStyleSheet(u"")
-        self.userpage_confirm_password_eye.setIcon(icon25)
+        self.userpage_confirm_password_eye.setIcon(icon26)
 
         self.horizontalLayout_22.addWidget(self.userpage_confirm_password_eye)
 
@@ -3090,9 +3116,9 @@ class Ui_MainWindow(object):
 "	padding-top: 5px;\n"
 "}\n"
 "")
-        icon26 = QIcon()
-        icon26.addFile(u":/assets/Assets/icons/icons8-plus-white-50.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.register_user.setIcon(icon26)
+        icon27 = QIcon()
+        icon27.addFile(u":/assets/Assets/icons/icons8-plus-white-50.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.register_user.setIcon(icon27)
 
         self.verticalLayout_30.addWidget(self.register_user, 0, Qt.AlignHCenter)
 
@@ -3106,7 +3132,7 @@ class Ui_MainWindow(object):
         self.register_message_scrollArea.setWidgetResizable(True)
         self.register_message_frame = QWidget()
         self.register_message_frame.setObjectName(u"register_message_frame")
-        self.register_message_frame.setGeometry(QRect(0, 0, 930, 248))
+        self.register_message_frame.setGeometry(QRect(0, 0, 916, 248))
         sizePolicy3.setHeightForWidth(self.register_message_frame.sizePolicy().hasHeightForWidth())
         self.register_message_frame.setSizePolicy(sizePolicy3)
         self.verticalLayout_55 = QVBoxLayout(self.register_message_frame)
@@ -3291,7 +3317,7 @@ class Ui_MainWindow(object):
         self.userpage_editprofile_old_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_editprofile_old_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
         self.userpage_editprofile_old_password_eye.setStyleSheet(u"")
-        self.userpage_editprofile_old_password_eye.setIcon(icon25)
+        self.userpage_editprofile_old_password_eye.setIcon(icon26)
 
         self.horizontalLayout_17.addWidget(self.userpage_editprofile_old_password_eye)
 
@@ -3323,7 +3349,7 @@ class Ui_MainWindow(object):
         sizePolicy5.setHeightForWidth(self.userpage_editprofile_new_password_eye.sizePolicy().hasHeightForWidth())
         self.userpage_editprofile_new_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_editprofile_new_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
-        self.userpage_editprofile_new_password_eye.setIcon(icon25)
+        self.userpage_editprofile_new_password_eye.setIcon(icon26)
 
         self.horizontalLayout_18.addWidget(self.userpage_editprofile_new_password_eye)
 
@@ -3354,7 +3380,7 @@ class Ui_MainWindow(object):
         sizePolicy5.setHeightForWidth(self.userpage_editprofile_confirm_new_password_eye.sizePolicy().hasHeightForWidth())
         self.userpage_editprofile_confirm_new_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_editprofile_confirm_new_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
-        self.userpage_editprofile_confirm_new_password_eye.setIcon(icon25)
+        self.userpage_editprofile_confirm_new_password_eye.setIcon(icon26)
 
         self.horizontalLayout_19.addWidget(self.userpage_editprofile_confirm_new_password_eye)
 
@@ -3460,6 +3486,15 @@ class Ui_MainWindow(object):
         self.verticalLayout_59.setObjectName(u"verticalLayout_59")
         self.textEdit = QTextEdit(self.about_page)
         self.textEdit.setObjectName(u"textEdit")
+        self.textEdit.setStyleSheet(u"QTextEdit {\n"
+"    background-color: #E0E4EC;\n"
+"    border-radius: 5px;\n"
+"    color: rgb(20, 20, 20);\n"
+"    font-family: ;\n"
+"	font: 11pt \"Arial\";\n"
+"    font-size: 12pt;\n"
+"	padding: 10px;\n"
+"}")
 
         self.verticalLayout_59.addWidget(self.textEdit)
 
@@ -3476,10 +3511,10 @@ class Ui_MainWindow(object):
         self.system_status_expanding_btn.clicked.connect(self.system_status_btn.click)
         self.notif_filter_expanding_btn.clicked.connect(self.notif_filter_btn.click)
 
-        self.main_stackedWidget.setCurrentIndex(1)
+        self.main_stackedWidget.setCurrentIndex(2)
         self.live_tabWidget.setCurrentIndex(0)
         self.settings_tabs.setCurrentIndex(1)
-        self.algorithm_stackedWidget.setCurrentIndex(3)
+        self.algorithm_stackedWidget.setCurrentIndex(4)
         self.user_tabs.setCurrentIndex(0)
 
 
@@ -3589,6 +3624,8 @@ class Ui_MainWindow(object):
         self.select_all_defects_table.setText("")
         self.delete_selected_defects.setText(QCoreApplication.translate("MainWindow", u"Delete", None))
         self.reload_reports_btn.setText(QCoreApplication.translate("MainWindow", u"Reload", None))
+        self.move_table_start_btn.setText("")
+        self.move_table_end_btn.setText("")
         ___qtablewidgetitem2 = self.report_table.horizontalHeaderItem(0)
         ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"X", None));
         ___qtablewidgetitem3 = self.report_table.horizontalHeaderItem(1)
@@ -3636,5 +3673,21 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem12 = self.userpage_all_users_table.verticalHeaderItem(0)
         ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
         self.user_tabs.setTabText(self.user_tabs.indexOf(self.all_users_tab), QCoreApplication.translate("MainWindow", u"All Users", None))
+        self.textEdit.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'Ubuntu'; font-size:16pt; font-weight:600; color:#030337;\">Dorsa Convoyer Belt Inspection</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu'; font-size:11pt;\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:30px;\"><span style=\" font-family:'Ubuntu';\">The intelligent system for inspecting surface defects of conv"
+                        "eyor belts has been developed to monitor, supervise, and predict conveyor belt failures, thereby reducing downtimes caused by its rupture. This system significantly contributes to increasing the efficiency of industrial systems and complexes.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu';\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:30px;\"><span style=\" font-family:'Ubuntu';\">This device is capable of inspecting the conveyor belt surface in line with the conditions and parameters of the conveyor belt, such as line speed, alongside environmental parameters and factors like lighting conditions, humidity, and dust, using specialized industrial surveillance cameras. It can detect any potential defects such as cracks, scratches, ruptures, wear, etc., with high speed and accuracy."
+                        "</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu';\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:30px;\"><span style=\" font-family:'Ubuntu';\">By using this intelligent system, monitoring and maintenance of conveyor lines become completely real-time, instantaneous, and with high precision and performance. Conveyor belts are one of the most important equipment in various industries, responsible for material transportation. These equipment are exposed to various damages that can lead to a decrease in production quality and an increase in costs.</span></p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu';\"><br /></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0p"
+                        "x; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:30px;\"><span style=\" font-family:'Ubuntu';\">One of the most common damages to conveyor belts is surface defects that can occur due to various reasons such as wear, impact, and abrasion. The intelligent system for inspecting surface defects of conveyor belts is an effective solution for identifying and eliminating these defects. This system can accurately and rapidly identify surface defects of the conveyor belt using advanced technologies such as image processing and artificial intelligence.</span></p></body></html>", None))
     # retranslateUi
 
