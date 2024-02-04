@@ -1,12 +1,13 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/view_3d.png</file>
+    <file>icons/belt_monitoring.jpg</file>
+    <file>icons/two_side_arrow.png</file>
     <file>icons/clear_filter_blue.png</file>
     <file>icons/clear_filter_blue_hover.png</file>
     <file>icons/3d_icon_hover.png</file>
     <file>icons/pause.png</file>
     <file>icons/3d_icon.png</file>
-    <file>icons/left_side.png</file>
-    <file>icons/right_side.png</file>
     <file>icons/play.png</file>
     <file>icons/view_icon.png</file>
     <file>icons/view_icon_hover.png</file>
@@ -40,9 +41,10 @@
     <file>icons/plc.png</file>
     <file>icons/camera.png</file>
     <file>icons/left_arrow_white.png</file>
-    <file>icons/left_arrow.png</file>
     <file>icons/left_double_arrow.png</file>
     <file>icons/tick.png</file>
+    <file>icons/left_side.png</file>
+    <file>icons/right_side.png</file>
     <file>icons/clear_filter.png</file>
     <file>icons/left_triangle.png</file>
     <file>icons/clear_filter_hover.png</file>

@@ -248,7 +248,10 @@ class AlgorithmSetting_UI(Common_Function_UI):
             'conv_window_size': self.ui.alghoritm_conv_window_size,
             'anomaly_algorithm': self.ui.anomaly_alghorithm_combo,
             'diff_thresh': self.ui.anomaly_thresh_error,
-            'defect_min_width': self.ui.defect_extractor_min_width
+            'defect_min_width': self.ui.defect_extractor_min_width,
+            'tracker_min_frame_gap': self.ui.defect_tracker_min_frame_gap,
+            'defect_min_length': self.ui.defect_tracker_min_length,
+            'image_width': self.ui.image_creator_image_width
         }
 
         self.combobox_items = {}
@@ -257,12 +260,16 @@ class AlgorithmSetting_UI(Common_Function_UI):
             'step1': self.ui.algorithm_image1,
             'step2': self.ui.algorithm_image2,
             'step3': self.ui.algorithm_image3,
+            'step4': self.ui.algorithm_image4,
+            'step5': self.ui.algorithm_image5,
         }
 
         self.multistep_buttons = {
             'step1': self.ui.step1_btn,
             'step2': self.ui.step2_btn,
             'step3': self.ui.step3_btn,
+            'step4': self.ui.step4_btn,
+            'step5': self.ui.step5_btn,
         }
 
         self.buttons = {
@@ -271,9 +278,15 @@ class AlgorithmSetting_UI(Common_Function_UI):
             'reset': self.ui.reset_algorithm_settings
         }
 
+
+        for i, name in enumerate(self.multistep_buttons):
+            print(i, name)
+
         self.multistep_button_connector('step1', lambda: self.change_steps_stackedwidget_page(0, 'step1') )
         self.multistep_button_connector('step2', lambda: self.change_steps_stackedwidget_page(1, 'step2') )
         self.multistep_button_connector('step3', lambda: self.change_steps_stackedwidget_page(2, 'step3') )
+        self.multistep_button_connector('step4', lambda: self.change_steps_stackedwidget_page(3, 'step4') )
+        self.multistep_button_connector('step5', lambda: self.change_steps_stackedwidget_page(4, 'step5') )
 
         self.change_steps_stackedwidget_page(0, 'step1')
 

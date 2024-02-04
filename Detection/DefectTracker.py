@@ -5,7 +5,7 @@ from Detection.Defect import Defect
 from backend.Utils.idList import idList
 
 class DefectTracker:
-    def __init__(self, min_frame_gap, min_length) -> None:
+    def __init__(self) -> None:
         #self.completed_defects: list[Defect] = []
         #self.non_completed_defects: list[Defect] = []
         #self.__not_pass_completed_defects: list[Defect] = []
@@ -13,10 +13,6 @@ class DefectTracker:
         self.completed_defects = idList()
         self.non_completed_defects = idList()
         self.__not_pass_completed_defects = idList()
-        
-
-        self.min_frame_gap = min_frame_gap
-        self.min_length = min_length
 
         self.external_new_defect_event = None
         self.external_defect_update_event = None
@@ -26,12 +22,6 @@ class DefectTracker:
     
     def set_update_defect_event(self, func):
         self.external_defect_update_event = func
-
-    def set_min_frame_gap(self, min_frame_gap):
-        self.min_frame_gap = min_frame_gap
-
-    def set_min_length(self, min_length):
-        self.min_length = min_length
 
     def feed(self, defect_indices: np.ndarray, error_ys: np.ndarray, line_idx: int):
         for defect_index in defect_indices:
@@ -76,14 +66,14 @@ class DefectTracker:
         for non_complete_defect in self.non_completed_defects.values():
             non_complete_defect.render(error_ys, line_idx=line_idx)
 
-    def check_defects_completion(self, line_idx):
+    def check_defects_completion(self, min_frame_gap, min_length, line_idx):
         i = 0
         while i<len(self.non_completed_defects): 
             defect:Defect = self.non_completed_defects[i]
-            if defect.is_complete(line_idx, self.min_frame_gap):
+            if defect.is_complete(line_idx, min_frame_gap):
                 
                 self.non_completed_defects.remove_by_value(defect)
-                if defect.is_defect(self.min_length):
+                if defect.is_defect(min_length):
                     
                     self.__not_pass_completed_defects.append(defect, defect.id)
                     #------------------------------------
@@ -113,13 +103,13 @@ class DefectTracker:
             self.__not_pass_completed_defects.remove_by_index(i)
 
 
-    def draw(self, image: np.ndarray, line_idx: int, end_belt_line_idx:int, color: tuple = (33, 33, 133)):
+    def draw(self, min_length, image: np.ndarray, line_idx: int, end_belt_line_idx:int, color: tuple = (33, 33, 133)):
         h, w = image.shape[:2]
 
         for defect in self.non_completed_defects.values():
             pt1, pt2 = defect.get_bounding_box(line_idx, end_belt_line_idx)
 
-            if not defect.is_defect(self.min_length):
+            if not defect.is_defect(min_length):
                 continue
 
             image = cv2.rectangle(image, pt1, pt2, color=color, thickness=2)

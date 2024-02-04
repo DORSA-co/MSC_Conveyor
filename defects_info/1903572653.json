@@ -1,0 +1,1 @@
+{"id": 1903572653, "width_info": {"mean": 26.333333333333332, "min": 10.0, "max": 50.0, "count": 9}, "depth_info": {"mean": 26.333333333333332, "min": 10.0, "max": 50.0, "count": 9}, "date": "1402/11/14", "time": "15:15:21", "n_last_lines": 3, "defect_indices": [[97, 147], [110, 131], [135, 148]], "start_line_idx": 6200, "end_line_idx": 6264, "defect_width_boundries": [97, 150]}

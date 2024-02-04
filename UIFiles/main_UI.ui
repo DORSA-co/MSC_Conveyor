@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1210</width>
+    <width>1196</width>
     <height>815</height>
    </rect>
   </property>
@@ -147,6 +147,7 @@ QCheckBox::indicator:disabled {
 
 QGraphicsView{
 	border: None;
+	background-color: #F7F8FA
 }
 
 /************************************************************/
@@ -454,12 +455,13 @@ QComboBox:focus{
 	border: None;
 }
 
-#step1_settings_frame .QLabel, #step2_settings_frame .QLabel, #step3_settings_frame .QLabel
+#step1_settings_frame .QLabel, #step2_settings_frame .QLabel, #step3_settings_frame .QLabel, #step4_settings_frame .QLabel,
+#step5_settings_frame .QLabel
 {
 	font-weight: bold;
 }
 
-#step1_label, #step2_label, #step3_label{
+#step1_label, #step2_label, #step3_label, #step4_label, #step5_label{
 	font-size: 26px;
 	color: #4C7EFF;
 }
@@ -1692,7 +1694,7 @@ border-radius: 20px;</string>
           <item>
            <widget class="QTabWidget" name="settings_tabs">
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="camera_tab">
              <attribute name="title">
@@ -2473,13 +2475,67 @@ border-radius: 20px;</string>
                    </property>
                   </widget>
                  </item>
+                 <item>
+                  <widget class="QFrame" name="step34_line">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="step4_btn">
+                   <property name="font">
+                    <font>
+                     <pointsize>-1</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="text">
+                    <string>4</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="step45_line">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="step5_btn">
+                   <property name="font">
+                    <font>
+                     <pointsize>-1</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
+                   </property>
+                   <property name="text">
+                    <string>5</string>
+                   </property>
+                  </widget>
+                 </item>
                 </layout>
                </widget>
               </item>
               <item>
                <widget class="QStackedWidget" name="algorithm_stackedWidget">
                 <property name="currentIndex">
-                 <number>0</number>
+                 <number>4</number>
                 </property>
                 <widget class="QWidget" name="step1">
                  <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="25,75">
@@ -2862,7 +2918,7 @@ border-radius: 20px;</string>
                         <number>7</number>
                        </property>
                        <item>
-                        <widget class="QLabel" name="label_72">
+                        <widget class="QLabel" name="min_width_label">
                          <property name="text">
                           <string>Min Width</string>
                          </property>
@@ -2919,6 +2975,288 @@ border-radius: 20px;</string>
                      </property>
                      <item>
                       <widget class="PhotoViewer" name="algorithm_image3"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+                <widget class="QWidget" name="step4">
+                 <layout class="QHBoxLayout" name="horizontalLayout_25" stretch="25,75">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QFrame" name="step4_settings_frame">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_58">
+                     <property name="spacing">
+                      <number>50</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>20</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>20</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="step4_label">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">border-bottom: 2px solid #D7D7D9;</string>
+                       </property>
+                       <property name="text">
+                        <string>Step 4</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_61">
+                       <property name="spacing">
+                        <number>7</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="min_frame_gap_label">
+                         <property name="text">
+                          <string>Min Frame Gap</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QSpinBox" name="defect_tracker_min_frame_gap">
+                         <property name="styleSheet">
+                          <string notr="true"/>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_64">
+                       <property name="spacing">
+                        <number>7</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="defect_tracker_min_length_label">
+                         <property name="text">
+                          <string>Min Length</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QSpinBox" name="defect_tracker_min_length">
+                         <property name="styleSheet">
+                          <string notr="true"/>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_9">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>296</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QFrame" name="step4_image_frame">
+                    <property name="minimumSize">
+                     <size>
+                      <width>200</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_65">
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="PhotoViewer" name="algorithm_image4"/>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+                <widget class="QWidget" name="step5">
+                 <layout class="QHBoxLayout" name="horizontalLayout_40" stretch="25,75">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="QFrame" name="step5_settings_frame">
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_62">
+                     <property name="spacing">
+                      <number>50</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>20</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>15</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>20</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="step5_label">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">border-bottom: 2px solid #D7D7D9;</string>
+                       </property>
+                       <property name="text">
+                        <string>Step 5</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_63">
+                       <property name="spacing">
+                        <number>7</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="image_width_label">
+                         <property name="text">
+                          <string>Image Width</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QSpinBox" name="image_creator_image_width">
+                         <property name="styleSheet">
+                          <string notr="true"/>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
+                         <property name="minimum">
+                          <number>500</number>
+                         </property>
+                         <property name="maximum">
+                          <number>5000</number>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_11">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>296</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QFrame" name="step5_image_frame">
+                    <property name="minimumSize">
+                     <size>
+                      <width>50</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_66">
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="PhotoViewer" name="algorithm_image5"/>
                      </item>
                     </layout>
                    </widget>
@@ -4782,7 +5120,7 @@ QFrame{
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>941</width>
+                      <width>916</width>
                       <height>248</height>
                      </rect>
                     </property>
@@ -5321,7 +5659,34 @@ QFrame{
         <widget class="QWidget" name="about_page">
          <layout class="QVBoxLayout" name="verticalLayout_59">
           <item>
-           <widget class="QTextEdit" name="textEdit"/>
+           <widget class="QTextEdit" name="textEdit">
+            <property name="styleSheet">
+             <string notr="true">QTextEdit {
+    background-color: #E0E4EC;
+    border-radius: 5px;
+    color: rgb(20, 20, 20);
+    font-family: ;
+	font: 11pt &quot;Arial&quot;;
+    font-size: 12pt;
+	padding: 10px;
+}</string>
+            </property>
+            <property name="html">
+             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Arial'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu'; font-size:16pt; font-weight:600; color:#030337;&quot;&gt;Dorsa Convoyer Belt Inspection&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu'; font-size:11pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:30px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu';&quot;&gt;The intelligent system for inspecting surface defects of conveyor belts has been developed to monitor, supervise, and predict conveyor belt failures, thereby reducing downtimes caused by its rupture. This system significantly contributes to increasing the efficiency of industrial systems and complexes.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:30px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu';&quot;&gt;This device is capable of inspecting the conveyor belt surface in line with the conditions and parameters of the conveyor belt, such as line speed, alongside environmental parameters and factors like lighting conditions, humidity, and dust, using specialized industrial surveillance cameras. It can detect any potential defects such as cracks, scratches, ruptures, wear, etc., with high speed and accuracy.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:30px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu';&quot;&gt;By using this intelligent system, monitoring and maintenance of conveyor lines become completely real-time, instantaneous, and with high precision and performance. Conveyor belts are one of the most important equipment in various industries, responsible for material transportation. These equipment are exposed to various damages that can lead to a decrease in production quality and an increase in costs.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Ubuntu';&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:30px;&quot;&gt;&lt;span style=&quot; font-family:'Ubuntu';&quot;&gt;One of the most common damages to conveyor belts is surface defects that can occur due to various reasons such as wear, impact, and abrasion. The intelligent system for inspecting surface defects of conveyor belts is an effective solution for identifying and eliminating these defects. This system can accurately and rapidly identify surface defects of the conveyor belt using advanced technologies such as image processing and artificial intelligence.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>

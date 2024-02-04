@@ -129,6 +129,9 @@ class algorithmSettingDB(parentSettingDB):
         {"col_name": "diff_thresh",       "type": "INT"},
         {"col_name": "anomaly_algorithm", "type": "VARCHAR(255)", "len": 100},
         {"col_name": "defect_min_width",  "type": "INT"},
+        {"col_name": "tracker_min_frame_gap",  "type": "INT"},
+        {"col_name": "defect_min_length",  "type": "INT"},
+        {"col_name": "image_width",  "type": "INT"},
     ]
     
     
@@ -138,6 +141,9 @@ class algorithmSettingDB(parentSettingDB):
                             'diff_thresh': 2,
                             'anomaly_algorithm': ANOMALY_ALGORITHMS.LINE_FIT,
                             'defect_min_width': 3,
+                            'tracker_min_frame_gap': 80,
+                            'defect_min_length': 5,
+                            'image_width': 1000,
                         }   
                     ]
     

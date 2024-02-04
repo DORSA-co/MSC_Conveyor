@@ -224,10 +224,7 @@ class AlgorithmSetting_API:
     def startup(self,):
         self.load_algorithm_settings()
 
-        #cv2.waitKey(2)
 
-    
-    
     def setting_change_event(self, name):
         value = self.uiHandeler.get_parm(name)
 
@@ -252,7 +249,10 @@ class AlgorithmSetting_API:
 
         step3_img = self.belt_inspection.DefectExtractor.draw(image=step2_img)
         self.uiHandeler.set_image('step3', step3_img)
-    
+
+        step5_img = self.belt_inspection.res_image
+        self.uiHandeler.set_image('step5', step5_img)
+
     def load_algorithm_settings(self,):
         parms = self.db.load()
         parms = self.mapDict.multi_key2value(parms)

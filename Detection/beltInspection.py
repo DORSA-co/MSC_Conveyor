@@ -28,8 +28,8 @@ class beltInspection:
         self.AnomalyDetection = AnomalyDetectionHandeler()
         self.DefectExtractor = DefectExtractor()
         self.Encoder = Encoder()
-        self.DefectTracker = DefectTracker(min_frame_gap=self.Encoder.step*10, min_length=5)
-        self.ImageCreator = ImageCreator((640, 1000),
+        self.DefectTracker = DefectTracker()
+        self.ImageCreator = ImageCreator((640, self.kwargs['image_width']),
                                          max_y_errors=DefectConstants.MAX_Y_ERRORS )
     
         self.external_new_defect_event_func = None
@@ -60,8 +60,6 @@ class beltInspection:
     def change_settings(self, kwargs:dict):
         self.kwargs = kwargs
 
-    
-
     def feed(self, image:np.ndarray):
         t = time.time()
 
@@ -91,7 +89,7 @@ class beltInspection:
         # print('defect tracker: ', time.time() - t)
 
         t = time.time()
-        self.DefectTracker.check_defects_completion(self.Encoder.line_idx)
+        self.DefectTracker.check_defects_completion(self.kwargs['tracker_min_frame_gap'], self.kwargs['defect_min_length'], self.Encoder.line_idx)
         # print('check completion: ', time.time() - t)
 
         t = time.time()
@@ -104,9 +102,10 @@ class beltInspection:
         self.DefectTracker.check_defect_passed(line_idx=self.Encoder.line_idx,
                                                img_width=image.shape[1])
         
-        self.res_image = self.DefectTracker.draw(image.copy(), 
-                                                 self.Encoder.line_idx,
-                                                 self.Encoder.end_line_idx)
+        self.res_image = self.DefectTracker.draw(self.kwargs['defect_min_length'],
+                                                image.copy(), 
+                                                self.Encoder.line_idx,
+                                                self.Encoder.end_line_idx)
         
         # print('last draw: ', time.time() - t)
 

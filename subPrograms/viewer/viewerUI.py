@@ -7,6 +7,7 @@ import numpy as np
 from PySide6.QtWidgets import QMainWindow
 from PySide6 import QtWidgets
 from PySide6 import QtCore
+from PySide6 import QtGui
 
 from UIFiles.image_viewer import Ui_ViewerWindow
 from UIFiles.belt_tile import Ui_Tile
@@ -36,6 +37,7 @@ class viewerUI(QMainWindow):
         self.common_func=Common_Function_UI()
 
         self.move_refresh_time = 0
+        self.selected_tile = None
         self.tile_external_event_func = None
 
         self.buttons_connection()
@@ -45,8 +47,6 @@ class viewerUI(QMainWindow):
         }
 
         self.TABLE_HEADERS = [
-                        ' ',
-                        'NO.',
                         'date',
                         'time',
                         'x',
@@ -57,14 +57,10 @@ class viewerUI(QMainWindow):
                         'length', 
                         'min_depth', 
                         'mean_depth', 
-                        'max_depth',
-                        'delete',
-                        'view'
+                        'max_depth'
                     ]
         
         self.TABLE_HEADERS_UNITS = [
-            '',
-            '',
             '',
             '',
             '',
@@ -76,9 +72,16 @@ class viewerUI(QMainWindow):
             ' (mm)',
             ' (mm)',
             ' (mm)',
-            '',
-            ''
         ]
+
+        self.__set_shadow()
+
+    def __set_shadow(self, ):
+        shadow  = QtWidgets.QGraphicsDropShadowEffect(self.ui.tiles_scrollArea)
+        shadow.setBlurRadius(10)
+        shadow.setOffset(0)
+        shadow.setColor(QtGui.QColor(0,0,0,50))
+        self.ui.tiles_scrollArea.setGraphicsEffect(shadow)
 
     def mousePressEvent(self, event):
         if event.button() == QtCore.Qt.LeftButton:
@@ -105,6 +108,7 @@ class viewerUI(QMainWindow):
             super().mouseDoubleClickEvent(event)
 
     def startup(self,):
+        GUIBackend.set_table_dim(self.ui.viewer_defect_table, 1, len(self.TABLE_HEADERS))
         GUIBackend.set_table_cheaders(self.ui.viewer_defect_table, 
                                       [self.TABLE_HEADERS[i]+self.TABLE_HEADERS_UNITS[i] for i in range(len(self.TABLE_HEADERS))]
                                     )
@@ -166,7 +170,24 @@ class viewerUI(QMainWindow):
         self.tile_external_event_func = func
 
     def tile_select_event(self, tile:Tile):
+        if self.selected_tile is not None:
+            self.selected_tile.unselect_tile()
+        self.selected_tile = tile
+        self.selected_tile.select_tile()
         self.tile_external_event_func(tile.id)
+
+    def show_defect_info(self, defect: dict):
+        for j, header in enumerate(self.TABLE_HEADERS):
+            value = defect.get(header, None)
+
+            if value is not None:
+                if header == 'date':
+                    value = value.strftime('%Y/%m/%d')
+                if  header == 'time':
+                    value = value.strftime('%H:%M:%S')
+
+            if value is not None:
+                GUIBackend.set_table_cell_value(self.ui.viewer_defect_table, (0, j), value=value)
 
 
 class Tile(QtWidgets.QWidget):
@@ -181,7 +202,30 @@ class Tile(QtWidgets.QWidget):
         self.external_select_event_func = None
 
         self.set_meterage(meterage)
-        self.set_color(color)
+        # self.set_color(color)
+
+        self.__set_shadow()
+
+        self.select_style = """
+background-color: #7892DF;
+min-height: 8px;
+max-height: 8px;
+border-radius: 4px;
+"""
+
+        self.unselect_style = """
+background-color: #E0E4EC;
+min-height: 8px;
+max-height: 8px;
+border-radius: 4px;
+"""
+
+    def __set_shadow(self, ):
+        shadow  = QtWidgets.QGraphicsDropShadowEffect(self)
+        shadow.setBlurRadius(10)
+        shadow.setOffset(0)
+        shadow.setColor(QtGui.QColor(0,0,0,100))
+        self.setGraphicsEffect(shadow)
 
     def mousePressEvent(self, event):
         if event.button() == QtCore.Qt.LeftButton:
@@ -196,5 +240,10 @@ class Tile(QtWidgets.QWidget):
 
     def set_color(self, color):
         color_obj = Color(color)
-        GUIBackend.set_style(self.ui.frame2, "background-color: {};".format(color_obj.hex_color))
-        
+        GUIBackend.set_style(self.ui.inner_frame, "background-color: {};".format(color_obj.hex_color))
+
+    def select_tile(self):
+        GUIBackend.set_style(self.ui.select_label, self.select_style)
+
+    def unselect_tile(self):
+        GUIBackend.set_style(self.ui.select_label, self.unselect_style)

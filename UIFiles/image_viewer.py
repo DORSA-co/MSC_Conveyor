@@ -27,7 +27,7 @@ class Ui_ViewerWindow(object):
     def setupUi(self, ViewerWindow):
         if not ViewerWindow.objectName():
             ViewerWindow.setObjectName(u"ViewerWindow")
-        ViewerWindow.resize(798, 726)
+        ViewerWindow.resize(798, 758)
         self.StyleSheet = QWidget(ViewerWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
         self.StyleSheet.setStyleSheet(u"QLabel{\n"
@@ -47,20 +47,19 @@ class Ui_ViewerWindow(object):
 "/************************************************************/\n"
 "\n"
 "QTableWidget {\n"
-"    background-color: #F7F8FA;\n"
+"    background-color: transparent;\n"
 "	gridline-color: #D7D7D9;\n"
 "	color: rgb(20, 20, 20);\n"
-"	border: 2px solid #F7F8FA;\n"
+"	border: 2px solid #D7D7D9;\n"
 "	border-radius: 8px;\n"
 "}\n"
 "\n"
 "QHeaderView::section {\n"
-"    background-color: #F7F8FA;\n"
+"    background-color: #E0E4EC;\n"
 "    padding: 5px;\n"
 "	border-top-left-radius: 0px;\n"
 "	border-bottom: 2px solid #BDBDBF;\n"
 "	border-right: 1px solid #D7D7D9;\n"
-"	font-weight: bold;\n"
 "	color: rgb(20, 20, 20);\n"
 "}\n"
 "\n"
@@ -76,8 +75,8 @@ class Ui_ViewerWindow(object):
 "\n"
 "QTableWidget::item:selected {\n"
 "    background-color: #E0E4EC;\n"
-""
-                        "	color: rgb(20, 20, 20);\n"
+"	color: rgb(20, 20"
+                        ", 20);\n"
 "}\n"
 "\n"
 "QTableWidget::item:hover {\n"
@@ -87,6 +86,90 @@ class Ui_ViewerWindow(object):
 "QHeaderView::up-arrow {\n"
 "	\n"
 "	image: url(:/icons/icons/table_sort_icon.png);\n"
+"}\n"
+"\n"
+"/************************************************************/\n"
+"\n"
+"QScrollBar:vertical {\n"
+"    border: none;\n"
+"    background: #F7F8FA;\n"
+"    width: 10px;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical {\n"
+"    background: #D7D7D9;\n"
+"    min-height: 20px;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:vertical {\n"
+"    border: none;\n"
+"    background: #F7F8FA;\n"
+"    height: 20px;\n"
+"    subcontrol-position: bottom;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::sub-line:vertical {\n"
+"    border: none;\n"
+"    background: #F7F8FA;\n"
+"    height: 20px;\n"
+"    subcontrol-position: top;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {\n"
+"    border: none;\n"
+"    width: 3px;\n"
+""
+                        "    height: 3px;\n"
+"    background: transparent;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"}\n"
+"\n"
+"QScrollBar:horizontal {\n"
+"    border: none;\n"
+"    background: #F7F8FA;\n"
+"    height: 10px;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:horizontal {\n"
+"    background: #D7D7D9;\n"
+"    min-width: 20px;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:horizontal {\n"
+"    border: none;\n"
+"    background: #F7F8FA;\n"
+"    width: 20px;\n"
+"    subcontrol-position: right;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::sub-line:horizontal {\n"
+"    border: none;\n"
+"    background: #F7F8FA;\n"
+"    width: 20px;\n"
+"    subcontrol-position: left;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"\n"
+"QScrollBar::left-arrow:horizontal, QScrollBar::right-arrow:horizontal {\n"
+"    border: none;\n"
+"    width: 3px;\n"
+"    height: 3px;\n"
+"    background: transparent;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:"
+                        "horizontal, QScrollBar::sub-page:horizontal {\n"
+"    background: none;\n"
 "}\n"
 "\n"
 "/************************************************************/\n"
@@ -103,19 +186,14 @@ class Ui_ViewerWindow(object):
 "	background-color: #E0E4EC;\n"
 "}\n"
 "\n"
-"#tile_image_frame\n"
-"{\n"
-"	background-color: #F7F8FA;\n"
-"	border:1px solid #D7D7D9;\n"
-"}\n"
-"\n"
 "#tiles_scrollArea{\n"
-"	background-color: #F7F8FA;\n"
-"	border:None;\n"
+"	background-color: #ebf0f7;\n"
+"	border: 2px solid #ebf0f7;\n"
+"	border-radius: 8px;\n"
 "}\n"
 "\n"
 "#tiles_frame{\n"
-"	background-color: #F7F8FA;\n"
+"	background-color: #ebf0f7;\n"
 "	border:None;\n"
 "}\n"
 "")
@@ -205,20 +283,26 @@ class Ui_ViewerWindow(object):
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.view_3d_btn = QPushButton(self.image_page)
         self.view_3d_btn.setObjectName(u"view_3d_btn")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.view_3d_btn.sizePolicy().hasHeightForWidth())
+        self.view_3d_btn.setSizePolicy(sizePolicy2)
+        self.view_3d_btn.setMinimumSize(QSize(100, 40))
+        self.view_3d_btn.setMaximumSize(QSize(100, 40))
         self.view_3d_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.view_3d_btn.setStyleSheet(u"#view_3d_btn\n"
 "{\n"
 "	background-color: transparent;\n"
 "	color:  rgba(46, 76, 153, 255);\n"
 "	border-radius: 20px;\n"
-"	min-width: 80;\n"
-"	max-width: 80;\n"
+"	min-width: 100;\n"
+"	max-width: 100;\n"
 "	min-height: 40;\n"
 "	max-height: 40;\n"
 "	font-size: 14px;\n"
 "	font-weight: bold;\n"
 "	text-align: right;\n"
-"	qproperty-icon: url(:/icons/icons/3d_icon.png);\n"
 "}\n"
 "\n"
 "#view_3d_btn:disabled\n"
@@ -229,7 +313,6 @@ class Ui_ViewerWindow(object):
 "#view_3d_btn:hover\n"
 "{\n"
 "	color:  rgba(76, 126, 255, 255);\n"
-"	qproperty-icon: url(:/icons/icons/3d_icon_hover.png);\n"
 "}\n"
 "\n"
 "#view_3d_btn:pressed\n"
@@ -238,29 +321,67 @@ class Ui_ViewerWindow(object):
 "	padding-top: 5px;\n"
 "}\n"
 "")
-        self.view_3d_btn.setIconSize(QSize(20, 20))
+        icon4 = QIcon()
+        icon4.addFile(u":/icons/icons/view_3d.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.view_3d_btn.setIcon(icon4)
+        self.view_3d_btn.setIconSize(QSize(30, 30))
 
         self.verticalLayout_2.addWidget(self.view_3d_btn, 0, Qt.AlignLeft)
 
         self.tile_image_viewer = PhotoViewer(self.image_page)
         self.tile_image_viewer.setObjectName(u"tile_image_viewer")
         self.tile_image_viewer.setMinimumSize(QSize(780, 413))
+        self.tile_image_viewer.setStyleSheet(u"background-color: transparent;")
 
         self.verticalLayout_2.addWidget(self.tile_image_viewer)
 
+        self.viewer_defect_table = QTableWidget(self.image_page)
+        if (self.viewer_defect_table.columnCount() < 2):
+            self.viewer_defect_table.setColumnCount(2)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.viewer_defect_table.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.viewer_defect_table.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        if (self.viewer_defect_table.rowCount() < 1):
+            self.viewer_defect_table.setRowCount(1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.viewer_defect_table.setVerticalHeaderItem(0, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.viewer_defect_table.setItem(0, 0, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.viewer_defect_table.setItem(0, 1, __qtablewidgetitem4)
+        self.viewer_defect_table.setObjectName(u"viewer_defect_table")
+        sizePolicy3 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.viewer_defect_table.sizePolicy().hasHeightForWidth())
+        self.viewer_defect_table.setSizePolicy(sizePolicy3)
+        self.viewer_defect_table.setMinimumSize(QSize(0, 90))
+        self.viewer_defect_table.setMaximumSize(QSize(16777215, 90))
+        self.viewer_defect_table.horizontalHeader().setDefaultSectionSize(150)
+        self.viewer_defect_table.horizontalHeader().setStretchLastSection(True)
+        self.viewer_defect_table.verticalHeader().setVisible(False)
+        self.viewer_defect_table.verticalHeader().setStretchLastSection(True)
+
+        self.verticalLayout_2.addWidget(self.viewer_defect_table)
+
+        self.verticalSpacer = QSpacerItem(20, 8, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout_2.addItem(self.verticalSpacer)
+
         self.tiles_scrollArea = QScrollArea(self.image_page)
         self.tiles_scrollArea.setObjectName(u"tiles_scrollArea")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.tiles_scrollArea.sizePolicy().hasHeightForWidth())
-        self.tiles_scrollArea.setSizePolicy(sizePolicy2)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.tiles_scrollArea.sizePolicy().hasHeightForWidth())
+        self.tiles_scrollArea.setSizePolicy(sizePolicy4)
         self.tiles_scrollArea.setMinimumSize(QSize(0, 120))
         self.tiles_scrollArea.setMaximumSize(QSize(16777215, 120))
         self.tiles_scrollArea.setWidgetResizable(True)
         self.tiles_frame = QWidget()
         self.tiles_frame.setObjectName(u"tiles_frame")
-        self.tiles_frame.setGeometry(QRect(0, 0, 780, 120))
+        self.tiles_frame.setGeometry(QRect(0, 0, 776, 116))
         self.horizontalLayout = QHBoxLayout(self.tiles_frame)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
@@ -270,47 +391,6 @@ class Ui_ViewerWindow(object):
         self.tiles_scrollArea.setWidget(self.tiles_frame)
 
         self.verticalLayout_2.addWidget(self.tiles_scrollArea)
-
-        self.viewer_defect_table = QTableWidget(self.image_page)
-        if (self.viewer_defect_table.columnCount() < 15):
-            self.viewer_defect_table.setColumnCount(15)
-        __qtablewidgetitem = QTableWidgetItem()
-        self.viewer_defect_table.setHorizontalHeaderItem(0, __qtablewidgetitem)
-        __qtablewidgetitem1 = QTableWidgetItem()
-        self.viewer_defect_table.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        __qtablewidgetitem2 = QTableWidgetItem()
-        self.viewer_defect_table.setHorizontalHeaderItem(2, __qtablewidgetitem2)
-        __qtablewidgetitem3 = QTableWidgetItem()
-        self.viewer_defect_table.setHorizontalHeaderItem(3, __qtablewidgetitem3)
-        __qtablewidgetitem4 = QTableWidgetItem()
-        self.viewer_defect_table.setHorizontalHeaderItem(4, __qtablewidgetitem4)
-        __qtablewidgetitem5 = QTableWidgetItem()
-        self.viewer_defect_table.setHorizontalHeaderItem(5, __qtablewidgetitem5)
-        __qtablewidgetitem6 = QTableWidgetItem()
-        self.viewer_defect_table.setHorizontalHeaderItem(6, __qtablewidgetitem6)
-        __qtablewidgetitem7 = QTableWidgetItem()
-        self.viewer_defect_table.setHorizontalHeaderItem(7, __qtablewidgetitem7)
-        __qtablewidgetitem8 = QTableWidgetItem()
-        self.viewer_defect_table.setHorizontalHeaderItem(8, __qtablewidgetitem8)
-        __qtablewidgetitem9 = QTableWidgetItem()
-        self.viewer_defect_table.setHorizontalHeaderItem(9, __qtablewidgetitem9)
-        __qtablewidgetitem10 = QTableWidgetItem()
-        self.viewer_defect_table.setHorizontalHeaderItem(10, __qtablewidgetitem10)
-        __qtablewidgetitem11 = QTableWidgetItem()
-        self.viewer_defect_table.setHorizontalHeaderItem(11, __qtablewidgetitem11)
-        __qtablewidgetitem12 = QTableWidgetItem()
-        self.viewer_defect_table.setHorizontalHeaderItem(12, __qtablewidgetitem12)
-        __qtablewidgetitem13 = QTableWidgetItem()
-        self.viewer_defect_table.setHorizontalHeaderItem(13, __qtablewidgetitem13)
-        __qtablewidgetitem14 = QTableWidgetItem()
-        self.viewer_defect_table.setHorizontalHeaderItem(14, __qtablewidgetitem14)
-        if (self.viewer_defect_table.rowCount() < 1):
-            self.viewer_defect_table.setRowCount(1)
-        __qtablewidgetitem15 = QTableWidgetItem()
-        self.viewer_defect_table.setVerticalHeaderItem(0, __qtablewidgetitem15)
-        self.viewer_defect_table.setObjectName(u"viewer_defect_table")
-
-        self.verticalLayout_2.addWidget(self.viewer_defect_table)
 
         self.main_stackedWidget.addWidget(self.image_page)
 
@@ -332,36 +412,15 @@ class Ui_ViewerWindow(object):
         self.close_btn.setText("")
         self.view_3d_btn.setText(QCoreApplication.translate("ViewerWindow", u"3D View", None))
         ___qtablewidgetitem = self.viewer_defect_table.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("ViewerWindow", u"New Column", None));
+        ___qtablewidgetitem.setText(QCoreApplication.translate("ViewerWindow", u"x", None));
         ___qtablewidgetitem1 = self.viewer_defect_table.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("ViewerWindow", u"New Column", None));
-        ___qtablewidgetitem2 = self.viewer_defect_table.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("ViewerWindow", u"New Column", None));
-        ___qtablewidgetitem3 = self.viewer_defect_table.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("ViewerWindow", u"New Column", None));
-        ___qtablewidgetitem4 = self.viewer_defect_table.horizontalHeaderItem(4)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("ViewerWindow", u"New Column", None));
-        ___qtablewidgetitem5 = self.viewer_defect_table.horizontalHeaderItem(5)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("ViewerWindow", u"New Column", None));
-        ___qtablewidgetitem6 = self.viewer_defect_table.horizontalHeaderItem(6)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("ViewerWindow", u"New Column", None));
-        ___qtablewidgetitem7 = self.viewer_defect_table.horizontalHeaderItem(7)
-        ___qtablewidgetitem7.setText(QCoreApplication.translate("ViewerWindow", u"New Column", None));
-        ___qtablewidgetitem8 = self.viewer_defect_table.horizontalHeaderItem(8)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("ViewerWindow", u"New Column", None));
-        ___qtablewidgetitem9 = self.viewer_defect_table.horizontalHeaderItem(9)
-        ___qtablewidgetitem9.setText(QCoreApplication.translate("ViewerWindow", u"New Column", None));
-        ___qtablewidgetitem10 = self.viewer_defect_table.horizontalHeaderItem(10)
-        ___qtablewidgetitem10.setText(QCoreApplication.translate("ViewerWindow", u"New Column", None));
-        ___qtablewidgetitem11 = self.viewer_defect_table.horizontalHeaderItem(11)
-        ___qtablewidgetitem11.setText(QCoreApplication.translate("ViewerWindow", u"New Column", None));
-        ___qtablewidgetitem12 = self.viewer_defect_table.horizontalHeaderItem(12)
-        ___qtablewidgetitem12.setText(QCoreApplication.translate("ViewerWindow", u"New Column", None));
-        ___qtablewidgetitem13 = self.viewer_defect_table.horizontalHeaderItem(13)
-        ___qtablewidgetitem13.setText(QCoreApplication.translate("ViewerWindow", u"New Column", None));
-        ___qtablewidgetitem14 = self.viewer_defect_table.horizontalHeaderItem(14)
-        ___qtablewidgetitem14.setText(QCoreApplication.translate("ViewerWindow", u"New Column", None));
-        ___qtablewidgetitem15 = self.viewer_defect_table.verticalHeaderItem(0)
-        ___qtablewidgetitem15.setText(QCoreApplication.translate("ViewerWindow", u"New Row", None));
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("ViewerWindow", u"y", None));
+        ___qtablewidgetitem2 = self.viewer_defect_table.verticalHeaderItem(0)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("ViewerWindow", u"New Row", None));
+
+        __sortingEnabled = self.viewer_defect_table.isSortingEnabled()
+        self.viewer_defect_table.setSortingEnabled(False)
+        self.viewer_defect_table.setSortingEnabled(__sortingEnabled)
+
     # retranslateUi
 

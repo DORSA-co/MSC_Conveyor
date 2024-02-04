@@ -40,6 +40,7 @@ class viewerAPI:
         self.uiHandeler.button_connector('view_3d', self.view_3d)
 
         self.startup()
+        self.uiHandeler.show_defect_info(self.defect_obj.get_info())
 
     def startup(self,):
         self.uiHandeler.startup()
@@ -137,7 +138,7 @@ class viewerAPI:
     def setup_tiles(self, images_names):
         for img_name in images_names:
             meterage = self.metadata[img_name]    
-            self.uiHandeler.add_tile(img_name, '#969696', meterage)
+            self.uiHandeler.add_tile(img_name, '#E0E4EC', meterage)
 
     def select_tile_evet(self, _id:int):
         self.current_image_idx = self.images_names.index(_id)

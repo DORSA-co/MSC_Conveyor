@@ -25,4 +25,3 @@ if __name__ == "__main__":
     API = main_API(main_ui)
     main_ui.show()
     app.exec()
-

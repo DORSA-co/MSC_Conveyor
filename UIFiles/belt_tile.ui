@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>300</width>
-    <height>146</height>
+    <height>123</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,10 +32,10 @@
    <item>
     <widget class="QWidget" name="StyleSheet" native="true">
      <property name="styleSheet">
-      <string notr="true">#frame
+      <string notr="true">#main_frame
 {
 	border:None;
-	background-color: #F7F8FA;
+	background-color: #E0E4EC;
 }</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -55,7 +55,7 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QFrame" name="frame">
+       <widget class="QFrame" name="main_frame">
         <property name="minimumSize">
          <size>
           <width>300</width>
@@ -78,77 +78,11 @@
          <property name="spacing">
           <number>4</number>
          </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout">
-           <property name="topMargin">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="meterage_low_label">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>0</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="left_arrow">
-             <property name="styleSheet">
-              <string notr="true">#left_arrow{
-	border: 0px solid gray;
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="right_arrow">
-             <property name="styleSheet">
-              <string notr="true">#right_arrow{
-	border: 0px solid gray;
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="meterage_high_label">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-               <weight>50</weight>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>10 </string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <widget class="QFrame" name="frame2">
+          <widget class="QFrame" name="inner_frame">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
              <horstretch>0</horstretch>
@@ -156,7 +90,8 @@
             </sizepolicy>
            </property>
            <property name="styleSheet">
-            <string notr="true">border: None;</string>
+            <string notr="true">border: None;
+background-color: None;</string>
            </property>
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
@@ -181,25 +116,201 @@
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="label">
-              <property name="text">
-               <string/>
+             <layout class="QHBoxLayout" name="horizontalLayout">
+              <property name="spacing">
+               <number>0</number>
               </property>
-              <property name="scaledContents">
-               <bool>true</bool>
+              <property name="leftMargin">
+               <number>0</number>
               </property>
-             </widget>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <property name="spacing">
+                 <number>1</number>
+                </property>
+                <item alignment="Qt::AlignHCenter">
+                 <widget class="QLabel" name="meterage_low_label">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>13</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #707070;</string>
+                  </property>
+                  <property name="text">
+                   <string>0</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_3">
+                  <property name="styleSheet">
+                   <string notr="true">color: #707070;</string>
+                  </property>
+                  <property name="text">
+                   <string>meter</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_7">
+                <item>
+                 <widget class="QFrame" name="arrow_frame">
+                  <property name="minimumSize">
+                   <size>
+                    <width>120</width>
+                    <height>22</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>120</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-image: url(:/icons/icons/two_side_arrow.png);
+background-repeat: false;
+background-position: center;
+</string>
+                  </property>
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_3">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeType">
+                   <enum>QSizePolicy::Preferred</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>70</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_6">
+                <property name="spacing">
+                 <number>1</number>
+                </property>
+                <item alignment="Qt::AlignHCenter">
+                 <widget class="QLabel" name="meterage_high_label">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>13</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color: #707070;</string>
+                  </property>
+                  <property name="text">
+                   <string>10 </string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_4">
+                  <property name="styleSheet">
+                   <string notr="true">color: #707070;</string>
+                  </property>
+                  <property name="text">
+                   <string>meter</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+             </layout>
             </item>
            </layout>
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_2">
+          <widget class="QLabel" name="select_label">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>8</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>8</height>
+            </size>
+           </property>
            <property name="styleSheet">
-            <string notr="true">background-color: #7892DF;
-min-height: 5px;
-max-height: 5px;
-border-radius: 2px;</string>
+            <string notr="true">background-color: #E0E4EC;
+border-radius: 4px;</string>
            </property>
            <property name="text">
             <string/>

@@ -288,7 +288,7 @@ background-color:transparent;</string>
       <item>
        <widget class="QStackedWidget" name="pages">
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="system_status_page">
          <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -303,6 +303,12 @@ background-color:transparent;</string>
             <layout class="QHBoxLayout" name="horizontalLayout_5">
              <item>
               <widget class="QLabel" name="camera_status_icon">
+               <property name="minimumSize">
+                <size>
+                 <width>50</width>
+                 <height>0</height>
+                </size>
+               </property>
                <property name="text">
                 <string/>
                </property>

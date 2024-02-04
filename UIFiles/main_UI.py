@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1210, 815)
+        MainWindow.resize(1196, 815)
         self.StyleSheet = QWidget(MainWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
         self.StyleSheet.setEnabled(True)
@@ -164,12 +164,13 @@ class Ui_MainWindow(object):
 "\n"
 "QGraphicsView{\n"
 "	border: None;\n"
+"	background-color: #F7F8FA\n"
 "}\n"
 "\n"
-"/************************************************************/\n"
+"/********************************************"
+                        "****************/\n"
 "\n"
-"QLin"
-                        "eEdit {\n"
+"QLineEdit {\n"
 "  	border:1px solid #E0E4EC;\n"
 "	background-color: #F7F8FA;\n"
 "	border-radius: 10px;\n"
@@ -214,9 +215,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QSpinBox::down-arrow,  \n"
-"QDoubleSpinBox::down-arrow,\n"
 ""
-                        "QDateEdit::down-arrow\n"
+                        "QDoubleSpinBox::down-arrow,\n"
+"QDateEdit::down-arrow\n"
 "{   \n"
 "	image: url(:/icons/icons/minus_icon_black.png);\n"
 "	width: 16px;\n"
@@ -260,9 +261,9 @@ class Ui_MainWindow(object):
 "{\n"
 "    min-width:30px;\n"
 "    min-height: 29px;\n"
-"    subcontrol-origin: margin;\n"
-""
-                        "    subcontrol-position: left;\n"
+"  "
+                        "  subcontrol-origin: margin;\n"
+"    subcontrol-position: left;\n"
 "    top: 0px;\n"
 "    right: 0px;\n"
 "}\n"
@@ -303,9 +304,9 @@ class Ui_MainWindow(object):
 "    color: rgb(20, 20, 20);\n"
 "	min-width: 100px;\n"
 "    padding: 8px 16px;\n"
-"    border-top-left-radius: 4px;\n"
-""
-                        "    border-top-right-radius: 4px;\n"
+"   "
+                        " border-top-left-radius: 4px;\n"
+"    border-top-right-radius: 4px;\n"
 "}\n"
 "\n"
 "QTabBar::tab:hover {\n"
@@ -343,11 +344,11 @@ class Ui_MainWindow(object):
 "	border-bottom: 2px solid #BDBDBF;\n"
 "	border-right: 1px solid #D7D7D9;\n"
 "	font-weight: bold;\n"
-"	color: rgb(20, 20, 20);\n"
+"	color"
+                        ": rgb(20, 20, 20);\n"
 "}\n"
 "\n"
-""
-                        "QHeaderView::section:first {\n"
+"QHeaderView::section:first {\n"
 "   border-top-left-radius: 4px;\n"
 "	border-left: None;\n"
 "}\n"
@@ -396,8 +397,8 @@ class Ui_MainWindow(object):
 "\n"
 "QComboBox::down-arrow:disabled\n"
 "{   \n"
-"	image: url(:/icons/icons/down_icon_gr"
-                        "ay.png);\n"
+"	ima"
+                        "ge: url(:/icons/icons/down_icon_gray.png);\n"
 "	width: 12px;\n"
 "    height: 12px;\n"
 "}\n"
@@ -446,11 +447,11 @@ class Ui_MainWindow(object):
 "	background-color: #F7F8FA;\n"
 "}\n"
 "\n"
-"#top_frame QPushButton{\n"
+"#top_frame QPu"
+                        "shButton{\n"
 "	border: 0px;\n"
 "}\n"
-""
-                        "\n"
+"\n"
 "#main_stackedWidget{\n"
 "	background-color: #E0E4EC;\n"
 "}\n"
@@ -478,25 +479,26 @@ class Ui_MainWindow(object):
 "	border: None;\n"
 "}\n"
 "\n"
-"#step1_settings_frame .QLabel, #step2_settings_frame .QLabel, #step3_settings_frame .QLabel\n"
+"#step1_settings_frame .QLabel, #step2_settings_frame .QLabel, #step3_settings_frame .QLabel, #step4_settings_frame .QLabel,\n"
+"#step5_settings_frame .QLabel\n"
 "{\n"
 "	font-weight: bold;\n"
 "}\n"
 "\n"
-"#step1_label, #step2_label, #step3_label{\n"
+"#step1_label, #step2_label, #step3_label, #step4_label, #step5_label{\n"
 "	font-size: 26px;\n"
 "	color: #4C7EFF;\n"
 "}\n"
 "\n"
 "#show_steps_frame{\n"
-"	border: None;\n"
+"	border: No"
+                        "ne;\n"
 "}\n"
 "\n"
 "#show_steps_frame .QPushButton{\n"
 "	background-color: transparent;\n"
 "	border:5px solid #7E84A2;\n"
-"	border-ra"
-                        "dius: 32px;\n"
+"	border-radius: 32px;\n"
 "	min-width: 55px;\n"
 "	max-width: 55px;\n"
 "	min-height: 55px;\n"
@@ -535,13 +537,13 @@ class Ui_MainWindow(object):
 "#userpage_editprofile_new_password_eye,\n"
 "#userpage_editprofile_confirm_new_password_eye\n"
 "{\n"
-"	border: 0px;\n"
+"	border: 0"
+                        "px;\n"
 "	background-color: rgba(0,0,0,0);\n"
 "	border:1px solid #E0E4EC;\n"
 "	background-color: #F7F8FA;\n"
 "	border-radius: 10px;\n"
-""
-                        "	border-top-left-radius: 0px;\n"
+"	border-top-left-radius: 0px;\n"
 "	border-bottom-left-radius: 0px;\n"
 "	border-left: None;\n"
 "	padding-right: 3px;\n"
@@ -575,14 +577,14 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "#defects_notifications_widget{\n"
-"	background-color: #F7F8FA;\n"
+"	background-color: #F7"
+                        "F8FA;\n"
 "	border:1px solid #D7D7D9;\n"
 "}\n"
 "\n"
 "#notifications_buttons_frame .QPushButton{\n"
 "	background-color: None;\n"
-"	border"
-                        ": None;\n"
+"	border: None;\n"
 "}\n"
 "\n"
 "\n"
@@ -1575,6 +1577,34 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_13.addWidget(self.step3_btn)
 
+        self.step34_line = QFrame(self.show_steps_frame)
+        self.step34_line.setObjectName(u"step34_line")
+        self.step34_line.setFrameShape(QFrame.StyledPanel)
+        self.step34_line.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_13.addWidget(self.step34_line)
+
+        self.step4_btn = QPushButton(self.show_steps_frame)
+        self.step4_btn.setObjectName(u"step4_btn")
+        self.step4_btn.setFont(font)
+        self.step4_btn.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.horizontalLayout_13.addWidget(self.step4_btn)
+
+        self.step45_line = QFrame(self.show_steps_frame)
+        self.step45_line.setObjectName(u"step45_line")
+        self.step45_line.setFrameShape(QFrame.StyledPanel)
+        self.step45_line.setFrameShadow(QFrame.Raised)
+
+        self.horizontalLayout_13.addWidget(self.step45_line)
+
+        self.step5_btn = QPushButton(self.show_steps_frame)
+        self.step5_btn.setObjectName(u"step5_btn")
+        self.step5_btn.setFont(font)
+        self.step5_btn.setCursor(QCursor(Qt.PointingHandCursor))
+
+        self.horizontalLayout_13.addWidget(self.step5_btn)
+
 
         self.verticalLayout_4.addWidget(self.show_steps_frame)
 
@@ -1778,10 +1808,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_35 = QVBoxLayout()
         self.verticalLayout_35.setSpacing(7)
         self.verticalLayout_35.setObjectName(u"verticalLayout_35")
-        self.label_72 = QLabel(self.step3_settings_frame)
-        self.label_72.setObjectName(u"label_72")
+        self.min_width_label = QLabel(self.step3_settings_frame)
+        self.min_width_label.setObjectName(u"min_width_label")
 
-        self.verticalLayout_35.addWidget(self.label_72)
+        self.verticalLayout_35.addWidget(self.min_width_label)
 
         self.defect_extractor_min_width = QSpinBox(self.step3_settings_frame)
         self.defect_extractor_min_width.setObjectName(u"defect_extractor_min_width")
@@ -1818,6 +1848,156 @@ class Ui_MainWindow(object):
         self.horizontalLayout_11.setStretch(0, 25)
         self.horizontalLayout_11.setStretch(1, 75)
         self.algorithm_stackedWidget.addWidget(self.step3)
+        self.step4 = QWidget()
+        self.step4.setObjectName(u"step4")
+        self.horizontalLayout_25 = QHBoxLayout(self.step4)
+        self.horizontalLayout_25.setObjectName(u"horizontalLayout_25")
+        self.horizontalLayout_25.setContentsMargins(0, 0, 0, 0)
+        self.step4_settings_frame = QFrame(self.step4)
+        self.step4_settings_frame.setObjectName(u"step4_settings_frame")
+        self.step4_settings_frame.setFrameShape(QFrame.StyledPanel)
+        self.step4_settings_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_58 = QVBoxLayout(self.step4_settings_frame)
+        self.verticalLayout_58.setSpacing(50)
+        self.verticalLayout_58.setObjectName(u"verticalLayout_58")
+        self.verticalLayout_58.setContentsMargins(20, 15, 20, -1)
+        self.step4_label = QLabel(self.step4_settings_frame)
+        self.step4_label.setObjectName(u"step4_label")
+        sizePolicy.setHeightForWidth(self.step4_label.sizePolicy().hasHeightForWidth())
+        self.step4_label.setSizePolicy(sizePolicy)
+        self.step4_label.setStyleSheet(u"border-bottom: 2px solid #D7D7D9;")
+
+        self.verticalLayout_58.addWidget(self.step4_label)
+
+        self.verticalLayout_61 = QVBoxLayout()
+        self.verticalLayout_61.setSpacing(7)
+        self.verticalLayout_61.setObjectName(u"verticalLayout_61")
+        self.min_frame_gap_label = QLabel(self.step4_settings_frame)
+        self.min_frame_gap_label.setObjectName(u"min_frame_gap_label")
+
+        self.verticalLayout_61.addWidget(self.min_frame_gap_label)
+
+        self.defect_tracker_min_frame_gap = QSpinBox(self.step4_settings_frame)
+        self.defect_tracker_min_frame_gap.setObjectName(u"defect_tracker_min_frame_gap")
+        self.defect_tracker_min_frame_gap.setStyleSheet(u"")
+        self.defect_tracker_min_frame_gap.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_61.addWidget(self.defect_tracker_min_frame_gap)
+
+
+        self.verticalLayout_58.addLayout(self.verticalLayout_61)
+
+        self.verticalLayout_64 = QVBoxLayout()
+        self.verticalLayout_64.setSpacing(7)
+        self.verticalLayout_64.setObjectName(u"verticalLayout_64")
+        self.defect_tracker_min_length_label = QLabel(self.step4_settings_frame)
+        self.defect_tracker_min_length_label.setObjectName(u"defect_tracker_min_length_label")
+
+        self.verticalLayout_64.addWidget(self.defect_tracker_min_length_label)
+
+        self.defect_tracker_min_length = QSpinBox(self.step4_settings_frame)
+        self.defect_tracker_min_length.setObjectName(u"defect_tracker_min_length")
+        self.defect_tracker_min_length.setStyleSheet(u"")
+        self.defect_tracker_min_length.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_64.addWidget(self.defect_tracker_min_length)
+
+
+        self.verticalLayout_58.addLayout(self.verticalLayout_64)
+
+        self.verticalSpacer_9 = QSpacerItem(20, 296, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_58.addItem(self.verticalSpacer_9)
+
+
+        self.horizontalLayout_25.addWidget(self.step4_settings_frame)
+
+        self.step4_image_frame = QFrame(self.step4)
+        self.step4_image_frame.setObjectName(u"step4_image_frame")
+        self.step4_image_frame.setMinimumSize(QSize(200, 0))
+        self.step4_image_frame.setFrameShape(QFrame.StyledPanel)
+        self.step4_image_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_65 = QVBoxLayout(self.step4_image_frame)
+        self.verticalLayout_65.setObjectName(u"verticalLayout_65")
+        self.verticalLayout_65.setContentsMargins(0, 0, 0, 0)
+        self.algorithm_image4 = PhotoViewer(self.step4_image_frame)
+        self.algorithm_image4.setObjectName(u"algorithm_image4")
+
+        self.verticalLayout_65.addWidget(self.algorithm_image4)
+
+
+        self.horizontalLayout_25.addWidget(self.step4_image_frame)
+
+        self.horizontalLayout_25.setStretch(0, 25)
+        self.horizontalLayout_25.setStretch(1, 75)
+        self.algorithm_stackedWidget.addWidget(self.step4)
+        self.step5 = QWidget()
+        self.step5.setObjectName(u"step5")
+        self.horizontalLayout_40 = QHBoxLayout(self.step5)
+        self.horizontalLayout_40.setObjectName(u"horizontalLayout_40")
+        self.horizontalLayout_40.setContentsMargins(0, 0, 0, 0)
+        self.step5_settings_frame = QFrame(self.step5)
+        self.step5_settings_frame.setObjectName(u"step5_settings_frame")
+        self.step5_settings_frame.setFrameShape(QFrame.StyledPanel)
+        self.step5_settings_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_62 = QVBoxLayout(self.step5_settings_frame)
+        self.verticalLayout_62.setSpacing(50)
+        self.verticalLayout_62.setObjectName(u"verticalLayout_62")
+        self.verticalLayout_62.setContentsMargins(20, 15, 20, -1)
+        self.step5_label = QLabel(self.step5_settings_frame)
+        self.step5_label.setObjectName(u"step5_label")
+        sizePolicy.setHeightForWidth(self.step5_label.sizePolicy().hasHeightForWidth())
+        self.step5_label.setSizePolicy(sizePolicy)
+        self.step5_label.setStyleSheet(u"border-bottom: 2px solid #D7D7D9;")
+
+        self.verticalLayout_62.addWidget(self.step5_label)
+
+        self.verticalLayout_63 = QVBoxLayout()
+        self.verticalLayout_63.setSpacing(7)
+        self.verticalLayout_63.setObjectName(u"verticalLayout_63")
+        self.image_width_label = QLabel(self.step5_settings_frame)
+        self.image_width_label.setObjectName(u"image_width_label")
+
+        self.verticalLayout_63.addWidget(self.image_width_label)
+
+        self.image_creator_image_width = QSpinBox(self.step5_settings_frame)
+        self.image_creator_image_width.setObjectName(u"image_creator_image_width")
+        self.image_creator_image_width.setStyleSheet(u"")
+        self.image_creator_image_width.setAlignment(Qt.AlignCenter)
+        self.image_creator_image_width.setMinimum(500)
+        self.image_creator_image_width.setMaximum(5000)
+
+        self.verticalLayout_63.addWidget(self.image_creator_image_width)
+
+
+        self.verticalLayout_62.addLayout(self.verticalLayout_63)
+
+        self.verticalSpacer_11 = QSpacerItem(20, 296, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.verticalLayout_62.addItem(self.verticalSpacer_11)
+
+
+        self.horizontalLayout_40.addWidget(self.step5_settings_frame)
+
+        self.step5_image_frame = QFrame(self.step5)
+        self.step5_image_frame.setObjectName(u"step5_image_frame")
+        self.step5_image_frame.setMinimumSize(QSize(50, 0))
+        self.step5_image_frame.setFrameShape(QFrame.StyledPanel)
+        self.step5_image_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_66 = QVBoxLayout(self.step5_image_frame)
+        self.verticalLayout_66.setObjectName(u"verticalLayout_66")
+        self.verticalLayout_66.setContentsMargins(0, 0, 0, 0)
+        self.algorithm_image5 = PhotoViewer(self.step5_image_frame)
+        self.algorithm_image5.setObjectName(u"algorithm_image5")
+
+        self.verticalLayout_66.addWidget(self.algorithm_image5)
+
+
+        self.horizontalLayout_40.addWidget(self.step5_image_frame)
+
+        self.horizontalLayout_40.setStretch(0, 25)
+        self.horizontalLayout_40.setStretch(1, 75)
+        self.algorithm_stackedWidget.addWidget(self.step5)
 
         self.verticalLayout_4.addWidget(self.algorithm_stackedWidget)
 
@@ -2926,7 +3106,7 @@ class Ui_MainWindow(object):
         self.register_message_scrollArea.setWidgetResizable(True)
         self.register_message_frame = QWidget()
         self.register_message_frame.setObjectName(u"register_message_frame")
-        self.register_message_frame.setGeometry(QRect(0, 0, 941, 248))
+        self.register_message_frame.setGeometry(QRect(0, 0, 930, 248))
         sizePolicy3.setHeightForWidth(self.register_message_frame.sizePolicy().hasHeightForWidth())
         self.register_message_frame.setSizePolicy(sizePolicy3)
         self.verticalLayout_55 = QVBoxLayout(self.register_message_frame)
@@ -3296,10 +3476,10 @@ class Ui_MainWindow(object):
         self.system_status_expanding_btn.clicked.connect(self.system_status_btn.click)
         self.notif_filter_expanding_btn.clicked.connect(self.notif_filter_btn.click)
 
-        self.main_stackedWidget.setCurrentIndex(4)
+        self.main_stackedWidget.setCurrentIndex(1)
         self.live_tabWidget.setCurrentIndex(0)
-        self.settings_tabs.setCurrentIndex(0)
-        self.algorithm_stackedWidget.setCurrentIndex(0)
+        self.settings_tabs.setCurrentIndex(1)
+        self.algorithm_stackedWidget.setCurrentIndex(3)
         self.user_tabs.setCurrentIndex(0)
 
 
@@ -3364,6 +3544,8 @@ class Ui_MainWindow(object):
         self.step1_btn.setText(QCoreApplication.translate("MainWindow", u"1", None))
         self.step2_btn.setText(QCoreApplication.translate("MainWindow", u"2", None))
         self.step3_btn.setText(QCoreApplication.translate("MainWindow", u"3", None))
+        self.step4_btn.setText(QCoreApplication.translate("MainWindow", u"4", None))
+        self.step5_btn.setText(QCoreApplication.translate("MainWindow", u"5", None))
         self.step1_label.setText(QCoreApplication.translate("MainWindow", u"Step 1", None))
         self.background_th_label.setText(QCoreApplication.translate("MainWindow", u"Background Threshould", None))
         self.conv_wsize_label.setText(QCoreApplication.translate("MainWindow", u"Convolotion Window Size", None))
@@ -3371,7 +3553,12 @@ class Ui_MainWindow(object):
         self.algorithm_label.setText(QCoreApplication.translate("MainWindow", u"Algorithm", None))
         self.thresh_error_label.setText(QCoreApplication.translate("MainWindow", u"Thresh Error", None))
         self.step3_label.setText(QCoreApplication.translate("MainWindow", u"Step 3", None))
-        self.label_72.setText(QCoreApplication.translate("MainWindow", u"Min Width", None))
+        self.min_width_label.setText(QCoreApplication.translate("MainWindow", u"Min Width", None))
+        self.step4_label.setText(QCoreApplication.translate("MainWindow", u"Step 4", None))
+        self.min_frame_gap_label.setText(QCoreApplication.translate("MainWindow", u"Min Frame Gap", None))
+        self.defect_tracker_min_length_label.setText(QCoreApplication.translate("MainWindow", u"Min Length", None))
+        self.step5_label.setText(QCoreApplication.translate("MainWindow", u"Step 5", None))
+        self.image_width_label.setText(QCoreApplication.translate("MainWindow", u"Image Width", None))
         self.save_algorithm_settings.setText(QCoreApplication.translate("MainWindow", u"Save", None))
         self.cancel_algorithm_settings.setText(QCoreApplication.translate("MainWindow", u"Cancel", None))
         self.reset_algorithm_settings.setText(QCoreApplication.translate("MainWindow", u"Reset", None))

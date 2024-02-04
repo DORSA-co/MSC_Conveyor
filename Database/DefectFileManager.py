@@ -46,12 +46,14 @@ class DefectFileManager:
         number_static.mean = json_dict['mean']
         number_static.count = json_dict['count']
 
+        return number_static
+
     def json_to_defect(self, json_dict)-> Defect:
         defect = Defect()
         
         defect.id = int(json_dict['id'])
         defect.widthInfo = self.json_to_number_statics(json_dict['width_info'])
-        defect.widthInfo = self.json_to_number_statics(json_dict['depth_info'])
+        defect.depthInfo = self.json_to_number_statics(json_dict['depth_info'])
 
         defect.jdatetime = JalaliDateTime.strptime(json_dict['date']+json_dict['time'], '%Y/%m/%d%H:%M:%S')
 
