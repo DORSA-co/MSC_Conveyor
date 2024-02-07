@@ -587,6 +587,11 @@ class Ui_MainWindow(object):
 "	border: None;\n"
 "}\n"
 "\n"
+"*[styleSheet=\"group1\"] {\n"
+"    background-color: blue;\n"
+"    color: white;\n"
+"}\n"
+"\n"
 "\n"
 "\n"
 "\n"
@@ -881,7 +886,7 @@ class Ui_MainWindow(object):
         self.defects_notifications_scrollArea.setWidgetResizable(True)
         self.defects_notifications_widget = QWidget()
         self.defects_notifications_widget.setObjectName(u"defects_notifications_widget")
-        self.defects_notifications_widget.setGeometry(QRect(0, 0, 320, 675))
+        self.defects_notifications_widget.setGeometry(QRect(0, 0, 320, 16))
         self.defects_notifications_widget.setStyleSheet(u"#defects_notifications_widget{\n"
 "	border:None;\n"
 "	border-top: 2px solid gray;\n"
@@ -3086,36 +3091,7 @@ class Ui_MainWindow(object):
         self.register_user.setObjectName(u"register_user")
         self.register_user.setEnabled(True)
         self.register_user.setCursor(QCursor(Qt.PointingHandCursor))
-        self.register_user.setStyleSheet(u"#register_user\n"
-"{\n"
-"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
-"	color: rgba(255, 255, 255, 210);\n"
-"	border-radius: 22px;\n"
-"	min-width: 200;\n"
-"	max-width: 200;\n"
-"	min-height: 44;\n"
-"	max-height: 44;\n"
-"	font-size: 14px;\n"
-"	font-weight: bold;\n"
-"}\n"
-"\n"
-"#register_user:disabled\n"
-"{\n"
-"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(189, 189, 191, 255), stop:1 rgba(189, 189, 191, 255));\n"
-"	color: rgba(120, 120, 120, 255);\n"
-"}\n"
-"\n"
-"#register_user:hover\n"
-"{\n"
-"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
-"}\n"
-"\n"
-"#register_user:pressed\n"
-"{\n"
-"	padding-left: 5px;\n"
-"	padding-top: 5px;\n"
-"}\n"
-"")
+        self.register_user.setStyleSheet(u"group1")
         icon27 = QIcon()
         icon27.addFile(u":/assets/Assets/icons/icons8-plus-white-50.png", QSize(), QIcon.Normal, QIcon.Off)
         self.register_user.setIcon(icon27)
@@ -3132,7 +3108,7 @@ class Ui_MainWindow(object):
         self.register_message_scrollArea.setWidgetResizable(True)
         self.register_message_frame = QWidget()
         self.register_message_frame.setObjectName(u"register_message_frame")
-        self.register_message_frame.setGeometry(QRect(0, 0, 916, 248))
+        self.register_message_frame.setGeometry(QRect(0, 0, 916, 267))
         sizePolicy3.setHeightForWidth(self.register_message_frame.sizePolicy().hasHeightForWidth())
         self.register_message_frame.setSizePolicy(sizePolicy3)
         self.verticalLayout_55 = QVBoxLayout(self.register_message_frame)
@@ -3257,7 +3233,7 @@ class Ui_MainWindow(object):
         self.change_username_message_scrollArea.setWidgetResizable(True)
         self.change_username_message_frame = QWidget()
         self.change_username_message_frame.setObjectName(u"change_username_message_frame")
-        self.change_username_message_frame.setGeometry(QRect(0, 0, 16, 16))
+        self.change_username_message_frame.setGeometry(QRect(0, 0, 432, 375))
         self.change_username_message_scrollArea.setWidget(self.change_username_message_frame)
 
         self.verticalLayout_54.addWidget(self.change_username_message_scrollArea)
@@ -3433,7 +3409,7 @@ class Ui_MainWindow(object):
         self.change_password_message_scrollArea.setWidgetResizable(True)
         self.change_password_message_frame = QWidget()
         self.change_password_message_frame.setObjectName(u"change_password_message_frame")
-        self.change_password_message_frame.setGeometry(QRect(0, 0, 16, 16))
+        self.change_password_message_frame.setGeometry(QRect(0, 0, 432, 287))
         self.change_password_message_scrollArea.setWidget(self.change_password_message_frame)
 
         self.verticalLayout_51.addWidget(self.change_password_message_scrollArea)
@@ -3511,7 +3487,7 @@ class Ui_MainWindow(object):
         self.system_status_expanding_btn.clicked.connect(self.system_status_btn.click)
         self.notif_filter_expanding_btn.clicked.connect(self.notif_filter_btn.click)
 
-        self.main_stackedWidget.setCurrentIndex(2)
+        self.main_stackedWidget.setCurrentIndex(3)
         self.live_tabWidget.setCurrentIndex(0)
         self.settings_tabs.setCurrentIndex(1)
         self.algorithm_stackedWidget.setCurrentIndex(4)

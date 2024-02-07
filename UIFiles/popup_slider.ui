@@ -302,21 +302,31 @@ background-color:transparent;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_5">
              <item>
-              <widget class="QLabel" name="camera_status_icon">
-               <property name="minimumSize">
-                <size>
-                 <width>50</width>
-                 <height>0</height>
-                </size>
+              <widget class="QPushButton" name="camera_status_icon">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: 0px solid gray;</string>
                </property>
                <property name="text">
                 <string/>
                </property>
-               <property name="pixmap">
-                <pixmap resource="assets/assets.qrc">:/icons/icons/camera.png</pixmap>
+               <property name="icon">
+                <iconset resource="assets/assets.qrc">
+                 <normaloff>:/icons/icons/camera.png</normaloff>:/icons/icons/camera.png</iconset>
                </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
+               <property name="iconSize">
+                <size>
+                 <width>50</width>
+                 <height>50</height>
+                </size>
                </property>
               </widget>
              </item>
@@ -363,18 +373,28 @@ background-color:transparent;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_4">
              <item>
-              <widget class="QLabel" name="plc_staus_icon">
+              <widget class="QPushButton" name="plc_staus_icon">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: 0px solid gray;</string>
+               </property>
                <property name="text">
                 <string/>
                </property>
-               <property name="pixmap">
-                <pixmap resource="assets/assets.qrc">:/icons/icons/plc.png</pixmap>
+               <property name="icon">
+                <iconset resource="assets/assets.qrc">
+                 <normaloff>:/icons/icons/plc.png</normaloff>:/icons/icons/plc.png</iconset>
                </property>
-               <property name="scaledContents">
-                <bool>false</bool>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
+               <property name="iconSize">
+                <size>
+                 <width>50</width>
+                 <height>50</height>
+                </size>
                </property>
               </widget>
              </item>
@@ -421,15 +441,28 @@ background-color:transparent;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_3">
              <item>
-              <widget class="QLabel" name="laser_status_icon">
+              <widget class="QPushButton" name="laser_status_icon">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: 0px solid gray;</string>
+               </property>
                <property name="text">
                 <string/>
                </property>
-               <property name="pixmap">
-                <pixmap resource="assets/assets.qrc">:/icons/icons/laser.png</pixmap>
+               <property name="icon">
+                <iconset resource="assets/assets.qrc">
+                 <normaloff>:/icons/icons/laser.png</normaloff>:/icons/icons/laser.png</iconset>
                </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
+               <property name="iconSize">
+                <size>
+                 <width>50</width>
+                 <height>50</height>
+                </size>
                </property>
               </widget>
              </item>
@@ -476,15 +509,28 @@ background-color:transparent;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_2">
              <item>
-              <widget class="QLabel" name="database_staus_icon">
+              <widget class="QPushButton" name="database_staus_icon">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border: 0px solid gray;</string>
+               </property>
                <property name="text">
                 <string/>
                </property>
-               <property name="pixmap">
-                <pixmap resource="assets/assets.qrc">:/icons/icons/database.png</pixmap>
+               <property name="icon">
+                <iconset resource="assets/assets.qrc">
+                 <normaloff>:/icons/icons/database.png</normaloff>:/icons/icons/database.png</iconset>
                </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
+               <property name="iconSize">
+                <size>
+                 <width>50</width>
+                 <height>50</height>
+                </size>
                </property>
               </widget>
              </item>
