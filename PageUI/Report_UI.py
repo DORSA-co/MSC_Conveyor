@@ -5,7 +5,7 @@ from UIFiles.main_UI import Ui_MainWindow
 from .Common_Function_UI import Common_Function_UI
 from uiUtils.guiBackend import GUIBackend
 from uiUtils.GUIComponents import deleteButton, viewButton, pageNavigationButton, tabelCheckbox
-from uiUtils.GUIComponents import singleAnimation
+from uiUtils.GUIComponents import singleAnimation, proggressDialogUI
 from Constants.Constant import ReportFiltersAnimation, ReportTableLimit
 
 class Report_UI(Common_Function_UI):
@@ -18,6 +18,8 @@ class Report_UI(Common_Function_UI):
         """Description of the code"""
 
         self.ui = ui
+        self.deleteProgressDialog = proggressDialogUI()        
+        self.deleteProgressDialog.setup('Remove','', operation_name='removed')
 
         self.TABLE_HEADERS = [
                         ' ',

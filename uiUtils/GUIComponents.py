@@ -2,6 +2,10 @@ import re
 import cv2
 
 from PySide6 import QtWidgets, QtCore, QtGui
+from UIFiles.defect_notification import Ui_Notification
+from UIFiles.progress_dialog import Ui_progressDialog
+import datetime
+from persiantools.jdatetime import JalaliDateTime, JalaliDate
 
 from uiUtils.guiBackend import GUIBackend
 import PySide6.QtWidgets 
@@ -1126,9 +1130,7 @@ class overlayMassage(QtWidgets.QWidget):
 
 
 
-from UIFiles.defect_notification import Ui_Notification
-import datetime
-from persiantools.jdatetime import JalaliDateTime, JalaliDate
+
 
 class defectNotification(QtWidgets.QWidget):
 
@@ -1218,3 +1220,73 @@ class defectNotification(QtWidgets.QWidget):
     def set_checkbox(self, flag):
         self.ui.select_checkBox.setChecked(flag)
 
+
+
+
+
+class proggressDialogUI(QtWidgets.QWidget):
+
+    def __init__(self, title='',
+                       description='',
+                       show_info = True,
+                       operation_name='') -> None:
+
+        super(proggressDialogUI, self).__init__()
+        self.ui = Ui_progressDialog()
+        self.ui.setupUi(self)
+
+        self.progressbar = self.ui.progressbar
+        self.title_lbl = self.ui.title_lbl
+        self.description_lbl = self.ui.description_lbl
+        self.progress_operetion_lbl = self.ui.progress_operetion_lbl
+        self.progress_frame = self.ui.progress_frame
+        self.complete_count_lbl = self.ui.complete_count_lbl
+        self.total_count_lbl = self.ui.total_count_lbl
+        self.cancel_btn = self.ui.cancel_btn
+
+        self.setup(title, description, show_info, operation_name)
+        GUIBackend.set_win_frameless(self)
+
+
+
+
+    def setup(self, title='',
+                       description='',
+                       show_info = True,
+                       operation_name=''):
+        
+        
+        
+        GUIBackend.set_wgt_visible(self.progress_frame, show_info)
+        GUIBackend.set_label_text(self.title_lbl, title)
+        GUIBackend.set_label_text(self.description_lbl, description)
+        GUIBackend.set_label_text(self.title_lbl, title)
+        GUIBackend.set_label_text(self.progress_operetion_lbl, operation_name)
+
+    
+    
+
+    def set_delete_progress_value(self, n, total=100):
+        GUIBackend.set_label_text(self.complete_count_lbl, str(int(n)))
+        GUIBackend.set_label_text(self.total_count_lbl, str(total))
+
+        percent = n / total * 100
+        GUIBackend.set_progressbar_value(self.progressbar, percent)
+
+    def cancel_button_connector(self,func):
+        GUIBackend.button_connector(self.cancel_btn, func)
+
+    
+    def show_confirm_massage(self, title, text, buttons):
+        dialog =  confirmMessageBox(title, text, buttons, parent=self)
+        return dialog.render()
+
+
+    def show_win(self,):
+        GUIBackend.show_window(self, always_on_top=True)
+    
+    def close_win(self):
+        GUIBackend.close_window(self)
+
+    def hide_win(self,):
+        GUIBackend.hide_window(self)
