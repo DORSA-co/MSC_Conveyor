@@ -5,7 +5,7 @@ import time
 from persiantools.jdatetime import JalaliDate,JalaliDateTime
 import numpy as np
 
-from Constants.Constant import DecimalRound, RefernceTime
+from Constants.Constant import DecimalRound
 
 
 class numberStatics:
@@ -58,7 +58,8 @@ class Defect:
             depthes: np.ndarray = None,
             n_last_lines: int = 3
         ):
-        self.id = int((time.time() - RefernceTime.REFERENCE_TIME)*(10000))
+        #self.id = int((time.time() - RefernceTime.REFERENCE_TIME)*(10000))
+        self.id = id(self)
         self.widthInfo = numberStatics()
         self.depthInfo = numberStatics()
         self.jdatetime = JalaliDateTime.now()
@@ -141,6 +142,8 @@ class Defect:
         
     def get_bounding_box(self, line_idx, belt_end_line_idx=None):
         #when belt pass the end and start from 0 again
+        #print(belt_end_line_idx, line_idx)
+        
         if belt_end_line_idx is not None and line_idx < self.end_line_idx:
             x1 = line_idx + (belt_end_line_idx - self.end_line_idx)
             x2 = line_idx + (belt_end_line_idx - self.start_line_idx)
@@ -150,6 +153,9 @@ class Defect:
 
         y1 = self.defect_width_boundries[0]
         y2 = self.defect_width_boundries[1]
+
+        #print((x1, y1), (x2, y2))
+        #print('---------------------------')
 
         return (x1, y1), (x2, y2)
 

@@ -8,7 +8,6 @@ parser.add_argument('--path', type=str, default=os.getcwd())
 args=parser.parse_args()
 print('Start')
 
-#args.defect_id= 1893238518
 
 # sys.path.insert(1, os.getcwd())
 sys.path.append(args.path)

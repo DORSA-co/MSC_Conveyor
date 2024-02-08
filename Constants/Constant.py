@@ -36,8 +36,8 @@ class SavePathes:
 class DecimalRound:
     ROUND_DECIMAL = 3
 
-class RefernceTime:
-    REFERENCE_TIME = 1707037547.268894 #1706536738.7368271
+# class RefernceTime:
+#     REFERENCE_TIME = 1707388026.5673308 #1706536738.7368271
 
 class RefreshRates:
     MOUSE_MOVE = 0.01

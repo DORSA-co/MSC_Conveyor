@@ -4,7 +4,7 @@ from persiantools import jdatetime
 class Defect_DB:
     TABLE_NAME = "Defect_Table"
     TABLE_COLS = [
-        {"col_name": "defect_id", "type": "int"},
+        {"col_name": "defect_id", "type": "bigint"},
 
         {"col_name": "date", "type": "VARCHAR(255)", "len": 50},
         {"col_name": "time", "type": "VARCHAR(255)", "len": 50},

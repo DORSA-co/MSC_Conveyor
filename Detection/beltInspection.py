@@ -20,6 +20,8 @@ from Detection.Defect import Defect
 
 from Constants.Constant import DefectConstants
 
+PRINT_FLAG = True
+
 class beltInspection:
 
     def __init__(self, kwargs:dict) -> None:
@@ -65,6 +67,9 @@ class beltInspection:
 
         # SHOULD BE CHANGED
         self.Encoder.counter()
+        line_idx = self.Encoder.get_line_idx()
+        #print(line_idx)
+        # return
         # SHOULD BE CHANGED
         t = time.time()
         self.laser_pts = self.LaserScanner.laserExtraction(image,
@@ -85,27 +90,27 @@ class beltInspection:
         # print('defect extractor: ', time.time() - t)
 
         t = time.time()
-        self.DefectTracker.feed(self.defect_indices, self.anomaly_pts[:, 1], self.Encoder.line_idx)
+        self.DefectTracker.feed(self.defect_indices, self.anomaly_pts[:, 1], line_idx)
         # print('defect tracker: ', time.time() - t)
 
         t = time.time()
-        self.DefectTracker.check_defects_completion(self.kwargs['tracker_min_frame_gap'], self.kwargs['defect_min_length'], self.Encoder.line_idx)
+        self.DefectTracker.check_defects_completion(self.kwargs['tracker_min_frame_gap'], self.kwargs['defect_min_length'], line_idx)
         # print('check completion: ', time.time() - t)
 
         t = time.time()
-        image = self.ImageCreator.feed(self.anomaly_pts, 'color_gradient', self.Encoder.step, self.Encoder.line_idx)
+        image = self.ImageCreator.feed(self.anomaly_pts, 'color_gradient', line_idx)
         # print('image creator: ', time.time() - t)
 
         t = time.time()
         # blure_image = cv2.blur(image, ksize=(3, 3))
         #--------------------------------------
-        self.DefectTracker.check_defect_passed(line_idx=self.Encoder.line_idx,
+        self.DefectTracker.check_defect_passed(line_idx=line_idx,
                                                img_width=image.shape[1])
         
         self.res_image = self.DefectTracker.draw(self.kwargs['defect_min_length'],
                                                 image.copy(), 
-                                                self.Encoder.line_idx,
-                                                self.Encoder.end_line_idx)
+                                                line_idx,
+                                                self.Encoder.get_end_line_idx())
         
         # print('last draw: ', time.time() - t)
 
@@ -123,12 +128,17 @@ class beltInspection:
         return self.DefectTracker.completed_defects.get_by_id(_id)
     
     def round_finish_event(self, finish_idx):
-        print('End Belt',finish_idx)
+        if PRINT_FLAG:
+            print('End Belt',finish_idx)
         self.ImageCreator.reset_image_index()
 
-    def cycle_image_event(self,):
-        save_thread = threading.Thread(target=self.ImageCreator.save_depth_image)
+    def cycle_image_event(self,image_index, image_start_line_idx):
+        if PRINT_FLAG:
+            print('save depth image:',image_index, image_start_line_idx)
+        save_thread = threading.Thread(target=self.ImageCreator.save_depth_image,
+                                       args=(image_index, image_start_line_idx))
         save_thread.start()
+
 
 if __name__ == "__main__":
     

@@ -15,7 +15,7 @@ class AnomalyDetectionHandeler:
     def __init__(self,) -> None:
         self.LineFit = LineFitAnomalyDetection()
         self.CurveFit = CurveFitAnomalyDetection()
-        self.__algorithm = ''
+        self.__algorithm = ANOMALY_ALGORITHMS.CURVE_FIT
 
 
     def feed(self, pts:np.ndarray, diff_thresh:int, algorithm:str):
@@ -45,8 +45,10 @@ class AnomalyDetectionHandeler:
 class _AnomalyDetection:
     
     def __init__(self) -> None:
-        self.error_ys = None
-        self.pts = None
+        self.error_ys = np.array([])
+        self.pts = np.array([])
+        self.xs = np.array([])
+        self.pred_ys = np.array([])
         self.MAX_STD = 10
 
     def threshould_errors(self, error_ys:np.ndarray, thresh:int):
@@ -54,8 +56,9 @@ class _AnomalyDetection:
         return error_ys
     
     def draw(self, image:np.ndarray, color:tuple=(0,0,255)):
-        defect_pts = self.pts[self.error_ys>0]
-        image[defect_pts[:,1], defect_pts[:,0]] = color
+        if self.pts.size:
+            defect_pts = self.pts[self.error_ys>0]
+            image[defect_pts[:,1], defect_pts[:,0]] = color
         return image
     
     def stackXY(self, xs:np.ndarray, error_ys:np.ndarray):
@@ -71,9 +74,6 @@ class LineFitAnomalyDetection(_AnomalyDetection):
         super().__init__()
         self.slope = None
         self.intercept = None   
-        self.xs = None
-        self.pred_ys = None
-        self.error_ys = None
 
     
     def calculate_ys(self, xs:np.ndarray, slope:float, intercept:float):
@@ -83,7 +83,8 @@ class LineFitAnomalyDetection(_AnomalyDetection):
     
     def draw(self,image: np.ndarray, line_color:tuple=(0,255,0), defect_color:tuple=(0,0,255) ):
         image = super().draw(image, color=defect_color)
-        image[self.pred_ys, self.xs] = line_color
+        if self.pred_ys.size:
+            image[self.pred_ys, self.xs] = line_color
         return image
 
 
@@ -118,9 +119,7 @@ class CurveFitAnomalyDetection(_AnomalyDetection):
     def __init__(self,) -> None:
         super().__init__()
         self.curve_parms = np.array([0,0,0])
-        self.xs = None
-        self.pred_ys = None
-        self.error_ys = None
+        
 
     
     def __curve_function(self, x, a, b, c):
@@ -133,7 +132,8 @@ class CurveFitAnomalyDetection(_AnomalyDetection):
     
     def draw(self, image: np.ndarray, line_color:tuple=(0,255,0), defect_color:tuple=(0,0,255) ):
         image = super().draw(image, color=defect_color)
-        image[self.pred_ys, self.xs] = line_color
+        if self.pred_ys.size:
+            image[self.pred_ys, self.xs] = line_color
         return image
 
     def __calc_error_ys(self, pts):

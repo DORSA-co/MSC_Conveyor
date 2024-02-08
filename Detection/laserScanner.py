@@ -6,10 +6,11 @@ class laserScanner:
     
     
     def __init__(self) -> None:
-        pass
+        self.pts = np.array([])
     
     def draw(self,image:np.ndarray, point_color=(255,255,255)):
-        image[self.pts[:,1], self.pts[:,0]] = point_color
+        if self.pts.size:
+            image[self.pts[:,1], self.pts[:,0]] = point_color
         return image
     
     
