@@ -207,7 +207,7 @@ class removeDefectsWorker(QObject):
                 i+=1
 
             #delay for help to user to cancel soon
-            time.sleep(0.2)
+            time.sleep(2)
 
         print('remove finished')
         self.finished.emit()

@@ -1,3 +1,5 @@
+import time
+
 import re
 import cv2
 
@@ -1239,6 +1241,7 @@ class proggressDialogUI(QtWidgets.QWidget):
         self.title_lbl = self.ui.title_lbl
         self.description_lbl = self.ui.description_lbl
         self.progress_operetion_lbl = self.ui.progress_operetion_lbl
+        self.value_lbl = self.ui.progressbar_value_label
         self.progress_frame = self.ui.progress_frame
         self.complete_count_lbl = self.ui.complete_count_lbl
         self.total_count_lbl = self.ui.total_count_lbl
@@ -1246,9 +1249,29 @@ class proggressDialogUI(QtWidgets.QWidget):
 
         self.setup(title, description, show_info, operation_name)
         GUIBackend.set_win_frameless(self)
+        GUIBackend.set_win_attribute(self, QtCore.Qt.WA_TranslucentBackground)
 
+        self.move_refresh_time = 0
+        self.offset = None
 
+    def mousePressEvent(self, event):
+        if event.button() == QtCore.Qt.LeftButton:
+            self.offset = QtCore.QPoint(event.position().x(),event.position().y())
+        else:
+            super().mousePressEvent(event)
 
+    def mouseMoveEvent(self, event):
+        if self.offset is not None:
+            if time.time() - self.move_refresh_time > Constant.RefreshRates.MOUSE_MOVE:
+                self.move_refresh_time = time.time()
+                self.move(self.pos() + QtCore.QPoint(event.scenePosition().x(),event.scenePosition().y()) - self.offset)
+
+        else:
+            super().mouseMoveEvent(event)
+
+    def mouseReleaseEvent(self, event):
+        self.offset = None
+        super().mouseReleaseEvent(event)
 
     def setup(self, title='',
                        description='',
@@ -1271,6 +1294,7 @@ class proggressDialogUI(QtWidgets.QWidget):
         GUIBackend.set_label_text(self.total_count_lbl, str(total))
 
         percent = n / total * 100
+        GUIBackend.set_label_text(self.value_lbl, str(round(percent)))
         GUIBackend.set_progressbar_value(self.progressbar, percent)
 
     def cancel_button_connector(self,func):

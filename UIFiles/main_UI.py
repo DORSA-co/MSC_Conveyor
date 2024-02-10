@@ -29,11 +29,17 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1196, 815)
+        MainWindow.resize(1196, 825)
         self.StyleSheet = QWidget(MainWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
         self.StyleSheet.setEnabled(True)
-        self.StyleSheet.setStyleSheet(u"QLabel{\n"
+        self.StyleSheet.setStyleSheet(u"*{\n"
+"	font: auto \"Roboto\";\n"
+"}\n"
+"\n"
+"/************************************************************/\n"
+"\n"
+"QLabel{\n"
 "	color: rgb(20, 20, 20);\n"
 "}\n"
 "\n"
@@ -73,14 +79,14 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {\n"
-"    border: none;\n"
+"    "
+                        "border: none;\n"
 "    width: 3px;\n"
 "    height: 3px;\n"
 "    background: transparent;\n"
 "}\n"
 "\n"
-"QScrollBar::add"
-                        "-page:vertical, QScrollBar::sub-page:vertical {\n"
+"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
 "    background: none;\n"
 "}\n"
 "\n"
@@ -117,14 +123,14 @@ class Ui_MainWindow(object):
 "    border: none;\n"
 "    width: 3px;\n"
 "    height: 3px;\n"
-"    background: transparent;\n"
+"    background: transparent"
+                        ";\n"
 "}\n"
 "\n"
 "QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {\n"
 "    background: none;\n"
 "}\n"
-""
-                        "\n"
+"\n"
 "/************************************************************/\n"
 "\n"
 "QCheckBox {\n"
@@ -162,13 +168,13 @@ class Ui_MainWindow(object):
 "\n"
 "/************************************************************/\n"
 "\n"
-"QGraphicsView{\n"
+"QGrap"
+                        "hicsView{\n"
 "	border: None;\n"
-"	background-color: #F7F8FA\n"
+"	background-color: transparent;\n"
 "}\n"
 "\n"
-"/********************************************"
-                        "****************/\n"
+"/************************************************************/\n"
 "\n"
 "QLineEdit {\n"
 "  	border:1px solid #E0E4EC;\n"
@@ -209,14 +215,14 @@ class Ui_MainWindow(object):
 "QDoubleSpinBox::up-arrow,\n"
 "QDateEdit::up-arrow\n"
 "{   \n"
-"	image: url(:/icons/icons/plus_icon_black.png);\n"
+"	im"
+                        "age: url(:/icons/icons/plus_icon_black.png);\n"
 "	width: 16px;\n"
 "	height: 16px;\n"
 "}\n"
 "\n"
 "QSpinBox::down-arrow,  \n"
-""
-                        "QDoubleSpinBox::down-arrow,\n"
+"QDoubleSpinBox::down-arrow,\n"
 "QDateEdit::down-arrow\n"
 "{   \n"
 "	image: url(:/icons/icons/minus_icon_black.png);\n"
@@ -255,14 +261,14 @@ class Ui_MainWindow(object):
 "    right: 0px;\n"
 "}\n"
 "\n"
-"QSpinBox::down-button,\n"
+"QSpinBox::down-butto"
+                        "n,\n"
 "QDoubleSpinBox::down-button,\n"
 "QDateEdit::down-button\n"
 "{\n"
 "    min-width:30px;\n"
 "    min-height: 29px;\n"
-"  "
-                        "  subcontrol-origin: margin;\n"
+"    subcontrol-origin: margin;\n"
 "    subcontrol-position: left;\n"
 "    top: 0px;\n"
 "    right: 0px;\n"
@@ -299,13 +305,13 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "/* Tab Bar Style */\n"
-"QTabBar::tab {\n"
+"QTabBar::tab {"
+                        "\n"
 "    background-color: #BDBDBF;\n"
 "    color: rgb(20, 20, 20);\n"
 "	min-width: 100px;\n"
 "    padding: 8px 16px;\n"
-"   "
-                        " border-top-left-radius: 4px;\n"
+"    border-top-left-radius: 4px;\n"
 "    border-top-right-radius: 4px;\n"
 "}\n"
 "\n"
@@ -340,12 +346,12 @@ class Ui_MainWindow(object):
 "QHeaderView::section {\n"
 "    background-color: #F7F8FA;\n"
 "    padding: 5px;\n"
-"	border-top-left-radius: 0px;\n"
+"	border-top-left"
+                        "-radius: 0px;\n"
 "	border-bottom: 2px solid #BDBDBF;\n"
 "	border-right: 1px solid #D7D7D9;\n"
 "	font-weight: bold;\n"
-"	color"
-                        ": rgb(20, 20, 20);\n"
+"	color: rgb(20, 20, 20);\n"
 "}\n"
 "\n"
 "QHeaderView::section:first {\n"
@@ -391,14 +397,14 @@ class Ui_MainWindow(object):
 "\n"
 "QComboBox:disabled\n"
 "{\n"
-"	border: 2px solid #F0F0F2;\n"
+""
+                        "	border: 2px solid #F0F0F2;\n"
 "	color: rgb(120, 120, 120);\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:disabled\n"
 "{   \n"
-"	ima"
-                        "ge: url(:/icons/icons/down_icon_gray.png);\n"
+"	image: url(:/icons/icons/down_icon_gray.png);\n"
 "	width: 12px;\n"
 "    height: 12px;\n"
 "}\n"
@@ -439,7 +445,8 @@ class Ui_MainWindow(object):
 "\n"
 "#side_frame QPushButton{\n"
 "	border: 0px;\n"
-"	color: white;\n"
+"	col"
+                        "or: white;\n"
 "	font-weight: bold;\n"
 "}\n"
 "\n"
@@ -447,8 +454,7 @@ class Ui_MainWindow(object):
 "	background-color: #F7F8FA;\n"
 "}\n"
 "\n"
-"#top_frame QPu"
-                        "shButton{\n"
+"#top_frame QPushButton{\n"
 "	border: 0px;\n"
 "}\n"
 "\n"
@@ -485,14 +491,14 @@ class Ui_MainWindow(object):
 "	font-weight: bold;\n"
 "}\n"
 "\n"
-"#step1_label, #step2_label, #step3_label, #step4_label, #step5_label{\n"
+"#step1_label, #step2_label, #step3_labe"
+                        "l, #step4_label, #step5_label{\n"
 "	font-size: 26px;\n"
 "	color: #4C7EFF;\n"
 "}\n"
 "\n"
 "#show_steps_frame{\n"
-"	border: No"
-                        "ne;\n"
+"	border: None;\n"
 "}\n"
 "\n"
 "#show_steps_frame .QPushButton{\n"
@@ -533,12 +539,12 @@ class Ui_MainWindow(object):
 "\n"
 "#userpage_password_eye,\n"
 "#userpage_confirm_password_eye,\n"
-"#userpage_editprofile_old_password_eye,\n"
+"#userpage_editprofile_old_passwo"
+                        "rd_eye,\n"
 "#userpage_editprofile_new_password_eye,\n"
 "#userpage_editprofile_confirm_new_password_eye\n"
 "{\n"
-"	border: 0"
-                        "px;\n"
+"	border: 0px;\n"
 "	background-color: rgba(0,0,0,0);\n"
 "	border:1px solid #E0E4EC;\n"
 "	background-color: #F7F8FA;\n"
@@ -571,14 +577,14 @@ class Ui_MainWindow(object):
 "#camera_settings_message_frame,\n"
 "#register_message_frame, \n"
 "#change_username_message_frame,\n"
-"#change_password_message_frame\n"
+"#change_password_m"
+                        "essage_frame\n"
 "{\n"
 "	background-color: #F7F8FA;\n"
 "}\n"
 "\n"
 "#defects_notifications_widget{\n"
-"	background-color: #F7"
-                        "F8FA;\n"
+"	background-color: #F7F8FA;\n"
 "	border:1px solid #D7D7D9;\n"
 "}\n"
 "\n"
@@ -631,7 +637,9 @@ class Ui_MainWindow(object):
         sizePolicy1.setHeightForWidth(self.side_live_view_btn.sizePolicy().hasHeightForWidth())
         self.side_live_view_btn.setSizePolicy(sizePolicy1)
         font = QFont()
+        font.setFamilies([u"Roboto"])
         font.setBold(True)
+        font.setItalic(False)
         self.side_live_view_btn.setFont(font)
         self.side_live_view_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.side_live_view_btn.setStyleSheet(u"")
@@ -879,7 +887,7 @@ class Ui_MainWindow(object):
         self.defects_notifications_scrollArea.setWidgetResizable(True)
         self.defects_notifications_widget = QWidget()
         self.defects_notifications_widget.setObjectName(u"defects_notifications_widget")
-        self.defects_notifications_widget.setGeometry(QRect(0, 0, 320, 675))
+        self.defects_notifications_widget.setGeometry(QRect(0, 0, 320, 684))
         self.defects_notifications_widget.setStyleSheet(u"#defects_notifications_widget{\n"
 "	border:None;\n"
 "	border-top: 2px solid gray;\n"
@@ -922,7 +930,11 @@ class Ui_MainWindow(object):
         self.label.setObjectName(u"label")
         self.label.setMinimumSize(QSize(40, 200))
         self.label.setMaximumSize(QSize(40, 200))
-        self.label.setFont(font)
+        font1 = QFont()
+        font1.setFamilies([u"Roboto"])
+        font1.setBold(False)
+        font1.setItalic(False)
+        self.label.setFont(font1)
         self.label.setStyleSheet(u"background-color: rgb(250, 65, 55);\n"
 "color: white;\n"
 "border-radius: 20px;")
@@ -1005,10 +1017,12 @@ class Ui_MainWindow(object):
 
         self.system_status_btn = QPushButton(self.expanding_frame)
         self.system_status_btn.setObjectName(u"system_status_btn")
-        font1 = QFont()
-        font1.setPointSize(11)
-        font1.setBold(False)
-        self.system_status_btn.setFont(font1)
+        font2 = QFont()
+        font2.setFamilies([u"Roboto"])
+        font2.setPointSize(11)
+        font2.setBold(False)
+        font2.setItalic(False)
+        self.system_status_btn.setFont(font2)
         self.system_status_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.system_status_btn.setStyleSheet(u"")
         icon12 = QIcon()
@@ -3131,7 +3145,7 @@ class Ui_MainWindow(object):
         self.register_message_scrollArea.setWidgetResizable(True)
         self.register_message_frame = QWidget()
         self.register_message_frame.setObjectName(u"register_message_frame")
-        self.register_message_frame.setGeometry(QRect(0, 0, 916, 248))
+        self.register_message_frame.setGeometry(QRect(0, 0, 916, 253))
         sizePolicy3.setHeightForWidth(self.register_message_frame.sizePolicy().hasHeightForWidth())
         self.register_message_frame.setSizePolicy(sizePolicy3)
         self.verticalLayout_55 = QVBoxLayout(self.register_message_frame)
@@ -3256,7 +3270,7 @@ class Ui_MainWindow(object):
         self.change_username_message_scrollArea.setWidgetResizable(True)
         self.change_username_message_frame = QWidget()
         self.change_username_message_frame.setObjectName(u"change_username_message_frame")
-        self.change_username_message_frame.setGeometry(QRect(0, 0, 432, 375))
+        self.change_username_message_frame.setGeometry(QRect(0, 0, 432, 381))
         self.change_username_message_scrollArea.setWidget(self.change_username_message_frame)
 
         self.verticalLayout_54.addWidget(self.change_username_message_scrollArea)
@@ -3432,7 +3446,7 @@ class Ui_MainWindow(object):
         self.change_password_message_scrollArea.setWidgetResizable(True)
         self.change_password_message_frame = QWidget()
         self.change_password_message_frame.setObjectName(u"change_password_message_frame")
-        self.change_password_message_frame.setGeometry(QRect(0, 0, 432, 287))
+        self.change_password_message_frame.setGeometry(QRect(0, 0, 432, 292))
         self.change_password_message_scrollArea.setWidget(self.change_password_message_frame)
 
         self.verticalLayout_51.addWidget(self.change_password_message_scrollArea)
@@ -3510,10 +3524,10 @@ class Ui_MainWindow(object):
         self.system_status_expanding_btn.clicked.connect(self.system_status_btn.click)
         self.notif_filter_expanding_btn.clicked.connect(self.notif_filter_btn.click)
 
-        self.main_stackedWidget.setCurrentIndex(0)
+        self.main_stackedWidget.setCurrentIndex(1)
         self.live_tabWidget.setCurrentIndex(0)
-        self.settings_tabs.setCurrentIndex(1)
-        self.algorithm_stackedWidget.setCurrentIndex(4)
+        self.settings_tabs.setCurrentIndex(0)
+        self.algorithm_stackedWidget.setCurrentIndex(0)
         self.user_tabs.setCurrentIndex(0)
 
 

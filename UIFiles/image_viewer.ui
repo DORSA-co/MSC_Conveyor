@@ -15,7 +15,13 @@
   </property>
   <widget class="QWidget" name="StyleSheet">
    <property name="styleSheet">
-    <string notr="true">QLabel{
+    <string notr="true">*{
+	font: auto &quot;Roboto&quot;;
+}
+
+/************************************************************/
+
+QLabel{
 	color: rgb(20, 20, 20);
 }
 

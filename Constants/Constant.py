@@ -30,6 +30,7 @@ class DemoImage:
     DIR = 'demo imgs/'
 
 class SavePathes:
+    DEFECTS_SAVE_PATH = 'defects_info'
     IMAGE_SAVE_PATH = os.path.join('belt_images', 'depth')
     METADATA_JASON_FILE = 'metadata.json'
 

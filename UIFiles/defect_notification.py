@@ -31,7 +31,13 @@ class Ui_Notification(object):
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.StyleSheet = QWidget(Notification)
         self.StyleSheet.setObjectName(u"StyleSheet")
-        self.StyleSheet.setStyleSheet(u"QLabel{\n"
+        self.StyleSheet.setStyleSheet(u"*{\n"
+"	font: auto \"Roboto\";\n"
+"}\n"
+"\n"
+"/************************************************************/\n"
+"\n"
+"QLabel{\n"
 "	color:#505050;\n"
 "\n"
 "}\n"
@@ -74,7 +80,8 @@ class Ui_Notification(object):
 "{\n"
 "	border:1px solid #E0E4EC;\n"
 "	border-radius: 15px;\n"
-"	background-color: #F7F8FA;\n"
+"	background-color: #F7F8"
+                        "FA;\n"
 "}\n"
 "\n"
 "#defect_color_frame{\n"
@@ -83,8 +90,7 @@ class Ui_Notification(object):
 "\n"
 "#defect_color_frame .QLabel\n"
 "{\n"
-"	borde"
-                        "r-radius:4px;\n"
+"	border-radius:4px;\n"
 "}\n"
 "\n"
 "#i_label{\n"
@@ -198,7 +204,10 @@ class Ui_Notification(object):
         self.defect_color_frame.setMinimumSize(QSize(30, 30))
         self.defect_color_frame.setMaximumSize(QSize(30, 30))
         font = QFont()
+        font.setFamilies([u"Roboto"])
         font.setPointSize(16)
+        font.setBold(False)
+        font.setItalic(False)
         self.defect_color_frame.setFont(font)
         self.defect_color_frame.setStyleSheet(u"#defect_color_frame{\n"
 "	background-color: red;\n"
@@ -218,9 +227,10 @@ class Ui_Notification(object):
         self.i_label.setMinimumSize(QSize(0, 0))
         self.i_label.setMaximumSize(QSize(16777215, 16777215))
         font1 = QFont()
-        font1.setFamilies([u"TeX Gyre Schola"])
+        font1.setFamilies([u"Roboto"])
         font1.setPointSize(15)
-        font1.setBold(True)
+        font1.setBold(False)
+        font1.setItalic(False)
         self.i_label.setFont(font1)
         self.i_label.setScaledContents(True)
         self.i_label.setAlignment(Qt.AlignCenter)

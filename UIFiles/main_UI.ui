@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1196</width>
-    <height>815</height>
+    <height>825</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,13 @@
     <bool>true</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">QLabel{
+    <string notr="true">*{
+	font: auto &quot;Roboto&quot;;
+}
+
+/************************************************************/
+
+QLabel{
 	color: rgb(20, 20, 20);
 }
 
@@ -147,7 +153,7 @@ QCheckBox::indicator:disabled {
 
 QGraphicsView{
 	border: None;
-	background-color: #F7F8FA
+	background-color: transparent;
 }
 
 /************************************************************/
@@ -673,7 +679,9 @@ QComboBox:focus{
          </property>
          <property name="font">
           <font>
+           <family>Roboto</family>
            <weight>75</weight>
+           <italic>false</italic>
            <bold>true</bold>
           </font>
          </property>
@@ -1042,7 +1050,7 @@ QComboBox:focus{
       <item>
        <widget class="QStackedWidget" name="main_stackedWidget">
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="live_view_page">
          <layout class="QHBoxLayout" name="horizontalLayout_23">
@@ -1203,7 +1211,7 @@ font-weight:bold;</string>
                     <x>0</x>
                     <y>0</y>
                     <width>320</width>
-                    <height>675</height>
+                    <height>684</height>
                    </rect>
                   </property>
                   <property name="styleSheet">
@@ -1286,8 +1294,10 @@ font-weight:bold;</string>
                     </property>
                     <property name="font">
                      <font>
-                      <weight>75</weight>
-                      <bold>true</bold>
+                      <family>Roboto</family>
+                      <weight>50</weight>
+                      <italic>false</italic>
+                      <bold>false</bold>
                      </font>
                     </property>
                     <property name="styleSheet">
@@ -1446,8 +1456,10 @@ border-radius: 20px;</string>
                 <widget class="QPushButton" name="system_status_btn">
                  <property name="font">
                   <font>
+                   <family>Roboto</family>
                    <pointsize>11</pointsize>
                    <weight>50</weight>
+                   <italic>false</italic>
                    <bold>false</bold>
                   </font>
                  </property>
@@ -1692,7 +1704,7 @@ border-radius: 20px;</string>
           <item>
            <widget class="QTabWidget" name="settings_tabs">
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="camera_tab">
              <attribute name="title">
@@ -1738,8 +1750,10 @@ border-radius: 20px;</string>
                      </property>
                      <property name="font">
                       <font>
+                       <family>Roboto</family>
                        <pointsize>-1</pointsize>
                        <weight>75</weight>
+                       <italic>false</italic>
                        <bold>true</bold>
                       </font>
                      </property>
@@ -1774,8 +1788,10 @@ border-radius: 20px;</string>
                      </property>
                      <property name="font">
                       <font>
+                       <family>Roboto</family>
                        <pointsize>-1</pointsize>
                        <weight>75</weight>
+                       <italic>false</italic>
                        <bold>true</bold>
                       </font>
                      </property>
@@ -1824,8 +1840,10 @@ border-radius: 20px;</string>
                         <widget class="QLabel" name="camera_settings_camera_label">
                          <property name="font">
                           <font>
+                           <family>Roboto</family>
                            <pointsize>-1</pointsize>
                            <weight>75</weight>
+                           <italic>false</italic>
                            <bold>true</bold>
                           </font>
                          </property>
@@ -1850,8 +1868,10 @@ border-radius: 20px;</string>
                           <widget class="QLabel" name="camera_settings_serial_label">
                            <property name="font">
                             <font>
+                             <family>Roboto</family>
                              <pointsize>-1</pointsize>
                              <weight>75</weight>
+                             <italic>false</italic>
                              <bold>true</bold>
                             </font>
                            </property>
@@ -1878,8 +1898,10 @@ border-radius: 20px;</string>
                       <widget class="QLabel" name="camera_settings_gain_label">
                        <property name="font">
                         <font>
+                         <family>Roboto</family>
                          <pointsize>-1</pointsize>
                          <weight>75</weight>
+                         <italic>false</italic>
                          <bold>true</bold>
                         </font>
                        </property>
@@ -1912,8 +1934,10 @@ border-radius: 20px;</string>
                        </property>
                        <property name="font">
                         <font>
+                         <family>Roboto</family>
                          <pointsize>-1</pointsize>
                          <weight>75</weight>
+                         <italic>false</italic>
                          <bold>true</bold>
                         </font>
                        </property>
@@ -1943,8 +1967,10 @@ border-radius: 20px;</string>
                       <widget class="QLabel" name="camera_settings_height_label">
                        <property name="font">
                         <font>
+                         <family>Roboto</family>
                          <pointsize>-1</pointsize>
                          <weight>75</weight>
+                         <italic>false</italic>
                          <bold>true</bold>
                         </font>
                        </property>
@@ -1974,8 +2000,10 @@ border-radius: 20px;</string>
                       <widget class="QLabel" name="camera_settings_exposure_label">
                        <property name="font">
                         <font>
+                         <family>Roboto</family>
                          <pointsize>-1</pointsize>
                          <weight>75</weight>
+                         <italic>false</italic>
                          <bold>true</bold>
                         </font>
                        </property>
@@ -2005,8 +2033,10 @@ border-radius: 20px;</string>
                       <widget class="QLabel" name="camera_settings_offsetx_label">
                        <property name="font">
                         <font>
+                         <family>Roboto</family>
                          <pointsize>-1</pointsize>
                          <weight>75</weight>
+                         <italic>false</italic>
                          <bold>true</bold>
                         </font>
                        </property>
@@ -2036,8 +2066,10 @@ border-radius: 20px;</string>
                       <widget class="QLabel" name="camera_settings_offsety_label">
                        <property name="font">
                         <font>
+                         <family>Roboto</family>
                          <pointsize>-1</pointsize>
                          <weight>75</weight>
+                         <italic>false</italic>
                          <bold>true</bold>
                         </font>
                        </property>
@@ -2092,8 +2124,10 @@ border-radius: 20px;</string>
                        </property>
                        <property name="font">
                         <font>
+                         <family>Roboto</family>
                          <pointsize>-1</pointsize>
                          <weight>75</weight>
+                         <italic>false</italic>
                          <bold>true</bold>
                         </font>
                        </property>
@@ -2318,8 +2352,10 @@ border-radius: 20px;</string>
                        </property>
                        <property name="font">
                         <font>
+                         <family>Roboto</family>
                          <pointsize>-1</pointsize>
                          <weight>75</weight>
+                         <italic>false</italic>
                          <bold>true</bold>
                         </font>
                        </property>
@@ -2391,8 +2427,10 @@ border-radius: 20px;</string>
                   <widget class="QPushButton" name="step1_btn">
                    <property name="font">
                     <font>
+                     <family>Roboto</family>
                      <pointsize>-1</pointsize>
                      <weight>75</weight>
+                     <italic>false</italic>
                      <bold>true</bold>
                     </font>
                    </property>
@@ -2430,8 +2468,10 @@ border-radius: 20px;</string>
                   <widget class="QPushButton" name="step2_btn">
                    <property name="font">
                     <font>
+                     <family>Roboto</family>
                      <pointsize>-1</pointsize>
                      <weight>75</weight>
+                     <italic>false</italic>
                      <bold>true</bold>
                     </font>
                    </property>
@@ -2460,8 +2500,10 @@ border-radius: 20px;</string>
                   <widget class="QPushButton" name="step3_btn">
                    <property name="font">
                     <font>
+                     <family>Roboto</family>
                      <pointsize>-1</pointsize>
                      <weight>75</weight>
+                     <italic>false</italic>
                      <bold>true</bold>
                     </font>
                    </property>
@@ -2487,8 +2529,10 @@ border-radius: 20px;</string>
                   <widget class="QPushButton" name="step4_btn">
                    <property name="font">
                     <font>
+                     <family>Roboto</family>
                      <pointsize>-1</pointsize>
                      <weight>75</weight>
+                     <italic>false</italic>
                      <bold>true</bold>
                     </font>
                    </property>
@@ -2514,8 +2558,10 @@ border-radius: 20px;</string>
                   <widget class="QPushButton" name="step5_btn">
                    <property name="font">
                     <font>
+                     <family>Roboto</family>
                      <pointsize>-1</pointsize>
                      <weight>75</weight>
+                     <italic>false</italic>
                      <bold>true</bold>
                     </font>
                    </property>
@@ -2533,7 +2579,7 @@ border-radius: 20px;</string>
               <item>
                <widget class="QStackedWidget" name="algorithm_stackedWidget">
                 <property name="currentIndex">
-                 <number>4</number>
+                 <number>0</number>
                 </property>
                 <widget class="QWidget" name="step1">
                  <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="25,75">
@@ -2601,7 +2647,9 @@ border-radius: 20px;</string>
                          </property>
                          <property name="font">
                           <font>
+                           <family>Roboto</family>
                            <weight>75</weight>
+                           <italic>false</italic>
                            <bold>true</bold>
                           </font>
                          </property>
@@ -2643,7 +2691,9 @@ border-radius: 20px;</string>
                          </property>
                          <property name="font">
                           <font>
+                           <family>Roboto</family>
                            <weight>75</weight>
+                           <italic>false</italic>
                            <bold>true</bold>
                           </font>
                          </property>
@@ -3293,8 +3343,10 @@ border-radius: 20px;</string>
                   </property>
                   <property name="font">
                    <font>
+                    <family>Roboto</family>
                     <pointsize>-1</pointsize>
                     <weight>75</weight>
+                    <italic>false</italic>
                     <bold>true</bold>
                    </font>
                   </property>
@@ -5192,7 +5244,7 @@ QFrame{
                       <x>0</x>
                       <y>0</y>
                       <width>916</width>
-                      <height>248</height>
+                      <height>253</height>
                      </rect>
                     </property>
                     <property name="sizePolicy">
@@ -5233,8 +5285,10 @@ QFrame{
                     <widget class="QLabel" name="profile_change_username_label">
                      <property name="font">
                       <font>
+                       <family>Roboto</family>
                        <pointsize>-1</pointsize>
                        <weight>75</weight>
+                       <italic>false</italic>
                        <bold>true</bold>
                       </font>
                      </property>
@@ -5388,7 +5442,7 @@ QFrame{
                         <x>0</x>
                         <y>0</y>
                         <width>432</width>
-                        <height>375</height>
+                        <height>381</height>
                        </rect>
                       </property>
                      </widget>
@@ -5651,7 +5705,7 @@ QFrame{
                         <x>0</x>
                         <y>0</y>
                         <width>432</width>
-                        <height>287</height>
+                        <height>292</height>
                        </rect>
                       </property>
                      </widget>

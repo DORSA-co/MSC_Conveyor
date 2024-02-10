@@ -9,6 +9,8 @@ from Detection.Defect import Defect, numberStatics
 class DefectFileManager:
     def __init__(self, main_path):
         self.main_path = main_path
+        if not os.path.exists(self.main_path):
+            os.makedirs(self.main_path)
 
     def defect_to_json(self, defect:Defect):
         json_dict = {}

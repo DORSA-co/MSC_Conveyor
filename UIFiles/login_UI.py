@@ -31,7 +31,13 @@ class Ui_loginDialogWin(object):
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.StyleSheet = QWidget(loginDialogWin)
         self.StyleSheet.setObjectName(u"StyleSheet")
-        self.StyleSheet.setStyleSheet(u"QLineEdit{\n"
+        self.StyleSheet.setStyleSheet(u"*{\n"
+"	font: auto \"Roboto\";\n"
+"}\n"
+"\n"
+"/************************************************************/\n"
+"\n"
+"QLineEdit{\n"
 "	background-color: rgba(0, 0, 0, 0);\n"
 "	border: None;\n"
 "	border-bottom: 2px solid rgba(105, 118, 132, 255);\n"
@@ -69,14 +75,14 @@ class Ui_loginDialogWin(object):
 "}\n"
 "\n"
 "#temp_btn{\n"
-"	border: 0px;\n"
+"	border: 0px;"
+                        "\n"
 "	background-color: rgba(0,0,0,0);\n"
 "}\n"
 "\n"
 "#temp_btn:pressed{\n"
 "	border: 0px;\n"
-"	background-color: rgba"
-                        "(0,0,0,0);\n"
+"	background-color: rgba(0,0,0,0);\n"
 "}\n"
 "\n"
 "#eye_btn{\n"
@@ -93,6 +99,7 @@ class Ui_loginDialogWin(object):
 "	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgb(126, 132, 162), stop:1 rgb(31, 42, 77));\n"
 "	color: rgba(255, 255, 255, 210);\n"
 "	border-radius: 20px;\n"
+"	font-weight: bold;\n"
 "}\n"
 "\n"
 "#login_btn:hover{\n"
@@ -202,7 +209,10 @@ class Ui_loginDialogWin(object):
         self.username_input.setMinimumSize(QSize(200, 40))
         self.username_input.setMaximumSize(QSize(200, 16777215))
         font = QFont()
+        font.setFamilies([u"Roboto"])
         font.setPointSize(11)
+        font.setBold(False)
+        font.setItalic(False)
         self.username_input.setFont(font)
         self.username_input.setStyleSheet(u"")
 
@@ -287,8 +297,10 @@ class Ui_loginDialogWin(object):
         self.login_btn.setMinimumSize(QSize(200, 40))
         self.login_btn.setMaximumSize(QSize(200, 40))
         font1 = QFont()
+        font1.setFamilies([u"Roboto"])
         font1.setPointSize(12)
         font1.setBold(True)
+        font1.setItalic(False)
         self.login_btn.setFont(font1)
         self.login_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.login_btn.setStyleSheet(u"")

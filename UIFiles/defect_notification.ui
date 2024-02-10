@@ -32,7 +32,13 @@
    <item>
     <widget class="QWidget" name="StyleSheet" native="true">
      <property name="styleSheet">
-      <string notr="true">QLabel{
+      <string notr="true">*{
+	font: auto &quot;Roboto&quot;;
+}
+
+/************************************************************/
+
+QLabel{
 	color:#505050;
 
 }
@@ -321,7 +327,11 @@ font-weight:bold;</string>
              </property>
              <property name="font">
               <font>
+               <family>Roboto</family>
                <pointsize>16</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
               </font>
              </property>
              <property name="styleSheet">
@@ -373,10 +383,11 @@ font-weight:bold;</string>
                 </property>
                 <property name="font">
                  <font>
-                  <family>TeX Gyre Schola</family>
+                  <family>Roboto</family>
                   <pointsize>15</pointsize>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <weight>50</weight>
+                  <italic>false</italic>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="text">

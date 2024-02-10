@@ -30,7 +30,14 @@ class Ui_Tile(object):
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.StyleSheet = QWidget(Tile)
         self.StyleSheet.setObjectName(u"StyleSheet")
-        self.StyleSheet.setStyleSheet(u"#main_frame\n"
+        self.StyleSheet.setStyleSheet(u"*{\n"
+"	font: auto \"Roboto\";\n"
+"	font-weight: bold;\n"
+"}\n"
+"\n"
+"/************************************************************/\n"
+"\n"
+"#main_frame\n"
 "{\n"
 "	border:None;\n"
 "	background-color: #E0E4EC;\n"
@@ -79,8 +86,10 @@ class Ui_Tile(object):
         sizePolicy1.setHeightForWidth(self.meterage_low_label.sizePolicy().hasHeightForWidth())
         self.meterage_low_label.setSizePolicy(sizePolicy1)
         font = QFont()
+        font.setFamilies([u"Roboto"])
         font.setPointSize(13)
         font.setBold(True)
+        font.setItalic(False)
         self.meterage_low_label.setFont(font)
         self.meterage_low_label.setStyleSheet(u"color: #707070;")
 

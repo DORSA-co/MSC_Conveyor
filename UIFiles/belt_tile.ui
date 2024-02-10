@@ -32,7 +32,14 @@
    <item>
     <widget class="QWidget" name="StyleSheet" native="true">
      <property name="styleSheet">
-      <string notr="true">#main_frame
+      <string notr="true">*{
+	font: auto &quot;Roboto&quot;;
+	font-weight: bold;
+}
+
+/************************************************************/
+
+#main_frame
 {
 	border:None;
 	background-color: #E0E4EC;
@@ -144,8 +151,10 @@ background-color: None;</string>
                   </property>
                   <property name="font">
                    <font>
+                    <family>Roboto</family>
                     <pointsize>13</pointsize>
                     <weight>75</weight>
+                    <italic>false</italic>
                     <bold>true</bold>
                    </font>
                   </property>
@@ -248,8 +257,10 @@ background-position: center;
                   </property>
                   <property name="font">
                    <font>
+                    <family>Roboto</family>
                     <pointsize>13</pointsize>
                     <weight>75</weight>
+                    <italic>false</italic>
                     <bold>true</bold>
                    </font>
                   </property>

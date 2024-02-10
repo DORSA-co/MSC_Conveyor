@@ -48,7 +48,7 @@ class main_API:
         self.beltIncpetcion.set_new_defect_event(self.new_defect_event)
         self.beltIncpetcion.set_update_defect_event(self.update_defect_event)
 
-        self.DefectFileManager = DefectFileManager('defects_info')
+        self.DefectFileManager = DefectFileManager(Constant.SavePathes.DEFECTS_SAVE_PATH)
         #--------------------------------------------------------
         
 

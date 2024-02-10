@@ -33,7 +33,13 @@ class Ui_slider(object):
         self.main_frame.setObjectName(u"main_frame")
         self.main_frame.setMinimumSize(QSize(400, 0))
         self.main_frame.setMaximumSize(QSize(800, 16777215))
-        self.main_frame.setStyleSheet(u"QSpinBox, QDoubleSpinBox , QDateEdit\n"
+        self.main_frame.setStyleSheet(u"*{\n"
+"	font: auto \"Roboto\";\n"
+"}\n"
+"\n"
+"/************************************************************/\n"
+"\n"
+"QSpinBox, QDoubleSpinBox , QDateEdit\n"
 "{\n"
 "	background-color: transparent;\n"
 "	border-bottom: 2px solid #D7D7D9;\n"
@@ -70,15 +76,15 @@ class Ui_slider(object):
 "}\n"
 "\n"
 "QSpinBox::up-arrow:disabled, QDoubleSpinBox::up-arrow:disabled,\n"
-"QDateEdit::up-arrow:disabled\n"
+"QDateEdit::up-arrow:disa"
+                        "bled\n"
 "{   \n"
 "	image: url(:/icons/icons/plus_icon_gray.png);\n"
 "	width: 16px;\n"
 "	height: 16px;\n"
 "}\n"
 "\n"
-"Q"
-                        "SpinBox::down-arrow:disabled ,  QDoubleSpinBox::down-arrow:disabled,\n"
+"QSpinBox::down-arrow:disabled ,  QDoubleSpinBox::down-arrow:disabled,\n"
 "QDateEdit::down-arrow:disabled\n"
 "{   \n"
 "	image: url(:/icons/icons/minus_icon_gray.png);\n"
@@ -116,15 +122,15 @@ class Ui_slider(object):
 "QSpinBox::down-button,\n"
 "QDoubleSpinBox::up-button,\n"
 "QDoubleSpinBox::down-button,\n"
-"QDateEdit::up-button,\n"
+"QDateEdit::up-butto"
+                        "n,\n"
 "QDateEdit::down-button\n"
 "{\n"
 "	background-color: transparent;\n"
 "}\n"
 "\n"
 "QSpinBox::up-button:disabled ,\n"
-""
-                        "QSpinBox::down-button:disabled ,\n"
+"QSpinBox::down-button:disabled ,\n"
 "QDoubleSpinBox::up-button:disabled ,\n"
 "QDoubleSpinBox::down-button:disabled,\n"
 "QDateEdit::up-button:disabled,\n"
@@ -160,13 +166,13 @@ class Ui_slider(object):
 "QCheckBox::indicator:checked {\n"
 "    border: 2px solid #7892DF;\n"
 "    background-color: #7892DF;\n"
-"    image: url(:/icons/icons/tick.png)  /* Path to your check mark icon */\n"
+"    image: url(:/icons/icons/tick.png)  /* Path to your check mark ic"
+                        "on */\n"
 "}\n"
 "\n"
 "/* Hover State */\n"
 "QCheckBox::indicator:hover {\n"
-"    border: 2px solid rgba(194, 197, 204, 255)"
-                        ";\n"
+"    border: 2px solid rgba(194, 197, 204, 255);\n"
 "}\n"
 "\n"
 "/* Disabled State */\n"
@@ -195,6 +201,7 @@ class Ui_slider(object):
 "#laser_status_title,\n"
 "#database_status_title{\n"
 "	color: #808080;\n"
+"	font-weight: bold;\n"
 "}\n"
 "\n"
 "#filters_frame{\n"
@@ -213,17 +220,26 @@ class Ui_slider(object):
 "}\n"
 "\n"
 "#date_icon,\n"
-"#width_icon,\n"
+"#width_i"
+                        "con,\n"
 "#height_icon,\n"
 "#depth_icon\n"
 "{\n"
 "	border: 0px solid transparent;	\n"
 "}\n"
 "\n"
+"#date_label,\n"
+"#width_label,\n"
+"#height_label,\n"
+"#depth_label,\n"
+"#filter_by_label\n"
+"{\n"
+"	font-weight: bold;\n"
+"}\n"
+"\n"
 "#filters_apply_btn\n"
 "{\n"
-"	background-color: q"
-                        "lineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
 "	color: rgba(255, 255, 255, 210);\n"
 "	border-radius: 22px;\n"
 "	min-width: 200;\n"
@@ -291,8 +307,10 @@ class Ui_slider(object):
         self.camera_status_title = QLabel(self.camera_staus_frame)
         self.camera_status_title.setObjectName(u"camera_status_title")
         font = QFont()
+        font.setFamilies([u"Roboto"])
         font.setPointSize(12)
         font.setBold(True)
+        font.setItalic(False)
         self.camera_status_title.setFont(font)
         self.camera_status_title.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
@@ -431,8 +449,10 @@ class Ui_slider(object):
         sizePolicy1.setHeightForWidth(self.filter_by_label.sizePolicy().hasHeightForWidth())
         self.filter_by_label.setSizePolicy(sizePolicy1)
         font1 = QFont()
+        font1.setFamilies([u"Roboto"])
         font1.setPointSize(14)
         font1.setBold(True)
+        font1.setItalic(False)
         self.filter_by_label.setFont(font1)
 
         self.verticalLayout_4.addWidget(self.filter_by_label)
@@ -863,7 +883,7 @@ class Ui_slider(object):
 
         self.retranslateUi(slider)
 
-        self.pages.setCurrentIndex(0)
+        self.pages.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(slider)
