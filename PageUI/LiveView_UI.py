@@ -187,7 +187,8 @@ class LiveView_UI(Common_Function_UI):
     def remove_notifications(self,):
         ans = self.show_confirm_box('close notification',
                                     'Are you sure to close all selected notifications?',
-                                    ['yes', 'cancel'])
+                                    ['yes', 'cancel'],
+                                    icon_type='question')
         if ans == 'yes':
             for notif in self.notifications.copy():
                 if notif.is_checked():
@@ -213,7 +214,8 @@ class LiveView_UI(Common_Function_UI):
     def close_notification_event(self, notif:defectNotification):
         ans = self.show_confirm_box('close notification',
                                     'Are you sure to close this notification?',
-                                    ['yes', 'cancel'])
+                                    ['yes', 'cancel'],
+                                    icon_type='question')
         if ans == 'yes':
             self.pop_notification(notif)
     

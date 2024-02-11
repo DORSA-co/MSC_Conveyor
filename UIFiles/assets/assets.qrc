@@ -1,5 +1,12 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/apply_disables.png</file>
+    <file>icons/apply_icon.png</file>
+    <file>icons/first.png</file>
+    <file>icons/last.png</file>
+    <file>icons/question_icon.png</file>
+    <file>icons/torn_black.png</file>
+    <file>icons/torn_gray.png</file>
     <file>icons/view_3d.png</file>
     <file>icons/belt_monitoring.jpg</file>
     <file>icons/two_side_arrow.png</file>

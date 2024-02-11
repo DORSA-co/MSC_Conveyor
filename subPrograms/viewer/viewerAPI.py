@@ -25,7 +25,7 @@ class viewerAPI:
         self.max_y_errors = DefectConstants.MAX_Y_ERRORS
         
         self.gradiants = {}
-        self.gradiants['color_gradient'] = self.create_gradient(heatMap.GRADIENT1)
+        self.gradiants['color_gradient'] = self.create_gradient(heatMap.GRADIENT2)
 
         self.uiHandeler.tile_select_connector(self.select_tile_evet)
         self.defect_obj = self.get_defect()
@@ -33,9 +33,9 @@ class viewerAPI:
         self.images_names = self.find_defect_images()
         self.setup_tiles(self.images_names)
 
-        self.current_image_idx = 0
+        # self.current_image_idx = 0
 
-        self.render(self.current_image_idx)
+        # self.render(self.current_image_idx)
 
         self.uiHandeler.button_connector('view_3d', self.view_3d)
 
@@ -136,9 +136,9 @@ class viewerAPI:
 
 
     def setup_tiles(self, images_names):
-        for img_name in images_names:
-            meterage = self.metadata[img_name]    
-            self.uiHandeler.add_tile(img_name, '#E0E4EC', meterage)
+        for i, img_name in enumerate(images_names):
+            meterage = self.metadata[img_name]
+            self.uiHandeler.add_tile(img_name, '#E0E4EC', meterage, select=(i==0))
 
     def select_tile_evet(self, _id:int):
         self.current_image_idx = self.images_names.index(_id)

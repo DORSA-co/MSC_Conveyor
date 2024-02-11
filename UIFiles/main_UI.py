@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1196, 825)
+        MainWindow.resize(1196, 832)
         self.StyleSheet = QWidget(MainWindow)
         self.StyleSheet.setObjectName(u"StyleSheet")
         self.StyleSheet.setEnabled(True)
@@ -887,7 +887,7 @@ class Ui_MainWindow(object):
         self.defects_notifications_scrollArea.setWidgetResizable(True)
         self.defects_notifications_widget = QWidget()
         self.defects_notifications_widget.setObjectName(u"defects_notifications_widget")
-        self.defects_notifications_widget.setGeometry(QRect(0, 0, 320, 684))
+        self.defects_notifications_widget.setGeometry(QRect(0, 0, 320, 691))
         self.defects_notifications_widget.setStyleSheet(u"#defects_notifications_widget{\n"
 "	border:None;\n"
 "	border-top: 2px solid gray;\n"
@@ -1410,7 +1410,7 @@ class Ui_MainWindow(object):
 "	max-height: 36;\n"
 "	font-size: 14px;\n"
 "	font-weight: bold;\n"
-"	qproperty-icon: url(:/icons/icons/cancel_icon.png);\n"
+"	icon: url(:/icons/icons/cancel_icon.png);\n"
 "}\n"
 "\n"
 "#cancel_camera_settings:disabled\n"
@@ -1423,7 +1423,7 @@ class Ui_MainWindow(object):
 "{\n"
 "	border: 2px solid rgba(76, 126, 255, 255);\n"
 "	color:  rgba(76, 126, 255, 255);\n"
-"	qproperty-icon: url(:/icons/icons/cancel_hover.png);\n"
+"	icon: url(:/icons/icons/cancel_hover.png);\n"
 "}\n"
 "\n"
 "#cancel_camera_settings:pressed\n"
@@ -1459,7 +1459,7 @@ class Ui_MainWindow(object):
 "	font-size: 14px;\n"
 "	font-weight: bold;\n"
 "	text-align: right;\n"
-"	qproperty-icon: url(:/icons/icons/reset_icon.png);\n"
+"	icon: url(:/icons/icons/reset_icon.png);\n"
 "}\n"
 "\n"
 "#reset_camera_settings:disabled\n"
@@ -1470,7 +1470,7 @@ class Ui_MainWindow(object):
 "#reset_camera_settings:hover\n"
 "{\n"
 "	color:  rgba(76, 126, 255, 255);\n"
-"	qproperty-icon: url(:/icons/icons/reset_hover.png);\n"
+"	icon: url(:/icons/icons/reset_hover.png);\n"
 "}\n"
 "\n"
 "#reset_camera_settings:pressed\n"
@@ -2074,7 +2074,7 @@ class Ui_MainWindow(object):
 "	max-height: 36;\n"
 "	font-size: 14px;\n"
 "	font-weight: bold;\n"
-"	qproperty-icon: url(:/icons/icons/cancel_icon.png);\n"
+"	icon: url(:/icons/icons/cancel_icon.png);\n"
 "}\n"
 "\n"
 "#cancel_algorithm_settings:disabled\n"
@@ -2087,7 +2087,7 @@ class Ui_MainWindow(object):
 "{\n"
 "	border: 2px solid rgba(76, 126, 255, 255);\n"
 "	color:  rgba(76, 126, 255, 255);\n"
-"	qproperty-icon: url(:/icons/icons/cancel_hover.png);\n"
+"	icon: url(:/icons/icons/cancel_hover.png);\n"
 "}\n"
 "\n"
 "#cancel_algorithm_settings:pressed\n"
@@ -2120,6 +2120,7 @@ class Ui_MainWindow(object):
 "	font-size: 14px;\n"
 "	font-weight: bold;\n"
 "	text-align: left;\n"
+"	icon: url(:/icons/icons/reset_icon.png);\n"
 "}\n"
 "\n"
 "#reset_algorithm_settings:disabled\n"
@@ -2130,7 +2131,7 @@ class Ui_MainWindow(object):
 "#reset_algorithm_settings:hover\n"
 "{\n"
 "	color:  rgba(76, 126, 255, 255);\n"
-"	qproperty-icon: url(:/icons/icons/reset_hover.png);\n"
+"	icon: url(:/icons/icons/reset_hover.png);\n"
 "}\n"
 "\n"
 "#reset_algorithm_settings:pressed\n"
@@ -2197,13 +2198,13 @@ class Ui_MainWindow(object):
 "	border: None;\n"
 "}\n"
 "\n"
-"#date_line, #width_line, #length_line, #depth_line, #class_line, #last_line{\n"
+"#date_line, #width_line, #length_line, #depth_line, #class_line, #torn_line, #last_line{\n"
 "	border: 1px solid #E3E3E6;\n"
 "}")
         self.report_filter_frame.setFrameShape(QFrame.StyledPanel)
         self.report_filter_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_48 = QVBoxLayout(self.report_filter_frame)
-        self.verticalLayout_48.setSpacing(10)
+        self.verticalLayout_48.setSpacing(9)
         self.verticalLayout_48.setObjectName(u"verticalLayout_48")
         self.report_filter_by_label = QLabel(self.report_filter_frame)
         self.report_filter_by_label.setObjectName(u"report_filter_by_label")
@@ -2624,6 +2625,67 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_48.addLayout(self.verticalLayout_60)
 
+        self.verticalLayout_68 = QVBoxLayout()
+        self.verticalLayout_68.setSpacing(0)
+        self.verticalLayout_68.setObjectName(u"verticalLayout_68")
+        self.torn_line = QFrame(self.report_filter_frame)
+        self.torn_line.setObjectName(u"torn_line")
+        self.torn_line.setMinimumSize(QSize(0, 2))
+        self.torn_line.setMaximumSize(QSize(16777215, 2))
+        self.torn_line.setFrameShape(QFrame.StyledPanel)
+        self.torn_line.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_68.addWidget(self.torn_line)
+
+        self.report_torn_title_frame = QFrame(self.report_filter_frame)
+        self.report_torn_title_frame.setObjectName(u"report_torn_title_frame")
+        sizePolicy2.setHeightForWidth(self.report_torn_title_frame.sizePolicy().hasHeightForWidth())
+        self.report_torn_title_frame.setSizePolicy(sizePolicy2)
+        self.report_torn_title_frame.setFrameShape(QFrame.StyledPanel)
+        self.report_torn_title_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_49 = QHBoxLayout(self.report_torn_title_frame)
+        self.horizontalLayout_49.setObjectName(u"horizontalLayout_49")
+        self.report_torn_checkBox = QCheckBox(self.report_torn_title_frame)
+        self.report_torn_checkBox.setObjectName(u"report_torn_checkBox")
+        sizePolicy.setHeightForWidth(self.report_torn_checkBox.sizePolicy().hasHeightForWidth())
+        self.report_torn_checkBox.setSizePolicy(sizePolicy)
+
+        self.horizontalLayout_49.addWidget(self.report_torn_checkBox)
+
+        self.report_torn_icon = QPushButton(self.report_torn_title_frame)
+        self.report_torn_icon.setObjectName(u"report_torn_icon")
+        self.report_torn_icon.setEnabled(False)
+        sizePolicy.setHeightForWidth(self.report_torn_icon.sizePolicy().hasHeightForWidth())
+        self.report_torn_icon.setSizePolicy(sizePolicy)
+        self.report_torn_icon.setStyleSheet(u"")
+        icon23 = QIcon()
+        icon23.addFile(u":/icons/icons/torn_black.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon23.addFile(u":/icons/icons/torn_black.png", QSize(), QIcon.Disabled, QIcon.Off)
+        self.report_torn_icon.setIcon(icon23)
+        self.report_torn_icon.setIconSize(QSize(25, 25))
+
+        self.horizontalLayout_49.addWidget(self.report_torn_icon)
+
+        self.report_torn_label = QLabel(self.report_torn_title_frame)
+        self.report_torn_label.setObjectName(u"report_torn_label")
+
+        self.horizontalLayout_49.addWidget(self.report_torn_label)
+
+
+        self.verticalLayout_68.addWidget(self.report_torn_title_frame)
+
+        self.report_torn_filter_frame = QFrame(self.report_filter_frame)
+        self.report_torn_filter_frame.setObjectName(u"report_torn_filter_frame")
+        sizePolicy2.setHeightForWidth(self.report_torn_filter_frame.sizePolicy().hasHeightForWidth())
+        self.report_torn_filter_frame.setSizePolicy(sizePolicy2)
+        self.report_torn_filter_frame.setFrameShape(QFrame.StyledPanel)
+        self.report_torn_filter_frame.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_68.addWidget(self.report_torn_filter_frame)
+
+
+        self.verticalLayout_48.addLayout(self.verticalLayout_68)
+
         self.last_line = QFrame(self.report_filter_frame)
         self.last_line.setObjectName(u"last_line")
         self.last_line.setMinimumSize(QSize(0, 2))
@@ -2673,6 +2735,10 @@ class Ui_MainWindow(object):
 "	padding-top: 5px;\n"
 "}\n"
 "")
+        icon24 = QIcon()
+        icon24.addFile(u":/icons/icons/apply_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon24.addFile(u":/icons/icons/apply_disables.png", QSize(), QIcon.Disabled, QIcon.Off)
+        self.report_filter_apply_btn.setIcon(icon24)
 
         self.horizontalLayout_33.addWidget(self.report_filter_apply_btn)
 
@@ -2730,7 +2796,7 @@ class Ui_MainWindow(object):
 "	max-height: 26;\n"
 "	font-size: 14px;\n"
 "	font-weight: bold;\n"
-"	qproperty-icon: url(:/icons/icons/delete_icon.png);\n"
+"	icon: url(:/icons/icons/delete_icon.png);\n"
 "}\n"
 "\n"
 "#delete_selected_defects:disabled\n"
@@ -2743,7 +2809,7 @@ class Ui_MainWindow(object):
 "{\n"
 "	border: 0px solid rgba(175, 41, 17, 150);\n"
 "	color:  rgba(175, 41, 17, 150);\n"
-"	qproperty-icon: url(:/icons/icons/delete_icon_hover.png);\n"
+"	icon: url(:/icons/icons/delete_icon_hover.png);\n"
 "}\n"
 "\n"
 "#delete_selected_defects:pressed\n"
@@ -2757,6 +2823,7 @@ class Ui_MainWindow(object):
 
         self.reload_reports_btn = QPushButton(self.report_page)
         self.reload_reports_btn.setObjectName(u"reload_reports_btn")
+        self.reload_reports_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.reload_reports_btn.setStyleSheet(u"#reload_reports_btn\n"
 "{\n"
 "	background-color: transparent;\n"
@@ -2769,7 +2836,7 @@ class Ui_MainWindow(object):
 "	font-size: 14px;\n"
 "	font-weight: bold;\n"
 "	text-align: right;\n"
-"	qproperty-icon: url(:/icons/icons/reset_icon.png);\n"
+"	icon: url(:/icons/icons/reset_icon.png);\n"
 "}\n"
 "\n"
 "#reload_reports_btn:disabled\n"
@@ -2780,7 +2847,7 @@ class Ui_MainWindow(object):
 "#reload_reports_btn:hover\n"
 "{\n"
 "	color:  rgba(76, 126, 255, 255);\n"
-"	qproperty-icon: url(:/icons/icons/reset_hover.png);\n"
+"	icon: url(:/icons/icons/reset_hover.png);\n"
 "}\n"
 "\n"
 "#reload_reports_btn:pressed\n"
@@ -2798,15 +2865,16 @@ class Ui_MainWindow(object):
 
         self.move_table_start_btn = QPushButton(self.report_page)
         self.move_table_start_btn.setObjectName(u"move_table_start_btn")
+        self.move_table_start_btn.setEnabled(True)
         sizePolicy.setHeightForWidth(self.move_table_start_btn.sizePolicy().hasHeightForWidth())
         self.move_table_start_btn.setSizePolicy(sizePolicy)
-        self.move_table_start_btn.setMinimumSize(QSize(40, 0))
-        self.move_table_start_btn.setMaximumSize(QSize(40, 16777215))
+        self.move_table_start_btn.setMinimumSize(QSize(30, 0))
+        self.move_table_start_btn.setMaximumSize(QSize(30, 16777215))
         self.move_table_start_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.move_table_start_btn.setStyleSheet(u"border: 0px solid gray;")
-        icon23 = QIcon()
-        icon23.addFile(u":/icons/icons/prev_black.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.move_table_start_btn.setIcon(icon23)
+        icon25 = QIcon()
+        icon25.addFile(u":/icons/icons/first.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.move_table_start_btn.setIcon(icon25)
 
         self.horizontalLayout_38.addWidget(self.move_table_start_btn)
 
@@ -2814,13 +2882,13 @@ class Ui_MainWindow(object):
         self.move_table_end_btn.setObjectName(u"move_table_end_btn")
         sizePolicy.setHeightForWidth(self.move_table_end_btn.sizePolicy().hasHeightForWidth())
         self.move_table_end_btn.setSizePolicy(sizePolicy)
-        self.move_table_end_btn.setMinimumSize(QSize(40, 0))
-        self.move_table_end_btn.setMaximumSize(QSize(40, 16777215))
+        self.move_table_end_btn.setMinimumSize(QSize(30, 0))
+        self.move_table_end_btn.setMaximumSize(QSize(30, 16777215))
         self.move_table_end_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.move_table_end_btn.setStyleSheet(u"border: 0px solid gray;")
-        icon24 = QIcon()
-        icon24.addFile(u":/icons/icons/next_black.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.move_table_end_btn.setIcon(icon24)
+        icon26 = QIcon()
+        icon26.addFile(u":/icons/icons/last.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.move_table_end_btn.setIcon(icon26)
 
         self.horizontalLayout_38.addWidget(self.move_table_end_btn)
 
@@ -2905,10 +2973,10 @@ class Ui_MainWindow(object):
 "	padding-top: 3px;\n"
 "}\n"
 "")
-        icon25 = QIcon()
-        icon25.addFile(u":/icons/icons/prev_black.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon25.addFile(u":/icons/icons/prev_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
-        self.report_prev_btn.setIcon(icon25)
+        icon27 = QIcon()
+        icon27.addFile(u":/icons/icons/prev_black.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon27.addFile(u":/icons/icons/prev_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
+        self.report_prev_btn.setIcon(icon27)
 
         self.horizontalLayout_37.addWidget(self.report_prev_btn)
 
@@ -2962,7 +3030,9 @@ class Ui_MainWindow(object):
 "	padding-top: 4px;\n"
 "}\n"
 "")
-        self.report_next_btn.setIcon(icon24)
+        icon28 = QIcon()
+        icon28.addFile(u":/icons/icons/next_black.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.report_next_btn.setIcon(icon28)
         self.report_next_btn.setCheckable(False)
         self.report_next_btn.setFlat(False)
 
@@ -3034,9 +3104,9 @@ class Ui_MainWindow(object):
         self.userpage_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
         self.userpage_password_eye.setStyleSheet(u"")
-        icon26 = QIcon()
-        icon26.addFile(u":/icons/icons/black_eye.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.userpage_password_eye.setIcon(icon26)
+        icon29 = QIcon()
+        icon29.addFile(u":/icons/icons/black_eye.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.userpage_password_eye.setIcon(icon29)
 
         self.horizontalLayout_21.addWidget(self.userpage_password_eye)
 
@@ -3069,7 +3139,7 @@ class Ui_MainWindow(object):
         self.userpage_confirm_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_confirm_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
         self.userpage_confirm_password_eye.setStyleSheet(u"")
-        self.userpage_confirm_password_eye.setIcon(icon26)
+        self.userpage_confirm_password_eye.setIcon(icon29)
 
         self.horizontalLayout_22.addWidget(self.userpage_confirm_password_eye)
 
@@ -3129,9 +3199,9 @@ class Ui_MainWindow(object):
 "	padding-top: 5px;\n"
 "}\n"
 "")
-        icon27 = QIcon()
-        icon27.addFile(u":/assets/Assets/icons/icons8-plus-white-50.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.register_user.setIcon(icon27)
+        icon30 = QIcon()
+        icon30.addFile(u":/assets/Assets/icons/icons8-plus-white-50.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.register_user.setIcon(icon30)
 
         self.verticalLayout_30.addWidget(self.register_user, 0, Qt.AlignHCenter)
 
@@ -3145,7 +3215,7 @@ class Ui_MainWindow(object):
         self.register_message_scrollArea.setWidgetResizable(True)
         self.register_message_frame = QWidget()
         self.register_message_frame.setObjectName(u"register_message_frame")
-        self.register_message_frame.setGeometry(QRect(0, 0, 916, 253))
+        self.register_message_frame.setGeometry(QRect(0, 0, 916, 260))
         sizePolicy3.setHeightForWidth(self.register_message_frame.sizePolicy().hasHeightForWidth())
         self.register_message_frame.setSizePolicy(sizePolicy3)
         self.verticalLayout_55 = QVBoxLayout(self.register_message_frame)
@@ -3270,7 +3340,7 @@ class Ui_MainWindow(object):
         self.change_username_message_scrollArea.setWidgetResizable(True)
         self.change_username_message_frame = QWidget()
         self.change_username_message_frame.setObjectName(u"change_username_message_frame")
-        self.change_username_message_frame.setGeometry(QRect(0, 0, 432, 381))
+        self.change_username_message_frame.setGeometry(QRect(0, 0, 432, 388))
         self.change_username_message_scrollArea.setWidget(self.change_username_message_frame)
 
         self.verticalLayout_54.addWidget(self.change_username_message_scrollArea)
@@ -3330,7 +3400,7 @@ class Ui_MainWindow(object):
         self.userpage_editprofile_old_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_editprofile_old_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
         self.userpage_editprofile_old_password_eye.setStyleSheet(u"")
-        self.userpage_editprofile_old_password_eye.setIcon(icon26)
+        self.userpage_editprofile_old_password_eye.setIcon(icon29)
 
         self.horizontalLayout_17.addWidget(self.userpage_editprofile_old_password_eye)
 
@@ -3362,7 +3432,7 @@ class Ui_MainWindow(object):
         sizePolicy5.setHeightForWidth(self.userpage_editprofile_new_password_eye.sizePolicy().hasHeightForWidth())
         self.userpage_editprofile_new_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_editprofile_new_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
-        self.userpage_editprofile_new_password_eye.setIcon(icon26)
+        self.userpage_editprofile_new_password_eye.setIcon(icon29)
 
         self.horizontalLayout_18.addWidget(self.userpage_editprofile_new_password_eye)
 
@@ -3393,7 +3463,7 @@ class Ui_MainWindow(object):
         sizePolicy5.setHeightForWidth(self.userpage_editprofile_confirm_new_password_eye.sizePolicy().hasHeightForWidth())
         self.userpage_editprofile_confirm_new_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_editprofile_confirm_new_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
-        self.userpage_editprofile_confirm_new_password_eye.setIcon(icon26)
+        self.userpage_editprofile_confirm_new_password_eye.setIcon(icon29)
 
         self.horizontalLayout_19.addWidget(self.userpage_editprofile_confirm_new_password_eye)
 
@@ -3446,7 +3516,7 @@ class Ui_MainWindow(object):
         self.change_password_message_scrollArea.setWidgetResizable(True)
         self.change_password_message_frame = QWidget()
         self.change_password_message_frame.setObjectName(u"change_password_message_frame")
-        self.change_password_message_frame.setGeometry(QRect(0, 0, 432, 292))
+        self.change_password_message_frame.setGeometry(QRect(0, 0, 432, 299))
         self.change_password_message_scrollArea.setWidget(self.change_password_message_frame)
 
         self.verticalLayout_51.addWidget(self.change_password_message_scrollArea)
@@ -3524,7 +3594,7 @@ class Ui_MainWindow(object):
         self.system_status_expanding_btn.clicked.connect(self.system_status_btn.click)
         self.notif_filter_expanding_btn.clicked.connect(self.notif_filter_btn.click)
 
-        self.main_stackedWidget.setCurrentIndex(1)
+        self.main_stackedWidget.setCurrentIndex(0)
         self.live_tabWidget.setCurrentIndex(0)
         self.settings_tabs.setCurrentIndex(0)
         self.algorithm_stackedWidget.setCurrentIndex(0)
@@ -3554,7 +3624,7 @@ class Ui_MainWindow(object):
         self.alarms_count_lbl.setText(QCoreApplication.translate("MainWindow", u"15/33 Alarms", None))
         self.label.setText("")
         self.live_tabWidget.setTabText(self.live_tabWidget.indexOf(self.belt_live_tab), QCoreApplication.translate("MainWindow", u"Belt Live ", None))
-        self.live_tabWidget.setTabText(self.live_tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Tab 2", None))
+        self.live_tabWidget.setTabText(self.live_tabWidget.indexOf(self.tab_2), "")
         ___qtablewidgetitem = self.defect_info_table.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"x", None));
         ___qtablewidgetitem1 = self.defect_info_table.horizontalHeaderItem(1)
@@ -3633,6 +3703,9 @@ class Ui_MainWindow(object):
         self.report_class_checkBox.setText("")
         self.report_class_icon.setText("")
         self.report_class_label.setText(QCoreApplication.translate("MainWindow", u"Class", None))
+        self.report_torn_checkBox.setText("")
+        self.report_torn_icon.setText("")
+        self.report_torn_label.setText(QCoreApplication.translate("MainWindow", u"Torn", None))
         self.report_filter_apply_btn.setText(QCoreApplication.translate("MainWindow", u"Apply", None))
         self.select_all_defects_table.setText("")
         self.delete_selected_defects.setText(QCoreApplication.translate("MainWindow", u"Delete", None))

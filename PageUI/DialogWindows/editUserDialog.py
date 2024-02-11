@@ -1,6 +1,6 @@
 import time
 
-from PySide6.QtWidgets import QDialog
+from PySide6.QtWidgets import QDialog, QApplication
 from PySide6 import QtCore
 
 from Constants import Constant
@@ -31,6 +31,23 @@ class editUserDialog(QDialog):
         self.move_refresh_time = 0
         self.show_password = False
         self.offset = None
+
+        self._center()
+
+    def _center(self):
+        # Get primary screen
+        primary_screen = QApplication.primaryScreen()
+
+        if primary_screen:
+            # Get geometry of the primary screen
+            screen_geometry = primary_screen.geometry()
+
+            # Calculate center point
+            center_point = screen_geometry.center()
+
+            # Set window position to be centered
+            self.move(center_point.x() - self.frameGeometry().width() // 2,
+                      center_point.y() - self.frameGeometry().height() // 2)
 
     def mousePressEvent(self, event):
         if event.button() == QtCore.Qt.LeftButton and event.y() < self.ui.top_frame.height():

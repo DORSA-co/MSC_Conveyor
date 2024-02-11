@@ -319,10 +319,11 @@ class LoginUserUI(Common_Function_UI):
             #GUIBackend.set_wgt_visible(self.logined_username_lbl, True)
             GUIBackend.set_label_text( self.ui.logined_username_lbl, username)
 
-    def show_logout(Self, username):
-        cmb = GUIComponents.confirmMessageBox('logout', 
-                                              "{} do you want logout?".format(username), buttons = ['yes', 'no'])
-        btn = cmb.render() 
+    def show_logout(self, username):
+        btn = self.show_confirm_box('logout', 
+                                        "{} do you want logout?".format(username), 
+                                        buttons = ['yes', 'no'],
+                                        icon_type='question',)
         return btn == 'yes'
             
 

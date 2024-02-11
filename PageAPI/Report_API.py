@@ -52,6 +52,7 @@ class Report_API:
             defect_dict['length'] = defect['length']
             defect_dict['depth'] = (defect['min_depth'], defect['max_depth'])
             defect_dict['date'] = defect['date']
+            defect_dict['torn'] = True
 
             res = apply_filter.check_filter(defect_dict)
             if res:
@@ -72,7 +73,8 @@ class Report_API:
         if show_confirm:
             response = self.uiHandler.show_confirm_box("Delete Defect",
                                                     "Are you sure you want to delete defect ?",
-                                                    buttons=['yes', 'cancel'])
+                                                    buttons=['yes', 'cancel'],
+                                                    icon_type='question')
             if response == 'cancel':
                 return
         
@@ -90,13 +92,15 @@ class Report_API:
         #check user select any defect or not
         if len(defect_records) == 0:
             self.uiHandler.show_confirm_box(title='Delete Sample', 
-                                 massage=f'No defects selected',
-                                 buttons=['ok'])
+                                 message=f'No defects selected',
+                                 buttons=['ok'],
+                                 icon_type='warning')
             return
         
         response = self.uiHandler.show_confirm_box("Delete Defects",
                                                     "Are you sure you want to delete selected defects ?",
-                                                    buttons=['yes', 'cancel'])
+                                                    buttons=['yes', 'cancel'],
+                                                    icon_type='question')
         if response == 'cancel':
             return
         
@@ -119,7 +123,8 @@ class Report_API:
         self.remove_worker.pause(True)
         res = self.uiHandler.deleteProgressDialog.show_confirm_massage( title='Cancel Removing',
                                                                 text= 'Are you sure cancel the progress?',
-                                                                buttons=['yes','no']
+                                                                buttons=['yes','no'],
+                                                                icon_type='question'
         )
         if res == 'yes':
             self.remove_worker.stop()
@@ -207,7 +212,7 @@ class removeDefectsWorker(QObject):
                 i+=1
 
             #delay for help to user to cancel soon
-            time.sleep(2)
+            time.sleep(0.2)
 
         print('remove finished')
         self.finished.emit()

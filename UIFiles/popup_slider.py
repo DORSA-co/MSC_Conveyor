@@ -777,6 +777,7 @@ class Ui_slider(object):
 
         self.filters_apply_btn = QPushButton(self.filters_frame)
         self.filters_apply_btn.setObjectName(u"filters_apply_btn")
+        self.filters_apply_btn.setEnabled(True)
         self.filters_apply_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.filters_apply_btn.setStyleSheet(u"#filters_apply_btn\n"
 "{\n"
@@ -808,6 +809,11 @@ class Ui_slider(object):
 "	padding-top: 5px;\n"
 "}\n"
 "")
+        icon9 = QIcon()
+        icon9.addFile(u":/icons/icons/apply_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon9.addFile(u":/icons/icons/apply_disables.png", QSize(), QIcon.Disabled, QIcon.Off)
+        self.filters_apply_btn.setIcon(icon9)
+        self.filters_apply_btn.setIconSize(QSize(20, 20))
 
         self.horizontalLayout_25.addWidget(self.filters_apply_btn)
 
@@ -830,7 +836,7 @@ class Ui_slider(object):
 "	max-height: 36;\n"
 "	font-size: 14px;\n"
 "	font-weight: bold;\n"
-"	qproperty-icon: url(:/icons/icons/clear_filter_blue.png);\n"
+"	icon: url(:/icons/icons/clear_filter_blue.png);\n"
 "}\n"
 "\n"
 "#notif_clear_filter_btn:disabled\n"
@@ -843,7 +849,7 @@ class Ui_slider(object):
 "{\n"
 "	border: 2px solid rgba(76, 126, 255, 255);\n"
 "	color:  rgba(76, 126, 255, 255);\n"
-"	qproperty-icon: url(:/icons/icons/clear_filter_blue_hover.png);\n"
+"	icon: url(:/icons/icons/clear_filter_blue_hover.png);\n"
 "}\n"
 "\n"
 "#notif_clear_filter_btn:pressed\n"
@@ -852,9 +858,9 @@ class Ui_slider(object):
 "	padding-top: 5px;\n"
 "}\n"
 "")
-        icon9 = QIcon()
-        icon9.addFile(u":/icons/icons/clear_filter_blue.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.notif_clear_filter_btn.setIcon(icon9)
+        icon10 = QIcon()
+        icon10.addFile(u":/icons/icons/clear_filter_blue.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.notif_clear_filter_btn.setIcon(icon10)
         self.notif_clear_filter_btn.setIconSize(QSize(20, 20))
 
         self.horizontalLayout_25.addWidget(self.notif_clear_filter_btn)

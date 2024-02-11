@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'progress_dialog_light.ui'
+## Form generated from reading UI file 'progress_dialog.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.2.4
 ##
@@ -24,6 +24,14 @@ class Ui_progressDialog(object):
         if not progressDialog.objectName():
             progressDialog.setObjectName(u"progressDialog")
         progressDialog.resize(798, 167)
+        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(progressDialog.sizePolicy().hasHeightForWidth())
+        progressDialog.setSizePolicy(sizePolicy)
+        progressDialog.setMinimumSize(QSize(0, 0))
+        progressDialog.setMaximumSize(QSize(16777215, 16777215))
+        progressDialog.setStyleSheet(u"")
         self.verticalLayout = QVBoxLayout(progressDialog)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -37,12 +45,12 @@ class Ui_progressDialog(object):
 "/************************************************************/\n"
 "\n"
 "#main_frame{\n"
-"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(213, 217, 224, 255), stop:1 rgba(227, 228, 230, 255));	\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(23, 32, 58, 255), stop:1 rgba(10, 14, 26, 255));	\n"
 "	border-radius: 30px;\n"
 "}\n"
 "\n"
 "#main_frame .QLabel{\n"
-"	color: rgb(20, 20, 20);\n"
+"	color: white;\n"
 "}")
         self.verticalLayout_2 = QVBoxLayout(self.StyleSheet)
         self.verticalLayout_2.setSpacing(0)
@@ -72,11 +80,11 @@ class Ui_progressDialog(object):
 
         self.title_lbl = QLabel(self.title_frame)
         self.title_lbl.setObjectName(u"title_lbl")
-        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.title_lbl.sizePolicy().hasHeightForWidth())
-        self.title_lbl.setSizePolicy(sizePolicy)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.title_lbl.sizePolicy().hasHeightForWidth())
+        self.title_lbl.setSizePolicy(sizePolicy1)
         self.title_lbl.setStyleSheet(u"font-size:22px;\n"
 "font-weight: bold;")
         self.title_lbl.setAlignment(Qt.AlignCenter)
@@ -85,8 +93,8 @@ class Ui_progressDialog(object):
 
         self.dots_label = QLabel(self.title_frame)
         self.dots_label.setObjectName(u"dots_label")
-        sizePolicy.setHeightForWidth(self.dots_label.sizePolicy().hasHeightForWidth())
-        self.dots_label.setSizePolicy(sizePolicy)
+        sizePolicy1.setHeightForWidth(self.dots_label.sizePolicy().hasHeightForWidth())
+        self.dots_label.setSizePolicy(sizePolicy1)
         self.dots_label.setStyleSheet(u"font-size:22px;\n"
 "font-weight: bold;")
 
@@ -94,27 +102,27 @@ class Ui_progressDialog(object):
 
         self.leftp_label = QLabel(self.title_frame)
         self.leftp_label.setObjectName(u"leftp_label")
-        sizePolicy.setHeightForWidth(self.leftp_label.sizePolicy().hasHeightForWidth())
-        self.leftp_label.setSizePolicy(sizePolicy)
+        sizePolicy1.setHeightForWidth(self.leftp_label.sizePolicy().hasHeightForWidth())
+        self.leftp_label.setSizePolicy(sizePolicy1)
         self.leftp_label.setStyleSheet(u"font-weight: bold;")
 
         self.horizontalLayout.addWidget(self.leftp_label)
 
         self.progressbar_value_label = QLabel(self.title_frame)
         self.progressbar_value_label.setObjectName(u"progressbar_value_label")
-        sizePolicy.setHeightForWidth(self.progressbar_value_label.sizePolicy().hasHeightForWidth())
-        self.progressbar_value_label.setSizePolicy(sizePolicy)
+        sizePolicy1.setHeightForWidth(self.progressbar_value_label.sizePolicy().hasHeightForWidth())
+        self.progressbar_value_label.setSizePolicy(sizePolicy1)
         self.progressbar_value_label.setStyleSheet(u"font-weight: bold;")
 
         self.horizontalLayout.addWidget(self.progressbar_value_label)
 
         self.percent_rightp_label = QLabel(self.title_frame)
         self.percent_rightp_label.setObjectName(u"percent_rightp_label")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.percent_rightp_label.sizePolicy().hasHeightForWidth())
-        self.percent_rightp_label.setSizePolicy(sizePolicy1)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.percent_rightp_label.sizePolicy().hasHeightForWidth())
+        self.percent_rightp_label.setSizePolicy(sizePolicy2)
         self.percent_rightp_label.setStyleSheet(u"font-weight: bold;")
 
         self.horizontalLayout.addWidget(self.percent_rightp_label)
@@ -128,9 +136,9 @@ class Ui_progressDialog(object):
 
         self.description_lbl = QLabel(self.title_frame)
         self.description_lbl.setObjectName(u"description_lbl")
-        sizePolicy1.setHeightForWidth(self.description_lbl.sizePolicy().hasHeightForWidth())
-        self.description_lbl.setSizePolicy(sizePolicy1)
-        self.description_lbl.setStyleSheet(u"color: rgb(80, 80, 80)")
+        sizePolicy2.setHeightForWidth(self.description_lbl.sizePolicy().hasHeightForWidth())
+        self.description_lbl.setSizePolicy(sizePolicy2)
+        self.description_lbl.setStyleSheet(u"color: rgb(180, 180, 180)")
         self.description_lbl.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_4.addWidget(self.description_lbl)
@@ -150,8 +158,9 @@ class Ui_progressDialog(object):
 "QProgressBar::chunk {\n"
 "	border-radius: 5px;\n"
 "    background: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0,\n"
-"                                stop: 0 #17203A, \n"
-"                                stop: 0.5 #D0AABF,\n"
+"                                stop: 0 #F7F8FA, \n"
+"                                stop: 0.3 #7E84A2,\n"
+"                                stop: 0.6 #7892DF,\n"
 "                                stop: 1 #4C7EFF);\n"
 "}")
         self.progressbar.setValue(87)
@@ -199,8 +208,8 @@ class Ui_progressDialog(object):
         self.cancel_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.cancel_btn.setStyleSheet(u"#cancel_btn\n"
 "{\n"
-"	border: 2px solid  rgba(46, 76, 153, 255);\n"
-"	color:  rgba(46, 76, 153, 255);\n"
+"	border: 2px solid  #7892df;\n"
+"	color:  #8aa7ff;\n"
 "	border-radius: 18px;\n"
 "	min-width: 100;\n"
 "	max-width: 100;\n"
@@ -249,7 +258,7 @@ class Ui_progressDialog(object):
     # setupUi
 
     def retranslateUi(self, progressDialog):
-        progressDialog.setWindowTitle(QCoreApplication.translate("progressDialog", u"Dialog", None))
+        progressDialog.setWindowTitle(QCoreApplication.translate("progressDialog", u"Edit User", None))
         self.title_lbl.setText(QCoreApplication.translate("progressDialog", u"title", None))
         self.dots_label.setText(QCoreApplication.translate("progressDialog", u"...", None))
         self.leftp_label.setText(QCoreApplication.translate("progressDialog", u"  (", None))

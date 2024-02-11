@@ -802,6 +802,16 @@ class GUIBackend:
         """
         table.setHorizontalHeaderLabels(headers)
 
+    @staticmethod
+    def set_table_cwidth(table: QtWidgets.QTableWidget, column:int, width):
+        """sets headers of given Qt table
+
+        Args:
+            table (QtWidgets.QTableWidget): Qt tableWidget object
+            headers (list[str]): list of headers. like headers = ['title1', 'title2',...]
+        """
+        table.setColumnWidth(column, width)
+
 
     @staticmethod
     def set_table_cell_color(table: QtWidgets.QTableWidget, index:tuple, color=None, bg_color=None):

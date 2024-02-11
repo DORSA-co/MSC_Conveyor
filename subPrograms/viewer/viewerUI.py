@@ -4,7 +4,7 @@ import time
 
 import numpy as np
 
-from PySide6.QtWidgets import QMainWindow
+from PySide6.QtWidgets import QMainWindow, QApplication
 from PySide6 import QtWidgets
 from PySide6 import QtCore
 from PySide6 import QtGui
@@ -75,6 +75,22 @@ class viewerUI(QMainWindow):
         ]
 
         self.__set_shadow()
+        self._center()
+
+    def _center(self):
+        # Get primary screen
+        primary_screen = QApplication.primaryScreen()
+
+        if primary_screen:
+            # Get geometry of the primary screen
+            screen_geometry = primary_screen.geometry()
+
+            # Calculate center point
+            center_point = screen_geometry.center()
+
+            # Set window position to be centered
+            self.move(center_point.x() - self.frameGeometry().width() // 2,
+                      center_point.y() - self.frameGeometry().height() // 2)
 
     def __set_shadow(self, ):
         shadow  = QtWidgets.QGraphicsDropShadowEffect(self.ui.tiles_scrollArea)
@@ -133,14 +149,12 @@ class viewerUI(QMainWindow):
         Returns: None
         """
 
-        res = self.common_func.show_alert_window(
-            title="Exit",
-            message="Do you want to exit?",
-            need_confirm=True,
-            level=1,
-        )
+        res = self.common_func.show_confirm_box(title="Exit",
+                                                message="Do you want to exit?",
+                                                buttons=['ok', 'cancel'],
+                                                icon_type='question')
 
-        if res:
+        if res=='ok':
             self.app_close_flag = True
             self.close()
             sys.exit()
@@ -158,13 +172,14 @@ class viewerUI(QMainWindow):
     def set_image(self, image: np.ndarray):
         self.ui.tile_image_viewer.set_image(image)
 
-    def add_tile(self, _id, color, meterage):
+    def add_tile(self, _id, color, meterage, select=False):
         tile = Tile(_id, meterage=meterage, color=color)
         tile.select_connector(self.tile_select_event)
         layout = self.ui.tiles_frame.layout()
         # layout.addWidget(tile)
-        for _ in range(10):
-            layout.insertWidget(0, tile)
+        layout.insertWidget(0, tile)
+        if select:
+            self.tile_select_event(tile)
     
     def tile_select_connector(self, func):
         self.tile_external_event_func = func

@@ -26,6 +26,12 @@ class IconsPath:
     WARNING_PATH = ':/icons/icons/warning_icon.png'
     ERROR_ICON = ':/icons/icons/error_icon.png'
     SUCCESS_ICON = ':/icons/icons/success_icon.png'
+    QUESTION_ICON = ':/icons/icons/question_icon.png'
+
+    TICK_PATH = ':/icons/icons/tick.png'
+    SAVE_PATH = ':/icons/icons/save_icon.png'
+    CANCEL_PATH = ':/icons/icons/cancel_icon.png'
+    CANCEL_HOVER_PATH = ':/icons/icons/cancel_hover.png'
 
     PLAY_ICON = ':/icons/icons/play.png'
     PAUSE_ICON = ':/icons/icons/pause.png'

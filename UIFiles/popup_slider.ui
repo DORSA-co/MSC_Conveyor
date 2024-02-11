@@ -1228,6 +1228,9 @@ background-color:transparent;</string>
                </item>
                <item>
                 <widget class="QPushButton" name="filters_apply_btn">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
                  <property name="cursor">
                   <cursorShape>PointingHandCursor</cursorShape>
                  </property>
@@ -1266,6 +1269,17 @@ background-color:transparent;</string>
                  <property name="text">
                   <string>Apply</string>
                  </property>
+                 <property name="icon">
+                  <iconset resource="assets/assets.qrc">
+                   <normaloff>:/icons/icons/apply_icon.png</normaloff>
+                   <disabledoff>:/icons/icons/apply_disables.png</disabledoff>:/icons/icons/apply_icon.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>20</width>
+                   <height>20</height>
+                  </size>
+                 </property>
                 </widget>
                </item>
                <item>
@@ -1291,7 +1305,7 @@ background-color:transparent;</string>
 	max-height: 36;
 	font-size: 14px;
 	font-weight: bold;
-	qproperty-icon: url(:/icons/icons/clear_filter_blue.png);
+	icon: url(:/icons/icons/clear_filter_blue.png);
 }
 
 #notif_clear_filter_btn:disabled
@@ -1304,7 +1318,7 @@ background-color:transparent;</string>
 {
 	border: 2px solid rgba(76, 126, 255, 255);
 	color:  rgba(76, 126, 255, 255);
-	qproperty-icon: url(:/icons/icons/clear_filter_blue_hover.png);
+	icon: url(:/icons/icons/clear_filter_blue_hover.png);
 }
 
 #notif_clear_filter_btn:pressed

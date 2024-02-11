@@ -56,12 +56,32 @@ class Report_UI(Common_Function_UI):
             '',
             ''
         ]
+
+        self.TABLE_COLLUMN_WIDTH = [
+                        50,
+                        50,
+                        150,
+                        150,
+                        150,
+                        150, 
+                        150,
+                        150,
+                        150,
+                        150, 
+                        150, 
+                        150, 
+                        150,
+                        100,
+                        100
+                    ]
         
         self.filters = {
             'ranges': {'date': (self.ui.report_start_date_input, self.ui.report_end_date_input),
                        'width': (self.ui.report_low_width_input, self.ui.report_high_width_input),
                        'length': (self.ui.report_low_length_input, self.ui.report_high_length_input), 
                        'depth': (self.ui.report_low_depth_input, self.ui.report_high_depth_input)
+            },
+            'booleans': {'torn': self.ui.report_torn_checkBox
             }
         }
 
@@ -71,6 +91,7 @@ class Report_UI(Common_Function_UI):
             'width': self.ui.report_width_checkBox,
             'length': self.ui.report_length_checkBox,
             'depth': self.ui.report_depth_checkBox,
+            'torn': self.ui.report_torn_checkBox,
         }
 
         self.filter_frames = {
@@ -79,6 +100,7 @@ class Report_UI(Common_Function_UI):
             'width': self.ui.report_width_filter_frame,
             'length': self.ui.report_length_filter_frame,
             'depth': self.ui.report_depth_filter_frame,
+            'torn': self.ui.report_torn_filter_frame,
         }
         
         self.buttons = {
@@ -111,10 +133,6 @@ class Report_UI(Common_Function_UI):
         self.button_connector('move_table_hscroll_end', self.__set_table_scrollbar_to_end)
 
         GUIBackend.checkbox_connector(self.ui.select_all_defects_table, self.select_all)
-        # self.button_connector('first', self.table_previous_page)
-        # self.button_connector('prev', self.table_previous_page)
-        # self.button_connector('prev', self.table_previous_page)
-
 
         self.table_current_page = 1
         self.table_total_pages = 0
@@ -123,9 +141,12 @@ class Report_UI(Common_Function_UI):
         self.handle_next_prev_enablity()
 
     def startup(self,):
+        self.__set_table_scrollbar_to_start()
         GUIBackend.set_table_cheaders(self.ui.report_table, 
                                       [self.TABLE_HEADERS[i]+self.TABLE_HEADERS_UNITS[i] for i in range(len(self.TABLE_HEADERS))]
                                     )
+        for c, width in enumerate(self.TABLE_COLLUMN_WIDTH):
+            GUIBackend.set_table_cwidth(self.ui.report_table, c, width)
         
     def button_connector(self, name, func):
         GUIBackend.button_connector(self.buttons[name], func)
@@ -138,6 +159,11 @@ class Report_UI(Common_Function_UI):
                 start_range = GUIBackend.get_input(self.filters['ranges'][key][0])
                 end_range = GUIBackend.get_input(self.filters['ranges'][key][1])
                 filters[key] = (start_range, end_range)
+
+        for key in self.filters['booleans'].keys():
+            if GUIBackend.get_checkbox_value(self.filter_checkboxes[key]):
+                value = GUIBackend.get_checkbox_value(self.filters['booleans'][key])
+                filters[key] = value
         
         return filters
     
@@ -300,8 +326,13 @@ class Report_UI(Common_Function_UI):
 
     def __set_table_scrollbar_to_start(self):
         self.ui.report_table.horizontalScrollBar().setValue(0)
+        GUIBackend.set_disable_enable(self.buttons['move_table_hscroll_start'], False)
+        GUIBackend.set_disable_enable(self.buttons['move_table_hscroll_end'], True)
 
     def __set_table_scrollbar_to_end(self):
         x = self.ui.report_table.horizontalScrollBar().maximum()
         self.ui.report_table.horizontalScrollBar().setValue(x)
+
+        GUIBackend.set_disable_enable(self.buttons['move_table_hscroll_start'], True)
+        GUIBackend.set_disable_enable(self.buttons['move_table_hscroll_end'], False)
 

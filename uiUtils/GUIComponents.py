@@ -3,6 +3,7 @@ import time
 import re
 import cv2
 
+from PySide6.QtWidgets import QApplication
 from PySide6 import QtWidgets, QtCore, QtGui
 from UIFiles.defect_notification import Ui_Notification
 from UIFiles.progress_dialog import Ui_progressDialog
@@ -10,7 +11,6 @@ import datetime
 from persiantools.jdatetime import JalaliDateTime, JalaliDate
 
 from uiUtils.guiBackend import GUIBackend
-import PySide6.QtWidgets 
 
 from Constants import Constant
 from Constants import IconsPath
@@ -139,26 +139,181 @@ QPushButton:hover{
 """
 
 CONFIRMBOX_STYLESHEET = """
-   QMessageBox{ 
-        background-color: #ffffff;
+QMessageBox{ 
+    background-color: #E0E4EC;
+    font: auto "Roboto";
+    font-size: 16px;
+}
 
-    }
-    
-    QPushButton{
-        border: none;
-        font-weight: bold;
-        color: #ffffff;
-        background-color:rgb(6, 76, 130);
-        min-height: 25px;
-        border-radius: 5px;
-        min-width:100px;
-        font-size:12px;
-	
-        }
+QMessageBox QLabel#qt_msgbox_label {
+    min-width: 400px;
+}
+"""
 
-    QPushButton:hover{
-	    background-color:rgb(22, 38, 76);
-    }
+OK_BUTTUN_STYLE= """
+QPushButton
+{{
+    background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));
+    color: rgba(255, 255, 255, 210);
+    border-radius: 20px;
+    min-width: 100;
+    max-width: 100;
+    min-height: 40;
+    max-height: 40;
+    font-size: 14px;
+    font-weight: bold;
+    icon: url({0})
+}}
+
+QPushButton:hover
+{{
+    background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));
+}}
+
+QPushButton:pressed
+{{
+    padding-left: 5px;
+    padding-top: 5px;
+}}
+""".format(IconsPath.IconsPath.TICK_PATH)
+
+YES_BUTTUN_STYLE= """
+QPushButton
+{{
+    background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));
+    color: rgba(255, 255, 255, 210);
+    border-radius: 20px;
+    min-width: 100;
+    max-width: 100;
+    min-height: 40;
+    max-height: 40;
+    font-size: 14px;
+    font-weight: bold;
+    icon: url({0})
+}}
+
+QPushButton:hover
+{{
+    background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));
+}}
+
+QPushButton:pressed
+{{
+    padding-left: 5px;
+    padding-top: 5px;
+}}
+""".format(IconsPath.IconsPath.TICK_PATH)
+
+SAVE_BUTTUN_STYLE= """
+QPushButton
+{{
+    background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));
+    color: rgba(255, 255, 255, 210);
+    border-radius: 20px;
+    min-width: 100;
+    max-width: 100;
+    min-height: 40;
+    max-height: 40;
+    font-size: 14px;
+    font-weight: bold;
+    icon: url({0})
+}}
+
+QPushButton:hover
+{{
+    background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));
+}}
+
+QPushButton:pressed
+{{
+    padding-left: 5px;
+    padding-top: 5px;
+}}
+""".format(IconsPath.IconsPath.SAVE_PATH)
+
+CANCEL_BUTTUN_STYLE= """
+QPushButton
+{{
+    border: 2px solid  rgba(46, 76, 153, 255);
+    color:  rgba(46, 76, 153, 255);
+    border-radius: 18px;
+    min-width: 100;
+    max-width: 100;
+    min-height: 36;
+    max-height: 36;
+    font-size: 14px;
+    font-weight: bold;
+    icon: url({0});
+}}
+
+QPushButton:hover
+{{
+    border: 2px solid rgba(76, 126, 255, 255);
+    color:  rgba(76, 126, 255, 255);
+    icon: url({1});
+}}
+
+QPushButton:pressed
+{{
+    padding-left: 5px;
+    padding-top: 5px;
+}}
+""".format(IconsPath.IconsPath.CANCEL_PATH, IconsPath.IconsPath.CANCEL_HOVER_PATH)
+
+NO_BUTTUN_STYLE= """
+QPushButton
+{{
+    border: 2px solid  rgba(46, 76, 153, 255);
+    color:  rgba(46, 76, 153, 255);
+    border-radius: 18px;
+    min-width: 100;
+    max-width: 100;
+    min-height: 36;
+    max-height: 36;
+    font-size: 14px;
+    font-weight: bold;
+    icon: url({0});
+}}
+
+QPushButton:hover
+{{
+    border: 2px solid rgba(76, 126, 255, 255);
+    color:  rgba(76, 126, 255, 255);
+    icon: url({1});
+}}
+
+QPushButton:pressed
+{{
+    padding-left: 5px;
+    padding-top: 5px;
+}}
+""".format(IconsPath.IconsPath.CANCEL_PATH, IconsPath.IconsPath.CANCEL_HOVER_PATH)
+
+IGNORE_BUTTUN_STYLE= """
+QPushButton
+{
+    border: 2px solid  rgba(46, 76, 153, 255);
+    color:  rgba(46, 76, 153, 255);
+    border-radius: 18px;
+    min-width: 100;
+    max-width: 100;
+    min-height: 36;
+    max-height: 36;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QPushButton:hover
+{
+    border: 2px solid rgba(76, 126, 255, 255);
+    color:  rgba(76, 126, 255, 255);
+}
+
+QPushButton:pressed
+{
+    padding-left: 5px;
+    padding-top: 5px;
+}
 """
 
 COMPARE_COMBOBOXE = """
@@ -868,8 +1023,9 @@ class inputTable(QtWidgets.QLineEdit):
         super(inputTable, self).__init__(*a, **kw)
 
 
-class confirmMessageBox:
-    def __init__(self, title, text, buttons, min_height=300, min_width=400, parent=None ):
+class MessageBox:
+    def __init__(self, title, text, buttons, icon_type, parent=None):
+
         self.STANDARD_BUTTONS = {
             'yes': QtWidgets.QMessageBox.Yes,
             'no': QtWidgets.QMessageBox.No,
@@ -877,24 +1033,68 @@ class confirmMessageBox:
             'save': QtWidgets.QMessageBox.Save,
             'ok': QtWidgets.QMessageBox.Ok,
             'ignore': QtWidgets.QMessageBox.Ignore,
-            
-
         }
 
-        self.icon = QtGui.QIcon(':/assets/icons/icons8-question-blue-50.png')
+        self.STANDARD_BUTTONS_STYLES = {
+            'yes': YES_BUTTUN_STYLE,
+            'no': NO_BUTTUN_STYLE,
+            'cancel': CANCEL_BUTTUN_STYLE,
+            'save': SAVE_BUTTUN_STYLE,
+            'ignore': IGNORE_BUTTUN_STYLE,
+            'ok': OK_BUTTUN_STYLE
+        }
+
         self.buttons = buttons
 
-        text = text + " " * 100 + "\n"
-
-        self.msg = QtWidgets.QMessageBox( text=text, parent=parent)
-        self.msg.setWindowTitle(title)
+        self.msg = QtWidgets.QMessageBox(parent=parent)
+        self.msg.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+        # self.msg.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.msg.setStyleSheet(CONFIRMBOX_STYLESHEET)
-        self.msg.setWindowIcon(self.icon)
-        #self.msg.setMinimumHeight(min_height)
-        #self.msg.setStyleSheet("QLabel{ min-width:" + str(min_width) + " px; }" )
-        #self.msg.setMinimumWidth(min_width)
+        self.msg.setMinimumSize(400, 200)
 
-        
+        if icon_type=='question':
+            icon_path = IconsPath.IconsPath.QUESTION_ICON
+        if icon_type=='info':
+            icon_path = IconsPath.IconsPath.INFO_PATH
+        if icon_type=='success':
+            icon_path = IconsPath.IconsPath.SUCCESS_ICON
+        if icon_type=='warning':
+            icon_path = IconsPath.IconsPath.WARNING_PATH
+        if icon_type=='error':
+            icon_path = IconsPath.IconsPath.ERROR_ICON
+
+        self.icon = QtGui.QPixmap(icon_path)
+        self.msg.setIconPixmap(self.icon)
+
+        # self.msg.setText("{0} <br> {0}".format(title, text))
+
+        html_text = """
+        <!DOCTYPE html>
+        <html>
+        <head>
+        <style>
+        /* Title style */
+        .title {{
+            color: rgb(20, 20, 20); /* Title color */
+            font-size: 22px; /* Title font size */
+            font-weight: bold;
+        }}
+        /* Text style */
+        .text {{
+            color: rgb(20, 20, 20);
+            font-size: 16px; /* Text font size */
+        }}
+        </style>
+        </head>
+        <body>
+        <p class="title">{0}</p>
+        <p class="text">{1}</p>
+        </body>
+        </html>
+        """
+        self.msg.setTextFormat(QtCore.Qt.RichText)
+        self.msg.setText(html_text.format(title, text))
+
         #---------------------------------------------------
         selected_buttons_obj = []
         for btn_name in buttons:
@@ -905,6 +1105,11 @@ class confirmMessageBox:
                 selected_buttons_obj = selected_buttons_obj | btn
         self.msg.setStandardButtons(selected_buttons_obj)
         #---------------------------------------------------
+
+        for btn_name in buttons:
+            style = self.STANDARD_BUTTONS_STYLES[btn_name]
+            btn = self.msg.button(self.STANDARD_BUTTONS[btn_name])
+            btn.setStyleSheet(style)
 
     def render(self) -> str:
         retval = self.msg.exec_()
@@ -1254,6 +1459,23 @@ class proggressDialogUI(QtWidgets.QWidget):
         self.move_refresh_time = 0
         self.offset = None
 
+        self._center()
+
+    def _center(self):
+        # Get primary screen
+        primary_screen = QApplication.primaryScreen()
+
+        if primary_screen:
+            # Get geometry of the primary screen
+            screen_geometry = primary_screen.geometry()
+
+            # Calculate center point
+            center_point = screen_geometry.center()
+
+            # Set window position to be centered
+            self.move(center_point.x() - self.frameGeometry().width() // 2,
+                      center_point.y() - self.frameGeometry().height() // 2)
+
     def mousePressEvent(self, event):
         if event.button() == QtCore.Qt.LeftButton:
             self.offset = QtCore.QPoint(event.position().x(),event.position().y())
@@ -1301,8 +1523,8 @@ class proggressDialogUI(QtWidgets.QWidget):
         GUIBackend.button_connector(self.cancel_btn, func)
 
     
-    def show_confirm_massage(self, title, text, buttons):
-        dialog =  confirmMessageBox(title, text, buttons, parent=self)
+    def show_confirm_massage(self, title, text, buttons, icon_type):
+        dialog =  MessageBox(title, text, buttons, icon_type, parent=self)
         return dialog.render()
 
 

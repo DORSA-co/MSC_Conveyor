@@ -4,7 +4,7 @@ from PySide6.QtCore import QTimer
 from PySide6 import QtWidgets, QtCore, QtGui
 import cv2
 
-from uiUtils.GUIComponents import confirmMessageBox, single_timer_runner, gifPlayer
+from uiUtils.GUIComponents import MessageBox, single_timer_runner, gifPlayer
 from uiUtils.guiBackend import GUIBackend
 
 class Common_Function_UI:
@@ -45,8 +45,8 @@ class Common_Function_UI:
             func(*args)
         return event
     
-    def show_confirm_box(Self, title, massage, buttons):
-        cmb = confirmMessageBox(title, massage, buttons = buttons)
+    def show_confirm_box(Self, title, message, buttons, icon_type):
+        cmb = MessageBox(title, message, buttons=buttons, icon_type=icon_type)
         return cmb.render()
 
     def set_message(self, label_name, text, level=1):
@@ -65,52 +65,3 @@ class Common_Function_UI:
             label_name.setText("")
             label_name.setStyleSheet("")
 
-    def show_alert_window(self, title, message, need_confirm=False, level=1):
-        """this function is used to create a confirm window
-        :param title: _description_, defaults to 'Message'
-        :type title: str, optional
-        :param message: _description_, defaults to 'Message'
-        :type message: str, optional
-        :return: _description_
-        :rtype: _type_
-        """
-
-        level = 0 if level < 0 or level > 2 else level
-
-        # create message box
-        alert_window = QtWidgets.QMessageBox()
-
-        # icon
-        if level == 0:
-            alert_window.setIcon(QtWidgets.QMessageBox.Information)
-        elif level == 1:
-            alert_window.setIcon(QtWidgets.QMessageBox.Warning)
-        elif level == 2:
-            alert_window.setIcon(QtWidgets.QMessageBox.Critical)
-
-        # Message and title
-        alert_window.setText(message)
-        alert_window.setWindowTitle(title)
-        # buttons
-        if not need_confirm:
-            alert_window.setStandardButtons(QtWidgets.QMessageBox.Ok)
-            alert_window.button(QtWidgets.QMessageBox.Ok).setText("ok")
-        else:
-            alert_window.setStandardButtons(
-                QtWidgets.QMessageBox.Cancel | QtWidgets.QMessageBox.Ok
-            )
-            alert_window.button(QtWidgets.QMessageBox.Ok).setText("Yes")
-            alert_window.button(QtWidgets.QMessageBox.Cancel).setText("Cancel")
-
-        alert_window.setWindowFlags(
-            QtCore.Qt.Dialog
-            | QtCore.Qt.CustomizeWindowHint
-            | QtCore.Qt.WindowTitleHint
-            | QtCore.Qt.WindowCloseButtonHint
-        )
-        returnValue = alert_window.exec()
-
-        if not need_confirm:
-            return True if returnValue == QtWidgets.QMessageBox.Ok else True
-        else:
-            return True if returnValue == QtWidgets.QMessageBox.Ok else False

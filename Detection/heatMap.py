@@ -12,6 +12,21 @@ GRADIENT1 = [((19, 47, 186), 0),
             ((19, 47, 186), 1),
             ]
 
+GRADIENT2 = [((2, 2, 204), 0),
+            ((0, 132, 254), 0.1),
+            ((0, 165, 254), 0.2),
+            ((5, 209, 245), 0.3),
+            ((180, 130, 70), 0.4),
+            ((128, 128, 128), 0.45),
+            ((128, 128, 128), 0.5),
+            ((128, 128, 128), 0.55),
+            ((180, 130, 70), 0.6),
+            ((5, 209, 245), 0.7),
+            ((0, 165, 254), 0.8),
+            ((0, 132, 254), 0.9),
+            ((2, 2, 204), 1)
+            ]
+
 
 class gradientItem:
     def __init__(self, color, position) -> None:
@@ -84,17 +99,21 @@ class colorGradient:
 
 if __name__ == "__main__":
     cg = colorGradient()
-    cg.add_color((19, 47, 186), 0)
-    cg.add_color((30, 115, 227), 0.15)
-    cg.add_color((9, 162, 222), 0.3)
-    cg.add_color((150, 150, 150), 0.45)
-    cg.add_color((150, 150, 150), 0.5)
-    cg.add_color((150, 150, 150), 0.55)
-    cg.add_color((9, 162, 222), 0.7)
-    cg.add_color((30, 115, 227), 0.85)
-    cg.add_color((19, 47, 186), 1)
+    cg.add_color((0, 0, 254), 0)
+    cg.add_color((0, 165, 254), 0.1)
+    cg.add_color((0, 215, 254), 0.2)
+    cg.add_color((180, 130, 70), 0.3)
+    
+    cg.add_color((128, 128, 128), 0.45)
+    cg.add_color((128, 128, 128), 0.5)
+    cg.add_color((128, 128, 128), 0.55)
+    
+    cg.add_color((180, 130, 70), 0.7)
+    cg.add_color((0, 215, 254), 0.8)
+    cg.add_color((0, 165, 254), 0.9)
+    cg.add_color((0, 0, 254), 1)
     gradiant = cg.generate_gradiant(20)
-    img = cg.toImage(200)
+    img = cg.toImage(20)
 
     cv2.imshow("grad", img)
     cv2.waitKey(0)

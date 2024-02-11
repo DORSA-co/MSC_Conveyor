@@ -1,4 +1,3 @@
-from tkinter.messagebox import NO
 from PySide6.QtCore import QMargins
 from PySide6.QtGui import QPainter, QColor, QFont
 from PySide6 import QtCharts

@@ -24,7 +24,7 @@ class ImageCreator:
         self.image_start_line_idx = 0
         self.prev_line_idx = 0
 
-        self.create_gradient('color_gradient', heatMap.GRADIENT1)
+        self.create_gradient('color_gradient', heatMap.GRADIENT2)
         
         self.create_gradient('gray_gradient', ( ((220, 220, 220), 0),
                                                 ((150, 150, 150), 0.19), 

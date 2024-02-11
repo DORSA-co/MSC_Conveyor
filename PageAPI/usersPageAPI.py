@@ -140,7 +140,8 @@ class AllUserTabAPI:
         if flag == 'delete':
             response = self.uiHandeler.show_confirm_box("Delete User",
                                                 "Are you sure you want to delete '{}' ?".format(user['username']),
-                                                  buttons=['yes', 'cancel'])
+                                                  buttons=['yes', 'cancel'],
+                                                  icon_type='question')
             if response == 'cancel':
                 return
             

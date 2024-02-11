@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1196</width>
-    <height>825</height>
+    <height>832</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1050,7 +1050,7 @@ QComboBox:focus{
       <item>
        <widget class="QStackedWidget" name="main_stackedWidget">
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="live_view_page">
          <layout class="QHBoxLayout" name="horizontalLayout_23">
@@ -1211,7 +1211,7 @@ font-weight:bold;</string>
                     <x>0</x>
                     <y>0</y>
                     <width>320</width>
-                    <height>684</height>
+                    <height>691</height>
                    </rect>
                   </property>
                   <property name="styleSheet">
@@ -1314,7 +1314,7 @@ border-radius: 20px;</string>
                 </widget>
                 <widget class="QWidget" name="tab_2">
                  <attribute name="title">
-                  <string>Tab 2</string>
+                  <string/>
                  </attribute>
                 </widget>
                </widget>
@@ -2196,7 +2196,7 @@ border-radius: 20px;</string>
 	max-height: 36;
 	font-size: 14px;
 	font-weight: bold;
-	qproperty-icon: url(:/icons/icons/cancel_icon.png);
+	icon: url(:/icons/icons/cancel_icon.png);
 }
 
 #cancel_camera_settings:disabled
@@ -2209,7 +2209,7 @@ border-radius: 20px;</string>
 {
 	border: 2px solid rgba(76, 126, 255, 255);
 	color:  rgba(76, 126, 255, 255);
-	qproperty-icon: url(:/icons/icons/cancel_hover.png);
+	icon: url(:/icons/icons/cancel_hover.png);
 }
 
 #cancel_camera_settings:pressed
@@ -2265,7 +2265,7 @@ border-radius: 20px;</string>
 	font-size: 14px;
 	font-weight: bold;
 	text-align: right;
-	qproperty-icon: url(:/icons/icons/reset_icon.png);
+	icon: url(:/icons/icons/reset_icon.png);
 }
 
 #reset_camera_settings:disabled
@@ -2276,7 +2276,7 @@ border-radius: 20px;</string>
 #reset_camera_settings:hover
 {
 	color:  rgba(76, 126, 255, 255);
-	qproperty-icon: url(:/icons/icons/reset_hover.png);
+	icon: url(:/icons/icons/reset_hover.png);
 }
 
 #reset_camera_settings:pressed
@@ -3415,7 +3415,7 @@ border-radius: 20px;</string>
 	max-height: 36;
 	font-size: 14px;
 	font-weight: bold;
-	qproperty-icon: url(:/icons/icons/cancel_icon.png);
+	icon: url(:/icons/icons/cancel_icon.png);
 }
 
 #cancel_algorithm_settings:disabled
@@ -3428,7 +3428,7 @@ border-radius: 20px;</string>
 {
 	border: 2px solid rgba(76, 126, 255, 255);
 	color:  rgba(76, 126, 255, 255);
-	qproperty-icon: url(:/icons/icons/cancel_hover.png);
+	icon: url(:/icons/icons/cancel_hover.png);
 }
 
 #cancel_algorithm_settings:pressed
@@ -3484,6 +3484,7 @@ border-radius: 20px;</string>
 	font-size: 14px;
 	font-weight: bold;
 	text-align: left;
+	icon: url(:/icons/icons/reset_icon.png);
 }
 
 #reset_algorithm_settings:disabled
@@ -3494,7 +3495,7 @@ border-radius: 20px;</string>
 #reset_algorithm_settings:hover
 {
 	color:  rgba(76, 126, 255, 255);
-	qproperty-icon: url(:/icons/icons/reset_hover.png);
+	icon: url(:/icons/icons/reset_hover.png);
 }
 
 #reset_algorithm_settings:pressed
@@ -3591,7 +3592,7 @@ QFrame{
 	border: None;
 }
 
-#date_line, #width_line, #length_line, #depth_line, #class_line, #last_line{
+#date_line, #width_line, #length_line, #depth_line, #class_line, #torn_line, #last_line{
 	border: 1px solid #E3E3E6;
 }</string>
             </property>
@@ -3603,7 +3604,7 @@ QFrame{
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_48">
              <property name="spacing">
-              <number>10</number>
+              <number>9</number>
              </property>
              <item>
               <widget class="QLabel" name="report_filter_by_label">
@@ -4422,6 +4423,119 @@ QFrame{
               </layout>
              </item>
              <item>
+              <layout class="QVBoxLayout" name="verticalLayout_68">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <item>
+                <widget class="QFrame" name="torn_line">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>2</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>2</height>
+                  </size>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="report_torn_title_frame">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_49">
+                  <item>
+                   <widget class="QCheckBox" name="report_torn_checkBox">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="report_torn_icon">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="assets/assets.qrc">
+                      <normaloff>:/icons/icons/torn_black.png</normaloff>
+                      <disabledoff>:/icons/icons/torn_black.png</disabledoff>:/icons/icons/torn_black.png</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>25</width>
+                      <height>25</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="report_torn_label">
+                    <property name="text">
+                     <string>Torn</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="report_torn_filter_frame">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
               <widget class="QFrame" name="last_line">
                <property name="minimumSize">
                 <size>
@@ -4500,6 +4614,11 @@ QFrame{
                  </property>
                  <property name="text">
                   <string>Apply</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="assets/assets.qrc">
+                   <normaloff>:/icons/icons/apply_icon.png</normaloff>
+                   <disabledoff>:/icons/icons/apply_disables.png</disabledoff>:/icons/icons/apply_icon.png</iconset>
                  </property>
                 </widget>
                </item>
@@ -4613,7 +4732,7 @@ QFrame{
 	max-height: 26;
 	font-size: 14px;
 	font-weight: bold;
-	qproperty-icon: url(:/icons/icons/delete_icon.png);
+	icon: url(:/icons/icons/delete_icon.png);
 }
 
 #delete_selected_defects:disabled
@@ -4626,7 +4745,7 @@ QFrame{
 {
 	border: 0px solid rgba(175, 41, 17, 150);
 	color:  rgba(175, 41, 17, 150);
-	qproperty-icon: url(:/icons/icons/delete_icon_hover.png);
+	icon: url(:/icons/icons/delete_icon_hover.png);
 }
 
 #delete_selected_defects:pressed
@@ -4643,6 +4762,9 @@ QFrame{
               </item>
               <item>
                <widget class="QPushButton" name="reload_reports_btn">
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">#reload_reports_btn
 {
@@ -4656,7 +4778,7 @@ QFrame{
 	font-size: 14px;
 	font-weight: bold;
 	text-align: right;
-	qproperty-icon: url(:/icons/icons/reset_icon.png);
+	icon: url(:/icons/icons/reset_icon.png);
 }
 
 #reload_reports_btn:disabled
@@ -4667,7 +4789,7 @@ QFrame{
 #reload_reports_btn:hover
 {
 	color:  rgba(76, 126, 255, 255);
-	qproperty-icon: url(:/icons/icons/reset_hover.png);
+	icon: url(:/icons/icons/reset_hover.png);
 }
 
 #reload_reports_btn:pressed
@@ -4697,6 +4819,9 @@ QFrame{
               </item>
               <item>
                <widget class="QPushButton" name="move_table_start_btn">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                   <horstretch>0</horstretch>
@@ -4705,13 +4830,13 @@ QFrame{
                 </property>
                 <property name="minimumSize">
                  <size>
-                  <width>40</width>
+                  <width>30</width>
                   <height>0</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>40</width>
+                  <width>30</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4726,7 +4851,7 @@ QFrame{
                 </property>
                 <property name="icon">
                  <iconset resource="assets/assets.qrc">
-                  <normaloff>:/icons/icons/prev_black.png</normaloff>:/icons/icons/prev_black.png</iconset>
+                  <normaloff>:/icons/icons/first.png</normaloff>:/icons/icons/first.png</iconset>
                 </property>
                </widget>
               </item>
@@ -4740,13 +4865,13 @@ QFrame{
                 </property>
                 <property name="minimumSize">
                  <size>
-                  <width>40</width>
+                  <width>30</width>
                   <height>0</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>40</width>
+                  <width>30</width>
                   <height>16777215</height>
                  </size>
                 </property>
@@ -4761,7 +4886,7 @@ QFrame{
                 </property>
                 <property name="icon">
                  <iconset resource="assets/assets.qrc">
-                  <normaloff>:/icons/icons/next_black.png</normaloff>:/icons/icons/next_black.png</iconset>
+                  <normaloff>:/icons/icons/last.png</normaloff>:/icons/icons/last.png</iconset>
                 </property>
                </widget>
               </item>
@@ -5244,7 +5369,7 @@ QFrame{
                       <x>0</x>
                       <y>0</y>
                       <width>916</width>
-                      <height>253</height>
+                      <height>260</height>
                      </rect>
                     </property>
                     <property name="sizePolicy">
@@ -5442,7 +5567,7 @@ QFrame{
                         <x>0</x>
                         <y>0</y>
                         <width>432</width>
-                        <height>381</height>
+                        <height>388</height>
                        </rect>
                       </property>
                      </widget>
@@ -5705,7 +5830,7 @@ QFrame{
                         <x>0</x>
                         <y>0</y>
                         <width>432</width>
-                        <height>292</height>
+                        <height>299</height>
                        </rect>
                       </property>
                      </widget>

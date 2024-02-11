@@ -2,7 +2,7 @@ import sys
 import time
 
 
-from PySide6.QtWidgets import QMainWindow, QHeaderView
+from PySide6.QtWidgets import QMainWindow, QHeaderView, QApplication
 from PySide6 import QtCore
 
 
@@ -93,9 +93,22 @@ class mainUI(QMainWindow):
         self.current_page_name = ''
         self.previouse_page_name = ''
 
-        
+        self._center()
 
-    
+    def _center(self):
+        # Get primary screen
+        primary_screen = QApplication.primaryScreen()
+
+        if primary_screen:
+            # Get geometry of the primary screen
+            screen_geometry = primary_screen.geometry()
+
+            # Calculate center point
+            center_point = screen_geometry.center()
+
+            # Set window position to be centered
+            self.move(center_point.x() - self.frameGeometry().width() // 2,
+                      center_point.y() - self.frameGeometry().height() // 2)
 
 
     def mousePressEvent(self, event):
@@ -248,14 +261,12 @@ class mainUI(QMainWindow):
         Returns: None
         """
 
-        res = self.common_func.show_alert_window(
-            title="Exit",
-            message="Do you want to exit?",
-            need_confirm=True,
-            level=1,
-        )
+        res = self.common_func.show_confirm_box(title="Exit",
+                                                message="Do you want to exit?",
+                                                buttons=['yes', 'cancel'],
+                                                icon_type='question')
 
-        if res:
+        if res=='yes':
             self.app_close_flag = True
             self.close()
             sys.exit()
