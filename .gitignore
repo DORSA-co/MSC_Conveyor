@@ -3,4 +3,5 @@ __pycache__/
 demo imgs
 *.json
 defects_info/*.json
-
+belt_images/depth/*.npy
+*.npy

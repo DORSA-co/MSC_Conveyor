@@ -105,9 +105,16 @@ class Defect:
             max(self.defect_width_boundries[1], end_anomaly_idx)
         )
 
-    def is_complete(self, line_idx:int, min_idx_gap):
+    def is_complete(self, line_idx:int, min_idx_gap, end_belt_idx):
+        if line_idx < self.end_line_idx:
+            line_idx += end_belt_idx
+
+
         if line_idx - self.end_line_idx >= min_idx_gap:
             return True
+        # if line_idx - self.end_line_idx < 0:
+        #     return True
+        
         return False
     
     def is_defect(self, min_length: int):
@@ -116,8 +123,8 @@ class Defect:
         else:
             return False
         
-    def is_present_in_image(self,line_idx, img_w):
-        x1 = line_idx - self.end_line_idx
+    def is_present_in_image(self,line_idx, img_w, end_belt_idx):
+        (x1,_), (_,_) = self.get_bounding_box(line_idx,img_w, end_belt_idx)
         if -img_w< x1 < img_w :
             return True
         return False
@@ -128,7 +135,7 @@ class Defect:
             defect_start_idx = self.defect_indices[:, 0].min()
             defect_end_idx = self.defect_indices[:, 1].max()
         except:
-            print(self.defect_indices)
+            print('Defect is_part_of ERROR:',self.defect_indices)
 
         distance = self.__calc_overlap(start_idx, end_idx,
                             defect_start_idx, defect_end_idx)
@@ -140,19 +147,31 @@ class Defect:
         else:
             return False
         
-    def get_bounding_box(self, line_idx, belt_end_line_idx=None):
+    def get_bounding_box(self, line_idx,img_width, belt_end_line_idx=None, border=12):
         #when belt pass the end and start from 0 again
-        #print(belt_end_line_idx, line_idx)
-        
-        if belt_end_line_idx is not None and line_idx < self.end_line_idx:
-            x1 = line_idx + (belt_end_line_idx - self.end_line_idx)
-            x2 = line_idx + (belt_end_line_idx - self.start_line_idx)
-        else:
-            x1 = line_idx - self.end_line_idx
-            x2 = line_idx - self.start_line_idx
+        # if line_idx < img_width and belt_end_line_idx - img_width <self.start_line_idx < belt_end_line_idx:
+        #      x1 = line_idx + (belt_end_line_idx - self.end_line_idx)
+        #      x2 = line_idx + (belt_end_line_idx - self.start_line_idx)
+        #else:
+        temp_line_idx = line_idx
+        if line_idx < img_width and self.end_line_idx > (belt_end_line_idx - img_width):
+            temp_line_idx += belt_end_line_idx
+
+        x1 = temp_line_idx - self.end_line_idx
+
+        temp_line_idx = line_idx
+        if line_idx < img_width and self.start_line_idx > (belt_end_line_idx - img_width):
+            temp_line_idx += belt_end_line_idx
+
+        x2 = temp_line_idx - self.start_line_idx
 
         y1 = self.defect_width_boundries[0]
         y2 = self.defect_width_boundries[1]
+
+        x1 -=border
+        x2 += border
+        y1 -= border
+        y2 += border
 
         #print((x1, y1), (x2, y2))
         #print('---------------------------')

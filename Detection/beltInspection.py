@@ -94,7 +94,10 @@ class beltInspection:
         # print('defect tracker: ', time.time() - t)
 
         t = time.time()
-        self.DefectTracker.check_defects_completion(self.kwargs['tracker_min_frame_gap'], self.kwargs['defect_min_length'], line_idx)
+        self.DefectTracker.check_defects_completion(self.kwargs['tracker_min_frame_gap'], 
+                                                    self.kwargs['defect_min_length'], 
+                                                    line_idx,
+                                                    self.Encoder.get_end_line_idx())
         # print('check completion: ', time.time() - t)
 
         t = time.time()
@@ -105,7 +108,8 @@ class beltInspection:
         # blure_image = cv2.blur(image, ksize=(3, 3))
         #--------------------------------------
         self.DefectTracker.check_defect_passed(line_idx=line_idx,
-                                               img_width=image.shape[1])
+                                               img_width=image.shape[1],
+                                               end_belt_idx=self.Encoder.get_end_line_idx())
         
         self.res_image = self.DefectTracker.draw(self.kwargs['defect_min_length'],
                                                 image.copy(), 
@@ -130,7 +134,7 @@ class beltInspection:
     def round_finish_event(self, finish_idx):
         if PRINT_FLAG:
             print('End Belt',finish_idx)
-        self.ImageCreator.reset_image_index()
+        self.ImageCreator.reset_image_index(finish_idx)
 
     def cycle_image_event(self,image_index, image_start_line_idx):
         if PRINT_FLAG:
