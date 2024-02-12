@@ -1171,7 +1171,7 @@ font-size:18px;
 font-weight:bold;</string>
                    </property>
                    <property name="text">
-                    <string>15/33 Alarms</string>
+                    <string>0 Alarms</string>
                    </property>
                   </widget>
                  </item>
@@ -5368,8 +5368,8 @@ QFrame{
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>916</width>
-                      <height>260</height>
+                      <width>100</width>
+                      <height>30</height>
                      </rect>
                     </property>
                     <property name="sizePolicy">
@@ -5566,8 +5566,8 @@ QFrame{
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>432</width>
-                        <height>388</height>
+                        <width>100</width>
+                        <height>30</height>
                        </rect>
                       </property>
                      </widget>
@@ -5829,8 +5829,8 @@ QFrame{
                        <rect>
                         <x>0</x>
                         <y>0</y>
-                        <width>432</width>
-                        <height>299</height>
+                        <width>100</width>
+                        <height>30</height>
                        </rect>
                       </property>
                      </widget>
