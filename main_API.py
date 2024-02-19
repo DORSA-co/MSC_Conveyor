@@ -68,7 +68,7 @@ class main_API:
         
         self.build_camera(CAMERAS)
         self.run_camera_thread(CAMERAS['name'])
-        self.cameras[CAMERAS['name']].Operations.start_grabbing()
+        #self.cameras[CAMERAS['name']].Operations.start_grabbing()
         
         
         self.API_Page_Setting = SettingAPI( self.uiHandeler.Page_Setting, 

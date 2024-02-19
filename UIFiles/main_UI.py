@@ -515,16 +515,6 @@ class Ui_MainWindow(object):
 "	border:5px solid #BDBDBF;\n"
 "}\n"
 "\n"
-"/*********************LexpandingFrameStyle**********************/\n"
-"\n"
-"*[styleSheet=\"LexpandingFrameStyle\"]\n"
-"{\n"
-"	background-color: #17203A\n"
-"}\n"
-"\n"
-"*[styleSheet=\"LexpandingFrameStyle\"] .QPushButton{\n"
-"	border: 0px solid gray;\n"
-"}\n"
 "\n"
 "")
         self.verticalLayout = QVBoxLayout(self.LocalStyleSheet)
@@ -1010,7 +1000,13 @@ class Ui_MainWindow(object):
         self.expanding_frame = QFrame(self.live_view_page)
         self.expanding_frame.setObjectName(u"expanding_frame")
         self.expanding_frame.setMinimumSize(QSize(50, 0))
-        self.expanding_frame.setStyleSheet(u"LexpandingFrameStyle")
+        self.expanding_frame.setStyleSheet(u"#expanding_frame{\n"
+"	background-color: #17203A;\n"
+"}\n"
+"\n"
+"#expanding_frame .QPushButton{\n"
+"	border: 0px solid red;\n"
+"}")
         self.verticalLayout_16 = QVBoxLayout(self.expanding_frame)
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
         self.verticalLayout_16.setContentsMargins(6, 20, 6, -1)
@@ -1120,7 +1116,9 @@ class Ui_MainWindow(object):
         self.run_stop_btn = QPushButton(self.expanding_frame)
         self.run_stop_btn.setObjectName(u"run_stop_btn")
         self.run_stop_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.run_stop_btn.setStyleSheet(u"")
+        self.run_stop_btn.setStyleSheet(u"#run_stop_btn{\n"
+"	color: white;\n"
+"}")
         icon15 = QIcon()
         icon15.addFile(u":/icons/icons/play.png", QSize(), QIcon.Normal, QIcon.Off)
         self.run_stop_btn.setIcon(icon15)

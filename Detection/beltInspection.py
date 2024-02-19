@@ -90,7 +90,10 @@ class beltInspection:
         # print('defect extractor: ', time.time() - t)
 
         t = time.time()
-        self.DefectTracker.feed(self.defect_indices, self.anomaly_pts[:, 1], line_idx)
+        self.DefectTracker.feed(self.defect_indices, 
+                                self.anomaly_pts[:, 1], 
+                                line_idx,
+                                self.Encoder.get_end_line_idx())
         # print('defect tracker: ', time.time() - t)
 
         t = time.time()
@@ -109,7 +112,7 @@ class beltInspection:
         #--------------------------------------
         self.DefectTracker.check_defect_passed(line_idx=line_idx,
                                                img_width=image.shape[1],
-                                               end_belt_idx=self.Encoder.get_end_line_idx())
+                                               belt_end_line_idx=self.Encoder.get_end_line_idx())
         
         self.res_image = self.DefectTracker.draw(self.kwargs['defect_min_length'],
                                                 image.copy(), 
@@ -117,6 +120,14 @@ class beltInspection:
                                                 self.Encoder.get_end_line_idx())
         
         # print('last draw: ', time.time() - t)
+
+        cv2.putText(self.res_image, 
+                    text=str(self.Encoder.line_idx),
+                    org=(20,20),
+                    fontFace=cv2.FONT_HERSHEY_COMPLEX_SMALL,
+                    fontScale=1,
+                    color=(0,0,0),
+                    thickness=2)
 
         # cv2.imshow('', res_image)
         #-------------------------------------------------------------------------------------------------

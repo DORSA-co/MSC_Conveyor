@@ -64,10 +64,10 @@ class LiveView_API:
         self.logined_user_password = password
 
     def run_stop(self,):
-        verify = VerifyUser(self.logined_user_password)
-        res = verify.render()
-        if not res:
-            return
+        # verify = VerifyUser(self.logined_user_password)
+        # res = verify.render()
+        # if not res:
+        #     return
         self.is_running = not(self.is_running)
         self.uiHandeler.set_run_stop_icon('pause' if self.is_running else 'play')
         self.external_run_stop_event_func()

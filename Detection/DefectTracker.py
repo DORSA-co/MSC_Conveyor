@@ -5,7 +5,14 @@ from Detection.Defect import Defect
 from backend.Utils.idList import idList
 
 class DefectTracker:
+    DUBGE = True
     def __init__(self) -> None:
+        # self.debug_defects = {
+        #     'complete':[],
+        #     'non_complete':[],
+        #     'not_defect':[],
+        #     'precense':[]
+        # }
         #self.completed_defects: list[Defect] = []
         #self.non_completed_defects: list[Defect] = []
         #self.__not_pass_completed_defects: list[Defect] = []
@@ -23,7 +30,7 @@ class DefectTracker:
     def set_update_defect_event(self, func):
         self.external_defect_update_event = func
 
-    def feed(self, defect_indices: np.ndarray, error_ys: np.ndarray, line_idx: int):
+    def feed(self, defect_indices: np.ndarray, error_ys: np.ndarray, line_idx: int, belt_end_line_idx):
         for defect_index in defect_indices:
             start_idx, end_idx, defect_type = defect_index
             find_defect_flag = False
@@ -64,22 +71,22 @@ class DefectTracker:
                 self.non_completed_defects.append(new_defect, new_defect.id)
 
         for non_complete_defect in self.non_completed_defects.values():
-            non_complete_defect.render(error_ys, line_idx=line_idx)
+            non_complete_defect.render(error_ys, line_idx, belt_end_line_idx)
 
-    def check_defects_completion(self, min_frame_gap, min_length, line_idx, end_belt_idx):
+    def check_defects_completion(self, min_frame_gap, min_length, line_idx, belt_end_line_idx):
         i = 0
         while i<len(self.non_completed_defects): 
             defect:Defect = self.non_completed_defects[i]
-            if defect.is_complete(line_idx, min_frame_gap, end_belt_idx):
+            if defect.is_complete(line_idx, min_frame_gap, belt_end_line_idx):
                 
                 self.non_completed_defects.remove_by_value(defect)
-                if defect.is_defect(min_length):
+                if defect.is_defect(min_length, belt_end_line_idx):
                     
                     self.__not_pass_completed_defects.append(defect, defect.id)
                     #------------------------------------
                     #check if defect is update of another defect
                     for i in range(self.completed_defects.count()):
-                        if defect.is_same(self.completed_defects[i]):
+                        if defect.is_same(self.completed_defects[i], belt_end_line_idx):
                             defect.id = self.completed_defects[i].id
                             #self.completed_defects[i] = defect
                             self.completed_defects.set_by_index(i, defect, defect.id)
@@ -94,36 +101,36 @@ class DefectTracker:
                 i+=1
         
         
-    def check_defect_passed(self, line_idx, img_width, end_belt_idx):
+    def check_defect_passed(self, line_idx, img_width, belt_end_line_idx):
         i  = 0
         while i < len(self.__not_pass_completed_defects):
-            if self.__not_pass_completed_defects[i].is_present_in_image(line_idx, img_width, end_belt_idx):
+            if self.__not_pass_completed_defects[i].is_present_in_image(line_idx, img_width, belt_end_line_idx):
                 i+=1
                 continue
             self.__not_pass_completed_defects.remove_by_index(i)
 
 
-    def draw(self, min_length, image: np.ndarray, line_idx: int, end_belt_line_idx:int, color: tuple = (33, 33, 133)):
+    def draw(self, min_length, image: np.ndarray, line_idx: int, belt_end_line_idx:int, color: tuple = (33, 33, 133)):
+        if 0<= line_idx <= 100:
+            x = 1
         h, w = image.shape[:2]
         #print('total defect to draw',len(self.non_completed_defects) + len(self.__not_pass_completed_defects))
         for defect in self.non_completed_defects.values():
-            pt1, pt2 = defect.get_bounding_box(line_idx,w, end_belt_line_idx)
 
-            if not defect.is_defect(min_length):
+            if not defect.is_defect(min_length, belt_end_line_idx):
                 continue
-
-            image = cv2.rectangle(image, pt1, pt2, color=color, thickness=2)
+            
+            image = defect.draw(image, line_idx, belt_end_line_idx, color)
+            
 
         defect:Defect
         for defect in self.__not_pass_completed_defects.values():
-            pt1, pt2 = defect.get_bounding_box(line_idx,w, end_belt_line_idx)
 
             # if pt1[0] > w:
             #     self.__not_pass_completed_defects.remove_by_value(defect)
             #     continue
 
-
-            image = cv2.rectangle(image, pt1, pt2, color=(255,0,0), thickness=2)
+            image = defect.draw(image, line_idx, belt_end_line_idx, (0,255,0))
         
 
         

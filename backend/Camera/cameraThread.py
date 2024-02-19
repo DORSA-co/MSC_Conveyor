@@ -12,9 +12,12 @@ from Constants import Constant
 def DemoImageLoader(path):
         files = sorted(os.listdir(path))
         files.reverse()
+        total_count = len(files)
+        start_idx = 70
         while True:
-            for fname in files:
-                fpath = os.path.join(path, fname)
+            total_range = list(range(start_idx, total_count)) + list(range(0,start_idx))
+            for i in total_range:
+                fpath = os.path.join(path, files[i])
                 yield cv2.imread(fpath,0)
 
 

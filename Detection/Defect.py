@@ -4,6 +4,7 @@ import time
 
 from persiantools.jdatetime import JalaliDate,JalaliDateTime
 import numpy as np
+import cv2
 
 from Constants.Constant import DecimalRound
 
@@ -87,7 +88,7 @@ class Defect:
         else:
             self.temp_indices = np.array(([[start_anomaly_idx, end_anomaly_idx]]))
 
-    def render(self, depthes, line_idx):
+    def render(self, depthes, line_idx, belt_end_line_idx):
         if not self.temp_indices.shape[0]:
             return
         start_anomaly_idx = self.temp_indices[:,0].min()
@@ -100,24 +101,29 @@ class Defect:
         self.__append_depth_info(depthes)
         self.__append_idx(start_anomaly_idx, end_anomaly_idx)
         self.end_line_idx = line_idx
+        if self.end_line_idx < self.start_line_idx:
+            self.end_line_idx += belt_end_line_idx
         self.defect_width_boundries = (
             min(self.defect_width_boundries[0], start_anomaly_idx),
             max(self.defect_width_boundries[1], end_anomaly_idx)
         )
 
-    def is_complete(self, line_idx:int, min_idx_gap, end_belt_idx):
-        if line_idx < self.end_line_idx:
-            line_idx += end_belt_idx
+    def is_complete(self, line_idx:int, min_idx_gap, belt_end_line_idx):
+        img_width = 1000
+        temp_line_idx = line_idx
 
+        if line_idx < img_width and self.end_line_idx > (belt_end_line_idx - img_width):
+            temp_line_idx += belt_end_line_idx
 
-        if line_idx - self.end_line_idx >= min_idx_gap:
+        
+        if temp_line_idx - self.end_line_idx >= min_idx_gap:
             return True
         # if line_idx - self.end_line_idx < 0:
         #     return True
         
         return False
     
-    def is_defect(self, min_length: int):
+    def is_defect(self, min_length: int, belt_end_line_idx:int):
         if (self.end_line_idx - self.start_line_idx) > min_length:
             return True
         else:
@@ -147,20 +153,19 @@ class Defect:
         else:
             return False
         
+    
+        
     def get_bounding_box(self, line_idx,img_width, belt_end_line_idx=None, border=12):
-        #when belt pass the end and start from 0 again
-        # if line_idx < img_width and belt_end_line_idx - img_width <self.start_line_idx < belt_end_line_idx:
-        #      x1 = line_idx + (belt_end_line_idx - self.end_line_idx)
-        #      x2 = line_idx + (belt_end_line_idx - self.start_line_idx)
-        #else:
         temp_line_idx = line_idx
+        flag = False
         if line_idx < img_width and self.end_line_idx > (belt_end_line_idx - img_width):
             temp_line_idx += belt_end_line_idx
+            flag = True
 
         x1 = temp_line_idx - self.end_line_idx
 
         temp_line_idx = line_idx
-        if line_idx < img_width and self.start_line_idx > (belt_end_line_idx - img_width):
+        if (line_idx < img_width and self.start_line_idx > (belt_end_line_idx - img_width)) or flag:
             temp_line_idx += belt_end_line_idx
 
         x2 = temp_line_idx - self.start_line_idx
@@ -173,10 +178,37 @@ class Defect:
         y1 -= border
         y2 += border
 
-        #print((x1, y1), (x2, y2))
-        #print('---------------------------')
-
         return (x1, y1), (x2, y2)
+    
+    def draw(self, image:np.ndarray, line_idx:int, end_belt_line_idx:int, color:tuple=(255,0,0)):
+        img_w = image.shape[1]
+        pt1, pt2 = self.get_bounding_box(line_idx, img_w, end_belt_line_idx)
+        res = cv2.rectangle(image, pt1, pt2, color=color, thickness=2)
+        
+        res =  self.__draw_debug(res,pt1,pt2)
+        return res
+    
+
+    def __draw_debug(self, image, pt1, pt2):
+        x,y = pt1
+        image = cv2.putText(image,
+                        text=str(self.id),
+                        org=(x,y),
+                        fontFace=cv2.FONT_HERSHEY_COMPLEX_SMALL,
+                        fontScale=1,
+                        color=(0,0,0),
+                        thickness=1
+                        )
+        
+        image = cv2.putText(image,
+                        text=str((x,y)),
+                        org=(x,y-20),
+                        fontFace=cv2.FONT_HERSHEY_SIMPLEX,
+                        fontScale=1,
+                        color=(0,0,0),
+                        thickness=1
+                        )
+        return image
 
     def __append_width_info(self, start_idx, end_idx):
         self.widthInfo.add(end_idx - start_idx)
@@ -226,13 +258,25 @@ class Defect:
         
         return res_defect
     
-    def is_same(self, other:Defect):
+    def is_same(self, other:Defect, belt_end_line_idx:int):
         intersect_y1 = max(self.defect_width_boundries[0], other.defect_width_boundries[0])
         intersect_y2 = min(self.defect_width_boundries[1], other.defect_width_boundries[1])
-
+        if self.start_line_idx > 2400:
+            bog = True
         if intersect_y2 > intersect_y1:
+
+            self_end_temp = self.end_line_idx
+            other_end_temp = other.end_line_idx
+
+            # if self.end_line_idx < self.start_line_idx or other.end_line_idx < other.start_line_idx:
+            #     self_end_temp += belt_end_line_idx
+            #     other_end_temp += belt_end_line_idx
+
+            
+            
+
             intersect_x1 = max(self.start_line_idx, other.start_line_idx)
-            intersect_x2 = min(self.end_line_idx, other.end_line_idx)
+            intersect_x2 = min(self_end_temp, other_end_temp)
             if intersect_x2> intersect_x1:
                 return True
         return False
