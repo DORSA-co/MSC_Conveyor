@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>377</width>
-    <height>533</height>
+    <height>529</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -51,24 +51,24 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QWidget" name="StyleSheet" native="true">
+    <widget class="QWidget" name="GlobalStyleSheet" native="true">
      <property name="styleSheet">
-      <string notr="true">*{
+      <string notr="true">/**************************Global Font***************************/
+
+QWidget
+{
 	font: auto &quot;Roboto&quot;;
 }
 
-/************************************************************/
+/**************************QLabel***************************/
 
 QLabel{
 	color: rgb(250, 250, 250);
 	font-weight: bold;
+	font-size: 14px;
 }
 
-QLabel:disabled{
-	color: rgb(120, 120, 120);
-}
-
-/************************************************************/
+/**************************QLineEdit***************************/
 
 QLineEdit {
   	border:1px solid #E0E4EC;
@@ -81,10 +81,10 @@ QLineEdit {
 }
 
 QLineEdit:focus {
-	border-bottom: 3px solid #7E84A2;
+	border-bottom: 2px solid #7E84A2;
 }
 
-/************************************************************/
+/**************************QComboBox***************************/
 
 QComboBox
 {
@@ -139,56 +139,9 @@ QComboBox QAbstractItemView {
 }
 
 QComboBox:focus{
-	border-bottom: 3px solid #7E84A2;
+	border-bottom: 2px solid #7E84A2;
 }
-
-/************************************************************/
-
-#save_btn, #cancel_btn{
-	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgb(126, 132, 162), stop:1 rgb(31, 42, 77));
-	color: rgba(255, 255, 255, 210);
-	border-radius: 20px;
-	min-width: 135;
-	max-width: 135;
-	min-height: 40;
-	max-height: 40;
-	font-size: 14px;
-	font-weight: bold;
-}
-
-
-#save_btn:hover, #cancel_btn:hover{
-	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgb(139, 146, 179), stop:1 rgba(40, 67, 98, 219));
-}
-
-#save_btn:pressed, #cancel_btn:pressed {
-	padding-left: 5px;
-	padding-top: 5px;
-}
-
-#main_frame{
-	border-image: url(:/icons/icons/bg_image2.jpg);
-	border-radius: 20px;
-}
-
-#inner_frame{
-	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, 			y2:0.715909, stop:0 rgba(0, 0, 0, 9), stop:0.375 rgba(0, 0, 0, 120), stop:0.835227 rgba(0, 0, 0, 150));	
-	border-radius: 20px;
-}
-
-#top_frame{
-	border: None;
-}
-
-#frame{
-	background-color: rgba(0, 0, 0, 100);
-	border-radius: 15px;
-}
-
-#close_btn{
-	border: 0px;
-	background-color: rgba(0,0,0,0);
-}</string>
+</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <property name="spacing">
@@ -207,16 +160,7 @@ QComboBox:focus{
        <number>0</number>
       </property>
       <item>
-       <widget class="QFrame" name="main_frame">
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
+       <widget class="QWidget" name="LocalStyleSheet" native="true">
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <property name="leftMargin">
           <number>0</number>
@@ -231,248 +175,375 @@ QComboBox:focus{
           <number>0</number>
          </property>
          <item>
-          <widget class="QFrame" name="inner_frame">
+          <widget class="QWidget" name="PointStyleSheet" native="true">
            <property name="styleSheet">
-            <string notr="true"/>
+            <string notr="true">/**************************PmainFrameStyle***************************/
+
+*[styleSheet=&quot;PmainFrameStyle&quot;]
+{
+	background-color: rgba(23, 32, 58, 255);
+	border-radius: 20px;
+}
+
+/**************************PinnerFrameStyle***************************/
+
+*[styleSheet=&quot;PinnerFrameStyle&quot;]
+{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, 			y2:0.715909, stop:0 rgba(0, 0, 0, 9), stop:0.375 rgba(0, 0, 0, 120), stop:0.835227 rgba(0, 0, 0, 150));	
+	border-radius: 20px;
+}
+
+/**************************PtopFrameStyle***************************/
+
+*[styleSheet=&quot;PtopFrameStyle&quot;]
+{
+	border: None;
+}
+
+/**************************PframeStyle***************************/
+
+*[styleSheet=&quot;PframeStyle&quot;]
+{
+	background-color: rgba(0, 0, 0, 100);
+	border-radius: 15px;
+}
+
+/**************************PsaveCancelStyle***************************/
+
+*[styleSheet=&quot;PsaveCancelStyle&quot;]
+{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgb(126, 132, 162), stop:1 rgb(31, 42, 77));
+	color: rgba(255, 255, 255, 210);
+	border-radius: 20px;
+	min-width: 135;
+	max-width: 135;
+	min-height: 40;
+	max-height: 40;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+*[styleSheet=&quot;PsaveCancelStyle&quot;]:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgb(139, 146, 179), stop:1 rgba(40, 67, 98, 219));
+}
+
+*[styleSheet=&quot;PsaveCancelStyle&quot;]:pressed {
+	padding-left: 5px;
+	padding-top: 5px;
+}
+
+/**************************PcloseButtonStyle***************************/
+
+*[styleSheet=&quot;PcloseButtonStyle&quot;]
+{
+	border: 0px;
+	background-color: rgba(0,0,0,0);
+}
+
+/**************************PerrorLabelStyle***************************/
+
+*[styleSheet=&quot;PerrorLabelStyle&quot;]
+{
+	color:rgb(255, 99, 94);
+}
+
+</string>
            </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout_7">
+           <layout class="QVBoxLayout" name="verticalLayout_9">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
             <item>
-             <widget class="QFrame" name="top_frame">
+             <widget class="QFrame" name="main_frame">
+              <property name="styleSheet">
+               <string notr="true">PmainFrameStyle</string>
+              </property>
               <property name="frameShape">
                <enum>QFrame::StyledPanel</enum>
               </property>
               <property name="frameShadow">
                <enum>QFrame::Raised</enum>
               </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_7">
-               <property name="bottomMargin">
-                <number>30</number>
-               </property>
-               <item>
-                <spacer name="horizontalSpacer_2">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>315</width>
-                   <height>18</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="QPushButton" name="close_btn">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="cursor">
-                  <cursorShape>PointingHandCursor</cursorShape>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true"/>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="icon">
-                  <iconset resource="assets/assets.qrc">
-                   <normaloff>:/icons/icons/close.png</normaloff>:/icons/icons/close.png</iconset>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="QFrame" name="frame">
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-              <layout class="QVBoxLayout" name="verticalLayout_5">
-               <property name="spacing">
-                <number>20</number>
-               </property>
+              <layout class="QVBoxLayout" name="verticalLayout_3">
                <property name="leftMargin">
-                <number>25</number>
+                <number>0</number>
                </property>
                <property name="topMargin">
-                <number>10</number>
+                <number>0</number>
                </property>
                <property name="rightMargin">
-                <number>25</number>
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>0</number>
                </property>
                <item>
-                <layout class="QVBoxLayout" name="verticalLayout_3">
-                 <property name="spacing">
-                  <number>6</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="username_label">
-                   <property name="text">
-                    <string>Username</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLineEdit" name="username_input">
-                   <property name="minimumSize">
-                    <size>
-                     <width>87</width>
-                     <height>37</height>
-                    </size>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QVBoxLayout" name="verticalLayout_4">
-                 <property name="spacing">
-                  <number>6</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="password_label">
-                   <property name="text">
-                    <string>Password</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_2">
-                   <property name="spacing">
-                    <number>0</number>
-                   </property>
-                   <item>
-                    <widget class="QLineEdit" name="password_input">
-                     <property name="minimumSize">
-                      <size>
-                       <width>87</width>
-                       <height>37</height>
-                      </size>
-                     </property>
-                     <property name="echoMode">
-                      <enum>QLineEdit::Normal</enum>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QVBoxLayout" name="verticalLayout_6">
-                 <property name="spacing">
-                  <number>6</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="role_label">
-                   <property name="text">
-                    <string>Role</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="role_combobox">
-                   <property name="minimumSize">
-                    <size>
-                     <width>87</width>
-                     <height>37</height>
-                    </size>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <spacer name="verticalSpacer_2">
-                 <property name="orientation">
-                  <enum>Qt::Vertical</enum>
-                 </property>
-                 <property name="sizeType">
-                  <enum>QSizePolicy::Preferred</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>20</width>
-                   <height>40</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_3">
-                 <property name="spacing">
-                  <number>0</number>
-                 </property>
-                 <item alignment="Qt::AlignHCenter">
-                  <widget class="QPushButton" name="save_btn">
-                   <property name="cursor">
-                    <cursorShape>PointingHandCursor</cursorShape>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true"/>
-                   </property>
-                   <property name="text">
-                    <string>Save</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item alignment="Qt::AlignHCenter">
-                  <widget class="QPushButton" name="cancel_btn">
-                   <property name="cursor">
-                    <cursorShape>PointingHandCursor</cursorShape>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true"/>
-                   </property>
-                   <property name="text">
-                    <string>Cancel</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <widget class="QLabel" name="error_lbl">
+                <widget class="QFrame" name="inner_frame">
                  <property name="styleSheet">
-                  <string notr="true">color:rgb(255, 99, 94);</string>
+                  <string notr="true">PinnerFrameStyle</string>
                  </property>
-                 <property name="text">
-                  <string/>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
                  </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_7">
+                  <item>
+                   <widget class="QFrame" name="top_frame">
+                    <property name="styleSheet">
+                     <string notr="true">PtopFrameStyle</string>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_7">
+                     <property name="bottomMargin">
+                      <number>30</number>
+                     </property>
+                     <item>
+                      <spacer name="horizontalSpacer_2">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>315</width>
+                         <height>18</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="close_btn">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="cursor">
+                        <cursorShape>PointingHandCursor</cursorShape>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">PcloseButtonStyle</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="assets/assets.qrc">
+                         <normaloff>:/icons/icons/close.png</normaloff>:/icons/icons/close.png</iconset>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QFrame" name="frame">
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">PframeStyle</string>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_5">
+                     <property name="spacing">
+                      <number>20</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>35</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>20</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>35</number>
+                     </property>
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_4">
+                       <property name="spacing">
+                        <number>6</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="username_label">
+                         <property name="enabled">
+                          <bool>true</bool>
+                         </property>
+                         <property name="text">
+                          <string>Username</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLineEdit" name="username_input">
+                         <property name="minimumSize">
+                          <size>
+                           <width>87</width>
+                           <height>37</height>
+                          </size>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_6">
+                       <property name="spacing">
+                        <number>6</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="password_label">
+                         <property name="text">
+                          <string>Password</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_2">
+                         <property name="spacing">
+                          <number>0</number>
+                         </property>
+                         <item>
+                          <widget class="QLineEdit" name="password_input">
+                           <property name="minimumSize">
+                            <size>
+                             <width>87</width>
+                             <height>37</height>
+                            </size>
+                           </property>
+                           <property name="echoMode">
+                            <enum>QLineEdit::Normal</enum>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_8">
+                       <property name="spacing">
+                        <number>6</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="role_label">
+                         <property name="text">
+                          <string>Role</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QComboBox" name="role_combobox">
+                         <property name="minimumSize">
+                          <size>
+                           <width>87</width>
+                           <height>37</height>
+                          </size>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer_2">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
+                       <property name="sizeType">
+                        <enum>QSizePolicy::Preferred</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_3">
+                       <property name="spacing">
+                        <number>0</number>
+                       </property>
+                       <item alignment="Qt::AlignHCenter">
+                        <widget class="QPushButton" name="save_btn">
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">PsaveCancelStyle</string>
+                         </property>
+                         <property name="text">
+                          <string>Save</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item alignment="Qt::AlignHCenter">
+                        <widget class="QPushButton" name="cancel_btn">
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">PsaveCancelStyle</string>
+                         </property>
+                         <property name="text">
+                          <string>Cancel</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="error_lbl">
+                       <property name="styleSheet">
+                        <string notr="true">PerrorLabelStyle</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <spacer name="verticalSpacer">
+                       <property name="orientation">
+                        <enum>Qt::Vertical</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>20</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
                 </widget>
-               </item>
-               <item>
-                <spacer name="verticalSpacer">
-                 <property name="orientation">
-                  <enum>Qt::Vertical</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>20</width>
-                   <height>40</height>
-                  </size>
-                 </property>
-                </spacer>
                </item>
               </layout>
              </widget>

@@ -163,7 +163,7 @@ class LiveView_UI(Common_Function_UI):
                                    )
         self.notifications.insert(0, notif, _id)
 
-        layout = self.ui.defects_notifications_widget.layout()
+        layout = self.ui.defects_notifications_frame.layout()
         layout.insertWidget(0, notif)
         layout.setSpacing(9)
         layout.setContentsMargins(9, 9, 9, 9)
@@ -174,7 +174,7 @@ class LiveView_UI(Common_Function_UI):
         notif.close_connector(self.close_notification_event)
 
     def pop_notification(self, notif:defectNotification):
-        layout = self.ui.defects_notifications_widget.layout()
+        layout = self.ui.defects_notifications_frame.layout()
         layout.removeWidget(notif)
         notif.setParent(None)
         self.notifications.remove_by_id(notif.id)
@@ -315,17 +315,17 @@ class sliderMenu:
     def __setup(self,):
         self.ui = Ui_slider()
         self.ui.setupUi(self.parent)
-        self.ui.main_frame.setParent(self.parent)
+        self.ui.GlobalStyleSheet.setParent(self.parent)
         parent_w = self.parent.width()
-        self.ui.main_frame.setGeometry(parent_w,0,0,0)
+        self.ui.GlobalStyleSheet.setGeometry(parent_w,0,0,0)
 
 
     def __slider_animation_builder(self,):
         parent_w = self.parent.width()
         parent_h =self.parent.height()
-        slider_w = self.ui.main_frame.width()
+        slider_w = self.ui.GlobalStyleSheet.width()
 
-        self.slide_animation = singleAnimation(self.ui.main_frame, 
+        self.slide_animation = singleAnimation(self.ui.GlobalStyleSheet, 
                                                b'geometry', 
                                                400, 
                                                QRect(parent_w,0,slider_w,parent_h),
@@ -345,7 +345,7 @@ class sliderMenu:
         self.slide_animation.backward()
 
     def disapear(self,):
-        self.ui.main_frame.setGeometry(0,0,0,0)
+        self.ui.GlobalStyleSheet.setGeometry(0,0,0,0)
 
     def set_system_status(self, name, state):
         icon_obj = self.system_status[name]

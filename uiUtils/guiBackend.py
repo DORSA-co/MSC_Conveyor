@@ -51,6 +51,10 @@ class GUIBackend:
         ui.setWindowFlags(QtCore.Qt.WindowFlags(QtCore.Qt.FramelessWindowHint))
 
     @staticmethod
+    def set_win_always_on_top(ui:QtWidgets.QMainWindow):
+        ui.setWindowFlag(QtCore.Qt.WindowStaysOnTopHint)
+
+    @staticmethod
     def set_win_attribute(ui:QtWidgets.QMainWindow, attribute:QtCore.Qt.WidgetAttribute):
         ui.setAttribute(attribute)
 

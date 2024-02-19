@@ -14,6 +14,9 @@ class dataPasser:
 
     def get_logined_user_role(self,):
         return self.logined_user.get('role', Constant.User.UNLOGIN_USER_ROLE)
+    
+    def get_logined_user_password(self,):
+        return self.logined_user.get('password', Constant.User.UNLOGIN_USER_PASSWORD)
 
 
 class usersPageAPI:
@@ -278,8 +281,6 @@ class EditUserTabAPI:
 
         if self.user_edit_event_func is not None:
             self.user_edit_event_func()
-
-
 
 
 class LoginUserAPI:

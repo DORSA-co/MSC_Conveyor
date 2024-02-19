@@ -16,9 +16,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QHeaderView,
-    QLabel, QMainWindow, QPushButton, QScrollArea,
-    QSizePolicy, QSpacerItem, QStackedWidget, QTableWidget,
-    QTableWidgetItem, QVBoxLayout, QWidget)
+    QMainWindow, QPushButton, QScrollArea, QSizePolicy,
+    QSpacerItem, QStackedWidget, QTableWidget, QTableWidgetItem,
+    QVBoxLayout, QWidget)
 
 from GUIComponents import PhotoViewer
 import assets_rc
@@ -28,13 +28,16 @@ class Ui_ViewerWindow(object):
         if not ViewerWindow.objectName():
             ViewerWindow.setObjectName(u"ViewerWindow")
         ViewerWindow.resize(798, 758)
-        self.StyleSheet = QWidget(ViewerWindow)
-        self.StyleSheet.setObjectName(u"StyleSheet")
-        self.StyleSheet.setStyleSheet(u"*{\n"
+        self.GlobalStyleSheet = QWidget(ViewerWindow)
+        self.GlobalStyleSheet.setObjectName(u"GlobalStyleSheet")
+        self.GlobalStyleSheet.setStyleSheet(u"/**************************Global Font***************************/\n"
+"\n"
+"QWidget\n"
+"{\n"
 "	font: auto \"Roboto\";\n"
 "}\n"
 "\n"
-"/************************************************************/\n"
+"/**************************QLabel***************************/\n"
 "\n"
 "QLabel{\n"
 "	color: rgb(20, 20, 20);\n"
@@ -44,13 +47,13 @@ class Ui_ViewerWindow(object):
 "	color: rgb(120, 120, 120);\n"
 "}\n"
 "\n"
-"/************************************************************/\n"
+"/**************************QGraphicsView***************************/\n"
 "\n"
 "QGraphicsView{\n"
 "	border: None;\n"
 "}\n"
 "\n"
-"/************************************************************/\n"
+"/**************************QTable***************************/\n"
 "\n"
 "QTableWidget {\n"
 "    background-color: transparent;\n"
@@ -71,13 +74,13 @@ class Ui_ViewerWindow(object):
 "\n"
 "QHeaderView::section:first {\n"
 "   border-top-left-radius: 4px;\n"
-"	border-left: None;\n"
+"	border-left: None"
+                        ";\n"
 "}\n"
 "\n"
 "QHeaderView::section:last {\n"
 "   border-top-right-radius: 4px;\n"
-"	bord"
-                        "er-right: None;\n"
+"	border-right: None;\n"
 "}\n"
 "\n"
 "QTableWidget::item:selected {\n"
@@ -94,7 +97,7 @@ class Ui_ViewerWindow(object):
 "	image: url(:/icons/icons/table_sort_icon.png);\n"
 "}\n"
 "\n"
-"/************************************************************/\n"
+"/**************************QScrollBar***************************/\n"
 "\n"
 "QScrollBar:vertical {\n"
 "    border: none;\n"
@@ -120,12 +123,12 @@ class Ui_ViewerWindow(object):
 "QScrollBar::sub-line:vertical {\n"
 "    border: none;\n"
 "    background: #F7F8FA;\n"
-"    height: 20px;\n"
+" "
+                        "   height: 20px;\n"
 "    subcontrol-position: top;\n"
 "    subcontrol-origin: margin;\n"
 "}\n"
-""
-                        "\n"
+"\n"
 "QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {\n"
 "    border: none;\n"
 "    width: 3px;\n"
@@ -165,10 +168,10 @@ class Ui_ViewerWindow(object):
 "    subcontrol-position: left;\n"
 "    subcontrol-origin: margin;\n"
 "}\n"
-"\n"
+""
+                        "\n"
 "QScrollBar::left-arrow:horizontal, QScrollBar::right-arrow:horizontal {\n"
-"    border: "
-                        "none;\n"
+"    border: none;\n"
 "    width: 3px;\n"
 "    height: 3px;\n"
 "    background: transparent;\n"
@@ -178,42 +181,106 @@ class Ui_ViewerWindow(object):
 "    background: none;\n"
 "}\n"
 "\n"
-"/************************************************************/\n"
 "\n"
-"#top_frame{\n"
+"\n"
+"")
+        self.verticalLayout = QVBoxLayout(self.GlobalStyleSheet)
+        self.verticalLayout.setSpacing(0)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.LocalStyleSheet = QWidget(self.GlobalStyleSheet)
+        self.LocalStyleSheet.setObjectName(u"LocalStyleSheet")
+        self.LocalStyleSheet.setStyleSheet(u"/**************************LtopFrameStyle***************************/\n"
+"\n"
+"*[styleSheet=\"LtopFrameStyle\"]\n"
+"{\n"
 "	background-color: #F7F8FA;\n"
 "}\n"
 "\n"
-"#top_frame QPushButton{\n"
+"*[styleSheet=\"LtopFrameStyle\"] .QPushButton{\n"
 "	border: 0px;\n"
-"}\n"
+"}")
+        self.verticalLayout_2 = QVBoxLayout(self.LocalStyleSheet)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.PointStyleSheet = QWidget(self.LocalStyleSheet)
+        self.PointStyleSheet.setObjectName(u"PointStyleSheet")
+        self.PointStyleSheet.setStyleSheet(u"/**************************PmainStackedWidgetStyle*******************/\n"
 "\n"
-"#main_stackedWidget{\n"
+"*[styleSheet=\"PmainStackedWidgetStyle\"]\n"
+"{\n"
 "	background-color: #E0E4EC;\n"
 "}\n"
 "\n"
-"#tiles_scrollArea{\n"
+"/**************************PtileScrollAreaStyle*******************/\n"
+"\n"
+"*[styleSheet=\"PtileScrollAreaStyle\"]\n"
+"{\n"
 "	background-color: #ebf0f7;\n"
 "	border: 2px solid #ebf0f7;\n"
 "	border-radius: 8px;\n"
 "}\n"
 "\n"
-"#tiles_frame{\n"
+"/**************************PtileFrameStyle*******************/\n"
+"\n"
+"*[styleSheet=\"PtileFrameStyle\"]\n"
+"{\n"
 "	background-color: #ebf0f7;\n"
 "	border:None;\n"
 "}\n"
+"\n"
+"/**************************P3dviewButtonStyle*******************/\n"
+"\n"
+"*[styleSheet=\"P3dviewButtonStyle\"]\n"
+"{\n"
+"	background-color: transparent;\n"
+"	color:  rgba(46, 76, 153, 255);\n"
+"	border-radius: 20px;\n"
+"	min-width: 100;\n"
+"	max-width: 100;\n"
+"	min-height: 40;\n"
+"	max-height: 40;\n"
+"	font-size: 14px;\n"
+"	font-weight: bold;\n"
+"	text-align: right;\n"
+"}\n"
+"\n"
+"*[styleSheet=\"P3dviewButtonStyle\"]:disabled\n"
+"{\n"
+"	colo"
+                        "r:  rgba(120, 120, 120, 255);\n"
+"}\n"
+"\n"
+"*[styleSheet=\"P3dviewButtonStyle\"]:hover\n"
+"{\n"
+"	color:  rgba(76, 126, 255, 255);\n"
+"}\n"
+"\n"
+"*[styleSheet=\"P3dviewButtonStyle\"]:pressed\n"
+"{\n"
+"	padding-left: 5px;\n"
+"	padding-top: 5px;\n"
+"}\n"
+"\n"
+"/**************************PimageViewerStyle*******************/\n"
+"\n"
+"*[styleSheet=\"PimageViewerStyle\"]\n"
+"{\n"
+"	background-color: transparent;\n"
+"}\n"
 "")
-        self.verticalLayout = QVBoxLayout(self.StyleSheet)
-        self.verticalLayout.setSpacing(0)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.top_frame = QFrame(self.StyleSheet)
+        self.verticalLayout_4 = QVBoxLayout(self.PointStyleSheet)
+        self.verticalLayout_4.setSpacing(0)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.top_frame = QFrame(self.PointStyleSheet)
         self.top_frame.setObjectName(u"top_frame")
         sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.top_frame.sizePolicy().hasHeightForWidth())
         self.top_frame.setSizePolicy(sizePolicy)
+        self.top_frame.setStyleSheet(u"LtopFrameStyle")
         self.top_frame.setFrameShape(QFrame.StyledPanel)
         self.top_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_14 = QHBoxLayout(self.top_frame)
@@ -221,11 +288,6 @@ class Ui_ViewerWindow(object):
         self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_14.addItem(self.horizontalSpacer)
-
-        self.logined_username_lbl = QLabel(self.top_frame)
-        self.logined_username_lbl.setObjectName(u"logined_username_lbl")
-
-        self.horizontalLayout_14.addWidget(self.logined_username_lbl)
 
         self.help_btn = QPushButton(self.top_frame)
         self.help_btn.setObjectName(u"help_btn")
@@ -279,14 +341,15 @@ class Ui_ViewerWindow(object):
         self.horizontalLayout_14.addWidget(self.close_btn)
 
 
-        self.verticalLayout.addWidget(self.top_frame)
+        self.verticalLayout_4.addWidget(self.top_frame)
 
-        self.main_stackedWidget = QStackedWidget(self.StyleSheet)
+        self.main_stackedWidget = QStackedWidget(self.PointStyleSheet)
         self.main_stackedWidget.setObjectName(u"main_stackedWidget")
+        self.main_stackedWidget.setStyleSheet(u"PmainStackedWidgetStyle")
         self.image_page = QWidget()
         self.image_page.setObjectName(u"image_page")
-        self.verticalLayout_2 = QVBoxLayout(self.image_page)
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_3 = QVBoxLayout(self.image_page)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.view_3d_btn = QPushButton(self.image_page)
         self.view_3d_btn.setObjectName(u"view_3d_btn")
         sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
@@ -297,49 +360,20 @@ class Ui_ViewerWindow(object):
         self.view_3d_btn.setMinimumSize(QSize(100, 40))
         self.view_3d_btn.setMaximumSize(QSize(100, 40))
         self.view_3d_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.view_3d_btn.setStyleSheet(u"#view_3d_btn\n"
-"{\n"
-"	background-color: transparent;\n"
-"	color:  rgba(46, 76, 153, 255);\n"
-"	border-radius: 20px;\n"
-"	min-width: 100;\n"
-"	max-width: 100;\n"
-"	min-height: 40;\n"
-"	max-height: 40;\n"
-"	font-size: 14px;\n"
-"	font-weight: bold;\n"
-"	text-align: right;\n"
-"}\n"
-"\n"
-"#view_3d_btn:disabled\n"
-"{\n"
-"	color:  rgba(120, 120, 120, 255);\n"
-"}\n"
-"\n"
-"#view_3d_btn:hover\n"
-"{\n"
-"	color:  rgba(76, 126, 255, 255);\n"
-"}\n"
-"\n"
-"#view_3d_btn:pressed\n"
-"{\n"
-"	padding-left: 5px;\n"
-"	padding-top: 5px;\n"
-"}\n"
-"")
+        self.view_3d_btn.setStyleSheet(u"P3dviewButtonStyle")
         icon4 = QIcon()
         icon4.addFile(u":/icons/icons/view_3d.png", QSize(), QIcon.Normal, QIcon.Off)
         self.view_3d_btn.setIcon(icon4)
         self.view_3d_btn.setIconSize(QSize(30, 30))
 
-        self.verticalLayout_2.addWidget(self.view_3d_btn, 0, Qt.AlignLeft)
+        self.verticalLayout_3.addWidget(self.view_3d_btn, 0, Qt.AlignLeft)
 
         self.tile_image_viewer = PhotoViewer(self.image_page)
         self.tile_image_viewer.setObjectName(u"tile_image_viewer")
         self.tile_image_viewer.setMinimumSize(QSize(780, 413))
-        self.tile_image_viewer.setStyleSheet(u"background-color: transparent;")
+        self.tile_image_viewer.setStyleSheet(u"PimageViewerStyle")
 
-        self.verticalLayout_2.addWidget(self.tile_image_viewer)
+        self.verticalLayout_3.addWidget(self.tile_image_viewer)
 
         self.viewer_defect_table = QTableWidget(self.image_page)
         if (self.viewer_defect_table.columnCount() < 2):
@@ -369,11 +403,11 @@ class Ui_ViewerWindow(object):
         self.viewer_defect_table.verticalHeader().setVisible(False)
         self.viewer_defect_table.verticalHeader().setStretchLastSection(True)
 
-        self.verticalLayout_2.addWidget(self.viewer_defect_table)
+        self.verticalLayout_3.addWidget(self.viewer_defect_table)
 
         self.verticalSpacer = QSpacerItem(20, 8, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
-        self.verticalLayout_2.addItem(self.verticalSpacer)
+        self.verticalLayout_3.addItem(self.verticalSpacer)
 
         self.tiles_scrollArea = QScrollArea(self.image_page)
         self.tiles_scrollArea.setObjectName(u"tiles_scrollArea")
@@ -384,10 +418,12 @@ class Ui_ViewerWindow(object):
         self.tiles_scrollArea.setSizePolicy(sizePolicy4)
         self.tiles_scrollArea.setMinimumSize(QSize(0, 120))
         self.tiles_scrollArea.setMaximumSize(QSize(16777215, 120))
+        self.tiles_scrollArea.setStyleSheet(u"PtileScrollAreaStyle")
         self.tiles_scrollArea.setWidgetResizable(True)
         self.tiles_frame = QWidget()
         self.tiles_frame.setObjectName(u"tiles_frame")
         self.tiles_frame.setGeometry(QRect(0, 0, 776, 116))
+        self.tiles_frame.setStyleSheet(u"PtileFrameStyle")
         self.horizontalLayout = QHBoxLayout(self.tiles_frame)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
@@ -396,13 +432,19 @@ class Ui_ViewerWindow(object):
 
         self.tiles_scrollArea.setWidget(self.tiles_frame)
 
-        self.verticalLayout_2.addWidget(self.tiles_scrollArea)
+        self.verticalLayout_3.addWidget(self.tiles_scrollArea)
 
         self.main_stackedWidget.addWidget(self.image_page)
 
-        self.verticalLayout.addWidget(self.main_stackedWidget)
+        self.verticalLayout_4.addWidget(self.main_stackedWidget)
 
-        ViewerWindow.setCentralWidget(self.StyleSheet)
+
+        self.verticalLayout_2.addWidget(self.PointStyleSheet)
+
+
+        self.verticalLayout.addWidget(self.LocalStyleSheet)
+
+        ViewerWindow.setCentralWidget(self.GlobalStyleSheet)
 
         self.retranslateUi(ViewerWindow)
 
@@ -411,7 +453,6 @@ class Ui_ViewerWindow(object):
 
     def retranslateUi(self, ViewerWindow):
         ViewerWindow.setWindowTitle(QCoreApplication.translate("ViewerWindow", u"MainWindow", None))
-        self.logined_username_lbl.setText("")
         self.help_btn.setText("")
         self.minimize_btn.setText("")
         self.maximize_btn.setText("")

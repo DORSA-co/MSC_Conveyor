@@ -59,13 +59,13 @@ class loginUserDialog(QDialog):
         else:
             super().mouseMoveEvent(event)
 
-    def keyPressEvent(self, event):
-        if event.key() == 16777220:  # Enter key
-            self.ui.login_btn.click()
-
     def mouseReleaseEvent(self, event):
         self.offset = None
         super().mouseReleaseEvent(event)
+
+    def keyPressEvent(self, event):
+        if event.key() == 16777220:  # Enter key
+            self.ui.login_btn.click()
 
     def login_button_connector(self, func):
         GUIBackend.button_connector(self.ui.login_btn, func)
@@ -107,9 +107,4 @@ class loginUserDialog(QDialog):
         else:
             GUIBackend.set_wgt_visible(self.ui.login_error_lbl, True)
             GUIBackend.set_label_text( self.ui.login_error_lbl, txt)
-
-
-
-
-            
 

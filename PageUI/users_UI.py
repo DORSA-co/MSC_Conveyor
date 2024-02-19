@@ -338,4 +338,3 @@ class LoginUserUI(Common_Function_UI):
         
         elif state == 'logout':
             GUIBackend.set_button_icon(self.ui.login_logout_btn, IconsPath.IconsPath.LOGOUT_ICON)
-            

@@ -29,15 +29,19 @@ class Ui_slider(object):
         self.verticalLayout = QVBoxLayout(slider)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.main_frame = QFrame(slider)
-        self.main_frame.setObjectName(u"main_frame")
-        self.main_frame.setMinimumSize(QSize(400, 0))
-        self.main_frame.setMaximumSize(QSize(800, 16777215))
-        self.main_frame.setStyleSheet(u"*{\n"
+        self.GlobalStyleSheet = QFrame(slider)
+        self.GlobalStyleSheet.setObjectName(u"GlobalStyleSheet")
+        self.GlobalStyleSheet.setMinimumSize(QSize(400, 0))
+        self.GlobalStyleSheet.setMaximumSize(QSize(800, 16777215))
+        self.GlobalStyleSheet.setStyleSheet(u"/**************************Global Font***************************/\n"
+"\n"
+"QWidget\n"
+"{\n"
 "	font: auto \"Roboto\";\n"
 "}\n"
 "\n"
-"/************************************************************/\n"
+"\n"
+"/************QSpinBox, QDoubleSpinBox, QDateEdit**************/\n"
 "\n"
 "QSpinBox, QDoubleSpinBox , QDateEdit\n"
 "{\n"
@@ -75,9 +79,9 @@ class Ui_slider(object):
 "	height: 16px;\n"
 "}\n"
 "\n"
-"QSpinBox::up-arrow:disabled, QDoubleSpinBox::up-arrow:disabled,\n"
-"QDateEdit::up-arrow:disa"
-                        "bled\n"
+""
+                        "QSpinBox::up-arrow:disabled, QDoubleSpinBox::up-arrow:disabled,\n"
+"QDateEdit::up-arrow:disabled\n"
 "{   \n"
 "	image: url(:/icons/icons/plus_icon_gray.png);\n"
 "	width: 16px;\n"
@@ -119,11 +123,11 @@ class Ui_slider(object):
 "}\n"
 "\n"
 "QSpinBox::up-button,\n"
-"QSpinBox::down-button,\n"
+"QSpinBox::down-but"
+                        "ton,\n"
 "QDoubleSpinBox::up-button,\n"
 "QDoubleSpinBox::down-button,\n"
-"QDateEdit::up-butto"
-                        "n,\n"
+"QDateEdit::up-button,\n"
 "QDateEdit::down-button\n"
 "{\n"
 "	background-color: transparent;\n"
@@ -145,7 +149,7 @@ class Ui_slider(object):
 "	border-bottom: 2px solid #7892DF;\n"
 "}\n"
 "\n"
-"/************************************************************/\n"
+"/**************************QCheckBox***************************/\n"
 "\n"
 "QCheckBox {\n"
 "    spacing: 0px;\n"
@@ -156,39 +160,40 @@ class Ui_slider(object):
 "    height: 12px;\n"
 "}\n"
 "\n"
-"/* Unchecked State */\n"
 "QCheckBox::indicator:unchecked {\n"
 "    border: 2px solid #E0E4EC;\n"
 "    background-color: white;\n"
 "}\n"
 "\n"
-"/* Checked State */\n"
 "QCheckBox::indicator:checked {\n"
 "    border: 2px solid #7892DF;\n"
 "    background-color: #7892DF;\n"
-"    image: url(:/icons/icons/tick.png)  /* Path to your check mark ic"
-                        "on */\n"
+"    image: url(:/icons/ic"
+                        "ons/tick.png)\n"
 "}\n"
 "\n"
-"/* Hover State */\n"
 "QCheckBox::indicator:hover {\n"
 "    border: 2px solid rgba(194, 197, 204, 255);\n"
 "}\n"
 "\n"
-"/* Disabled State */\n"
 "QCheckBox::indicator:disabled {\n"
 "    border: 2px solid #E0E4EC;\n"
 "    background-color: #F6F6F6;\n"
 "}\n"
 "\n"
 "\n"
-"/************************************************************/\n"
+"")
+        self.verticalLayout_2 = QVBoxLayout(self.GlobalStyleSheet)
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.LocalStyleSheet = QWidget(self.GlobalStyleSheet)
+        self.LocalStyleSheet.setObjectName(u"LocalStyleSheet")
+        self.LocalStyleSheet.setMinimumSize(QSize(400, 0))
+        self.LocalStyleSheet.setMaximumSize(QSize(800, 16777215))
+        self.LocalStyleSheet.setStyleSheet(u"/**************************LsystemStatusStyle***************************/\n"
 "\n"
-"#frame{\n"
-"	background-color: #F7F8FA;\n"
-"}\n"
-"\n"
-"#system_status_page .QFrame{\n"
+"*[styleSheet=\"LsystemStatusStyle\"] .QFrame\n"
+"{\n"
 "	border:1px solid #E0E4EC;\n"
 "	border-radius: 20px;\n"
 "	min-height: 100px;\n"
@@ -196,73 +201,169 @@ class Ui_slider(object):
 "	padding-right: 30px;\n"
 "}\n"
 "\n"
-"#camera_status_title, \n"
-"#plc_status_title,\n"
-"#laser_status_title,\n"
-"#database_status_title{\n"
-"	color: #808080;\n"
-"	font-weight: bold;\n"
-"}\n"
+"/**************************LfiltersFrameStyle***************************/\n"
 "\n"
-"#filters_frame{\n"
+"*[styleSheet=\"LfiltersFrameStyle\"]\n"
+"{\n"
 "	border: None;\n"
 "}\n"
 "\n"
-"#filters_frame .QLabel{\n"
+"*[styleSheet=\"LfiltersFrameStyle\"] .QLabel\n"
+"{\n"
 "	color: #808080;\n"
 "}\n"
 "\n"
-"#filters_frame .QFrame{\n"
+"*[styleSheet=\"LfiltersFrameStyle\"]  .QFrame{\n"
 "	border:1px solid #E0E4EC;\n"
 "	border-radius: 20px;\n"
 "	min-height: 120px;\n"
 "	max-height: 120px;\n"
 "}\n"
 "\n"
-"#date_icon,\n"
-"#width_i"
-                        "con,\n"
-"#height_icon,\n"
-"#depth_icon\n"
+"")
+        self.verticalLayout_3 = QVBoxLayout(self.LocalStyleSheet)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.PointStyleSheet = QWidget(self.LocalStyleSheet)
+        self.PointStyleSheet.setObjectName(u"PointStyleSheet")
+        self.PointStyleSheet.setMinimumSize(QSize(400, 0))
+        self.PointStyleSheet.setMaximumSize(QSize(800, 16777215))
+        self.PointStyleSheet.setStyleSheet(u"/**************************PcloseButtonStyle***************************/\n"
+"\n"
+"*[styleSheet=\"PcloseButtonStyle\"]\n"
+"{\n"
+"	border:none;\n"
+"	background-color:transparent;\n"
+"}\n"
+"\n"
+"/**************************PfiltersTitleStyle***************************/\n"
+"\n"
+"*[styleSheet=\"PstatusTitlesStyle\"]\n"
+"{\n"
+"	color: #808080;\n"
+"	font-weight: bold;\n"
+"}\n"
+"\n"
+"/**************************PfilterByLabelStyle***************************/\n"
+"\n"
+"*[styleSheet=\"PfilterByLabelStyle\"]\n"
+"{\n"
+"	color: rgb(50, 50, 50);\n"
+"	font-weight: bold;\n"
+"}\n"
+"\n"
+"/**************************PstatusIconsStyle***************************/\n"
+"\n"
+"*[styleSheet=\"PstatusIconsStyle\"]\n"
+"{\n"
+"	border: 0px solid gray;\n"
+"}\n"
+"\n"
+"/**************************PfiltersIconsStyle***************************/\n"
+"\n"
+"*[styleSheet=\"PfiltersIconsStyle\"]\n"
 "{\n"
 "	border: 0px solid transparent;	\n"
 "}\n"
 "\n"
-"#date_label,\n"
-"#width_label,\n"
-"#height_label,\n"
-"#depth_label,\n"
-"#filter_by_label\n"
+"/**************************PfilterslabelsStyle***************************/\n"
+"\n"
+"*[styleSheet=\"Pfilte"
+                        "rslabelsStyle\"]\n"
 "{\n"
 "	font-weight: bold;\n"
 "}\n"
 "\n"
-"#filters_apply_btn\n"
+"/**************************PapplyFiltersButtonStyle********************/\n"
+"\n"
+"*[styleSheet=\"PapplyFiltersButtonStyle\"]\n"
 "{\n"
 "	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
 "	color: rgba(255, 255, 255, 210);\n"
-"	border-radius: 22px;\n"
-"	min-width: 200;\n"
-"	max-width: 200;\n"
-"	min-height: 44;\n"
-"	max-height: 44;\n"
+"	border-radius: 20px;\n"
+"	min-width: 134;\n"
+"	max-width: 134;\n"
+"	min-height:40;\n"
+"	max-height: 40;\n"
 "	font-size: 14px;\n"
 "	font-weight: bold;\n"
 "}\n"
 "\n"
+"*[styleSheet=\"PapplyFiltersButtonStyle\"]:disabled\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(189, 189, 191, 255), stop:1 rgba(189, 189, 191, 255));\n"
+"	color: rgba(120, 120, 120, 255);\n"
+"}\n"
+"\n"
+"*[styleSheet=\"PapplyFiltersButtonStyle\"]:hover\n"
+"{\n"
+"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
+"}\n"
+"\n"
+"*"
+                        "[styleSheet=\"PapplyFiltersButtonStyle\"]:pressed\n"
+"{\n"
+"	padding-left: 5px;\n"
+"	padding-top: 5px;\n"
+"}\n"
+"\n"
+"/**************************PclearFiltersButtonStyle********************/\n"
+"\n"
+"*[styleSheet=\"PclearFiltersButtonStyle\"]\n"
+"{\n"
+"	border: 2px solid  rgba(46, 76, 153, 255);\n"
+"	color:  rgba(46, 76, 153, 255);\n"
+"	border-radius: 18px;\n"
+"	min-width: 130;\n"
+"	max-width: 130;\n"
+"	min-height: 36;\n"
+"	max-height: 36;\n"
+"	font-size: 14px;\n"
+"	font-weight: bold;\n"
+"	icon: url(:/icons/icons/clear_filter_blue.png);\n"
+"}\n"
+"\n"
+"*[styleSheet=\"PclearFiltersButtonStyle\"]:disabled\n"
+"{\n"
+"	border: 2px solid rgba(189, 189, 191, 255);\n"
+"	color: rgba(120, 120, 120, 255);\n"
+"}\n"
+"\n"
+"*[styleSheet=\"PclearFiltersButtonStyle\"]:hover\n"
+"{\n"
+"	border: 2px solid rgba(76, 126, 255, 255);\n"
+"	color:  rgba(76, 126, 255, 255);\n"
+"	icon: url(:/icons/icons/clear_filter_blue_hover.png);\n"
+"}\n"
+"\n"
+"*[styleSheet=\"PclearFiltersButtonStyle\"]:pressed\n"
+"{\n"
+"	padding-left: 5px;\n"
+"	paddin"
+                        "g-top: 5px;\n"
+"}\n"
+"\n"
+"\n"
 "")
+        self.verticalLayout_12 = QVBoxLayout(self.PointStyleSheet)
+        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
+        self.verticalLayout_12.setContentsMargins(0, 0, 0, 0)
+        self.main_frame = QFrame(self.PointStyleSheet)
+        self.main_frame.setObjectName(u"main_frame")
+        self.main_frame.setMinimumSize(QSize(400, 0))
+        self.main_frame.setMaximumSize(QSize(800, 16777215))
+        self.main_frame.setStyleSheet(u"")
         self.main_frame.setFrameShape(QFrame.StyledPanel)
         self.main_frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_2 = QVBoxLayout(self.main_frame)
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.verticalLayout_4 = QVBoxLayout(self.main_frame)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(-1, 0, -1, -1)
         self.close = QPushButton(self.main_frame)
         self.close.setObjectName(u"close")
         self.close.setCursor(QCursor(Qt.PointingHandCursor))
-        self.close.setStyleSheet(u"border:none;\n"
-"background-color:transparent;")
+        self.close.setStyleSheet(u"PcloseButtonStyle")
         icon = QIcon()
         icon.addFile(u":/icons/icons/close_icon.png", QSize(), QIcon.Normal, QIcon.Off)
         self.close.setIcon(icon)
@@ -274,14 +375,15 @@ class Ui_slider(object):
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
 
-        self.verticalLayout_2.addLayout(self.horizontalLayout)
+        self.verticalLayout_4.addLayout(self.horizontalLayout)
 
         self.pages = QStackedWidget(self.main_frame)
         self.pages.setObjectName(u"pages")
         self.system_status_page = QWidget()
         self.system_status_page.setObjectName(u"system_status_page")
-        self.verticalLayout_3 = QVBoxLayout(self.system_status_page)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.system_status_page.setStyleSheet(u"LsystemStatusStyle")
+        self.verticalLayout_5 = QVBoxLayout(self.system_status_page)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.camera_staus_frame = QFrame(self.system_status_page)
         self.camera_staus_frame.setObjectName(u"camera_staus_frame")
         self.camera_staus_frame.setFrameShape(QFrame.StyledPanel)
@@ -296,7 +398,7 @@ class Ui_slider(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.camera_status_icon.sizePolicy().hasHeightForWidth())
         self.camera_status_icon.setSizePolicy(sizePolicy)
-        self.camera_status_icon.setStyleSheet(u"border: 0px solid gray;")
+        self.camera_status_icon.setStyleSheet(u"PstatusIconsStyle")
         icon1 = QIcon()
         icon1.addFile(u":/icons/icons/camera.png", QSize(), QIcon.Normal, QIcon.Off)
         self.camera_status_icon.setIcon(icon1)
@@ -312,6 +414,7 @@ class Ui_slider(object):
         font.setBold(True)
         font.setItalic(False)
         self.camera_status_title.setFont(font)
+        self.camera_status_title.setStyleSheet(u"PstatusTitlesStyle")
         self.camera_status_title.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.horizontalLayout_5.addWidget(self.camera_status_title)
@@ -324,7 +427,7 @@ class Ui_slider(object):
         self.horizontalLayout_5.addWidget(self.camera_status)
 
 
-        self.verticalLayout_3.addWidget(self.camera_staus_frame)
+        self.verticalLayout_5.addWidget(self.camera_staus_frame)
 
         self.plc_staus_frame = QFrame(self.system_status_page)
         self.plc_staus_frame.setObjectName(u"plc_staus_frame")
@@ -336,7 +439,7 @@ class Ui_slider(object):
         self.plc_staus_icon.setObjectName(u"plc_staus_icon")
         sizePolicy.setHeightForWidth(self.plc_staus_icon.sizePolicy().hasHeightForWidth())
         self.plc_staus_icon.setSizePolicy(sizePolicy)
-        self.plc_staus_icon.setStyleSheet(u"border: 0px solid gray;")
+        self.plc_staus_icon.setStyleSheet(u"PstatusIconsStyle")
         icon2 = QIcon()
         icon2.addFile(u":/icons/icons/plc.png", QSize(), QIcon.Normal, QIcon.Off)
         self.plc_staus_icon.setIcon(icon2)
@@ -347,6 +450,7 @@ class Ui_slider(object):
         self.plc_status_title = QLabel(self.plc_staus_frame)
         self.plc_status_title.setObjectName(u"plc_status_title")
         self.plc_status_title.setFont(font)
+        self.plc_status_title.setStyleSheet(u"PstatusTitlesStyle")
         self.plc_status_title.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.horizontalLayout_4.addWidget(self.plc_status_title)
@@ -359,7 +463,7 @@ class Ui_slider(object):
         self.horizontalLayout_4.addWidget(self.plc_staus)
 
 
-        self.verticalLayout_3.addWidget(self.plc_staus_frame)
+        self.verticalLayout_5.addWidget(self.plc_staus_frame)
 
         self.laser_status_frame = QFrame(self.system_status_page)
         self.laser_status_frame.setObjectName(u"laser_status_frame")
@@ -371,7 +475,7 @@ class Ui_slider(object):
         self.laser_status_icon.setObjectName(u"laser_status_icon")
         sizePolicy.setHeightForWidth(self.laser_status_icon.sizePolicy().hasHeightForWidth())
         self.laser_status_icon.setSizePolicy(sizePolicy)
-        self.laser_status_icon.setStyleSheet(u"border: 0px solid gray;")
+        self.laser_status_icon.setStyleSheet(u"PstatusIconsStyle")
         icon3 = QIcon()
         icon3.addFile(u":/icons/icons/laser.png", QSize(), QIcon.Normal, QIcon.Off)
         self.laser_status_icon.setIcon(icon3)
@@ -382,6 +486,7 @@ class Ui_slider(object):
         self.laser_status_title = QLabel(self.laser_status_frame)
         self.laser_status_title.setObjectName(u"laser_status_title")
         self.laser_status_title.setFont(font)
+        self.laser_status_title.setStyleSheet(u"PstatusTitlesStyle")
         self.laser_status_title.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.horizontalLayout_3.addWidget(self.laser_status_title)
@@ -394,7 +499,7 @@ class Ui_slider(object):
         self.horizontalLayout_3.addWidget(self.laser_status)
 
 
-        self.verticalLayout_3.addWidget(self.laser_status_frame)
+        self.verticalLayout_5.addWidget(self.laser_status_frame)
 
         self.database_staus_frame = QFrame(self.system_status_page)
         self.database_staus_frame.setObjectName(u"database_staus_frame")
@@ -406,7 +511,7 @@ class Ui_slider(object):
         self.database_staus_icon.setObjectName(u"database_staus_icon")
         sizePolicy.setHeightForWidth(self.database_staus_icon.sizePolicy().hasHeightForWidth())
         self.database_staus_icon.setSizePolicy(sizePolicy)
-        self.database_staus_icon.setStyleSheet(u"border: 0px solid gray;")
+        self.database_staus_icon.setStyleSheet(u"PstatusIconsStyle")
         icon4 = QIcon()
         icon4.addFile(u":/icons/icons/database.png", QSize(), QIcon.Normal, QIcon.Off)
         self.database_staus_icon.setIcon(icon4)
@@ -417,6 +522,7 @@ class Ui_slider(object):
         self.database_status_title = QLabel(self.database_staus_frame)
         self.database_status_title.setObjectName(u"database_status_title")
         self.database_status_title.setFont(font)
+        self.database_status_title.setStyleSheet(u"PstatusTitlesStyle")
         self.database_status_title.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.horizontalLayout_2.addWidget(self.database_status_title)
@@ -429,18 +535,18 @@ class Ui_slider(object):
         self.horizontalLayout_2.addWidget(self.database_staus)
 
 
-        self.verticalLayout_3.addWidget(self.database_staus_frame)
+        self.verticalLayout_5.addWidget(self.database_staus_frame)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_3.addItem(self.verticalSpacer)
+        self.verticalLayout_5.addItem(self.verticalSpacer)
 
         self.pages.addWidget(self.system_status_page)
         self.notification_filter_page = QWidget()
         self.notification_filter_page.setObjectName(u"notification_filter_page")
-        self.verticalLayout_4 = QVBoxLayout(self.notification_filter_page)
-        self.verticalLayout_4.setSpacing(15)
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.verticalLayout_6 = QVBoxLayout(self.notification_filter_page)
+        self.verticalLayout_6.setSpacing(15)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.filter_by_label = QLabel(self.notification_filter_page)
         self.filter_by_label.setObjectName(u"filter_by_label")
         sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
@@ -454,11 +560,13 @@ class Ui_slider(object):
         font1.setBold(True)
         font1.setItalic(False)
         self.filter_by_label.setFont(font1)
+        self.filter_by_label.setStyleSheet(u"PfilterByLabelStyle")
 
-        self.verticalLayout_4.addWidget(self.filter_by_label)
+        self.verticalLayout_6.addWidget(self.filter_by_label)
 
         self.filters_frame = QFrame(self.notification_filter_page)
         self.filters_frame.setObjectName(u"filters_frame")
+        self.filters_frame.setStyleSheet(u"LfiltersFrameStyle")
         self.filters_frame.setFrameShape(QFrame.StyledPanel)
         self.filters_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_9 = QVBoxLayout(self.filters_frame)
@@ -492,6 +600,7 @@ class Ui_slider(object):
         self.date_icon.setEnabled(False)
         sizePolicy2.setHeightForWidth(self.date_icon.sizePolicy().hasHeightForWidth())
         self.date_icon.setSizePolicy(sizePolicy2)
+        self.date_icon.setStyleSheet(u"PfiltersIconsStyle")
         icon5 = QIcon()
         icon5.addFile(u":/icons/icons/date_gray.png", QSize(), QIcon.Normal, QIcon.Off)
         icon5.addFile(u":/icons/icons/date_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
@@ -505,6 +614,7 @@ class Ui_slider(object):
         sizePolicy1.setHeightForWidth(self.date_label.sizePolicy().hasHeightForWidth())
         self.date_label.setSizePolicy(sizePolicy1)
         self.date_label.setFont(font)
+        self.date_label.setStyleSheet(u"PfilterslabelsStyle")
 
         self.horizontalLayout_9.addWidget(self.date_label)
 
@@ -548,9 +658,9 @@ class Ui_slider(object):
         self.width_frame.setObjectName(u"width_frame")
         self.width_frame.setFrameShape(QFrame.StyledPanel)
         self.width_frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_5 = QVBoxLayout(self.width_frame)
-        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.verticalLayout_5.setContentsMargins(-1, 0, -1, -1)
+        self.verticalLayout_7 = QVBoxLayout(self.width_frame)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.verticalLayout_7.setContentsMargins(-1, 0, -1, -1)
         self.horizontalLayout_8 = QHBoxLayout()
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
         self.filter_width_checkBox = QCheckBox(self.width_frame)
@@ -565,6 +675,7 @@ class Ui_slider(object):
         self.width_icon.setEnabled(False)
         sizePolicy2.setHeightForWidth(self.width_icon.sizePolicy().hasHeightForWidth())
         self.width_icon.setSizePolicy(sizePolicy2)
+        self.width_icon.setStyleSheet(u"PfiltersIconsStyle")
         icon6 = QIcon()
         icon6.addFile(u":/icons/icons/width_gray.png", QSize(), QIcon.Normal, QIcon.Off)
         icon6.addFile(u":/icons/icons/width_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
@@ -578,11 +689,12 @@ class Ui_slider(object):
         sizePolicy1.setHeightForWidth(self.width_label.sizePolicy().hasHeightForWidth())
         self.width_label.setSizePolicy(sizePolicy1)
         self.width_label.setFont(font)
+        self.width_label.setStyleSheet(u"PfilterslabelsStyle")
 
         self.horizontalLayout_8.addWidget(self.width_label)
 
 
-        self.verticalLayout_5.addLayout(self.horizontalLayout_8)
+        self.verticalLayout_7.addLayout(self.horizontalLayout_8)
 
         self.horizontalLayout_11 = QHBoxLayout()
         self.horizontalLayout_11.setSpacing(15)
@@ -612,7 +724,7 @@ class Ui_slider(object):
         self.horizontalLayout_11.addWidget(self.high_width_input)
 
 
-        self.verticalLayout_5.addLayout(self.horizontalLayout_11)
+        self.verticalLayout_7.addLayout(self.horizontalLayout_11)
 
 
         self.verticalLayout_9.addWidget(self.width_frame)
@@ -621,9 +733,9 @@ class Ui_slider(object):
         self.height_frame.setObjectName(u"height_frame")
         self.height_frame.setFrameShape(QFrame.StyledPanel)
         self.height_frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_6 = QVBoxLayout(self.height_frame)
-        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.verticalLayout_6.setContentsMargins(-1, 0, -1, -1)
+        self.verticalLayout_10 = QVBoxLayout(self.height_frame)
+        self.verticalLayout_10.setObjectName(u"verticalLayout_10")
+        self.verticalLayout_10.setContentsMargins(-1, 0, -1, -1)
         self.horizontalLayout_7 = QHBoxLayout()
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.filter_lenght_checkBox = QCheckBox(self.height_frame)
@@ -638,6 +750,7 @@ class Ui_slider(object):
         self.height_icon.setEnabled(False)
         sizePolicy2.setHeightForWidth(self.height_icon.sizePolicy().hasHeightForWidth())
         self.height_icon.setSizePolicy(sizePolicy2)
+        self.height_icon.setStyleSheet(u"PfiltersIconsStyle")
         icon7 = QIcon()
         icon7.addFile(u":/icons/icons/length_gray.png", QSize(), QIcon.Normal, QIcon.Off)
         icon7.addFile(u":/icons/icons/length_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
@@ -651,11 +764,12 @@ class Ui_slider(object):
         sizePolicy1.setHeightForWidth(self.height_label.sizePolicy().hasHeightForWidth())
         self.height_label.setSizePolicy(sizePolicy1)
         self.height_label.setFont(font)
+        self.height_label.setStyleSheet(u"PfilterslabelsStyle")
 
         self.horizontalLayout_7.addWidget(self.height_label)
 
 
-        self.verticalLayout_6.addLayout(self.horizontalLayout_7)
+        self.verticalLayout_10.addLayout(self.horizontalLayout_7)
 
         self.horizontalLayout_12 = QHBoxLayout()
         self.horizontalLayout_12.setSpacing(15)
@@ -684,7 +798,7 @@ class Ui_slider(object):
         self.horizontalLayout_12.addWidget(self.high_lenght_input)
 
 
-        self.verticalLayout_6.addLayout(self.horizontalLayout_12)
+        self.verticalLayout_10.addLayout(self.horizontalLayout_12)
 
 
         self.verticalLayout_9.addWidget(self.height_frame)
@@ -693,9 +807,9 @@ class Ui_slider(object):
         self.depth_frame.setObjectName(u"depth_frame")
         self.depth_frame.setFrameShape(QFrame.StyledPanel)
         self.depth_frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_7 = QVBoxLayout(self.depth_frame)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.verticalLayout_7.setContentsMargins(-1, 0, -1, -1)
+        self.verticalLayout_11 = QVBoxLayout(self.depth_frame)
+        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
+        self.verticalLayout_11.setContentsMargins(-1, 0, -1, -1)
         self.horizontalLayout_6 = QHBoxLayout()
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.filter_depth_checkBox = QCheckBox(self.depth_frame)
@@ -710,6 +824,7 @@ class Ui_slider(object):
         self.depth_icon.setEnabled(False)
         sizePolicy2.setHeightForWidth(self.depth_icon.sizePolicy().hasHeightForWidth())
         self.depth_icon.setSizePolicy(sizePolicy2)
+        self.depth_icon.setStyleSheet(u"PfiltersIconsStyle")
         icon8 = QIcon()
         icon8.addFile(u":/icons/icons/depth_gray.png", QSize(), QIcon.Normal, QIcon.Off)
         icon8.addFile(u":/icons/icons/depth_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
@@ -723,11 +838,12 @@ class Ui_slider(object):
         sizePolicy1.setHeightForWidth(self.depth_label.sizePolicy().hasHeightForWidth())
         self.depth_label.setSizePolicy(sizePolicy1)
         self.depth_label.setFont(font)
+        self.depth_label.setStyleSheet(u"PfilterslabelsStyle")
 
         self.horizontalLayout_6.addWidget(self.depth_label)
 
 
-        self.verticalLayout_7.addLayout(self.horizontalLayout_6)
+        self.verticalLayout_11.addLayout(self.horizontalLayout_6)
 
         self.horizontalLayout_13 = QHBoxLayout()
         self.horizontalLayout_13.setSpacing(15)
@@ -759,7 +875,7 @@ class Ui_slider(object):
         self.horizontalLayout_13.addWidget(self.high_depth_input)
 
 
-        self.verticalLayout_7.addLayout(self.horizontalLayout_13)
+        self.verticalLayout_11.addLayout(self.horizontalLayout_13)
 
 
         self.verticalLayout_9.addWidget(self.depth_frame)
@@ -779,36 +895,7 @@ class Ui_slider(object):
         self.filters_apply_btn.setObjectName(u"filters_apply_btn")
         self.filters_apply_btn.setEnabled(True)
         self.filters_apply_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.filters_apply_btn.setStyleSheet(u"#filters_apply_btn\n"
-"{\n"
-"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));\n"
-"	color: rgba(255, 255, 255, 210);\n"
-"	border-radius: 20px;\n"
-"	min-width: 134;\n"
-"	max-width: 134;\n"
-"	min-height:40;\n"
-"	max-height: 40;\n"
-"	font-size: 14px;\n"
-"	font-weight: bold;\n"
-"}\n"
-"\n"
-"#filters_apply_btn:disabled\n"
-"{\n"
-"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(189, 189, 191, 255), stop:1 rgba(189, 189, 191, 255));\n"
-"	color: rgba(120, 120, 120, 255);\n"
-"}\n"
-"\n"
-"#filters_apply_btn:hover\n"
-"{\n"
-"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
-"}\n"
-"\n"
-"#filters_apply_btn:pressed\n"
-"{\n"
-"	padding-left: 5px;\n"
-"	padding-top: 5px;\n"
-"}\n"
-"")
+        self.filters_apply_btn.setStyleSheet(u"PapplyFiltersButtonStyle")
         icon9 = QIcon()
         icon9.addFile(u":/icons/icons/apply_icon.png", QSize(), QIcon.Normal, QIcon.Off)
         icon9.addFile(u":/icons/icons/apply_disables.png", QSize(), QIcon.Disabled, QIcon.Off)
@@ -825,39 +912,7 @@ class Ui_slider(object):
         sizePolicy4.setHeightForWidth(self.notif_clear_filter_btn.sizePolicy().hasHeightForWidth())
         self.notif_clear_filter_btn.setSizePolicy(sizePolicy4)
         self.notif_clear_filter_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.notif_clear_filter_btn.setStyleSheet(u"#notif_clear_filter_btn\n"
-"{\n"
-"	border: 2px solid  rgba(46, 76, 153, 255);\n"
-"	color:  rgba(46, 76, 153, 255);\n"
-"	border-radius: 18px;\n"
-"	min-width: 130;\n"
-"	max-width: 130;\n"
-"	min-height: 36;\n"
-"	max-height: 36;\n"
-"	font-size: 14px;\n"
-"	font-weight: bold;\n"
-"	icon: url(:/icons/icons/clear_filter_blue.png);\n"
-"}\n"
-"\n"
-"#notif_clear_filter_btn:disabled\n"
-"{\n"
-"	border: 2px solid rgba(189, 189, 191, 255);\n"
-"	color: rgba(120, 120, 120, 255);\n"
-"}\n"
-"\n"
-"#notif_clear_filter_btn:hover\n"
-"{\n"
-"	border: 2px solid rgba(76, 126, 255, 255);\n"
-"	color:  rgba(76, 126, 255, 255);\n"
-"	icon: url(:/icons/icons/clear_filter_blue_hover.png);\n"
-"}\n"
-"\n"
-"#notif_clear_filter_btn:pressed\n"
-"{\n"
-"	padding-left: 5px;\n"
-"	padding-top: 5px;\n"
-"}\n"
-"")
+        self.notif_clear_filter_btn.setStyleSheet(u"PclearFiltersButtonStyle")
         icon10 = QIcon()
         icon10.addFile(u":/icons/icons/clear_filter_blue.png", QSize(), QIcon.Normal, QIcon.Off)
         self.notif_clear_filter_btn.setIcon(icon10)
@@ -877,19 +932,28 @@ class Ui_slider(object):
         self.verticalLayout_9.addItem(self.verticalSpacer_2)
 
 
-        self.verticalLayout_4.addWidget(self.filters_frame)
+        self.verticalLayout_6.addWidget(self.filters_frame)
 
         self.pages.addWidget(self.notification_filter_page)
 
-        self.verticalLayout_2.addWidget(self.pages)
+        self.verticalLayout_4.addWidget(self.pages)
 
 
-        self.verticalLayout.addWidget(self.main_frame)
+        self.verticalLayout_12.addWidget(self.main_frame)
+
+
+        self.verticalLayout_3.addWidget(self.PointStyleSheet)
+
+
+        self.verticalLayout_2.addWidget(self.LocalStyleSheet)
+
+
+        self.verticalLayout.addWidget(self.GlobalStyleSheet)
 
 
         self.retranslateUi(slider)
 
-        self.pages.setCurrentIndex(1)
+        self.pages.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(slider)

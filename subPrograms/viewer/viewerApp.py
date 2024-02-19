@@ -7,9 +7,8 @@ parser.add_argument('-id', '--defect_id', type=int)
 parser.add_argument('--path', type=str, default=os.getcwd())
 args=parser.parse_args()
 print('Start')
+#args.defect_id = 2354061969344
 
-
-# sys.path.insert(1, os.getcwd())
 sys.path.append(args.path)
 sys.path.append(os.path.join('UIFiles', 'assets'))
 sys.path.append('uiUtils')

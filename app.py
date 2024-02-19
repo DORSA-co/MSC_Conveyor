@@ -8,6 +8,7 @@ os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'main_UI.ui'), o
 os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'defect_notification.ui'), os.path.join('UIFiles', 'defect_notification.py')))
 os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'edit_user.ui'), os.path.join('UIFiles', 'edit_user.py')))
 os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'login_UI.ui'), os.path.join('UIFiles', 'login_UI.py')))
+os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'verify_UI.ui'), os.path.join('UIFiles', 'verify_UI.py')))
 os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'popup_slider.ui'), os.path.join('UIFiles', 'popup_slider.py')))
 os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'image_viewer.ui'), os.path.join('UIFiles', 'image_viewer.py')))
 os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'belt_tile.ui'), os.path.join('UIFiles', 'belt_tile.py')))

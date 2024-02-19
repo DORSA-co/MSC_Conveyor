@@ -87,10 +87,14 @@ class ImageCreator:
 
         return self.image
 
-    def reset_image_index(self):
-        #the image update by self.prev_line_idx last time. 
-        #so we calc image_start_line_idx by prev_line_idx
-        self.image_start_line_idx = self.__calc_start_line_idx(self.prev_line_idx)
+    def reset_image_index(self, end_belt_idx):
+        '''
+        the image update by self.prev_line_idx last time. 
+        so we calc image_start_line_idx by prev_line_idx
+        '''
+        self.image_start_line_idx = self.prev_line_idx - self.total_idx
+        #self.image_start_line_idx = self.__calc_start_line_idx(self.prev_line_idx)
+        print(self.image_start_line_idx)
         #print('reset_image_index', self.image_start_line_idx, self.cycle_idx)
         self.image_index += 1
         self.external_cycle_image_event_func(self.image_index, self.image_start_line_idx)

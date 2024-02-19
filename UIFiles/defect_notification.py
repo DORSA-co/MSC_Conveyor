@@ -24,23 +24,27 @@ class Ui_Notification(object):
     def setupUi(self, Notification):
         if not Notification.objectName():
             Notification.setObjectName(u"Notification")
-        Notification.resize(531, 196)
+        Notification.resize(587, 170)
         self.horizontalLayout_2 = QHBoxLayout(Notification)
         self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.StyleSheet = QWidget(Notification)
-        self.StyleSheet.setObjectName(u"StyleSheet")
-        self.StyleSheet.setStyleSheet(u"*{\n"
+        self.GlobalStyleSheet = QWidget(Notification)
+        self.GlobalStyleSheet.setObjectName(u"GlobalStyleSheet")
+        self.GlobalStyleSheet.setStyleSheet(u"/**************************Global Font***************************/\n"
+"\n"
+"QWidget\n"
+"{\n"
 "	font: auto \"Roboto\";\n"
 "}\n"
 "\n"
-"/************************************************************/\n"
+"/**************************QLabel***************************/\n"
 "\n"
 "QLabel{\n"
 "	color:#505050;\n"
-"\n"
 "}\n"
+"\n"
+"/**************************QCheckBox***************************/\n"
 "\n"
 "QCheckBox {\n"
 "    spacing: 0px;\n"
@@ -51,68 +55,90 @@ class Ui_Notification(object):
 "    height: 20px;\n"
 "}\n"
 "\n"
-"/* Unchecked State */\n"
 "QCheckBox::indicator:unchecked {\n"
 "    border: 2px solid #E0E4EC;\n"
 "    background-color: white;\n"
 "}\n"
 "\n"
-"/* Checked State */\n"
 "QCheckBox::indicator:checked {\n"
 "    border: 2px solid #7892DF;\n"
 "    background-color: #7892DF;\n"
-"    image: url(:/icons/icons/tick.png)  /* Path to your check mark icon */\n"
+"    image: url(:/icons/icons/tick.png)\n"
 "}\n"
 "\n"
-"/* Hover State */\n"
 "QCheckBox::indicator:hover {\n"
 "    border: 2px solid rgba(194, 197, 204, 255);\n"
 "}\n"
 "\n"
-"/* Disabled State */\n"
 "QCheckBox::indicator:disabled {\n"
 "    border: 2px solid #E0E4EC;\n"
 "    background-color: #F6F6F6;\n"
 "}\n"
-"\n"
-"\n"
-"#main_frame\n"
-"{\n"
-"	border:1px solid #E0E4EC;\n"
-"	border-radius: 15px;\n"
-"	background-color: #F7F8"
-                        "FA;\n"
-"}\n"
-"\n"
-"#defect_color_frame{\n"
-"	border: None;\n"
-"}\n"
-"\n"
-"#defect_color_frame .QLabel\n"
-"{\n"
-"	border-radius:4px;\n"
-"}\n"
-"\n"
-"#i_label{\n"
-"	color: #FFFFFF\n"
-"}\n"
-"\n"
-"#close_btn{\n"
-" border:none;\n"
-"}\n"
-"\n"
-"#close_btn:hover{\n"
-" background-color:#f0f0f0;\n"
-"}")
-        self.verticalLayout_2 = QVBoxLayout(self.StyleSheet)
+"")
+        self.verticalLayout_2 = QVBoxLayout(self.GlobalStyleSheet)
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.main_frame = QFrame(self.StyleSheet)
+        self.LocalStyleSheet = QWidget(self.GlobalStyleSheet)
+        self.LocalStyleSheet.setObjectName(u"LocalStyleSheet")
+        self.LocalStyleSheet.setStyleSheet(u"")
+        self.verticalLayout = QVBoxLayout(self.LocalStyleSheet)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.PointStyleSheet = QWidget(self.LocalStyleSheet)
+        self.PointStyleSheet.setObjectName(u"PointStyleSheet")
+        self.PointStyleSheet.setStyleSheet(u"/**************************mainStyle***************************/\n"
+"\n"
+"*[styleSheet=\"mainStyle\"]\n"
+"{\n"
+"	border:1px solid #E0E4EC;\n"
+"	border-radius: 15px;\n"
+"	background-color: #F7F8FA;\n"
+"}\n"
+"\n"
+"/**************************PcolorFrameStyle***************************/\n"
+"\n"
+"*[styleSheet=\"PcolorFrameStyle\"]\n"
+"{\n"
+"	border: None;\n"
+"	background-color: red;\n"
+"	border-radius:15px;\n"
+"}\n"
+"\n"
+"/**************************PiLabelStyle***************************/\n"
+"\n"
+"*[styleSheet=\"PiLabelStyle\"]\n"
+"{\n"
+"	color: #FFFFFF\n"
+"}\n"
+"\n"
+"/**************************PcloseButtonStyle***************************/\n"
+"\n"
+"*[styleSheet=\"PcloseButtonStyle\"]\n"
+"{\n"
+"	border:none;\n"
+"}\n"
+"\n"
+"*[styleSheet=\"PcloseButtonStyle\"]:hover\n"
+"{\n"
+"	background-color:#f0f0f0;\n"
+"}\n"
+"\n"
+"/**************************PtagLabelStyle***************************/\n"
+"\n"
+"*[styleSheet=\"PtagLabelStyle\"]\n"
+"{\n"
+"	color:rgb(71, 118, 239);\n"
+"	font-weight:bold;\n"
+"}")
+        self.verticalLayout_6 = QVBoxLayout(self.PointStyleSheet)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
+        self.main_frame = QFrame(self.PointStyleSheet)
         self.main_frame.setObjectName(u"main_frame")
         self.main_frame.setMinimumSize(QSize(0, 100))
         self.main_frame.setMaximumSize(QSize(16777215, 100))
-        self.main_frame.setStyleSheet(u"")
+        self.main_frame.setStyleSheet(u"mainStyle")
         self.main_frame.setFrameShape(QFrame.StyledPanel)
         self.main_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_4 = QHBoxLayout(self.main_frame)
@@ -135,10 +161,10 @@ class Ui_Notification(object):
 
         self.horizontalLayout_3.addWidget(self.select_checkBox)
 
-        self.verticalLayout = QVBoxLayout()
-        self.verticalLayout.setSpacing(6)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(10, 10, -1, 10)
+        self.verticalLayout_3 = QVBoxLayout()
+        self.verticalLayout_3.setSpacing(6)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.verticalLayout_3.setContentsMargins(10, 10, -1, 10)
         self.horizontalLayout_6 = QHBoxLayout()
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.horizontalLayout_6.setContentsMargins(-1, 0, -1, -1)
@@ -149,8 +175,7 @@ class Ui_Notification(object):
 
         self.tag_label = QLabel(self.main_frame)
         self.tag_label.setObjectName(u"tag_label")
-        self.tag_label.setStyleSheet(u"color:rgb(71, 118, 239);\n"
-"font-weight:bold;")
+        self.tag_label.setStyleSheet(u"PtagLabelStyle")
 
         self.horizontalLayout_6.addWidget(self.tag_label)
 
@@ -159,7 +184,7 @@ class Ui_Notification(object):
         self.horizontalLayout_6.addItem(self.horizontalSpacer_3)
 
 
-        self.verticalLayout.addLayout(self.horizontalLayout_6)
+        self.verticalLayout_3.addLayout(self.horizontalLayout_6)
 
         self.horizontalLayout_5 = QHBoxLayout()
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
@@ -170,7 +195,7 @@ class Ui_Notification(object):
         self.horizontalLayout_5.addWidget(self.defect_type_label)
 
 
-        self.verticalLayout.addLayout(self.horizontalLayout_5)
+        self.verticalLayout_3.addLayout(self.horizontalLayout_5)
 
         self.horizontalLayout = QHBoxLayout()
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -190,10 +215,10 @@ class Ui_Notification(object):
         self.horizontalLayout.addWidget(self.time_label)
 
 
-        self.verticalLayout.addLayout(self.horizontalLayout)
+        self.verticalLayout_3.addLayout(self.horizontalLayout)
 
 
-        self.horizontalLayout_3.addLayout(self.verticalLayout)
+        self.horizontalLayout_3.addLayout(self.verticalLayout_3)
 
         self.horizontalSpacer_2 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
 
@@ -209,18 +234,13 @@ class Ui_Notification(object):
         font.setBold(False)
         font.setItalic(False)
         self.defect_color_frame.setFont(font)
-        self.defect_color_frame.setStyleSheet(u"#defect_color_frame{\n"
-"	background-color: red;\n"
-"	border-radius:15px;\n"
-"	border: None;\n"
-"}\n"
-"")
+        self.defect_color_frame.setStyleSheet(u"PcolorFrameStyle")
         self.defect_color_frame.setFrameShape(QFrame.StyledPanel)
         self.defect_color_frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_3 = QVBoxLayout(self.defect_color_frame)
-        self.verticalLayout_3.setSpacing(0)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_4 = QVBoxLayout(self.defect_color_frame)
+        self.verticalLayout_4.setSpacing(0)
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.i_label = QLabel(self.defect_color_frame)
         self.i_label.setObjectName(u"i_label")
         self.i_label.setEnabled(True)
@@ -232,10 +252,11 @@ class Ui_Notification(object):
         font1.setBold(False)
         font1.setItalic(False)
         self.i_label.setFont(font1)
+        self.i_label.setStyleSheet(u"PiLabelStyle")
         self.i_label.setScaledContents(True)
         self.i_label.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_3.addWidget(self.i_label, 0, Qt.AlignHCenter)
+        self.verticalLayout_4.addWidget(self.i_label, 0, Qt.AlignHCenter)
 
 
         self.horizontalLayout_3.addWidget(self.defect_color_frame)
@@ -243,31 +264,38 @@ class Ui_Notification(object):
 
         self.horizontalLayout_4.addLayout(self.horizontalLayout_3)
 
-        self.verticalLayout_4 = QVBoxLayout()
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.verticalLayout_4.setContentsMargins(0, 5, 5, -1)
+        self.verticalLayout_5 = QVBoxLayout()
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_5.setContentsMargins(0, 5, 5, -1)
         self.close_btn = QPushButton(self.main_frame)
         self.close_btn.setObjectName(u"close_btn")
         self.close_btn.setMaximumSize(QSize(30, 30))
+        self.close_btn.setStyleSheet(u"PcloseButtonStyle")
         icon = QIcon()
         icon.addFile(u":/icons/icons/close_gray.png", QSize(), QIcon.Normal, QIcon.Off)
         self.close_btn.setIcon(icon)
         self.close_btn.setIconSize(QSize(15, 15))
 
-        self.verticalLayout_4.addWidget(self.close_btn, 0, Qt.AlignTop)
+        self.verticalLayout_5.addWidget(self.close_btn, 0, Qt.AlignTop)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_4.addItem(self.verticalSpacer)
+        self.verticalLayout_5.addItem(self.verticalSpacer)
 
 
-        self.horizontalLayout_4.addLayout(self.verticalLayout_4)
+        self.horizontalLayout_4.addLayout(self.verticalLayout_5)
 
 
-        self.verticalLayout_2.addWidget(self.main_frame)
+        self.verticalLayout_6.addWidget(self.main_frame)
 
 
-        self.horizontalLayout_2.addWidget(self.StyleSheet)
+        self.verticalLayout.addWidget(self.PointStyleSheet)
+
+
+        self.verticalLayout_2.addWidget(self.LocalStyleSheet)
+
+
+        self.horizontalLayout_2.addWidget(self.GlobalStyleSheet)
 
 
         self.retranslateUi(Notification)

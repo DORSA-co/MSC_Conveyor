@@ -29,15 +29,18 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1196, 832)
-        self.StyleSheet = QWidget(MainWindow)
-        self.StyleSheet.setObjectName(u"StyleSheet")
-        self.StyleSheet.setEnabled(True)
-        self.StyleSheet.setStyleSheet(u"*{\n"
+        MainWindow.resize(1205, 825)
+        self.GlobalStyleSheet = QWidget(MainWindow)
+        self.GlobalStyleSheet.setObjectName(u"GlobalStyleSheet")
+        self.GlobalStyleSheet.setEnabled(True)
+        self.GlobalStyleSheet.setStyleSheet(u"/**************************Global Font***************************/\n"
+"\n"
+"QWidget\n"
+"{\n"
 "	font: auto \"Roboto\";\n"
 "}\n"
 "\n"
-"/************************************************************/\n"
+"/**************************QLabel***************************/\n"
 "\n"
 "QLabel{\n"
 "	color: rgb(20, 20, 20);\n"
@@ -47,7 +50,7 @@ class Ui_MainWindow(object):
 "	color: rgb(120, 120, 120);\n"
 "}\n"
 "\n"
-"/************************************************************/\n"
+"/**************************QScrollBar***************************/\n"
 "\n"
 "QScrollBar:vertical {\n"
 "    border: none;\n"
@@ -75,12 +78,12 @@ class Ui_MainWindow(object):
 "    background: #F7F8FA;\n"
 "    height: 20px;\n"
 "    subcontrol-position: top;\n"
-"    subcontrol-origin: margin;\n"
+"    subcontrol-origin: margin;"
+                        "\n"
 "}\n"
 "\n"
 "QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {\n"
-"    "
-                        "border: none;\n"
+"    border: none;\n"
 "    width: 3px;\n"
 "    height: 3px;\n"
 "    background: transparent;\n"
@@ -120,18 +123,18 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QScrollBar::left-arrow:horizontal, QScrollBar::right-arrow:horizontal {\n"
-"    border: none;\n"
+" "
+                        "   border: none;\n"
 "    width: 3px;\n"
 "    height: 3px;\n"
-"    background: transparent"
-                        ";\n"
+"    background: transparent;\n"
 "}\n"
 "\n"
 "QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {\n"
 "    background: none;\n"
 "}\n"
 "\n"
-"/************************************************************/\n"
+"/**************************QCheckBox***************************/\n"
 "\n"
 "QCheckBox {\n"
 "    spacing: 0px;\n"
@@ -142,39 +145,35 @@ class Ui_MainWindow(object):
 "    height: 15px;\n"
 "}\n"
 "\n"
-"/* Unchecked State */\n"
 "QCheckBox::indicator:unchecked {\n"
 "    border: 2px solid #E0E4EC;\n"
 "    background-color: white;\n"
 "}\n"
 "\n"
-"/* Checked State */\n"
 "QCheckBox::indicator:checked {\n"
 "    border: 2px solid #7892DF;\n"
 "    background-color: #7892DF;\n"
-"    image: url(:/icons/icons/tick.png)  /* Path to your check mark icon */\n"
+"    image: url(:/icons/icons/tick.png) \n"
 "}\n"
 "\n"
-"/* Hover State */\n"
 "QCheckBox::indicator:hover {\n"
 "    border: 2px solid rgba(194, 197, 204, 255);\n"
 "}\n"
 "\n"
-"/* Disabled State */\n"
 "QCheckBox::indicator:disabled {\n"
 "    border: 2px solid #E0E4EC;\n"
 "    background-color: #F6F6F6;\n"
 "}\n"
 "\n"
-"/************************************************************/\n"
+"/**************************QGraphicsView***************************/\n"
 "\n"
-"QGrap"
-                        "hicsView{\n"
+"QGraphicsView{\n"
 "	border: None;\n"
-"	background-color: transparent;\n"
+"	b"
+                        "ackground-color: transparent;\n"
 "}\n"
 "\n"
-"/************************************************************/\n"
+"/**************************QLineEdit***************************/\n"
 "\n"
 "QLineEdit {\n"
 "  	border:1px solid #E0E4EC;\n"
@@ -190,7 +189,7 @@ class Ui_MainWindow(object):
 "	border-bottom: 2px solid #7892DF;\n"
 "}\n"
 "\n"
-"/************************************************************/\n"
+"/***********QSpinBox, QDoubleSpinBox, QDateEdit*************/\n"
 "\n"
 "QSpinBox, QDoubleSpinBox, QDateEdit\n"
 "{\n"
@@ -215,8 +214,8 @@ class Ui_MainWindow(object):
 "QDoubleSpinBox::up-arrow,\n"
 "QDateEdit::up-arrow\n"
 "{   \n"
-"	im"
-                        "age: url(:/icons/icons/plus_icon_black.png);\n"
+"	image: url(:/icons/icons/plus_icon_b"
+                        "lack.png);\n"
 "	width: 16px;\n"
 "	height: 16px;\n"
 "}\n"
@@ -261,9 +260,9 @@ class Ui_MainWindow(object):
 "    right: 0px;\n"
 "}\n"
 "\n"
-"QSpinBox::down-butto"
-                        "n,\n"
-"QDoubleSpinBox::down-button,\n"
+"QSpinBox::down-button,\n"
+"QDoubleSpinBox::down-button"
+                        ",\n"
 "QDateEdit::down-button\n"
 "{\n"
 "    min-width:30px;\n"
@@ -298,17 +297,16 @@ class Ui_MainWindow(object):
 "	border-bottom: 2px solid #7892DF;\n"
 "}\n"
 "\n"
-"/************************************************************/\n"
+"/**************************QTabWidget***************************/\n"
 "\n"
 "QTabWidget {\n"
 "    background-color: #F7F8FA;\n"
 "}\n"
 "\n"
-"/* Tab Bar Style */\n"
-"QTabBar::tab {"
-                        "\n"
+"QTabBar::tab {\n"
 "    background-color: #BDBDBF;\n"
-"    color: rgb(20, 20, 20);\n"
+"    color: rgb("
+                        "20, 20, 20);\n"
 "	min-width: 100px;\n"
 "    padding: 8px 16px;\n"
 "    border-top-left-radius: 4px;\n"
@@ -320,20 +318,18 @@ class Ui_MainWindow(object):
 "	color: rgb(120, 120, 120);\n"
 "}\n"
 "\n"
-"/* Tab Content Area */\n"
 "QTabWidget::pane {\n"
 "    border: 1px solid #E0E4EC;\n"
 "    border-top: none;\n"
 "    background-color: #E0E4EC;\n"
 "}\n"
 "\n"
-"/* Selected Tab Label Style */\n"
 "QTabBar::tab:selected {\n"
 "    background-color: #E0E4EC;\n"
-"    border-bottom: 2px solid #7892DF; /* Change the color of the selected tab indicator */\n"
+"    border-bottom: 2px solid #7892DF; \n"
 "}\n"
 "\n"
-"/************************************************************/\n"
+"/**************************QTableWidget***************************/\n"
 "\n"
 "QTableWidget {\n"
 "    background-color: #F7F8FA;\n"
@@ -346,15 +342,15 @@ class Ui_MainWindow(object):
 "QHeaderView::section {\n"
 "    background-color: #F7F8FA;\n"
 "    padding: 5px;\n"
-"	border-top-left"
-                        "-radius: 0px;\n"
+"	border-top-left-radius: 0px;\n"
 "	border-bottom: 2px solid #BDBDBF;\n"
 "	border-right: 1px solid #D7D7D9;\n"
 "	font-weight: bold;\n"
 "	color: rgb(20, 20, 20);\n"
 "}\n"
 "\n"
-"QHeaderView::section:first {\n"
+"QHead"
+                        "erView::section:first {\n"
 "   border-top-left-radius: 4px;\n"
 "	border-left: None;\n"
 "}\n"
@@ -378,7 +374,7 @@ class Ui_MainWindow(object):
 "	image: url(:/icons/icons/table_sort_icon.png);\n"
 "}\n"
 "\n"
-"/************************************************************/\n"
+"/**************************QComboBox***************************/\n"
 "\n"
 "QComboBox\n"
 "{\n"
@@ -397,14 +393,14 @@ class Ui_MainWindow(object):
 "\n"
 "QComboBox:disabled\n"
 "{\n"
-""
-                        "	border: 2px solid #F0F0F2;\n"
+"	border: 2px solid #F0F0F2;\n"
 "	color: rgb(120, 120, 120);\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:disabled\n"
 "{   \n"
-"	image: url(:/icons/icons/down_icon_gray.png);\n"
+"	image: url(:/icons/icons/down_icon_gray."
+                        "png);\n"
 "	width: 12px;\n"
 "    height: 12px;\n"
 "}\n"
@@ -437,71 +433,71 @@ class Ui_MainWindow(object):
 "	border-bottom: 2px solid #7892DF;\n"
 "}\n"
 "\n"
-"/************************************************************/\n"
+"")
+        self.horizontalLayout = QHBoxLayout(self.GlobalStyleSheet)
+        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.LocalStyleSheet = QWidget(self.GlobalStyleSheet)
+        self.LocalStyleSheet.setObjectName(u"LocalStyleSheet")
+        self.LocalStyleSheet.setStyleSheet(u"/**************************LsideFrameStyle***************************/\n"
 "\n"
-"#side_frame{\n"
+"*[styleSheet=\"LsideFrameStyle\"]\n"
+"{\n"
 "	background-color: #17203A;\n"
 "}\n"
 "\n"
-"#side_frame QPushButton{\n"
+"*[styleSheet=\"LsideFrameStyle\"]  .QPushButton{\n"
 "	border: 0px;\n"
-"	col"
-                        "or: white;\n"
+"	color: white;\n"
 "	font-weight: bold;\n"
 "}\n"
 "\n"
-"#top_frame{\n"
-"	background-color: #F7F8FA;\n"
-"}\n"
+"/**************************LtopFrameStyle***************************/\n"
 "\n"
-"#top_frame QPushButton{\n"
-"	border: 0px;\n"
-"}\n"
-"\n"
-"#main_stackedWidget{\n"
-"	background-color: #E0E4EC;\n"
-"}\n"
-"\n"
-"#camera_tab .QFrame, \n"
-"#algorithm_stackedWidget .QFrame, \n"
-"#user_register_tab .QFrame, \n"
-"#user_profile_tab .QFrame,\n"
-"#live_view_page .QFrame,\n"
-"#report_page  .QFrame\n"
+"*[styleSheet=\"LtopFrameStyle\"]\n"
 "{\n"
 "	background-color: #F7F8FA;\n"
 "	border:1px solid #D7D7D9;\n"
 "}\n"
 "\n"
-"#camera_settings_frame .QLabel, #register_info_frame .QLabel,\n"
-"#profile_change_username_frame .QLabel,\n"
-"#profile_change_password_frame .QLabel\n"
+"*[styleSheet=\"LtopFrameStyle\"] .QPushButton{\n"
+"	border: 0px;\n"
+"}\n"
+"\n"
+"/**************************LpagesFrameStyle***************************/\n"
+"\n"
+"*[styleSheet=\"LpagesFrameStyle\"] .QFrame\n"
+"{\n"
+"	background-color: #F7F8FA;\n"
+"	border:1px solid #D7D7D9;\n"
+"}\n"
+"\n"
+"/*************************LpagesBoldLabelStyle**************************/\n"
+"\n"
+"*[styleSheet=\"LpagesBoldLabelStyle\"] .QLabel\n"
 "{\n"
 "	font-weight: bold;\n"
 "	font-size: 15px;\n"
 "}\n"
 "\n"
-"#connect_camera_switch::indicator{\n"
-"	border: None;\n"
-"}\n"
+"/*********************LshowStepsFrameStyle**********"
+                        "************/\n"
 "\n"
-"#step1_settings_frame .QLabel, #step2_settings_frame .QLabel, #step3_settings_frame .QLabel, #step4_settings_frame .QLabel,\n"
-"#step5_settings_frame .QLabel\n"
+"*[styleSheet=\"LshowStepsFrameStyle\"]\n"
 "{\n"
-"	font-weight: bold;\n"
-"}\n"
-"\n"
-"#step1_label, #step2_label, #step3_labe"
-                        "l, #step4_label, #step5_label{\n"
-"	font-size: 26px;\n"
-"	color: #4C7EFF;\n"
-"}\n"
-"\n"
-"#show_steps_frame{\n"
 "	border: None;\n"
 "}\n"
 "\n"
-"#show_steps_frame .QPushButton{\n"
+"*[styleSheet=\"LshowStepsFrameStyle\"]  .QFrame\n"
+"{\n"
+"	border: 2px solid #7E84A2;\n"
+"	min-height: 0px;\n"
+"	max-height: 0px;\n"
+"}\n"
+"\n"
+"*[styleSheet=\"LshowStepsFrameStyle\"]  .QPushButton\n"
+"{\n"
 "	background-color: transparent;\n"
 "	border:5px solid #7E84A2;\n"
 "	border-radius: 32px;\n"
@@ -514,102 +510,128 @@ class Ui_MainWindow(object):
 "	font-weight: bold;\n"
 "}\n"
 "\n"
-"#show_steps_frame .QPushButton:hover{\n"
+"*[styleSheet=\"LshowStepsFrameStyle\"]  .QPushButton:hover\n"
+"{\n"
 "	border:5px solid #BDBDBF;\n"
 "}\n"
 "\n"
-"#show_steps_frame .QFrame{\n"
-"	border: 2px solid #7E84A2;\n"
-"	min-height: 0px;\n"
-"	max-height: 0px;\n"
+"/*********************LexpandingFrameStyle**********************/\n"
+"\n"
+"*[styleSheet=\"LexpandingFrameStyle\"]\n"
+"{\n"
+"	background-color: #17203A\n"
 "}\n"
 "\n"
-"#userspage_user_heading_lbl{\n"
+"*[styleSheet=\"LexpandingFrameStyle\"] .QPushButton{\n"
+"	border: 0px solid gray;\n"
+"}\n"
+"\n"
+"")
+        self.verticalLayout = QVBoxLayout(self.LocalStyleSheet)
+        self.verticalLayout.setObjectName(u"verticalLayout")
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.PointStyleSheet = QWidget(self.LocalStyleSheet)
+        self.PointStyleSheet.setObjectName(u"PointStyleSheet")
+        self.PointStyleSheet.setStyleSheet(u"/*******************PmainStackedWidgetStyle********************/\n"
+"\n"
+"*[styleSheet=\"PmainStackedWidgetStyle\"]\n"
+"{\n"
+"	background-color: #E0E4EC;\n"
+"}\n"
+"\n"
+"/*******************PswitchStyle********************/\n"
+"\n"
+"*[styleSheet=\"PswitchStyle\"]::indicator{\n"
+"	background-color: transparent;\n"
+"	border: None;\n"
+"}\n"
+"\n"
+"/*******************PpagesTitleLabelStyle********************/\n"
+"\n"
+"*[styleSheet=\"PpagesTitleLabelStyle\"]\n"
+"{\n"
+"	font-size: 26px;\n"
 "	font-weight: bold;\n"
-"	font-size: 20px;\n"
 "	color: #4C7EFF;\n"
-"	min-height: 70px;\n"
 "}\n"
 "\n"
-"#profile_change_username_label, #profile_change_password_label{\n"
+"/*******************PpagesSmallTitleLabelStyle********************/\n"
+"\n"
+"*[styleSheet=\"PpagesSmallTitleLabelStyle\"]\n"
+"{\n"
+"	font-size: 20px;\n"
 "	font-weight: bold;\n"
-"	font-size: 20px;\n"
 "	color: #4C7EFF;\n"
 "}\n"
 "\n"
-"#userpage_password_eye,\n"
-"#userpage_confirm_password_eye,\n"
-"#userpage_editprofile_old_passwo"
-                        "rd_eye,\n"
-"#userpage_editprofile_new_password_eye,\n"
-"#userpage_editprofile_confirm_new_password_eye\n"
+"/*******************PeyePushButtonsStyle********************/\n"
+"\n"
+"*[styleSheet=\"PeyePushButtonsStyle\"]\n"
 "{\n"
 "	border: 0px;\n"
 "	background-color: rgba(0,0,0,0);\n"
 "	border:1px solid #E0E4EC;\n"
 "	background-color: #F7F8FA;\n"
 "	border-radius: 10px;\n"
-"	border-top-left-radius: 0px;\n"
+"	bord"
+                        "er-top-left-radius: 0px;\n"
 "	border-bottom-left-radius: 0px;\n"
 "	border-left: None;\n"
 "	padding-right: 3px;\n"
 "}\n"
 "\n"
-"#userpage_password_inpt,\n"
-"#userpage_confirm_password_inpt,\n"
-"#userpage_editprofile_old_password_inpt,\n"
-"#userpage_editprofile_new_password_inpt,\n"
-"#userpage_editprofile_confirm_new_password_inpt\n"
+"/*******************PeyeLineEditsStyle********************/\n"
+"\n"
+"*[styleSheet=\"PeyeLineEditsStyle\"]\n"
 "{\n"
 "	border-right: None;\n"
 "	border-top-right-radius: 0px;\n"
 "	border-bottom-right-radius: 0px;\n"
 "}\n"
 "\n"
-"#camera_settings_message_scrollArea,\n"
-"#register_message_scrollArea, \n"
-"#change_username_message_scrollArea,\n"
-"#change_password_message_scrollArea\n"
+"/*******************PmessagesScrollAreaStyle********************/\n"
+"\n"
+"*[styleSheet=\"PmessagesScrollAreaStyle\"]\n"
 "{\n"
 "	border: None;\n"
 "}\n"
 "\n"
-"#camera_settings_message_frame,\n"
-"#register_message_frame, \n"
-"#change_username_message_frame,\n"
-"#change_password_m"
-                        "essage_frame\n"
+"/*******************PmessagesFrameStyle********************/\n"
+"\n"
+"*[styleSheet=\"PmessagesFrameStyle\"]\n"
 "{\n"
 "	background-color: #F7F8FA;\n"
 "}\n"
 "\n"
-"#defects_notifications_widget{\n"
+"/*******************PdefectNotificationsFrameStyle********************/\n"
+"\n"
+"*[styleSheet=\"PdefectNotificationsFrameStyle\"]\n"
+"{\n"
 "	background-color: #F7F8FA;\n"
-"	border:1px solid #D7D7D9;\n"
+"	border:None;\n"
+"	border-top: 2px solid gray;\n"
 "}\n"
 "\n"
-"#notifications_buttons_frame .QPushButton{\n"
-"	background-color: None;\n"
-"	border: None;\n"
-"}\n"
+"\n"
 "\n"
 "\n"
 "\n"
 "")
-        self.horizontalLayout = QHBoxLayout(self.StyleSheet)
-        self.horizontalLayout.setSpacing(0)
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.side_frame = QFrame(self.StyleSheet)
+        self.horizontalLayout_45 = QHBoxLayout(self.PointStyleSheet)
+        self.horizontalLayout_45.setSpacing(0)
+        self.horizontalLayout_45.setObjectName(u"horizontalLayout_45")
+        self.horizontalLayout_45.setContentsMargins(0, 0, 0, 0)
+        self.side_frame = QFrame(self.PointStyleSheet)
         self.side_frame.setObjectName(u"side_frame")
         self.side_frame.setMinimumSize(QSize(198, 0))
         self.side_frame.setMaximumSize(QSize(198, 16777215))
+        self.side_frame.setStyleSheet(u"LsideFrameStyle")
         self.side_frame.setFrameShape(QFrame.StyledPanel)
         self.side_frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_2 = QVBoxLayout(self.side_frame)
-        self.verticalLayout_2.setSpacing(0)
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_67 = QVBoxLayout(self.side_frame)
+        self.verticalLayout_67.setSpacing(0)
+        self.verticalLayout_67.setObjectName(u"verticalLayout_67")
+        self.verticalLayout_67.setContentsMargins(0, 0, 0, 0)
         self.dorsa_label = QLabel(self.side_frame)
         self.dorsa_label.setObjectName(u"dorsa_label")
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
@@ -623,11 +645,11 @@ class Ui_MainWindow(object):
         self.dorsa_label.setScaledContents(True)
         self.dorsa_label.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_2.addWidget(self.dorsa_label)
+        self.verticalLayout_67.addWidget(self.dorsa_label)
 
         self.verticalSpacer = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_2.addItem(self.verticalSpacer)
+        self.verticalLayout_67.addItem(self.verticalSpacer)
 
         self.side_live_view_btn = QPushButton(self.side_frame)
         self.side_live_view_btn.setObjectName(u"side_live_view_btn")
@@ -648,7 +670,7 @@ class Ui_MainWindow(object):
         self.side_live_view_btn.setIcon(icon)
         self.side_live_view_btn.setIconSize(QSize(35, 35))
 
-        self.verticalLayout_2.addWidget(self.side_live_view_btn)
+        self.verticalLayout_67.addWidget(self.side_live_view_btn)
 
         self.side_settings_btn = QPushButton(self.side_frame)
         self.side_settings_btn.setObjectName(u"side_settings_btn")
@@ -660,7 +682,7 @@ class Ui_MainWindow(object):
         self.side_settings_btn.setIcon(icon1)
         self.side_settings_btn.setIconSize(QSize(30, 30))
 
-        self.verticalLayout_2.addWidget(self.side_settings_btn)
+        self.verticalLayout_67.addWidget(self.side_settings_btn)
 
         self.pushButton_4 = QPushButton(self.side_frame)
         self.pushButton_4.setObjectName(u"pushButton_4")
@@ -668,7 +690,7 @@ class Ui_MainWindow(object):
         self.pushButton_4.setSizePolicy(sizePolicy1)
         self.pushButton_4.setMaximumSize(QSize(16777215, 0))
 
-        self.verticalLayout_2.addWidget(self.pushButton_4)
+        self.verticalLayout_67.addWidget(self.pushButton_4)
 
         self.side_report_btn = QPushButton(self.side_frame)
         self.side_report_btn.setObjectName(u"side_report_btn")
@@ -681,7 +703,7 @@ class Ui_MainWindow(object):
         self.side_report_btn.setIcon(icon2)
         self.side_report_btn.setIconSize(QSize(30, 30))
 
-        self.verticalLayout_2.addWidget(self.side_report_btn)
+        self.verticalLayout_67.addWidget(self.side_report_btn)
 
         self.side_users_btn = QPushButton(self.side_frame)
         self.side_users_btn.setObjectName(u"side_users_btn")
@@ -693,7 +715,7 @@ class Ui_MainWindow(object):
         self.side_users_btn.setIcon(icon3)
         self.side_users_btn.setIconSize(QSize(30, 30))
 
-        self.verticalLayout_2.addWidget(self.side_users_btn)
+        self.verticalLayout_67.addWidget(self.side_users_btn)
 
         self.side_about_btn = QPushButton(self.side_frame)
         self.side_about_btn.setObjectName(u"side_about_btn")
@@ -705,33 +727,34 @@ class Ui_MainWindow(object):
         self.side_about_btn.setIcon(icon4)
         self.side_about_btn.setIconSize(QSize(35, 35))
 
-        self.verticalLayout_2.addWidget(self.side_about_btn)
+        self.verticalLayout_67.addWidget(self.side_about_btn)
 
         self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
-        self.verticalLayout_2.addItem(self.verticalSpacer_2)
+        self.verticalLayout_67.addItem(self.verticalSpacer_2)
 
-        self.verticalLayout_2.setStretch(0, 11)
-        self.verticalLayout_2.setStretch(1, 2)
-        self.verticalLayout_2.setStretch(2, 10)
-        self.verticalLayout_2.setStretch(3, 10)
-        self.verticalLayout_2.setStretch(4, 10)
-        self.verticalLayout_2.setStretch(5, 10)
-        self.verticalLayout_2.setStretch(6, 10)
-        self.verticalLayout_2.setStretch(7, 10)
-        self.verticalLayout_2.setStretch(8, 28)
+        self.verticalLayout_67.setStretch(0, 11)
+        self.verticalLayout_67.setStretch(1, 2)
+        self.verticalLayout_67.setStretch(2, 10)
+        self.verticalLayout_67.setStretch(3, 10)
+        self.verticalLayout_67.setStretch(4, 10)
+        self.verticalLayout_67.setStretch(5, 10)
+        self.verticalLayout_67.setStretch(6, 10)
+        self.verticalLayout_67.setStretch(7, 10)
+        self.verticalLayout_67.setStretch(8, 28)
 
-        self.horizontalLayout.addWidget(self.side_frame)
+        self.horizontalLayout_45.addWidget(self.side_frame)
 
-        self.verticalLayout = QVBoxLayout()
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.top_frame = QFrame(self.StyleSheet)
+        self.verticalLayout_2 = QVBoxLayout()
+        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.top_frame = QFrame(self.PointStyleSheet)
         self.top_frame.setObjectName(u"top_frame")
         sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
         sizePolicy2.setHorizontalStretch(0)
         sizePolicy2.setVerticalStretch(0)
         sizePolicy2.setHeightForWidth(self.top_frame.sizePolicy().hasHeightForWidth())
         self.top_frame.setSizePolicy(sizePolicy2)
+        self.top_frame.setStyleSheet(u"LtopFrameStyle")
         self.top_frame.setFrameShape(QFrame.StyledPanel)
         self.top_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_14 = QHBoxLayout(self.top_frame)
@@ -818,12 +841,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout_14.addWidget(self.close_btn)
 
 
-        self.verticalLayout.addWidget(self.top_frame)
+        self.verticalLayout_2.addWidget(self.top_frame)
 
-        self.main_stackedWidget = QStackedWidget(self.StyleSheet)
+        self.main_stackedWidget = QStackedWidget(self.PointStyleSheet)
         self.main_stackedWidget.setObjectName(u"main_stackedWidget")
+        self.main_stackedWidget.setStyleSheet(u"PmainStackedWidgetStyle")
         self.live_view_page = QWidget()
         self.live_view_page.setObjectName(u"live_view_page")
+        self.live_view_page.setStyleSheet(u"LpagesFrameStyle")
         self.horizontalLayout_23 = QHBoxLayout(self.live_view_page)
         self.horizontalLayout_23.setObjectName(u"horizontalLayout_23")
         self.horizontalLayout_23.setContentsMargins(0, 0, 0, 0)
@@ -885,14 +910,11 @@ class Ui_MainWindow(object):
         self.defects_notifications_scrollArea.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.defects_notifications_scrollArea.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.defects_notifications_scrollArea.setWidgetResizable(True)
-        self.defects_notifications_widget = QWidget()
-        self.defects_notifications_widget.setObjectName(u"defects_notifications_widget")
-        self.defects_notifications_widget.setGeometry(QRect(0, 0, 320, 691))
-        self.defects_notifications_widget.setStyleSheet(u"#defects_notifications_widget{\n"
-"	border:None;\n"
-"	border-top: 2px solid gray;\n"
-"}")
-        self.verticalLayout_9 = QVBoxLayout(self.defects_notifications_widget)
+        self.defects_notifications_frame = QWidget()
+        self.defects_notifications_frame.setObjectName(u"defects_notifications_frame")
+        self.defects_notifications_frame.setGeometry(QRect(0, 0, 320, 684))
+        self.defects_notifications_frame.setStyleSheet(u"PdefectNotificationsFrameStyle")
+        self.verticalLayout_9 = QVBoxLayout(self.defects_notifications_frame)
         self.verticalLayout_9.setSpacing(0)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
@@ -906,7 +928,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_9.addLayout(self.verticalLayout_7)
 
-        self.defects_notifications_scrollArea.setWidget(self.defects_notifications_widget)
+        self.defects_notifications_scrollArea.setWidget(self.defects_notifications_frame)
 
         self.verticalLayout_3.addWidget(self.defects_notifications_scrollArea)
 
@@ -961,6 +983,7 @@ class Ui_MainWindow(object):
         self.defect_info_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_5 = QHBoxLayout(self.defect_info_frame)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.horizontalLayout_5.setContentsMargins(0, 9, 0, 0)
         self.defect_info_table = QTableWidget(self.defect_info_frame)
         if (self.defect_info_table.columnCount() < 2):
             self.defect_info_table.setColumnCount(2)
@@ -987,13 +1010,7 @@ class Ui_MainWindow(object):
         self.expanding_frame = QFrame(self.live_view_page)
         self.expanding_frame.setObjectName(u"expanding_frame")
         self.expanding_frame.setMinimumSize(QSize(50, 0))
-        self.expanding_frame.setStyleSheet(u"#expanding_frame{\n"
-"	background-color: #17203A;\n"
-"}\n"
-"\n"
-"#expanding_frame .QPushButton{\n"
-"	border: 0px solid red;\n"
-"}")
+        self.expanding_frame.setStyleSheet(u"LexpandingFrameStyle")
         self.verticalLayout_16 = QVBoxLayout(self.expanding_frame)
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
         self.verticalLayout_16.setContentsMargins(6, 20, 6, -1)
@@ -1103,9 +1120,7 @@ class Ui_MainWindow(object):
         self.run_stop_btn = QPushButton(self.expanding_frame)
         self.run_stop_btn.setObjectName(u"run_stop_btn")
         self.run_stop_btn.setCursor(QCursor(Qt.PointingHandCursor))
-        self.run_stop_btn.setStyleSheet(u"#run_stop_btn{\n"
-"	color: white;\n"
-"}")
+        self.run_stop_btn.setStyleSheet(u"")
         icon15 = QIcon()
         icon15.addFile(u":/icons/icons/play.png", QSize(), QIcon.Normal, QIcon.Off)
         self.run_stop_btn.setIcon(icon15)
@@ -1132,10 +1147,12 @@ class Ui_MainWindow(object):
         self.settings_tabs.setObjectName(u"settings_tabs")
         self.camera_tab = QWidget()
         self.camera_tab.setObjectName(u"camera_tab")
+        self.camera_tab.setStyleSheet(u"LpagesFrameStyle")
         self.horizontalLayout_7 = QHBoxLayout(self.camera_tab)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.camera_settings_frame = QFrame(self.camera_tab)
         self.camera_settings_frame.setObjectName(u"camera_settings_frame")
+        self.camera_settings_frame.setStyleSheet(u"LpagesBoldLabelStyle")
         self.camera_settings_frame.setFrameShape(QFrame.StyledPanel)
         self.camera_settings_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_39 = QVBoxLayout(self.camera_settings_frame)
@@ -1156,7 +1173,7 @@ class Ui_MainWindow(object):
 
         self.connect_camera_switch = SwitchControl(self.camera_settings_frame)
         self.connect_camera_switch.setObjectName(u"connect_camera_switch")
-        self.connect_camera_switch.setStyleSheet(u"")
+        self.connect_camera_switch.setStyleSheet(u"PswitchStyle")
 
         self.horizontalLayout_8.addWidget(self.connect_camera_switch)
 
@@ -1546,6 +1563,7 @@ class Ui_MainWindow(object):
         self.show_steps_frame = QFrame(self.algorithm_tab)
         self.show_steps_frame.setObjectName(u"show_steps_frame")
         self.show_steps_frame.setMinimumSize(QSize(0, 100))
+        self.show_steps_frame.setStyleSheet(u"LshowStepsFrameStyle")
         self.show_steps_frame.setFrameShape(QFrame.StyledPanel)
         self.show_steps_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_13 = QHBoxLayout(self.show_steps_frame)
@@ -1622,6 +1640,7 @@ class Ui_MainWindow(object):
 
         self.algorithm_stackedWidget = QStackedWidget(self.algorithm_tab)
         self.algorithm_stackedWidget.setObjectName(u"algorithm_stackedWidget")
+        self.algorithm_stackedWidget.setStyleSheet(u"LpagesFrameStyle")
         self.step1 = QWidget()
         self.step1.setObjectName(u"step1")
         self.horizontalLayout_6 = QHBoxLayout(self.step1)
@@ -1629,6 +1648,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.step1_settings_frame = QFrame(self.step1)
         self.step1_settings_frame.setObjectName(u"step1_settings_frame")
+        self.step1_settings_frame.setStyleSheet(u"LpagesBoldLabelStyle")
         self.step1_settings_frame.setFrameShape(QFrame.StyledPanel)
         self.step1_settings_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_28 = QVBoxLayout(self.step1_settings_frame)
@@ -1639,7 +1659,7 @@ class Ui_MainWindow(object):
         self.step1_label.setObjectName(u"step1_label")
         sizePolicy.setHeightForWidth(self.step1_label.sizePolicy().hasHeightForWidth())
         self.step1_label.setSizePolicy(sizePolicy)
-        self.step1_label.setStyleSheet(u"border-bottom: 2px solid #D7D7D9;")
+        self.step1_label.setStyleSheet(u"PpagesTitleLabelStyle")
 
         self.verticalLayout_28.addWidget(self.step1_label)
 
@@ -1721,6 +1741,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.step2_settings_frame = QFrame(self.step2)
         self.step2_settings_frame.setObjectName(u"step2_settings_frame")
+        self.step2_settings_frame.setStyleSheet(u"LpagesBoldLabelStyle")
         self.step2_settings_frame.setFrameShape(QFrame.StyledPanel)
         self.step2_settings_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_33 = QVBoxLayout(self.step2_settings_frame)
@@ -1731,7 +1752,7 @@ class Ui_MainWindow(object):
         self.step2_label.setObjectName(u"step2_label")
         sizePolicy.setHeightForWidth(self.step2_label.sizePolicy().hasHeightForWidth())
         self.step2_label.setSizePolicy(sizePolicy)
-        self.step2_label.setStyleSheet(u"border-bottom: 2px solid #D7D7D9;")
+        self.step2_label.setStyleSheet(u"PpagesTitleLabelStyle")
 
         self.verticalLayout_33.addWidget(self.step2_label)
 
@@ -1803,6 +1824,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
         self.step3_settings_frame = QFrame(self.step3)
         self.step3_settings_frame.setObjectName(u"step3_settings_frame")
+        self.step3_settings_frame.setStyleSheet(u"LpagesBoldLabelStyle")
         self.step3_settings_frame.setFrameShape(QFrame.StyledPanel)
         self.step3_settings_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_36 = QVBoxLayout(self.step3_settings_frame)
@@ -1813,7 +1835,7 @@ class Ui_MainWindow(object):
         self.step3_label.setObjectName(u"step3_label")
         sizePolicy.setHeightForWidth(self.step3_label.sizePolicy().hasHeightForWidth())
         self.step3_label.setSizePolicy(sizePolicy)
-        self.step3_label.setStyleSheet(u"border-bottom: 2px solid #D7D7D9;")
+        self.step3_label.setStyleSheet(u"PpagesTitleLabelStyle")
 
         self.verticalLayout_36.addWidget(self.step3_label)
 
@@ -1867,6 +1889,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_25.setContentsMargins(0, 0, 0, 0)
         self.step4_settings_frame = QFrame(self.step4)
         self.step4_settings_frame.setObjectName(u"step4_settings_frame")
+        self.step4_settings_frame.setStyleSheet(u"LpagesBoldLabelStyle")
         self.step4_settings_frame.setFrameShape(QFrame.StyledPanel)
         self.step4_settings_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_58 = QVBoxLayout(self.step4_settings_frame)
@@ -1877,7 +1900,7 @@ class Ui_MainWindow(object):
         self.step4_label.setObjectName(u"step4_label")
         sizePolicy.setHeightForWidth(self.step4_label.sizePolicy().hasHeightForWidth())
         self.step4_label.setSizePolicy(sizePolicy)
-        self.step4_label.setStyleSheet(u"border-bottom: 2px solid #D7D7D9;")
+        self.step4_label.setStyleSheet(u"PpagesTitleLabelStyle")
 
         self.verticalLayout_58.addWidget(self.step4_label)
 
@@ -1950,6 +1973,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_40.setContentsMargins(0, 0, 0, 0)
         self.step5_settings_frame = QFrame(self.step5)
         self.step5_settings_frame.setObjectName(u"step5_settings_frame")
+        self.step5_settings_frame.setStyleSheet(u"LpagesBoldLabelStyle")
         self.step5_settings_frame.setFrameShape(QFrame.StyledPanel)
         self.step5_settings_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_62 = QVBoxLayout(self.step5_settings_frame)
@@ -1960,7 +1984,7 @@ class Ui_MainWindow(object):
         self.step5_label.setObjectName(u"step5_label")
         sizePolicy.setHeightForWidth(self.step5_label.sizePolicy().hasHeightForWidth())
         self.step5_label.setSizePolicy(sizePolicy)
-        self.step5_label.setStyleSheet(u"border-bottom: 2px solid #D7D7D9;")
+        self.step5_label.setStyleSheet(u"PpagesTitleLabelStyle")
 
         self.verticalLayout_62.addWidget(self.step5_label)
 
@@ -2179,6 +2203,7 @@ class Ui_MainWindow(object):
         self.main_stackedWidget.addWidget(self.settings_page)
         self.report_page = QWidget()
         self.report_page.setObjectName(u"report_page")
+        self.report_page.setStyleSheet(u"LpagesFrameStyle")
         self.horizontalLayout_29 = QHBoxLayout(self.report_page)
         self.horizontalLayout_29.setObjectName(u"horizontalLayout_29")
         self.report_filter_frame = QFrame(self.report_page)
@@ -2796,7 +2821,6 @@ class Ui_MainWindow(object):
 "	max-height: 26;\n"
 "	font-size: 14px;\n"
 "	font-weight: bold;\n"
-"	icon: url(:/icons/icons/delete_icon.png);\n"
 "}\n"
 "\n"
 "#delete_selected_defects:disabled\n"
@@ -2818,6 +2842,9 @@ class Ui_MainWindow(object):
 "	padding-top: 5px;\n"
 "}\n"
 "")
+        icon25 = QIcon()
+        icon25.addFile(u":/icons/icons/delete_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.delete_selected_defects.setIcon(icon25)
 
         self.horizontalLayout_38.addWidget(self.delete_selected_defects)
 
@@ -2836,7 +2863,6 @@ class Ui_MainWindow(object):
 "	font-size: 14px;\n"
 "	font-weight: bold;\n"
 "	text-align: right;\n"
-"	icon: url(:/icons/icons/reset_icon.png);\n"
 "}\n"
 "\n"
 "#reload_reports_btn:disabled\n"
@@ -2856,6 +2882,7 @@ class Ui_MainWindow(object):
 "	padding-top: 5px;\n"
 "}\n"
 "")
+        self.reload_reports_btn.setIcon(icon18)
 
         self.horizontalLayout_38.addWidget(self.reload_reports_btn)
 
@@ -2872,9 +2899,9 @@ class Ui_MainWindow(object):
         self.move_table_start_btn.setMaximumSize(QSize(30, 16777215))
         self.move_table_start_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.move_table_start_btn.setStyleSheet(u"border: 0px solid gray;")
-        icon25 = QIcon()
-        icon25.addFile(u":/icons/icons/first.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.move_table_start_btn.setIcon(icon25)
+        icon26 = QIcon()
+        icon26.addFile(u":/icons/icons/first.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.move_table_start_btn.setIcon(icon26)
 
         self.horizontalLayout_38.addWidget(self.move_table_start_btn)
 
@@ -2886,9 +2913,9 @@ class Ui_MainWindow(object):
         self.move_table_end_btn.setMaximumSize(QSize(30, 16777215))
         self.move_table_end_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.move_table_end_btn.setStyleSheet(u"border: 0px solid gray;")
-        icon26 = QIcon()
-        icon26.addFile(u":/icons/icons/last.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.move_table_end_btn.setIcon(icon26)
+        icon27 = QIcon()
+        icon27.addFile(u":/icons/icons/last.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.move_table_end_btn.setIcon(icon27)
 
         self.horizontalLayout_38.addWidget(self.move_table_end_btn)
 
@@ -2924,6 +2951,7 @@ class Ui_MainWindow(object):
         self.report_table.setStyleSheet(u"alternate-background-color: rgba(120, 146, 223, 30);")
         self.report_table.setAlternatingRowColors(True)
         self.report_table.setCornerButtonEnabled(True)
+        self.report_table.horizontalHeader().setVisible(False)
         self.report_table.horizontalHeader().setDefaultSectionSize(150)
         self.report_table.horizontalHeader().setStretchLastSection(True)
         self.report_table.verticalHeader().setVisible(False)
@@ -2973,10 +3001,10 @@ class Ui_MainWindow(object):
 "	padding-top: 3px;\n"
 "}\n"
 "")
-        icon27 = QIcon()
-        icon27.addFile(u":/icons/icons/prev_black.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon27.addFile(u":/icons/icons/prev_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
-        self.report_prev_btn.setIcon(icon27)
+        icon28 = QIcon()
+        icon28.addFile(u":/icons/icons/prev_black.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon28.addFile(u":/icons/icons/prev_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
+        self.report_prev_btn.setIcon(icon28)
 
         self.horizontalLayout_37.addWidget(self.report_prev_btn)
 
@@ -3030,9 +3058,9 @@ class Ui_MainWindow(object):
 "	padding-top: 4px;\n"
 "}\n"
 "")
-        icon28 = QIcon()
-        icon28.addFile(u":/icons/icons/next_black.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.report_next_btn.setIcon(icon28)
+        icon29 = QIcon()
+        icon29.addFile(u":/icons/icons/next_black.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.report_next_btn.setIcon(icon29)
         self.report_next_btn.setCheckable(False)
         self.report_next_btn.setFlat(False)
 
@@ -3056,10 +3084,12 @@ class Ui_MainWindow(object):
         self.user_tabs.setTabShape(QTabWidget.Rounded)
         self.user_register_tab = QWidget()
         self.user_register_tab.setObjectName(u"user_register_tab")
+        self.user_register_tab.setStyleSheet(u"LpagesFrameStyle")
         self.verticalLayout_41 = QVBoxLayout(self.user_register_tab)
         self.verticalLayout_41.setObjectName(u"verticalLayout_41")
         self.register_info_frame = QFrame(self.user_register_tab)
         self.register_info_frame.setObjectName(u"register_info_frame")
+        self.register_info_frame.setStyleSheet(u"LpagesBoldLabelStyle")
         self.register_info_frame.setFrameShape(QFrame.StyledPanel)
         self.register_info_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_30 = QVBoxLayout(self.register_info_frame)
@@ -3095,6 +3125,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
         self.userpage_password_inpt = QLineEdit(self.register_info_frame)
         self.userpage_password_inpt.setObjectName(u"userpage_password_inpt")
+        self.userpage_password_inpt.setStyleSheet(u"PeyeLineEditsStyle")
 
         self.horizontalLayout_21.addWidget(self.userpage_password_inpt)
 
@@ -3103,10 +3134,10 @@ class Ui_MainWindow(object):
         sizePolicy5.setHeightForWidth(self.userpage_password_eye.sizePolicy().hasHeightForWidth())
         self.userpage_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
-        self.userpage_password_eye.setStyleSheet(u"")
-        icon29 = QIcon()
-        icon29.addFile(u":/icons/icons/black_eye.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.userpage_password_eye.setIcon(icon29)
+        self.userpage_password_eye.setStyleSheet(u"PeyePushButtonsStyle")
+        icon30 = QIcon()
+        icon30.addFile(u":/icons/icons/black_eye.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.userpage_password_eye.setIcon(icon30)
 
         self.horizontalLayout_21.addWidget(self.userpage_password_eye)
 
@@ -3129,7 +3160,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
         self.userpage_confirm_password_inpt = QLineEdit(self.register_info_frame)
         self.userpage_confirm_password_inpt.setObjectName(u"userpage_confirm_password_inpt")
-        self.userpage_confirm_password_inpt.setStyleSheet(u"")
+        self.userpage_confirm_password_inpt.setStyleSheet(u"PeyeLineEditsStyle")
 
         self.horizontalLayout_22.addWidget(self.userpage_confirm_password_inpt)
 
@@ -3138,8 +3169,8 @@ class Ui_MainWindow(object):
         sizePolicy5.setHeightForWidth(self.userpage_confirm_password_eye.sizePolicy().hasHeightForWidth())
         self.userpage_confirm_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_confirm_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
-        self.userpage_confirm_password_eye.setStyleSheet(u"")
-        self.userpage_confirm_password_eye.setIcon(icon29)
+        self.userpage_confirm_password_eye.setStyleSheet(u"PeyePushButtonsStyle")
+        self.userpage_confirm_password_eye.setIcon(icon30)
 
         self.horizontalLayout_22.addWidget(self.userpage_confirm_password_eye)
 
@@ -3199,9 +3230,9 @@ class Ui_MainWindow(object):
 "	padding-top: 5px;\n"
 "}\n"
 "")
-        icon30 = QIcon()
-        icon30.addFile(u":/assets/Assets/icons/icons8-plus-white-50.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.register_user.setIcon(icon30)
+        icon31 = QIcon()
+        icon31.addFile(u":/assets/Assets/icons/icons8-plus-white-50.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.register_user.setIcon(icon31)
 
         self.verticalLayout_30.addWidget(self.register_user, 0, Qt.AlignHCenter)
 
@@ -3212,12 +3243,14 @@ class Ui_MainWindow(object):
         sizePolicy6.setVerticalStretch(0)
         sizePolicy6.setHeightForWidth(self.register_message_scrollArea.sizePolicy().hasHeightForWidth())
         self.register_message_scrollArea.setSizePolicy(sizePolicy6)
+        self.register_message_scrollArea.setStyleSheet(u"PmessagesScrollAreaStyle")
         self.register_message_scrollArea.setWidgetResizable(True)
         self.register_message_frame = QWidget()
         self.register_message_frame.setObjectName(u"register_message_frame")
-        self.register_message_frame.setGeometry(QRect(0, 0, 100, 30))
+        self.register_message_frame.setGeometry(QRect(0, 0, 925, 253))
         sizePolicy3.setHeightForWidth(self.register_message_frame.sizePolicy().hasHeightForWidth())
         self.register_message_frame.setSizePolicy(sizePolicy3)
+        self.register_message_frame.setStyleSheet(u"PmessagesFrameStyle")
         self.verticalLayout_55 = QVBoxLayout(self.register_message_frame)
         self.verticalLayout_55.setObjectName(u"verticalLayout_55")
         self.register_message_scrollArea.setWidget(self.register_message_frame)
@@ -3230,6 +3263,7 @@ class Ui_MainWindow(object):
         self.user_tabs.addTab(self.user_register_tab, "")
         self.user_profile_tab = QWidget()
         self.user_profile_tab.setObjectName(u"user_profile_tab")
+        self.user_profile_tab.setStyleSheet(u"LpagesFrameStyle")
         self.horizontalLayout_20 = QHBoxLayout(self.user_profile_tab)
         self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
         self.verticalLayout_52 = QVBoxLayout()
@@ -3244,7 +3278,7 @@ class Ui_MainWindow(object):
         self.profile_change_username_label = QLabel(self.profile_change_username_title_frame)
         self.profile_change_username_label.setObjectName(u"profile_change_username_label")
         self.profile_change_username_label.setFont(font)
-        self.profile_change_username_label.setStyleSheet(u"")
+        self.profile_change_username_label.setStyleSheet(u"PpagesSmallTitleLabelStyle")
 
         self.verticalLayout_53.addWidget(self.profile_change_username_label)
 
@@ -3253,6 +3287,7 @@ class Ui_MainWindow(object):
 
         self.profile_change_username_frame = QFrame(self.user_profile_tab)
         self.profile_change_username_frame.setObjectName(u"profile_change_username_frame")
+        self.profile_change_username_frame.setStyleSheet(u"LpagesBoldLabelStyle")
         self.profile_change_username_frame.setFrameShape(QFrame.StyledPanel)
         self.profile_change_username_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_54 = QVBoxLayout(self.profile_change_username_frame)
@@ -3337,10 +3372,12 @@ class Ui_MainWindow(object):
 
         self.change_username_message_scrollArea = QScrollArea(self.profile_change_username_frame)
         self.change_username_message_scrollArea.setObjectName(u"change_username_message_scrollArea")
+        self.change_username_message_scrollArea.setStyleSheet(u"PmessagesScrollAreaStyle")
         self.change_username_message_scrollArea.setWidgetResizable(True)
         self.change_username_message_frame = QWidget()
         self.change_username_message_frame.setObjectName(u"change_username_message_frame")
-        self.change_username_message_frame.setGeometry(QRect(0, 0, 100, 30))
+        self.change_username_message_frame.setGeometry(QRect(0, 0, 437, 381))
+        self.change_username_message_frame.setStyleSheet(u"PmessagesFrameStyle")
         self.change_username_message_scrollArea.setWidget(self.change_username_message_frame)
 
         self.verticalLayout_54.addWidget(self.change_username_message_scrollArea)
@@ -3362,7 +3399,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_44.setObjectName(u"verticalLayout_44")
         self.profile_change_password_label = QLabel(self.profile_change_password_title_frame)
         self.profile_change_password_label.setObjectName(u"profile_change_password_label")
-        self.profile_change_password_label.setStyleSheet(u"")
+        self.profile_change_password_label.setStyleSheet(u"PpagesSmallTitleLabelStyle")
 
         self.verticalLayout_44.addWidget(self.profile_change_password_label)
 
@@ -3371,6 +3408,7 @@ class Ui_MainWindow(object):
 
         self.profile_change_password_frame = QFrame(self.user_profile_tab)
         self.profile_change_password_frame.setObjectName(u"profile_change_password_frame")
+        self.profile_change_password_frame.setStyleSheet(u"LpagesBoldLabelStyle")
         self.profile_change_password_frame.setFrameShape(QFrame.StyledPanel)
         self.profile_change_password_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_51 = QVBoxLayout(self.profile_change_password_frame)
@@ -3390,7 +3428,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
         self.userpage_editprofile_old_password_inpt = QLineEdit(self.profile_change_password_frame)
         self.userpage_editprofile_old_password_inpt.setObjectName(u"userpage_editprofile_old_password_inpt")
-        self.userpage_editprofile_old_password_inpt.setStyleSheet(u"")
+        self.userpage_editprofile_old_password_inpt.setStyleSheet(u"PeyeLineEditsStyle")
 
         self.horizontalLayout_17.addWidget(self.userpage_editprofile_old_password_inpt)
 
@@ -3399,8 +3437,8 @@ class Ui_MainWindow(object):
         sizePolicy5.setHeightForWidth(self.userpage_editprofile_old_password_eye.sizePolicy().hasHeightForWidth())
         self.userpage_editprofile_old_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_editprofile_old_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
-        self.userpage_editprofile_old_password_eye.setStyleSheet(u"")
-        self.userpage_editprofile_old_password_eye.setIcon(icon29)
+        self.userpage_editprofile_old_password_eye.setStyleSheet(u"PeyePushButtonsStyle")
+        self.userpage_editprofile_old_password_eye.setIcon(icon30)
 
         self.horizontalLayout_17.addWidget(self.userpage_editprofile_old_password_eye)
 
@@ -3424,6 +3462,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
         self.userpage_editprofile_new_password_inpt = QLineEdit(self.profile_change_password_frame)
         self.userpage_editprofile_new_password_inpt.setObjectName(u"userpage_editprofile_new_password_inpt")
+        self.userpage_editprofile_new_password_inpt.setStyleSheet(u"PeyeLineEditsStyle")
 
         self.horizontalLayout_18.addWidget(self.userpage_editprofile_new_password_inpt)
 
@@ -3432,7 +3471,8 @@ class Ui_MainWindow(object):
         sizePolicy5.setHeightForWidth(self.userpage_editprofile_new_password_eye.sizePolicy().hasHeightForWidth())
         self.userpage_editprofile_new_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_editprofile_new_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
-        self.userpage_editprofile_new_password_eye.setIcon(icon29)
+        self.userpage_editprofile_new_password_eye.setStyleSheet(u"PeyePushButtonsStyle")
+        self.userpage_editprofile_new_password_eye.setIcon(icon30)
 
         self.horizontalLayout_18.addWidget(self.userpage_editprofile_new_password_eye)
 
@@ -3455,6 +3495,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
         self.userpage_editprofile_confirm_new_password_inpt = QLineEdit(self.profile_change_password_frame)
         self.userpage_editprofile_confirm_new_password_inpt.setObjectName(u"userpage_editprofile_confirm_new_password_inpt")
+        self.userpage_editprofile_confirm_new_password_inpt.setStyleSheet(u"PeyeLineEditsStyle")
 
         self.horizontalLayout_19.addWidget(self.userpage_editprofile_confirm_new_password_inpt)
 
@@ -3463,7 +3504,8 @@ class Ui_MainWindow(object):
         sizePolicy5.setHeightForWidth(self.userpage_editprofile_confirm_new_password_eye.sizePolicy().hasHeightForWidth())
         self.userpage_editprofile_confirm_new_password_eye.setSizePolicy(sizePolicy5)
         self.userpage_editprofile_confirm_new_password_eye.setCursor(QCursor(Qt.PointingHandCursor))
-        self.userpage_editprofile_confirm_new_password_eye.setIcon(icon29)
+        self.userpage_editprofile_confirm_new_password_eye.setStyleSheet(u"PeyePushButtonsStyle")
+        self.userpage_editprofile_confirm_new_password_eye.setIcon(icon30)
 
         self.horizontalLayout_19.addWidget(self.userpage_editprofile_confirm_new_password_eye)
 
@@ -3513,10 +3555,12 @@ class Ui_MainWindow(object):
 
         self.change_password_message_scrollArea = QScrollArea(self.profile_change_password_frame)
         self.change_password_message_scrollArea.setObjectName(u"change_password_message_scrollArea")
+        self.change_password_message_scrollArea.setStyleSheet(u"PmessagesScrollAreaStyle")
         self.change_password_message_scrollArea.setWidgetResizable(True)
         self.change_password_message_frame = QWidget()
         self.change_password_message_frame.setObjectName(u"change_password_message_frame")
-        self.change_password_message_frame.setGeometry(QRect(0, 0, 100, 30))
+        self.change_password_message_frame.setGeometry(QRect(0, 0, 436, 292))
+        self.change_password_message_frame.setStyleSheet(u"PmessagesFrameStyle")
         self.change_password_message_scrollArea.setWidget(self.change_password_message_frame)
 
         self.verticalLayout_51.addWidget(self.change_password_message_scrollArea)
@@ -3534,7 +3578,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_45.setObjectName(u"verticalLayout_45")
         self.userspage_user_heading_lbl = QLabel(self.all_users_tab)
         self.userspage_user_heading_lbl.setObjectName(u"userspage_user_heading_lbl")
-        self.userspage_user_heading_lbl.setStyleSheet(u"")
+        self.userspage_user_heading_lbl.setMinimumSize(QSize(0, 70))
+        self.userspage_user_heading_lbl.setStyleSheet(u"PpagesSmallTitleLabelStyle")
 
         self.verticalLayout_45.addWidget(self.userspage_user_heading_lbl)
 
@@ -3583,12 +3628,18 @@ class Ui_MainWindow(object):
 
         self.main_stackedWidget.addWidget(self.about_page)
 
-        self.verticalLayout.addWidget(self.main_stackedWidget)
+        self.verticalLayout_2.addWidget(self.main_stackedWidget)
 
 
-        self.horizontalLayout.addLayout(self.verticalLayout)
+        self.horizontalLayout_45.addLayout(self.verticalLayout_2)
 
-        MainWindow.setCentralWidget(self.StyleSheet)
+
+        self.verticalLayout.addWidget(self.PointStyleSheet)
+
+
+        self.horizontalLayout.addWidget(self.LocalStyleSheet)
+
+        MainWindow.setCentralWidget(self.GlobalStyleSheet)
 
         self.retranslateUi(MainWindow)
         self.system_status_expanding_btn.clicked.connect(self.system_status_btn.click)
@@ -3621,7 +3672,7 @@ class Ui_MainWindow(object):
         self.maximize_btn.setText("")
         self.close_btn.setText("")
         self.select_all_notif_checkbox.setText("")
-        self.alarms_count_lbl.setText(QCoreApplication.translate("MainWindow", u"No Alarms", None))
+        self.alarms_count_lbl.setText(QCoreApplication.translate("MainWindow", u"0 Alarms", None))
         self.label.setText("")
         self.live_tabWidget.setTabText(self.live_tabWidget.indexOf(self.belt_live_tab), QCoreApplication.translate("MainWindow", u"Belt Live ", None))
         self.live_tabWidget.setTabText(self.live_tabWidget.indexOf(self.tab_2), "")

@@ -1,22 +1,16 @@
 import time
 
-import sys
-import os
-sys.path.append(os.path.join('UIFiles', 'assets'))
-sys.path.append('uiUtils')
-
-from PySide6.QtWidgets import QApplication
-from PySide6 import QtWidgets, QtCore
-from UIFiles.verify_UI import Ui_verifyDialogWin
-from backend.UserManager.userLoginRegister import passwordManager
-from uiUtils.guiBackend import GUIBackend
+from PySide6.QtWidgets import QDialog, QApplication
+from PySide6 import QtCore
 
 from Constants import Constant
 from Constants import IconsPath
+from uiUtils.guiBackend import GUIBackend
+from UIFiles.verify_UI import Ui_verifyDialogWin
 
-class VerifyUser(QtWidgets.QDialog):
-    def __init__(self, password) -> None:
-        super(VerifyUser, self).__init__()
+class verifyUserDialog(QDialog):
+    def __init__(self) -> None:
+        super(verifyUserDialog, self).__init__()
 
         self.ui = Ui_verifyDialogWin()
         self.ui.setupUi(self)
@@ -26,9 +20,6 @@ class VerifyUser(QtWidgets.QDialog):
         GUIBackend.set_win_attribute(self, QtCore.Qt.WA_TranslucentBackground)
         GUIBackend.button_connector(self.ui.close_btn, self.close_win)
         GUIBackend.button_connector(self.ui.verify_eye_btn, self.show_hide_password)
-        GUIBackend.button_connector(self.ui.verify_btn, self.verify_password)
-
-        self.password = password
 
         self.move_refresh_time = 0
         self.show_password = False
@@ -75,17 +66,12 @@ class VerifyUser(QtWidgets.QDialog):
         if event.key() == 16777220:  # Enter key
             self.ui.verify_btn.click()
 
-    def verify_password(self):
-        enterd_password = self.get_inputs()
-        res = passwordManager.check_password(enterd_password, self.password)
-        if not res:
-            self.write_error('Invalid Password')
-        else:
-            self.accept()
+    def verify_button_connector(self, func):
+        GUIBackend.button_connector(self.ui.verify_btn, func)
 
     def show_win(self):
         self.write_error(None)
-        return self.exec_()
+        GUIBackend.show_window(self, always_on_top=True)
 
     def close_win(self):
         self.clear_inputs()
@@ -119,15 +105,3 @@ class VerifyUser(QtWidgets.QDialog):
             GUIBackend.set_wgt_visible(self.ui.verify_error_lbl, True)
             GUIBackend.set_label_text( self.ui.verify_error_lbl, txt)
 
-
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-
-    password = ''
-
-    hashed_pass = passwordManager.hash_password(password)
-
-    main_ui = VerifyUser(hashed_pass)
-    ret = main_ui.show_win()
-    print(ret)
-    app.exec()

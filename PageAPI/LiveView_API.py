@@ -7,10 +7,12 @@ from persiantools.jdatetime import JalaliDate, JalaliDateTime
 import numpy as np
 
 from uiUtils.GUIComponents import defectNotification
+from uiUtils.GUIComponents import VerifyUser
 from PageUI.LiveView_UI import LiveView_UI
 from Detection.Defect import Defect
 from Detection.beltInspection import beltInspection
 from backend.Utils.Filter import applyFilter
+from Constants import Constant
 
 class LiveView_API:
 
@@ -32,7 +34,7 @@ class LiveView_API:
         
         self.__button_connector()
 
-
+        self.logined_user_password = Constant.User.UNLOGIN_USER_PASSWORD
 
 
     def startup(self,):
@@ -58,8 +60,14 @@ class LiveView_API:
         self.uiHandeler.sliderMenu.button_connector('clear_filters', self.clear_filters)
         self.uiHandeler.button_connector('run_stop', self.run_stop)
 
-    
+    def set_logined_user_password(self, password):
+        self.logined_user_password = password
+
     def run_stop(self,):
+        verify = VerifyUser(self.logined_user_password)
+        res = verify.render()
+        if not res:
+            return
         self.is_running = not(self.is_running)
         self.uiHandeler.set_run_stop_icon('pause' if self.is_running else 'play')
         self.external_run_stop_event_func()
