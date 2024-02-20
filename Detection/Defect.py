@@ -88,7 +88,7 @@ class Defect:
         else:
             self.temp_indices = np.array(([[start_anomaly_idx, end_anomaly_idx]]))
 
-    def render(self, depthes, line_idx, belt_end_line_idx):
+    def render(self, depthes, line_idx):
         if not self.temp_indices.shape[0]:
             return
         start_anomaly_idx = self.temp_indices[:,0].min()
@@ -101,36 +101,39 @@ class Defect:
         self.__append_depth_info(depthes)
         self.__append_idx(start_anomaly_idx, end_anomaly_idx)
         self.end_line_idx = line_idx
-        if self.end_line_idx < self.start_line_idx:
-            self.end_line_idx += belt_end_line_idx
+
         self.defect_width_boundries = (
             min(self.defect_width_boundries[0], start_anomaly_idx),
             max(self.defect_width_boundries[1], end_anomaly_idx)
         )
 
-    def is_complete(self, line_idx:int, min_idx_gap, belt_end_line_idx):
-        img_width = 1000
-        temp_line_idx = line_idx
+    def is_same(self, other:Defect):
+        intersect_y1 = max(self.defect_width_boundries[0], other.defect_width_boundries[0])
+        intersect_y2 = min(self.defect_width_boundries[1], other.defect_width_boundries[1])
 
-        if line_idx < img_width and self.end_line_idx > (belt_end_line_idx - img_width):
-            temp_line_idx += belt_end_line_idx
+        if intersect_y2 > intersect_y1:
+            self_end_temp = self.end_line_idx
+            other_end_temp = other.end_line_idx 
+            
+            intersect_x1 = max(self.start_line_idx, other.start_line_idx)
+            intersect_x2 = min(self_end_temp, other_end_temp)
+            if intersect_x2> intersect_x1:
+                return True
+        return False
 
-        
-        if temp_line_idx - self.end_line_idx >= min_idx_gap:
+    def is_complete(self, line_idx:int, min_idx_gap):
+        if line_idx - self.end_line_idx >= min_idx_gap:
             return True
-        # if line_idx - self.end_line_idx < 0:
-        #     return True
-        
         return False
     
-    def is_defect(self, min_length: int, belt_end_line_idx:int):
+    def is_defect(self, min_length: int):
         if (self.end_line_idx - self.start_line_idx) > min_length:
             return True
         else:
             return False
         
-    def is_present_in_image(self,line_idx, img_w, end_belt_idx):
-        (x1,_), (_,_) = self.get_bounding_box(line_idx,img_w, end_belt_idx)
+    def is_present_in_image(self,line_idx, img_w):
+        (x1,_), (_,_) = self.get_bounding_box(line_idx)
         if -img_w< x1 < img_w :
             return True
         return False
@@ -155,20 +158,9 @@ class Defect:
         
     
         
-    def get_bounding_box(self, line_idx,img_width, belt_end_line_idx=None, border=12):
-        temp_line_idx = line_idx
-        flag = False
-        if line_idx < img_width and self.end_line_idx > (belt_end_line_idx - img_width):
-            temp_line_idx += belt_end_line_idx
-            flag = True
-
-        x1 = temp_line_idx - self.end_line_idx
-
-        temp_line_idx = line_idx
-        if (line_idx < img_width and self.start_line_idx > (belt_end_line_idx - img_width)) or flag:
-            temp_line_idx += belt_end_line_idx
-
-        x2 = temp_line_idx - self.start_line_idx
+    def get_bounding_box(self, line_idx, border=12):
+        x1 = line_idx - self.end_line_idx
+        x2 = line_idx - self.start_line_idx
 
         y1 = self.defect_width_boundries[0]
         y2 = self.defect_width_boundries[1]
@@ -180,15 +172,69 @@ class Defect:
 
         return (x1, y1), (x2, y2)
     
-    def draw(self, image:np.ndarray, line_idx:int, end_belt_line_idx:int, color:tuple=(255,0,0)):
-        img_w = image.shape[1]
-        pt1, pt2 = self.get_bounding_box(line_idx, img_w, end_belt_line_idx)
+    def draw(self, image:np.ndarray, line_idx:int, color:tuple=(255,0,0)):
+        pt1, pt2 = self.get_bounding_box(line_idx,)
         res = cv2.rectangle(image, pt1, pt2, color=color, thickness=2)
         
         res =  self.__draw_debug(res,pt1,pt2)
         return res
     
+    
+    def get_length(self):
+        return np.round(abs(self.end_line_idx - self.start_line_idx), DecimalRound.ROUND_DECIMAL)
 
+
+    def get_info_for_filter(self,):
+        res = {
+            'width': (self.widthInfo.min, self.widthInfo.max),
+            'depth': (self.depthInfo.min, self.depthInfo.max),
+            'lenght': self.get_length(),
+            'date': self.jdatetime.date(),
+        }
+
+        return res
+    
+    def get_info(self, ):
+        res = {}
+        res['defect_id'] = self.id
+
+        res['date'] = self.jdatetime.date()
+        res['time'] = self.jdatetime.time()
+
+        res['x'] = self.start_line_idx
+        res['y'] = self.defect_width_boundries[0]
+
+        res['min_width'] = np.round(self.widthInfo.min, DecimalRound.ROUND_DECIMAL)
+        res['mean_width'] = np.round(self.widthInfo.mean, DecimalRound.ROUND_DECIMAL)
+        res['max_width'] = np.round(self.widthInfo.max, DecimalRound.ROUND_DECIMAL)
+
+        res['min_depth'] = np.round(self.depthInfo.min, DecimalRound.ROUND_DECIMAL)
+        res['mean_depth'] = np.round(self.depthInfo.mean, DecimalRound.ROUND_DECIMAL)
+        res['max_depth'] = np.round(self.depthInfo.max, DecimalRound.ROUND_DECIMAL)
+
+        res['length'] = self.get_length()
+
+        return res
+    
+
+
+    def update_line_idx(self, line_idx, belt_end_line_idx):
+        if self.end_line_idx > 0:
+            if line_idx < self.end_line_idx :
+                self.end_line_idx -= belt_end_line_idx
+        
+        else:
+            if line_idx > self.end_line_idx + belt_end_line_idx:
+                self.end_line_idx += belt_end_line_idx
+
+        if self.start_line_idx > 0:
+            if line_idx < self.start_line_idx :
+                self.start_line_idx -= belt_end_line_idx
+        else:
+            if line_idx > self.start_line_idx + belt_end_line_idx:
+                self.start_line_idx += belt_end_line_idx
+
+    
     def __draw_debug(self, image, pt1, pt2):
         x,y = pt1
         image = cv2.putText(image,
@@ -257,62 +303,3 @@ class Defect:
 
         
         return res_defect
-    
-    def is_same(self, other:Defect, belt_end_line_idx:int):
-        intersect_y1 = max(self.defect_width_boundries[0], other.defect_width_boundries[0])
-        intersect_y2 = min(self.defect_width_boundries[1], other.defect_width_boundries[1])
-        if self.start_line_idx > 2400:
-            bog = True
-        if intersect_y2 > intersect_y1:
-
-            self_end_temp = self.end_line_idx
-            other_end_temp = other.end_line_idx
-
-            # if self.end_line_idx < self.start_line_idx or other.end_line_idx < other.start_line_idx:
-            #     self_end_temp += belt_end_line_idx
-            #     other_end_temp += belt_end_line_idx
-
-            
-            
-
-            intersect_x1 = max(self.start_line_idx, other.start_line_idx)
-            intersect_x2 = min(self_end_temp, other_end_temp)
-            if intersect_x2> intersect_x1:
-                return True
-        return False
-    
-    def get_length(self):
-        return np.round(abs(self.end_line_idx - self.start_line_idx), DecimalRound.ROUND_DECIMAL)
-
-
-    def get_info_for_filter(self,):
-        res = {
-            'width': (self.widthInfo.min, self.widthInfo.max),
-            'depth': (self.depthInfo.min, self.depthInfo.max),
-            'lenght': self.get_length(),
-            'date': self.jdatetime.date(),
-        }
-
-        return res
-    
-    def get_info(self, ):
-        res = {}
-        res['defect_id'] = self.id
-
-        res['date'] = self.jdatetime.date()
-        res['time'] = self.jdatetime.time()
-
-        res['x'] = self.start_line_idx
-        res['y'] = self.defect_width_boundries[0]
-
-        res['min_width'] = np.round(self.widthInfo.min, DecimalRound.ROUND_DECIMAL)
-        res['mean_width'] = np.round(self.widthInfo.mean, DecimalRound.ROUND_DECIMAL)
-        res['max_width'] = np.round(self.widthInfo.max, DecimalRound.ROUND_DECIMAL)
-
-        res['min_depth'] = np.round(self.depthInfo.min, DecimalRound.ROUND_DECIMAL)
-        res['mean_depth'] = np.round(self.depthInfo.mean, DecimalRound.ROUND_DECIMAL)
-        res['max_depth'] = np.round(self.depthInfo.max, DecimalRound.ROUND_DECIMAL)
-
-        res['length'] = self.get_length()
-
-        return res

@@ -100,7 +100,7 @@ class beltInspection:
         self.DefectTracker.check_defects_completion(self.kwargs['tracker_min_frame_gap'], 
                                                     self.kwargs['defect_min_length'], 
                                                     line_idx,
-                                                    self.Encoder.get_end_line_idx())
+                                                    )
         # print('check completion: ', time.time() - t)
 
         t = time.time()
@@ -112,12 +112,12 @@ class beltInspection:
         #--------------------------------------
         self.DefectTracker.check_defect_passed(line_idx=line_idx,
                                                img_width=image.shape[1],
-                                               belt_end_line_idx=self.Encoder.get_end_line_idx())
+                                               )
         
         self.res_image = self.DefectTracker.draw(self.kwargs['defect_min_length'],
                                                 image.copy(), 
                                                 line_idx,
-                                                self.Encoder.get_end_line_idx())
+                                                )
         
         # print('last draw: ', time.time() - t)
 

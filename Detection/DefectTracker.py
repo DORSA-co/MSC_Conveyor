@@ -71,22 +71,31 @@ class DefectTracker:
                 self.non_completed_defects.append(new_defect, new_defect.id)
 
         for non_complete_defect in self.non_completed_defects.values():
-            non_complete_defect.render(error_ys, line_idx, belt_end_line_idx)
+            non_complete_defect.render(error_ys, line_idx)
 
-    def check_defects_completion(self, min_frame_gap, min_length, line_idx, belt_end_line_idx):
+        
+        for i in range(len(self.completed_defects)):
+            defect:Defect = self.completed_defects[i]
+            defect.update_line_idx(line_idx, belt_end_line_idx)
+        
+        for i in range(len(self.non_completed_defects)):
+            defect:Defect = self.non_completed_defects[i]
+            defect.update_line_idx(line_idx, belt_end_line_idx)
+
+    def check_defects_completion(self, min_frame_gap, min_length, line_idx):
         i = 0
         while i<len(self.non_completed_defects): 
             defect:Defect = self.non_completed_defects[i]
-            if defect.is_complete(line_idx, min_frame_gap, belt_end_line_idx):
+            if defect.is_complete(line_idx, min_frame_gap):
                 
                 self.non_completed_defects.remove_by_value(defect)
-                if defect.is_defect(min_length, belt_end_line_idx):
+                if defect.is_defect(min_length):
                     
                     self.__not_pass_completed_defects.append(defect, defect.id)
                     #------------------------------------
                     #check if defect is update of another defect
                     for i in range(self.completed_defects.count()):
-                        if defect.is_same(self.completed_defects[i], belt_end_line_idx):
+                        if defect.is_same(self.completed_defects[i]):
                             defect.id = self.completed_defects[i].id
                             #self.completed_defects[i] = defect
                             self.completed_defects.set_by_index(i, defect, defect.id)
@@ -101,26 +110,26 @@ class DefectTracker:
                 i+=1
         
         
-    def check_defect_passed(self, line_idx, img_width, belt_end_line_idx):
+    def check_defect_passed(self, line_idx, img_width):
         i  = 0
         while i < len(self.__not_pass_completed_defects):
-            if self.__not_pass_completed_defects[i].is_present_in_image(line_idx, img_width, belt_end_line_idx):
+            if self.__not_pass_completed_defects[i].is_present_in_image(line_idx, img_width):
                 i+=1
                 continue
             self.__not_pass_completed_defects.remove_by_index(i)
 
 
-    def draw(self, min_length, image: np.ndarray, line_idx: int, belt_end_line_idx:int, color: tuple = (33, 33, 133)):
+    def draw(self, min_length, image: np.ndarray, line_idx: int, color: tuple = (33, 33, 133)):
         if 0<= line_idx <= 100:
             x = 1
         h, w = image.shape[:2]
         #print('total defect to draw',len(self.non_completed_defects) + len(self.__not_pass_completed_defects))
         for defect in self.non_completed_defects.values():
 
-            if not defect.is_defect(min_length, belt_end_line_idx):
+            if not defect.is_defect(min_length):
                 continue
             
-            image = defect.draw(image, line_idx, belt_end_line_idx, color)
+            image = defect.draw(image, line_idx, color)
             
 
         defect:Defect
@@ -130,7 +139,7 @@ class DefectTracker:
             #     self.__not_pass_completed_defects.remove_by_value(defect)
             #     continue
 
-            image = defect.draw(image, line_idx, belt_end_line_idx, (0,255,0))
+            image = defect.draw(image, line_idx, (0,255,0))
         
 
         
