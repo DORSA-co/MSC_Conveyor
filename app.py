@@ -13,6 +13,7 @@ os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'popup_slider.ui
 os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'image_viewer.ui'), os.path.join('UIFiles', 'image_viewer.py')))
 os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'belt_tile.ui'), os.path.join('UIFiles', 'belt_tile.py')))
 os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'progress_dialog.ui'), os.path.join('UIFiles', 'progress_dialog.py')))
+os.system('pyside6-uic {} -o {}'.format(os.path.join('UIFiles', 'calendar.ui'), os.path.join('UIFiles', 'calendar.py')))
 
 from PySide6.QtWidgets import QApplication
 

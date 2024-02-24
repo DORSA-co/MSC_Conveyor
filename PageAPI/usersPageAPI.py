@@ -17,7 +17,9 @@ class dataPasser:
     
     def get_logined_user_password(self,):
         return self.logined_user.get('password', Constant.User.UNLOGIN_USER_PASSWORD)
-
+    
+    def get_logined_user_username(self,):
+        return self.logined_user.get('username', Constant.User.UNLOGIN_USER_USERNAME)
 
 class usersPageAPI:
 

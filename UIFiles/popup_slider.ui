@@ -48,55 +48,52 @@ QWidget
 	font: auto &quot;Roboto&quot;;
 }
 
+/*****************QSpinBox, QDoubleSpinBox*******************/
 
-/************QSpinBox, QDoubleSpinBox, QDateEdit**************/
-
-QSpinBox, QDoubleSpinBox , QDateEdit
+QSpinBox, QDoubleSpinBox
 {
 	background-color: transparent;
 	border-bottom: 2px solid #D7D7D9;
 	border-radius: None;
-	font-size: 18px;
+	font-size: 16px;
 	min-height: 25px;
 	min-width: 70px;
 	qproperty-alignment: AlignCenter;
-	color: #808080;
 }
 
 QSpinBox:disabled ,
-QDoubleSpinBox:disabled ,
-QDateEdit:disabled
+QDoubleSpinBox:disabled
 {
-	border-bottom: 2px solid #DCDCDC;
-	color: #DCDCDC;
+	border-bottom: 2px solid #F0F0F2;
+	color: rgb(120, 120, 120);
 }
 
-QSpinBox::up-arrow, QDoubleSpinBox::up-arrow,
-QDateEdit::up-arrow
+QSpinBox::up-arrow, 
+QDoubleSpinBox::up-arrow
 {   
 	image: url(:/icons/icons/plus_icon_black.png);
 	width: 16px;
 	height: 16px;
 }
 
-QSpinBox::down-arrow ,  QDoubleSpinBox::down-arrow,
-QDateEdit::down-arrow
+QSpinBox::down-arrow,  
+QDoubleSpinBox::down-arrow
 {   
 	image: url(:/icons/icons/minus_icon_black.png);
 	width: 16px;
 	height: 16px;
 }
 
-QSpinBox::up-arrow:disabled, QDoubleSpinBox::up-arrow:disabled,
-QDateEdit::up-arrow:disabled
+QSpinBox::up-arrow:disabled, 
+QDoubleSpinBox::up-arrow:disabled
 {   
 	image: url(:/icons/icons/plus_icon_gray.png);
 	width: 16px;
 	height: 16px;
 }
 
-QSpinBox::down-arrow:disabled ,  QDoubleSpinBox::down-arrow:disabled,
-QDateEdit::down-arrow:disabled
+QSpinBox::down-arrow:disabled ,  
+QDoubleSpinBox::down-arrow:disabled
 {   
 	image: url(:/icons/icons/minus_icon_gray.png);
 	width: 16px;
@@ -104,8 +101,7 @@ QDateEdit::down-arrow:disabled
 }
 
 QSpinBox::up-button,
-QDoubleSpinBox::up-button,
-QDateEdit::up-button
+QDoubleSpinBox::up-button
 {
 	border:none;
     min-width:30px;
@@ -117,10 +113,8 @@ QDateEdit::up-button
 }
 
 QSpinBox::down-button,
-QDoubleSpinBox::down-button,
-QDateEdit::down-button
+QDoubleSpinBox::down-button
 {
-	border:none;
     min-width:30px;
     min-height: 29px;
     subcontrol-origin: margin;
@@ -132,9 +126,7 @@ QDateEdit::down-button
 QSpinBox::up-button,
 QSpinBox::down-button,
 QDoubleSpinBox::up-button,
-QDoubleSpinBox::down-button,
-QDateEdit::up-button,
-QDateEdit::down-button
+QDoubleSpinBox::down-button
 {
 	background-color: transparent;
 }
@@ -142,16 +134,40 @@ QDateEdit::down-button
 QSpinBox::up-button:disabled ,
 QSpinBox::down-button:disabled ,
 QDoubleSpinBox::up-button:disabled ,
-QDoubleSpinBox::down-button:disabled,
-QDateEdit::up-button:disabled,
-QDateEdit::down-button:disabled
+QDoubleSpinBox::down-button:disabled
 {
     subcontrol-origin: border;
 }
 
-QSpinBox:focus, QDoubleSpinBox:focus,
-QDateEdit:focus
+QSpinBox:focus, QDoubleSpinBox:focus{
+	border-bottom: 2px solid #7892DF;
+}
+
+/***************************QDateEdit****************************/
+
+QDateEdit
 {
+	border:1px solid #E0E4EC;
+	background-color: transparent;
+	border-radius: 10px;
+	min-height: 35px;
+	font-size: 16px;
+}
+
+QDateEdit:disabled
+{
+	border: 2px solid #F0F0F2;
+	color: rgb(120, 120, 120);
+}
+
+QDateEdit::up-button,
+QDateEdit::down-button
+{
+	width: 0px;
+	background-color: transparent;
+}
+
+QDateEdit:focus{
 	border-bottom: 2px solid #7892DF;
 }
 
@@ -277,7 +293,14 @@ QCheckBox::indicator:disabled {
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">/**************************PcloseButtonStyle***************************/
+            <string notr="true">/*******************PmainFrameStyle********************/
+
+*[styleSheet=&quot;PmainFrameStyle&quot;]
+{
+	background-color: #F7F8FA;
+}
+
+/**************************PcloseButtonStyle***************************/
 
 *[styleSheet=&quot;PcloseButtonStyle&quot;]
 {
@@ -389,6 +412,30 @@ QCheckBox::indicator:disabled {
 	padding-top: 5px;
 }
 
+/*******************PdateEditsStyle********************/
+
+*[styleSheet=&quot;PdateEditsStyle&quot;]
+{
+	border-right: None;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+/*******************PdatePushButtonsStyle********************/
+
+*[styleSheet=&quot;PdatePushButtonsStyle&quot;]
+{
+	border: 0px;
+	background-color: transparent;
+	border:1px solid #E0E4EC;
+	background-color: #F7F8FA;
+	border-radius: 10px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border-left: None;
+	padding-right: 3px;
+}
+
 
 </string>
            </property>
@@ -420,7 +467,7 @@ QCheckBox::indicator:disabled {
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true"/>
+               <string notr="true">PmainFrameStyle</string>
               </property>
               <property name="frameShape">
                <enum>QFrame::StyledPanel</enum>
@@ -469,7 +516,7 @@ QCheckBox::indicator:disabled {
                <item>
                 <widget class="QStackedWidget" name="pages">
                  <property name="currentIndex">
-                  <number>0</number>
+                  <number>1</number>
                  </property>
                  <widget class="QWidget" name="system_status_page">
                   <property name="styleSheet">
@@ -939,14 +986,74 @@ QCheckBox::indicator:disabled {
                             <number>12</number>
                            </property>
                            <item>
-                            <widget class="QDateEdit" name="start_date_input">
-                             <property name="enabled">
-                              <bool>true</bool>
+                            <layout class="QHBoxLayout" name="horizontalLayout_14">
+                             <property name="spacing">
+                              <number>0</number>
                              </property>
-                             <property name="timeSpec">
-                              <enum>Qt::OffsetFromUTC</enum>
-                             </property>
-                            </widget>
+                             <item>
+                              <widget class="QDateEdit" name="start_date_input">
+                               <property name="enabled">
+                                <bool>true</bool>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>16777215</width>
+                                 <height>37</height>
+                                </size>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">PdateEditsStyle</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                               <property name="timeSpec">
+                                <enum>Qt::OffsetFromUTC</enum>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QPushButton" name="start_date_btn">
+                               <property name="sizePolicy">
+                                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                                 <horstretch>0</horstretch>
+                                 <verstretch>0</verstretch>
+                                </sizepolicy>
+                               </property>
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>37</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>16777215</width>
+                                 <height>37</height>
+                                </size>
+                               </property>
+                               <property name="cursor">
+                                <cursorShape>PointingHandCursor</cursorShape>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">PdatePushButtonsStyle</string>
+                               </property>
+                               <property name="text">
+                                <string/>
+                               </property>
+                               <property name="icon">
+                                <iconset resource="assets/assets.qrc">
+                                 <normaloff>:/icons/icons/date_black.png</normaloff>:/icons/icons/date_black.png</iconset>
+                               </property>
+                               <property name="iconSize">
+                                <size>
+                                 <width>25</width>
+                                 <height>25</height>
+                                </size>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
                            </item>
                            <item>
                             <widget class="QLabel" name="date_to_label">
@@ -962,11 +1069,71 @@ QCheckBox::indicator:disabled {
                             </widget>
                            </item>
                            <item>
-                            <widget class="QDateEdit" name="end_date_input">
-                             <property name="enabled">
-                              <bool>true</bool>
+                            <layout class="QHBoxLayout" name="horizontalLayout_15">
+                             <property name="spacing">
+                              <number>0</number>
                              </property>
-                            </widget>
+                             <item>
+                              <widget class="QDateEdit" name="end_date_input">
+                               <property name="enabled">
+                                <bool>true</bool>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>16777215</width>
+                                 <height>37</height>
+                                </size>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">PdateEditsStyle</string>
+                               </property>
+                               <property name="alignment">
+                                <set>Qt::AlignCenter</set>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QPushButton" name="end_date_btn">
+                               <property name="sizePolicy">
+                                <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                                 <horstretch>0</horstretch>
+                                 <verstretch>0</verstretch>
+                                </sizepolicy>
+                               </property>
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>37</height>
+                                </size>
+                               </property>
+                               <property name="maximumSize">
+                                <size>
+                                 <width>16777215</width>
+                                 <height>37</height>
+                                </size>
+                               </property>
+                               <property name="cursor">
+                                <cursorShape>PointingHandCursor</cursorShape>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">PdatePushButtonsStyle</string>
+                               </property>
+                               <property name="text">
+                                <string/>
+                               </property>
+                               <property name="icon">
+                                <iconset resource="assets/assets.qrc">
+                                 <normaloff>:/icons/icons/date_black.png</normaloff>:/icons/icons/date_black.png</iconset>
+                               </property>
+                               <property name="iconSize">
+                                <size>
+                                 <width>25</width>
+                                 <height>25</height>
+                                </size>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
                            </item>
                           </layout>
                          </item>

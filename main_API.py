@@ -128,9 +128,9 @@ class main_API:
     def login_user_event(self,):
         role = self.API_Page_Users.data_passer.get_logined_user_role()
         password = self.API_Page_Users.data_passer.get_logined_user_password()
-        # username = self.API_Page_Users.data_passer.logined_user.get('username', '')
+        username = self.API_Page_Users.data_passer.get_logined_user_username()
         self.set_access(role)
-        self.API_Live_View.set_logined_user_password(password)
+        self.API_Live_View.set_logined_user(username, password)
         #self.mainPageAPI.set_logined_user(username)
         #self.reportsPageAPI.set_user_login(username)
 

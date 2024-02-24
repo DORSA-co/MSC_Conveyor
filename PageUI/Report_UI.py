@@ -6,6 +6,7 @@ from .Common_Function_UI import Common_Function_UI
 from uiUtils.guiBackend import GUIBackend
 from uiUtils.GUIComponents import deleteButton, viewButton, pageNavigationButton, tabelCheckbox
 from uiUtils.GUIComponents import singleAnimation, proggressDialogUI
+from uiUtils.GUIComponents import Calendar
 from Constants.Constant import ReportFiltersAnimation, ReportTableLimit
 
 class Report_UI(Common_Function_UI):
@@ -110,7 +111,9 @@ class Report_UI(Common_Function_UI):
             'delete_all': self.ui.delete_selected_defects,
             'reload': self.ui.reload_reports_btn,
             'move_table_hscroll_end': self.ui.move_table_end_btn,
-            'move_table_hscroll_start': self.ui.move_table_start_btn
+            'move_table_hscroll_start': self.ui.move_table_start_btn,
+            'start_date_btn': self.ui.report_start_date_btn,
+            'end_date_btn': self.ui.report_end_date_btn
         }
 
         
@@ -131,6 +134,8 @@ class Report_UI(Common_Function_UI):
         self.button_connector('prev', self.table_previous_page)
         self.button_connector('move_table_hscroll_start', self.__set_table_scrollbar_to_start)
         self.button_connector('move_table_hscroll_end', self.__set_table_scrollbar_to_end)
+        self.button_connector('start_date_btn', self.__set_filter_start_date)
+        self.button_connector('end_date_btn', self.__set_filter_end_date)
 
         GUIBackend.checkbox_connector(self.ui.select_all_defects_table, self.select_all)
 
@@ -336,3 +341,17 @@ class Report_UI(Common_Function_UI):
         GUIBackend.set_disable_enable(self.buttons['move_table_hscroll_start'], True)
         GUIBackend.set_disable_enable(self.buttons['move_table_hscroll_end'], False)
 
+    def __show_calender(self):
+        calendar = Calendar()
+        selected_date = calendar.show_win()
+        return selected_date
+
+    def __set_filter_start_date(self):
+        selected_date = self.__show_calender()
+        if selected_date:
+            GUIBackend.set_input(self.filters['ranges']['date'][0], selected_date)
+
+    def __set_filter_end_date(self):
+        selected_date = self.__show_calender()
+        if selected_date:
+            GUIBackend.set_input(self.filters['ranges']['date'][1], selected_date)

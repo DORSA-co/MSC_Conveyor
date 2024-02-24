@@ -20,7 +20,7 @@ class Encoder:
         self.x += self.step
         self.line_idx += self.step
 
-        if self.line_idx> 414 * self.step:
+        if self.line_idx> 985 * self.step:
             self.end_line_idx = self.line_idx
             self.line_idx = 0
             self.x = 0

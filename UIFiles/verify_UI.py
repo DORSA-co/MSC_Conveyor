@@ -25,7 +25,7 @@ class Ui_verifyDialogWin(object):
     def setupUi(self, verifyDialogWin):
         if not verifyDialogWin.objectName():
             verifyDialogWin.setObjectName(u"verifyDialogWin")
-        verifyDialogWin.resize(325, 279)
+        verifyDialogWin.resize(309, 286)
         self.verticalLayout = QVBoxLayout(verifyDialogWin)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -158,6 +158,14 @@ class Ui_verifyDialogWin(object):
 "*[styleSheet=\"PerrorLabelStyle\"]\n"
 "{\n"
 "	color:rgb(255, 99, 94);\n"
+"}\n"
+"\n"
+"/**************************PmessageLabelStyle***************************/\n"
+"\n"
+"*[styleSheet=\"PmessageLabelStyle\"]\n"
+"{\n"
+"	color: white;\n"
+"	padding-left: 0px;\n"
 "}")
         self.verticalLayout_8 = QVBoxLayout(self.PointStyleSheet)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
@@ -234,18 +242,19 @@ class Ui_verifyDialogWin(object):
 
         self.horizontalLayout_8.addItem(self.horizontalSpacer_11)
 
+        self.verticalLayout_5 = QVBoxLayout()
+        self.verticalLayout_5.setSpacing(3)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_5.setContentsMargins(-1, 20, 0, 20)
+        self.verify_message = QLabel(self.verify_frame)
+        self.verify_message.setObjectName(u"verify_message")
+        self.verify_message.setStyleSheet(u"PmessageLabelStyle")
+
+        self.verticalLayout_5.addWidget(self.verify_message)
+
         self.horizontalLayout_11 = QHBoxLayout()
+        self.horizontalLayout_11.setSpacing(10)
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
-        self.verify_password_icon = QLabel(self.verify_frame)
-        self.verify_password_icon.setObjectName(u"verify_password_icon")
-        sizePolicy1.setHeightForWidth(self.verify_password_icon.sizePolicy().hasHeightForWidth())
-        self.verify_password_icon.setSizePolicy(sizePolicy1)
-        self.verify_password_icon.setMaximumSize(QSize(25, 25))
-        self.verify_password_icon.setPixmap(QPixmap(u":/icons/icons/password.png"))
-        self.verify_password_icon.setScaledContents(True)
-
-        self.horizontalLayout_11.addWidget(self.verify_password_icon)
-
         self.horizontalLayout_12 = QHBoxLayout()
         self.horizontalLayout_12.setSpacing(0)
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
@@ -280,7 +289,10 @@ class Ui_verifyDialogWin(object):
         self.horizontalLayout_11.addLayout(self.horizontalLayout_12)
 
 
-        self.horizontalLayout_8.addLayout(self.horizontalLayout_11)
+        self.verticalLayout_5.addLayout(self.horizontalLayout_11)
+
+
+        self.horizontalLayout_8.addLayout(self.verticalLayout_5)
 
         self.horizontalSpacer_12 = QSpacerItem(13, 124, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
@@ -354,7 +366,7 @@ class Ui_verifyDialogWin(object):
     def retranslateUi(self, verifyDialogWin):
         verifyDialogWin.setWindowTitle(QCoreApplication.translate("verifyDialogWin", u"Dialog", None))
         self.close_btn.setText("")
-        self.verify_password_icon.setText("")
+        self.verify_message.setText(QCoreApplication.translate("verifyDialogWin", u"Enter Your Password", None))
         self.verify_password_input.setText(QCoreApplication.translate("verifyDialogWin", u"admin", None))
         self.verify_password_input.setPlaceholderText(QCoreApplication.translate("verifyDialogWin", u"Password", None))
         self.verify_eye_btn.setText("")

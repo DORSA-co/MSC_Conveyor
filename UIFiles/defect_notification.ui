@@ -96,8 +96,7 @@ QCheckBox::indicator:disabled {
       <item>
        <widget class="QWidget" name="LocalStyleSheet" native="true">
         <property name="styleSheet">
-         <string notr="true">
-</string>
+         <string notr="true"/>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout">
          <property name="leftMargin">
@@ -115,9 +114,9 @@ QCheckBox::indicator:disabled {
          <item>
           <widget class="QWidget" name="PointStyleSheet" native="true">
            <property name="styleSheet">
-            <string notr="true">/**************************mainStyle***************************/
+            <string notr="true">/**************************PmainStyle***************************/
 
-*[styleSheet=&quot;mainStyle&quot;]
+*[styleSheet=&quot;PmainStyle&quot;]
 {
 	border:1px solid #E0E4EC;
 	border-radius: 15px;
@@ -188,7 +187,7 @@ QCheckBox::indicator:disabled {
                </size>
               </property>
               <property name="styleSheet">
-               <string notr="true">mainStyle</string>
+               <string notr="true">PmainStyle</string>
               </property>
               <property name="frameShape">
                <enum>QFrame::StyledPanel</enum>

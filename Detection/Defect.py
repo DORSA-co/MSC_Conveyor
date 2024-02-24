@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import time
 
-from persiantools.jdatetime import JalaliDate,JalaliDateTime
+## DATE ##
+from persiantools.jdatetime import JalaliDate, JalaliDateTime
+# from datetime import datetime
 import numpy as np
 import cv2
 
@@ -63,7 +65,8 @@ class Defect:
         self.id = id(self)
         self.widthInfo = numberStatics()
         self.depthInfo = numberStatics()
-        self.jdatetime = JalaliDateTime.now()
+        ## DATE ##
+        self.jdatetime = JalaliDateTime.now() #datetime.now()
 
         self.n_last_lines = n_last_lines
         
@@ -189,6 +192,7 @@ class Defect:
             'width': (self.widthInfo.min, self.widthInfo.max),
             'depth': (self.depthInfo.min, self.depthInfo.max),
             'lenght': self.get_length(),
+            ## DATE ##
             'date': self.jdatetime.date(),
         }
 
@@ -198,6 +202,7 @@ class Defect:
         res = {}
         res['defect_id'] = self.id
 
+        ## DATE ##
         res['date'] = self.jdatetime.date()
         res['time'] = self.jdatetime.time()
 

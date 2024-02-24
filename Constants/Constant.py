@@ -54,6 +54,7 @@ class User:
     MIN_PASS_LENGHT = 5
     UNLOGIN_USER_PASSWORD = '#'*(MIN_PASS_LENGHT-1)
     UNLOGIN_USER_ROLE = 'unknown'
+    UNLOGIN_USER_USERNAME = '*'*(MIN_USERNAME_LENGHT-1)
     USER_ROLES = ['admin', 'user']
 
     ACCESS = {

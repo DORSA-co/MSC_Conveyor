@@ -40,56 +40,53 @@ class Ui_slider(object):
 "	font: auto \"Roboto\";\n"
 "}\n"
 "\n"
+"/*****************QSpinBox, QDoubleSpinBox*******************/\n"
 "\n"
-"/************QSpinBox, QDoubleSpinBox, QDateEdit**************/\n"
-"\n"
-"QSpinBox, QDoubleSpinBox , QDateEdit\n"
+"QSpinBox, QDoubleSpinBox\n"
 "{\n"
 "	background-color: transparent;\n"
 "	border-bottom: 2px solid #D7D7D9;\n"
 "	border-radius: None;\n"
-"	font-size: 18px;\n"
+"	font-size: 16px;\n"
 "	min-height: 25px;\n"
 "	min-width: 70px;\n"
 "	qproperty-alignment: AlignCenter;\n"
-"	color: #808080;\n"
 "}\n"
 "\n"
 "QSpinBox:disabled ,\n"
-"QDoubleSpinBox:disabled ,\n"
-"QDateEdit:disabled\n"
+"QDoubleSpinBox:disabled\n"
 "{\n"
-"	border-bottom: 2px solid #DCDCDC;\n"
-"	color: #DCDCDC;\n"
+"	border-bottom: 2px solid #F0F0F2;\n"
+"	color: rgb(120, 120, 120);\n"
 "}\n"
 "\n"
-"QSpinBox::up-arrow, QDoubleSpinBox::up-arrow,\n"
-"QDateEdit::up-arrow\n"
+"QSpinBox::up-arrow, \n"
+"QDoubleSpinBox::up-arrow\n"
 "{   \n"
 "	image: url(:/icons/icons/plus_icon_black.png);\n"
 "	width: 16px;\n"
 "	height: 16px;\n"
 "}\n"
 "\n"
-"QSpinBox::down-arrow ,  QDoubleSpinBox::down-arrow,\n"
-"QDateEdit::down-arrow\n"
+"QSpinBox::down-arrow,  \n"
+"QDoubleSpinBox::down-arrow\n"
 "{   \n"
 "	image: url(:/icons/icons/minus_icon_black.png);\n"
 "	width: 16px;\n"
 "	height: 16px;\n"
 "}\n"
 "\n"
-""
-                        "QSpinBox::up-arrow:disabled, QDoubleSpinBox::up-arrow:disabled,\n"
-"QDateEdit::up-arrow:disabled\n"
+"QSpinBox::up-arrow:disabled, \n"
+"QDoubleSpinBox::up-arrow:disabled\n"
 "{   \n"
-"	image: url(:/icons/icons/plus_icon_gray.png);\n"
+"	image: url(:/"
+                        "icons/icons/plus_icon_gray.png);\n"
 "	width: 16px;\n"
 "	height: 16px;\n"
 "}\n"
 "\n"
-"QSpinBox::down-arrow:disabled ,  QDoubleSpinBox::down-arrow:disabled,\n"
-"QDateEdit::down-arrow:disabled\n"
+"QSpinBox::down-arrow:disabled ,  \n"
+"QDoubleSpinBox::down-arrow:disabled\n"
 "{   \n"
 "	image: url(:/icons/icons/minus_icon_gray.png);\n"
 "	width: 16px;\n"
@@ -97,8 +94,7 @@ class Ui_slider(object):
 "}\n"
 "\n"
 "QSpinBox::up-button,\n"
-"QDoubleSpinBox::up-button,\n"
-"QDateEdit::up-button\n"
+"QDoubleSpinBox::up-button\n"
 "{\n"
 "	border:none;\n"
 "    min-width:30px;\n"
@@ -110,10 +106,8 @@ class Ui_slider(object):
 "}\n"
 "\n"
 "QSpinBox::down-button,\n"
-"QDoubleSpinBox::down-button,\n"
-"QDateEdit::down-button\n"
+"QDoubleSpinBox::down-button\n"
 "{\n"
-"	border:none;\n"
 "    min-width:30px;\n"
 "    min-height: 29px;\n"
 "    subcontrol-origin: margin;\n"
@@ -123,29 +117,51 @@ class Ui_slider(object):
 "}\n"
 "\n"
 "QSpinBox::up-button,\n"
-"QSpinBox::down-but"
-                        "ton,\n"
+"QSpinBox::down-button,\n"
 "QDoubleSpinBox::up-button,\n"
-"QDoubleSpinBox::down-button,\n"
-"QDateEdit::up-button,\n"
-"QDateEdit::down-button\n"
+"QDoubleSpinBox::down-button\n"
 "{\n"
 "	background-color: transparent;\n"
 "}\n"
 "\n"
 "QSpinBox::up-button:disabled ,\n"
 "QSpinBox::down-button:disabled ,\n"
-"QDoubleSpinBox::up-button:disabled ,\n"
-"QDoubleSpinBox::down-button:disabled,\n"
-"QDateEdit::up-button:disabled,\n"
-"QDateEdit::down-button:disabled\n"
+"QDoubleSpinBox::up-button:disa"
+                        "bled ,\n"
+"QDoubleSpinBox::down-button:disabled\n"
 "{\n"
 "    subcontrol-origin: border;\n"
 "}\n"
 "\n"
-"QSpinBox:focus, QDoubleSpinBox:focus,\n"
-"QDateEdit:focus\n"
+"QSpinBox:focus, QDoubleSpinBox:focus{\n"
+"	border-bottom: 2px solid #7892DF;\n"
+"}\n"
+"\n"
+"/***************************QDateEdit****************************/\n"
+"\n"
+"QDateEdit\n"
 "{\n"
+"	border:1px solid #E0E4EC;\n"
+"	background-color: transparent;\n"
+"	border-radius: 10px;\n"
+"	min-height: 35px;\n"
+"	font-size: 16px;\n"
+"}\n"
+"\n"
+"QDateEdit:disabled\n"
+"{\n"
+"	border: 2px solid #F0F0F2;\n"
+"	color: rgb(120, 120, 120);\n"
+"}\n"
+"\n"
+"QDateEdit::up-button,\n"
+"QDateEdit::down-button\n"
+"{\n"
+"	width: 0px;\n"
+"	background-color: transparent;\n"
+"}\n"
+"\n"
+"QDateEdit:focus{\n"
 "	border-bottom: 2px solid #7892DF;\n"
 "}\n"
 "\n"
@@ -162,14 +178,14 @@ class Ui_slider(object):
 "\n"
 "QCheckBox::indicator:unchecked {\n"
 "    border: 2px solid #E0E4EC;\n"
-"    background-color: white;\n"
+"    backgr"
+                        "ound-color: white;\n"
 "}\n"
 "\n"
 "QCheckBox::indicator:checked {\n"
 "    border: 2px solid #7892DF;\n"
 "    background-color: #7892DF;\n"
-"    image: url(:/icons/ic"
-                        "ons/tick.png)\n"
+"    image: url(:/icons/icons/tick.png)\n"
 "}\n"
 "\n"
 "QCheckBox::indicator:hover {\n"
@@ -228,7 +244,14 @@ class Ui_slider(object):
         self.PointStyleSheet.setObjectName(u"PointStyleSheet")
         self.PointStyleSheet.setMinimumSize(QSize(400, 0))
         self.PointStyleSheet.setMaximumSize(QSize(800, 16777215))
-        self.PointStyleSheet.setStyleSheet(u"/**************************PcloseButtonStyle***************************/\n"
+        self.PointStyleSheet.setStyleSheet(u"/*******************PmainFrameStyle********************/\n"
+"\n"
+"*[styleSheet=\"PmainFrameStyle\"]\n"
+"{\n"
+"	background-color: #F7F8FA;\n"
+"}\n"
+"\n"
+"/**************************PcloseButtonStyle***************************/\n"
 "\n"
 "*[styleSheet=\"PcloseButtonStyle\"]\n"
 "{\n"
@@ -263,13 +286,13 @@ class Ui_slider(object):
 "\n"
 "*[styleSheet=\"PfiltersIconsStyle\"]\n"
 "{\n"
-"	border: 0px solid transparent;	\n"
+""
+                        "	border: 0px solid transparent;	\n"
 "}\n"
 "\n"
 "/**************************PfilterslabelsStyle***************************/\n"
 "\n"
-"*[styleSheet=\"Pfilte"
-                        "rslabelsStyle\"]\n"
+"*[styleSheet=\"PfilterslabelsStyle\"]\n"
 "{\n"
 "	font-weight: bold;\n"
 "}\n"
@@ -297,11 +320,11 @@ class Ui_slider(object):
 "\n"
 "*[styleSheet=\"PapplyFiltersButtonStyle\"]:hover\n"
 "{\n"
-"	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
+"	backg"
+                        "round-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));\n"
 "}\n"
 "\n"
-"*"
-                        "[styleSheet=\"PapplyFiltersButtonStyle\"]:pressed\n"
+"*[styleSheet=\"PapplyFiltersButtonStyle\"]:pressed\n"
 "{\n"
 "	padding-left: 5px;\n"
 "	padding-top: 5px;\n"
@@ -333,14 +356,38 @@ class Ui_slider(object):
 "{\n"
 "	border: 2px solid rgba(76, 126, 255, 255);\n"
 "	color:  rgba(76, 126, 255, 255);\n"
-"	icon: url(:/icons/icons/clear_filter_blue_hover.png);\n"
+"	icon: ur"
+                        "l(:/icons/icons/clear_filter_blue_hover.png);\n"
 "}\n"
 "\n"
 "*[styleSheet=\"PclearFiltersButtonStyle\"]:pressed\n"
 "{\n"
 "	padding-left: 5px;\n"
-"	paddin"
-                        "g-top: 5px;\n"
+"	padding-top: 5px;\n"
+"}\n"
+"\n"
+"/*******************PdateEditsStyle********************/\n"
+"\n"
+"*[styleSheet=\"PdateEditsStyle\"]\n"
+"{\n"
+"	border-right: None;\n"
+"	border-top-right-radius: 0px;\n"
+"	border-bottom-right-radius: 0px;\n"
+"}\n"
+"\n"
+"/*******************PdatePushButtonsStyle********************/\n"
+"\n"
+"*[styleSheet=\"PdatePushButtonsStyle\"]\n"
+"{\n"
+"	border: 0px;\n"
+"	background-color: transparent;\n"
+"	border:1px solid #E0E4EC;\n"
+"	background-color: #F7F8FA;\n"
+"	border-radius: 10px;\n"
+"	border-top-left-radius: 0px;\n"
+"	border-bottom-left-radius: 0px;\n"
+"	border-left: None;\n"
+"	padding-right: 3px;\n"
 "}\n"
 "\n"
 "\n"
@@ -352,7 +399,7 @@ class Ui_slider(object):
         self.main_frame.setObjectName(u"main_frame")
         self.main_frame.setMinimumSize(QSize(400, 0))
         self.main_frame.setMaximumSize(QSize(800, 16777215))
-        self.main_frame.setStyleSheet(u"")
+        self.main_frame.setStyleSheet(u"PmainFrameStyle")
         self.main_frame.setFrameShape(QFrame.StyledPanel)
         self.main_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_4 = QVBoxLayout(self.main_frame)
@@ -625,28 +672,74 @@ class Ui_slider(object):
         self.horizontalLayout_10.setSpacing(15)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
         self.horizontalLayout_10.setContentsMargins(12, -1, 12, -1)
+        self.horizontalLayout_14 = QHBoxLayout()
+        self.horizontalLayout_14.setSpacing(0)
+        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
         self.start_date_input = QDateEdit(self.date_frame)
         self.start_date_input.setObjectName(u"start_date_input")
         self.start_date_input.setEnabled(True)
+        self.start_date_input.setMaximumSize(QSize(16777215, 37))
+        self.start_date_input.setStyleSheet(u"PdateEditsStyle")
+        self.start_date_input.setAlignment(Qt.AlignCenter)
         self.start_date_input.setTimeSpec(Qt.OffsetFromUTC)
 
-        self.horizontalLayout_10.addWidget(self.start_date_input)
+        self.horizontalLayout_14.addWidget(self.start_date_input)
 
-        self.date_to_label = QLabel(self.date_frame)
-        self.date_to_label.setObjectName(u"date_to_label")
+        self.start_date_btn = QPushButton(self.date_frame)
+        self.start_date_btn.setObjectName(u"start_date_btn")
         sizePolicy3 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
         sizePolicy3.setHorizontalStretch(0)
         sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.start_date_btn.sizePolicy().hasHeightForWidth())
+        self.start_date_btn.setSizePolicy(sizePolicy3)
+        self.start_date_btn.setMinimumSize(QSize(0, 37))
+        self.start_date_btn.setMaximumSize(QSize(16777215, 37))
+        self.start_date_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.start_date_btn.setStyleSheet(u"PdatePushButtonsStyle")
+        icon6 = QIcon()
+        icon6.addFile(u":/icons/icons/date_black.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.start_date_btn.setIcon(icon6)
+        self.start_date_btn.setIconSize(QSize(25, 25))
+
+        self.horizontalLayout_14.addWidget(self.start_date_btn)
+
+
+        self.horizontalLayout_10.addLayout(self.horizontalLayout_14)
+
+        self.date_to_label = QLabel(self.date_frame)
+        self.date_to_label.setObjectName(u"date_to_label")
         sizePolicy3.setHeightForWidth(self.date_to_label.sizePolicy().hasHeightForWidth())
         self.date_to_label.setSizePolicy(sizePolicy3)
 
         self.horizontalLayout_10.addWidget(self.date_to_label)
 
+        self.horizontalLayout_15 = QHBoxLayout()
+        self.horizontalLayout_15.setSpacing(0)
+        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
         self.end_date_input = QDateEdit(self.date_frame)
         self.end_date_input.setObjectName(u"end_date_input")
         self.end_date_input.setEnabled(True)
+        self.end_date_input.setMaximumSize(QSize(16777215, 37))
+        self.end_date_input.setStyleSheet(u"PdateEditsStyle")
+        self.end_date_input.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_10.addWidget(self.end_date_input)
+        self.horizontalLayout_15.addWidget(self.end_date_input)
+
+        self.end_date_btn = QPushButton(self.date_frame)
+        self.end_date_btn.setObjectName(u"end_date_btn")
+        sizePolicy3.setHeightForWidth(self.end_date_btn.sizePolicy().hasHeightForWidth())
+        self.end_date_btn.setSizePolicy(sizePolicy3)
+        self.end_date_btn.setMinimumSize(QSize(0, 37))
+        self.end_date_btn.setMaximumSize(QSize(16777215, 37))
+        self.end_date_btn.setCursor(QCursor(Qt.PointingHandCursor))
+        self.end_date_btn.setStyleSheet(u"PdatePushButtonsStyle")
+        self.end_date_btn.setIcon(icon6)
+        self.end_date_btn.setIconSize(QSize(25, 25))
+
+        self.horizontalLayout_15.addWidget(self.end_date_btn)
+
+
+        self.horizontalLayout_10.addLayout(self.horizontalLayout_15)
 
 
         self.verticalLayout_8.addLayout(self.horizontalLayout_10)
@@ -676,10 +769,10 @@ class Ui_slider(object):
         sizePolicy2.setHeightForWidth(self.width_icon.sizePolicy().hasHeightForWidth())
         self.width_icon.setSizePolicy(sizePolicy2)
         self.width_icon.setStyleSheet(u"PfiltersIconsStyle")
-        icon6 = QIcon()
-        icon6.addFile(u":/icons/icons/width_gray.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon6.addFile(u":/icons/icons/width_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
-        self.width_icon.setIcon(icon6)
+        icon7 = QIcon()
+        icon7.addFile(u":/icons/icons/width_gray.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon7.addFile(u":/icons/icons/width_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
+        self.width_icon.setIcon(icon7)
         self.width_icon.setIconSize(QSize(25, 25))
 
         self.horizontalLayout_8.addWidget(self.width_icon)
@@ -751,10 +844,10 @@ class Ui_slider(object):
         sizePolicy2.setHeightForWidth(self.height_icon.sizePolicy().hasHeightForWidth())
         self.height_icon.setSizePolicy(sizePolicy2)
         self.height_icon.setStyleSheet(u"PfiltersIconsStyle")
-        icon7 = QIcon()
-        icon7.addFile(u":/icons/icons/length_gray.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon7.addFile(u":/icons/icons/length_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
-        self.height_icon.setIcon(icon7)
+        icon8 = QIcon()
+        icon8.addFile(u":/icons/icons/length_gray.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon8.addFile(u":/icons/icons/length_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
+        self.height_icon.setIcon(icon8)
         self.height_icon.setIconSize(QSize(25, 25))
 
         self.horizontalLayout_7.addWidget(self.height_icon)
@@ -825,10 +918,10 @@ class Ui_slider(object):
         sizePolicy2.setHeightForWidth(self.depth_icon.sizePolicy().hasHeightForWidth())
         self.depth_icon.setSizePolicy(sizePolicy2)
         self.depth_icon.setStyleSheet(u"PfiltersIconsStyle")
-        icon8 = QIcon()
-        icon8.addFile(u":/icons/icons/depth_gray.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon8.addFile(u":/icons/icons/depth_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
-        self.depth_icon.setIcon(icon8)
+        icon9 = QIcon()
+        icon9.addFile(u":/icons/icons/depth_gray.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon9.addFile(u":/icons/icons/depth_gray.png", QSize(), QIcon.Disabled, QIcon.Off)
+        self.depth_icon.setIcon(icon9)
         self.depth_icon.setIconSize(QSize(25, 25))
 
         self.horizontalLayout_6.addWidget(self.depth_icon)
@@ -896,10 +989,10 @@ class Ui_slider(object):
         self.filters_apply_btn.setEnabled(True)
         self.filters_apply_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.filters_apply_btn.setStyleSheet(u"PapplyFiltersButtonStyle")
-        icon9 = QIcon()
-        icon9.addFile(u":/icons/icons/apply_icon.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon9.addFile(u":/icons/icons/apply_disables.png", QSize(), QIcon.Disabled, QIcon.Off)
-        self.filters_apply_btn.setIcon(icon9)
+        icon10 = QIcon()
+        icon10.addFile(u":/icons/icons/apply_icon.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon10.addFile(u":/icons/icons/apply_disables.png", QSize(), QIcon.Disabled, QIcon.Off)
+        self.filters_apply_btn.setIcon(icon10)
         self.filters_apply_btn.setIconSize(QSize(20, 20))
 
         self.horizontalLayout_25.addWidget(self.filters_apply_btn)
@@ -913,9 +1006,9 @@ class Ui_slider(object):
         self.notif_clear_filter_btn.setSizePolicy(sizePolicy4)
         self.notif_clear_filter_btn.setCursor(QCursor(Qt.PointingHandCursor))
         self.notif_clear_filter_btn.setStyleSheet(u"PclearFiltersButtonStyle")
-        icon10 = QIcon()
-        icon10.addFile(u":/icons/icons/clear_filter_blue.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.notif_clear_filter_btn.setIcon(icon10)
+        icon11 = QIcon()
+        icon11.addFile(u":/icons/icons/clear_filter_blue.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.notif_clear_filter_btn.setIcon(icon11)
         self.notif_clear_filter_btn.setIconSize(QSize(20, 20))
 
         self.horizontalLayout_25.addWidget(self.notif_clear_filter_btn)
@@ -953,7 +1046,7 @@ class Ui_slider(object):
 
         self.retranslateUi(slider)
 
-        self.pages.setCurrentIndex(0)
+        self.pages.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(slider)
@@ -978,7 +1071,9 @@ class Ui_slider(object):
         self.filter_date_checkBox.setText("")
         self.date_icon.setText("")
         self.date_label.setText(QCoreApplication.translate("slider", u"Date", None))
+        self.start_date_btn.setText("")
         self.date_to_label.setText(QCoreApplication.translate("slider", u"To", None))
+        self.end_date_btn.setText("")
         self.filter_width_checkBox.setText("")
         self.width_icon.setText("")
         self.width_label.setText(QCoreApplication.translate("slider", u"Width (cm)", None))

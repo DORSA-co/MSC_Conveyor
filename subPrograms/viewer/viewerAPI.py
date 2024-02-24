@@ -108,9 +108,8 @@ class viewerAPI:
         return xyz
 
     def draw_bounding_box(self, image: np.ndarray, color: tuple = (33, 33, 133)):
-        h,w = image.shape[:2]
         line_idx = self.get_image_idx_boundry_idx(self.current_image_idx)[1]
-        pt1, pt2 = self.defect_obj.get_bounding_box(line_idx,w )
+        pt1, pt2 = self.defect_obj.get_bounding_box(line_idx)
         
         image = cv2.rectangle(image, pt1, pt2, color=color, thickness=2)
         return image

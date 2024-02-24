@@ -1024,13 +1024,13 @@ class GUIBackend:
         """returns date of QDateEdit
         """
         if block_signal:
-            GUIBackend.set_signal_connection(date, False)
+            GUIBackend.set_signal_connection(obj, False)
 
         date = QtCore.QDate(date.year, date.month, date.day)
         obj.setDate(date)
 
         if block_signal:
-            GUIBackend.set_signal_connection(date, True)
+            GUIBackend.set_signal_connection(obj, True)
     
 
     def date_input_connector( obj: QtWidgets.QDateEdit, func):

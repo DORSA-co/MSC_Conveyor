@@ -14,6 +14,7 @@ from uiUtils.GUIComponents import defectNotification
 from uiUtils.guiBackend import GUIBackend
 from UIFiles.popup_slider import Ui_slider
 from uiUtils.GUIComponents import singleAnimation
+from uiUtils.GUIComponents import Calendar
 from Constants.IconsPath import IconsPath
 from uiUtils import GUIComponents 
 from backend.Utils.Filter import applyFilter
@@ -263,6 +264,11 @@ class sliderMenu:
             'depth': (self.ui.low_depth_input, self.ui.high_depth_input),
         }
 
+        self.date_filter_buttons = {
+            'start': self.ui.start_date_btn,
+            'end': self.ui.end_date_btn
+        }
+
         self.filters_activation = {
             'date': self.ui.filter_date_checkBox,
             'width': self.ui.filter_width_checkBox,
@@ -276,7 +282,6 @@ class sliderMenu:
         }
 
         GUIBackend.button_connector(self.ui.close, self.slide_out)
-        
 
         for name in self.filters.keys():
             low_field, high_feild = self.filters[name]
@@ -289,6 +294,7 @@ class sliderMenu:
             self.__handle_fields_enablity(False, name)
 
         self.__set_dates_default_values()
+        self.__date_filter_button_connector()
 
     def __set_dates_default_values(self):
         for field in self.filters['date']:
@@ -312,6 +318,10 @@ class sliderMenu:
         GUIBackend.set_disable_enable(low_field, state)
         GUIBackend.set_disable_enable(high_feild, state)
 
+        if name == 'date':
+            GUIBackend.set_disable_enable(self.date_filter_buttons['start'], state)
+            GUIBackend.set_disable_enable(self.date_filter_buttons['end'], state)
+
     def __setup(self,):
         self.ui = Ui_slider()
         self.ui.setupUi(self.parent)
@@ -331,6 +341,26 @@ class sliderMenu:
                                                QRect(parent_w,0,slider_w,parent_h),
                                                QRect(parent_w-slider_w,0,slider_w,parent_h)
                                                )
+        
+    def __date_filter_button_connector(self):
+        GUIBackend.button_connector(self.date_filter_buttons['start'], self.__set_filter_start_date)
+        GUIBackend.button_connector(self.date_filter_buttons['end'], self.__set_filter_end_date)
+    
+    def __show_calender(self):
+        calendar = Calendar()
+        selected_date = calendar.show_win()
+        return selected_date
+
+    def __set_filter_start_date(self):
+        selected_date = self.__show_calender()
+        if selected_date:
+            GUIBackend.set_input(self.filters['date'][0], selected_date)
+
+    def __set_filter_end_date(self):
+        selected_date = self.__show_calender()
+        if selected_date:
+            GUIBackend.set_input(self.filters['date'][1], selected_date)
+
         
     def button_connector(self, name, func):
         GUIBackend.button_connector(self.buttons[name], func)
@@ -355,7 +385,6 @@ class sliderMenu:
             pixmap  = QPixmap(IconsPath.ERROR_ICON)
         icon_obj.setPixmap(pixmap)
 
-
     def get_filters(self, ):
         res = {}
         for name in self.filters.keys():
@@ -373,4 +402,3 @@ class sliderMenu:
     def deactive_filters(self):
         for filter_activation in self.filters_activation.values():
             GUIBackend.set_checkbox_value(filter_activation, False)
-    

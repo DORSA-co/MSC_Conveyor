@@ -120,9 +120,6 @@ class DefectTracker:
 
 
     def draw(self, min_length, image: np.ndarray, line_idx: int, color: tuple = (33, 33, 133)):
-        if 0<= line_idx <= 100:
-            x = 1
-        h, w = image.shape[:2]
         #print('total defect to draw',len(self.non_completed_defects) + len(self.__not_pass_completed_defects))
         for defect in self.non_completed_defects.values():
 

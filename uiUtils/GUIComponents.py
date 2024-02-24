@@ -5,13 +5,16 @@ import re
 import cv2
 from persiantools.jdatetime import JalaliDateTime, JalaliDate
 
-from PySide6.QtWidgets import QApplication
+from PySide6.QtWidgets import QApplication, QToolButton
 from PySide6 import QtWidgets, QtCore, QtGui
 from UIFiles.defect_notification import Ui_Notification
 from UIFiles.progress_dialog import Ui_progressDialog
 from UIFiles.verify_UI import Ui_verifyDialogWin
+from UIFiles.calendar import Ui_CalendarDialog
 from backend.UserManager.userLoginRegister import passwordManager
 from uiUtils.guiBackend import GUIBackend
+
+from Constants import Constant
 
 from Constants import Constant
 from Constants import IconsPath
@@ -412,9 +415,94 @@ def single_timer_runner( t, func):
     timer = QtCore.QTimer()
     timer.singleShot(t, func)
 
+class Calendar(QtWidgets.QDialog):
+    def __init__(self) -> None:
+        super(Calendar, self).__init__()
+
+        self.ui = Ui_CalendarDialog()
+        self.ui.setupUi(self)
+
+        GUIBackend.set_win_frameless(self)
+        GUIBackend.set_win_attribute(self, QtCore.Qt.WA_TranslucentBackground)
+
+        GUIBackend.button_connector(self.ui.cancel_btn, self.close_win)
+        GUIBackend.button_connector(self.ui.ok_btn, self.get_selected_date)
+
+        self.move_refresh_time = 0
+        self.offset = None
+
+        self.selected_date = None
+
+        self._center()
+        self._styler()
+
+    def _center(self):
+        primary_screen = QApplication.primaryScreen()
+
+        if primary_screen:
+            screen_geometry = primary_screen.geometry()
+
+            center_point = screen_geometry.center()
+
+            self.move(center_point.x() - self.frameGeometry().width() // 2,
+                      center_point.y() - self.frameGeometry().height() // 2)
+            
+    def _styler(self):
+        self._style_next_prev()
+        self._style_today()
+            
+    def _style_next_prev(self):
+        prev_month_button = self.ui.calendar.findChild(QToolButton, 'qt_calendar_prevmonth')
+        next_month_button = self.ui.calendar.findChild(QToolButton, 'qt_calendar_nextmonth')
+
+        prev_month_button.setIcon(QtGui.QIcon(':/icons/icons/prev_gray.png'))
+        next_month_button.setIcon(QtGui.QIcon(':/icons/icons/next_gray.png'))
+
+        prev_month_button.setCursor(QtGui.QCursor(QtGui.Qt.PointingHandCursor))
+        next_month_button.setCursor(QtGui.QCursor(QtGui.Qt.PointingHandCursor))
+
+    def _style_today(self):
+        today_format = QtGui.QTextCharFormat()
+        today_format.setForeground(QtGui.QColor('#4C7EFF'))
+
+        self.ui.calendar.setDateTextFormat(QtCore.QDate.currentDate(), today_format)
+
+    def mousePressEvent(self, event):
+        if event.button() == QtCore.Qt.LeftButton:
+            self.offset = QtCore.QPoint(event.position().x(),event.position().y())
+        else:
+            super().mousePressEvent(event)
+
+    def mouseMoveEvent(self, event):
+        if self.offset is not None and event.buttons() == QtCore.Qt.LeftButton:
+            if time.time() - self.move_refresh_time > Constant.RefreshRates.MOUSE_MOVE:
+                self.move_refresh_time = time.time()
+                self.move(self.pos() + QtCore.QPoint(event.scenePosition().x(),event.scenePosition().y()) - self.offset)
+
+        else:
+            super().mouseMoveEvent(event)
+
+    def mouseReleaseEvent(self, event):
+        self.offset = None
+        super().mouseReleaseEvent(event)
+
+    def show_win(self):
+        result = self.exec_()
+        if result == QtWidgets.QDialog.Accepted:
+            return self.selected_date
+        else:
+            return None
+
+    def close_win(self):
+        GUIBackend.close_window(self)
+        self.reject()
+
+    def get_selected_date(self):
+        self.selected_date = self.ui.calendar.selectedDate().toPython()
+        self.accept()
 
 class VerifyUser(QtWidgets.QDialog):
-    def __init__(self, password) -> None:
+    def __init__(self, username, password) -> None:
         super(VerifyUser, self).__init__()
 
         self.ui = Ui_verifyDialogWin()
@@ -427,6 +515,7 @@ class VerifyUser(QtWidgets.QDialog):
         GUIBackend.button_connector(self.ui.verify_eye_btn, self.show_hide_password)
         GUIBackend.button_connector(self.ui.verify_btn, self.verify_password)
 
+        self.username = username
         self.password = password
 
         self.move_refresh_time = 0
@@ -435,6 +524,8 @@ class VerifyUser(QtWidgets.QDialog):
         self.offset = None
 
         self._center()
+
+        self.set_verification_message()
 
     def _center(self):
         # Get primary screen
@@ -474,6 +565,9 @@ class VerifyUser(QtWidgets.QDialog):
         if event.key() == 16777220:  # Enter key
             self.ui.verify_btn.click()
 
+    def set_verification_message(self):
+        GUIBackend.set_label_text(self.ui.verify_message, 'Enter {} Password'.format(self.username))
+
     def verify_password(self):
         enterd_password = self.get_inputs()
         if passwordManager.check_password(Constant.User.UNLOGIN_USER_PASSWORD, self.password):
@@ -491,6 +585,7 @@ class VerifyUser(QtWidgets.QDialog):
     def close_win(self):
         self.clear_inputs()
         GUIBackend.close_window(self)
+        self.reject()
 
     def show_hide_password(self):
         self.show_password = not self.show_password
@@ -1524,10 +1619,17 @@ class defectNotification(QtWidgets.QWidget):
     
     
     def set_selected(self,flag):
+        style = """
+            #main_frame{{
+            background-color: rgb{0};
+            border:1px solid #E0E4EC;
+            border-radius: 15px;
+        }}
+        """
         if flag:
-            self.ui.main_frame.setStyleSheet("#main_frame{background-color:  rgb(194, 204, 238);}")
+            self.ui.main_frame.setStyleSheet(style.format("(194, 204, 238)"))
         else:
-            self.ui.main_frame.setStyleSheet("#main_frame{background-color:#F7F8FA;}")
+            self.ui.main_frame.setStyleSheet(style.format("(247, 248, 250)"))
 
     def set_checkbox(self, flag):
         self.ui.select_checkBox.setChecked(flag)

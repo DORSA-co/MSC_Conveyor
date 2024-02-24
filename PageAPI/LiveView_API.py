@@ -34,8 +34,8 @@ class LiveView_API:
         
         self.__button_connector()
 
+        self.logined_user_username = Constant.User.UNLOGIN_USER_USERNAME
         self.logined_user_password = Constant.User.UNLOGIN_USER_PASSWORD
-
 
     def startup(self,):
         pass
@@ -60,14 +60,15 @@ class LiveView_API:
         self.uiHandeler.sliderMenu.button_connector('clear_filters', self.clear_filters)
         self.uiHandeler.button_connector('run_stop', self.run_stop)
 
-    def set_logined_user_password(self, password):
+    def set_logined_user(self, username, password):
+        self.logined_user_username = username
         self.logined_user_password = password
 
     def run_stop(self,):
-        # verify = VerifyUser(self.logined_user_password)
-        # res = verify.render()
-        # if not res:
-        #     return
+        verify = VerifyUser(self.logined_user_username, self.logined_user_password)
+        res = verify.render()
+        if not res:
+            return
         self.is_running = not(self.is_running)
         self.uiHandeler.set_run_stop_icon('pause' if self.is_running else 'play')
         self.external_run_stop_event_func()

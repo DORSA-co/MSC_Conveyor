@@ -1,5 +1,7 @@
 from Database.databaseManager import databaseManager
+## DATE ##
 from persiantools import jdatetime
+# import datetime
 
 class Defect_DB:
     TABLE_NAME = "Defect_Table"
@@ -65,8 +67,10 @@ class Defect_DB:
     def load(self):
          records=self.db_manager.get_all_content(self.TABLE_NAME, reverse_order=True)
          for record in records:
+            ## DATE ##
             record['date'] = jdatetime.JalaliDateTime.strptime(record['date'], '%Y/%m/%d')
             record['time'] = jdatetime.JalaliDateTime.strptime(record['time'], '%H:%M:%S')
+
          return records
       
     def remove_record(self,column_name, Select_ID):

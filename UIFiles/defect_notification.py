@@ -87,9 +87,9 @@ class Ui_Notification(object):
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.PointStyleSheet = QWidget(self.LocalStyleSheet)
         self.PointStyleSheet.setObjectName(u"PointStyleSheet")
-        self.PointStyleSheet.setStyleSheet(u"/**************************mainStyle***************************/\n"
+        self.PointStyleSheet.setStyleSheet(u"/**************************PmainStyle***************************/\n"
 "\n"
-"*[styleSheet=\"mainStyle\"]\n"
+"*[styleSheet=\"PmainStyle\"]\n"
 "{\n"
 "	border:1px solid #E0E4EC;\n"
 "	border-radius: 15px;\n"
@@ -138,7 +138,7 @@ class Ui_Notification(object):
         self.main_frame.setObjectName(u"main_frame")
         self.main_frame.setMinimumSize(QSize(0, 100))
         self.main_frame.setMaximumSize(QSize(16777215, 100))
-        self.main_frame.setStyleSheet(u"mainStyle")
+        self.main_frame.setStyleSheet(u"PmainStyle")
         self.main_frame.setFrameShape(QFrame.StyledPanel)
         self.main_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_4 = QHBoxLayout(self.main_frame)

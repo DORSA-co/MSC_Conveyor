@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1205</width>
-    <height>825</height>
+    <height>847</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -171,30 +171,28 @@ QLineEdit:focus {
 	border-bottom: 2px solid #7892DF;
 }
 
-/***********QSpinBox, QDoubleSpinBox, QDateEdit*************/
+/*****************QSpinBox, QDoubleSpinBox*******************/
 
-QSpinBox, QDoubleSpinBox, QDateEdit
+QSpinBox, QDoubleSpinBox
 {
 	background-color: transparent;
 	border-bottom: 2px solid #D7D7D9;
 	border-radius: None;
-	font-size: 18px;
+	font-size: 16px;
 	min-height: 25px;
 	min-width: 70px;
 	qproperty-alignment: AlignCenter;
 }
 
 QSpinBox:disabled ,
-QDoubleSpinBox:disabled,
-QDateEdit:disabled
+QDoubleSpinBox:disabled
 {
 	border-bottom: 2px solid #F0F0F2;
 	color: rgb(120, 120, 120);
 }
 
 QSpinBox::up-arrow, 
-QDoubleSpinBox::up-arrow,
-QDateEdit::up-arrow
+QDoubleSpinBox::up-arrow
 {   
 	image: url(:/icons/icons/plus_icon_black.png);
 	width: 16px;
@@ -202,8 +200,7 @@ QDateEdit::up-arrow
 }
 
 QSpinBox::down-arrow,  
-QDoubleSpinBox::down-arrow,
-QDateEdit::down-arrow
+QDoubleSpinBox::down-arrow
 {   
 	image: url(:/icons/icons/minus_icon_black.png);
 	width: 16px;
@@ -211,8 +208,7 @@ QDateEdit::down-arrow
 }
 
 QSpinBox::up-arrow:disabled, 
-QDoubleSpinBox::up-arrow:disabled,
-QDateEdit::up-arrow:disabled
+QDoubleSpinBox::up-arrow:disabled
 {   
 	image: url(:/icons/icons/plus_icon_gray.png);
 	width: 16px;
@@ -220,8 +216,7 @@ QDateEdit::up-arrow:disabled
 }
 
 QSpinBox::down-arrow:disabled ,  
-QDoubleSpinBox::down-arrow:disabled,
-QDateEdit::down-arrow:disabled
+QDoubleSpinBox::down-arrow:disabled
 {   
 	image: url(:/icons/icons/minus_icon_gray.png);
 	width: 16px;
@@ -229,8 +224,7 @@ QDateEdit::down-arrow:disabled
 }
 
 QSpinBox::up-button,
-QDoubleSpinBox::up-button,
-QDateEdit::up-button
+QDoubleSpinBox::up-button
 {
 	border:none;
     min-width:30px;
@@ -242,8 +236,7 @@ QDateEdit::up-button
 }
 
 QSpinBox::down-button,
-QDoubleSpinBox::down-button,
-QDateEdit::down-button
+QDoubleSpinBox::down-button
 {
     min-width:30px;
     min-height: 29px;
@@ -256,9 +249,7 @@ QDateEdit::down-button
 QSpinBox::up-button,
 QSpinBox::down-button,
 QDoubleSpinBox::up-button,
-QDoubleSpinBox::down-button ,
-QDateEdit::up-button,
-QDateEdit::down-button
+QDoubleSpinBox::down-button
 {
 	background-color: transparent;
 }
@@ -266,14 +257,40 @@ QDateEdit::down-button
 QSpinBox::up-button:disabled ,
 QSpinBox::down-button:disabled ,
 QDoubleSpinBox::up-button:disabled ,
-QDoubleSpinBox::down-button:disabled,
-QDateEdit::up-button:disabled,
-QDateEdit::down-button:disabled
+QDoubleSpinBox::down-button:disabled
 {
     subcontrol-origin: border;
 }
 
-QSpinBox:focus, QDoubleSpinBox:focus, QDateEdit:focus{
+QSpinBox:focus, QDoubleSpinBox:focus{
+	border-bottom: 2px solid #7892DF;
+}
+
+/***************************QDateEdit****************************/
+
+QDateEdit
+{
+	border:1px solid #E0E4EC;
+	background-color: #F7F8FA;
+	border-radius: 10px;
+	min-height: 35px;
+	font-size: 16px;
+}
+
+QDateEdit:disabled
+{
+	border: 2px solid #F0F0F2;
+	color: rgb(120, 120, 120);
+}
+
+QDateEdit::up-button,
+QDateEdit::down-button
+{
+	width: 0px;
+	background-color: transparent;
+}
+
+QDateEdit:focus{
 	border-bottom: 2px solid #7892DF;
 }
 
@@ -1098,7 +1115,7 @@ QComboBox:focus{
                <string notr="true">PmainStackedWidgetStyle</string>
               </property>
               <property name="currentIndex">
-               <number>0</number>
+               <number>2</number>
               </property>
               <widget class="QWidget" name="live_view_page">
                <property name="styleSheet">
@@ -1261,8 +1278,8 @@ font-weight:bold;</string>
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>320</width>
-                          <height>684</height>
+                          <width>90</width>
+                          <height>30</height>
                          </rect>
                         </property>
                         <property name="styleSheet">
@@ -1923,6 +1940,9 @@ border-radius: 20px;</string>
                                <property name="enabled">
                                 <bool>false</bool>
                                </property>
+                               <property name="cursor">
+                                <cursorShape>PointingHandCursor</cursorShape>
+                               </property>
                               </widget>
                              </item>
                              <item>
@@ -1947,7 +1967,11 @@ border-radius: 20px;</string>
                                 </widget>
                                </item>
                                <item>
-                                <widget class="QComboBox" name="devices_sn_combobox"/>
+                                <widget class="QComboBox" name="devices_sn_combobox">
+                                 <property name="cursor">
+                                  <cursorShape>PointingHandCursor</cursorShape>
+                                 </property>
+                                </widget>
                                </item>
                               </layout>
                              </item>
@@ -2913,6 +2937,9 @@ border-radius: 20px;</string>
                                <property name="enabled">
                                 <bool>true</bool>
                                </property>
+                               <property name="cursor">
+                                <cursorShape>PointingHandCursor</cursorShape>
+                               </property>
                                <property name="styleSheet">
                                 <string notr="true"/>
                                </property>
@@ -3865,7 +3892,61 @@ QFrame{
                          <number>10</number>
                         </property>
                         <item>
-                         <widget class="QDateEdit" name="report_start_date_input"/>
+                         <layout class="QHBoxLayout" name="horizontalLayout_46">
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QDateEdit" name="report_start_date_input">
+                            <property name="styleSheet">
+                             <string notr="true">PeyeLineEditsStyle</string>
+                            </property>
+                            <property name="alignment">
+                             <set>Qt::AlignCenter</set>
+                            </property>
+                            <property name="displayFormat">
+                             <string>MM/dd/yyyy</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="report_start_date_btn">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">border: 0px;
+background-color: rgba(0,0,0,0);
+border:1px solid #E0E4EC;
+background-color: #F7F8FA;
+border-radius: 10px;
+border-top-left-radius: 0px;
+border-bottom-left-radius: 0px;
+border-left: None;
+padding-right: 3px;</string>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="assets/assets.qrc">
+                              <normaloff>:/icons/icons/date_black.png</normaloff>:/icons/icons/date_black.png</iconset>
+                            </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>25</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
                         </item>
                         <item>
                          <widget class="QLabel" name="report_date_to_label">
@@ -3881,7 +3962,61 @@ QFrame{
                          </widget>
                         </item>
                         <item>
-                         <widget class="QDateEdit" name="report_end_date_input"/>
+                         <layout class="QHBoxLayout" name="horizontalLayout_48">
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QDateEdit" name="report_end_date_input">
+                            <property name="styleSheet">
+                             <string notr="true">PeyeLineEditsStyle</string>
+                            </property>
+                            <property name="alignment">
+                             <set>Qt::AlignCenter</set>
+                            </property>
+                            <property name="displayFormat">
+                             <string>MM/dd/yyyy</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="report_end_date_btn">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="cursor">
+                             <cursorShape>PointingHandCursor</cursorShape>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">border: 0px;
+background-color: rgba(0,0,0,0);
+border:1px solid #E0E4EC;
+background-color: #F7F8FA;
+border-radius: 10px;
+border-top-left-radius: 0px;
+border-bottom-left-radius: 0px;
+border-left: None;
+padding-right: 3px;</string>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="assets/assets.qrc">
+                              <normaloff>:/icons/icons/date_black.png</normaloff>:/icons/icons/date_black.png</iconset>
+                            </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>25</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
                         </item>
                        </layout>
                       </widget>
@@ -4507,7 +4642,11 @@ QFrame{
                          <number>10</number>
                         </property>
                         <item>
-                         <widget class="QComboBox" name="report_class_comboBox"/>
+                         <widget class="QComboBox" name="report_class_comboBox">
+                          <property name="cursor">
+                           <cursorShape>PointingHandCursor</cursorShape>
+                          </property>
+                         </widget>
                         </item>
                        </layout>
                       </widget>
@@ -5002,7 +5141,7 @@ QFrame{
                      <bool>true</bool>
                     </property>
                     <attribute name="horizontalHeaderVisible">
-                     <bool>false</bool>
+                     <bool>true</bool>
                     </attribute>
                     <attribute name="horizontalHeaderDefaultSectionSize">
                      <number>150</number>
@@ -5410,7 +5549,11 @@ QFrame{
                           </widget>
                          </item>
                          <item>
-                          <widget class="QComboBox" name="userpage_user_role_combobox"/>
+                          <widget class="QComboBox" name="userpage_user_role_combobox">
+                           <property name="cursor">
+                            <cursorShape>PointingHandCursor</cursorShape>
+                           </property>
+                          </widget>
                          </item>
                         </layout>
                        </item>
@@ -5482,8 +5625,8 @@ QFrame{
                            <rect>
                             <x>0</x>
                             <y>0</y>
-                            <width>925</width>
-                            <height>253</height>
+                            <width>100</width>
+                            <height>30</height>
                            </rect>
                           </property>
                           <property name="sizePolicy">
@@ -5692,8 +5835,8 @@ QFrame{
                              <rect>
                               <x>0</x>
                               <y>0</y>
-                              <width>437</width>
-                              <height>381</height>
+                              <width>100</width>
+                              <height>30</height>
                              </rect>
                             </property>
                             <property name="styleSheet">
@@ -5978,8 +6121,8 @@ QFrame{
                              <rect>
                               <x>0</x>
                               <y>0</y>
-                              <width>436</width>
-                              <height>292</height>
+                              <width>100</width>
+                              <height>30</height>
                              </rect>
                             </property>
                             <property name="styleSheet">
