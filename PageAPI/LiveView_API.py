@@ -3,7 +3,8 @@ import random
 import time
 
 import cv2
-from persiantools.jdatetime import JalaliDate, JalaliDateTime
+# from persiantools.jdatetime import JalaliDate, JalaliDateTime
+from datetime import datetime
 import numpy as np
 
 from uiUtils.GUIComponents import defectNotification
@@ -50,7 +51,7 @@ class LiveView_API:
             self.uiHandeler.append_notification( defect.id,
                                                 'material_side', 
                                                 'new',
-                                                defect.jdatetime, 
+                                                defect.datetime, 
                                                 'should be change', 
                                                 (100,200,20)
                                                 )

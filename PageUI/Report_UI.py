@@ -1,6 +1,5 @@
-from persiantools import jdatetime
 import math
-
+from datetime import datetime
 from UIFiles.main_UI import Ui_MainWindow
 from .Common_Function_UI import Common_Function_UI
 from uiUtils.guiBackend import GUIBackend
@@ -116,6 +115,8 @@ class Report_UI(Common_Function_UI):
             'end_date_btn': self.ui.report_end_date_btn
         }
 
+        self.state_date_calender = Calendar(self.filters['ranges']['date'][0])
+        self.end_date_calender = Calendar(self.filters['ranges']['date'][1])
         
         self.table_widget_func = None
         self.pages_number_navigation_button:dict[int,pageNavigationButton] = {}
@@ -130,12 +131,23 @@ class Report_UI(Common_Function_UI):
         
         self.__filter_animation_builder()
 
-        self.button_connector('next', self.table_next_page)
-        self.button_connector('prev', self.table_previous_page)
-        self.button_connector('move_table_hscroll_start', self.__set_table_scrollbar_to_start)
-        self.button_connector('move_table_hscroll_end', self.__set_table_scrollbar_to_end)
-        self.button_connector('start_date_btn', self.__set_filter_start_date)
-        self.button_connector('end_date_btn', self.__set_filter_end_date)
+        GUIBackend.button_connector(self.buttons['next'], 
+                                    self.table_next_page)
+        GUIBackend.button_connector(self.buttons['prev'], 
+                                    self.table_previous_page)
+        
+        GUIBackend.button_connector(self.buttons['move_table_hscroll_start'], 
+                                    self.__set_table_scrollbar_to_start)
+        
+        GUIBackend.button_connector(self.buttons['move_table_hscroll_end'], 
+                                    self.__set_table_scrollbar_to_end)
+        
+        GUIBackend.button_connector(self.buttons['start_date_btn'], 
+                                                  self.state_date_calender.show_win )
+        
+        GUIBackend.button_connector(self.buttons['end_date_btn'], 
+                                                  self.end_date_calender.show_win )
+ 
 
         GUIBackend.checkbox_connector(self.ui.select_all_defects_table, self.select_all)
 
@@ -146,6 +158,10 @@ class Report_UI(Common_Function_UI):
         self.handle_next_prev_enablity()
 
     def startup(self,):
+        #set today for default date
+        for field in self.filters['ranges']['date']:
+            GUIBackend.set_date_input(field, datetime.today())
+
         self.__set_table_scrollbar_to_start()
         GUIBackend.set_table_cheaders(self.ui.report_table, 
                                       [self.TABLE_HEADERS[i]+self.TABLE_HEADERS_UNITS[i] for i in range(len(self.TABLE_HEADERS))]
@@ -176,13 +192,13 @@ class Report_UI(Common_Function_UI):
         #self.table_current_page += 1
         self.table_page_event(self.table_current_page + 1)
         self.handle_next_prev_enablity()
-        self.set_table_contents()
+        self.update_table_contents()
 
     def table_previous_page(self):
         #self.table_current_page -= 1
         self.table_page_event(self.table_current_page - 1)
         self.handle_next_prev_enablity()
-        self.set_table_contents()
+        self.update_table_contents()
         
 
     def handle_next_prev_enablity(self):
@@ -201,9 +217,9 @@ class Report_UI(Common_Function_UI):
         self.setup_page_navigation_buttons(1, self.table_total_pages, self.table_page_event)
         self.handle_next_prev_enablity()
         # self.handle_page_numbers_enablity()
-        self.set_table_contents()
+        self.update_table_contents()
     
-    def set_table_contents(self):
+    def update_table_contents(self):
         table_page_start_idx = ReportTableLimit.REPORT_TABLE_LIMIT*(self.table_current_page-1)
         table_page_end_idx = min(ReportTableLimit.REPORT_TABLE_LIMIT*(self.table_current_page), 
                                  len(self.table_total_contents)
@@ -280,7 +296,7 @@ class Report_UI(Common_Function_UI):
         self.table_current_page = number
         self.pages_number_navigation_button[self.table_current_page].set_selected(True)
         self.handle_next_prev_enablity()
-        self.set_table_contents()
+        self.update_table_contents()
 
     def checked_table_record(self,state, record):
         if state:
@@ -294,7 +310,7 @@ class Report_UI(Common_Function_UI):
             self.selected_table_contents = self.table_total_contents.copy()
         else:
             self.selected_table_contents = []
-        self.set_table_contents()
+        self.update_table_contents()
     
     def get_selected_defects(self,):
         return self.selected_table_contents
@@ -341,17 +357,3 @@ class Report_UI(Common_Function_UI):
         GUIBackend.set_disable_enable(self.buttons['move_table_hscroll_start'], True)
         GUIBackend.set_disable_enable(self.buttons['move_table_hscroll_end'], False)
 
-    def __show_calender(self):
-        calendar = Calendar()
-        selected_date = calendar.show_win()
-        return selected_date
-
-    def __set_filter_start_date(self):
-        selected_date = self.__show_calender()
-        if selected_date:
-            GUIBackend.set_input(self.filters['ranges']['date'][0], selected_date)
-
-    def __set_filter_end_date(self):
-        selected_date = self.__show_calender()
-        if selected_date:
-            GUIBackend.set_input(self.filters['ranges']['date'][1], selected_date)

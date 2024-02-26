@@ -2,7 +2,8 @@ import json
 import os
 
 import numpy as np
-from persiantools.jdatetime import JalaliDateTime
+# from persiantools.jdatetime import JalaliDateTime
+from datetime import datetime
 
 from Detection.Defect import Defect, numberStatics
 
@@ -18,8 +19,8 @@ class DefectFileManager:
         json_dict['width_info'] = self.number_statics_to_json(defect.widthInfo)
         json_dict['depth_info'] = self.number_statics_to_json(defect.widthInfo)
 
-        json_dict['date'] = defect.jdatetime.strftime('%Y/%m/%d')
-        json_dict['time'] = defect.jdatetime.strftime('%H:%M:%S')
+        json_dict['date'] = defect.datetime.strftime('%Y/%m/%d')
+        json_dict['time'] = defect.datetime.strftime('%H:%M:%S')
 
         json_dict['n_last_lines'] = defect.n_last_lines
 
@@ -57,7 +58,7 @@ class DefectFileManager:
         defect.widthInfo = self.json_to_number_statics(json_dict['width_info'])
         defect.depthInfo = self.json_to_number_statics(json_dict['depth_info'])
 
-        defect.jdatetime = JalaliDateTime.strptime(json_dict['date']+json_dict['time'], '%Y/%m/%d%H:%M:%S')
+        defect.datetime = datetime.strptime(json_dict['date']+json_dict['time'], '%Y/%m/%d%H:%M:%S')
 
         defect.n_last_lines = json_dict['n_last_lines']
 

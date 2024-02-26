@@ -1,6 +1,7 @@
 from Database.databaseManager import databaseManager
 ## DATE ##
-from persiantools import jdatetime
+#from persiantools import jdatetime
+import datetime
 # import datetime
 
 class Defect_DB:
@@ -68,8 +69,8 @@ class Defect_DB:
          records=self.db_manager.get_all_content(self.TABLE_NAME, reverse_order=True)
          for record in records:
             ## DATE ##
-            record['date'] = jdatetime.JalaliDateTime.strptime(record['date'], '%Y/%m/%d')
-            record['time'] = jdatetime.JalaliDateTime.strptime(record['time'], '%H:%M:%S')
+            record['date'] = datetime.datetime.strptime(record['date'], '%Y/%m/%d').date()
+            record['time'] = datetime.datetime.strptime(record['time'], '%H:%M:%S').time()
 
          return records
       

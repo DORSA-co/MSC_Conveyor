@@ -2,7 +2,8 @@ import numpy as np
 import random
 from functools import partial
 
-from persiantools.jdatetime import JalaliDateTime, JalaliDate
+# from persiantools.jdatetime import JalaliDateTime, JalaliDate
+from datetime import datetime
 from PySide6.QtWidgets import *
 from .Common_Function_UI import Common_Function_UI
 from PySide6.QtGui import QImage, QPixmap
@@ -150,7 +151,7 @@ class LiveView_UI(Common_Function_UI):
                             _id: int,
                             side:str,
                             tag:str,
-                            datetime:JalaliDateTime,  
+                            datetime:datetime,  
                             defect_type:str,
                             defect_color:tuple
                             ):
@@ -281,6 +282,14 @@ class sliderMenu:
             'clear_filters': self.ui.notif_clear_filter_btn,
         }
 
+        self.start_date_calender = Calendar(self.filters['date'][0])
+        self.end_date_calender = Calendar(self.filters['date'][1])
+
+        GUIBackend.button_connector(self.date_filter_buttons['start'],
+                                    self.start_date_calender.show_win )
+        GUIBackend.button_connector(self.date_filter_buttons['end'],
+                                    self.end_date_calender.show_win )
+
         GUIBackend.button_connector(self.ui.close, self.slide_out)
 
         for name in self.filters.keys():
@@ -294,11 +303,10 @@ class sliderMenu:
             self.__handle_fields_enablity(False, name)
 
         self.__set_dates_default_values()
-        self.__date_filter_button_connector()
 
     def __set_dates_default_values(self):
         for field in self.filters['date']:
-            GUIBackend.set_date_input(field, JalaliDateTime.now())
+            GUIBackend.set_date_input(field, datetime.now())
 
     def __setup_input_limits(self, name:str, limit_type:str ):
         def func():
@@ -341,25 +349,6 @@ class sliderMenu:
                                                QRect(parent_w,0,slider_w,parent_h),
                                                QRect(parent_w-slider_w,0,slider_w,parent_h)
                                                )
-        
-    def __date_filter_button_connector(self):
-        GUIBackend.button_connector(self.date_filter_buttons['start'], self.__set_filter_start_date)
-        GUIBackend.button_connector(self.date_filter_buttons['end'], self.__set_filter_end_date)
-    
-    def __show_calender(self):
-        calendar = Calendar()
-        selected_date = calendar.show_win()
-        return selected_date
-
-    def __set_filter_start_date(self):
-        selected_date = self.__show_calender()
-        if selected_date:
-            GUIBackend.set_input(self.filters['date'][0], selected_date)
-
-    def __set_filter_end_date(self):
-        selected_date = self.__show_calender()
-        if selected_date:
-            GUIBackend.set_input(self.filters['date'][1], selected_date)
 
         
     def button_connector(self, name, func):

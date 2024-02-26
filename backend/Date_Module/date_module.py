@@ -1,5 +1,5 @@
-from persiantools.jdatetime import JalaliDate
-import datetime
+# from persiantools.jdatetime import JalaliDate
+from datetime import datetime
 
 
 def get_date(persian=True, folder_path=False):
@@ -35,20 +35,20 @@ def get_date(persian=True, folder_path=False):
     # miladi date
     else:
         # get day
-        day = str(datetime.datetime.today().date().day)
+        day = str(datetime.today().date().day)
         if len(day)==1:
             day = '0' + day
         #
         # get month
-        month = str(datetime.datetime.today().date().month)
+        month = str(datetime.today().date().month)
         if len(month)==1:
             month = '0' + month
         #
         # full date string
         if not folder_path:
-            date = '%s/%s/%s' % (datetime.datetime.today().date().year, month, day)
+            date = '%s/%s/%s' % (datetime.today().date().year, month, day)
         else:
-            date = '%s-%s-%s' % (datetime.datetime.today().date().year, month, day)
+            date = '%s-%s-%s' % (datetime.today().date().year, month, day)
 
     return date
 
@@ -64,7 +64,7 @@ def get_time(folder_path=False):
         time: current time (in string)
     """
 
-    time = datetime.datetime.now()
+    time = datetime.now()
     
     if not folder_path:
         time = str(time.strftime("%H:%M:%S"))

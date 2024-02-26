@@ -24,12 +24,12 @@ class applyFilter:
 
             #-------------------------------------------                    
             if isinstance(_filter_value, tuple):
-                if isinstance(value, numbers.Number):
-                    if value < _filter_value[0] or value  > _filter_value[1]:
-                        return False
-                
-                elif isinstance(value, tuple):
+                if isinstance(value, tuple):
                     if value[0] > _filter_value[1] or value[1] < _filter_value[0]:
+                        return False
+
+                else:
+                    if value < _filter_value[0] or value  > _filter_value[1]:
                         return False
             
             #-------------------------------------------

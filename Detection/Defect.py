@@ -3,7 +3,8 @@ from __future__ import annotations
 import time
 
 ## DATE ##
-from persiantools.jdatetime import JalaliDate, JalaliDateTime
+#from persiantools.datetime import JalaliDate, JalaliDateTime
+from datetime import datetime
 # from datetime import datetime
 import numpy as np
 import cv2
@@ -53,6 +54,9 @@ class numberStatics:
 
 
 class Defect:
+    width_px2mm = 0.3
+    depth_px2mm = 0.7
+    lenght_px2mm = 3
     def __init__(
             self,
             start_anomaly_idx: int = None,
@@ -66,7 +70,7 @@ class Defect:
         self.widthInfo = numberStatics()
         self.depthInfo = numberStatics()
         ## DATE ##
-        self.jdatetime = JalaliDateTime.now() #datetime.now()
+        self.datetime = datetime.now() #datetime.now()
 
         self.n_last_lines = n_last_lines
         
@@ -184,7 +188,8 @@ class Defect:
     
     
     def get_length(self):
-        return np.round(abs(self.end_line_idx - self.start_line_idx), DecimalRound.ROUND_DECIMAL)
+        lenght_m = abs(self.end_line_idx - self.start_line_idx)/1000 * self.lenght_px2mm
+        return np.round(lenght_m, DecimalRound.ROUND_DECIMAL)
 
 
     def get_info_for_filter(self,):
@@ -193,7 +198,7 @@ class Defect:
             'depth': (self.depthInfo.min, self.depthInfo.max),
             'lenght': self.get_length(),
             ## DATE ##
-            'date': self.jdatetime.date(),
+            'date': self.datetime.date(),
         }
 
         return res
@@ -203,8 +208,8 @@ class Defect:
         res['defect_id'] = self.id
 
         ## DATE ##
-        res['date'] = self.jdatetime.date()
-        res['time'] = self.jdatetime.time()
+        res['date'] = self.datetime.date()
+        res['time'] = self.datetime.time()
 
         res['x'] = self.start_line_idx
         res['y'] = self.defect_width_boundries[0]
@@ -262,10 +267,12 @@ class Defect:
         return image
 
     def __append_width_info(self, start_idx, end_idx):
-        self.widthInfo.add(end_idx - start_idx)
+        width_cm = abs(end_idx - start_idx) * self.width_px2mm / 10
+        self.widthInfo.add(width_cm)
 
-    def __append_depth_info(self, depthes):
-        self.depthInfo.add_list(depthes)
+    def __append_depth_info(self, depthes_px):
+        depthes_mm = depthes_px * self.depth_px2mm
+        self.depthInfo.add_list(depthes_mm)
 
     def __append_idx(self, start_idx, end_idx):
         self.defect_indices = np.append( self.defect_indices, np.array([[start_idx, end_idx ]]), axis=0 )

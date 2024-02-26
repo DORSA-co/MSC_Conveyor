@@ -157,40 +157,6 @@ class CameraSetting_API:
             print(f'{name} Setting is not available')
         
 
-    # def calculate_tear_depth(self):
-    #    perspective = np.cos(60 * 3.14159 / 180)  
-    #    if self.camera !=None:
-    #        #self.camera.build_converter(pixel_type=dorsaPylon.PixelType.GRAY8)         ###################  for getting image from  camera
-    #        # self.camera.Operations.start_grabbing()
-    #         #self.camera.Parms.set_exposureTime(5000)
-    #        # self.camera.Parms.set_gain(517)  #217   #### get the good answer
-    #        parms_camera = self.ui_cam.get_camera_parms_UI()
-    #        Exposure=parms_camera["Exposure"]
-    #        Gain=parms_camera["Gain"]
-
-    #        self.camera.Parms.set_exposureTime(Exposure)      # Get good answer for second version ----- 5000
-    #        self.camera.Parms.set_gain(Gain)  #217   #### get the good answer         # Get good answer for second version ----- 517
-    #        img = self.camera.getPictures()
-    #        img = img[:, 25:620]
-    #        img = cv2.blur(img, (5, 1))
-    #        h, w = img.shape
-    #        total_sum = 0
-    #        total_count = 0
-
-    #        for i in range(w-1):
-    #           for j in range (h-1):
-    #               if  img[j,i]>100:
-    #                   #print(img[i,j])
-    #                   total_count += 1
-    #                   total_sum += j
-    #           if total_count>0:
-    #                 a=int((total_sum / total_count)) /(perspective + 0.01)
-    #                 #print("sum of defect")
-    #                 #print(a)
-                      
-    #        #max=defect_detection_find_max(img ,470)
-    #        #print(a)
-    #        self.ui_cam.show_tear_depth(a)
 
 class AlgorithmSetting_API:
     def __init__(self, 
@@ -244,8 +210,6 @@ class AlgorithmSetting_API:
         
         step2_img = self.belt_inspection.AnomalyDetection.draw(image=step1_img)
         self.uiHandeler.set_image('step2', step2_img)
-        #cv2.imshow('step2', step2_img)
-        #cv2.waitKey(1)
 
         step3_img = self.belt_inspection.DefectExtractor.draw(image=step2_img)
         self.uiHandeler.set_image('step3', step3_img)

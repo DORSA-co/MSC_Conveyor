@@ -3,7 +3,8 @@ import datetime
 
 import re
 import cv2
-from persiantools.jdatetime import JalaliDateTime, JalaliDate
+#from persiantools.jdatetime import JalaliDateTime, JalaliDate
+from datetime import datetime, date
 
 from PySide6.QtWidgets import QApplication, QToolButton
 from PySide6 import QtWidgets, QtCore, QtGui
@@ -416,17 +417,18 @@ def single_timer_runner( t, func):
     timer.singleShot(t, func)
 
 class Calendar(QtWidgets.QDialog):
-    def __init__(self) -> None:
+    def __init__(self, input_field:QtWidgets.QDateEdit) -> None:
         super(Calendar, self).__init__()
 
         self.ui = Ui_CalendarDialog()
         self.ui.setupUi(self)
+        self.input_field = input_field
 
         GUIBackend.set_win_frameless(self)
         GUIBackend.set_win_attribute(self, QtCore.Qt.WA_TranslucentBackground)
 
         GUIBackend.button_connector(self.ui.cancel_btn, self.close_win)
-        GUIBackend.button_connector(self.ui.ok_btn, self.get_selected_date)
+        GUIBackend.button_connector(self.ui.ok_btn, self.__update__date_field)
 
         self.move_refresh_time = 0
         self.offset = None
@@ -487,19 +489,28 @@ class Calendar(QtWidgets.QDialog):
         super().mouseReleaseEvent(event)
 
     def show_win(self):
-        result = self.exec_()
-        if result == QtWidgets.QDialog.Accepted:
-            return self.selected_date
-        else:
-            return None
+        date = GUIBackend.get_date_input(self.input_field)
+        self.__set_date(date)
+    
+        GUIBackend.show_window(self, always_on_top=True)
 
     def close_win(self):
         GUIBackend.close_window(self)
-        self.reject()
 
-    def get_selected_date(self):
-        self.selected_date = self.ui.calendar.selectedDate().toPython()
-        self.accept()
+    def __update__date_field(self):
+        selected_date = self.ui.calendar.selectedDate().toPython()
+        GUIBackend.set_date_input(self.input_field, selected_date)
+        self.close_win()
+    
+    def __set_date(self, date:datetime):
+        date = QtCore.QDate(date.year, date.month, date.day)
+        self.ui.calendar.setSelectedDate(date)
+
+
+
+
+
+
 
 class VerifyUser(QtWidgets.QDialog):
     def __init__(self, username, password) -> None:
@@ -1545,7 +1556,7 @@ class defectNotification(QtWidgets.QWidget):
                  id: int,
                  side:str,
                  tag:str,
-                 datetime:JalaliDateTime,  
+                 datetime:datetime,  
                  defect_type:str,
                  defect_color:tuple) -> None:
         
@@ -1589,8 +1600,8 @@ class defectNotification(QtWidgets.QWidget):
     def set_defect_type(self, defect_type:str):
         self.ui.defect_type_label.setText(defect_type)
 
-    def set_date(self, date:JalaliDate):
-        today = JalaliDate.today()
+    def set_date(self, date:date):
+        today = date.today()
         diff = today - date
         if diff.days > 10 :
             txt = date.strftime("%Y/%m/%d")

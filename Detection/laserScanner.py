@@ -3,7 +3,7 @@ from Detection import cvToolsCython
 
 
 class laserScanner:
-    
+    TEAR_DEPTH = -100
     
     def __init__(self) -> None:
         self.pts = np.array([])
@@ -15,5 +15,5 @@ class laserScanner:
     
     
     def laserExtraction(self, image, thresh, win_size=10):
-        self.pts = cvToolsCython.extract_points_maxwin(image, thresh, win_size)
+        self.pts = cvToolsCython.extract_points_maxwin(image, thresh, win_size, self.TEAR_DEPTH)
         return self.pts

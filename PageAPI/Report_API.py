@@ -25,6 +25,7 @@ class Report_API:
         self.uiHandler.button_connector('delete_all', self.delete_all)
         self.uiHandler.button_connector('reload', self.startup)
         self.uiHandler.table_widget_connector(self.table_event)
+
         self.uiHandler.deleteProgressDialog.cancel_button_connector(self.cancel_removing_defects)
 
         self.view_defect_process = None

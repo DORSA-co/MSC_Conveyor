@@ -77,7 +77,7 @@ def extract_points_slope(numpy.ndarray[DTYPE_uint8, ndim=2] img, float gain_thre
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-def extract_points_maxwin(numpy.ndarray[DTYPE_uint8, ndim=2] img, int thresh,  int window_size):  
+def extract_points_maxwin(numpy.ndarray[DTYPE_uint8, ndim=2] img, int thresh,  int window_size, int replacement):  
 
     cdef int total_y_sum = 0
     cdef int weights_sum = 0
@@ -122,7 +122,7 @@ def extract_points_maxwin(numpy.ndarray[DTYPE_uint8, ndim=2] img, int thresh,  i
         if weights_sum > 0:
             res_y = int(total_y_sum / weights_sum )
         else:
-            res_y = -1
+            res_y = replacement
         
         res_pts[x, 0] = x
         res_pts[x, 1] = res_y
