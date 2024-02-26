@@ -39,7 +39,8 @@
 
 QWidget
 {
-	font: auto &quot;Roboto&quot;;
+    font: auto &quot;Roboto&quot;;
+    color: white; /* Ensuring text is visible on darker backgrounds */
 }
 
 /***********************QCalendarWidget************************/
@@ -50,64 +51,69 @@ QCalendarWidget {
 
 QCalendarWidget QToolButton {
     background-color: transparent;
-    color: rgb(20, 20, 20);
+    color: rgb(220, 220, 220); 
     font-size: 16pt;
-	font-weight: bold;
+    font-weight: bold;
     border: none;
-	min-height: 40px;
-	max-height: 40px;
+    min-height: 40px;
+    max-height: 40px;
 }
 
 QCalendarWidget QToolButton#qt_calendar_prevmonth
 {
-    icon: url(:/icons/icons/prev_gray.png);
-	background-color: transparent;
-	min-height: 40px;
-	max-height: 40px;
-	min-width: 40px;
-	max-width: 40px;
-	border-radius: 5px;
-	border: 2px solid #E0E4EC;
+    background-color: transparent;
+    min-height: 40px;
+    max-height: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    border-radius: 5px;
+    border: 2px solid #343a40; 
 }
 
 QCalendarWidget QToolButton#qt_calendar_nextmonth
 {
-    icon: url(:/icons/icons/next_gray.png);
-	background-color: transparent;
-	min-height: 40px;
-	max-height: 40px;
-	min-width: 40px;
-	max-width: 40px;
-	border-radius: 5px;
-	border: 2px solid #E0E4EC;
+    background-color: transparent;
+    min-height: 40px;
+    max-height: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    border-radius: 5px;
+    border: 2px solid #343a40;
 }
 
 QCalendarWidget QToolButton#qt_calendar_prevmonth:hover,
 QCalendarWidget QToolButton#qt_calendar_nextmonth:hover
 {
-    background-color: #E0E4EC;
+    background-color: #343a40; 
 }
 
 QCalendarWidget QToolButton#qt_calendar_prevmonth:pressed,
 QCalendarWidget QToolButton#qt_calendar_nextmonth:pressed
 {
-    background-color: #E0E4EC;
+    background-color: #23272b; 
 }
 
 QCalendarWidget QWidget#qt_calendar_navigationbar 
 {
-    background-color: transparent;
-	min-height: 80px;
+    background-color: transparent; 
+    min-height: 80px;
 }
 
 QCalendarWidget QTableView 
 {
     outline: none;
-	background-color: #F7F8FA;
+    background-color: rgba(10, 14, 26, 255); 
     selection-background-color: #7892DF;
     selection-color: white;
-	border-top: 2px solid #E0E4EC;
-	border-bottom: 2px solid #E0E4EC;
+	alternate-background-color: transparent;
+    border-top: 2px solid #343a40;
+    border-bottom: 2px solid #343a40;
+}
+
+QCalendarWidget QComboBox QAbstractItemView {
+    background-color: red; /* Background color of the dropdown items */
+    selection-background-color: red; /* Background color of a selected item */
+    selection-color: red; /* Text color of a selected item */
 }
 </string>
      </property>
@@ -152,7 +158,7 @@ QCalendarWidget QTableView
 
 *[styleSheet=&quot;PmainFrameStyle&quot;]
 {
-	background-color: #F7F8FA;
+	background-color: rgba(10, 14, 26, 255);
 	border-radius: 20px;
 }
 
@@ -160,7 +166,7 @@ QCalendarWidget QTableView
 
 *[styleSheet=&quot;PokPushButtonStyle&quot;]
 {
-	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(46, 76, 153, 255), stop:1 rgba(76, 126, 255, 255));
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgb(126, 132, 162), stop:1 rgb(31, 42, 77));
 	color: rgba(255, 255, 255, 210);
 	border-radius: 12px;
 	min-width: 150;
@@ -179,7 +185,7 @@ QCalendarWidget QTableView
 
 *[styleSheet=&quot;PokPushButtonStyle&quot;]:hover
 {
-	background-color: qlineargradient(spread:pad, x1:0.635, y1:1, x2:0.44, y2:0, stop:0 rgba(77, 98, 153, 255), stop:1 rgba(114, 152, 252, 255));
+	background-color: qlineargradient(spread:pad, x1:0, y1:0.505682, x2:1, y2:0.477, stop:0 rgb(139, 146, 179), stop:1 rgba(40, 67, 98, 219));
 }
 
 *[styleSheet=&quot;PokPushButtonStyle&quot;]:pressed
@@ -192,8 +198,8 @@ QCalendarWidget QTableView
 
 *[styleSheet=&quot;PcancelPushButtonStyle&quot;]
 {
-	border: 2px solid  rgba(46, 76, 153, 255);
-	color:  rgba(46, 76, 153, 255);
+	border: 2px solid  rgb(126, 132, 162);
+	color:  rgb(126, 132, 162);
 	border-radius: 12px;
 	min-width: 150;
 	max-width: 150;
@@ -211,8 +217,8 @@ QCalendarWidget QTableView
 
 *[styleSheet=&quot;PcancelPushButtonStyle&quot;]:hover
 {
-	border: 2px solid rgba(76, 126, 255, 255);
-	color:  rgba(76, 126, 255, 255);
+	border: 2px solid rgb(139, 146, 179);
+	color:  rgb(139, 146, 179);
 }
 
 *[styleSheet=&quot;PcancelPushButtonStyle&quot;]:pressed
@@ -307,6 +313,9 @@ QCalendarWidget QTableView
                  </item>
                  <item>
                   <widget class="QPushButton" name="cancel_btn">
+                   <property name="enabled">
+                    <bool>true</bool>
+                   </property>
                    <property name="cursor">
                     <cursorShape>PointingHandCursor</cursorShape>
                    </property>
@@ -320,6 +329,9 @@ QCalendarWidget QTableView
                  </item>
                  <item>
                   <widget class="QPushButton" name="ok_btn">
+                   <property name="enabled">
+                    <bool>true</bool>
+                   </property>
                    <property name="cursor">
                     <cursorShape>PointingHandCursor</cursorShape>
                    </property>
