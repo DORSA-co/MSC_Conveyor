@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'edit_user.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.2.4
+## Created by: Qt User Interface Compiler version 6.6.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -25,7 +25,7 @@ class Ui_editUserDialogWin(object):
         if not editUserDialogWin.objectName():
             editUserDialogWin.setObjectName(u"editUserDialogWin")
         editUserDialogWin.resize(377, 529)
-        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(editUserDialogWin.sizePolicy().hasHeightForWidth())
@@ -238,13 +238,13 @@ class Ui_editUserDialogWin(object):
         self.horizontalLayout_7 = QHBoxLayout(self.top_frame)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.horizontalLayout_7.setContentsMargins(-1, -1, -1, 30)
-        self.horizontalSpacer_2 = QSpacerItem(315, 18, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_2 = QSpacerItem(315, 18, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_7.addItem(self.horizontalSpacer_2)
 
         self.close_btn = QPushButton(self.top_frame)
         self.close_btn.setObjectName(u"close_btn")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.close_btn.sizePolicy().hasHeightForWidth())
@@ -329,7 +329,7 @@ class Ui_editUserDialogWin(object):
 
         self.verticalLayout_5.addLayout(self.verticalLayout_8)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Preferred)
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred)
 
         self.verticalLayout_5.addItem(self.verticalSpacer_2)
 
@@ -359,7 +359,7 @@ class Ui_editUserDialogWin(object):
 
         self.verticalLayout_5.addWidget(self.error_lbl)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout_5.addItem(self.verticalSpacer)
 

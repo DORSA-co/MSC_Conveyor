@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'popup_slider.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.2.4
+## Created by: Qt User Interface Compiler version 6.6.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -417,7 +417,7 @@ class Ui_slider(object):
 
         self.horizontalLayout.addWidget(self.close)
 
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
@@ -440,7 +440,7 @@ class Ui_slider(object):
         self.camera_status_icon = QPushButton(self.camera_staus_frame)
         self.camera_status_icon.setObjectName(u"camera_status_icon")
         self.camera_status_icon.setEnabled(True)
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.camera_status_icon.sizePolicy().hasHeightForWidth())
@@ -584,7 +584,7 @@ class Ui_slider(object):
 
         self.verticalLayout_5.addWidget(self.database_staus_frame)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout_5.addItem(self.verticalSpacer)
 
@@ -596,7 +596,7 @@ class Ui_slider(object):
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.filter_by_label = QLabel(self.notification_filter_page)
         self.filter_by_label.setObjectName(u"filter_by_label")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.filter_by_label.sizePolicy().hasHeightForWidth())
@@ -634,7 +634,7 @@ class Ui_slider(object):
         self.filter_date_checkBox = QCheckBox(self.date_frame)
         self.filter_date_checkBox.setObjectName(u"filter_date_checkBox")
         self.filter_date_checkBox.setEnabled(True)
-        sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         sizePolicy2.setHorizontalStretch(0)
         sizePolicy2.setVerticalStretch(0)
         sizePolicy2.setHeightForWidth(self.filter_date_checkBox.sizePolicy().hasHeightForWidth())
@@ -687,7 +687,7 @@ class Ui_slider(object):
 
         self.start_date_btn = QPushButton(self.date_frame)
         self.start_date_btn.setObjectName(u"start_date_btn")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Preferred)
         sizePolicy3.setHorizontalStretch(0)
         sizePolicy3.setVerticalStretch(0)
         sizePolicy3.setHeightForWidth(self.start_date_btn.sizePolicy().hasHeightForWidth())
@@ -973,14 +973,14 @@ class Ui_slider(object):
 
         self.verticalLayout_9.addWidget(self.depth_frame)
 
-        self.verticalSpacer_3 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Minimum)
+        self.verticalSpacer_3 = QSpacerItem(20, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
 
         self.verticalLayout_9.addItem(self.verticalSpacer_3)
 
         self.horizontalLayout_25 = QHBoxLayout()
         self.horizontalLayout_25.setObjectName(u"horizontalLayout_25")
         self.horizontalLayout_25.setContentsMargins(26, 10, 13, 10)
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_25.addItem(self.horizontalSpacer_2)
 
@@ -999,7 +999,7 @@ class Ui_slider(object):
 
         self.notif_clear_filter_btn = QPushButton(self.filters_frame)
         self.notif_clear_filter_btn.setObjectName(u"notif_clear_filter_btn")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
         sizePolicy4.setHorizontalStretch(0)
         sizePolicy4.setVerticalStretch(0)
         sizePolicy4.setHeightForWidth(self.notif_clear_filter_btn.sizePolicy().hasHeightForWidth())
@@ -1013,14 +1013,14 @@ class Ui_slider(object):
 
         self.horizontalLayout_25.addWidget(self.notif_clear_filter_btn)
 
-        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_25.addItem(self.horizontalSpacer_3)
 
 
         self.verticalLayout_9.addLayout(self.horizontalLayout_25)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout_9.addItem(self.verticalSpacer_2)
 

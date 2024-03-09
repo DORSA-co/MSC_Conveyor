@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'belt_tile.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.2.4
+## Created by: Qt User Interface Compiler version 6.6.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -96,7 +96,7 @@ class Ui_Tile(object):
         self.verticalLayout_3.setContentsMargins(-1, -1, -1, 0)
         self.inner_frame = QFrame(self.main_frame)
         self.inner_frame.setObjectName(u"inner_frame")
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Expanding)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.inner_frame.sizePolicy().hasHeightForWidth())
@@ -117,7 +117,7 @@ class Ui_Tile(object):
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.meterage_low_label = QLabel(self.inner_frame)
         self.meterage_low_label.setObjectName(u"meterage_low_label")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Preferred)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.meterage_low_label.sizePolicy().hasHeightForWidth())
@@ -138,7 +138,7 @@ class Ui_Tile(object):
 
         self.verticalLayout_5.addWidget(self.meter_low_label)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout_5.addItem(self.verticalSpacer)
 
@@ -157,7 +157,7 @@ class Ui_Tile(object):
 
         self.verticalLayout_7.addWidget(self.arrow_frame)
 
-        self.verticalSpacer_3 = QSpacerItem(20, 70, QSizePolicy.Minimum, QSizePolicy.Preferred)
+        self.verticalSpacer_3 = QSpacerItem(20, 70, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred)
 
         self.verticalLayout_7.addItem(self.verticalSpacer_3)
 
@@ -182,7 +182,7 @@ class Ui_Tile(object):
 
         self.verticalLayout_6.addWidget(self.meter_high_label)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout_6.addItem(self.verticalSpacer_2)
 

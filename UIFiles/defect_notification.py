@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'defect_notification.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.2.4
+## Created by: Qt User Interface Compiler version 6.6.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -152,7 +152,7 @@ class Ui_Notification(object):
         self.select_checkBox = QCheckBox(self.main_frame)
         self.select_checkBox.setObjectName(u"select_checkBox")
         self.select_checkBox.setEnabled(True)
-        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.select_checkBox.sizePolicy().hasHeightForWidth())
@@ -179,7 +179,7 @@ class Ui_Notification(object):
 
         self.horizontalLayout_6.addWidget(self.tag_label)
 
-        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_6.addItem(self.horizontalSpacer_3)
 
@@ -205,7 +205,7 @@ class Ui_Notification(object):
 
         self.horizontalLayout.addWidget(self.date_label)
 
-        self.horizontalSpacer = QSpacerItem(27, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+        self.horizontalSpacer = QSpacerItem(27, 20, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer)
 
@@ -220,7 +220,7 @@ class Ui_Notification(object):
 
         self.horizontalLayout_3.addLayout(self.verticalLayout_3)
 
-        self.horizontalSpacer_2 = QSpacerItem(5, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+        self.horizontalSpacer_2 = QSpacerItem(5, 20, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_3.addItem(self.horizontalSpacer_2)
 
@@ -278,7 +278,7 @@ class Ui_Notification(object):
 
         self.verticalLayout_5.addWidget(self.close_btn, 0, Qt.AlignTop)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout_5.addItem(self.verticalSpacer)
 

@@ -1,8 +1,14 @@
-import threading
 import time
 import threading
+import os
+import psutil
 
-import cv2
+import numpy as np
+from PySide6.QtCore import Signal, QObject
+from pympler.asizeof import asizeof
+from memory_profiler import profile
+import tracemalloc
+
 
 from PageAPI.Setting_API import SettingAPI
 from PageAPI.AlgorithmCalibration_API import AlgorithmCalibration_API
@@ -33,8 +39,10 @@ class main_API:
 
     """
     DEBUG_PROCESS_THREAD = False
+    DEBUG_CAMERA_CHECKER_THREAD = False
     DEVICE_CHECKer_TIMER = 5000
     CAMERA_SIMULATION = True
+    REFRESH_RATE = 20
     
     
     def __init__(self, uiHandeler:mainUI) -> None:
@@ -45,8 +53,10 @@ class main_API:
         #--------------------------------------------------------
         kwargs = self.db.Setting_DB.algorithm_setting_db.load()
         self.beltIncpetcion = beltInspection(kwargs)
-        self.beltIncpetcion.set_new_defect_event(self.new_defect_event)
-        self.beltIncpetcion.set_update_defect_event(self.update_defect_event)
+        self.beltIncpetcion.new_defect.connect(self.new_defect_event)
+        self.beltIncpetcion.update_defect.connect(self.update_defect_event)
+        self.beltIncpetcion.processing_finished.connect(self.processing_finished_event)
+
 
         self.DefectFileManager = DefectFileManager(Constant.SavePathes.DEFECTS_SAVE_PATH)
         #--------------------------------------------------------
@@ -60,14 +70,17 @@ class main_API:
         self.checked_device_time = time.time()
         self.is_during_checking_device  = False
         self.is_during_process = False
-        self.system_running = False
         
+        self.test_timer = time.time()
+        self.fps = 0
+        self.refresh_time = time.time()
         self.device_checker_timer = timerBuilder(self.DEVICE_CHECKer_TIMER, self.check_camera_devices_event)
         self.device_checker_timer.start()
         
         
         self.build_camera(CAMERAS)
         self.run_camera_thread(CAMERAS['name'])
+
         #self.cameras[CAMERAS['name']].Operations.start_grabbing()
         
         
@@ -90,7 +103,7 @@ class main_API:
         self.uiHandeler.change_page_connector(self.page_change_event)
         self.API_Page_Users.set_login_event(self.login_user_event)
         self.API_Report.set_external_delete_event_function(self.delete_defect)
-        self.API_Live_View.set_run_stop_evetn( self.run_stop_event)
+        self.API_Live_View.set_run_stop_event( self.run_stop_event)
 
         
         self.pages_api_dict = {
@@ -103,7 +116,11 @@ class main_API:
         self.API_Page_Users.loginUser.uiHandeler.loginDialog.show_win()
         self.startup()
         
-
+    @staticmethod
+    def print_memory_usage():
+        process = psutil.Process(os.getpid())
+        memory_usage = process.memory_info().rss # in bytes 
+        print(f"Memory Usage: {memory_usage / 1024**2:.2f} MB")
 
     def startup(self,):
         for api in self.pages_api_dict.values():
@@ -134,25 +151,49 @@ class main_API:
         #self.mainPageAPI.set_logined_user(username)
         #self.reportsPageAPI.set_user_login(username)
 
+    #@profile
     def grabbed_image_event(self, image):
+        # print('process time', time.time() - self.test_timer)
+        # self.test_timer = time.time()
+        
+        
         if not self.is_during_process:
             self.is_during_process = True
+            self.image = image
+            
             if self.API_Live_View.is_running:
-                self.beltIncpetcion.feed(image)
-            
-            
+                self.fps += 1
+                if (time.time() - self.test_timer) >= 1:
+                    print('FPS: ', self.fps, time.time() - self.test_timer)
+                    self.print_memory_usage()
+                    self.test_timer = time.time()
+                    self.fps = 0
 
 
-        if self.uiHandeler.current_page_name == 'settings':
-            self.API_Page_Setting.grab_image_event(image)
+                if not self.DEBUG_PROCESS_THREAD:
+                    self.belt_inspection_thread = threading.Thread(target=self.beltIncpetcion.feed, args=(image,))  
+                    self.belt_inspection_thread.start()
+                
+                else:
+                    self.beltIncpetcion.feed(image)
 
-        elif self.uiHandeler.current_page_name == 'live':
-            self.API_Live_View.uiHandeler.set_liveview_belt_img(self.beltIncpetcion.res_image)
-            
+
+    #@profile
+    def processing_finished_event(self):
         self.is_during_process = False
 
+        if (time.time() - self.refresh_time)*1000 > (1000/self.REFRESH_RATE):
+            if self.uiHandeler.current_page_name == 'settings':
+                self.API_Page_Setting.grab_image_event(self.image)
 
+            elif self.uiHandeler.current_page_name == 'live':
+                
+                    self.refresh_time = time.time()
+                    res_image = self.beltIncpetcion.get_result_image()
+                    self.API_Live_View.uiHandeler.set_liveview_belt_img(res_image)
 
+        
+        
 
     def build_camera(self, camera_meta: dict):
         """get camera meta_data and build that camera
@@ -198,6 +239,7 @@ class main_API:
 
     def check_camera_devices_event(self,):
         if not self.is_during_checking_device:
+
             t = time.time()
             self.checked_device_time = time.time()
             self.is_during_checking_device = True
@@ -205,7 +247,7 @@ class main_API:
             self.device_checker_worker = DeviceCheckerWorker(self.collector)
             self.device_checker_thread = threading.Thread(target= self.device_checker_worker.serial_number_finder)
             self.device_checker_worker.serials_ready.connect(self.refresh_camera_devices_event)
-            if self.DEBUG_PROCESS_THREAD:
+            if self.DEBUG_CAMERA_CHECKER_THREAD:
                 print('Device Checker on Debug mode')
                 self.device_checker_worker.serial_number_finder()
             else:
@@ -246,18 +288,25 @@ class main_API:
         print('ERROR GRABBING IMAGE')
 
     def new_defect_event(self, defect:Defect):
+        pass
         self.API_Live_View.new_defect_event(defect)
         info = defect.get_info()
         info['main_path'] = self.DefectFileManager.main_path
-        self.db.Defects_DB.save(info)
-        threading.Thread(target=self.DefectFileManager.save, args=(defect,)).start()
+
+        count = Constant.DatabaseLimits.DEFECT_COUNT
+        if count is not None:
+            if self.db.Defects_DB.count() <= count:
+                self.db.Defects_DB.save(info)
+                threading.Thread(target=self.DefectFileManager.save, args=(defect,)).start()
+            else:
+                pass
+                #print('WARNING mainAPI: Database is full')
     
     def update_defect_event(self, defect:Defect):
         info = defect.get_info()
         info['main_path'] = self.DefectFileManager.main_path
-        self.db.Defects_DB.save(info)
+        self.db.Defects_DB.update(info)
         threading.Thread(target=self.DefectFileManager.save, args=(defect,)).start()
-
 
     def delete_defect(self, defect:dict):
         defect_id = defect['defect_id']
@@ -265,11 +314,13 @@ class main_API:
         notif = self.API_Live_View.uiHandeler.notifications.get_by_id(defect_id)
         if notif !=None :
             self.API_Live_View.uiHandeler.pop_notification(notif)
-
     
     def run_stop_event(self,):
+        self.is_during_process = False
         for camera in self.cameras.values():
             if self.API_Live_View.is_running:
                 camera.Operations.start_grabbing()
             else:
                 camera.Operations.stop_grabbing()
+
+        #self.beltIncpetcion.Encoder.update_time = time.time()

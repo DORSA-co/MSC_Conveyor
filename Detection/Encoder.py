@@ -1,29 +1,36 @@
 import time
 
 class Encoder:
-    SPEED = 600
+    SPEED = 300
     def __init__(self):
         self.line_idx = -1
         self.x = -1
-        self.step = 8
+        self.step = 0
         self.end_line_idx = 0
         self.external_finish_event_func = None
-        self.update_time = time.time()
+        self.update_time = None
+
+        self.test_idx= 0
 
     def counter(self):
+        #print(self.step)
         now = time.time()
-        self.step = (now - self.update_time) * self.SPEED
+        if self.update_time is not None:
+            self.step = (now - self.update_time) * self.SPEED
+
+        self.test_idx+=1
         #-----------------------
-        self.step = 6
+        #self.step = 6
         #-----------------------
         self.update_time = now
         self.x += self.step
         self.line_idx += self.step
 
-        if self.line_idx> 414 * self.step:
+        if self.test_idx> 414:
             self.end_line_idx = self.line_idx
             self.line_idx = 0
             self.x = 0
+            self.test_idx = 0
             # self.step = 0
             #event
             self.external_finish_event_func(self.get_end_line_idx())

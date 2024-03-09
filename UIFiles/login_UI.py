@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'login_UI.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.2.4
+## Created by: Qt User Interface Compiler version 6.6.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -186,13 +186,13 @@ class Ui_loginDialogWin(object):
         self.horizontalLayout_6 = QHBoxLayout(self.top_frame)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.horizontalLayout_6.setContentsMargins(-1, -1, -1, 50)
-        self.horizontalSpacer = QSpacerItem(315, 18, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer = QSpacerItem(315, 18, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_6.addItem(self.horizontalSpacer)
 
         self.close_btn = QPushButton(self.top_frame)
         self.close_btn.setObjectName(u"close_btn")
-        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.close_btn.sizePolicy().hasHeightForWidth())
@@ -224,7 +224,7 @@ class Ui_loginDialogWin(object):
         self.verticalLayout_5.setContentsMargins(-1, 50, -1, -1)
         self.horizontalLayout_7 = QHBoxLayout()
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.horizontalSpacer_9 = QSpacerItem(13, 124, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_9 = QSpacerItem(13, 124, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_7.addItem(self.horizontalSpacer_9)
 
@@ -322,14 +322,14 @@ class Ui_loginDialogWin(object):
 
         self.horizontalLayout_7.addLayout(self.verticalLayout_7)
 
-        self.horizontalSpacer_10 = QSpacerItem(13, 124, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_10 = QSpacerItem(13, 124, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_7.addItem(self.horizontalSpacer_10)
 
 
         self.verticalLayout_5.addLayout(self.horizontalLayout_7)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Preferred)
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred)
 
         self.verticalLayout_5.addItem(self.verticalSpacer_2)
 
@@ -348,13 +348,13 @@ class Ui_loginDialogWin(object):
 
         self.verticalLayout_5.addWidget(self.login_btn, 0, Qt.AlignHCenter)
 
-        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Preferred)
+        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred)
 
         self.verticalLayout_5.addItem(self.verticalSpacer_3)
 
         self.login_error_lbl = QLabel(self.login_frame)
         self.login_error_lbl.setObjectName(u"login_error_lbl")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.login_error_lbl.sizePolicy().hasHeightForWidth())
@@ -364,7 +364,7 @@ class Ui_loginDialogWin(object):
 
         self.verticalLayout_5.addWidget(self.login_error_lbl)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout_5.addItem(self.verticalSpacer)
 

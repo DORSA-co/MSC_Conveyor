@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'image_viewer.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.2.4
+## Created by: Qt User Interface Compiler version 6.6.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -275,7 +275,7 @@ class Ui_ViewerWindow(object):
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.top_frame = QFrame(self.PointStyleSheet)
         self.top_frame.setObjectName(u"top_frame")
-        sizePolicy = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.top_frame.sizePolicy().hasHeightForWidth())
@@ -285,13 +285,13 @@ class Ui_ViewerWindow(object):
         self.top_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_14 = QHBoxLayout(self.top_frame)
         self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_14.addItem(self.horizontalSpacer)
 
         self.help_btn = QPushButton(self.top_frame)
         self.help_btn.setObjectName(u"help_btn")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.help_btn.sizePolicy().hasHeightForWidth())
@@ -352,7 +352,7 @@ class Ui_ViewerWindow(object):
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.view_3d_btn = QPushButton(self.image_page)
         self.view_3d_btn.setObjectName(u"view_3d_btn")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         sizePolicy2.setHorizontalStretch(0)
         sizePolicy2.setVerticalStretch(0)
         sizePolicy2.setHeightForWidth(self.view_3d_btn.sizePolicy().hasHeightForWidth())
@@ -391,7 +391,7 @@ class Ui_ViewerWindow(object):
         __qtablewidgetitem4 = QTableWidgetItem()
         self.viewer_defect_table.setItem(0, 1, __qtablewidgetitem4)
         self.viewer_defect_table.setObjectName(u"viewer_defect_table")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
         sizePolicy3.setHorizontalStretch(0)
         sizePolicy3.setVerticalStretch(0)
         sizePolicy3.setHeightForWidth(self.viewer_defect_table.sizePolicy().hasHeightForWidth())
@@ -405,13 +405,13 @@ class Ui_ViewerWindow(object):
 
         self.verticalLayout_3.addWidget(self.viewer_defect_table)
 
-        self.verticalSpacer = QSpacerItem(20, 8, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer = QSpacerItem(20, 8, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
 
         self.verticalLayout_3.addItem(self.verticalSpacer)
 
         self.tiles_scrollArea = QScrollArea(self.image_page)
         self.tiles_scrollArea.setObjectName(u"tiles_scrollArea")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
         sizePolicy4.setHorizontalStretch(0)
         sizePolicy4.setVerticalStretch(0)
         sizePolicy4.setHeightForWidth(self.tiles_scrollArea.sizePolicy().hasHeightForWidth())
@@ -426,7 +426,7 @@ class Ui_ViewerWindow(object):
         self.tiles_frame.setStyleSheet(u"PtileFrameStyle")
         self.horizontalLayout = QHBoxLayout(self.tiles_frame)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout.addItem(self.horizontalSpacer_2)
 

@@ -15,14 +15,16 @@ class DefectTracker:
         # }
         #self.completed_defects: list[Defect] = []
         #self.non_completed_defects: list[Defect] = []
-        #self.__not_pass_completed_defects: list[Defect] = []
+        #self.not_pass_completed_defects: list[Defect] = []
         
         self.completed_defects = idList()
         self.non_completed_defects = idList()
-        self.__not_pass_completed_defects = idList()
+        self.not_pass_completed_defects = idList()
 
         self.external_new_defect_event = None
         self.external_defect_update_event = None
+
+        self.LIMIT_COUNT = 100
     
     def set_new_defect_event(self, func):
         self.external_new_defect_event = func
@@ -68,7 +70,10 @@ class DefectTracker:
                     start_line_idx=line_idx
                 )
 
-                self.non_completed_defects.append(new_defect, new_defect.id)
+                if self.non_completed_defects.count() < self.LIMIT_COUNT:
+                    self.non_completed_defects.append(new_defect, new_defect.id)
+                else:
+                    print('Non complete defect is full')
 
         for non_complete_defect in self.non_completed_defects.values():
             non_complete_defect.render(error_ys, line_idx)
@@ -89,9 +94,9 @@ class DefectTracker:
             if defect.is_complete(line_idx, min_frame_gap):
                 
                 self.non_completed_defects.remove_by_value(defect)
-                if defect.is_defect(min_length):
+                if defect.is_defect(min_length) and self.completed_defects.count() < self.LIMIT_COUNT:
                     
-                    self.__not_pass_completed_defects.append(defect, defect.id)
+                    self.not_pass_completed_defects.append(defect, defect.id)
                     #------------------------------------
                     #check if defect is update of another defect
                     for i in range(self.completed_defects.count()):
@@ -112,15 +117,15 @@ class DefectTracker:
         
     def check_defect_passed(self, line_idx, img_width):
         i  = 0
-        while i < len(self.__not_pass_completed_defects):
-            if self.__not_pass_completed_defects[i].is_present_in_image(line_idx, img_width):
+        while i < len(self.not_pass_completed_defects):
+            if self.not_pass_completed_defects[i].is_present_in_image(line_idx, img_width):
                 i+=1
                 continue
-            self.__not_pass_completed_defects.remove_by_index(i)
+            self.not_pass_completed_defects.remove_by_index(i)
 
 
     def draw(self, min_length, image: np.ndarray, line_idx: int, color: tuple = (33, 33, 133)):
-        #print('total defect to draw',len(self.non_completed_defects) + len(self.__not_pass_completed_defects))
+        #print('total defect to draw',len(self.non_completed_defects) + len(self.not_pass_completed_defects))
         for defect in self.non_completed_defects.values():
 
             if not defect.is_defect(min_length):
@@ -130,10 +135,10 @@ class DefectTracker:
             
 
         defect:Defect
-        for defect in self.__not_pass_completed_defects.values():
+        for defect in self.not_pass_completed_defects.values():
 
             # if pt1[0] > w:
-            #     self.__not_pass_completed_defects.remove_by_value(defect)
+            #     self.not_pass_completed_defects.remove_by_value(defect)
             #     continue
 
             image = defect.draw(image, line_idx, (0,255,0))
