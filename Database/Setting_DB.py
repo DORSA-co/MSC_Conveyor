@@ -143,7 +143,7 @@ class algorithmSettingDB(parentSettingDB):
                             'defect_min_width': 3,
                             'tracker_min_frame_gap': 80,
                             'defect_min_length': 5,
-                            'image_width': 1000,
+                            'image_width': 5000,
                         }   
                     ]
     

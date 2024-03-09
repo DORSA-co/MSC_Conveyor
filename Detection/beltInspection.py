@@ -24,7 +24,7 @@ from Detection.Defect import Defect
 from Constants.Constant import DefectConstants
 
 PRINT_FLAG = True
-TIME_MONITORING_FLAG = True
+TIME_MONITORING_FLAG = False
 
 class beltInspection(QObject):
     processing_finished = Signal()
@@ -66,7 +66,7 @@ class beltInspection(QObject):
         #ONLY FOR TEST
 
 
-        if image.shape[1] != self.ImageCreator.image_size[0]:
+        if not self.ImageCreator.check_image_size(image.shape):
             self.ImageCreator = ImageCreator((image.shape[1], self.kwargs['image_width']),
                                          max_y_errors=DefectConstants.MAX_Y_ERRORS )
             self.ImageCreator.set_cycle_image_event(self.cycle_image_event)

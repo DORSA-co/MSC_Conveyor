@@ -1,5 +1,8 @@
 import os
 
+class DatabaseLimits:
+    DEFECT_COUNT = 100
+
 class SideBarAnimation:
     ANIMATION_DURATION = 300
     WIDTH_START_VALUE = 0

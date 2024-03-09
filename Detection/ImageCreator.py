@@ -9,16 +9,19 @@ from Detection import heatMap
 from Constants.Constant import SavePathes
 
 class ImageCreator:
-    def __init__(self, image_size: tuple, max_y_errors: int) -> None:
-        self.image_size = image_size
-        self.image = np.zeros(image_size + (3,), dtype=np.uint8)
-        self.depth_image = np.zeros(image_size, dtype=np.float32)
+    def __init__(self, image_size: tuple, max_y_errors: int, scale:float=0.3) -> None:
+        self.scale = scale
+
+        self.image_size = int(image_size[0] * self.scale), int(image_size[1] * self.scale)
+
+        self.image = np.zeros(self.image_size + (3,), dtype=np.uint8)
+        self.depth_image = np.zeros(self.image_size, dtype=np.float32)
         self.gradiants = {}
         self.max_y_errors = max_y_errors
 
         self.external_cycle_image_event_func = None
         self.cycle_idx = 0
-        self.total_idx = image_size[1]
+        self.total_idx = self.image_size[1]
         self.image_index = 0
 
         self.image_start_line_idx = 0
@@ -38,6 +41,11 @@ class ImageCreator:
                                                 ))
         
         #self.create_metadata()
+
+    def check_image_size(self, img_size):
+        if int(img_size[1] * self.scale) == self.image_size[0]:
+            return True
+        return False
     
     def set_cycle_image_event(self, func):
         self.external_cycle_image_event_func = func
@@ -55,13 +63,17 @@ class ImageCreator:
     def __calc_step(self, line_idx):
         step = max(line_idx - self.prev_line_idx,0)
         self.prev_line_idx = line_idx
+        #step = int(step * self.scale)
         return step
     
     def feed(self, error_ys: np.ndarray, gradient_name: str, line_idx: int):
         #calculate the step image go forward
         step = self.__calc_step(line_idx)
 
-        if step!=0:
+        if step!=0 and step < self.image_size[1]:
+            error_ys = np.resize(error_ys, (int(error_ys.shape[0] * self.scale), error_ys.shape[1]))
+
+
             self.image[:, step:] = self.image[:,: - (step) ]
             self.depth_image[:, step:] = self.depth_image[:,: - (step) ]
 

@@ -51,18 +51,35 @@ class Defect_DB:
             return True
         return False
 
+    # def save(self, data):
+    #     data['date'] = data['date'].strftime('%Y/%m/%d')
+    #     data['time'] = data['time'].strftime('%H:%M:%S')        
+    #     if self.is_exist(data[self.PRIMERY_KEY_COL_NAME]):
+    #         self.db_manager.update_record_dict(
+    #             self.TABLE_NAME,
+    #             data,
+    #             self.PRIMERY_KEY_COL_NAME,
+    #             data[self.PRIMERY_KEY_COL_NAME],
+    #         )
+    #     else:
+    #         self.db_manager.add_record_dict(self.TABLE_NAME, data)
+
     def save(self, data):
         data['date'] = data['date'].strftime('%Y/%m/%d')
+        data['time'] = data['time'].strftime('%H:%M:%S')                    
+        # else:
+        self.db_manager.add_record_dict(self.TABLE_NAME, data)
+
+
+    def update(self, data):
+        data['date'] = data['date'].strftime('%Y/%m/%d')
         data['time'] = data['time'].strftime('%H:%M:%S')
-        if self.is_exist(data[self.PRIMERY_KEY_COL_NAME]):
-            self.db_manager.update_record_dict(
+        self.db_manager.update_record_dict(
                 self.TABLE_NAME,
                 data,
                 self.PRIMERY_KEY_COL_NAME,
                 data[self.PRIMERY_KEY_COL_NAME],
             )
-        else:
-            self.db_manager.add_record_dict(self.TABLE_NAME, data)
 
 
     def load(self):
@@ -104,3 +121,6 @@ class Defect_DB:
                         self.TABLE_NAME,
                         value
                     )
+     
+    def count(self,):
+        return self.db_manager.get_count_table(self.TABLE_NAME)
